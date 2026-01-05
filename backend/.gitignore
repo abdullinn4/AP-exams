@@ -1,3 +1,6 @@
+# приватные конфиги
+tokens.properties
+
 HELP.md
 .gradle
 build/
