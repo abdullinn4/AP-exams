@@ -1,5 +1,7 @@
 package org.example.apexams.courses.dto;
 
+import org.example.apexams.courses.entity.enums.CourseStatus;
+
 import java.time.Instant;
 import java.util.UUID;
 
@@ -10,7 +12,7 @@ public record CourseResponse(
         String description,
         String previewVideoUrl,
         String coverUrl,
-        String status,
+        CourseStatus status,
         String discordInviteUrl,
         Instant createdAt,
         Instant updatedAt

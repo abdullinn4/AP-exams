@@ -11,4 +11,22 @@ public interface ModuleService {
     ModuleEntity createModule(CreateModuleRequest dto);
     ModuleResponse getModule(UUID id);
     List<ModuleResponse> getModulesByCourse(UUID courseId);
+
+    // Получение модуля с проверкой доступа (для студента)
+    ModuleResponse getModuleWithAccess(UUID moduleId, UUID userId);
+
+    // Получение модулей с прогрессом (для студента)
+    List<ModuleResponse> getModulesWithProgress(UUID courseId, UUID userId);
+
+    // Обновление модуля (админ)
+    void updateModule(UUID id, CreateModuleRequest dto);
+
+    // Изменение порядка модулей (админ)
+    void reorderModules(UUID courseId, List<UUID> moduleIds);
+
+    // Удаление модуля (админ)
+    void deleteModule(UUID id);
+
+    // Проверка доступа к модулю (учитывая release_at)
+    boolean isModuleAvailable(UUID moduleId, UUID userId);
 }

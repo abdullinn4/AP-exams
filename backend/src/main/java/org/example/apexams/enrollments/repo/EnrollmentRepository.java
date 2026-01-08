@@ -20,5 +20,6 @@ public interface EnrollmentRepository
     boolean existsByUserIdAndCourseId(UUID userId, UUID courseId);
 
     List<EnrollmentEntity> findAllByUserId(UUID userId);
+    
+    List<EnrollmentEntity> findAllByCourseId(UUID courseId);
 }
-

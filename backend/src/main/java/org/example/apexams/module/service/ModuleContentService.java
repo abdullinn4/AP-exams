@@ -8,4 +8,9 @@ import java.util.UUID;
 public interface ModuleContentService {
     ModuleContentResponse upsert(ModuleContentRequest dto);
     ModuleContentResponse getByModuleId(UUID moduleId);
+    
+    // Получение контента с проверкой доступа
+    ModuleContentResponse getByModuleIdWithAccess(UUID moduleId, UUID userId);
+    
+    void delete(UUID moduleId);
 }

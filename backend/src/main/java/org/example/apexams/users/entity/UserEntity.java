@@ -2,6 +2,7 @@ package org.example.apexams.users.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.apexams.users.entity.enums.Role;
 import org.example.apexams.users.entity.enums.UserStatus;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -32,6 +33,11 @@ public class UserEntity {
 
     @Column(name = "discord_nickname")
     private String discordNickname;
+
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    @Column(nullable = false)
+    private Role role = Role.STUDENT;
 
     @Enumerated(EnumType.STRING)
     @Builder.Default

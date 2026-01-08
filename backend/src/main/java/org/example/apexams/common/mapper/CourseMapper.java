@@ -15,7 +15,7 @@ public class CourseMapper {
                 courseEntity.getDescription(),
                 courseEntity.getPreviewVideoUrl(),
                 courseEntity.getCoverUrl(),
-                courseEntity.getStatus().toString(),
+                courseEntity.getStatus(),
                 courseEntity.getDiscordInviteUrl(),
                 courseEntity.getCreatedAt(),
                 courseEntity.getUpdatedAt()

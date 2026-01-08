@@ -52,7 +52,8 @@ public class EnrollmentEntity {
     private Instant accessTo;
 
     @Enumerated(EnumType.STRING)
+    @Builder.Default
     @Column(nullable = false)
-    private EnrollmentStatus status;
+    private EnrollmentStatus status = EnrollmentStatus.ACTIVE;
 }
 

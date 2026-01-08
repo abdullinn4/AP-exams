@@ -1,0 +1,260 @@
+package org.example.apexams.tests.service;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.example.apexams.common.mapper.TestMapper;
+import org.example.apexams.notifications.entity.enums.NotificationType;
+import org.example.apexams.notifications.service.NotificationService;
+import org.example.apexams.questionBank.entity.QuestionEntity;
+import org.example.apexams.questionBank.service.QuestionService;
+import org.example.apexams.tests.dto.TestAttemptResponse;
+import org.example.apexams.tests.entity.TestAttemptEntity;
+import org.example.apexams.tests.entity.TestEntity;
+import org.example.apexams.tests.entity.TestQuestionEntity;
+import org.example.apexams.tests.entity.enums.TestType;
+import org.example.apexams.tests.repo.TestAttemptRepository;
+import org.example.apexams.tests.repo.TestQuestionRepository;
+import org.example.apexams.tests.repo.TestRepository;
+import org.example.apexams.users.entity.UserEntity;
+import org.example.apexams.users.repo.UserRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class TestAttemptServiceImpl implements TestAttemptService {
+    private final TestAttemptRepository attemptRepository;
+    private final TestRepository testRepository;
+    private final TestQuestionRepository testQuestionRepository;
+    private final UserRepository userRepository;
+    private final TestMapper testMapper;
+    private final QuestionService questionService;
+    private final ObjectMapper objectMapper;
+    private final NotificationService notificationService;
+
+    @Override
+    @Transactional
+    public TestAttemptResponse startAttempt(UUID userId, UUID testId) {
+        TestEntity test = findTestByIdOrThrow(testId);
+        UserEntity user = findUserByIdOrThrow(userId);
+        
+        // Проверка лимита попыток
+        if (!canUserStartAttempt(userId, testId)) {
+            throw new IllegalStateException("Attempts limit reached for test: " + testId);
+        }
+        
+        // Создаём попытку
+        TestAttemptEntity attempt = TestAttemptEntity.builder()
+                .test(test)
+                .user(user)
+                .startedAt(Instant.now())
+                .build();
+        
+        // Для Mock Exam сохраняем список вопросов в result_json
+        if (test.getType() == TestType.MOCK_EXAM) {
+            List<QuestionEntity> randomQuestions = questionService.generateRandomQuestions(
+                test.getCourse().getId(), 50
+            );
+            List<UUID> questionIds = randomQuestions.stream()
+                    .map(QuestionEntity::getId)
+                    .collect(Collectors.toList());
+            
+            try {
+                Map<String, Object> resultJson = new HashMap<>();
+                resultJson.put("questions", questionIds);
+                attempt.setResultJson(objectMapper.writeValueAsString(resultJson));
+            } catch (Exception e) {
+                log.error("Error saving questions to result_json: {}", e.getMessage());
+            }
+        }
+        
+        attemptRepository.save(attempt);
+        log.info("Test attempt started: user={}, test={}, attemptId={}", userId, testId, attempt.getId());
+        
+        return testMapper.toDto(attempt);
+    }
+
+    @Override
+    @Transactional
+    public TestAttemptResponse submitAttempt(UUID attemptId, Map<UUID, String> answers) {
+        TestAttemptEntity attempt = findAttemptByIdOrThrow(attemptId);
+        TestEntity test = attempt.getTest();
+        
+        if (attempt.getFinishedAt() != null) {
+            throw new IllegalStateException("Attempt already submitted: " + attemptId);
+        }
+        
+        // Получаем вопросы теста
+        List<QuestionEntity> questions;
+        if (test.getType() == TestType.MODULE_TEST) {
+            questions = testQuestionRepository.findAllByTestIdOrderByOrderIndex(test.getId())
+                    .stream()
+                    .map(TestQuestionEntity::getQuestion)
+                    .collect(Collectors.toList());
+        } else {
+            // Для Mock Exam берём из result_json
+            try {
+                Map<String, Object> resultJson = objectMapper.readValue(
+                    attempt.getResultJson(), Map.class
+                );
+                List<String> questionIds = (List<String>) resultJson.get("questions");
+                questions = questionIds.stream()
+                        .map(id -> questionService.getQuestionForStudent(UUID.fromString(id)))
+                        .map(q -> QuestionEntity.builder().id(q.id()).build())
+                        .collect(Collectors.toList());
+            } catch (Exception e) {
+                log.error("Error reading questions from result_json: {}", e.getMessage());
+                throw new IllegalStateException("Failed to read test questions");
+            }
+        }
+        
+        // Проверяем ответы
+        int correctCount = 0;
+        Map<String, Boolean> results = new HashMap<>();
+        
+        for (QuestionEntity question : questions) {
+            String userAnswer = answers.get(question.getId());
+            if (userAnswer != null) {
+                boolean isCorrect = questionService.validateAnswer(question.getId(), userAnswer);
+                if (isCorrect) {
+                    correctCount++;
+                }
+                results.put(question.getId().toString(), isCorrect);
+            } else {
+                results.put(question.getId().toString(), false);
+            }
+        }
+        
+        // Вычисляем score
+        double score = questions.isEmpty() ? 0 : (double) correctCount / questions.size() * 100;
+        
+        // Сохраняем результат
+        attempt.setFinishedAt(Instant.now());
+        try {
+            attempt.setAnswersJson(objectMapper.writeValueAsString(answers));
+            
+            Map<String, Object> resultJson = new HashMap<>();
+            resultJson.put("correctCount", correctCount);
+            resultJson.put("totalCount", questions.size());
+            resultJson.put("results", results);
+            attempt.setResultJson(objectMapper.writeValueAsString(resultJson));
+        } catch (Exception e) {
+            log.error("Error saving attempt results: {}", e.getMessage());
+        }
+        attempt.setScore(score);
+        
+        attemptRepository.save(attempt);
+        log.info("Test attempt submitted: attemptId={}, score={}", attemptId, score);
+        
+        // Создаём уведомление о прохождении теста
+        try {
+            NotificationType notificationType = test.getType() == TestType.MOCK_EXAM 
+                ? NotificationType.MOCK_EXAM_RESULT 
+                : NotificationType.TEST_PASSED;
+            
+            String payload = objectMapper.writeValueAsString(java.util.Map.of(
+                "testId", test.getId().toString(),
+                "testTitle", test.getTitle(),
+                "testType", test.getType().name(),
+                "score", score,
+                "correctCount", correctCount,
+                "totalCount", questions.size(),
+                "courseId", test.getCourse().getId().toString(),
+                "courseName", test.getCourse().getTitle()
+            ));
+            
+            notificationService.createNotification(attempt.getUser().getId(), notificationType, payload);
+        } catch (Exception e) {
+            log.error("Failed to create notification for test completion: {}", e.getMessage());
+        }
+        
+        return testMapper.toDto(attempt);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public TestAttemptResponse getAttemptResult(UUID attemptId) {
+        TestAttemptEntity attempt = findAttemptByIdOrThrow(attemptId);
+        return testMapper.toDto(attempt);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<TestAttemptResponse> getUserAttempts(UUID userId, UUID testId) {
+        return attemptRepository.findAllByUserIdAndTestId(userId, testId)
+                .stream()
+                .map(testMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean canUserStartAttempt(UUID userId, UUID testId) {
+        TestEntity test = findTestByIdOrThrow(testId);
+        
+        // Если лимит не установлен - можно начинать
+        if (test.getAttemptsLimit() == 0) {
+            return true;
+        }
+        
+        // Проверяем количество попыток
+        int attemptsCount = attemptRepository.countByUserIdAndTestId(userId, testId);
+        return attemptsCount < test.getAttemptsLimit();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public int getRemainingAttempts(UUID userId, UUID testId) {
+        TestEntity test = findTestByIdOrThrow(testId);
+        
+        // Если лимит не установлен - возвращаем -1 (безлимит)
+        if (test.getAttemptsLimit() == 0) {
+            return -1;
+        }
+        
+        int attemptsCount = attemptRepository.countByUserIdAndTestId(userId, testId);
+        int remaining = test.getAttemptsLimit() - attemptsCount;
+        return Math.max(0, remaining);
+    }
+
+    @Override
+    @Transactional
+    public void resetAttempts(UUID userId, UUID testId) {
+        List<TestAttemptEntity> attempts = attemptRepository.findAllByUserIdAndTestId(userId, testId);
+        attemptRepository.deleteAll(attempts);
+        log.info("Reset {} attempts for user {} on test {}", attempts.size(), userId, testId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<TestAttemptResponse> getCourseAttempts(UUID courseId) {
+        return attemptRepository.findAllByTestCourseId(courseId)
+                .stream()
+                .map(testMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    private TestAttemptEntity findAttemptByIdOrThrow(UUID attemptId) {
+        return attemptRepository.findById(attemptId)
+                .orElseThrow(() -> new IllegalArgumentException("Test attempt not found: " + attemptId));
+    }
+
+    private TestEntity findTestByIdOrThrow(UUID testId) {
+        return testRepository.findById(testId)
+                .orElseThrow(() -> new IllegalArgumentException("Test not found: " + testId));
+    }
+
+    private UserEntity findUserByIdOrThrow(UUID userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found: " + userId));
+    }
+}
