@@ -1,5 +1,5 @@
 # приватные конфиги
-tokens.properties
+.env
 
 HELP.md
 .gradle
