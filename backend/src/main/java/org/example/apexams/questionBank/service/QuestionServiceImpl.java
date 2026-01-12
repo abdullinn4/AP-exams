@@ -62,10 +62,10 @@ public class QuestionServiceImpl implements QuestionService {
     @Transactional(readOnly = true)
     public boolean validateAnswer(UUID questionId, String userAnswer) {
         QuestionEntity question = findQuestionByIdOrThrow(questionId);
-        
+
         try {
             String answerKeyJson = question.getAnswerKeyJson();
-            
+
             if (question.getType() == QuestionType.SINGLE_CHOICE) {
                 // Для single choice: {"correct": "A"}
                 String correctAnswer = objectMapper.readTree(answerKeyJson).get("correct").asText();
@@ -73,12 +73,12 @@ public class QuestionServiceImpl implements QuestionService {
             } else if (question.getType() == QuestionType.MULTIPLE_CHOICE) {
                 // Для multiple choice: {"correct": ["A", "C"]}
                 List<String> correctAnswers = objectMapper.readValue(
-                    objectMapper.readTree(answerKeyJson).get("correct").toString(),
-                    objectMapper.getTypeFactory().constructCollectionType(List.class, String.class)
+                        objectMapper.readTree(answerKeyJson).get("correct").toString(),
+                        objectMapper.getTypeFactory().constructCollectionType(List.class, String.class)
                 );
                 List<String> userAnswers = List.of(userAnswer.split(","));
-                return correctAnswers.size() == userAnswers.size() && 
-                       correctAnswers.containsAll(userAnswers);
+                return correctAnswers.size() == userAnswers.size() &&
+                        correctAnswers.containsAll(userAnswers);
             } else {
                 // Для open questions - простое сравнение строк (можно улучшить)
                 String correctAnswer = objectMapper.readTree(answerKeyJson).get("correct").asText();
@@ -95,11 +95,11 @@ public class QuestionServiceImpl implements QuestionService {
     public QuestionResultResponse checkAnswer(UUID questionId, String userAnswer) {
         QuestionEntity question = findQuestionByIdOrThrow(questionId);
         boolean isCorrect = validateAnswer(questionId, userAnswer);
-        
+
         try {
             String answerKeyJson = question.getAnswerKeyJson();
             String correctAnswer;
-            
+
             if (question.getType() == QuestionType.SINGLE_CHOICE) {
                 correctAnswer = objectMapper.readTree(answerKeyJson).get("correct").asText();
             } else if (question.getType() == QuestionType.MULTIPLE_CHOICE) {
@@ -107,12 +107,12 @@ public class QuestionServiceImpl implements QuestionService {
             } else {
                 correctAnswer = objectMapper.readTree(answerKeyJson).get("correct").asText();
             }
-            
+
             return new QuestionResultResponse(
-                questionId,
-                isCorrect,
-                correctAnswer,
-                question.getExplanation()
+                    questionId,
+                    isCorrect,
+                    correctAnswer,
+                    question.getExplanation()
             );
         } catch (Exception e) {
             log.error("Error checking answer for question {}: {}", questionId, e.getMessage());
@@ -124,16 +124,16 @@ public class QuestionServiceImpl implements QuestionService {
     @Transactional(readOnly = true)
     public List<QuestionEntity> generateRandomQuestions(UUID courseId, int count) {
         List<QuestionEntity> allQuestions = questionRepository.findAllByCourseId(courseId);
-        
+
         if (allQuestions.size() <= count) {
-            log.warn("Not enough questions in course {}. Requested: {}, Available: {}", 
+            log.warn("Not enough questions in course {}. Requested: {}, Available: {}",
                     courseId, count, allQuestions.size());
             return allQuestions;
         }
-        
+
         Collections.shuffle(allQuestions);
         List<QuestionEntity> randomQuestions = allQuestions.subList(0, count);
-        
+
         log.info("Generated {} random questions for course {}", count, courseId);
         return randomQuestions;
     }

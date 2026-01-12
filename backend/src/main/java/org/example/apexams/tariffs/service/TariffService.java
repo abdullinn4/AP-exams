@@ -10,8 +10,11 @@ import java.util.UUID;
 
 public interface TariffService {
     TariffEntity createTariff(CreateTariffRequest dto);
+
     TariffResponse getTariff(UUID id);
+
     List<TariffResponse> getAllTariffs();
+
     List<TariffResponse> getByCourseId(UUID courseId);
 
     // Получение активных тарифов курса (для checkout)
@@ -25,6 +28,7 @@ public interface TariffService {
 
     // Активация/деактивация тарифа (админ)
     void activateTariff(UUID id);
+
     void deactivateTariff(UUID id);
 
     // Удаление тарифа (админ)

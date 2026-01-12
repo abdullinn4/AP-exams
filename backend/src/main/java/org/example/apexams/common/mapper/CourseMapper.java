@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CourseMapper {
-    public CourseResponse toDto(CourseEntity courseEntity){
+    public CourseResponse toDto(CourseEntity courseEntity) {
         return new CourseResponse(
                 courseEntity.getId(),
                 courseEntity.getTitle(),

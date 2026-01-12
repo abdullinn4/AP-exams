@@ -13,5 +13,6 @@ public record EnrollmentResponse(
         EnrollmentStatus status,
         Instant accessFrom,
         Instant accessTo
-) {}
+) {
+}
 

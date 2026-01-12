@@ -1,4 +1,4 @@
-package org.example.apexams.config;
+package org.example.apexams.config.redis;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

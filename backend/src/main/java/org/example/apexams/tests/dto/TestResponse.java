@@ -4,7 +4,7 @@ import org.example.apexams.tariffs.entity.enums.TariffTier;
 
 import java.util.UUID;
 
-public record TestResponse (
+public record TestResponse(
         UUID id,
         UUID courseId,
         UUID moduleId,
@@ -14,5 +14,5 @@ public record TestResponse (
         int attemptsLimit,
         TariffTier minTier,
         boolean isPublished
-){
+) {
 }

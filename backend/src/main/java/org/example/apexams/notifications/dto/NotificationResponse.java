@@ -9,5 +9,6 @@ public record NotificationResponse(
         String payloadJson,
         String status,
         Instant createdAt
-) {}
+) {
+}
 

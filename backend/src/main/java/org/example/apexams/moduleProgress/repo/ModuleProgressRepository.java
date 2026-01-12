@@ -11,6 +11,8 @@ import java.util.UUID;
 @Repository
 public interface ModuleProgressRepository extends JpaRepository<ModuleProgressEntity, UUID> {
     Optional<ModuleProgressEntity> findByUserIdAndModuleId(UUID userId, UUID moduleId);
+
     List<ModuleProgressEntity> findAllByUserId(UUID userId);
+
     List<ModuleProgressEntity> findAllByModuleCourseId(UUID courseId);
 }

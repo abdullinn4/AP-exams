@@ -83,19 +83,19 @@ public class EnrollmentServiceImpl implements EnrollmentService {
                 user.getEmail(), course.getSlug(), tariff.getTier());
 
         EnrollmentEntity savedEnrollment = enrollmentRepository.save(enrollmentEntity);
-        
+
         // Создаём уведомление о покупке курса
         try {
             String payload = objectMapper.writeValueAsString(java.util.Map.of(
-                "courseId", course.getId().toString(),
-                "courseName", course.getTitle(),
-                "tier", tariff.getTier().name()
+                    "courseId", course.getId().toString(),
+                    "courseName", course.getTitle(),
+                    "tier", tariff.getTier().name()
             ));
             notificationService.createNotification(user.getId(), NotificationType.COURSE_PURCHASED, payload);
         } catch (Exception e) {
             log.error("Failed to create notification for course purchase: {}", e.getMessage());
         }
-        
+
         return savedEnrollment;
     }
 

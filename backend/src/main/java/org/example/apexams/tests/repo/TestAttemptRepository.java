@@ -10,7 +10,10 @@ import java.util.UUID;
 @Repository
 public interface TestAttemptRepository extends JpaRepository<TestAttemptEntity, UUID> {
     List<TestAttemptEntity> findAllByTestId(UUID testId);
+
     List<TestAttemptEntity> findAllByUserIdAndTestId(UUID userId, UUID testId);
+
     List<TestAttemptEntity> findAllByTestCourseId(UUID courseId);
+
     int countByUserIdAndTestId(UUID userId, UUID testId);
 }

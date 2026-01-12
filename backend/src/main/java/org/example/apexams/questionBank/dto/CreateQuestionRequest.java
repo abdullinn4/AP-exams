@@ -13,4 +13,5 @@ public record CreateQuestionRequest(
         String optionsJson,
         String answerKeyJson,
         String explanation
-) {}
+) {
+}

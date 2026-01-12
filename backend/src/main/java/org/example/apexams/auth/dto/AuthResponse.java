@@ -1,5 +1,6 @@
 package org.example.apexams.auth.dto;
 
-public record AuthResponse (
+public record AuthResponse(
         TokenPair tokens
-){}
+) {
+}

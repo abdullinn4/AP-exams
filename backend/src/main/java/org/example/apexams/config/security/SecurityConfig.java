@@ -22,12 +22,12 @@ import java.util.List;
 @Configuration
 @RequiredArgsConstructor
 @EnableWebSecurity
-public class SecurityConfig{
+public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
     private final AuthenticationConfiguration authenticationConfiguration;
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
@@ -38,7 +38,6 @@ public class SecurityConfig{
                         /* ---------- PUBLIC ---------- */
                         .requestMatchers(
                                 "/api/v1/public/**",
-                                "/api/v1/courses/**",              // витрина / preview
                                 "/"
                         ).permitAll()
 

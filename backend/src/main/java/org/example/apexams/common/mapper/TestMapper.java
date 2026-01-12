@@ -36,7 +36,7 @@ public class TestMapper {
                 .build();
     }
 
-    public TestQuestionResponse toDto(TestQuestionEntity testQuestionEntity){
+    public TestQuestionResponse toDto(TestQuestionEntity testQuestionEntity) {
         return new TestQuestionResponse(
                 testQuestionEntity.getId(),
                 testQuestionEntity.getTest().getId(),
@@ -45,7 +45,7 @@ public class TestMapper {
         );
     }
 
-    public TestAttemptResponse toDto(TestAttemptEntity testAttemptEntity){
+    public TestAttemptResponse toDto(TestAttemptEntity testAttemptEntity) {
         return new TestAttemptResponse(
                 testAttemptEntity.getId(),
                 testAttemptEntity.getTest().getId(),

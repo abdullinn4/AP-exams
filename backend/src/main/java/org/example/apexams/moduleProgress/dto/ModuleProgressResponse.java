@@ -7,4 +7,5 @@ public record ModuleProgressResponse(
         UUID moduleId,
         String status,
         Instant completedAt
-) {}
+) {
+}

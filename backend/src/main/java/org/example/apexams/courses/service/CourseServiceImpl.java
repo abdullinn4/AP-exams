@@ -145,6 +145,14 @@ public class CourseServiceImpl implements CourseService {
         log.info("Course marked as deleted: {}", id);
     }
 
+    @Override
+    public List<CourseResponse> getCoursesByIds(List<UUID> ids) {
+        return courseRepository.findAllById(ids)
+                .stream()
+                .map(courseMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
     private CourseEntity findCourseByIdOrThrow(UUID id) {
         return courseRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Course not found: " + id));

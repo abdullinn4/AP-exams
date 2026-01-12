@@ -13,10 +13,17 @@ public interface UserService {
     String generatePassword();
 
     String resetPassword(String email);
+
     UserResponse getUserByEmail(String email);
+
     UserResponse getUserById(UUID uuid);
+
     void updateDiscordNickname(String email, String nickname);
+
     void blockUser(UUID uuid);
+
     void unblockUser(UUID uuid);
+
     void changeRole(UUID uuid, Role role);
+
 }

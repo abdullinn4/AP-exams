@@ -70,8 +70,9 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     @Transactional
-    public NotificationResponse markAsRead(UUID notificationId) {
-        NotificationEntity notification = findNotificationByIdOrThrow(notificationId);
+    public NotificationResponse markAsRead(UUID notificationId, UUID userId) {
+        NotificationEntity notification = notificationRepository.findByUserIdAndId(userId, notificationId)
+                .orElseThrow(() -> new IllegalArgumentException("Notification not found: " + notificationId));
 
         if (notification.getStatus() == NotificationStatus.UNREAD) {
             notification.setStatus(NotificationStatus.READ);
@@ -93,7 +94,7 @@ public class NotificationServiceImpl implements NotificationService {
 
         unreadNotifications.forEach(n -> n.setStatus(NotificationStatus.READ));
         notificationRepository.saveAll(unreadNotifications);
-        
+
         log.info("Marked {} notifications as read for user {}", unreadNotifications.size(), userId);
     }
 

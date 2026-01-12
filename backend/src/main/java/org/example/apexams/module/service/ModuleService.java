@@ -9,7 +9,9 @@ import java.util.UUID;
 
 public interface ModuleService {
     ModuleEntity createModule(CreateModuleRequest dto);
+
     ModuleResponse getModule(UUID id);
+
     List<ModuleResponse> getModulesByCourse(UUID courseId);
 
     // Получение модуля с проверкой доступа (для студента)

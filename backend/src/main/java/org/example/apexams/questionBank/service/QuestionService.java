@@ -12,16 +12,19 @@ import java.util.UUID;
 public interface QuestionService {
     // === Чтение (Admin) ===
     QuestionResponse getQuestion(UUID questionId);
+
     List<QuestionResponse> getQuestionsByCourse(UUID courseId);
+
     List<QuestionResponse> getQuestionsByType(UUID courseId, QuestionType type);
-    
+
     // === Для студентов (БЕЗ правильных ответов) ===
     QuestionForStudentResponse getQuestionForStudent(UUID questionId);
-    
+
     // === Валидация ответов ===
     boolean validateAnswer(UUID questionId, String userAnswer);
+
     QuestionResultResponse checkAnswer(UUID questionId, String userAnswer);
-    
+
     // === Генерация случайных вопросов для Mock Exams ===
     List<QuestionEntity> generateRandomQuestions(UUID courseId, int count);
 }

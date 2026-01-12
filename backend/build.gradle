@@ -48,6 +48,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
     implementation 'me.paulschwarz:spring-dotenv:4.0.0'
+
+    implementation 'com.sendgrid:sendgrid-java:4.10.2'
+
+    implementation 'com.stripe:stripe-java:24.3.0'
 }
 
 

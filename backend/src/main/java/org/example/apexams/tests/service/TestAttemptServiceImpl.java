@@ -46,28 +46,28 @@ public class TestAttemptServiceImpl implements TestAttemptService {
     public TestAttemptResponse startAttempt(UUID userId, UUID testId) {
         TestEntity test = findTestByIdOrThrow(testId);
         UserEntity user = findUserByIdOrThrow(userId);
-        
+
         // Проверка лимита попыток
         if (!canUserStartAttempt(userId, testId)) {
             throw new IllegalStateException("Attempts limit reached for test: " + testId);
         }
-        
+
         // Создаём попытку
         TestAttemptEntity attempt = TestAttemptEntity.builder()
                 .test(test)
                 .user(user)
                 .startedAt(Instant.now())
                 .build();
-        
+
         // Для Mock Exam сохраняем список вопросов в result_json
         if (test.getType() == TestType.MOCK_EXAM) {
             List<QuestionEntity> randomQuestions = questionService.generateRandomQuestions(
-                test.getCourse().getId(), 50
+                    test.getCourse().getId(), 50
             );
             List<UUID> questionIds = randomQuestions.stream()
                     .map(QuestionEntity::getId)
                     .collect(Collectors.toList());
-            
+
             try {
                 Map<String, Object> resultJson = new HashMap<>();
                 resultJson.put("questions", questionIds);
@@ -76,10 +76,10 @@ public class TestAttemptServiceImpl implements TestAttemptService {
                 log.error("Error saving questions to result_json: {}", e.getMessage());
             }
         }
-        
+
         attemptRepository.save(attempt);
         log.info("Test attempt started: user={}, test={}, attemptId={}", userId, testId, attempt.getId());
-        
+
         return testMapper.toDto(attempt);
     }
 
@@ -88,11 +88,11 @@ public class TestAttemptServiceImpl implements TestAttemptService {
     public TestAttemptResponse submitAttempt(UUID attemptId, Map<UUID, String> answers) {
         TestAttemptEntity attempt = findAttemptByIdOrThrow(attemptId);
         TestEntity test = attempt.getTest();
-        
+
         if (attempt.getFinishedAt() != null) {
             throw new IllegalStateException("Attempt already submitted: " + attemptId);
         }
-        
+
         // Получаем вопросы теста
         List<QuestionEntity> questions;
         if (test.getType() == TestType.MODULE_TEST) {
@@ -104,7 +104,7 @@ public class TestAttemptServiceImpl implements TestAttemptService {
             // Для Mock Exam берём из result_json
             try {
                 Map<String, Object> resultJson = objectMapper.readValue(
-                    attempt.getResultJson(), Map.class
+                        attempt.getResultJson(), Map.class
                 );
                 List<String> questionIds = (List<String>) resultJson.get("questions");
                 questions = questionIds.stream()
@@ -116,11 +116,11 @@ public class TestAttemptServiceImpl implements TestAttemptService {
                 throw new IllegalStateException("Failed to read test questions");
             }
         }
-        
+
         // Проверяем ответы
         int correctCount = 0;
         Map<String, Boolean> results = new HashMap<>();
-        
+
         for (QuestionEntity question : questions) {
             String userAnswer = answers.get(question.getId());
             if (userAnswer != null) {
@@ -133,15 +133,15 @@ public class TestAttemptServiceImpl implements TestAttemptService {
                 results.put(question.getId().toString(), false);
             }
         }
-        
+
         // Вычисляем score
         double score = questions.isEmpty() ? 0 : (double) correctCount / questions.size() * 100;
-        
+
         // Сохраняем результат
         attempt.setFinishedAt(Instant.now());
         try {
             attempt.setAnswersJson(objectMapper.writeValueAsString(answers));
-            
+
             Map<String, Object> resultJson = new HashMap<>();
             resultJson.put("correctCount", correctCount);
             resultJson.put("totalCount", questions.size());
@@ -151,32 +151,32 @@ public class TestAttemptServiceImpl implements TestAttemptService {
             log.error("Error saving attempt results: {}", e.getMessage());
         }
         attempt.setScore(score);
-        
+
         attemptRepository.save(attempt);
         log.info("Test attempt submitted: attemptId={}, score={}", attemptId, score);
-        
+
         // Создаём уведомление о прохождении теста
         try {
-            NotificationType notificationType = test.getType() == TestType.MOCK_EXAM 
-                ? NotificationType.MOCK_EXAM_RESULT 
-                : NotificationType.TEST_PASSED;
-            
+            NotificationType notificationType = test.getType() == TestType.MOCK_EXAM
+                    ? NotificationType.MOCK_EXAM_RESULT
+                    : NotificationType.TEST_PASSED;
+
             String payload = objectMapper.writeValueAsString(java.util.Map.of(
-                "testId", test.getId().toString(),
-                "testTitle", test.getTitle(),
-                "testType", test.getType().name(),
-                "score", score,
-                "correctCount", correctCount,
-                "totalCount", questions.size(),
-                "courseId", test.getCourse().getId().toString(),
-                "courseName", test.getCourse().getTitle()
+                    "testId", test.getId().toString(),
+                    "testTitle", test.getTitle(),
+                    "testType", test.getType().name(),
+                    "score", score,
+                    "correctCount", correctCount,
+                    "totalCount", questions.size(),
+                    "courseId", test.getCourse().getId().toString(),
+                    "courseName", test.getCourse().getTitle()
             ));
-            
+
             notificationService.createNotification(attempt.getUser().getId(), notificationType, payload);
         } catch (Exception e) {
             log.error("Failed to create notification for test completion: {}", e.getMessage());
         }
-        
+
         return testMapper.toDto(attempt);
     }
 
@@ -200,12 +200,12 @@ public class TestAttemptServiceImpl implements TestAttemptService {
     @Transactional(readOnly = true)
     public boolean canUserStartAttempt(UUID userId, UUID testId) {
         TestEntity test = findTestByIdOrThrow(testId);
-        
+
         // Если лимит не установлен - можно начинать
         if (test.getAttemptsLimit() == 0) {
             return true;
         }
-        
+
         // Проверяем количество попыток
         int attemptsCount = attemptRepository.countByUserIdAndTestId(userId, testId);
         return attemptsCount < test.getAttemptsLimit();
@@ -215,12 +215,12 @@ public class TestAttemptServiceImpl implements TestAttemptService {
     @Transactional(readOnly = true)
     public int getRemainingAttempts(UUID userId, UUID testId) {
         TestEntity test = findTestByIdOrThrow(testId);
-        
+
         // Если лимит не установлен - возвращаем -1 (безлимит)
         if (test.getAttemptsLimit() == 0) {
             return -1;
         }
-        
+
         int attemptsCount = attemptRepository.countByUserIdAndTestId(userId, testId);
         int remaining = test.getAttemptsLimit() - attemptsCount;
         return Math.max(0, remaining);

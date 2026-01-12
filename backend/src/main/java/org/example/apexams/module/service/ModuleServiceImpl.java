@@ -9,11 +9,14 @@ import org.example.apexams.module.dto.CreateModuleRequest;
 import org.example.apexams.module.dto.ModuleResponse;
 import org.example.apexams.module.entity.ModuleEntity;
 import org.example.apexams.module.repo.ModuleRepository;
+import org.example.apexams.moduleProgress.dto.ModuleProgressResponse;
+import org.example.apexams.moduleProgress.service.ModuleProgressService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -25,6 +28,7 @@ public class ModuleServiceImpl implements ModuleService {
     private final CourseRepository courseRepository;
     private final ModuleMapper moduleMapper;
     private final EnrollmentService enrollmentService;
+    private final ModuleProgressService moduleProgressService;
 
 
     @Override
@@ -82,10 +86,21 @@ public class ModuleServiceImpl implements ModuleService {
             throw new IllegalStateException("User does not have access to this course");
         }
 
-        // Получаем модули (прогресс будет добавлен позже в Этапе 2)
         List<ModuleEntity> modules = moduleRepository.findByCourseIdOrderByOrderIndex(courseId);
 
+        // ✅ Получаем весь прогресс пользователя для этого курса
+        Map<UUID, ModuleProgressResponse> progressMap = moduleProgressService.getUserProgress(userId)
+                .stream()
+                .collect(Collectors.toMap(
+                        ModuleProgressResponse::moduleId,
+                        p -> p
+                ));
+
         return modules.stream()
+                /*.map(module -> {
+                    ModuleProgressResponse progress = progressMap.get(module.getId());
+                    //return moduleMapper.toDtoWithProgress(module, progress);
+                })*/
                 .map(moduleMapper::toDto)
                 .collect(Collectors.toList());
     }

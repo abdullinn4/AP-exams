@@ -12,7 +12,10 @@ import java.util.UUID;
 @Repository
 public interface TariffRepository extends JpaRepository<TariffEntity, UUID> {
     List<TariffEntity> findByCourseId(UUID courseId);
+
     Optional<TariffEntity> findByCourseIdAndTier(UUID course_id, TariffTier tier);
+
     List<TariffEntity> findByCourseIdAndIsActiveTrue(UUID courseId);
+
     boolean existsByCourseIdAndTier(UUID courseId, TariffTier tier);
 }

@@ -21,7 +21,7 @@ public interface NotificationService {
     long getUnreadCount(UUID userId);
 
     // Пометить уведомление как прочитанное
-    NotificationResponse markAsRead(UUID notificationId);
+    NotificationResponse markAsRead(UUID notificationId, UUID userId);
 
     // Пометить все уведомления пользователя как прочитанные
     void markAllAsRead(UUID userId);

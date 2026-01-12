@@ -11,4 +11,5 @@ public record TestWithQuestionsResponse(
         int timeLimitSec,
         int attemptsLimit,
         List<QuestionForStudentResponse> questions
-) {}
+) {
+}

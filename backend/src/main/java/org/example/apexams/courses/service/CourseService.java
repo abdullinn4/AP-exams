@@ -9,7 +9,9 @@ import java.util.UUID;
 
 public interface CourseService {
     CourseEntity createCourse(CreateCourseRequest dto);
+
     CourseResponse getCourse(UUID id);
+
     List<CourseResponse> getAllCourses();
 
     // Получение по slug (для публичных страниц /courses/{slug})
@@ -29,4 +31,6 @@ public interface CourseService {
 
     // Удаление курса (админ)
     void deleteCourse(UUID id);
+
+    List<CourseResponse> getCoursesByIds(List<UUID> ids);
 }

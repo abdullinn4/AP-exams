@@ -87,8 +87,8 @@ public class ModuleProgressServiceImpl implements ModuleProgressService {
             progressRepository.save(progress);
             log.info("Module started: user={}, module={}", userId, moduleId);
         } else {
-            log.debug("Module already started: user={}, module={}, status={}", 
-                userId, moduleId, progress.getStatus());
+            log.debug("Module already started: user={}, module={}, status={}",
+                    userId, moduleId, progress.getStatus());
         }
 
         return progressMapper.toDto(progress);
@@ -113,15 +113,15 @@ public class ModuleProgressServiceImpl implements ModuleProgressService {
             progress.setCompletedAt(Instant.now());
             progressRepository.save(progress);
             log.info("Module completed: user={}, module={}", userId, moduleId);
-            
+
             // Создаём уведомление о завершении модуля
             try {
                 ModuleEntity module = progress.getModule();
                 String payload = objectMapper.writeValueAsString(java.util.Map.of(
-                    "moduleId", moduleId.toString(),
-                    "moduleName", module.getTitle(),
-                    "courseId", module.getCourse().getId().toString(),
-                    "courseName", module.getCourse().getTitle()
+                        "moduleId", moduleId.toString(),
+                        "moduleName", module.getTitle(),
+                        "courseId", module.getCourse().getId().toString(),
+                        "courseName", module.getCourse().getTitle()
                 ));
                 notificationService.createNotification(userId, NotificationType.MODULE_COMPLETED, payload);
             } catch (Exception e) {

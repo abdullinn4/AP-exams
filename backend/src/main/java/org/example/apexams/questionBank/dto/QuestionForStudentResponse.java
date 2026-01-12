@@ -9,4 +9,5 @@ public record QuestionForStudentResponse(
         String prompt,
         String optionsJson,
         QuestionType type
-) {}
+) {
+}

@@ -10,5 +10,6 @@ import java.util.UUID;
 @Repository
 public interface TestQuestionRepository extends JpaRepository<TestQuestionEntity, UUID> {
     List<TestQuestionEntity> findAllByTestId(UUID testId);
+
     List<TestQuestionEntity> findAllByTestIdOrderByOrderIndex(UUID testId);
 }

@@ -7,4 +7,5 @@ public record QuestionResultResponse(
         boolean isCorrect,
         String correctAnswer,
         String explanation
-) {}
+) {
+}
