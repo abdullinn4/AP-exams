@@ -2,7 +2,6 @@ package org.example.apexams.tests.service;
 
 import org.example.apexams.questionBank.dto.QuestionForStudentResponse;
 import org.example.apexams.tests.dto.TestResponse;
-import org.example.apexams.tests.dto.TestWithQuestionsResponse;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,8 +21,6 @@ public interface TestService {
 
     // === Получение тестов для студента ===
     List<TestResponse> getAvailableTestsForUser(UUID userId, UUID courseId);
-
-    TestWithQuestionsResponse getTestWithQuestions(UUID testId, UUID userId);
 
     // === Проверка доступа ===
     boolean canUserAccessTest(UUID userId, UUID testId);

@@ -2,7 +2,7 @@ package org.example.apexams.users.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.apexams.config.security.details.UserDetailsImpl;
-import org.example.apexams.courses.dto.CourseResponse;
+import org.example.apexams.courses.dto.CourseWithProgressResponse;
 import org.example.apexams.users.dto.UserResponse;
 import org.example.apexams.users.service.StudentCourseService;
 import org.example.apexams.users.service.UserService;
@@ -29,7 +29,7 @@ public class StudentProfileController {
     }
 
     @GetMapping("/courses")
-    public ResponseEntity<List<CourseResponse>> getMyCourses(@AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return ResponseEntity.ok(studentCourseService.getCoursesByUser(userDetails.user().getId()));
+    public ResponseEntity<List<CourseWithProgressResponse>> getMyCourses(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return ResponseEntity.ok(studentCourseService.getCoursesWithProgress(userDetails.user().getId()));
     }
 }

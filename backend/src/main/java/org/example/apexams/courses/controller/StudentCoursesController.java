@@ -2,6 +2,7 @@ package org.example.apexams.courses.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.apexams.config.security.details.UserDetailsImpl;
+import org.example.apexams.courses.dto.CourseDetailsResponse;
 import org.example.apexams.courses.dto.CourseResponse;
 import org.example.apexams.users.service.StudentCourseService;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,7 @@ public class StudentCoursesController {
     private final StudentCourseService studentCourseService;
 
     @GetMapping("/{courseId}")
-    public ResponseEntity<CourseResponse> getCourse(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable UUID courseId) {
-        return ResponseEntity.ok(studentCourseService.getCourseById(userDetails.user().getId(), courseId));
+    public ResponseEntity<CourseDetailsResponse> getCourse(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable UUID courseId) {
+        return ResponseEntity.ok(studentCourseService.getCourseWithModules(userDetails.user().getId(), courseId));
     }
 }

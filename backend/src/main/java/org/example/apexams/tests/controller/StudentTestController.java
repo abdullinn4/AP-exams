@@ -2,10 +2,9 @@ package org.example.apexams.tests.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.apexams.config.security.details.UserDetailsImpl;
+import org.example.apexams.tests.dto.StartTestResponse;
 import org.example.apexams.tests.dto.TestAttemptResponse;
-import org.example.apexams.tests.dto.TestWithQuestionsResponse;
 import org.example.apexams.tests.service.TestAttemptService;
-import org.example.apexams.tests.service.TestService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,13 +18,12 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @PreAuthorize("hasRole('STUDENT')")
 public class StudentTestController {
-    private final TestService testService;
     private final TestAttemptService testAttemptService;
 
-    @GetMapping("/tests/{testId}/attempts")
-    public ResponseEntity<TestWithQuestionsResponse> startAttempt(@PathVariable UUID testId,
-                                                                  @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return ResponseEntity.ok(testService.getTestWithQuestions(testId, userDetails.user().getId()));
+    @PostMapping("/tests/{testId}/attempts")
+    public ResponseEntity<StartTestResponse> startAttempt(@PathVariable UUID testId,
+                                                          @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return ResponseEntity.ok(testAttemptService.startTest(testId, userDetails.user().getId()));
     }
 
     @PostMapping("/test-attempts/{attemptId}/submit")

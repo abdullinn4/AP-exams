@@ -5,12 +5,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.apexams.common.mapper.ModuleMapper;
 import org.example.apexams.courses.repo.CourseRepository;
 import org.example.apexams.enrollments.service.EnrollmentService;
-import org.example.apexams.module.dto.CreateModuleRequest;
-import org.example.apexams.module.dto.ModuleResponse;
+import org.example.apexams.module.dto.*;
 import org.example.apexams.module.entity.ModuleEntity;
 import org.example.apexams.module.repo.ModuleRepository;
 import org.example.apexams.moduleProgress.dto.ModuleProgressResponse;
+import org.example.apexams.moduleProgress.entity.enums.ModuleProgressStatus;
 import org.example.apexams.moduleProgress.service.ModuleProgressService;
+import org.example.apexams.tariffs.entity.enums.TariffTier;
+import org.example.apexams.tests.dto.TestResponse;
+import org.example.apexams.tests.service.TestService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +32,8 @@ public class ModuleServiceImpl implements ModuleService {
     private final ModuleMapper moduleMapper;
     private final EnrollmentService enrollmentService;
     private final ModuleProgressService moduleProgressService;
+    private final TestService testService;
+    private final ModuleContentService moduleContentService;
 
 
     @Override
@@ -62,33 +67,62 @@ public class ModuleServiceImpl implements ModuleService {
 
     @Override
     @Transactional(readOnly = true)
-    public ModuleResponse getModuleWithAccess(UUID moduleId, UUID userId) {
+    public ModuleDetailsResponse getModuleDetails(UUID moduleId, UUID userId) {
         ModuleEntity module = findModuleByIdOrThrow(moduleId);
-
-        // Проверка доступа к курсу
         if (!enrollmentService.hasAccess(userId, module.getCourse().getId())) {
             throw new IllegalStateException("User does not have access to this course");
         }
 
-        // Проверка доступности модуля (release_at)
         if (!isModuleAvailable(moduleId, userId)) {
             throw new IllegalStateException("Module is not available yet");
         }
+        ModuleContentResponse content = moduleContentService.getByModuleId(moduleId);
 
-        return moduleMapper.toDto(module);
+        ModuleProgressResponse progress = moduleProgressService.getProgress(userId, moduleId);
+
+        TestResponse test = testService.getTestsByModule(moduleId).stream()
+                .findFirst()
+                .orElse(null);
+
+        TariffTier userTier = enrollmentService.getUserTier(userId, module.getCourse().getId())
+                .orElse(TariffTier.BASIC);
+
+        boolean canContactCurator = userTier == TariffTier.PRO;
+
+        String discordInviteLink = canContactCurator ? module.getCourse().getDiscordInviteUrl() : null;
+
+        return new ModuleDetailsResponse(
+                module.getId(),
+                module.getCourse().getId(),
+                module.getTitle(),
+                module.getOrderIndex(),
+                module.getReleaseAt(),
+
+                content != null ? content.videoPayload() : null,
+                content != null ? content.textPayload() : null,
+
+                progress != null ? progress.status() : ModuleProgressStatus.NOT_STARTED,
+                progress != null ? progress.completedAt() : null,
+
+                test != null ? test.id() : null,
+                test != null ? test.title() : null,
+                test != null ? test.timeLimitSec() : null,
+                test != null ? test.attemptsLimit() : null,
+
+                canContactCurator,
+                discordInviteLink
+        );
+
     }
 
-    @Override
     @Transactional(readOnly = true)
-    public List<ModuleResponse> getModulesWithProgress(UUID courseId, UUID userId) {
-        // Проверка доступа к курсу
+    @Override
+    public List<ModuleWithProgressResponse> getModulesWithProgressList(UUID courseId, UUID userId) {
         if (!enrollmentService.hasAccess(userId, courseId)) {
             throw new IllegalStateException("User does not have access to this course");
         }
-
         List<ModuleEntity> modules = moduleRepository.findByCourseIdOrderByOrderIndex(courseId);
 
-        // ✅ Получаем весь прогресс пользователя для этого курса
         Map<UUID, ModuleProgressResponse> progressMap = moduleProgressService.getUserProgress(userId)
                 .stream()
                 .collect(Collectors.toMap(
@@ -97,11 +131,19 @@ public class ModuleServiceImpl implements ModuleService {
                 ));
 
         return modules.stream()
-                /*.map(module -> {
+                .map(module -> {
                     ModuleProgressResponse progress = progressMap.get(module.getId());
-                    //return moduleMapper.toDtoWithProgress(module, progress);
-                })*/
-                .map(moduleMapper::toDto)
+
+                    return new ModuleWithProgressResponse(
+                            module.getId(),
+                            module.getCourse().getId(),
+                            module.getTitle(),
+                            module.getOrderIndex(),
+                            module.getReleaseAt(),
+                            progress != null ? progress.status() : ModuleProgressStatus.NOT_STARTED,
+                            progress != null ? progress.completedAt() : null
+                    );
+                })
                 .collect(Collectors.toList());
     }
 

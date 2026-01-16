@@ -9,8 +9,9 @@ public class ModuleProgressMapper {
 
     public ModuleProgressResponse toDto(ModuleProgressEntity entity) {
         return new ModuleProgressResponse(
+                entity.getId(),
                 entity.getModule().getId(),
-                entity.getStatus().name(),
+                entity.getStatus(),
                 entity.getCompletedAt()
         );
     }

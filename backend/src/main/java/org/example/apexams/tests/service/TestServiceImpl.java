@@ -10,10 +10,8 @@ import org.example.apexams.questionBank.entity.QuestionEntity;
 import org.example.apexams.questionBank.service.QuestionService;
 import org.example.apexams.tariffs.entity.enums.TariffTier;
 import org.example.apexams.tests.dto.TestResponse;
-import org.example.apexams.tests.dto.TestWithQuestionsResponse;
 import org.example.apexams.tests.entity.TestEntity;
 import org.example.apexams.tests.entity.TestQuestionEntity;
-import org.example.apexams.tests.entity.enums.TestType;
 import org.example.apexams.tests.repo.TestQuestionRepository;
 import org.example.apexams.tests.repo.TestRepository;
 import org.springframework.stereotype.Service;
@@ -121,43 +119,6 @@ public class TestServiceImpl implements TestService {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public TestWithQuestionsResponse getTestWithQuestions(UUID testId, UUID userId) {
-        TestEntity test = findTestByIdOrThrow(testId);
-
-        // Проверка доступа
-        if (!canUserAccessTest(userId, testId)) {
-            throw new IllegalStateException("User does not have access to this test");
-        }
-
-        List<QuestionForStudentResponse> questions;
-
-        if (test.getType() == TestType.MODULE_TEST) {
-            // Для Module Test - берём вопросы из test_questions
-            questions = testQuestionRepository.findAllByTestIdOrderByOrderIndex(testId)
-                    .stream()
-                    .map(TestQuestionEntity::getQuestion)
-                    .map(questionMapper::toStudentDto)
-                    .collect(Collectors.toList());
-        } else {
-            // Для Mock Exam - генерируем случайные вопросы
-            List<QuestionEntity> randomQuestions = questionService.generateRandomQuestions(
-                    test.getCourse().getId(), 50
-            );
-            questions = randomQuestions.stream()
-                    .map(questionMapper::toStudentDto)
-                    .collect(Collectors.toList());
-        }
-
-        return new TestWithQuestionsResponse(
-                test.getId(),
-                test.getTitle(),
-                test.getTimeLimitSec(),
-                test.getAttemptsLimit(),
-                questions
-        );
-    }
 
     @Override
     @Transactional(readOnly = true)

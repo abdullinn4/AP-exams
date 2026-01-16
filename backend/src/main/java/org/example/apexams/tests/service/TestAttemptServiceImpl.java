@@ -3,11 +3,14 @@ package org.example.apexams.tests.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.apexams.common.mapper.QuestionMapper;
 import org.example.apexams.common.mapper.TestMapper;
 import org.example.apexams.notifications.entity.enums.NotificationType;
 import org.example.apexams.notifications.service.NotificationService;
+import org.example.apexams.questionBank.dto.QuestionForStudentResponse;
 import org.example.apexams.questionBank.entity.QuestionEntity;
 import org.example.apexams.questionBank.service.QuestionService;
+import org.example.apexams.tests.dto.StartTestResponse;
 import org.example.apexams.tests.dto.TestAttemptResponse;
 import org.example.apexams.tests.entity.TestAttemptEntity;
 import org.example.apexams.tests.entity.TestEntity;
@@ -40,17 +43,31 @@ public class TestAttemptServiceImpl implements TestAttemptService {
     private final QuestionService questionService;
     private final ObjectMapper objectMapper;
     private final NotificationService notificationService;
+    private final TestService testService;
+    private final QuestionMapper questionMapper;
 
-    @Override
+
     @Transactional
-    public TestAttemptResponse startAttempt(UUID userId, UUID testId) {
+    @Override
+    public StartTestResponse startTest(UUID userId, UUID testId) {
         TestEntity test = findTestByIdOrThrow(testId);
         UserEntity user = findUserByIdOrThrow(userId);
+
+        // Проверка доступа к тесту
+        if (!testService.canUserAccessTest(userId, testId)) {
+            throw new IllegalStateException("User does not have access to this test");
+        }
 
         // Проверка лимита попыток
         if (!canUserStartAttempt(userId, testId)) {
             throw new IllegalStateException("Attempts limit reached for test: " + testId);
         }
+
+        // Получаем вопросы из test_questions
+        List<QuestionEntity> questions = testQuestionRepository.findAllByTestIdOrderByOrderIndex(testId)
+                .stream()
+                .map(TestQuestionEntity::getQuestion)
+                .toList();
 
         // Создаём попытку
         TestAttemptEntity attempt = TestAttemptEntity.builder()
@@ -59,28 +76,27 @@ public class TestAttemptServiceImpl implements TestAttemptService {
                 .startedAt(Instant.now())
                 .build();
 
-        // Для Mock Exam сохраняем список вопросов в result_json
-        if (test.getType() == TestType.MOCK_EXAM) {
-            List<QuestionEntity> randomQuestions = questionService.generateRandomQuestions(
-                    test.getCourse().getId(), 50
-            );
-            List<UUID> questionIds = randomQuestions.stream()
-                    .map(QuestionEntity::getId)
-                    .collect(Collectors.toList());
-
-            try {
-                Map<String, Object> resultJson = new HashMap<>();
-                resultJson.put("questions", questionIds);
-                attempt.setResultJson(objectMapper.writeValueAsString(resultJson));
-            } catch (Exception e) {
-                log.error("Error saving questions to result_json: {}", e.getMessage());
-            }
-        }
-
         attemptRepository.save(attempt);
         log.info("Test attempt started: user={}, test={}, attemptId={}", userId, testId, attempt.getId());
 
-        return testMapper.toDto(attempt);
+        // Преобразуем вопросы в DTO (без правильных ответов)
+        List<QuestionForStudentResponse> questionDtos = questions.stream()
+                .map(questionMapper::toStudentDto)
+                .collect(Collectors.toList());
+
+        // Получаем оставшиеся попытки
+        int remainingAttempts = getRemainingAttempts(userId, testId);
+
+        return new StartTestResponse(
+                attempt.getId(),
+                test.getId(),
+                test.getTitle(),
+                test.getTimeLimitSec(),
+                test.getAttemptsLimit(),
+                remainingAttempts,
+                attempt.getStartedAt(),
+                questionDtos
+        );
     }
 
     @Override
@@ -94,28 +110,10 @@ public class TestAttemptServiceImpl implements TestAttemptService {
         }
 
         // Получаем вопросы теста
-        List<QuestionEntity> questions;
-        if (test.getType() == TestType.MODULE_TEST) {
-            questions = testQuestionRepository.findAllByTestIdOrderByOrderIndex(test.getId())
-                    .stream()
-                    .map(TestQuestionEntity::getQuestion)
-                    .collect(Collectors.toList());
-        } else {
-            // Для Mock Exam берём из result_json
-            try {
-                Map<String, Object> resultJson = objectMapper.readValue(
-                        attempt.getResultJson(), Map.class
-                );
-                List<String> questionIds = (List<String>) resultJson.get("questions");
-                questions = questionIds.stream()
-                        .map(id -> questionService.getQuestionForStudent(UUID.fromString(id)))
-                        .map(q -> QuestionEntity.builder().id(q.id()).build())
-                        .collect(Collectors.toList());
-            } catch (Exception e) {
-                log.error("Error reading questions from result_json: {}", e.getMessage());
-                throw new IllegalStateException("Failed to read test questions");
-            }
-        }
+        List<QuestionEntity> questions = testQuestionRepository.findAllByTestIdOrderByOrderIndex(test.getId())
+                .stream()
+                .map(TestQuestionEntity::getQuestion)
+                .toList();
 
         // Проверяем ответы
         int correctCount = 0;
@@ -191,6 +189,14 @@ public class TestAttemptServiceImpl implements TestAttemptService {
     @Transactional(readOnly = true)
     public List<TestAttemptResponse> getUserAttempts(UUID userId, UUID testId) {
         return attemptRepository.findAllByUserIdAndTestId(userId, testId)
+                .stream()
+                .map(testMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<TestAttemptResponse> getAllUserAttempts(UUID userId) {
+        return attemptRepository.findAllByUserId(userId)
                 .stream()
                 .map(testMapper::toDto)
                 .collect(Collectors.toList());

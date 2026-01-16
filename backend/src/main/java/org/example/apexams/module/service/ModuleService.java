@@ -1,7 +1,9 @@
 package org.example.apexams.module.service;
 
 import org.example.apexams.module.dto.CreateModuleRequest;
+import org.example.apexams.module.dto.ModuleDetailsResponse;
 import org.example.apexams.module.dto.ModuleResponse;
+import org.example.apexams.module.dto.ModuleWithProgressResponse;
 import org.example.apexams.module.entity.ModuleEntity;
 
 import java.util.List;
@@ -15,10 +17,10 @@ public interface ModuleService {
     List<ModuleResponse> getModulesByCourse(UUID courseId);
 
     // Получение модуля с проверкой доступа (для студента)
-    ModuleResponse getModuleWithAccess(UUID moduleId, UUID userId);
+    ModuleDetailsResponse getModuleDetails(UUID moduleId, UUID userId);
 
     // Получение модулей с прогрессом (для студента)
-    List<ModuleResponse> getModulesWithProgress(UUID courseId, UUID userId);
+    List<ModuleWithProgressResponse> getModulesWithProgressList(UUID courseId, UUID userId);
 
     // Обновление модуля (админ)
     void updateModule(UUID id, CreateModuleRequest dto);

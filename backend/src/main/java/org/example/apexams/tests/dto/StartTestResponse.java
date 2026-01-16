@@ -2,14 +2,18 @@ package org.example.apexams.tests.dto;
 
 import org.example.apexams.questionBank.dto.QuestionForStudentResponse;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
-public record TestWithQuestionsResponse(
+public record StartTestResponse(
+        UUID attemptId,
         UUID testId,
-        String title,
-        int timeLimitSec,
-        int attemptsLimit,
+        String testTitle,
+        Integer timeLimitSec,
+        Integer attemptsLimit,
+        Integer remainingAttempts,
+        Instant startedAt,
         List<QuestionForStudentResponse> questions
 ) {
 }
