@@ -1,5 +1,9 @@
 package org.example.apexams.moduleProgress.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.example.apexams.config.security.details.UserDetailsImpl;
 import org.example.apexams.moduleProgress.service.ModuleProgressService;
@@ -17,11 +21,16 @@ import java.util.UUID;
 @RequestMapping("/api/v1/progress")
 @RequiredArgsConstructor
 @PreAuthorize("hasRole('STUDENT')")
+@SecurityRequirement(name = "bearerAuth")
+@Tag(name = "Student Progress", description = "Module progress tracking")
 public class StudentProgressController {
     private final ModuleProgressService moduleProgressService;
 
+    @Operation(summary = "Mark module as completed", description = "Mark a module as completed and update progress")
     @PostMapping("/modules/{moduleId}/complete")
-    public ResponseEntity<Void> completeModule(@PathVariable UUID moduleId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public ResponseEntity<Void> completeModule(
+            @Parameter(description = "Module ID") @PathVariable UUID moduleId,
+            @Parameter(hidden = true) @AuthenticationPrincipal UserDetailsImpl userDetails) {
         moduleProgressService.completeModule(moduleId, userDetails.user().getId());
         return ResponseEntity.ok().build();
     }

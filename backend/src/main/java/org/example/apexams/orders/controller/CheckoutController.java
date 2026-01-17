@@ -1,5 +1,8 @@
 package org.example.apexams.orders.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.apexams.orders.dto.CheckoutResponse;
@@ -14,12 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/checkout")
 @RequiredArgsConstructor
+@Tag(name = "Checkout", description = "Course purchase and Stripe checkout")
 public class CheckoutController {
     private final CheckoutService checkoutService;
 
+    @Operation(
+            summary = "Prepare checkout session",
+            description = "Create Stripe checkout session for course purchase. Creates user if not exists."
+    )
     @PostMapping("/prepare")
     public ResponseEntity<CheckoutResponse> prepareCheckout(
-            @Valid @RequestBody CheckoutPrepareRequest request) {
+            @Parameter(description = "User and tariff information") @Valid @RequestBody CheckoutPrepareRequest request) {
         return ResponseEntity.ok(checkoutService.prepareCheckout(request));
     }
 }

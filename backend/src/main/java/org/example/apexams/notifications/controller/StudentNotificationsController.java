@@ -1,5 +1,9 @@
 package org.example.apexams.notifications.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.example.apexams.config.security.details.UserDetailsImpl;
 import org.example.apexams.notifications.dto.NotificationResponse;
@@ -16,16 +20,23 @@ import java.util.UUID;
 @RequestMapping("/api/v1/notifications")
 @RequiredArgsConstructor
 @PreAuthorize("hasRole('STUDENT')")
+@SecurityRequirement(name = "bearerAuth")
+@Tag(name = "Student Notifications", description = "User notifications management")
 public class StudentNotificationsController {
     private final NotificationService notificationService;
 
+    @Operation(summary = "Get user notifications")
     @GetMapping
-    public ResponseEntity<List<NotificationResponse>> getNotifications(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public ResponseEntity<List<NotificationResponse>> getNotifications(
+            @Parameter(hidden = true) @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return ResponseEntity.ok(notificationService.getUserNotifications(userDetails.user().getId()));
     }
 
+    @Operation(summary = "Mark notification as read")
     @PostMapping("/{notificationId}/read")
-    public ResponseEntity<NotificationResponse> markAsRead(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable UUID notificationId) {
+    public ResponseEntity<NotificationResponse> markAsRead(
+            @Parameter(hidden = true) @AuthenticationPrincipal UserDetailsImpl userDetails,
+            @Parameter(description = "Notification ID") @PathVariable UUID notificationId) {
         return ResponseEntity.ok(notificationService.markAsRead(userDetails.user().getId(), notificationId));
     }
 }

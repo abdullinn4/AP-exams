@@ -1,5 +1,8 @@
 package org.example.apexams.courses.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.example.apexams.courses.dto.CourseResponse;
 import org.example.apexams.courses.service.CourseService;
@@ -19,28 +22,36 @@ import java.util.UUID;
 @RestController
 @RequestMapping("api/v1/public/courses")
 @RequiredArgsConstructor
+@Tag(name = "Public Courses", description = "Public course catalog and preview (no authentication required)")
 public class PublicCourseController {
     private final CourseService courseService;
     private final ModuleService moduleService;
     private final TariffService tariffService;
 
+    @Operation(summary = "Get all published courses", description = "Returns list of all published courses available for purchase")
     @GetMapping
     public ResponseEntity<List<CourseResponse>> getPublishedCourses() {
         return ResponseEntity.ok(courseService.getPublishedCourses());
     }
 
+    @Operation(summary = "Get course preview by slug", description = "Returns course details including preview video and description")
     @GetMapping("/{slug}/preview")
-    public ResponseEntity<CourseResponse> getCourseBySlug(@PathVariable String slug) {
+    public ResponseEntity<CourseResponse> getCourseBySlug(
+            @Parameter(description = "Course slug") @PathVariable String slug) {
         return ResponseEntity.ok(courseService.getCourseBySlug(slug));
     }
 
+    @Operation(summary = "Get course modules", description = "Returns list of modules for a course")
     @GetMapping("/{courseId}/modules")
-    public ResponseEntity<List<ModuleResponse>> getModulesByCourseId(@PathVariable UUID courseId) {
+    public ResponseEntity<List<ModuleResponse>> getModulesByCourseId(
+            @Parameter(description = "Course ID") @PathVariable UUID courseId) {
         return ResponseEntity.ok(moduleService.getModulesByCourse(courseId));
     }
 
+    @Operation(summary = "Get course tariffs", description = "Returns available tariffs (Basic/Pro) for a course")
     @GetMapping("/{courseId}/tariffs")
-    public ResponseEntity<List<TariffResponse>> getActiveTariffs(@PathVariable UUID courseId) {
+    public ResponseEntity<List<TariffResponse>> getActiveTariffs(
+            @Parameter(description = "Course ID") @PathVariable UUID courseId) {
         return ResponseEntity.ok(tariffService.getActiveTariffsByCourse(courseId));
     }
 }

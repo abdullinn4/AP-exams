@@ -1,5 +1,9 @@
 package org.example.apexams.users.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.example.apexams.config.security.details.UserDetailsImpl;
 import org.example.apexams.courses.dto.CourseWithProgressResponse;
@@ -19,17 +23,23 @@ import java.util.List;
 @RequestMapping("/api/v1/me")
 @RequiredArgsConstructor
 @PreAuthorize("hasRole('STUDENT')")
+@SecurityRequirement(name = "bearerAuth")
+@Tag(name = "Student Profile", description = "Student profile and enrolled courses")
 public class StudentProfileController {
     private final UserService userService;
     private final StudentCourseService studentCourseService;
 
+    @Operation(summary = "Get current user profile")
     @GetMapping
-    public ResponseEntity<UserResponse> getProfile(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public ResponseEntity<UserResponse> getProfile(
+            @Parameter(hidden = true) @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return ResponseEntity.ok(userService.getUserById(userDetails.user().getId()));
     }
 
+    @Operation(summary = "Get enrolled courses with progress")
     @GetMapping("/courses")
-    public ResponseEntity<List<CourseWithProgressResponse>> getMyCourses(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public ResponseEntity<List<CourseWithProgressResponse>> getMyCourses(
+            @Parameter(hidden = true) @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return ResponseEntity.ok(studentCourseService.getCoursesWithProgress(userDetails.user().getId()));
     }
 }

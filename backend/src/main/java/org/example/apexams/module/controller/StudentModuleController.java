@@ -1,5 +1,9 @@
 package org.example.apexams.module.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.example.apexams.config.security.details.UserDetailsImpl;
 import org.example.apexams.module.dto.ModuleDetailsResponse;
@@ -18,12 +22,16 @@ import java.util.UUID;
 @RequestMapping("/api/v1/courses/{courseId}/modules")
 @PreAuthorize("hasRole('STUDENT')")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
+@Tag(name = "Student Modules", description = "Module content access for students")
 public class StudentModuleController {
     private final ModuleService moduleService;
 
+    @Operation(summary = "Get module details", description = "Get module content including video, text, test info, and Discord access for Pro users")
     @GetMapping("/{moduleId}")
-    public ResponseEntity<ModuleDetailsResponse> getModule(@PathVariable UUID moduleId,
-                                                           @AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public ResponseEntity<ModuleDetailsResponse> getModule(
+            @Parameter(description = "Module ID") @PathVariable UUID moduleId,
+            @Parameter(hidden = true) @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return ResponseEntity.ok(moduleService.getModuleDetails(moduleId, userDetails.user().getId()));
     }
 }

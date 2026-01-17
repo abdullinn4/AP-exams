@@ -49,9 +49,21 @@ dependencies {
 
     implementation 'me.paulschwarz:spring-dotenv:4.0.0'
 
-    implementation 'com.sendgrid:sendgrid-java:4.10.2'
+    implementation 'com.sendgrid:sendgrid-java:4.10.3'
 
     implementation 'com.stripe:stripe-java:24.3.0'
+
+    // Rate limiting with Bucket4j
+    implementation 'com.bucket4j:bucket4j-core:8.10.1'
+
+    // Для Redis с Lettuce (официальное расширение Bucket4j)
+    implementation 'com.bucket4j:bucket4j-redis:8.10.1'
+
+    // SLF4J MDC for Request ID
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+
+    // Swagger/OpenAPI
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0'
 }
 
 
