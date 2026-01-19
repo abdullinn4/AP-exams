@@ -26,4 +26,6 @@ public interface UserService {
 
     void changeRole(UUID uuid, Role role);
 
+    void changePassword(UUID userId, String currentPassword, String newPassword);
+
 }

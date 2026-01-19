@@ -51,7 +51,8 @@ dependencies {
 
     implementation 'com.sendgrid:sendgrid-java:4.10.3'
 
-    implementation 'com.stripe:stripe-java:24.3.0'
+    // Source: https://mvnrepository.com/artifact/be.codewriter/lemonsqueezy-java
+    implementation("be.codewriter:lemonsqueezy-java:1.0.0")
 
     // Rate limiting with Bucket4j
     implementation 'com.bucket4j:bucket4j-core:8.10.1'

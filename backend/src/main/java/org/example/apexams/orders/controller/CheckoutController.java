@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/checkout")
 @RequiredArgsConstructor
-@Tag(name = "Checkout", description = "Course purchase and Stripe checkout")
+@Tag(name = "Checkout", description = "Course purchase and LemonSqueezy checkout")
 public class CheckoutController {
     private final CheckoutService checkoutService;
 
     @Operation(
             summary = "Prepare checkout session",
-            description = "Create Stripe checkout session for course purchase. Creates user if not exists."
+            description = "Create LemonSqueezy checkout session for course purchase. Creates user if not exists."
     )
     @PostMapping("/prepare")
     public ResponseEntity<CheckoutResponse> prepareCheckout(

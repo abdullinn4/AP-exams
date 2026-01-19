@@ -9,6 +9,7 @@ public record TariffResponse(
         UUID courseId,
         String title,
         TariffTier tier,
+        String lemonSqueezyVariantId,
         Integer priceCents,
         String currency,
         Boolean isActive

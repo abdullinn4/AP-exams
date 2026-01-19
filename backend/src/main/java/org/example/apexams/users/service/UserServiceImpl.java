@@ -130,6 +130,19 @@ public class UserServiceImpl implements UserService {
         log.info("User role successfully changed for user: {}", uuid);
     }
 
+    @Transactional
+    @Override
+    public void changePassword(UUID userId, String currentPassword, String newPassword) {
+        UserEntity userEntity = findUserByIdOrThrow(userId);
+        if (!passwordEncoder.matches(currentPassword, userEntity.getPasswordHash())) {
+            throw new IllegalArgumentException("Current password is incorrect");
+        }
+        userEntity.setPasswordHash(passwordEncoder.encode(newPassword));
+        userRepository.save(userEntity);
+
+        log.info("Password successfully changed for user: {}", userId);
+    }
+
     private UserEntity findUserByEmailOrThrow(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException(
