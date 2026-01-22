@@ -4,6 +4,8 @@ import org.example.apexams.orders.dto.OrderResponse;
 import org.example.apexams.orders.entity.OrderEntity;
 import org.springframework.stereotype.Component;
 
+import static org.example.apexams.common.util.MoneyUtils.centsToDecimal;
+
 @Component
 public class OrderMapper {
 
@@ -20,7 +22,7 @@ public class OrderMapper {
                 order.getLemonSqueezyCheckoutId(),
                 order.getLemonSqueezyOrderId(),
                 order.getStatus(),
-                order.getAmountCents(),
+                centsToDecimal(order.getAmountCents()),
                 order.getCurrency(),
                 order.getCreatedAt(),
                 order.getCompletedAt()

@@ -2,6 +2,7 @@ package org.example.apexams.tariffs.dto;
 
 import org.example.apexams.tariffs.entity.enums.TariffTier;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 public record TariffResponse(
@@ -10,7 +11,7 @@ public record TariffResponse(
         String title,
         TariffTier tier,
         String lemonSqueezyVariantId,
-        Integer priceCents,
+        BigDecimal price,
         String currency,
         Boolean isActive
 ) {

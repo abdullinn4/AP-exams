@@ -3,6 +3,7 @@ package org.example.apexams.orders.dto;
 import org.example.apexams.orders.entity.enums.OrderStatus;
 import org.example.apexams.tariffs.entity.enums.TariffTier;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -18,7 +19,7 @@ public record OrderResponse(
         String lemonsqueezyCheckoutId,
         String lemonsqueezyOrderId,
         OrderStatus status,
-        Integer amountCents,
+        BigDecimal amount,
         String currency,
         Instant createdAt,
         Instant completedAt

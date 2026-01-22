@@ -5,6 +5,8 @@ import org.example.apexams.tariffs.dto.TariffResponse;
 import org.example.apexams.tariffs.entity.TariffEntity;
 import org.springframework.stereotype.Component;
 
+import static org.example.apexams.common.util.MoneyUtils.centsToDecimal;
+
 @Component
 public class TariffMapper {
 
@@ -24,7 +26,7 @@ public class TariffMapper {
                 entity.getTitle(),
                 entity.getTier(),
                 entity.getLemonSqueezyVariantId(),
-                entity.getPriceCents(),
+                centsToDecimal(entity.getPriceCents()),
                 entity.getCurrency(),
                 entity.getIsActive()
         );
