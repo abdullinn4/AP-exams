@@ -1,0 +1,146 @@
+import { Link } from 'react-router-dom'
+
+interface FooterProps {
+    variant?: 'full' | 'minimal'
+}
+
+export const Footer = ({ variant = 'full' }: FooterProps) => {
+    const logoSrc = '/src/assets/webflow/images/logo-dark-courselify-webflow-ecommerce-template.svg'
+
+    // Минимальный футер (Footer V3)
+    if (variant === 'minimal') {
+        return (
+            <footer data-w-id="369acd65-337f-5722-d652-5227d6299733" className="footer-wrapper">
+                <div className="footer-card v3">
+                    <div className="w-layout-blockcontainer container-default w-container">
+                        <div className="footer-bottom v2">
+                            <div className="footer-logo-wrapper v3">
+                                <Link to="/" className="logo-link w-inline-block">
+                                    <img src={logoSrc} alt="AP Exams Logo" />
+                                </Link>
+                            </div>
+                            <p>Copyright © AP Exams 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        )
+    }
+
+    // Полный футер (Footer V1) - исправленный
+    return (
+        <footer data-w-id="016d8e1b-8412-bb5e-68d3-3aceb3839135" className="footer-wrapper">
+            <div className="footer-card">
+                <div className="w-layout-blockcontainer container-default w-container">
+                    <div className="footer-top v1">
+                        <div id="w-node-_4ce7d77c-4018-d530-59d0-9a7e57241a47-57241a43" className="mg-top-64px mg-top-0-tablet">
+                            <div className="footer-logo-wrapper">
+                                <Link to="/" className="logo-link w-inline-block">
+                                    <img src={logoSrc} alt="AP Exams Logo" />
+                                </Link>
+                            </div>
+                            <div className="mg-top-16px mg-top-8px-tablet">
+                                <p>Lorem ipsum dolor sit amet lorem consectetur pretium neque leo eu nibh neque ultricies pellentesque.</p>
+                            </div>
+                            <div className="mg-top-24px mg-top-16px-tablet">
+                                <div className="social-media-grid">
+                                    <a href="https://www.facebook.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                        <div className="icon-font-social-media"></div>
+                                    </a>
+                                    <a href="https://www.twitter.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                        <div className="icon-font-social-media"></div>
+                                    </a>
+                                    <a href="https://www.instagram.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                        <div className="icon-font-social-media"></div>
+                                    </a>
+                                    <a href="https://www.linkedin.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                        <div className="icon-font-social-media"></div>
+                                    </a>
+                                    <a href="https://www.youtube.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                        <div className="icon-font-social-media"></div>
+                                    </a>
+                                    <a href="https://www.dribbble.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                        <div className="icon-font-social-media"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="footer-column-card">
+                            <div className="w-layout-grid grid-footer-columns">
+                                <div id="w-node-_4ce7d77c-4018-d530-59d0-9a7e57241a53-57241a43">
+                                    <h3 className="footer-title">Main pages</h3>
+                                    <div className="footer-column---main-pages">
+                                        <ul role="list" className="footer-column-links">
+                                            <li className="footer-column-item">
+                                                <Link to="/" className="footer-item-link w-inline-block">
+                                                    <div>Home</div>
+                                                </Link>
+                                            </li>
+                                            <li className="footer-column-item">
+                                                <Link to="/about" className="footer-item-link w-inline-block">
+                                                    <div>About</div>
+                                                </Link>
+                                            </li>
+                                            <li className="footer-column-item">
+                                                <Link to="/contact" className="footer-item-link w-inline-block">
+                                                    <div>Contact</div>
+                                                </Link>
+                                            </li>
+                                            <li className="footer-column-item">
+                                                <Link to="/pricing" className="footer-item-link w-inline-block">
+                                                    <div>Pricing</div>
+                                                </Link>
+                                            </li>
+                                            <li className="footer-column-item">
+                                                <Link to="/chapters" className="footer-item-link w-inline-block">
+                                                    <div>Chapters</div>
+                                                </Link>
+                                            </li>
+                                            <li className="footer-column-item">
+                                                <Link to="/blog" className="footer-item-link w-inline-block">
+                                                    <div>Blog</div>
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="w-node-_4ce7d77c-4018-d530-59d0-9a7e57241a6c-57241a43">
+                                    <h3 className="footer-title">Utility pages</h3>
+                                    <ul role="list" className="footer-column-links">
+                                        <li className="footer-column-item">
+                                            <Link to="/sign-in" className="footer-item-link w-inline-block">
+                                                <div>Sign in</div>
+                                            </Link>
+                                        </li>
+                                        <li className="footer-column-item">
+                                            <Link to="/sign-up" className="footer-item-link w-inline-block">
+                                                <div>Sign up</div>
+                                            </Link>
+                                        </li>
+                                        <li className="footer-column-item">
+                                            <Link to="/404" className="footer-item-link w-inline-block">
+                                                <div>404 Not found</div>
+                                            </Link>
+                                        </li>
+                                        <li className="footer-column-item">
+                                            <Link to="/password-protected" className="footer-item-link w-inline-block">
+                                                <div>Password protected</div>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="footer-bottom v1">
+                        <div className="text-center">
+                            <p>
+                                Copyright © AP Exams 2026
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    )
+}

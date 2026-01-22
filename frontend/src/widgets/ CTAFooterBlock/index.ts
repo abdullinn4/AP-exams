@@ -1,0 +1,1 @@
+export { CTAFooterBlock } from './ CTAFooterBlock.tsx'

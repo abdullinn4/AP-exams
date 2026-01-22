@@ -1,0 +1,8 @@
+@import '../../assets/webflow/css/normalize.css';
+@import '../../assets/webflow/css/webflow.css';
+@import '../../assets/webflow/css/smash-ap.webflow.css';
+
+body {
+    font-family: var(--main-font);
+    background-color: var(--neutral--100);
+}
