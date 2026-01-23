@@ -15,6 +15,7 @@ export const Header = ({ variant = 'full', theme = 'dark' }: HeaderProps) => {
         ? '/src/assets/webflow/images/logo-white-courselify-webflow-ecommerce-template.svg'
         : '/src/assets/webflow/images/logo-dark-courselify-webflow-ecommerce-template.svg'
 
+
     // Минимальный хэдер для auth страниц (Header V3)
 
     if (variant === 'minimal') {
@@ -99,11 +100,21 @@ export const Header = ({ variant = 'full', theme = 'dark' }: HeaderProps) => {
                             </ul>
                         </nav>
                         <div data-open-product="" data-wf-cart-type="modal" data-wf-cart-query="" data-wf-page-link-href-prefix="" className="w-commerce-commercecartwrapper cart-wrapper" data-node-type="commerce-cart-wrapper">
-                            <a data-w-id="ec261ed6-1354-ca9a-7ff5-ab76103da11a" className={`w-commerce-commercecartopenlink cart-button ${theme === 'light' ? 'white' : ''} w-inline-block`} role="button" aria-haspopup="dialog" aria-label="Open cart" data-node-type="commerce-cart-open-link" href="#">
+                            <a
+                                data-w-id="ec261ed6-1354-ca9a-7ff5-ab76103da11a"
+                                className="w-commerce-commercecartopenlink cart-button w-inline-block"
+                                role="button"
+                                aria-haspopup="dialog"
+                                aria-label="Open cart"
+                                data-node-type="commerce-cart-open-link"
+                                href="#"
+                                style={{ color: theme === 'light' ? '#fff' : '#000' }}
+                            >
                                 <div className="w-inline-block">Cart(</div>
-                                <div className={`w-commerce-commercecartopenlinkcount cart-quantity ${theme === 'light' ? 'white' : ''}`}>0</div>
+                                <div className="w-commerce-commercecartopenlinkcount cart-quantity">0</div>
                                 <div className="w-inline-block">)</div>
                             </a>
+
                             <div style={{display: 'none'}} className="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-modal cart-wrapper" data-node-type="commerce-cart-container-wrapper">
                                 <div data-node-type="commerce-cart-container" role="dialog" className="w-commerce-commercecartcontainer cart-container">
                                     <div className="card">

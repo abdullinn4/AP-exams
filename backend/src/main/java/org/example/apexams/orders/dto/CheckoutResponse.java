@@ -4,6 +4,6 @@ import java.util.UUID;
 
 public record CheckoutResponse(
         UUID orderId,
-        String stripeCheckoutUrl
+        String lemonSqueezyCheckoutUrl
 ) {
 }
