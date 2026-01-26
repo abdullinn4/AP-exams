@@ -4,7 +4,7 @@ export const PricingSection = () => {
     const plans = [
         {
             name: "Basic",
-            icon: "/src/assets/webflow/images/basic-plan-icon-courselify-webflow-ecommerce-template.png",
+            icon: "/src/assets/webflow/images/basic-plan-courselify-x-webflow-template.png",
             description: "Perfect for beginners who want to start learning web design",
             price: "$49",
             features: [
@@ -17,7 +17,7 @@ export const PricingSection = () => {
         },
         {
             name: "Pro",
-            icon: "/src/assets/webflow/images/pro-plan-icon-courselify-webflow-ecommerce-template.png",
+            icon: "/src/assets/webflow/images/pro-plan-courselify-x-webflow-template.png",
             description: "For serious learners who want the complete experience",
             price: "$99",
             features: [

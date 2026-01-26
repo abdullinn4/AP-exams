@@ -7,6 +7,7 @@ import {ScrollToTop} from "@/shared/lib/components/ScrollToTop";
 import {useWebflowAnimations} from "@/shared/lib/hooks/useWebflowAnimations.ts";
 import {CheckoutPage} from "@/pages/CheckoutPage";
 import {CheckoutSuccessPage} from "@/pages/CheckoutSuccessPage";
+import {AboutPage} from "@/pages/AboutPage";
 
 export const AppRouter = () => {
     useWebflowAnimations()
@@ -18,6 +19,7 @@ export const AppRouter = () => {
                 <Route path={ROUTES.SIGN_IN} element={<SignInPage />} />
                 <Route path={ROUTES.FORGOT_PASSWORD} element={<ForgotPasswordPage />} />
                 <Route path={ROUTES.HOME} element={<HomePage />}/>
+                <Route path={ROUTES.ABOUT} element={<AboutPage/>}/>
                 <Route path={ROUTES.CHECKOUT} element={<CheckoutPage />}/>
                 <Route path={ROUTES.CHECKOUT_SUCCESS} element={<CheckoutSuccessPage/>}/>
 
