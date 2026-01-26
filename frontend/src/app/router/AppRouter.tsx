@@ -8,6 +8,7 @@ import {useWebflowAnimations} from "@/shared/lib/hooks/useWebflowAnimations.ts";
 import {CheckoutPage} from "@/pages/CheckoutPage";
 import {CheckoutSuccessPage} from "@/pages/CheckoutSuccessPage";
 import {AboutPage} from "@/pages/AboutPage";
+import {CatalogPage} from "@/pages/CatalogPage";
 
 export const AppRouter = () => {
     useWebflowAnimations()
@@ -20,6 +21,7 @@ export const AppRouter = () => {
                 <Route path={ROUTES.FORGOT_PASSWORD} element={<ForgotPasswordPage />} />
                 <Route path={ROUTES.HOME} element={<HomePage />}/>
                 <Route path={ROUTES.ABOUT} element={<AboutPage/>}/>
+                <Route path={ROUTES.CATALOG} element={<CatalogPage/>}/>
                 <Route path={ROUTES.CHECKOUT} element={<CheckoutPage />}/>
                 <Route path={ROUTES.CHECKOUT_SUCCESS} element={<CheckoutSuccessPage/>}/>
 

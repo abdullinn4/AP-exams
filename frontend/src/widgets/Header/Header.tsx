@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '@/features/auth/model/useAuth'
 import { ROUTES } from '@/app/router/routes'
+import {CartBadge} from "@/features/cart";
 
 interface HeaderProps {
     variant?: 'full' | 'minimal'
@@ -108,11 +109,9 @@ export const Header = ({ variant = 'full', theme = 'dark' }: HeaderProps) => {
                                 aria-label="Open cart"
                                 data-node-type="commerce-cart-open-link"
                                 href="#"
-                                style={{ color: theme === 'light' ? '#fff' : '#000' }}
+                                style={{ color: theme === 'light' ? '#fff' : '#000'}}
                             >
-                                <div className="w-inline-block">Cart(</div>
-                                <div className="w-commerce-commercecartopenlinkcount cart-quantity">0</div>
-                                <div className="w-inline-block">)</div>
+                                <CartBadge theme={theme} />
                             </a>
 
                             <div style={{display: 'none'}} className="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-modal cart-wrapper" data-node-type="commerce-cart-container-wrapper">

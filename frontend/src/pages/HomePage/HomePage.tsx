@@ -9,7 +9,7 @@ import { TestimonialsSection } from '@/widgets/TestimonialsSection'
 import { BlogSection } from '@/widgets/BlogSection'
 import { PricingSection } from '@/widgets/PricingSection'
 import { FinalCTASection } from '@/widgets/FinalCTASection'
-import {CTAFooterBlock} from "@/widgets/ CTAFooterBlock";
+import {CTAFooterBlock} from "@/widgets/CTAFooterBlock";
 
 export const HomePage = () => {
     

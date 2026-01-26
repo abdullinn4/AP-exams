@@ -1,0 +1,43 @@
+// @/features/cart/ui/CartBadge.tsx
+import { useState } from 'react'
+import { useCart } from "@/features/cart"
+
+interface CartBadgeProps {
+    theme?: 'light' | 'dark'
+}
+
+export const CartBadge = ({ theme = 'dark' }: CartBadgeProps) => {
+    const { totalItems } = useCart()
+    const [isHovered, setIsHovered] = useState(false)
+
+    const iconSrc = theme === 'light'
+        ? (isHovered ? '/src/assets/webflow/images/white-hover-shopping-cart.svg' : '/src/assets/webflow/images/white-shopping-cart.svg')
+        : (isHovered ? '/src/assets/webflow/images/black-hover-shopping-cart.svg' : '/src/assets/webflow/images/black-shopping-cart.svg')
+
+    return (
+        <div
+            className="cart-badge-wrapper"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px'
+            }}
+        >
+            <img
+                src={iconSrc}
+                alt="Cart"
+                className="cart-icon"
+                style={{
+                    width: '20px',
+                    height: '20px',
+                    display: 'block'
+                }}
+            />
+            {totalItems > 0 && (
+                <span style={{ fontSize: '16px', lineHeight: '1' }}>({totalItems})</span>
+            )}
+        </div>
+    )
+}

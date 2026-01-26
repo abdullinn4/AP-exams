@@ -23,6 +23,7 @@ const MOCK_COURSE: CourseDetails = {
     id: '1',
     title: 'AP Computer Science A',
     slug: 'ap-computer-science-a',
+    snippet: 'Master Java programming and prepare for the AP Computer Science A',
     description: 'Master Java programming and prepare for the AP Computer Science A exam with comprehensive lessons, practice problems, and expert guidance.',
     previewVideoUrl: null,
     coverUrl: '/src/assets/webflow/images/course-cover-placeholder.jpg',

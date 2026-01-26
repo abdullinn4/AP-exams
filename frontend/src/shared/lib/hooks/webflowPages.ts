@@ -5,5 +5,6 @@ export const WEBFLOW_PAGE_IDS: Record<string, string> = {
     '/checkout': '696cb73966e9acecad098e51',
     '/checkout/success': '696cb73966e9acecad098e51',
     '/about': '696cb73966e9acecad098e69',
+    '/catalog': '696cb73966e9acecad098e69',
     // ... остальные
 }

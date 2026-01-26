@@ -5,5 +5,6 @@ export const ROUTES = {
     CHECKOUT: '/checkout',
     CHECKOUT_SUCCESS: '/checkout/success',
     ABOUT: '/about',
+    CATALOG: '/catalog',
     NOT_FOUND: '/404',
 } as const

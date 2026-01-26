@@ -7,7 +7,7 @@ import {
     ABOUT_PROJECTS,
     ABOUT_HOBBIES
 } from '@/shared/config/content'
-import {CTAFooterBlock} from "@/widgets/ CTAFooterBlock";
+import {CTAFooterBlock} from "@/widgets/CTAFooterBlock";
 
 export const AboutPage = () => {
     return (
