@@ -4,26 +4,17 @@ import {zodResolver} from '@hookform/resolvers/zod'
 import {type CheckoutFormData, checkoutSchema} from '@/features/checkout/lib/checkoutSchema'
 import {CustomerInfoFields} from '@/features/checkout/ui/CustomerInfoFields'
 import {OrderItemsBlock} from '@/features/checkout/ui/OrderItemsBlock'
-import type {TariffDetails} from '@/entities/tariff/tariff'
-import type {CourseDetails} from '@/entities/course/course'
+import type {CartItem} from '@/entities/cart/cart'
 import {tokenService} from '@/features/auth/lib/tokenService'
 import {usePrepareCheckoutMutation} from '@/shared/api/checkoutApi'
+import {getCheckoutVariantId} from '@/features/checkout/lib/bundleVariants'
 
 interface CheckoutFormProps {
-    tariff: TariffDetails
-    course: CourseDetails
-    finalPrice?: number
-    discountPercent?: number
-    discountAmount?: number
-    promoCode?: string
+    items: CartItem[]
     onSubmitTrigger?: (submitFn: () => void, isSubmitting: boolean) => void
 }
 
-export const CheckoutForm = ({
-                                 tariff,
-                                 course,
-                                 onSubmitTrigger
-                             }: CheckoutFormProps) => {
+export const CheckoutForm = ({items, onSubmitTrigger}: CheckoutFormProps) => {
     const [prepareCheckout, {isLoading: isPreparingCheckout}] = usePrepareCheckoutMutation()
     const [error, setError] = useState<string | null>(null)
 
@@ -32,10 +23,10 @@ export const CheckoutForm = ({
         defaultValues: {
             email: '',
             discordNickname: '',
-            promoCode: '',
         },
     })
 
+    // Автозаполнение из токена
     useEffect(() => {
         const token = tokenService.getAccessToken()
         if (token) {
@@ -51,25 +42,40 @@ export const CheckoutForm = ({
                 console.error('Failed to parse token:', error)
             }
         }
-    }, [methods.setValue])
+    }, [methods])
 
     const onSubmit = useCallback(async (data: CheckoutFormData) => {
         setError(null)
 
         try {
+            // Получаем variant ID (обычный или bundle)
+            const variantId = getCheckoutVariantId(items)
+
+            // Собираем tariff IDs
+            const tariffIds = items.map(item => item.tariffId)
+
             // Сохраняем данные для success страницы
             sessionStorage.setItem('checkoutFormData', JSON.stringify({
                 email: data.email,
                 discordNickname: data.discordNickname,
-                tariffId: tariff.id,
-                courseId: course.id,
+                tariffIds,
+                items: items.map(item => ({
+                    courseId: item.courseId,
+                    courseTitle: item.courseTitle,
+                    tariffId: item.tariffId,
+                    tariffTitle: item.tariffTitle,
+                    tariffTier: item.tariffTier,
+                    price: item.price,
+                    currency: item.currency,
+                }))
             }))
 
             // Вызываем API для создания checkout session
             const response = await prepareCheckout({
-                tariffId: tariff.id,
                 email: data.email,
                 discordNickname: data.discordNickname,
+                tariffIds,
+                variantId,
             }).unwrap()
 
             // Редиректим на LemonSqueezy для оплаты
@@ -78,7 +84,7 @@ export const CheckoutForm = ({
             console.error('Checkout preparation failed:', err)
             setError('Failed to prepare checkout. Please try again.')
         }
-    }, [tariff.id, course.id, prepareCheckout])
+    }, [items, prepareCheckout])
 
     useEffect(() => {
         if (onSubmitTrigger) {
@@ -93,7 +99,7 @@ export const CheckoutForm = ({
         <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
                 <CustomerInfoFields/>
-                <OrderItemsBlock tariff={tariff} course={course}/>
+                <OrderItemsBlock items={items}/>
 
                 {error && (
                     <div className="error-message-wrapper mg-top-16px" style={{display: 'block'}}>

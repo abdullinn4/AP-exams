@@ -1,4 +1,3 @@
-// @/features/cart/ui/CartBadge.tsx
 import { useState } from 'react'
 import { useCart } from "@/features/cart"
 
@@ -36,7 +35,41 @@ export const CartBadge = ({ theme = 'dark' }: CartBadgeProps) => {
                 }}
             />
             {totalItems > 0 && (
-                <span style={{ fontSize: '16px', lineHeight: '1' }}>({totalItems})</span>
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: '-12px',
+                        right: '-10px',
+                        width: '26px',
+                        height: '26px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        textAlign: 'center'
+                    }}
+                >
+                    <img
+                        src="/src/assets/webflow/images/circle-shopping-cart-small.svg"
+                        alt=""
+                            style={{
+                                position: 'absolute',
+                                width: '100%',
+                                height: '100%'
+                            }}
+                    />
+                    <span
+                        style={{
+                            position: 'relative',
+                            fontSize: '11px',
+                            fontWeight: '600',
+                            lineHeight: '1',
+                            color: '#fff',
+                            zIndex: 1
+                        }}
+                    >
+                        {totalItems}
+                    </span>
+                </div>
             )}
         </div>
     )

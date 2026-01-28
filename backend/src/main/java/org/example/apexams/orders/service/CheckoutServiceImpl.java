@@ -12,6 +12,7 @@ import org.example.apexams.users.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -26,24 +27,35 @@ public class CheckoutServiceImpl implements CheckoutService {
     @Override
     @Transactional
     public CheckoutResponse prepareCheckout(CheckoutPrepareRequest request) {
-        TariffEntity tariff = findActiveTariff(request.tariffId());
+        List<TariffEntity> tariffs = findActiveTariffs(request.tariffIds());
         UserEntity user = findOrCreateUser(request);
 
-        String checkoutUrl = paymentProvider.createCheckoutSession(user, tariff.getCourse(), tariff);
+        // Просто передаем variantId от фронта в LemonSqueezy
+        String checkoutUrl = paymentProvider.createCheckoutSession(
+                user,
+                tariffs,
+                request.variantId()
+        );
 
-        log.info("Checkout prepared: user={}, tariff={}", user.getEmail(), tariff.getTitle());
+        log.info("Checkout prepared: user={}, tariffs={}, variantId={}",
+                user.getEmail(), tariffs.size(), request.variantId());
         return new CheckoutResponse(UUID.randomUUID(), checkoutUrl);
     }
 
-    private TariffEntity findActiveTariff(UUID tariffId) {
-        TariffEntity tariff = tariffRepository.findById(tariffId)
-                .orElseThrow(() -> new IllegalArgumentException("Tariff not found"));
+    private List<TariffEntity> findActiveTariffs(List<UUID> tariffIds) {
+        List<TariffEntity> tariffs = tariffRepository.findAllById(tariffIds);
 
-        if (!tariff.getIsActive()) {
-            throw new IllegalStateException("Tariff is not active");
+        if (tariffs.size() != tariffIds.size()) {
+            throw new IllegalArgumentException("Some tariffs not found");
         }
 
-        return tariff;
+        tariffs.forEach(tariff -> {
+            if (!tariff.getIsActive()) {
+                throw new IllegalStateException("Tariff is not active: " + tariff.getId());
+            }
+        });
+
+        return tariffs;
     }
 
     private UserEntity findOrCreateUser(CheckoutPrepareRequest request) {

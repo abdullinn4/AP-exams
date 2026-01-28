@@ -4,8 +4,10 @@ import org.example.apexams.courses.entity.CourseEntity;
 import org.example.apexams.tariffs.entity.TariffEntity;
 import org.example.apexams.users.entity.UserEntity;
 
+import java.util.List;
+
 public interface PaymentProvider {
-    String createCheckoutSession(UserEntity user, CourseEntity course, TariffEntity tariff);
+    String createCheckoutSession(UserEntity user, List<TariffEntity> tariffs, String variantId);
 
     void handleWebhook(String payload, String signature);
 }

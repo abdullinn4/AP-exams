@@ -10,6 +10,7 @@ public record CreateCourseRequest(
         String slug,
 
         String description,
+        String snippet,
         String previewVideoUrl,
         String coverUrl,
         String discordInviteUrl

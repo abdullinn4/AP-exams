@@ -50,6 +50,7 @@ export const TariffSelectionModal = ({
             price: tariff.price,
             currency: tariff.currency,
             addedAt: new Date().toISOString(),
+            lemonSqueezyVariantId: tariff.lemonSqueezyVariantId,
         })
 
         onClose()
@@ -59,33 +60,12 @@ export const TariffSelectionModal = ({
 
     return (
         <div
-            className="modal-overlay"
-            style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 9999,
-                padding: '20px'
-            }}
+            className="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-modal cart-wrapper"
             onClick={onClose}
         >
             <div
                 className="card overflow-visible"
-                style={{
-                    backgroundColor: '#fff',
-                    borderRadius: '32px',
-                    maxWidth: '1000px',
-                    width: '100%',
-                    maxHeight: '90vh',
-                    overflow: 'hidden',
-                    position: 'relative'
-                }}
+
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Modal Header */}
@@ -96,7 +76,7 @@ export const TariffSelectionModal = ({
                 }}>
                     {/* Close button - top right */}
                     <a
-                        className="w-commerce-commercecartcloselink close-button w-inline-block modal-close-btn"
+                        className="w-commerce-commercecartcloselink close-button w-inline-block"
                         role="button"
                         aria-label="Close modal"
                         onClick={onClose}
@@ -124,7 +104,7 @@ export const TariffSelectionModal = ({
                             e.currentTarget.style.transform = 'rotate(0deg)';
                         }}
                     >
-                        ×
+                        &#x2715;
                     </a>
 
                     {/* Title centered */}
@@ -195,11 +175,11 @@ export const TariffSelectionModal = ({
                                     return (
                                         <div
                                             key={tariff.id}
-                                            className={`card pricing-card-v1 ${tariff.tier === 'PRO' ? 'popular' : ''}`}
-                                            style={{marginTop: '60px'}}
+                                            className={`card pricing-card-v1`}
+                                            style={{marginTop: '60px' , border: `${tariff.tier === 'PRO' ? '1px solid #FD6E70' : '1px solid #f1f1f3'}`}}
                                         >
                                                 <div
-                                                    className={`pricing-card-content-wrapper ${tariff.tier === 'PRO' ? 'popular' : ''}`}
+                                                    className={`pricing-card-content-wrapper`}
                                                     style={{ padding: '32px' }}
                                                 >
                                                     <div>

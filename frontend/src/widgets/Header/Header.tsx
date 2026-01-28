@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '@/features/auth/model/useAuth'
 import { ROUTES } from '@/app/router/routes'
-import {CartBadge} from "@/features/cart";
+import {CartBadge, CartModal} from "@/features/cart";
+import {useState} from "react";
 
 interface HeaderProps {
     variant?: 'full' | 'minimal'
@@ -10,6 +11,7 @@ interface HeaderProps {
 
 export const Header = ({ variant = 'full', theme = 'dark' }: HeaderProps) => {
     const { isAuthenticated, logout } = useAuth()
+    const [isCartOpen, setIsCartOpen] = useState(false)
 
     // Выбор логотипа в зависимости от темы
     const logoSrc = theme === 'light'
@@ -110,27 +112,15 @@ export const Header = ({ variant = 'full', theme = 'dark' }: HeaderProps) => {
                                 data-node-type="commerce-cart-open-link"
                                 href="#"
                                 style={{ color: theme === 'light' ? '#fff' : '#000'}}
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    setIsCartOpen(true)
+                                }}
                             >
                                 <CartBadge theme={theme} />
                             </a>
 
-                            <div style={{display: 'none'}} className="w-commerce-commercecartcontainerwrapper w-commerce-commercecartcontainerwrapper--cartType-modal cart-wrapper" data-node-type="commerce-cart-container-wrapper">
-                                <div data-node-type="commerce-cart-container" role="dialog" className="w-commerce-commercecartcontainer cart-container">
-                                    <div className="card">
-                                        <div className="w-commerce-commercecartheader cart-header">
-                                            <h4 className="w-commerce-commercecartheading">Your Cart</h4>
-                                            <a className="w-commerce-commercecartcloselink close-button w-inline-block" role="button" aria-label="Close cart" data-node-type="commerce-cart-close-link">
-                                                <div></div>
-                                            </a>
-                                        </div>
-                                        <div className="w-commerce-commercecartformwrapper cart-form-wrapper">
-                                            <div className="w-commerce-commercecartemptystate empty-state">
-                                                <div>No items found.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
                         </div>
                     </div>
 

@@ -11,6 +11,7 @@ public record CourseDetailsResponse(
         String title,
         String slug,
         String description,
+        String snippet,
         String previewVideoUrl,
         String coverUrl,
         CourseStatus status,

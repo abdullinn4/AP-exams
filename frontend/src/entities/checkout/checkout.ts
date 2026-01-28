@@ -1,13 +1,13 @@
 export interface CheckoutFormData {
     email: string;
     discordNickname: string;
-    promoCode?: string;
 }
 
 export interface CheckoutPrepareRequest {
-    tariffId: string
     email: string
     discordNickname: string
+    tariffIds: string[]  // Массив ID тарифов из корзины
+    variantId: string    // LemonSqueezy variant ID (обычный или bundle)
 }
 
 export interface CheckoutPrepareResponse {
@@ -33,6 +33,6 @@ export interface PromoCodeValidationResponse {
 export interface CheckoutSuccessData {
     email: string
     discordNickname: string
-    tariffId: string
-    courseId: string
+    tariffIds: string[]
+    courseIds: string
 }

@@ -116,29 +116,25 @@ const MOCK_TARIFFS: Record<string, TariffDetails[]> = {
     ],
 }
 
-const USE_MOCK_TARIFFS = true // Переключатель для mock данных
 
 export const coursesApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getAllCourses: builder.query<CourseDetails[], void>({
-            query: () => '/courses',
+            query: () => 'public/courses',
             providesTags: ['Courses'],
         }),
         getCourseById: builder.query<CourseDetails, string>({
-            query: (id) => `/courses/${id}`,
+            query: (id) => `public/courses/${id}/preview`,
             providesTags: (result, error, id) => [{ type: 'Courses', id }],
         }),
         getTariffsByCourseId: builder.query<TariffDetails[], string>({
-            queryFn: async (courseId) => {
-                if (USE_MOCK_TARIFFS) {
-                    // Имитация задержки сети
-                    await new Promise(resolve => setTimeout(resolve, 300))
-                    return { data: MOCK_TARIFFS[courseId] || [] }
+            /*query: (courseId) => `/public/courses/${courseId}/tariffs`,
+            providesTags: (_result, _error, courseId) => [{ type: 'Tariffs', id: courseId }],*/
+            queryFn: (courseId) =>{
+                return {
+                    data: MOCK_TARIFFS[courseId]
                 }
-                // Когда будет готов бэк, используется обычный запрос
-                return { error: { status: 'CUSTOM_ERROR', error: 'Backend not ready' } }
-            },
-            providesTags: (_result, _error, courseId) => [{ type: 'Courses', id: courseId }],
+            }
         }),
     }),
 })

@@ -12,6 +12,7 @@ public class CourseMapper {
                 courseEntity.getId(),
                 courseEntity.getTitle(),
                 courseEntity.getSlug(),
+                courseEntity.getSnippet(),
                 courseEntity.getDescription(),
                 courseEntity.getPreviewVideoUrl(),
                 courseEntity.getCoverUrl(),
@@ -27,6 +28,7 @@ public class CourseMapper {
                 .title(dto.title())
                 .slug(dto.slug())
                 .description(dto.description())
+                .snippet(dto.snippet())
                 .previewVideoUrl(dto.previewVideoUrl())
                 .coverUrl(dto.coverUrl())
                 .discordInviteUrl(dto.discordInviteUrl())

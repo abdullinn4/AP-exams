@@ -2,9 +2,7 @@ package org.example.apexams.orders.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-
 import lombok.extern.slf4j.Slf4j;
-import org.example.apexams.courses.entity.CourseEntity;
 import org.example.apexams.enrollments.service.EnrollmentService;
 import org.example.apexams.orders.entity.OrderEntity;
 import org.example.apexams.orders.entity.enums.OrderStatus;
@@ -18,7 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -40,9 +40,16 @@ public class LemonSqueezyService implements PaymentProvider {
     private String frontendUrl;
 
     @Override
-    public String createCheckoutSession(UserEntity user, CourseEntity course, TariffEntity tariff) {
-        String checkoutUrl = createLemonSqueezyCheckout(user, course, tariff);
-        saveOrder(user, course, tariff, extractCheckoutId(checkoutUrl));
+    public String createCheckoutSession(UserEntity user, List<TariffEntity> tariffs, String variantId) {
+        String checkoutUrl = createLemonSqueezyCheckout(user, tariffs, variantId);
+        String checkoutId = extractCheckoutId(checkoutUrl);
+
+        // Создаем pending orders для каждого тарифа
+        // Цену пока не знаем - получим из webhook
+        for (TariffEntity tariff : tariffs) {
+            saveOrder(user, tariff, checkoutId);
+        }
+
         return checkoutUrl;
     }
 
@@ -66,13 +73,13 @@ public class LemonSqueezyService implements PaymentProvider {
         }
     }
 
-    private String createLemonSqueezyCheckout(UserEntity user, CourseEntity course, TariffEntity tariff) {
+    private String createLemonSqueezyCheckout(UserEntity user, List<TariffEntity> tariffs, String variantId) {
         try {
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.setBearerAuth(apiKey);
 
-            Map<String, Object> requestBody = buildCheckoutRequest(user, course, tariff);
+            Map<String, Object> requestBody = buildCheckoutRequest(user, tariffs, variantId);
             HttpEntity<Map<String, Object>> request = new HttpEntity<>(requestBody, headers);
 
             ResponseEntity<Map> response = restTemplate.exchange(
@@ -89,10 +96,26 @@ public class LemonSqueezyService implements PaymentProvider {
         }
     }
 
-    private Map<String, Object> buildCheckoutRequest(UserEntity user, CourseEntity course, TariffEntity tariff) {
-        if (tariff.getLemonSqueezyVariantId() == null) {
-            throw new IllegalStateException("LemonSqueezy variant ID not configured for tariff: " + tariff.getId());
-        }
+    private Map<String, Object> buildCheckoutRequest(UserEntity user, List<TariffEntity> tariffs, String variantId) {
+        // Validate all tariffs have LemonSqueezy variant IDs
+        tariffs.forEach(tariff -> {
+            if (tariff.getLemonSqueezyVariantId() == null) {
+                throw new IllegalStateException("LemonSqueezy variant ID not configured for tariff: " + tariff.getId());
+            }
+        });
+
+        // Store tariff IDs in custom data for webhook processing
+        String tariffIdsStr = tariffs.stream()
+                .map(t -> t.getId().toString())
+                .collect(Collectors.joining(","));
+
+        String productName = tariffs.size() == 1
+                ? tariffs.getFirst().getCourse().getTitle() + " - " + tariffs.getFirst().getTitle()
+                : "Course Bundle (" + tariffs.size() + " courses)";
+
+        String productDescription = tariffs.stream()
+                .map(t -> t.getCourse().getTitle() + " - " + t.getTier().name())
+                .collect(Collectors.joining(", "));
 
         return Map.of(
                 "data", Map.of(
@@ -102,90 +125,104 @@ public class LemonSqueezyService implements PaymentProvider {
                                         "email", user.getEmail(),
                                         "custom", Map.of(
                                                 "user_id", user.getId().toString(),
-                                                "course_id", course.getId().toString(),
-                                                "tariff_id", tariff.getId().toString()
+                                                "tariff_ids", tariffIdsStr,
+                                                "item_count", tariffs.size()
                                         )
                                 ),
                                 "product_options", Map.of(
-                                        "name", course.getTitle() + " - " + tariff.getTitle(),
-                                        "description", tariff.getTier().name() + " tier",
+                                        "name", productName,
+                                        "description", productDescription,
                                         "redirect_url", frontendUrl + "/checkout/success"
+                                ),
+                                "checkout_options", Map.of(
+                                        "button_color", "#7C3AED"
                                 )
                         ),
                         "relationships", Map.of(
                                 "store", Map.of("data", Map.of("type", "stores", "id", storeId)),
-                                "variant", Map.of("data", Map.of("type", "variants", "id", tariff.getLemonSqueezyVariantId()))
+                                "variant", Map.of("data", Map.of("type", "variants", "id", variantId))
                         )
                 )
         );
     }
 
-    private void saveOrder(UserEntity user, CourseEntity course, TariffEntity tariff, String checkoutId) {
+    private void saveOrder(UserEntity user, TariffEntity tariff, String checkoutId) {
         OrderEntity order = OrderEntity.builder()
                 .user(user)
-                .course(course)
+                .course(tariff.getCourse())
                 .tariff(tariff)
                 .lemonSqueezyCheckoutId(checkoutId)
                 .status(OrderStatus.PENDING)
-                .amountCents(tariff.getPriceCents())
+                .amountCents(0) // Будет обновлено из webhook
                 .currency(tariff.getCurrency())
                 .build();
 
         orderRepository.save(order);
-        log.info("Order created: checkout={}, user={}", checkoutId, user.getEmail());
+        log.info("Order created: checkout={}, user={}, course={}", checkoutId, user.getEmail(), tariff.getCourse().getTitle());
     }
 
     private void processOrderCreated(Map<String, Object> event) {
         Map<String, Object> data = (Map<String, Object>) event.get("data");
         Map<String, Object> attributes = (Map<String, Object>) data.get("attributes");
 
-        String orderId = (String) data.get("id");
+        String lemonSqueezyOrderId = (String) data.get("id");
         String status = (String) attributes.get("status");
         String checkoutId = (String) attributes.get("identifier");
 
+        // ВАЖНО: Получаем реальную цену от LemonSqueezy (уже со всеми скидками)
+        int totalPaidCents = (Integer) attributes.get("total");
+
         if (!"paid".equals(status)) {
-            log.warn("Order {} not paid, status: {}", orderId, status);
+            log.warn("Order {} not paid, status: {}", lemonSqueezyOrderId, status);
             return;
         }
 
-        OrderEntity order = findOrderByCheckoutId(checkoutId);
+        // Найти все orders с этим checkoutId (может быть несколько для разных курсов)
+        List<OrderEntity> orders = orderRepository.findAllByLemonSqueezyCheckoutId(checkoutId);
 
-        if (order.getStatus() == OrderStatus.COMPLETED) {
-            log.warn("Order {} already completed", order.getId());
-            return;
+        if (orders.isEmpty()) {
+            throw new IllegalArgumentException("No orders found for checkout: " + checkoutId);
         }
 
-        completeOrder(order, orderId);
-        enrollmentService.enrollUser(order.getUser(), order.getCourse(), order.getTariff());
+        // Распределяем финальную цену между orders
+        int pricePerItem = totalPaidCents / orders.size();
 
-        log.info("Order completed: {}, user enrolled: {}", orderId, order.getUser().getEmail());
+        // Обработать каждый order
+        for (OrderEntity order : orders) {
+            if (order.getStatus() == OrderStatus.COMPLETED) {
+                log.warn("Order {} already completed", order.getId());
+                continue;
+            }
+            // Сохраняем реальную оплаченную цену
+            order.setAmountCents(pricePerItem);
+            completeOrder(order, lemonSqueezyOrderId);
+            enrollmentService.enrollUser(order.getUser(), order.getCourse(), order.getTariff());
+
+            log.info("User enrolled: user={}, course={}", order.getUser().getEmail(), order.getCourse().getTitle());
+        }
+
+        log.info("Checkout completed: {}, {} courses enrolled", lemonSqueezyOrderId, orders.size());
     }
 
     private void processOrderRefunded(Map<String, Object> event) {
-        String orderId = (String) ((Map<String, Object>) event.get("data")).get("id");
-        OrderEntity order = findOrderByPaymentId(orderId);
+        String lemonSqueezyOrderId = (String) ((Map<String, Object>) event.get("data")).get("id");
 
-        order.setStatus(OrderStatus.REFUNDED);
-        orderRepository.save(order);
+        // Найти все orders с этим lemonSqueezyOrderId
+        List<OrderEntity> orders = orderRepository.findAllByLemonSqueezyOrderId(lemonSqueezyOrderId);
 
-        log.info("Order refunded: {}", orderId);
+        for (OrderEntity order : orders) {
+            order.setStatus(OrderStatus.REFUNDED);
+            orderRepository.save(order);
+        }
+
+        log.info("Orders refunded: {}, count: {}", lemonSqueezyOrderId, orders.size());
     }
 
-    private void completeOrder(OrderEntity order, String paymentId) {
+    private void completeOrder(OrderEntity order, String lemonSqueezyOrderId) {
         order.setStatus(OrderStatus.COMPLETED);
-        order.setLemonSqueezyOrderId(paymentId);
+        order.setLemonSqueezyOrderId(lemonSqueezyOrderId);
         order.setCompletedAt(Instant.now());
         orderRepository.save(order);
-    }
-
-    private OrderEntity findOrderByCheckoutId(String checkoutId) {
-        return orderRepository.findByLemonSqueezyCheckoutId(checkoutId)
-                .orElseThrow(() -> new IllegalArgumentException("Order not found: " + checkoutId));
-    }
-
-    private OrderEntity findOrderByPaymentId(String paymentId) {
-        return orderRepository.findByLemonSqueezyOrderId(paymentId)
-                .orElseThrow(() -> new IllegalArgumentException("Order not found: " + paymentId));
     }
 
     private String extractCheckoutUrl(Map<String, Object> response) {

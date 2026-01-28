@@ -132,6 +132,7 @@ public class StudentCourseServiceImpl implements StudentCourseService {
                 course.title(),
                 course.slug(),
                 course.description(),
+                course.snippet(),
                 course.previewVideoUrl(),
                 course.coverUrl(),
                 course.status(),

@@ -3,9 +3,24 @@ import {useNavigate} from 'react-router-dom'
 import {Header} from '@/widgets/Header'
 import {Footer} from '@/widgets/Footer'
 import {formatPrice} from '@/shared/lib/utils/money'
-import {useGetCourseByIdQuery, useGetTariffByIdQuery} from '@/shared/api/checkoutApi'
-import type {CheckoutSuccessData} from '@/entities/checkout/checkout'
 import {ROUTES} from '@/app/router/routes'
+
+interface CheckoutSuccessItem {
+    courseId: string
+    courseTitle: string
+    tariffId: string
+    tariffTitle: string
+    tariffTier: string
+    price: number
+    currency: string
+}
+
+interface CheckoutSuccessData {
+    email: string
+    discordNickname: string
+    tariffIds: string[]
+    items: CheckoutSuccessItem[]
+}
 
 export const CheckoutSuccessPage = () => {
     const navigate = useNavigate()
@@ -29,19 +44,12 @@ export const CheckoutSuccessPage = () => {
         }
     }, [navigate])
 
-    const {data: tariff} = useGetTariffByIdQuery(
-        checkoutData?.tariffId || '',
-        {skip: !checkoutData?.tariffId}
-    )
-
-    const {data: course} = useGetCourseByIdQuery(
-        checkoutData?.courseId || '',
-        {skip: !checkoutData?.courseId}
-    )
-
     if (!checkoutData) {
         return null
     }
+
+    const totalPrice = checkoutData.items.reduce((sum, item) => sum + item.price, 0)
+    const currency = checkoutData.items[0]?.currency || 'USD'
 
     return (
         <div className="page-wrapper">
@@ -50,39 +58,14 @@ export const CheckoutSuccessPage = () => {
             <section className="section top">
                 <div className="w-layout-blockcontainer container-default w-container">
                     <div className="inner-container _600px mg-bottom-48px text-center">
-                        <h1
-                            data-w-id="bb5abbaa-a20a-39df-7abf-1886366cf573"
-                            style={{
-                                WebkitTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
-                                MozTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
-                                msTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
-                                transform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
-                                opacity: 0
-                            }}
-                            className="mg-bottom-16px"
-                        >
-                            Order Confirmation
-                        </h1>
-                        <p
-                            data-w-id="0a4dd4fe-6d4a-341a-4525-61693b619968"
-                            style={{
-                                WebkitTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
-                                MozTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
-                                msTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
-                                transform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
-                                opacity: 0
-                            }}
-                            className="text-200"
-                        >
-                            Thanks for placing your order. You will be receiving more information via email.
+                        <h1 className="mg-bottom-16px">Order Confirmation</h1>
+                        <p className="text-200">
+                            Thanks for your purchase! You will receive access details and course information via email shortly.
                         </p>
                     </div>
 
                     <div className="w-layout-grid checkout-form" style={{gridTemplateColumns: '1fr'}}>
-                        <div
-                            data-w-id="64f8cd77d5e21d3daa05112400000000000c"
-                            style={{opacity: 0, maxWidth: '800px', margin: '0 auto', width: '100%'}}
-                        >
+                        <div style={{maxWidth: '800px', margin: '0 auto', width: '100%'}}>
                             {/* Customer Info */}
                             <div className="card checkout-block">
                                 <div className="w-commerce-commercecheckoutblockheader checkout-block-header">
@@ -94,40 +77,50 @@ export const CheckoutSuccessPage = () => {
                                         <div className="text-200 text-neutral-600">{checkoutData.email}</div>
                                     </div>
                                     <div>
-                                        <div className="text-200 text-weight-semibold mg-bottom-8px">Discord Nickname
-                                        </div>
+                                        <div className="text-200 text-weight-semibold mg-bottom-8px">Discord Nickname</div>
                                         <div className="text-200 text-neutral-600">{checkoutData.discordNickname}</div>
                                     </div>
                                 </fieldset>
                             </div>
 
-                            {/* Order Details */}
+                            {/* Purchased Courses */}
                             <div className="card checkout-block">
                                 <div className="w-commerce-commercecheckoutsummaryblockheader checkout-block-header">
-                                    <h2 className="display-6">Order Details</h2>
+                                    <h2 className="display-6">Purchased Courses</h2>
                                 </div>
                                 <fieldset className="w-commerce-commercecheckoutblockcontent checkout-block-content">
-                                    <div className="order-item">
-                                        <div className="order-item-details">
-                                            <h3 className="display-6 mg-bottom-8px">
-                                                {course?.title || 'Loading...'}
-                                            </h3>
-                                            <p className="text-200 text-neutral-600 mg-bottom-16px">
-                                                {tariff?.title || 'Loading...'} - {tariff?.tier || ''}
-                                            </p>
-                                            {tariff && (
+                                    {checkoutData.items.map((item, index) => (
+                                        <div
+                                            key={item.tariffId}
+                                            className="order-item"
+                                            style={index > 0 ? {marginTop: '16px', paddingTop: '16px', borderTop: '1px solid #e5e7eb'} : {}}
+                                        >
+                                            <div className="order-item-details">
+                                                <h3 className="display-6 mg-bottom-8px">{item.courseTitle}</h3>
+                                                <p className="text-200 text-neutral-600 mg-bottom-16px">
+                                                    {item.tariffTitle} - {item.tariffTier}
+                                                </p>
                                                 <div className="text-200 text-weight-semibold">
-                                                    {formatPrice(tariff.price, tariff.currency)}
+                                                    {formatPrice(item.price, item.currency)}
                                                 </div>
-                                            )}
+                                            </div>
+                                        </div>
+                                    ))}
+
+                                    {/* Total */}
+                                    <div className="mg-top-24px" style={{paddingTop: '24px', borderTop: '2px solid #e5e7eb'}}>
+                                        <div className="w-commerce-commercecheckoutsummarylineitem">
+                                            <div className="text-200 text-weight-semibold">Total Paid</div>
+                                            <div className="text-200 text-weight-semibold">
+                                                {formatPrice(totalPrice, currency)}
+                                            </div>
                                         </div>
                                     </div>
                                 </fieldset>
                             </div>
 
                             {/* Action Buttons */}
-                            <div className="mg-top-32px"
-                                 style={{display: 'flex', gap: '16px', justifyContent: 'center'}}>
+                            <div className="mg-top-32px" style={{display: 'flex', gap: '16px', justifyContent: 'center'}}>
                                 <button
                                     onClick={() => navigate(ROUTES.HOME)}
                                     className="button-primary"
