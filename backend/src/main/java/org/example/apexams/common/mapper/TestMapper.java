@@ -15,7 +15,7 @@ public class TestMapper {
         return new TestResponse(
                 entity.getId(),
                 entity.getCourse().getId(),  // ← Добавить
-                entity.getModule() != null ? entity.getModule().getId() : null,  // ← Добавить
+                entity.getLesson() != null ? entity.getLesson().getId() : null,  // ← Добавить
                 entity.getTitle(),
                 entity.getType().name(),
                 entity.getTimeLimitSec(),

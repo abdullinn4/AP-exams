@@ -5,11 +5,12 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.example.apexams.courses.dto.CourseResponse;
+import org.example.apexams.courses.dto.CourseWithUnitsResponse;
 import org.example.apexams.courses.service.CourseService;
-import org.example.apexams.module.dto.ModuleResponse;
-import org.example.apexams.module.service.ModuleService;
 import org.example.apexams.tariffs.dto.TariffResponse;
 import org.example.apexams.tariffs.service.TariffService;
+import org.example.apexams.units.dto.UnitResponse;
+import org.example.apexams.units.service.UnitService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +26,6 @@ import java.util.UUID;
 @Tag(name = "Public Courses", description = "Public course catalog and preview (no authentication required)")
 public class PublicCourseController {
     private final CourseService courseService;
-    private final ModuleService moduleService;
     private final TariffService tariffService;
 
     @Operation(summary = "Get all published courses", description = "Returns list of all published courses available for purchase")
@@ -36,17 +36,11 @@ public class PublicCourseController {
 
     @Operation(summary = "Get course preview by slug", description = "Returns course details including preview video and description")
     @GetMapping("/{slug}/preview")
-    public ResponseEntity<CourseResponse> getCourseBySlug(
+    public ResponseEntity<CourseWithUnitsResponse> getCourseBySlug(
             @Parameter(description = "Course slug") @PathVariable String slug) {
         return ResponseEntity.ok(courseService.getCourseBySlug(slug));
     }
 
-    @Operation(summary = "Get course modules", description = "Returns list of modules for a course")
-    @GetMapping("/{courseId}/modules")
-    public ResponseEntity<List<ModuleResponse>> getModulesByCourseId(
-            @Parameter(description = "Course ID") @PathVariable UUID courseId) {
-        return ResponseEntity.ok(moduleService.getModulesByCourse(courseId));
-    }
 
     @Operation(summary = "Get course tariffs", description = "Returns available tariffs (Basic/Pro) for a course")
     @GetMapping("/{courseId}/tariffs")

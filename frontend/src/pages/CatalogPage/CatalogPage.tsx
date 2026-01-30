@@ -85,10 +85,10 @@ export const CatalogPage = () => {
                                                     >
                                                         <div className="text-block">Add to Cart</div>
                                                         <div className="item-icon-right">
-                                                            <div className="custom-icon-font"></div>
+                                                            <div className="custom-icon-font"></div>
                                                         </div>
                                                     </button>
-                                                    <Link to={`/courses/${course.id}`} className="link-wrapper w-inline-block">
+                                                    <Link to={`/courses/${course.slug}/preview`} className="link-wrapper w-inline-block">
                                                         <div className="display-2 bold text-neutral-800">
                                                             <div className="flex y-align-center">
                                                                 <div>View Course</div>

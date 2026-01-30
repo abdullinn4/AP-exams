@@ -52,7 +52,7 @@ export const CartModal = ({ isOpen, onClose}: CartModalProps) => {
                                     No items found.
                                 </div>
                                 <Link
-                                    to="/catalog"
+                                    to="/courses"
                                     className="button-primary small w-button"
                                     onClick={onClose}
                                 >

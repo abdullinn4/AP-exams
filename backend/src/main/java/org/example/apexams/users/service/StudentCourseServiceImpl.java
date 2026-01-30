@@ -11,14 +11,17 @@ import org.example.apexams.enrollments.entity.EnrollmentEntity;
 import org.example.apexams.enrollments.entity.enums.EnrollmentStatus;
 import org.example.apexams.enrollments.repo.EnrollmentRepository;
 import org.example.apexams.enrollments.service.EnrollmentService;
-import org.example.apexams.module.dto.ModuleWithProgressResponse;
-import org.example.apexams.module.entity.ModuleEntity;
-import org.example.apexams.module.repo.ModuleRepository;
-import org.example.apexams.moduleProgress.dto.ModuleProgressResponse;
-import org.example.apexams.moduleProgress.entity.ModuleProgressEntity;
-import org.example.apexams.moduleProgress.entity.enums.ModuleProgressStatus;
-import org.example.apexams.moduleProgress.repo.ModuleProgressRepository;
-import org.example.apexams.moduleProgress.service.ModuleProgressService;
+import org.example.apexams.lessonProgress.dto.LessonProgressResponse;
+import org.example.apexams.lessonProgress.entity.LessonProgressEntity;
+import org.example.apexams.lessonProgress.entity.enums.LessonProgressStatus;
+import org.example.apexams.lessonProgress.repo.LessonProgressRepository;
+import org.example.apexams.lessonProgress.service.LessonProgressService;
+import org.example.apexams.lessons.dto.LessonWithProgressResponse;
+import org.example.apexams.lessons.entity.LessonEntity;
+import org.example.apexams.lessons.repo.LessonRepository;
+import org.example.apexams.units.dto.UnitWithLessonsResponse;
+import org.example.apexams.units.entity.UnitEntity;
+import org.example.apexams.units.repo.UnitRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -33,9 +36,10 @@ public class StudentCourseServiceImpl implements StudentCourseService {
     private final EnrollmentService enrollmentService;
     private final CourseService courseService;
     private final EnrollmentRepository enrollmentRepository;
-    private final ModuleRepository moduleRepository;
-    private final ModuleProgressRepository moduleProgressRepository;
-    private final ModuleProgressService moduleProgressService;
+    private final LessonRepository lessonRepository;
+    private final LessonProgressRepository lessonProgressRepository;
+    private final LessonProgressService lessonProgressService;
+    private final UnitRepository unitRepository;
 
     @Override
     public List<CourseResponse> getCoursesByUser(UUID uuid) {
@@ -63,22 +67,22 @@ public class StudentCourseServiceImpl implements StudentCourseService {
                 .map(enrollment -> {
                     CourseEntity course = enrollment.getCourse();
 
-                    List<ModuleEntity> allModules = moduleRepository.findByCourseIdOrderByOrderIndex(course.getId());
-                    int totalModules = allModules.size();
+                    List<LessonEntity> allLessons = lessonRepository.findByUnitIdOrderByOrderIndex(course.getId());
+                    int totalLessons = allLessons.size();
 
-                    List<ModuleProgressEntity> completedModules = moduleProgressRepository.findAllByUserId(userId)
+                    List<LessonProgressEntity> completedLessons = lessonProgressRepository.findAllByUserId(userId)
                             .stream()
-                            .filter(p -> p.getStatus() == ModuleProgressStatus.COMPLETED)
-                            .filter(p -> allModules.stream().anyMatch(m -> m.getId().equals(p.getModule().getId())))
+                            .filter(p -> p.getStatus() == LessonProgressStatus.COMPLETED)
+                            .filter(p -> allLessons.stream().anyMatch(m -> m.getId().equals(p.getLesson().getId())))
                             .toList();
 
-                    int completed = completedModules.size();
-                    double progressPercentage = totalModules > 0 ? (completed * 100.0 / totalModules) : 0.0;
+                    int completed = completedLessons.size();
+                    double progressPercentage = totalLessons > 0 ? (completed * 100.0 / totalLessons) : 0.0;
 
-                    ModuleProgressEntity lastAccessed = moduleProgressRepository.findAllByUserId(userId)
+                    LessonProgressEntity lastAccessed = lessonProgressRepository.findAllByUserId(userId)
                             .stream()
-                            .filter(p -> allModules.stream().anyMatch(m -> m.getId().equals(p.getModule().getId())))
-                            .max(Comparator.comparing(ModuleProgressEntity::getId))
+                            .filter(p -> allLessons.stream().anyMatch(m -> m.getId().equals(p.getLesson().getId())))
+                            .max(Comparator.comparing(LessonProgressEntity::getId))
                             .orElse(null);
 
                     return new CourseWithProgressResponse(
@@ -87,45 +91,79 @@ public class StudentCourseServiceImpl implements StudentCourseService {
                             course.getSlug(),
                             course.getCoverUrl(),
                             enrollment.getTier(),
-                            totalModules,
+                            totalLessons,
                             completed,
                             progressPercentage,
-                            lastAccessed != null ? lastAccessed.getModule().getId() : null,
-                            lastAccessed != null ? lastAccessed.getModule().getTitle() : null
+                            lastAccessed != null ? lastAccessed.getLesson().getId() : null,
+                            lastAccessed != null ? lastAccessed.getLesson().getTitle() : null
                     );
                 })
                 .collect(Collectors.toList());
     }
 
     @Override
-    public CourseDetailsResponse getCourseWithModules(UUID userId, UUID courseId) {
+    public CourseDetailsResponse getCourseWithUnits(UUID userId, UUID courseId) {
         // Проверка доступа
         if (!enrollmentService.hasAccess(userId, courseId)) {
             throw new IllegalStateException("User does not have access to this course");
         }
 
         CourseResponse course = courseService.getCourse(courseId);
-        // Получаем модули с прогрессом
-        List<ModuleEntity> modules = moduleRepository.findByCourseIdOrderByOrderIndex(courseId);
 
-        Map<UUID, ModuleProgressResponse> progressMap = moduleProgressService.getUserProgress(userId)
+        // Получаем все units курса
+        List<UnitEntity> units = unitRepository.findByCourseIdOrderByOrderIndex(courseId);
+
+        // Получаем прогресс пользователя по всем урокам
+        Map<UUID, LessonProgressResponse> progressMap = lessonProgressService.getUserProgress(userId)
                 .stream()
-                .collect(Collectors.toMap(ModuleProgressResponse::moduleId, p -> p));
+                .collect(Collectors.toMap(LessonProgressResponse::lessonId, p -> p));
 
-        List<ModuleWithProgressResponse> modulesWithProgress = modules.stream()
-                .map(module -> {
-                    ModuleProgressResponse progress = progressMap.get(module.getId());
-                    return new ModuleWithProgressResponse(
-                            module.getId(),
-                            module.getCourse().getId(),
-                            module.getTitle(),
-                            module.getOrderIndex(),
-                            module.getReleaseAt(),
-                            progress != null ? progress.status() : ModuleProgressStatus.NOT_STARTED,
-                            progress != null ? progress.completedAt() : null
+        List<UnitWithLessonsResponse> unitsWithProgress = units.stream()
+                .map(unit -> {
+                    // Получаем уроки unit
+                    List<LessonEntity> lessons = lessonRepository.findByUnitIdOrderByOrderIndex(unit.getId());
+
+                    // Формируем уроки с прогрессом
+                    List<LessonWithProgressResponse> lessonsWithProgress = lessons.stream()
+                            .map(lesson -> {
+                                LessonProgressResponse progress = progressMap.get(lesson.getId());
+                                return new LessonWithProgressResponse(
+                                        lesson.getId(),
+                                        lesson.getUnit().getId(),
+                                        lesson.getTitle(),
+                                        lesson.getOrderIndex(),
+                                        lesson.getReleaseAt(),
+                                        progress != null ? progress.status() : LessonProgressStatus.NOT_STARTED,
+                                        progress != null ? progress.completedAt() : null
+                                );
+                            })
+                            .toList();
+
+                    // Считаем прогресс unit
+                    int totalLessons = lessonsWithProgress.size();
+                    int completedLessons = (int) lessonsWithProgress.stream()
+                            .filter(l -> l.progressStatus() == LessonProgressStatus.COMPLETED)
+                            .count();
+                    double progressPercentage = totalLessons > 0 ? (completedLessons * 100.0 / totalLessons) : 0.0;
+
+                    return new UnitWithLessonsResponse(
+                            unit.getId(),
+                            unit.getCourse().getId(),
+                            unit.getTitle(),
+                            unit.getSnippet(),
+                            unit.getDescription(),
+                            unit.getIconUrl(),
+                            unit.getOrderIndex(),
+                            unit.getIsPublished(),
+                            unit.getCreatedAt(),
+                            unit.getUpdatedAt(),
+                            lessonsWithProgress,
+                            totalLessons,
+                            completedLessons,
+                            progressPercentage
                     );
                 })
-                .collect(Collectors.toList());
+                .toList();
 
         return new CourseDetailsResponse(
                 course.id(),
@@ -137,7 +175,7 @@ public class StudentCourseServiceImpl implements StudentCourseService {
                 course.coverUrl(),
                 course.status(),
                 course.discordInviteUrl(),
-                modulesWithProgress
+                unitsWithProgress
         );
     }
 

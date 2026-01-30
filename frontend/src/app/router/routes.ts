@@ -5,6 +5,7 @@ export const ROUTES = {
     CHECKOUT: '/checkout',
     CHECKOUT_SUCCESS: '/checkout/success',
     ABOUT: '/about',
-    CATALOG: '/catalog',
+    CATALOG: '/courses',
     NOT_FOUND: '/404',
+    COURSE_PREVIEW: '/courses/:slug/preview',
 } as const

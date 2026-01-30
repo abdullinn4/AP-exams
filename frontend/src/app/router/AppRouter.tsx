@@ -9,6 +9,7 @@ import {CheckoutPage} from "@/pages/CheckoutPage";
 import {CheckoutSuccessPage} from "@/pages/CheckoutSuccessPage";
 import {AboutPage} from "@/pages/AboutPage";
 import {CatalogPage} from "@/pages/CatalogPage";
+import {CoursePreviewPage} from "@/pages/CoursePreviewPage";
 
 export const AppRouter = () => {
     useWebflowAnimations()
@@ -22,6 +23,7 @@ export const AppRouter = () => {
                 <Route path={ROUTES.HOME} element={<HomePage />}/>
                 <Route path={ROUTES.ABOUT} element={<AboutPage/>}/>
                 <Route path={ROUTES.CATALOG} element={<CatalogPage/>}/>
+                <Route path={ROUTES.COURSE_PREVIEW} element={<CoursePreviewPage />}/>
                 <Route path={ROUTES.CHECKOUT} element={<CheckoutPage />}/>
                 <Route path={ROUTES.CHECKOUT_SUCCESS} element={<CheckoutSuccessPage/>}/>
 

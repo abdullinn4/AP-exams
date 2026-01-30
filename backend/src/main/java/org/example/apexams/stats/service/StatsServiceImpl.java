@@ -2,8 +2,8 @@ package org.example.apexams.stats.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.apexams.moduleProgress.entity.enums.ModuleProgressStatus;
-import org.example.apexams.moduleProgress.repo.ModuleProgressRepository;
+import org.example.apexams.lessonProgress.entity.enums.LessonProgressStatus;
+import org.example.apexams.lessonProgress.repo.LessonProgressRepository;
 import org.example.apexams.stats.dto.MockExamStats;
 import org.example.apexams.stats.dto.ModuleTestStats;
 import org.example.apexams.stats.dto.OverallStats;
@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class StatsServiceImpl implements StatsService {
     private final TestAttemptRepository testAttemptRepository;
-    private final ModuleProgressRepository moduleProgressRepository;
+    private final LessonProgressRepository lessonProgressRepository;
 
     @Override
     @Transactional(readOnly = true)
@@ -113,9 +113,9 @@ public class StatsServiceImpl implements StatsService {
     }
 
     private OverallStats getOverallStats(UUID userId, List<TestAttemptEntity> allAttempts) {
-        long totalModulesCompleted = moduleProgressRepository.findAllByUserId(userId)
+        long totalLessonsCompleted = lessonProgressRepository.findAllByUserId(userId)
                 .stream()
-                .filter(p -> p.getStatus() == ModuleProgressStatus.COMPLETED)
+                .filter(p -> p.getStatus() == LessonProgressStatus.COMPLETED)
                 .count();
 
         long totalModuleTests = allAttempts.stream()
@@ -139,7 +139,7 @@ public class StatsServiceImpl implements StatsService {
                 .orElse(0.0);
 
         return new OverallStats(
-                (int) totalModulesCompleted,
+                (int) totalLessonsCompleted,
                 (int) totalModuleTests,
                 (int) totalMockExams,
                 avgModuleTestScore,

@@ -1,7 +1,8 @@
 package org.example.apexams.courses.dto;
 
 import org.example.apexams.courses.entity.enums.CourseStatus;
-import org.example.apexams.module.dto.ModuleWithProgressResponse;
+import org.example.apexams.lessons.dto.LessonWithProgressResponse;
+import org.example.apexams.units.dto.UnitWithLessonsResponse;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +18,6 @@ public record CourseDetailsResponse(
         CourseStatus status,
         String discordInviteUrl,
 
-        List<ModuleWithProgressResponse> modules
+        List<UnitWithLessonsResponse> units
 ) {
 }

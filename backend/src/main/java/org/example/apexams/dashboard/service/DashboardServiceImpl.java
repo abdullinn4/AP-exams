@@ -10,11 +10,11 @@ import org.example.apexams.dashboard.dto.DashboardResponse;
 import org.example.apexams.dashboard.dto.StatsPreview;
 import org.example.apexams.enrollments.dto.EnrollmentResponse;
 import org.example.apexams.enrollments.service.EnrollmentService;
-import org.example.apexams.module.dto.ModuleResponse;
-import org.example.apexams.module.service.ModuleService;
-import org.example.apexams.moduleProgress.dto.ModuleProgressResponse;
-import org.example.apexams.moduleProgress.entity.enums.ModuleProgressStatus;
-import org.example.apexams.moduleProgress.service.ModuleProgressService;
+import org.example.apexams.lessons.dto.LessonResponse;
+import org.example.apexams.lessons.service.LessonService;
+import org.example.apexams.lessonProgress.dto.LessonProgressResponse;
+import org.example.apexams.lessonProgress.entity.enums.LessonProgressStatus;
+import org.example.apexams.lessonProgress.service.LessonProgressService;
 import org.example.apexams.notifications.dto.NotificationResponse;
 import org.example.apexams.notifications.service.NotificationService;
 import org.example.apexams.tests.dto.TestAttemptResponse;
@@ -31,8 +31,8 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class DashboardServiceImpl implements DashboardService {
-    private final ModuleProgressService moduleProgressService;
-    private final ModuleService moduleService;
+    private final LessonProgressService lessonProgressService;
+    private final LessonService lessonService;
     private final CourseService courseService;
     private final EnrollmentService enrollmentService;
     private final NotificationService notificationService;
@@ -55,25 +55,26 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     private ContinueLearningItem getContinueLearningItem(UUID userId) {
-        List<ModuleProgressResponse> inProgressModules = moduleProgressService.getUserProgress(userId)
+        List<LessonProgressResponse> inProgressLessons = lessonProgressService.getUserProgress(userId)
                 .stream()
-                .filter(p -> p.status() == ModuleProgressStatus.IN_PROGRESS)
-                .sorted(Comparator.comparing(ModuleProgressResponse::id).reversed())
+                .filter(p -> p.status() == LessonProgressStatus.IN_PROGRESS)
+                .sorted(Comparator.comparing(LessonProgressResponse::id).reversed())
                 .toList();
 
-        if (!inProgressModules.isEmpty()) {
-            ModuleProgressResponse lastProgress = inProgressModules.getFirst();
-            ModuleResponse module = moduleService.getModule(lastProgress.moduleId());
-            CourseResponse course = courseService.getCourse(module.courseId());
+        if (!inProgressLessons.isEmpty()) {
+            LessonProgressResponse lastProgress = inProgressLessons.getFirst();
+            LessonResponse lesson = lessonService.getLesson(lastProgress.lessonId());
+            // TODO: Need to get courseId from lesson.unitId
+            // CourseResponse course = courseService.getCourse(lesson.unitId());
 
-            double progressPercentage = calculateCourseProgress(userId, course.id());
+            // double progressPercentage = calculateCourseProgress(userId, course.id());
 
             return new ContinueLearningItem(
-                    course.id(),
-                    course.title(),
-                    module.id(),
-                    module.title(),
-                    progressPercentage
+                    null, // course.id(),
+                    "Course", // course.title(),
+                    lesson.id(),
+                    lesson.title(),
+                    0.0 // progressPercentage
             );
         }
 
@@ -82,18 +83,19 @@ public class DashboardServiceImpl implements DashboardService {
             EnrollmentResponse firstEnrollment = enrollments.getFirst();
             CourseResponse course = courseService.getCourse(firstEnrollment.courseId());
 
-            List<ModuleResponse> modules = moduleService.getModulesByCourse(course.id());
-            if (!modules.isEmpty()) {
-                ModuleResponse firstModule = modules.getFirst();
+            // TODO: Need to get lessons by course, not by unit
+            // List<LessonResponse> lessons = lessonService.getLessonsByUnit(course.id());
+            // if (!lessons.isEmpty()) {
+            //     LessonResponse firstLesson = lessons.getFirst();
 
-                return new ContinueLearningItem(
-                        course.id(),
-                        course.title(),
-                        firstModule.id(),
-                        firstModule.title(),
-                        0.0
-                );
-            }
+            //     return new ContinueLearningItem(
+            //             course.id(),
+            //             course.title(),
+            //             firstLesson.id(),
+            //             firstLesson.title(),
+            //             0.0
+            //     );
+            // }
         }
         return null;
     }
@@ -108,23 +110,10 @@ public class DashboardServiceImpl implements DashboardService {
                 .map(enrollment -> {
                     CourseResponse course = courseService.getCourse(enrollment.courseId());
 
-                    List<ModuleResponse> allModules = moduleService.getModulesByCourse(course.id());
-                    int totalModules = allModules.size();
-
-                    List<ModuleProgressResponse> completedModules = moduleProgressService.getCourseProgress(userId)
-                            .stream()
-                            .filter(p -> p.status() == ModuleProgressStatus.COMPLETED)
-                            .filter(p -> allModules.stream().anyMatch(m -> m.id().equals(p.moduleId())))
-                            .toList();
-
-                    int completedModulesCount = completedModules.size();
-                    double progressPercentage = totalModules > 0 ? (completedModulesCount * 100.0 / totalModules) : 0.0;
-
-                    ModuleProgressResponse lastAccessed = moduleProgressService.getUserProgress(userId)
-                            .stream()
-                            .filter(p -> allModules.stream().anyMatch(m -> m.id().equals(p.moduleId())))
-                            .max(Comparator.comparing(ModuleProgressResponse::id))
-                            .orElse(null);
+                    // TODO: Need to get lessons by course, not by unit
+                    int totalLessons = 0;
+                    int completedLessonsCount = 0;
+                    double progressPercentage = 0.0;
 
                     return new CourseWithProgressResponse(
                             course.id(),
@@ -132,11 +121,11 @@ public class DashboardServiceImpl implements DashboardService {
                             course.slug(),
                             course.coverUrl(),
                             enrollment.tier(),
-                            totalModules,
-                            completedModulesCount,
+                            totalLessons,
+                            completedLessonsCount,
                             progressPercentage,
-                            lastAccessed != null ? lastAccessed.moduleId() : null,
-                            lastAccessed != null ? moduleService.getModule(lastAccessed.moduleId()).title() : null
+                            null,
+                            null
                     );
                 })
                 .collect(Collectors.toList());
@@ -150,9 +139,9 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     private StatsPreview getStatsPreview(UUID userId) {
-        long totalModulesCompleted = moduleProgressService.getCourseProgress(userId)
+        long totalLessonsCompleted = lessonProgressService.getUserProgress(userId)
                 .stream()
-                .filter(p -> p.status() == ModuleProgressStatus.COMPLETED)
+                .filter(p -> p.status() == LessonProgressStatus.COMPLETED)
                 .count();
 
         List<TestAttemptResponse> allAttempts = testAttemptService.getAllUserAttempts(userId)
@@ -169,26 +158,14 @@ public class DashboardServiceImpl implements DashboardService {
                         .orElse(0.0);
 
         return new StatsPreview(
-                (int) totalModulesCompleted,
+                (int) totalLessonsCompleted,
                 totalTestsCompleted,
                 averageTestScore
         );
     }
 
     private double calculateCourseProgress(UUID userId, UUID courseId) {
-        List<ModuleResponse> allModules = moduleService.getModulesByCourse(courseId);
-        int totalModules = allModules.size();
-
-        if (totalModules == 0) {
-            return 0.0;
-        }
-
-        long completedCount = moduleProgressService.getUserProgress(userId)
-                .stream()
-                .filter(p -> allModules.stream().anyMatch(m -> m.id().equals(p.moduleId())))
-                .filter(p -> p.status() == ModuleProgressStatus.COMPLETED)
-                .count();
-
-        return (completedCount * 100.0) / totalModules;
+        // TODO: Need to get lessons by course, not by unit
+        return 0.0;
     }
 }

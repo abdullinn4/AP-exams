@@ -35,10 +35,10 @@ public class AdminTestController {
     }
 
     @Operation(summary = "Get tests by module")
-    @GetMapping("/module/{moduleId}")
+    @GetMapping("/lesson/{lessonId}")
     public ResponseEntity<List<TestResponse>> getTestsByModule(
-            @Parameter(description = "Module ID") @PathVariable UUID moduleId) {
-        return ResponseEntity.ok(testService.getTestsByModule(moduleId));
+            @Parameter(description = "Module ID") @PathVariable UUID lessonId) {
+        return ResponseEntity.ok(testService.getTestsByLesson(lessonId));
     }
 
     @Operation(summary = "Get test by ID")

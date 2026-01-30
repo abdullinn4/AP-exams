@@ -1,7 +1,8 @@
-import { useState } from 'react'
 import { useGetTariffsByCourseIdQuery } from '@/shared/api/courseApi'
-import type { TariffDetails } from '@/entities/tariff/tariff'
-import { useCart } from "@/features/cart"
+import { TariffCard } from '@/widgets/TariffCard'
+import { useAddCourseToCart } from "@/shared/lib/hooks/useAddCourseToCart"
+import type {TariffDetails} from "@/entities/tariff/tariff.ts";
+import {useEffect, useRef} from "react";
 
 interface TariffSelectionModalProps {
     isOpen: boolean
@@ -18,45 +19,34 @@ export const TariffSelectionModal = ({
                                          courseTitle,
                                          courseCoverUrl,
                                      }: TariffSelectionModalProps) => {
-    const { data: tariffs, isLoading, error } = useGetTariffsByCourseIdQuery(courseId, {
+    const { data: tariffs = [], isLoading, error } = useGetTariffsByCourseIdQuery(courseId, {
         skip: !isOpen,
     })
-    const { addItem, hasItem, canAddMore } = useCart()
-    const [errorMessage, setErrorMessage] = useState<string | null>(null)
+    const { addTariffToCart, errorMessage } = useAddCourseToCart({
+        id: courseId,
+        title: courseTitle,
+        coverUrl: courseCoverUrl
+    })
+
+    const messageRef = useRef<HTMLDivElement | null>(null)
+    useEffect(() => {
+        if (errorMessage && messageRef.current) {
+            messageRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+            })
+        }
+    }, [errorMessage])
 
     if (!isOpen) return null
 
     const handleAddToCart = (tariff: TariffDetails) => {
-        if (hasItem(courseId)) {
-            setErrorMessage('This course is already in your cart')
-            setTimeout(() => setErrorMessage(null), 3000)
-            return
+        const success = addTariffToCart(tariff)
+        if (success) {
+            onClose()
         }
-
-        if (!canAddMore()) {
-            setErrorMessage('Cart is full (maximum 5 courses)')
-            setTimeout(() => setErrorMessage(null), 3000)
-            return
-        }
-
-        addItem({
-            id: `${courseId}-${tariff.id}`,
-            courseId,
-            courseTitle,
-            courseCoverUrl,
-            tariffId: tariff.id,
-            tariffTitle: tariff.title,
-            tariffTier: tariff.tier,
-            price: tariff.price,
-            currency: tariff.currency,
-            addedAt: new Date().toISOString(),
-            lemonSqueezyVariantId: tariff.lemonSqueezyVariantId,
-        })
-
-        onClose()
     }
 
-    const activeTariffs = tariffs?.filter(t => t.isActive) || []
 
     return (
         <div
@@ -65,7 +55,6 @@ export const TariffSelectionModal = ({
         >
             <div
                 className="card overflow-visible"
-
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Modal Header */}
@@ -74,7 +63,7 @@ export const TariffSelectionModal = ({
                     padding: '40px 48px 32px',
                     position: 'relative'
                 }}>
-                    {/* Close button - top right */}
+                    {/* Close button */}
                     <a
                         className="w-commerce-commercecartcloselink close-button w-inline-block"
                         role="button"
@@ -107,7 +96,7 @@ export const TariffSelectionModal = ({
                         &#x2715;
                     </a>
 
-                    {/* Title centered */}
+                    {/* Title */}
                     <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto' }}>
                         <h4 className="display-7" style={{ margin: 0 }}>
                             Choose your plan for{' '}
@@ -119,157 +108,66 @@ export const TariffSelectionModal = ({
                     </div>
                 </div>
 
-                {/* Error Message */}
-                {errorMessage && (
-                    <div className="w-commerce-commercecarterrorstate error-message-wrapper"
-                         style={{ margin: '24px 48px 0' }}>
-                        <div className="w-cart-error-msg">{errorMessage}</div>
-                    </div>
-                )}
-
                 {/* Modal Content */}
                 <div className="w-commerce-commercecartformwrapper cart-form-wrapper"
                      style={{
-                         padding: '40px 48px',
+                         padding: '0px 48px',
                          maxHeight: 'calc(90vh - 180px)',
                          overflowY: 'auto',
-                         display: 'flex',
-                         justifyContent: 'center'
                      }}>
 
-                    {isLoading ? (
-                        <div className="pd-sides-24px flex-vertical text-center" style={{ padding: '60px 20px' }}>
-                            <div className="display-2 text-neutral-800 mg-bottom-24px">Loading plans...</div>
-                        </div>
-                    ) : error ? (
+                    {error ? (
                         <div className="pd-sides-24px flex-vertical text-center" style={{ padding: '60px 20px' }}>
                             <div className="display-2 text-neutral-800 mg-bottom-24px">Failed to load plans</div>
                             <p className="text-neutral-600">Please try again later</p>
                         </div>
-                    ) : activeTariffs.length === 0 ? (
+                    ) : tariffs.length === 0 && !isLoading ? (
                         <div className="pd-sides-24px flex-vertical text-center" style={{ padding: '60px 20px' }}>
                             <div className="display-2 text-neutral-800 mg-bottom-24px">No plans available</div>
                             <p className="text-neutral-600">There are no active plans for this course</p>
                         </div>
                     ) : (
-                        <div
-                            className="section-bg-wrapper"
-                            style={{
-                                width: '100%',
-                                marginTop: '48px',
-                            }}
-                        >
-                            <div
-                                className="pricing-grid"
-                                style={{
-                                    display: 'grid',
-                                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                                    gap: '32px',
-                                    maxWidth: '720px',
-                                    margin: '0 auto',
-                                }}
-                            >
-                                {activeTariffs.map((tariff) => {
-                                    const isPro = tariff.tier?.toUpperCase() === 'PRO'
+                        <div>
+                            {errorMessage && (
+                                <div ref={messageRef} className="w-commerce-commercecarterrorstate error-message-wrapper"
+                                     style={{ margin: '0 auto 24px', maxWidth: '720px' }}>
+                                    <div className="w-cart-error-msg">{errorMessage}</div>
+                                </div>
+                            )}
 
-                                    return (
-                                        <div
-                                            key={tariff.id}
-                                            className={`card pricing-card-v1`}
-                                            style={{marginTop: '60px' , border: `${tariff.tier === 'PRO' ? '1px solid #FD6E70' : '1px solid #f1f1f3'}`}}
-                                        >
-                                                <div
-                                                    className={`pricing-card-content-wrapper`}
-                                                    style={{ padding: '32px' }}
-                                                >
-                                                    <div>
-                                                        {/* Image */}
-                                                        <div className="image-wrapper pricing-card-image">
-                                                            <img
-                                                                alt={`${tariff.tier} Plan`}
-                                                                loading="lazy"
-                                                                src={`/src/assets/webflow/images/${tariff.tier.toLowerCase()}-plan-courselify-x-webflow-template.png`}
-                                                                className="width-100"
-                                                            />
-                                                        </div>
-
-                                                        {/* Title */}
-                                                        <div className="mg-top-16px">
-                                                            <h3 className="display-5">{tariff.title}</h3>
-                                                        </div>
-
-                                                        <div className="mg-top-8px">
-                                                            <p className="text-neutral-600">{tariff.tier} tier</p>
-                                                        </div>
-
-                                                        {/* Features */}
-                                                        <div className="mg-top-32px">
-                                                            <div className="w-layout-grid grid-1-column gap-row-16px">
-                                                                <div className="pricing-feature-wrapper v1">
-                                                                    <div className="check-icon">✓</div>
-                                                                    <div>All chapters included</div>
-                                                                </div>
-                                                                <div className="pricing-feature-wrapper v1">
-                                                                    <div className="check-icon">✓</div>
-                                                                    <div>Lifetime access</div>
-                                                                </div>
-                                                                <div className="pricing-feature-wrapper v1">
-                                                                    <div className="check-icon">✓</div>
-                                                                    <div>Certificate of completion</div>
-                                                                </div>
-
-                                                                {isPro && (
-                                                                    <>
-                                                                        <div className="pricing-feature-wrapper v1">
-                                                                            <div className="check-icon">✓</div>
-                                                                            <div>Weekly Q&A sessions</div>
-                                                                        </div>
-                                                                        <div className="pricing-feature-wrapper v1">
-                                                                            <div className="check-icon">✓</div>
-                                                                            <div>1-on-1 monthly meetings</div>
-                                                                        </div>
-                                                                    </>
-                                                                )}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    {/* Price */}
-                                                    <div className="badge-position-absolute">
-                                                        <div className={`badge ${isPro ? 'popular-badge' : ''}`}>
-                                                            {tariff.currency === 'USD' ? '$' : tariff.currency}
-                                                            {tariff.price} {tariff.currency}
-                                                        </div>
-                                                    </div>
-
-                                                    {/* CTA */}
-                                                    <div className="mg-top-32px">
-                                                        <a
-                                                            onClick={() => handleAddToCart(tariff)}
-                                                            className="button-primary w-button"
-                                                            style={{
-                                                                cursor: 'pointer',
-                                                                width: '100%',
-                                                                textAlign: 'center',
-                                                            }}
-                                                        >
-                                                            <div className="text-block">Add to Cart</div>
-                                                            <div className="item-icon-right">
-                                                                <div className="custom-icon-font"></div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                        </div>
-                                    )
-                                })}
-                            </div>
-
-                            <div className="blur-bg pricing-section-bg---home-v1" />
+                            {isLoading ? (
+                                <div className="text-center" style={{ padding: '60px 20px' }}>
+                                    <div className="display-2 text-neutral-800">Loading plans...</div>
+                                </div>
+                            ) : (
+                                <div className="section-bg-wrapper" style={{ width: '100%' }}>
+                                    <div
+                                        className="pricing-grid"
+                                        style={{
+                                            display: 'grid',
+                                            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                                            gap: '32px',
+                                            maxWidth: '720px',
+                                        }}
+                                    >
+                                        {tariffs.map((tariff) => (
+                                            <TariffCard
+                                                key={tariff.id}
+                                                tier={tariff.tier as 'BASIC' | 'PRO'}
+                                                title={tariff.title}
+                                                price={tariff.price}
+                                                currency={tariff.currency}
+                                                featured={tariff.tier === 'PRO'}
+                                                actionLabel="Add to Cart"
+                                                onAction={() => handleAddToCart(tariff)}
+                                                variant="modal"
+                                            />
+                                        ))}
+                                    </div>
+                                    <div className="blur-bg pricing-section-bg---home-v1" />
+                                </div>
+                            )}
                         </div>
-
-
                     )}
                 </div>
             </div>

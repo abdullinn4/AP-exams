@@ -51,8 +51,8 @@ public class TestServiceImpl implements TestService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<TestResponse> getTestsByModule(UUID moduleId) {
-        return testRepository.findAllByModuleId(moduleId)
+    public List<TestResponse> getTestsByLesson(UUID lessonId) {
+        return testRepository.findAllByLessonId(lessonId)
                 .stream()
                 .map(testMapper::toDto)
                 .collect(Collectors.toList());

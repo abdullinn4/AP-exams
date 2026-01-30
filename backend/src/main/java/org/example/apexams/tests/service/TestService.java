@@ -12,7 +12,7 @@ public interface TestService {
 
     List<TestResponse> getTestsByCourse(UUID courseId);
 
-    List<TestResponse> getTestsByModule(UUID moduleId);
+    List<TestResponse> getTestsByLesson(UUID lessonId);
 
     // === Публикация (Admin) ===
     void publishTest(UUID testId);

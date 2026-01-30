@@ -1,5 +1,5 @@
 import { baseApi } from '@/shared/api/baseApi.ts'
-import type { CourseDetails } from '@/entities/course/course.ts'
+import type {CourseDetails, CourseWithUnits} from '@/entities/course/course.ts'
 import type {TariffDetails} from "@/entities/tariff/tariff.ts";
 
 // Mock данные для тарифов (временно)
@@ -12,7 +12,7 @@ const MOCK_TARIFFS: Record<string, TariffDetails[]> = {
             tier: 'BASIC',
             price: 49,
             currency: 'USD',
-            lemonSqueezyVariantId: null,
+            lemonSqueezyVariantId: '1',
             isActive: true,
         },
         {
@@ -22,7 +22,7 @@ const MOCK_TARIFFS: Record<string, TariffDetails[]> = {
             tier: 'PRO',
             price: 99,
             currency: 'USD',
-            lemonSqueezyVariantId: null,
+            lemonSqueezyVariantId: '2',
             isActive: true,
         },
     ],
@@ -34,7 +34,7 @@ const MOCK_TARIFFS: Record<string, TariffDetails[]> = {
             tier: 'BASIC',
             price: 49,
             currency: 'USD',
-            lemonSqueezyVariantId: null,
+            lemonSqueezyVariantId: '3',
             isActive: true,
         },
         {
@@ -44,7 +44,7 @@ const MOCK_TARIFFS: Record<string, TariffDetails[]> = {
             tier: 'PRO',
             price: 99,
             currency: 'USD',
-            lemonSqueezyVariantId: null,
+            lemonSqueezyVariantId: '4',
             isActive: true,
         },
     ],
@@ -56,7 +56,7 @@ const MOCK_TARIFFS: Record<string, TariffDetails[]> = {
             tier: 'BASIC',
             price: 49,
             currency: 'USD',
-            lemonSqueezyVariantId: null,
+            lemonSqueezyVariantId: '5',
             isActive: true,
         },
         {
@@ -66,7 +66,7 @@ const MOCK_TARIFFS: Record<string, TariffDetails[]> = {
             tier: 'PRO',
             price: 99,
             currency: 'USD',
-            lemonSqueezyVariantId: null,
+            lemonSqueezyVariantId: '6',
             isActive: true,
         },
     ],
@@ -78,7 +78,7 @@ const MOCK_TARIFFS: Record<string, TariffDetails[]> = {
             tier: 'BASIC',
             price: 49,
             currency: 'USD',
-            lemonSqueezyVariantId: null,
+            lemonSqueezyVariantId: '7',
             isActive: true,
         },
         {
@@ -88,7 +88,7 @@ const MOCK_TARIFFS: Record<string, TariffDetails[]> = {
             tier: 'PRO',
             price: 99,
             currency: 'USD',
-            lemonSqueezyVariantId: null,
+            lemonSqueezyVariantId: '8',
             isActive: true,
         },
     ],
@@ -100,7 +100,7 @@ const MOCK_TARIFFS: Record<string, TariffDetails[]> = {
             tier: 'BASIC',
             price: 49,
             currency: 'USD',
-            lemonSqueezyVariantId: null,
+            lemonSqueezyVariantId: '9',
             isActive: true,
         },
         {
@@ -110,7 +110,7 @@ const MOCK_TARIFFS: Record<string, TariffDetails[]> = {
             tier: 'PRO',
             price: 99,
             currency: 'USD',
-            lemonSqueezyVariantId: null,
+            lemonSqueezyVariantId: '10',
             isActive: true,
         },
     ],
@@ -123,9 +123,9 @@ export const coursesApi = baseApi.injectEndpoints({
             query: () => 'public/courses',
             providesTags: ['Courses'],
         }),
-        getCourseById: builder.query<CourseDetails, string>({
-            query: (id) => `public/courses/${id}/preview`,
-            providesTags: (result, error, id) => [{ type: 'Courses', id }],
+        getCourseBySlug: builder.query<CourseWithUnits, string>({
+            query: (slug) => `public/courses/${slug}/preview`,
+            //providesTags: (result, error, slug) => [{ type: 'Courses', slug }],
         }),
         getTariffsByCourseId: builder.query<TariffDetails[], string>({
             /*query: (courseId) => `/public/courses/${courseId}/tariffs`,
@@ -141,6 +141,6 @@ export const coursesApi = baseApi.injectEndpoints({
 
 export const {
     useGetAllCoursesQuery,
-    useGetCourseByIdQuery,
+    useGetCourseBySlugQuery,
     useGetTariffsByCourseIdQuery,
 } = coursesApi

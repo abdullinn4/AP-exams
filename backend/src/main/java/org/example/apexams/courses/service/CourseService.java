@@ -1,6 +1,7 @@
 package org.example.apexams.courses.service;
 
 import org.example.apexams.courses.dto.CourseResponse;
+import org.example.apexams.courses.dto.CourseWithUnitsResponse;
 import org.example.apexams.courses.dto.CreateCourseRequest;
 import org.example.apexams.courses.entity.CourseEntity;
 
@@ -15,7 +16,7 @@ public interface CourseService {
     List<CourseResponse> getAllCourses();
 
     // Получение по slug (для публичных страниц /courses/{slug})
-    CourseResponse getCourseBySlug(String slug);
+    CourseWithUnitsResponse getCourseBySlug(String slug);
 
     // Обновление курса (админ)
     void updateCourse(UUID id, CreateCourseRequest dto);

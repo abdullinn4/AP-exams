@@ -147,7 +147,7 @@ export const Header = ({ variant = 'full', theme = 'dark' }: HeaderProps) => {
                                     <Link to={ROUTES.SIGN_IN} className={`secondary-button small ${theme === 'light' ? 'white' : ''} w-inline-block`}>
                                         <div className="text-block">Sign in</div>
                                     </Link>
-                                    <Link to="/pricing" className={`button-primary small ${theme === 'light' ? 'white' : ''} w-inline-block`}>
+                                    <Link to="/courses" className={`button-primary small ${theme === 'light' ? 'white' : ''} w-inline-block`}>
                                         <div className="text-block">Choose a subject</div>
                                         <div className="item-icon-right small">
                                             <div className="custom-icon-font"></div>

@@ -4,10 +4,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.apexams.common.mapper.CourseMapper;
 import org.example.apexams.courses.dto.CourseResponse;
+import org.example.apexams.courses.dto.CourseWithUnitsResponse;
 import org.example.apexams.courses.dto.CreateCourseRequest;
 import org.example.apexams.courses.entity.CourseEntity;
 import org.example.apexams.courses.entity.enums.CourseStatus;
 import org.example.apexams.courses.repo.CourseRepository;
+import org.example.apexams.units.dto.UnitResponse;
+import org.example.apexams.units.service.UnitService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +24,7 @@ import java.util.stream.Collectors;
 public class CourseServiceImpl implements CourseService {
     private final CourseRepository courseRepository;
     private final CourseMapper courseMapper;
+    private final UnitService unitService;
 
     @Override
     @Transactional
@@ -56,8 +60,10 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional(readOnly = true)
-    public CourseResponse getCourseBySlug(String slug) {
-        return courseMapper.toDto(findCourseBySlugOrThrow(slug));
+    public CourseWithUnitsResponse getCourseBySlug(String slug) {
+        CourseEntity courseEntity = findCourseBySlugOrThrow(slug);
+        List<UnitResponse> units = unitService.getActiveUnitsByCourse(courseEntity.getId());
+        return courseMapper.toDto(courseEntity, units);
     }
 
     @Override

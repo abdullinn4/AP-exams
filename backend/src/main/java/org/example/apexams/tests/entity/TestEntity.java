@@ -3,7 +3,7 @@ package org.example.apexams.tests.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.example.apexams.courses.entity.CourseEntity;
-import org.example.apexams.module.entity.ModuleEntity;
+import org.example.apexams.lessons.entity.LessonEntity;
 import org.example.apexams.tariffs.entity.enums.TariffTier;
 import org.example.apexams.tests.entity.enums.TestType;
 
@@ -27,8 +27,8 @@ public class TestEntity {
     private CourseEntity course;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "module_id")
-    private ModuleEntity module;
+    @JoinColumn(name = "lesson_id")
+    private LessonEntity lesson;
 
     @Column(name = "type", nullable = false)
     @Enumerated(EnumType.STRING)

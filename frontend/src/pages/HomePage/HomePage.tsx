@@ -10,8 +10,39 @@ import { BlogSection } from '@/widgets/BlogSection'
 import { PricingSection } from '@/widgets/PricingSection'
 import { FinalCTASection } from '@/widgets/FinalCTASection'
 import {CTAFooterBlock} from "@/widgets/CTAFooterBlock";
+import {useNavigate} from "react-router-dom";
+import type {TariffDetails} from "@/entities/tariff/tariff.ts";
 
 export const HomePage = () => {
+    const navigate = useNavigate()
+
+    const handleTariffAction = () => {
+        navigate('/courses')
+    }
+
+    // Mock tariffs для HomePage
+    const homeTariffs: TariffDetails[] = [
+        {
+            id: 'basic',
+            courseId: 'general',
+            title: 'Basic',
+            tier: 'BASIC',
+            price: 49,
+            currency: 'USD',
+            lemonSqueezyVariantId: '1',
+            isActive: true,
+        },
+        {
+            id: 'pro',
+            courseId: 'general',
+            title: 'Pro',
+            tier: 'PRO',
+            price: 99,
+            currency: 'USD',
+            lemonSqueezyVariantId: '2',
+            isActive: true,
+        },
+    ]
     
     return (
         <div className="page-wrapper">
@@ -24,7 +55,14 @@ export const HomePage = () => {
             <TestimonialsSection />
             <BlogSection />
             <FinalCTASection />
-            <PricingSection />
+            <PricingSection
+                title='Pricing plans <span class="heading-gradient">for you</span>'
+                description="Lorem ipsum dolor amet consectetur pellentesque scelerisque fermentum bibendum ipsum massa cursus aliquet feugiat."
+                tariffs={homeTariffs}
+                onTariffAction={handleTariffAction}
+                actionLabel="Get started"
+                showBackground={true}
+            />
 
             <footer className="footer-wrapper">
                 <div

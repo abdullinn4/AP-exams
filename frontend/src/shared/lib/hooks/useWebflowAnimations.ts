@@ -12,33 +12,48 @@ declare global {
     }
 }
 
+const matchRoute = (pathname: string): string | undefined => {
+    if (WEBFLOW_PAGE_IDS[pathname]) {
+        return WEBFLOW_PAGE_IDS[pathname]
+    }
+
+    for (const [pattern, pageId] of Object.entries(WEBFLOW_PAGE_IDS)) {
+        const regex = new RegExp('^' + pattern.replace(/:[^/]+/g, '[^/]+') + '$')
+        if (regex.test(pathname)) {
+            return pageId
+        }
+    }
+
+    return undefined
+}
+
 export const useWebflowAnimations = () => {
     const location = useLocation()
 
     useEffect(() => {
         if (!window.Webflow) return
 
-        const pageId = WEBFLOW_PAGE_IDS[location.pathname]
+        const pageId = matchRoute(location.pathname)
 
-        // ВАЖНО: если нет pageId — НЕ инициализируем ix2
         if (!pageId) return
 
         document.documentElement.setAttribute('data-wf-page', pageId)
+        document.documentElement.setAttribute('data-wf-site', '696cb73866e9acecad098e11')
 
         const ix2 = window.Webflow.require('ix2')
 
         window.Webflow.destroy()
 
-        // безопасный сброс состояний
         if (ix2?.clear) {
             ix2.clear()
         }
 
         window.Webflow.ready()
-        ix2.init()
 
-        // Webflow любит resize после init
-        window.dispatchEvent(new Event('resize'))
+        setTimeout(() => {
+            ix2.init()
+            window.dispatchEvent(new Event('resize'))
+        }, 100)
 
     }, [location.pathname])
 }
