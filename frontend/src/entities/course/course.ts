@@ -12,6 +12,20 @@ export interface CourseDetails {
     updatedAt: string
 }
 
+export interface CourseWithProgress {
+    id: string
+    title: string
+    slug: string
+    snippet: string | null
+    coverUrl: string | null
+    tier: 'BASIC' | 'PRO'
+    totalModules: number
+    completedModules: number
+    progressPercentage: number
+    lastAccessedModuleId: string | null
+    lastAccessedModuleTitle: string | null
+}
+
 export interface Unit {
     id: string
     courseId: string,
@@ -26,12 +40,44 @@ export interface Unit {
     updatedAt: string
 }
 
-export interface Lesson {
-    id: string,
-    unitId: string,
-    title: string,
-    orderIndex: number,
+export interface LessonWithProgress {
+    id: string
+    unitId: string
+    title: string
+    orderIndex: number
     releaseAt: string | null
+    progressStatus: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED'
+    progressCompletedAt: string | null
+}
+
+export interface UnitWithProgress {
+    id: string
+    courseId: string
+    title: string
+    snippet: string | null
+    description: string | null
+    iconUrl: string | null
+    orderIndex: number
+    isPublished: boolean
+    createdAt: string
+    updatedAt: string
+    lessons: LessonWithProgress[]
+    totalLessons: number
+    completedLessons: number
+    progressPercentage: number
+}
+
+export interface CourseDetailsWithProgress {
+    id: string
+    title: string
+    slug: string
+    description: string | null
+    snippet: string | null
+    previewVideoUrl: string | undefined
+    coverUrl: string | null
+    status: 'DRAFT' | 'PUBLISHED'
+    discordInviteUrl: string | null
+    units: UnitWithProgress[]
 }
 
 export interface CourseWithUnits extends CourseDetails {

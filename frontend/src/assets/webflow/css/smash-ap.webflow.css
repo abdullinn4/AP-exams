@@ -14009,3 +14009,10 @@ figcaption {
   font-style: normal;
   font-display: swap;
 }
+.card.chapter-premium-card.w-inline-block {
+    transition: transform 0.3s ease;
+}
+
+.card.chapter-premium-card.w-inline-block:hover {
+    transform: translate3d(4px, 0, 0.01px);
+}

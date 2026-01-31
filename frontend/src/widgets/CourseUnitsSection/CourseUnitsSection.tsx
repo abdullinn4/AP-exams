@@ -1,15 +1,23 @@
-import type {Unit} from "@/entities/course/course.ts";
+import type { Unit, UnitWithProgress } from "@/entities/course/course.ts"
+import { ProgressBar } from '@/widgets/ProgressBar'
+import { Link } from 'react-router-dom'
 
 interface CourseUnitsSectionProps {
-    units: Unit[]
+    units: Unit[] | UnitWithProgress[]
     isClickable?: boolean
     showProgress?: boolean
+    courseSlug?: string
+}
+
+const isUnitWithProgress = (unit: Unit | UnitWithProgress): unit is UnitWithProgress => {
+    return 'progressPercentage' in unit
 }
 
 export const CourseUnitsSection = ({
                                        units,
                                        isClickable = false,
-                                       showProgress = false
+                                       showProgress = false,
+                                       courseSlug
                                    }: CourseUnitsSectionProps) => {
     return (
         <div className="w-layout-blockcontainer container-default w-container">
@@ -25,6 +33,9 @@ export const CourseUnitsSection = ({
                 <div className="mg-top-32px mg-bottom-80px">
                     <div className="w-layout-grid grid-1-column gap-row-24px">
                         {units.map((unit) => {
+                            const unitWithProgress = isUnitWithProgress(unit) ? unit : null
+                            const lessonsCount = unitWithProgress?.totalLessons ?? (unit as Unit).lessonsCount
+
                             const content = (
                                 <>
                                     <div className="chapter-premium-card---left-content">
@@ -40,24 +51,25 @@ export const CourseUnitsSection = ({
                                             <div className="mg-top-4px">
                                                 <p>{unit.snippet}</p>
                                             </div>
+                                            {showProgress && unitWithProgress && (
+                                                <div className="mg-top-16px">
+                                                    <ProgressBar
+                                                        percentage={unitWithProgress.progressPercentage}
+                                                        animated={true}
+                                                        height="6px"
+                                                    />
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                     <div className="chapter-premium-card---right-content">
                                         <div className="badge secondary">
-                                            <div>{unit.lessonsCount} Lessons</div>
+                                            <div>{lessonsCount} Lessons</div>
                                         </div>
-                                        {showProgress && (
-                                            <div className="badge secondary" style={{ marginLeft: '8px' }}>
-                                                <div>0% Complete</div>
-                                            </div>
-                                        )}
                                         {isClickable && (
                                             <div className="display-2 bold text-neutral-800">
-                                                <div className="flex y-align-center">
+                                                <div className="link">
                                                     <div>Browse lessons</div>
-                                                    <div className="item-icon-right">
-                                                        <div className="icon-font-squared"></div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         )}
@@ -66,14 +78,13 @@ export const CourseUnitsSection = ({
                             )
 
                             return isClickable ? (
-                                <a
+                                <Link
                                     key={unit.id}
-                                    href={`#unit-${unit.id}`}
+                                    to={`/courses/${courseSlug}/units/${unit.id}`}
                                     className="card chapter-premium-card w-inline-block"
-                                    data-w-id={`unit-card-${unit.id}`} // Для Webflow анимаций
                                 >
                                     {content}
-                                </a>
+                                </Link>
                             ) : (
                                 <div
                                     key={unit.id}

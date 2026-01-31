@@ -8,4 +8,6 @@ export const ROUTES = {
     CATALOG: '/courses',
     NOT_FOUND: '/404',
     COURSE_PREVIEW: '/courses/:slug/preview',
+    MY_COURSES: '/my-courses',
+    MY_COURSE: '/courses/:slug',
 } as const

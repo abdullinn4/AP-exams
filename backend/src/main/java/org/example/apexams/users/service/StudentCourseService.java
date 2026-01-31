@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface StudentCourseService {
-    List<CourseResponse> getCoursesByUser(UUID uuid);
+    List<CourseWithProgressResponse> getCoursesByUser(UUID uuid);
 
     CourseResponse getCourseById(UUID uuid, UUID courseId);
 

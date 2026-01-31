@@ -24,6 +24,7 @@ export const CoursePreviewPage = () => {
                 units={course.units}
                 isClickable={false}
                 showProgress={false}
+                courseSlug={course.slug}
             />
 
             <PricingSection

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.apexams.config.security.details.UserDetailsImpl;
 import org.example.apexams.courses.dto.CourseDetailsResponse;
 import org.example.apexams.courses.dto.CourseResponse;
+import org.example.apexams.courses.dto.CourseWithProgressResponse;
 import org.example.apexams.users.service.StudentCourseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -30,7 +31,7 @@ public class StudentCoursesController {
     private final StudentCourseService studentCourseService;
 
     @GetMapping
-    public ResponseEntity<List<CourseResponse>> getMyCourses(
+    public ResponseEntity<List<CourseWithProgressResponse>> getMyCourses(
             @Parameter(hidden = true) @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return ResponseEntity.ok(studentCourseService.getCoursesByUser(userDetails.user().getId()));
     }

@@ -9,4 +9,5 @@ import java.util.UUID;
 public interface LessonRepository extends JpaRepository<LessonEntity, UUID> {
     List<LessonEntity> findByUnitIdOrderByOrderIndex(UUID unitId);
     List<LessonEntity> findByUnitIds(List<UUID> unitIds);
+
 }
