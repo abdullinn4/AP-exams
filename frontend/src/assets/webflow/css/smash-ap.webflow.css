@@ -14016,3 +14016,10 @@ figcaption {
 .card.chapter-premium-card.w-inline-block:hover {
     transform: translate3d(4px, 0, 0.01px);
 }
+.card.chapter-card-v3.w-inline-block {
+    transition: transform 0.3s ease;
+}
+
+.card.chapter-card-v3.w-inline-block:hover {
+    transform: translate3d(4px, 0, 0.01px);
+}

@@ -9,5 +9,6 @@ export const WEBFLOW_PAGE_IDS: Record<string, string> = {
     '/courses/:slug/preview': '696cb73966e9acecad098eec',
     '/my-courses': '696cb73966e9acecad098e69',
     '/courses/:slug': '696cb73966e9acecad098eec',
+    '/courses/:slug/units/:unitId': '696cb73966e9acecad098ec5',
     // ... остальные
 }

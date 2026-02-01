@@ -12,6 +12,7 @@ import {CatalogPage} from "@/pages/CatalogPage";
 import {CoursePreviewPage} from "@/pages/CoursePreviewPage";
 import {MyCoursesPage} from "@/pages/MyCoursesPage";
 import {MyCoursePage} from "@/pages/MyCoursePage";
+import {UnitPage} from "@/pages/UnitPage";
 
 export const AppRouter = () => {
     useWebflowAnimations()
@@ -31,6 +32,7 @@ export const AppRouter = () => {
 
                 <Route path={ROUTES.MY_COURSES} element={<MyCoursesPage />} />
                 <Route path={ROUTES.MY_COURSE} element={<MyCoursePage />} />
+                <Route path={ROUTES.UNIT} element={<UnitPage />} />
 
                 <Route path="*" element={<Navigate to={ROUTES.HOME} replace />} />
             </Routes>

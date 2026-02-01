@@ -10,4 +10,5 @@ export const ROUTES = {
     COURSE_PREVIEW: '/courses/:slug/preview',
     MY_COURSES: '/my-courses',
     MY_COURSE: '/courses/:slug',
+    UNIT: '/courses/:slug/units/:unitId',
 } as const
