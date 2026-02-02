@@ -83,3 +83,31 @@ export interface CourseDetailsWithProgress {
 export interface CourseWithUnits extends CourseDetails {
     units: Unit[]
 }
+
+export interface LessonDetails {
+    id: string
+    unitId: string
+    title: string
+    orderIndex: number
+    releaseAt: string | null
+
+    // Контент
+    videoPayload: string | null
+    textPayload: string | null
+
+    // Прогресс
+    progressStatus: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED'
+    progressCompletedAt: string | null
+
+    // Тест
+    testId: string | null
+    testTitle: string | null
+    testTimeLimitSec: number | null
+    testAttemptsLimit: number | null
+    testAttemptId: string | null // ID текущей/последней попытки, если есть
+    testAttemptStatus: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED' | null
+
+    // Куратор
+    canContactCurator: boolean
+    discordInviteLink: string | null
+}

@@ -15,7 +15,7 @@ import java.util.UUID;
 public class LessonContentEntity {
     @Id
     @Column(name = "lesson_id")
-    private UUID lessonId;
+    private UUID id;
 
     @MapsId
     @OneToOne(fetch = FetchType.LAZY)

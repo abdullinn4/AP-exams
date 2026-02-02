@@ -3,7 +3,7 @@ import type {
     CourseDetails,
     CourseDetailsWithProgress,
     CourseWithProgress,
-    CourseWithUnits, UnitWithProgress
+    CourseWithUnits, LessonDetails, UnitWithProgress
 } from '@/entities/course/course.ts'
 import type {TariffDetails} from "@/entities/tariff/tariff.ts";
 
@@ -153,6 +153,15 @@ export const coursesApi = baseApi.injectEndpoints({
             query: ({ courseSlug, unitId }) => `/courses/${courseSlug}/units/${unitId}`,
             providesTags: (result, error, { unitId }) => [{ type: 'Course', id: unitId }],
         }),
+        getLessonDetails: builder.query<LessonDetails, {
+            courseSlug: string
+            unitId: string
+            lessonId: string
+        }>({
+            query: ({ courseSlug, unitId, lessonId }) =>
+                `/courses/${courseSlug}/units/${unitId}/lessons/${lessonId}`,
+            providesTags: (result, error, { lessonId }) => [{ type: 'Course', id: lessonId }],
+        }),
     }),
 })
 
@@ -163,4 +172,5 @@ export const {
     useGetMyCoursesQuery,
     useGetCourseDetailsQuery,
     useGetUnitDetailsQuery,
+    useGetLessonDetailsQuery,
 } = coursesApi

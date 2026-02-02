@@ -88,7 +88,7 @@ public class StudentCourseServiceImpl implements StudentCourseService {
         List<UUID> unitIds = units.stream().map(UnitEntity::getId).toList();
 
         // Batch загрузка всех lessons одним запросом
-        Map<UUID, List<LessonEntity>> lessonsByUnit = lessonRepository.findByUnitIds(unitIds)
+        Map<UUID, List<LessonEntity>> lessonsByUnit = lessonRepository.findByUnitIdIn(unitIds)
                 .stream()
                 .collect(Collectors.groupingBy(l -> l.getUnit().getId()));
 

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.apexams.common.mapper.UnitMapper;
 import org.example.apexams.enrollments.service.EnrollmentService;
+import org.example.apexams.lessonProgress.entity.enums.LessonProgressStatus;
 import org.example.apexams.lessons.dto.LessonWithProgressResponse;
 import org.example.apexams.lessons.repo.LessonRepository;
 import org.example.apexams.lessons.service.LessonService;
@@ -51,6 +52,15 @@ public class UnitServiceImpl implements UnitService {
         // Получаем уроки с прогрессом
         List<LessonWithProgressResponse> lessons = lessonService.getLessonsWithProgressList(unitId, userId);
 
+        int totalLessons = lessons.size();
+        int completedLessons = (int) lessons.stream()
+                .filter(l -> l.progressStatus() == LessonProgressStatus.COMPLETED)
+                .count();
+        double progressPercentage = totalLessons > 0
+                ? Math.round((completedLessons * 100.0 / totalLessons) * 100.0) / 100.0
+                : 0.0;
+
+        // Рассчитываем прогресс
         return new UnitWithLessonsResponse(
                 unit.getId(),
                 unit.getCourse().getId(),
@@ -62,7 +72,11 @@ public class UnitServiceImpl implements UnitService {
                 unit.getIsPublished(),
                 unit.getCreatedAt(),
                 unit.getUpdatedAt(),
-                lessons
+                lessons,
+                totalLessons,
+                completedLessons,
+                progressPercentage
+
         );
     }
 
@@ -72,7 +86,7 @@ public class UnitServiceImpl implements UnitService {
         List<UnitEntity> units = unitRepository.findByCourseIdAndIsPublishedTrueOrderByOrderIndex(courseId);
 
         List<UUID> unitIds = units.stream().map(UnitEntity::getId).toList();
-        Map<UUID, Long> unitLessonsCount = lessonRepository.findByUnitIds(unitIds)
+        Map<UUID, Long> unitLessonsCount = lessonRepository.findByUnitIdIn(unitIds)
                 .stream()
                 .collect(Collectors.groupingBy(
                         lesson -> lesson.getUnit().getId(),

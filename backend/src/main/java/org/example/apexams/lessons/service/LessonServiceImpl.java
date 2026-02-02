@@ -80,7 +80,11 @@ public class LessonServiceImpl implements LessonService {
         }
         LessonContentResponse content = lessonContentService.getByLessonId(lessonId);
 
+        // ДОБАВИТЬ: Автоматически начать урок при первом просмотре
         LessonProgressResponse progress = lessonProgressService.getProgress(userId, lessonId);
+        if (progress.status() == LessonProgressStatus.NOT_STARTED || progress.status() == LessonProgressStatus.IN_PROGRESS) {
+            progress = lessonProgressService.startLesson(userId, lessonId);
+        }
 
         TestResponse test = testService.getTestsByLesson(lessonId).stream()
                 .findFirst()

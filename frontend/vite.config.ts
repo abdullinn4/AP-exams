@@ -10,6 +10,7 @@ export default defineConfig({
             '@': path.resolve(__dirname, './src'), // @ = путь к src/
         },
     },
+    assetsInclude: ['**/*.md'],
     server: {
         port: 3000, // Запуск на порту 3000
         proxy: {

@@ -11,4 +11,5 @@ export const ROUTES = {
     MY_COURSES: '/my-courses',
     MY_COURSE: '/courses/:slug',
     UNIT: '/courses/:slug/units/:unitId',
+    LESSON: '/courses/:slug/units/:unitId/lessons/:lessonId',
 } as const
