@@ -6,6 +6,8 @@ import type {
     CourseWithUnits, LessonDetails, UnitWithProgress
 } from '@/entities/course/course.ts'
 import type {TariffDetails} from "@/entities/tariff/tariff.ts";
+import type {StartTestResponse, TestAttemptResult} from "@/entities/test/test.ts";
+import {MOCK_START_TEST_RESPONSE, MOCK_TEST_RESULT} from "@/shared/config/content/test-mock.content.ts";
 
 // Mock данные для тарифов (временно)
 const MOCK_TARIFFS: Record<string, TariffDetails[]> = {
@@ -162,6 +164,53 @@ export const coursesApi = baseApi.injectEndpoints({
                 `/courses/${courseSlug}/units/${unitId}/lessons/${lessonId}`,
             providesTags: (result, error, { lessonId }) => [{ type: 'Course', id: lessonId }],
         }),
+        // Тесты
+        /*startTest: builder.mutation<StartTestResponse, string>({
+            query: (testId) => ({
+                url: `/tests/${testId}/attempts`,
+                method: 'POST',
+            }),
+            invalidatesTags: ['Course'],
+        }),
+        submitTest: builder.mutation<TestAttemptResult, { attemptId: string; answers: TestAnswers }>({
+            query: ({ attemptId, answers }) => ({
+                url: `/test-attempts/${attemptId}/submit`,
+                method: 'POST',
+                body: answers,
+            }),
+            invalidatesTags: ['Course'],
+        }),
+        getTestResult: builder.query<TestAttemptResult, string>({
+            query: (attemptId) => `/test-attempts/${attemptId}/result`,
+            providesTags: (result, error, attemptId) => [{ type: 'Course', id: attemptId }],
+        }),*/
+
+        startTest: builder.mutation<StartTestResponse, string>({
+            queryFn: async (testId) => {
+                // Mock данные
+                await new Promise(resolve => setTimeout(resolve, 500))
+                return { data: MOCK_START_TEST_RESPONSE }
+            },
+            invalidatesTags: ['Course'],
+        }),
+
+        submitTest: builder.mutation<TestAttemptResult, { attemptId: string; answers: TestAnswers }>({
+            queryFn: async ({ attemptId, answers }) => {
+                // Mock данные
+                await new Promise(resolve => setTimeout(resolve, 1000))
+                return { data: MOCK_TEST_RESULT }
+            },
+            invalidatesTags: ['Course'],
+        }),
+
+        getTestResult: builder.query<TestAttemptResult, string>({
+            queryFn: async (attemptId) => {
+                // Mock данные
+                await new Promise(resolve => setTimeout(resolve, 300))
+                return { data: MOCK_TEST_RESULT }
+            },
+            providesTags: (result, error, attemptId) => [{ type: 'Course', id: attemptId }],
+        }),
     }),
 })
 
@@ -173,4 +222,7 @@ export const {
     useGetCourseDetailsQuery,
     useGetUnitDetailsQuery,
     useGetLessonDetailsQuery,
+    useStartTestMutation,
+    useSubmitTestMutation,
+    useGetTestResultQuery,
 } = coursesApi

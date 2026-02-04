@@ -19,7 +19,6 @@ public class TestMapper {
                 entity.getTitle(),
                 entity.getType().name(),
                 entity.getTimeLimitSec(),
-                entity.getAttemptsLimit(),
                 entity.getMinTier(),
                 entity.isPublished()
         );
@@ -30,7 +29,6 @@ public class TestMapper {
                 .type(dto.type())
                 .title(dto.title())
                 .timeLimitSec(dto.timeLimitSec())
-                .attemptsLimit(dto.attemptsLimit())
                 .minTier(dto.minTier())
                 .isPublished(false)
                 .build();

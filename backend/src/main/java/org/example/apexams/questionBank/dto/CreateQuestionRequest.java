@@ -12,6 +12,7 @@ public record CreateQuestionRequest(
         String prompt,
         String optionsJson,
         String answerKeyJson,
-        String explanation
+        String explanation,
+        String imageUrl
 ) {
 }

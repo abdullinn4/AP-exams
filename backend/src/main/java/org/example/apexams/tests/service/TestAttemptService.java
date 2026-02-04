@@ -2,6 +2,7 @@ package org.example.apexams.tests.service;
 
 import org.example.apexams.tests.dto.StartTestResponse;
 import org.example.apexams.tests.dto.TestAttemptResponse;
+import org.example.apexams.tests.dto.TestResultDetailsResponse;
 
 import java.util.List;
 import java.util.Map;
@@ -20,13 +21,11 @@ public interface TestAttemptService {
 
     List<TestAttemptResponse> getAllUserAttempts(UUID userId);
 
-    // === Проверка лимитов ===
-    boolean canUserStartAttempt(UUID userId, UUID testId);
-
-    int getRemainingAttempts(UUID userId, UUID testId);
 
     // === Админ ===
     void resetAttempts(UUID userId, UUID testId);
 
     List<TestAttemptResponse> getCourseAttempts(UUID courseId);
+
+    TestResultDetailsResponse getTestResultDetails(UUID attemptId, UUID userId);
 }

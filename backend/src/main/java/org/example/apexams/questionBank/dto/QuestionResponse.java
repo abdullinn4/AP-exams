@@ -11,6 +11,7 @@ public record QuestionResponse(
         String answerKeyJson,
         String explanation,
         String tagsJson,
-        QuestionType type
+        QuestionType type,
+        String imageUrl
 ) {
 }

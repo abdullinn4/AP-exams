@@ -1,3 +1,5 @@
+import type {TestAttemptStatus, TestAttemptSummary} from "@/entities/test/test.ts";
+
 export interface CourseDetails {
     id: string
     title: string
@@ -103,11 +105,11 @@ export interface LessonDetails {
     testId: string | null
     testTitle: string | null
     testTimeLimitSec: number | null
-    testAttemptsLimit: number | null
-    testAttemptId: string | null // ID текущей/последней попытки, если есть
-    testAttemptStatus: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED' | null
+    testAttemptStatus: TestAttemptStatus | null;
+    testAttemptId: string | null
+    testAttemptSummary: TestAttemptSummary | null
 
     // Куратор
     canContactCurator: boolean
-    discordInviteLink: string | null
+    discordInviteUrl: string | null
 }

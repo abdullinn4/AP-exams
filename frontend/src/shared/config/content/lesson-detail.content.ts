@@ -1,4 +1,5 @@
 import type { LessonDetails } from '@/entities/course/course'
+import { TestAttemptStatus } from '@/entities/test/test'
 import lessonTheoryMd from './lesson-theory.md?raw'
 
 export const MOCK_LESSON_DETAIL: LessonDetails = {
@@ -17,8 +18,10 @@ export const MOCK_LESSON_DETAIL: LessonDetails = {
     testId: '550e8400-e29b-41d4-a716-446655440020',
     testTitle: 'Vectors Quiz',
     testTimeLimitSec: 1800,
-    testAttemptsLimit: 3,
+    testAttemptStatus: TestAttemptStatus.NOT_STARTED,
+    testAttemptId: null,
+    testAttemptSummary: null,
 
     canContactCurator: true,
-    discordInviteLink: 'https://discord.gg/example'
+    discordInviteUrl: 'https://discord.gg/example'
 }

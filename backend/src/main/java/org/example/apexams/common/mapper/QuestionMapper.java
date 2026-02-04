@@ -18,7 +18,8 @@ public class QuestionMapper {
                 entity.getAnswerKeyJson(),
                 entity.getExplanation(),
                 entity.getTagsJson(),
-                entity.getType()
+                entity.getType(),
+                entity.getImageUrl()
         );
     }
 
@@ -28,7 +29,8 @@ public class QuestionMapper {
                 entity.getId(),
                 entity.getPrompt(),
                 entity.getOptionsJson(),
-                entity.getType()
+                entity.getType(),
+                entity.getImageUrl()
         );
     }
 

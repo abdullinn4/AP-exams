@@ -41,4 +41,7 @@ public class QuestionEntity {
 
     @Column(columnDefinition = "text")
     private String explanation;
+
+    @Column(name = "image_url", length = 500)
+    private String imageUrl;
 }

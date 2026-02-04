@@ -11,8 +11,6 @@ public record StartTestResponse(
         UUID testId,
         String testTitle,
         Integer timeLimitSec,
-        Integer attemptsLimit,
-        Integer remainingAttempts,
         Instant startedAt,
         List<QuestionForStudentResponse> questions
 ) {

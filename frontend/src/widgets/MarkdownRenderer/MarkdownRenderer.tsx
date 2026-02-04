@@ -20,7 +20,7 @@ export const MarkdownRenderer = ({ content, className = '' }: MarkdownRendererPr
 
             if (isInline) {
                 return (
-                    <code className={className} {...props}>
+                    <code className="inline-code" {...props}>
                         {children}
                     </code>
                 )
@@ -31,21 +31,51 @@ export const MarkdownRenderer = ({ content, className = '' }: MarkdownRendererPr
                     style={vscDarkPlus as any}
                     language={match[1]}
                     PreTag="div"
+                    customStyle={{
+                        borderRadius: '8px',
+                        padding: '16px',
+                        fontSize: '14px',
+                        marginTop: '16px',
+                        marginBottom: '16px'
+                    }}
                 >
                     {String(children).replace(/\n$/, '')}
                 </SyntaxHighlighter>
             )
         },
         img({ src, alt }) {
-
             return (
                 <img
                     src={src}
                     alt={alt || ''}
                     loading="lazy"
-                    style={{ maxWidth: '40%', height: 'auto' }}
+                    style={{ maxWidth: '30%', height: 'auto', borderRadius: '8px', marginTop: '16px', marginBottom: '16px' }}
                 />
             )
+        },
+        table({ children }) {
+            return (
+                <div className="table-wrapper">
+                    <table className="markdown-table">
+                        {children}
+                    </table>
+                </div>
+            )
+        },
+        thead({ children }) {
+            return <thead className="markdown-thead">{children}</thead>
+        },
+        tbody({ children }) {
+            return <tbody className="markdown-tbody">{children}</tbody>
+        },
+        tr({ children }) {
+            return <tr className="markdown-tr">{children}</tr>
+        },
+        th({ children }) {
+            return <th className="markdown-th">{children}</th>
+        },
+        td({ children }) {
+            return <td className="markdown-td">{children}</td>
         }
     }
 

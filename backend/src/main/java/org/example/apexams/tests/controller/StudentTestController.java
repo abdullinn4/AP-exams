@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.apexams.config.security.details.UserDetailsImpl;
 import org.example.apexams.tests.dto.StartTestResponse;
 import org.example.apexams.tests.dto.TestAttemptResponse;
+import org.example.apexams.tests.dto.TestResultDetailsResponse;
 import org.example.apexams.tests.service.TestAttemptService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -46,5 +47,16 @@ public class StudentTestController {
             @Parameter(description = "Attempt ID") @PathVariable UUID attemptId,
             @Parameter(description = "Map of question ID to answer") @RequestBody Map<UUID, String> answers) {
         return ResponseEntity.ok(testAttemptService.submitAttempt(attemptId, answers));
+    }
+
+    @Operation(
+            summary = "Get test result details",
+            description = "Get detailed test results including correct answers and explanations"
+    )
+    @GetMapping("/test-attempts/{attemptId}/details")
+    public ResponseEntity<TestResultDetailsResponse> getTestResultDetails(
+            @Parameter(description = "Attempt ID") @PathVariable UUID attemptId,
+            @Parameter(hidden = true) @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return ResponseEntity.ok(testAttemptService.getTestResultDetails(attemptId, userDetails.user().getId()));
     }
 }

@@ -8,6 +8,7 @@ public record QuestionForStudentResponse(
         UUID id,
         String prompt,
         String optionsJson,
-        QuestionType type
+        QuestionType type,
+        String imageUrl
 ) {
 }

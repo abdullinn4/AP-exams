@@ -16,7 +16,7 @@ public class LessonContentMapper {
 
     public LessonContentResponse toDto(LessonContentEntity entity) {
         return new LessonContentResponse(
-                entity.getLessonId(),
+                entity.getLesson().getId(),
                 entity.getVideoPayload(),
                 entity.getTextPayload()
         );

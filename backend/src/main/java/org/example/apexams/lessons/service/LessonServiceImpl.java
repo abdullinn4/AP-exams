@@ -1,19 +1,25 @@
 package org.example.apexams.lessons.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.apexams.common.mapper.LessonMapper;
-import org.example.apexams.lessons.dto.*;
-import org.example.apexams.units.repo.UnitRepository;
 import org.example.apexams.enrollments.service.EnrollmentService;
-import org.example.apexams.lessons.entity.LessonEntity;
-import org.example.apexams.lessons.repo.LessonRepository;
 import org.example.apexams.lessonProgress.dto.LessonProgressResponse;
 import org.example.apexams.lessonProgress.entity.enums.LessonProgressStatus;
 import org.example.apexams.lessonProgress.service.LessonProgressService;
+import org.example.apexams.lessons.dto.*;
+import org.example.apexams.lessons.entity.LessonEntity;
+import org.example.apexams.lessons.repo.LessonRepository;
 import org.example.apexams.tariffs.entity.enums.TariffTier;
+import org.example.apexams.tests.dto.TestAttemptSummary;
 import org.example.apexams.tests.dto.TestResponse;
+import org.example.apexams.tests.entity.TestAttemptEntity;
+import org.example.apexams.tests.entity.enums.TestAttemptStatus;
+import org.example.apexams.tests.repo.TestAttemptRepository;
 import org.example.apexams.tests.service.TestService;
+import org.example.apexams.units.repo.UnitRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +40,7 @@ public class LessonServiceImpl implements LessonService {
     private final LessonProgressService lessonProgressService;
     private final TestService testService;
     private final LessonContentService lessonContentService;
+    private final TestAttemptRepository testAttemptRepository;
 
 
     @Override
@@ -70,7 +77,7 @@ public class LessonServiceImpl implements LessonService {
     public LessonDetailsResponse getLessonDetails(UUID lessonId, UUID userId) {
         LessonEntity lesson = findLessonByIdOrThrow(lessonId);
         UUID courseId = lesson.getUnit().getCourse().getId();
-        
+
         if (!enrollmentService.hasAccess(userId, courseId)) {
             throw new IllegalStateException("User does not have access to this course");
         }
@@ -97,6 +104,47 @@ public class LessonServiceImpl implements LessonService {
 
         String discordInviteLink = canContactCurator ? lesson.getUnit().getCourse().getDiscordInviteUrl() : null;
 
+        // Определяем статус попытки теста и собираем информацию о последней попытке
+        TestAttemptStatus testAttemptStatus = null;
+        UUID testAttemptId = null;
+        TestAttemptSummary testAttemptSummary = null;
+
+        if (test != null) {
+            List<TestAttemptEntity> attempts = testAttemptRepository.findAllByUserIdAndTestId(userId, test.id());
+            if (attempts.isEmpty()) {
+                testAttemptStatus = TestAttemptStatus.NOT_STARTED;
+            } else {
+                TestAttemptEntity lastAttempt = attempts.getLast();
+                testAttemptId = lastAttempt.getId();
+
+                if (lastAttempt.getFinishedAt() == null) {
+                    testAttemptStatus = TestAttemptStatus.IN_PROGRESS;
+                } else {
+                    testAttemptStatus = TestAttemptStatus.COMPLETED;
+
+                    // Парсим resultJson для получения correctCount и totalCount
+                    String resultJson = lastAttempt.getResultJson();
+                    if (resultJson != null) {
+                        try {
+                            ObjectMapper mapper = new ObjectMapper();
+                            JsonNode resultNode = mapper.readTree(resultJson);
+
+                            Integer correctCount = resultNode.get("correctCount").asInt();
+                            Integer totalCount = resultNode.get("totalCount").asInt();
+
+                            testAttemptSummary = new TestAttemptSummary(
+                                    correctCount,
+                                    totalCount,
+                                    lastAttempt.getScore(),
+                                    lastAttempt.getFinishedAt()
+                            );
+                        } catch (Exception e) {
+                            log.error("Failed to parse resultJson for attempt {}", lastAttempt.getId(), e);
+                        }
+                    }
+                }
+            }
+        }
         return new LessonDetailsResponse(
                 lesson.getId(),
                 lesson.getUnit().getId(),
@@ -113,7 +161,9 @@ public class LessonServiceImpl implements LessonService {
                 test != null ? test.id() : null,
                 test != null ? test.title() : null,
                 test != null ? test.timeLimitSec() : null,
-                test != null ? test.attemptsLimit() : null,
+                testAttemptStatus,
+                testAttemptId,
+                testAttemptSummary,
 
                 canContactCurator,
                 discordInviteLink
@@ -127,7 +177,7 @@ public class LessonServiceImpl implements LessonService {
         var unit = unitRepository.findById(unitId)
                 .orElseThrow(() -> new IllegalArgumentException("Unit not found: " + unitId));
         UUID courseId = unit.getCourse().getId();
-        
+
         if (!enrollmentService.hasAccess(userId, courseId)) {
             throw new IllegalStateException("User does not have access to this course");
         }

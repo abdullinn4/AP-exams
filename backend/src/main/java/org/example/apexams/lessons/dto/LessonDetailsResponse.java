@@ -1,6 +1,8 @@
 package org.example.apexams.lessons.dto;
 
 import org.example.apexams.lessonProgress.entity.enums.LessonProgressStatus;
+import org.example.apexams.tests.dto.TestAttemptSummary;
+import org.example.apexams.tests.entity.enums.TestAttemptStatus;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -21,7 +23,9 @@ public record LessonDetailsResponse(
         UUID testId,
         String testTitle,
         Integer testTimeLimitSec,
-        Integer testAttemptsLimit,
+        TestAttemptStatus testAttemptStatus,
+        UUID testAttemptId,
+        TestAttemptSummary testAttemptSummary,
 
         Boolean canContactCurator,
         String discordInviteUrl

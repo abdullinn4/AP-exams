@@ -36,7 +36,6 @@ public class LessonContentServiceImpl implements LessonContentService {
                 .orElseGet(() -> {
                     var c = mapper.toEntity(dto);
                     c.setLesson(lesson);
-                    c.setLessonId(lesson.getId());
                     return c;
                 });
 

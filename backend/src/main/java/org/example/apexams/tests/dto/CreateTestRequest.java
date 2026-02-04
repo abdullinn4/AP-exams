@@ -12,7 +12,6 @@ public record CreateTestRequest(
         TestType type,
         String title,
         Integer timeLimitSec,
-        Integer attemptsLimit,
         TariffTier minTier
 ) {
 }

@@ -40,9 +40,6 @@ public class TestEntity {
     @Column(name = "time_limit_sec")
     private int timeLimitSec;
 
-    @Column(name = "attempts_limit")
-    private int attemptsLimit;
-
     @Column(name = "min_tier", nullable = false)
     @Enumerated(EnumType.STRING)
     private TariffTier minTier;

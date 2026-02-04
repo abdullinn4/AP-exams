@@ -11,7 +11,6 @@ public record TestResponse(
         String title,
         String type,
         int timeLimitSec,
-        int attemptsLimit,
         TariffTier minTier,
         boolean isPublished
 ) {

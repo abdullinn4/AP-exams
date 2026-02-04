@@ -1,5 +1,7 @@
 package org.example.apexams.tests.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,8 +12,10 @@ import org.example.apexams.notifications.service.NotificationService;
 import org.example.apexams.questionBank.dto.QuestionForStudentResponse;
 import org.example.apexams.questionBank.entity.QuestionEntity;
 import org.example.apexams.questionBank.service.QuestionService;
+import org.example.apexams.tests.dto.QuestionResultDetail;
 import org.example.apexams.tests.dto.StartTestResponse;
 import org.example.apexams.tests.dto.TestAttemptResponse;
+import org.example.apexams.tests.dto.TestResultDetailsResponse;
 import org.example.apexams.tests.entity.TestAttemptEntity;
 import org.example.apexams.tests.entity.TestEntity;
 import org.example.apexams.tests.entity.TestQuestionEntity;
@@ -25,10 +29,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -58,9 +59,10 @@ public class TestAttemptServiceImpl implements TestAttemptService {
             throw new IllegalStateException("User does not have access to this test");
         }
 
-        // Проверка лимита попыток
-        if (!canUserStartAttempt(userId, testId)) {
-            throw new IllegalStateException("Attempts limit reached for test: " + testId);
+        // Проверка: можно ли начать новую попытку (только одна попытка)
+        int existingAttempts = attemptRepository.countByUserIdAndTestId(userId, testId);
+        if (existingAttempts > 0) {
+            throw new IllegalStateException("Test already attempted. Only one attempt is allowed.");
         }
 
         // Получаем вопросы из test_questions
@@ -84,16 +86,12 @@ public class TestAttemptServiceImpl implements TestAttemptService {
                 .map(questionMapper::toStudentDto)
                 .collect(Collectors.toList());
 
-        // Получаем оставшиеся попытки
-        int remainingAttempts = getRemainingAttempts(userId, testId);
 
         return new StartTestResponse(
                 attempt.getId(),
                 test.getId(),
                 test.getTitle(),
                 test.getTimeLimitSec(),
-                test.getAttemptsLimit(),
-                remainingAttempts,
                 attempt.getStartedAt(),
                 questionDtos
         );
@@ -202,35 +200,6 @@ public class TestAttemptServiceImpl implements TestAttemptService {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public boolean canUserStartAttempt(UUID userId, UUID testId) {
-        TestEntity test = findTestByIdOrThrow(testId);
-
-        // Если лимит не установлен - можно начинать
-        if (test.getAttemptsLimit() == 0) {
-            return true;
-        }
-
-        // Проверяем количество попыток
-        int attemptsCount = attemptRepository.countByUserIdAndTestId(userId, testId);
-        return attemptsCount < test.getAttemptsLimit();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public int getRemainingAttempts(UUID userId, UUID testId) {
-        TestEntity test = findTestByIdOrThrow(testId);
-
-        // Если лимит не установлен - возвращаем -1 (безлимит)
-        if (test.getAttemptsLimit() == 0) {
-            return -1;
-        }
-
-        int attemptsCount = attemptRepository.countByUserIdAndTestId(userId, testId);
-        int remaining = test.getAttemptsLimit() - attemptsCount;
-        return Math.max(0, remaining);
-    }
 
     @Override
     @Transactional
@@ -247,6 +216,96 @@ public class TestAttemptServiceImpl implements TestAttemptService {
                 .stream()
                 .map(testMapper::toDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public TestResultDetailsResponse getTestResultDetails(UUID attemptId, UUID userId) {
+        TestAttemptEntity attempt = attemptRepository.findById(attemptId)
+                .orElseThrow(() -> new IllegalArgumentException("Test attempt not found: " + attemptId));
+
+        // Проверка что попытка принадлежит пользователю
+        if (!attempt.getUser().getId().equals(userId)) {
+            throw new IllegalStateException("Access denied to this test attempt");
+        }
+
+        // Проверка что тест завершен
+        if (attempt.getFinishedAt() == null) {
+            throw new IllegalStateException("Test attempt is not finished yet");
+        }
+
+        TestEntity test = attempt.getTest();
+
+        // Парсим ответы студента
+        Map<UUID, String> userAnswers = new HashMap<>();
+        if (attempt.getAnswersJson() != null) {
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                userAnswers = mapper.readValue(attempt.getAnswersJson(), new TypeReference<Map<UUID, String>>() {});
+            } catch (Exception e) {
+                log.error("Failed to parse answersJson for attempt {}", attemptId, e);
+            }
+        }
+
+        // Парсим результаты
+        Map<UUID, Boolean> results = new HashMap<>();
+        int correctCount = 0;
+        int totalCount = 0;
+
+        if (attempt.getResultJson() != null) {
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode resultNode = mapper.readTree(attempt.getResultJson());
+                correctCount = resultNode.get("correctCount").asInt();
+                totalCount = resultNode.get("totalCount").asInt();
+
+                JsonNode resultsNode = resultNode.get("results");
+                resultsNode.fields().forEachRemaining(entry -> {
+                    UUID questionId = UUID.fromString(entry.getKey());
+                    boolean isCorrect = entry.getValue().asBoolean();
+                    results.put(questionId, isCorrect);
+                });
+            } catch (Exception e) {
+                log.error("Failed to parse resultJson for attempt {}", attemptId, e);
+            }
+        }
+
+        // Получаем все вопросы теста с правильными ответами
+        List<TestQuestionEntity> testQuestions = testQuestionRepository.findAllByTestIdOrderByOrderIndex(test.getId());
+
+        List<QuestionResultDetail> questionDetails = new ArrayList<>();
+
+        for (TestQuestionEntity tq : testQuestions) {
+            QuestionEntity question = tq.getQuestion();
+            UUID questionId = question.getId();
+
+            String userAnswer = userAnswers.getOrDefault(questionId, "");
+            Boolean isCorrect = results.getOrDefault(questionId, false);
+
+            questionDetails.add(new QuestionResultDetail(
+                    questionId,
+                    question.getPrompt(),
+                    question.getImageUrl(),
+                    question.getType(),
+                    question.getOptionsJson(),
+                    userAnswer,
+                    question.getAnswerKeyJson(),  // Правильный ответ
+                    isCorrect,
+                    question.getExplanation()
+            ));
+        }
+
+        return new TestResultDetailsResponse(
+                attempt.getId(),
+                test.getId(),
+                test.getTitle(),
+                attempt.getStartedAt(),
+                attempt.getFinishedAt(),
+                attempt.getScore(),
+                correctCount,
+                totalCount,
+                questionDetails
+        );
     }
 
     private TestAttemptEntity findAttemptByIdOrThrow(UUID attemptId) {
