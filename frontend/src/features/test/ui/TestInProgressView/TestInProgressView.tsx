@@ -1,10 +1,12 @@
 import type {StartTestResponse, TestAnswers} from "@/entities/test/test.ts";
-import {useEffect, useState} from "react";
+import {useMemo, useRef, useState} from "react";
 import {TestTimer} from "@/widgets/TestTimer";
 import {QuestionRenderer} from "@/widgets/QuestionRenderer";
 import {QuestionNavigationPanel} from "@/widgets/QuestionNavigationPanel";
 import {ConfirmSubmitModal} from "@/widgets/ConfirmSubmitModal";
 import {TimeUpModal} from "@/widgets/TimeUpModal";
+import {useTestNavigation} from "@/features/test/model/useTestNavigation.ts";
+import {useUnloadProtection} from "@/features/test/model/useUnloadProtection.ts";
 
 interface TestInProgressViewProps {
     testData: StartTestResponse;
@@ -12,96 +14,82 @@ interface TestInProgressViewProps {
     isSubmitting: boolean;
 }
 
-export const TestInProgressView = ({ testData, onSubmit, isSubmitting }: TestInProgressViewProps) => {
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [answers, setAnswers] = useState<TestAnswers>({});
-    const [showConfirmModal, setShowConfirmModal] = useState(false);
-    const [showTimeUpModal, setShowTimeUpModal] = useState(false);
+export const TestInProgressView = ({testData, onSubmit, isSubmitting}: TestInProgressViewProps) => {
+    const {
+        currentQuestionIndex,
+        currentQuestion,
+        answers,
+        answerQuestion,
+        goNext,
+        goPrevious,
+        goTo,
+        isFirst,
+        isLast
+    } = useTestNavigation(testData)
 
-    const currentQuestion = testData.questions[currentQuestionIndex];
-    const currentAnswer = answers[currentQuestion.id] || '';
+    const [showConfirmModal, setShowConfirmModal] = useState(false)
+    const [showTimeUpModal, setShowTimeUpModal] = useState(false)
+    const hasCompletedRef = useRef(false);
 
-    useEffect(() => {
-        const handleBeforeUnload = (e: BeforeUnloadEvent) => {
-            e.preventDefault();
-        };
+    useUnloadProtection(!showTimeUpModal && !isSubmitting);
 
-        window.addEventListener('beforeunload', handleBeforeUnload);
-        return () => window.removeEventListener('beforeunload', handleBeforeUnload);
-    }, []);
-
-    const handleNextQuestion = () => {
-        if (currentQuestionIndex < testData.questions.length - 1) {
-            setCurrentQuestionIndex(prev => prev + 1);
-        }
-    };
-
-    const handlePreviousQuestion = () => {
-        if (currentQuestionIndex > 0) {
-            setCurrentQuestionIndex(prev => prev - 1);
-        }
-    };
-
-    const handleQuestionClick = (index: number) => {
-        setCurrentQuestionIndex(index);
-    };
-
-    const handleFinishClick = () => {
-        setShowConfirmModal(true);
-    };
-
-    const handleConfirmSubmit = () => {
+    const handleFinish = () => setShowConfirmModal(true)
+    const handleConfirm = () => {
         setShowConfirmModal(false);
         onSubmit(answers);
     };
-
     const handleTimeUp = () => {
+        if (hasCompletedRef.current) return;
+        hasCompletedRef.current = true;
+
         setShowTimeUpModal(true);
         setTimeout(() => {
             setShowTimeUpModal(false);
             onSubmit(answers);
         }, 2000);
-    };
+    }
 
-    const parseOptions = (optionsJson: string): Array<{ id: string; text: string }> => {
+    const options = useMemo(() => {
+        if (currentQuestion.type !== 'MULTIPLE_CHOICE' && currentQuestion.type !== 'SINGLE_CHOICE') return [];
+
         try {
-            return JSON.parse(optionsJson);
+            return JSON.parse(currentQuestion.optionsJson);
         } catch {
             return [];
         }
-    };
-
-    const options = currentQuestion.type === 'MULTIPLE_CHOICE'
-        ? parseOptions(currentQuestion.optionsJson)
-        : [];
+    }, [currentQuestion]);
 
     return (
         <div>
 
-            <div className="w-layout-grid grid-2-columns" style={{ gridTemplateColumns: '2fr 1fr', gap: '32px', alignItems: 'start' }}>
+            <div className="w-layout-grid grid-2-columns"
+                 style={{gridTemplateColumns: '2fr 1fr', gap: '32px', alignItems: 'start'}}>
                 {/* Левая колонка - вопросы */}
                 <div>
                     <div className="card">
-                        <div style={{ padding: '32px' }}>
+                        <div style={{padding: '32px'}}>
                             <QuestionRenderer
                                 question={currentQuestion}
                                 questionNumber={currentQuestionIndex + 1}
                             />
 
                             <div className="mg-top-32px">
-                                {currentQuestion.type === 'MULTIPLE_CHOICE' ? (
+                                {currentQuestion.type === 'SINGLE_CHOICE' && (
                                     <div className="test-options-wrapper">
-                                        {options.map((option) => (
+                                        {options.map((option: { id: string; text: string }) => (
                                             <label key={option.id} className="test-option-label">
                                                 <input
                                                     type="radio"
                                                     name={`question-${currentQuestion.id}`}
                                                     value={option.id}
-                                                    checked={currentAnswer === option.id}
-                                                    onChange={(e) => setAnswers(prev => ({
-                                                        ...prev,
-                                                        [currentQuestion.id]: e.target.value
-                                                    }))}
+                                                    checked={answers[currentQuestion.id] === option.id}
+                                                    onChange={() =>
+                                                        answerQuestion(
+                                                            currentQuestion.id,
+                                                            option.id,
+                                                            'SINGLE_CHOICE'
+                                                        )
+                                                    }
                                                     className="test-radio-input"
                                                     disabled={isSubmitting}
                                                 />
@@ -109,47 +97,70 @@ export const TestInProgressView = ({ testData, onSubmit, isSubmitting }: TestInP
                                             </label>
                                         ))}
                                     </div>
-                                ) : (
+                                )}
+                                {currentQuestion.type === 'MULTIPLE_CHOICE' && (
+                                    <div className="test-options-wrapper">
+                                        {options.map((option: { id: string; text: string }) => {
+                                            const selectedAnswers = Array.isArray(
+                                                answers[currentQuestion.id]
+                                            )
+                                                ? (answers[currentQuestion.id] as string[])
+                                                : []
+
+                                            return (
+                                                <label key={option.id} className="test-option-label">
+                                                    <input
+                                                        type="checkbox"
+                                                        value={option.id}
+                                                        checked={selectedAnswers.includes(option.id)}
+                                                        onChange={() =>
+                                                            answerQuestion(
+                                                                currentQuestion.id,
+                                                                option.id,
+                                                                'MULTIPLE_CHOICE'
+                                                            )
+                                                        }
+                                                        className="test-checkbox-input"
+                                                        disabled={isSubmitting}
+                                                    />
+                                                    <span className="text-neutral-700">
+                                                        {option.text}
+                                                    </span>
+                                                </label>
+                                            )
+                                        })}
+                                    </div>
+                                )}
+                                {currentQuestion.type === 'OPEN' && (
                                     <textarea
                                         className="test-textarea-input"
-                                        value={currentAnswer}
-                                        onChange={(e) => setAnswers(prev => ({
-                                            ...prev,
-                                            [currentQuestion.id]: e.target.value
-                                        }))}
+                                        value={answers[currentQuestion.id] || ''}
+                                        onChange={e =>
+                                            answerQuestion(
+                                                currentQuestion.id,
+                                                e.target.value,
+                                                'OPEN'
+                                            )
+                                        }
                                         placeholder="Type your answer here..."
                                         rows={6}
                                         disabled={isSubmitting}
                                     />
                                 )}
+
                             </div>
 
-                            <div className="mg-top-32px" style={{ display: 'flex', gap: '16px', justifyContent: 'space-between' }}>
-                                <button
-                                    className="button-primary w-button"
-                                    onClick={handlePreviousQuestion}
-                                    disabled={currentQuestionIndex === 0 || isSubmitting}
-                                    style={{ opacity: (currentQuestionIndex === 0 || isSubmitting) ? 0.5 : 1 }}
-                                >
-                                    Previous
+                            <div className="mg-top-32px"
+                                 style={{display: 'flex', gap: '16px', justifyContent: 'space-between'}}>
+                                <button onClick={goPrevious} disabled={isFirst || isSubmitting}
+                                        className="button-primary w-button">Previous
                                 </button>
-
-                                {currentQuestionIndex < testData.questions.length - 1 ? (
-                                    <button
-                                        className="button-primary w-button"
-                                        onClick={handleNextQuestion}
-                                        disabled={isSubmitting}
-                                    >
-                                        Next Question
-                                    </button>
+                                {isLast ? (
+                                    <button onClick={handleFinish} disabled={isSubmitting}
+                                            className="button-primary w-button">{isSubmitting ? 'Submitting...' : 'Finish Test'}</button>
                                 ) : (
-                                    <button
-                                        className="button-primary w-button"
-                                        onClick={handleFinishClick}
-                                        disabled={isSubmitting}
-                                    >
-                                        {isSubmitting ? 'Submitting...' : 'Finish Test'}
-                                    </button>
+                                    <button onClick={goNext} disabled={isSubmitting}
+                                            className="button-primary w-button">Next Question</button>
                                 )}
                             </div>
                         </div>
@@ -157,7 +168,7 @@ export const TestInProgressView = ({ testData, onSubmit, isSubmitting }: TestInP
                 </div>
 
                 {/* Правая колонка - таймер + навигация */}
-                <div style={{ position: 'sticky', top: '24px' }}>
+                <div style={{position: 'sticky', top: '24px'}}>
                     <TestTimer
                         timeLimitSec={testData.timeLimitSec}
                         startedAt={testData.startedAt}
@@ -169,9 +180,10 @@ export const TestInProgressView = ({ testData, onSubmit, isSubmitting }: TestInP
                             questions={testData.questions}
                             answers={answers}
                             currentQuestionIndex={currentQuestionIndex}
-                            onQuestionSelect={handleQuestionClick}
-                            onFinishTest={handleFinishClick}
+                            onQuestionSelect={goTo}
+                            onFinishTest={handleFinish}
                             isSubmitting={isSubmitting}
+                            mode="test"
                         />
                     </div>
                 </div>
@@ -180,12 +192,13 @@ export const TestInProgressView = ({ testData, onSubmit, isSubmitting }: TestInP
             {showConfirmModal && (
                 <ConfirmSubmitModal
                     isOpen={showConfirmModal}
-                    onConfirm={handleConfirmSubmit}
+                    onConfirm={handleConfirm}
                     onCancel={() => setShowConfirmModal(false)}
+                    isSubmitting={isSubmitting}
                 />
             )}
 
-            {showTimeUpModal && <TimeUpModal isOpen={showTimeUpModal} />}
+            {showTimeUpModal && <TimeUpModal isOpen={showTimeUpModal}/>}
         </div>
     );
 };

@@ -1,4 +1,5 @@
 import Countdown, { type CountdownRenderProps } from 'react-countdown';
+import {useCallback} from "react";
 
 interface TestTimerProps {
     timeLimitSec: number;
@@ -10,7 +11,7 @@ export const TestTimer = ({ timeLimitSec, startedAt, onTimeUp }: TestTimerProps)
     const startTime = new Date(startedAt).getTime();
     const endTime = startTime + timeLimitSec * 1000;
 
-    const renderer = ({ hours, minutes, seconds, completed }: CountdownRenderProps) => {
+    const renderer = useCallback(({ hours, minutes, seconds, completed }: CountdownRenderProps) => {
         if (completed) {
             return (
                 <div className="card" style={{ padding: '24px', textAlign: 'center', background: '#fee2e2', border: '2px solid #dc2626' }}>
@@ -33,7 +34,7 @@ export const TestTimer = ({ timeLimitSec, startedAt, onTimeUp }: TestTimerProps)
                 </span>
             </div>
         );
-    };
+    }, []);
 
     return (
         <Countdown

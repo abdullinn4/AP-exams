@@ -13,6 +13,7 @@ export default defineConfig({
     assetsInclude: ['**/*.md'],
     server: {
         port: 3000, // Запуск на порту 3000
+        host: '127.0.0.1',
         proxy: {
             '/api': {
                 target: 'http://localhost:8080', // Проксируем API на бэкенд

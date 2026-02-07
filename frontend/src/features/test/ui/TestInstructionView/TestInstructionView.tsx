@@ -11,42 +11,49 @@ export const TestInstructionView = ({ lesson, onStartTest, isLoading }: TestInst
         return null;
     }
 
-    const timeLimit = lesson.testTimeLimitSec
-        ? `${Math.floor(lesson.testTimeLimitSec / 60)} minutes`
-        : 'No time limit';
+    const formatTimeLimit = (sec?: number | null)=> sec ? Math.floor(sec / 60) + ' min' : 'No time limit';
+
+    const instructions = [
+        'Read each question carefully',
+        'You can navigate between questions using the navigation panel',
+        'Your answers are saved automatically',
+        'You can review and change your answers before submitting',
+        'Once you submit, you cannot retake the test',
+        'The test will auto-submit when time expires',
+    ];
 
     return (
 
         <div>
-            <h2>{lesson.testTitle}</h2>
+            <h2 className="display-6 mg-bottom-32px">{lesson.testTitle}</h2>
 
-            <div className="test-info">
-                <div className="info-item">
-                    <span className="info-label">Time Limit: </span>
-                    <span className="info-value">{timeLimit}</span>
+            <div className="mg-bottom-32px">
+                <div className="mg-bottom-16px">
+                    <span className="display-2 text-neutral-600">Time Limit: </span>
+                    <span className="display-2 bold text-neutral-800">{formatTimeLimit(lesson.testTimeLimitSec)}</span>
                 </div>
-                <div className="info-item">
-                    <span className="info-label">Attempts: </span>
-                    <span className="info-value">1 attempt only</span>
+                <div>
+                    <span className="display-2 text-neutral-600">Attempts: </span>
+                    <span className="display-2 bold text-neutral-800">1 attempt only</span>
                 </div>
             </div>
 
-            <div className="test-instructions">
-                <h4>Instructions</h4>
-                <ol>
-                    <li>Read each question carefully</li>
-                    <li>You can navigate between questions using the navigation panel</li>
-                    <li>Your answers are saved automatically</li>
-                    <li>You can review and change your answers before submitting</li>
-                    <li>Once you submit, you cannot retake the test</li>
-                    <li>The test will auto-submit when time expires</li>
+            <div className="mg-bottom-40px">
+                <h4 className="display-5 bold mg-bottom-24px">Instructions</h4>
+                <ol style={{ paddingLeft: '24px' }}>
+                    {instructions.map((instruction, index) => (
+                        <li key={index} className="display-2 text-neutral-800 mg-bottom-12px">
+                            {instruction}
+                        </li>
+                    ))}
                 </ol>
             </div>
 
             <button
-                className="button-primary"
+                className="button-primary w-button"
                 onClick={onStartTest}
                 disabled={isLoading}
+                aria-busy={isLoading}
             >
                 {isLoading ? 'Starting...' : 'Start Test'}
             </button>

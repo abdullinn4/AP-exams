@@ -32,7 +32,7 @@ export interface TestAttemptResult {
 }
 
 export interface TestAnswers {
-    [questionId: string]: string;
+    [questionId: string]: string | string[];
 }
 
 export interface TestAttemptSummary {
@@ -40,6 +40,28 @@ export interface TestAttemptSummary {
     totalCount: number;
     score: number;
     attemptedAt: string;
+}
+
+export interface QuestionResultDetail {
+    questionId: string;
+    prompt: string;
+    type: 'SINGLE_CHOICE' | 'MULTIPLE_CHOICE' | 'OPEN';
+    imageUrl?: string;
+    optionsJson: string;
+    userAnswer: string;
+    correctAnswer: string;
+    isCorrect: boolean;
+    explanation: string;
+}
+
+export interface TestResultDetailsResponse {
+    attemptId: string;
+    testTitle: string;
+    correctCount: number;
+    totalCount: number;
+    score: number;
+    finishedAt: string;
+    questionResults: QuestionResultDetail[];
 }
 
 export const TestAttemptStatus = {

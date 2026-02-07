@@ -6,8 +6,17 @@ import type {
     CourseWithUnits, LessonDetails, UnitWithProgress
 } from '@/entities/course/course.ts'
 import type {TariffDetails} from "@/entities/tariff/tariff.ts";
-import type {StartTestResponse, TestAttemptResult} from "@/entities/test/test.ts";
-import {MOCK_START_TEST_RESPONSE, MOCK_TEST_RESULT} from "@/shared/config/content/test-mock.content.ts";
+import type {
+    StartTestResponse,
+    TestAnswers,
+    TestAttemptResult,
+    TestResultDetailsResponse
+} from "@/entities/test/test.ts";
+import {
+    MOCK_START_TEST_RESPONSE,
+    MOCK_TEST_RESULT,
+    MOCK_TEST_RESULT_DETAILS
+} from "@/shared/config/content/test-mock.content.ts";
 
 // Mock данные для тарифов (временно)
 const MOCK_TARIFFS: Record<string, TariffDetails[]> = {
@@ -211,6 +220,13 @@ export const coursesApi = baseApi.injectEndpoints({
             },
             providesTags: (result, error, attemptId) => [{ type: 'Course', id: attemptId }],
         }),
+        getTestResultDetails: builder.query<TestResultDetailsResponse, string>({
+            queryFn: async (attemptId) => {
+                await new Promise(resolve => setTimeout(resolve, 300))
+                return { data: MOCK_TEST_RESULT_DETAILS }
+            },
+            providesTags: (result, error, attemptId) => [{ type: 'Course', id: `result-${attemptId}` }],
+        }),
     }),
 })
 
@@ -225,4 +241,5 @@ export const {
     useStartTestMutation,
     useSubmitTestMutation,
     useGetTestResultQuery,
+    useGetTestResultDetailsQuery,
 } = coursesApi

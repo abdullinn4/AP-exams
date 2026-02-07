@@ -6,41 +6,89 @@ interface TestCompletedSummaryProps {
 }
 
 export const TestCompletedSummary = ({ result, onViewResults }: TestCompletedSummaryProps) => {
-    const parsedResults = JSON.parse(result.resultJson)
+    const parsedResults = (() => {
+        try {
+            return JSON.parse(result.resultJson)
+        } catch {
+            return { correctCount: 0, totalCount: 0 }
+        }
+    })();
     const { correctCount, totalCount } = parsedResults
 
     const percentage = Math.round(result.score)
     const isPassed = percentage >= 70
 
+    // Форматируем дату прохождения теста
+    const attemptDate = new Date(result.finishedAt).toLocaleDateString('en-US', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    })
+
     return (
         <div>
-            <h2 className="display-6 mg-bottom-24px">Test Completed</h2>
+            {/* Карточка с результатами */}
+            <div className="card bg-neutral-300" style={{ padding: '40px' }}>
+                <div className="grid-2-columns" style={{
+                    gridTemplateColumns: '1fr auto',
+                    alignItems: 'start',
+                    gap: '48px'
+                }}>
+                    {/* Левая часть - основная информация */}
+                    <div>
+                        <h2 className="display-5 bold text-neutral-800 mg-bottom-8px">
+                            Solved correctly {correctCount} {correctCount === 1 ? 'question' : 'questions'} out of {totalCount}
+                        </h2>
+                        <p className="display-2 text-neutral-600 mg-bottom-24px">
+                            No attempts remaining
+                        </p>
 
-            <div className="card" style={{ padding: '32px', textAlign: 'center' }}>
-                <div className={`display-8 bold mg-bottom-16px ${isPassed ? 'text-success' : 'text-error'}`}>
-                    {correctCount} out of {totalCount} correct
+                        <button
+                            className="button-primary w-button"
+                            onClick={onViewResults}
+                        >
+                            View Results
+                        </button>
+                    </div>
+
+                    {/* Правая часть - детали */}
+                    <div style={{ minWidth: '240px' }}>
+                        {/* Баллы */}
+                        <div className="mg-bottom-24px">
+                            <div className="display-1 text-neutral-600 mg-bottom-4px">
+                                Score
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <span className="display-3 bold text-neutral-800">
+                                    {correctCount} out of {totalCount}
+                                </span>
+                                {isPassed && (
+                                    <span style={{
+                                        color: '#10b981',
+                                        fontSize: '20px',
+                                        fontWeight: 'bold'
+                                    }}>✓</span>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Дата прохождения */}
+                        <div>
+                            <div className="display-1 text-neutral-600 mg-bottom-4px">
+                                Completed on
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <span className="display-2 text-neutral-800">
+                                    {attemptDate}
+                                </span>
+                                <span style={{ fontSize: '16px', opacity: 0.4 }}>📅</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div className={`display-4 mg-bottom-24px ${isPassed ? 'text-success' : 'text-error'}`}>
-                    Score: {percentage}%
-                </div>
-
-                <p className="text-neutral-600 mg-bottom-24px">
-                    {isPassed
-                        ? '🎉 Congratulations! You passed the test.'
-                        : 'You need at least 70% to pass. Review the material and try again.'}
-                </p>
-
-                <p className="text-neutral-600 mg-bottom-32px">
-                    No attempts remaining
-                </p>
-
-                <button
-                    className="button-primary w-button"
-                    onClick={onViewResults}
-                >
-                    View Results
-                </button>
             </div>
         </div>
     )

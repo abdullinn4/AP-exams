@@ -19,8 +19,13 @@ export const MOCK_LESSON_DETAIL: LessonDetails = {
     testTitle: 'Vectors Quiz',
     testTimeLimitSec: 1800,
     testAttemptStatus: TestAttemptStatus.NOT_STARTED,
-    testAttemptId: null,
-    testAttemptSummary: null,
+    testAttemptId: '550e8400-e29b-41d4-a716-446655440030',
+    testAttemptSummary: {
+        correctCount: 4,
+        totalCount: 5,
+        score: 80,
+        attemptedAt: new Date(Date.now() - 86400000).toISOString() // 1 день назад
+    },
 
     canContactCurator: true,
     discordInviteUrl: 'https://discord.gg/example'

@@ -2,9 +2,10 @@ interface ConfirmSubmitModalProps {
     isOpen: boolean
     onConfirm: () => void
     onCancel: () => void
+    isSubmitting?: boolean
 }
 
-export const ConfirmSubmitModal = ({ isOpen, onConfirm, onCancel }: ConfirmSubmitModalProps) => {
+export const ConfirmSubmitModal = ({isOpen, onConfirm, onCancel, isSubmitting}: ConfirmSubmitModalProps) => {
     if (!isOpen) return null
 
     return (
@@ -20,7 +21,7 @@ export const ConfirmSubmitModal = ({ isOpen, onConfirm, onCancel }: ConfirmSubmi
                         role="button"
                         aria-label="Close modal"
                         onClick={onCancel}
-                        style={{ cursor: 'pointer' }}
+                        style={{cursor: 'pointer'}}
                     >
                         <div className="icon-font-squared">&#x2715;</div>
                     </a>
@@ -28,9 +29,9 @@ export const ConfirmSubmitModal = ({ isOpen, onConfirm, onCancel }: ConfirmSubmi
 
                 <div className="w-commerce-commercecartformwrapper cart-form-wrapper">
                     <div className="pd-sides-24px pd-top-24px"
-                    style={{
-                        paddingBottom: '24px'
-                    }}>
+                         style={{
+                             paddingBottom: '24px'
+                         }}>
                         <p className="text-neutral-600 mg-bottom-32px">
                             Are you sure you want to submit the test? You cannot change your answers after submission.
                         </p>
@@ -39,8 +40,8 @@ export const ConfirmSubmitModal = ({ isOpen, onConfirm, onCancel }: ConfirmSubmi
                             <button className="secondary-button w-button" onClick={onCancel}>
                                 Cancel
                             </button>
-                            <button className="button-primary w-button" onClick={onConfirm}>
-                                Submit Test
+                            <button className="button-primary w-button" onClick={onConfirm} disabled={isSubmitting}>
+                                {isSubmitting ? 'Submitting...' : 'Submit Test'}
                             </button>
                         </div>
                     </div>

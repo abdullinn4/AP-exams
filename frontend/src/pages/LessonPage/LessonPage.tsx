@@ -4,12 +4,14 @@ import {Footer} from '@/widgets/Footer'
 import {YouTubePlayer} from '@/widgets/YouTubePlayer'
 import {MarkdownRenderer} from '@/widgets/MarkdownRenderer'
 import {MOCK_LESSON_DETAIL} from '@/shared/config/content/lesson-detail.content'
-import {type TestAnswers, TestAttemptStatus} from "@/entities/test/test.ts"
 import {TestInstructionView} from "@/features/test/ui/TestInstructionView/TestInstructionView.tsx"
 import {TestInProgressView} from "@/features/test/ui/TestInProgressView"
 import {TestCompletedSummary} from "@/features/test/ui/TestCompletedSummary"
-import {useStartTestMutation, useSubmitTestMutation} from '@/shared/api/courseApi'
-import {useState} from "react";
+import {TestResultsView} from "@/features/test/ui/TestResultsView";
+import {useLessonTest} from "@/features/test/model/useLessonTest.ts";
+import type {TestAttemptResult} from "@/entities/test/test.ts";
+import {useRef} from "react";
+import {useScrollToTest} from "@/features/test/model/useScrollToTest.ts";
 
 export const LessonPage = () => {
     const {slug, unitId} = useParams<{
@@ -18,29 +20,22 @@ export const LessonPage = () => {
     }>()
 
     const lesson = MOCK_LESSON_DETAIL
+    const {
+        view,
+        testData,
+        testResult,
+        resultDetails,
+        isStarting,
+        isSubmitting,
+        isLoadingResults,
+        startTest,
+        submitTest,
+        viewResults,
+        backToSummary,
+    } = useLessonTest(lesson)
 
-    const [startTest, {data: testData, isLoading: isStarting}] = useStartTestMutation()
-    const [submitTest, {data: testResult, isLoading: isSubmitting}] = useSubmitTestMutation()
-    const [showResults, setShowResults] = useState(false)
-
-    const handleStartTest = () => {
-        if (lesson.testId) {
-            startTest(lesson.testId)
-        }
-    }
-
-    const handleSubmitTest = (answers: TestAnswers) => {
-        if (testData) {
-            submitTest({
-                attemptId: testData.attemptId,
-                answers
-            })
-        }
-    }
-
-    const handleViewResults = () => {
-        setShowResults(true)
-    }
+    const testSectionRef = useRef<HTMLDivElement | null>(null)
+    useScrollToTest(view, testSectionRef)
 
     return (
         <div className="page-wrapper">
@@ -58,13 +53,13 @@ export const LessonPage = () => {
                             Chapters
                         </Link>
                         <div className="icon-font-wrapper breadcrumb-arrow">
-                            <div className="icon-font-squared"></div>
+                            <div className="icon-font-squared"></div>
                         </div>
                         <Link to={`/courses/${slug}/units/${unitId}`} className="breadcrumb-link">
                             Back to Unit
                         </Link>
                         <div className="icon-font-wrapper breadcrumb-arrow">
-                            <div className="icon-font-squared"></div>
+                            <div className="icon-font-squared"></div>
                         </div>
                         <div className="breadcrumb-link static text-neutral-800">
                             {lesson.title}
@@ -153,49 +148,41 @@ export const LessonPage = () => {
 
                                 {/* Test Tab */}
                                 {lesson.testId && (
-                                    <div data-w-tab="Tab 2" className="w-tab-pane">
+                                    <div data-w-tab="Tab 2" className="w-tab-pane" ref={testSectionRef}>
                                         <div className="card tab-card">
-                                            {/* 1. Тест не начат - показываем инструкции */}
-                                            {lesson.testAttemptStatus === TestAttemptStatus.NOT_STARTED && !testData && !testResult && (
+                                            {view === 'instruction' && (
                                                 <TestInstructionView
                                                     lesson={lesson}
-                                                    onStartTest={handleStartTest}
+                                                    onStartTest={startTest}
                                                     isLoading={isStarting}
                                                 />
                                             )}
 
-                                            {/* 2. Тест в процессе - показываем форму теста */}
-                                            {testData && !testResult && (
+                                            {view === 'inProgress' && testData && (
                                                 <TestInProgressView
                                                     testData={testData}
-                                                    onSubmit={handleSubmitTest}
+                                                    onSubmit={submitTest}
                                                     isSubmitting={isSubmitting}
                                                 />
                                             )}
 
-                                            {/* 3. Тест только что завершен - показываем краткую статистику */}
-                                            {testResult && !showResults && (
+                                            {view === 'summary' && (
                                                 <TestCompletedSummary
-                                                    result={testResult}
-                                                    onViewResults={handleViewResults}
+                                                    result={(testResult ?? lesson.testAttemptSummary) as TestAttemptResult}
+                                                    onViewResults={viewResults}
                                                 />
                                             )}
 
-                                            {/* 4. Показываем детальные результаты (пока заглушка) */}
-                                            {testResult && showResults && (
-                                                <div style={{textAlign: 'center', padding: '48px'}}>
-                                                    <h3 className="display-6">Detailed Results</h3>
-                                                    <p className="text-neutral-600 mg-top-16px">
-                                                        Detailed results view will be implemented later
-                                                    </p>
-                                                    <button
-                                                        className="button-secondary w-button mg-top-24px"
-                                                        onClick={() => setShowResults(false)}
-                                                    >
-                                                        Back to Summary
-                                                    </button>
-                                                </div>
+                                            {view === 'results' && (
+                                                isLoadingResults ? (
+                                                    <p>Loading...</p>
+                                                ) : resultDetails ? (
+                                                    <TestResultsView resultDetails={resultDetails}/>
+                                                ) : (
+                                                    <button onClick={backToSummary}>Back</button>
+                                                )
                                             )}
+
                                         </div>
                                     </div>
                                 )}
