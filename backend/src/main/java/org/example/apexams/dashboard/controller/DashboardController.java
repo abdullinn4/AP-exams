@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DashboardController {
     private final DashboardService dashboardService;
 
-    @Operation(summary = "Get dashboard data", description = "Get dashboard overview including courses, progress, and recent notifications")
+    @Operation(summary = "Get dashboard data", description = "Get dashboard overview including courses and lessons")
     @GetMapping
     public ResponseEntity<DashboardResponse> getDashboard(
             @Parameter(hidden = true) @AuthenticationPrincipal UserDetailsImpl userDetails) {

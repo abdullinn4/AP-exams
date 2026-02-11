@@ -17,6 +17,8 @@ import {
     MOCK_TEST_RESULT,
     MOCK_TEST_RESULT_DETAILS
 } from "@/shared/config/content/test-mock.content.ts";
+import type {DashboardResponse} from "@/entities/dashboard/dashboard.ts";
+import {MOCK_DASHBOARD_DATA} from "@/shared/config/content/dashboard-mock.content.ts";
 
 // Mock данные для тарифов (временно)
 const MOCK_TARIFFS: Record<string, TariffDetails[]> = {
@@ -227,6 +229,13 @@ export const coursesApi = baseApi.injectEndpoints({
             },
             providesTags: (result, error, attemptId) => [{ type: 'Course', id: `result-${attemptId}` }],
         }),
+        getDashboard: builder.query<DashboardResponse, void>({
+            queryFn: async () => {
+                await new Promise(resolve => setTimeout(resolve, 500))
+                return { data: MOCK_DASHBOARD_DATA }
+            },
+            providesTags: ['Dashboard'],
+        }),
     }),
 })
 
@@ -242,4 +251,5 @@ export const {
     useSubmitTestMutation,
     useGetTestResultQuery,
     useGetTestResultDetailsQuery,
+    useGetDashboardQuery,
 } = coursesApi

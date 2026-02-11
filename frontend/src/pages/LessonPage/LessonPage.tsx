@@ -90,7 +90,7 @@ export const LessonPage = () => {
                                     </div>
                                 </div>
                                 <div className="mg-top-16px">
-                                    <h1 className="display-9">Welcome to the course</h1>
+                                    <h1 className="display-9">Welcome to the lesson</h1>
                                 </div>
                             </div>
                         </div>

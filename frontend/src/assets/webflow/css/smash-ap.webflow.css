@@ -14303,7 +14303,7 @@ figcaption {
         padding: 8px 12px;
     }
 }
-/* Grid layout для теста (2/3 + 1/3) - ЕДИНСТВЕННОЕ что нужно добавить */
+/* Grid layout для теста (2/3 + 1/3) */
 .test-content-grid-2-1 {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -14315,4 +14315,14 @@ figcaption {
     .test-content-grid-2-1 {
         grid-template-columns: 1fr;
     }
+}
+
+.lesson_status_in_progress{
+    color: #fed133;
+}
+.lesson_status_not_started{
+    color: #ea384c;
+}
+.lesson_status_completed{
+    color: #1ed760;
 }

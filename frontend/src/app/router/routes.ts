@@ -13,4 +13,5 @@ export const ROUTES = {
     UNIT: '/courses/:slug/units/:unitId',
     LESSON: '/courses/:slug/units/:unitId/lessons/:lessonId',
     TERMS_AND_CONDITIONS: '/terms-and-conditions',
+    DASHBOARD: '/dashboard',
 } as const

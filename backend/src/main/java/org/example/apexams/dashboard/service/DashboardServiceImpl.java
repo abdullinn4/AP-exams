@@ -2,15 +2,24 @@ package org.example.apexams.dashboard.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.apexams.common.exception.ResourceNotFoundException;
 import org.example.apexams.courses.dto.CourseResponse;
 import org.example.apexams.courses.dto.CourseWithProgressResponse;
+import org.example.apexams.courses.entity.CourseEntity;
+import org.example.apexams.courses.entity.enums.CourseStatus;
+import org.example.apexams.courses.repo.CourseRepository;
 import org.example.apexams.courses.service.CourseService;
-import org.example.apexams.dashboard.dto.ContinueLearningItem;
+import org.example.apexams.dashboard.dto.CourseCardResponse;
+import org.example.apexams.dashboard.dto.CourseLessonPreview;
+import org.example.apexams.dashboard.dto.DashboardCourseDetailResponse;
 import org.example.apexams.dashboard.dto.DashboardResponse;
-import org.example.apexams.dashboard.dto.StatsPreview;
 import org.example.apexams.enrollments.dto.EnrollmentResponse;
+import org.example.apexams.enrollments.repo.EnrollmentRepository;
 import org.example.apexams.enrollments.service.EnrollmentService;
+import org.example.apexams.lessonProgress.repo.LessonProgressRepository;
 import org.example.apexams.lessons.dto.LessonResponse;
+import org.example.apexams.lessons.entity.LessonEntity;
+import org.example.apexams.lessons.repo.LessonRepository;
 import org.example.apexams.lessons.service.LessonService;
 import org.example.apexams.lessonProgress.dto.LessonProgressResponse;
 import org.example.apexams.lessonProgress.entity.enums.LessonProgressStatus;
@@ -22,150 +31,123 @@ import org.example.apexams.tests.service.TestAttemptService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class DashboardServiceImpl implements DashboardService {
+    private final CourseRepository courseRepository;
+    private final LessonRepository lessonRepository;
     private final LessonProgressService lessonProgressService;
-    private final LessonService lessonService;
-    private final CourseService courseService;
     private final EnrollmentService enrollmentService;
-    private final NotificationService notificationService;
-    private final TestAttemptService testAttemptService;
+    private final CourseService courseService;
 
     @Transactional(readOnly = true)
     @Override
     public DashboardResponse getDashboard(UUID userId) {
-        ContinueLearningItem continueLearningItem = getContinueLearningItem(userId);
-        List<CourseWithProgressResponse> recentCourses = getRecentCourses(userId);
-        List<NotificationResponse> recentNotifications = getRecentNotifications(userId);
-        StatsPreview statsPreview = getStatsPreview(userId);
+        List<CourseCardResponse> myCourses = getMyCourses(userId);
+        List<CourseCardResponse> availableCourses = getAvailableCourses(userId);
 
-        return new DashboardResponse(
-                continueLearningItem,
-                recentCourses,
-                recentNotifications,
-                statsPreview
-        );
-    }
 
-    private ContinueLearningItem getContinueLearningItem(UUID userId) {
-        List<LessonProgressResponse> inProgressLessons = lessonProgressService.getUserProgress(userId)
-                .stream()
-                .filter(p -> p.status() == LessonProgressStatus.IN_PROGRESS)
-                .sorted(Comparator.comparing(LessonProgressResponse::id).reversed())
+        List<DashboardCourseDetailResponse> selectedCourseDetails = myCourses.stream()
+                .map(course -> getCourseDetail(userId, course.id()))
                 .toList();
 
-        if (!inProgressLessons.isEmpty()) {
-            LessonProgressResponse lastProgress = inProgressLessons.getFirst();
-            LessonResponse lesson = lessonService.getLesson(lastProgress.lessonId());
-            // TODO: Need to get courseId from lesson.unitId
-            // CourseResponse course = courseService.getCourse(lesson.unitId());
 
-            // double progressPercentage = calculateCourseProgress(userId, course.id());
-
-            return new ContinueLearningItem(
-                    null, // course.id(),
-                    "Course", // course.title(),
-                    lesson.id(),
-                    lesson.title(),
-                    0.0 // progressPercentage
-            );
-        }
-
-        List<EnrollmentResponse> enrollments = enrollmentService.getUserEnrollments(userId);
-        if (!enrollments.isEmpty()) {
-            EnrollmentResponse firstEnrollment = enrollments.getFirst();
-            CourseResponse course = courseService.getCourse(firstEnrollment.courseId());
-
-            // TODO: Need to get lessons by course, not by unit
-            // List<LessonResponse> lessons = lessonService.getLessonsByUnit(course.id());
-            // if (!lessons.isEmpty()) {
-            //     LessonResponse firstLesson = lessons.getFirst();
-
-            //     return new ContinueLearningItem(
-            //             course.id(),
-            //             course.title(),
-            //             firstLesson.id(),
-            //             firstLesson.title(),
-            //             0.0
-            //     );
-            // }
-        }
-        return null;
+        return new DashboardResponse(myCourses, availableCourses, selectedCourseDetails);
     }
 
-    private List<CourseWithProgressResponse> getRecentCourses(UUID userId) {
-        List<EnrollmentResponse> enrollments = enrollmentService.getUserEnrollments(userId)
+
+    private DashboardCourseDetailResponse getCourseDetail(UUID userId, UUID courseId) {
+        CourseEntity course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new ResourceNotFoundException("Course not found"));
+
+        // Получаем все уроки курса с сортировкой
+        List<LessonEntity> allLessons = lessonRepository.findAllByCourseIdOrderByUnitAndLesson(courseId);
+
+        // Получаем прогресс пользователя по всем урокам
+        Map<UUID, LessonProgressStatus> progressMap = lessonProgressService.getUserProgress(userId)
                 .stream()
+                .collect(Collectors.toMap(
+                        LessonProgressResponse::lessonId,
+                        LessonProgressResponse::status
+                ));
+
+        // Создаем список уроков с их статусами
+        List<CourseLessonPreview> allLessonPreviews = allLessons.stream()
+                .map(lesson -> {
+                    LessonProgressStatus status = progressMap.getOrDefault(
+                            lesson.getId(),
+                            LessonProgressStatus.NOT_STARTED
+                    );
+                    return new CourseLessonPreview(
+                            lesson.getId(),
+                            lesson.getTitle(),
+                            lesson.getOrderIndex(),
+                            lesson.getUnit().getId(),
+                            lesson.getUnit().getTitle(),
+                            status
+                    );
+                })
+                .toList();
+
+        // Фильтруем и сортируем: сначала IN_PROGRESS, потом NOT_STARTED
+        List<CourseLessonPreview> inProgressLessons = allLessonPreviews.stream()
+                .filter(l -> l.status() == LessonProgressStatus.IN_PROGRESS)
                 .limit(3)
                 .toList();
 
-        return enrollments.stream()
-                .map(enrollment -> {
-                    CourseResponse course = courseService.getCourse(enrollment.courseId());
+        List<CourseLessonPreview> selectedLessons = new ArrayList<>(inProgressLessons);
 
-                    // TODO: Need to get lessons by course, not by unit
-                    int totalLessons = 0;
-                    int completedLessonsCount = 0;
-                    double progressPercentage = 0.0;
+        // Если меньше 3, добавляем NOT_STARTED
+        if (selectedLessons.size() < 3) {
+            List<CourseLessonPreview> notStartedLessons = allLessonPreviews.stream()
+                    .filter(l -> l.status() == LessonProgressStatus.NOT_STARTED)
+                    .limit(3 - selectedLessons.size())
+                    .toList();
+            selectedLessons.addAll(notStartedLessons);
+        }
 
-                    return new CourseWithProgressResponse(
-                            course.id(),
-                            course.title(),
-                            course.slug(),
-                            course.coverUrl(),
-                            enrollment.tier(),
-                            totalLessons,
-                            completedLessonsCount,
-                            progressPercentage,
-                            null,
-                            null
-                    );
-                })
-                .collect(Collectors.toList());
-    }
-
-    private List<NotificationResponse> getRecentNotifications(UUID userId) {
-        return notificationService.getUserNotifications(userId)
-                .stream()
-                .limit(5)
-                .toList();
-    }
-
-    private StatsPreview getStatsPreview(UUID userId) {
-        long totalLessonsCompleted = lessonProgressService.getUserProgress(userId)
-                .stream()
-                .filter(p -> p.status() == LessonProgressStatus.COMPLETED)
-                .count();
-
-        List<TestAttemptResponse> allAttempts = testAttemptService.getAllUserAttempts(userId)
-                .stream()
-                .filter(a -> a.finishedAt() != null)
-                .toList();
-
-        int totalTestsCompleted = allAttempts.size();
-
-        double averageTestScore = allAttempts.isEmpty() ? 0.0 :
-                allAttempts.stream()
-                        .mapToDouble(TestAttemptResponse::score)
-                        .average()
-                        .orElse(0.0);
-
-        return new StatsPreview(
-                (int) totalLessonsCompleted,
-                totalTestsCompleted,
-                averageTestScore
+        return new DashboardCourseDetailResponse(
+                course.getId(),
+                course.getTitle(),
+                course.getSlug(),
+                course.getSnippet(),
+                selectedLessons
         );
     }
 
-    private double calculateCourseProgress(UUID userId, UUID courseId) {
-        // TODO: Need to get lessons by course, not by unit
-        return 0.0;
+    private List<CourseCardResponse> getMyCourses(UUID userId) {
+        return enrollmentService.getUserEnrollments(userId).stream()
+                .map(enrollment -> {
+                    CourseResponse course = courseService.getCourse(enrollment.courseId());
+                    return new CourseCardResponse(
+                            course.id(),
+                            course.title(),
+                            course.slug(),
+                            course.coverUrl()
+                    );
+                })
+                .toList();
+    }
+
+    private List<CourseCardResponse> getAvailableCourses(UUID userId) {
+        // Получаем ID курсов, на которые пользователь уже записан
+        Set<UUID> enrolledCourseIds = enrollmentService.getUserEnrollments(userId).stream()
+                .map(EnrollmentResponse::courseId)
+                .collect(Collectors.toSet());
+
+        // Получаем все опубликованные курсы
+        return courseRepository.findAllByStatus(CourseStatus.PUBLISHED).stream()
+                .filter(course -> !enrolledCourseIds.contains(course.getId()))
+                .map(course -> new CourseCardResponse(
+                        course.getId(),
+                        course.getTitle(),
+                        course.getSlug(),
+                        course.getCoverUrl()
+                ))
+                .toList();
     }
 }

@@ -1,5 +1,3 @@
-// frontend/src/pages/UnitPage/UnitPage.tsx
-
 import { useParams, Link } from 'react-router-dom'
 import { Header } from '@/widgets/Header'
 import { Footer } from '@/widgets/Footer'
