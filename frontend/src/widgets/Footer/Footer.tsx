@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import {ROUTES} from "@/app/router/routes.ts";
 
 interface FooterProps {
     variant?: 'full' | 'minimal'
@@ -15,7 +16,7 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                     <div className="w-layout-blockcontainer container-default w-container">
                         <div className="footer-bottom v2">
                             <div className="footer-logo-wrapper v3">
-                                <Link to="/" className="logo-link w-inline-block">
+                                <Link to={ROUTES.HOME} className="logo-link w-inline-block">
                                     <img src={logoSrc} alt="AP Exams Logo" />
                                 </Link>
                             </div>
@@ -35,7 +36,7 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                     <div className="footer-top v1">
                         <div id="w-node-_4ce7d77c-4018-d530-59d0-9a7e57241a47-57241a43" className="mg-top-64px mg-top-0-tablet">
                             <div className="footer-logo-wrapper">
-                                <Link to="/" className="logo-link w-inline-block">
+                                <Link to={ROUTES.HOME} className="logo-link w-inline-block">
                                     <img src={logoSrc} alt="AP Exams Logo" />
                                 </Link>
                             </div>
@@ -72,33 +73,23 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                     <div className="footer-column---main-pages">
                                         <ul role="list" className="footer-column-links">
                                             <li className="footer-column-item">
-                                                <Link to="/" className="footer-item-link w-inline-block">
+                                                <Link to={ROUTES.HOME} className="footer-item-link w-inline-block">
                                                     <div>Home</div>
                                                 </Link>
                                             </li>
                                             <li className="footer-column-item">
-                                                <Link to="/about" className="footer-item-link w-inline-block">
+                                                <Link to={ROUTES.ABOUT} className="footer-item-link w-inline-block">
                                                     <div>About</div>
                                                 </Link>
                                             </li>
                                             <li className="footer-column-item">
-                                                <Link to="/contact" className="footer-item-link w-inline-block">
-                                                    <div>Contact</div>
+                                                <Link to={ROUTES.CATALOG} className="footer-item-link w-inline-block">
+                                                    <div>Courses</div>
                                                 </Link>
                                             </li>
                                             <li className="footer-column-item">
-                                                <Link to="/pricing" className="footer-item-link w-inline-block">
-                                                    <div>Pricing</div>
-                                                </Link>
-                                            </li>
-                                            <li className="footer-column-item">
-                                                <Link to="/chapters" className="footer-item-link w-inline-block">
-                                                    <div>Chapters</div>
-                                                </Link>
-                                            </li>
-                                            <li className="footer-column-item">
-                                                <Link to="/blog" className="footer-item-link w-inline-block">
-                                                    <div>Blog</div>
+                                                <Link to={ROUTES.TERMS_AND_CONDITIONS} className="footer-item-link w-inline-block">
+                                                    <div>Terms & Conditions</div>
                                                 </Link>
                                             </li>
                                         </ul>
@@ -108,24 +99,16 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                     <h3 className="footer-title">Utility pages</h3>
                                     <ul role="list" className="footer-column-links">
                                         <li className="footer-column-item">
-                                            <Link to="/sign-in" className="footer-item-link w-inline-block">
-                                                <div>Sign in</div>
-                                            </Link>
-                                        </li>
-                                        <li className="footer-column-item">
-                                            <Link to="/sign-up" className="footer-item-link w-inline-block">
-                                                <div>Sign up</div>
-                                            </Link>
-                                        </li>
-                                        <li className="footer-column-item">
-                                            <Link to="/404" className="footer-item-link w-inline-block">
-                                                <div>404 Not found</div>
-                                            </Link>
-                                        </li>
-                                        <li className="footer-column-item">
-                                            <Link to="/password-protected" className="footer-item-link w-inline-block">
-                                                <div>Password protected</div>
-                                            </Link>
+                                            <li className="footer-column-item">
+                                                <Link to={ROUTES.SIGN_IN} className="footer-item-link w-inline-block">
+                                                    <div>Sign in</div>
+                                                </Link>
+                                            </li>
+                                            <li className="footer-column-item">
+                                                <Link to={ROUTES.CATALOG} className="footer-item-link w-inline-block">
+                                                    <div>Browse Courses</div>
+                                                </Link>
+                                            </li>
                                         </li>
                                     </ul>
                                 </div>

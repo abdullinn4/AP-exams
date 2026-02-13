@@ -99,7 +99,7 @@ public class LemonSqueezyService implements PaymentProvider {
     private Map<String, Object> buildCheckoutRequest(UserEntity user, List<TariffEntity> tariffs, String variantId) {
         // Validate all tariffs have LemonSqueezy variant IDs
         tariffs.forEach(tariff -> {
-            if (tariff.getLemonSqueezyVariantId() == null) {
+            if (tariff.getPaddleVariantId() == null) {
                 throw new IllegalStateException("LemonSqueezy variant ID not configured for tariff: " + tariff.getId());
             }
         });

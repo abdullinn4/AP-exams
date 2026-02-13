@@ -14,7 +14,7 @@ public record CreateTariffRequest(
         @NotNull
         TariffTier tier,
         @NotNull
-        String lemonSqueezyVariantId,
+        String paddleVariantId,
         @NotNull
         Integer priceCents
 ) {

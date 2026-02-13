@@ -3,7 +3,7 @@ import {ROUTES} from "@/app/router/routes.ts";
 import {SignInPage} from "@/pages/SignInPage";
 import {ForgotPasswordPage} from "@/pages/ForgotPasswordPage";
 import {HomePage} from "@/pages/HomePage";
-import {ScrollToTop} from "@/shared/lib/components/ScrollToTop";
+import {ScrollManager} from "@/shared/lib/components/ScrollManager.tsx";
 import {useWebflowAnimations} from "@/shared/lib/hooks/useWebflowAnimations.ts";
 import {CheckoutPage} from "@/pages/CheckoutPage";
 import {CheckoutSuccessPage} from "@/pages/CheckoutSuccessPage";
@@ -16,13 +16,14 @@ import {UnitPage} from "@/pages/UnitPage";
 import {LessonPage} from "@/pages/LessonPage";
 import {TermsAndConditionsPage} from "@/pages/TermsAndConditionsPage";
 import {DashboardPage} from "@/pages/DashboardPage";
+import {ProtectedRoute} from "@/app/router/ProtectedRoute.tsx";
 
 export const AppRouter = () => {
     useWebflowAnimations()
 
     return (
         <>
-            <ScrollToTop />
+            <ScrollManager />
             <Routes>
                 <Route path={ROUTES.SIGN_IN} element={<SignInPage />} />
                 <Route path={ROUTES.FORGOT_PASSWORD} element={<ForgotPasswordPage />} />
@@ -34,11 +35,13 @@ export const AppRouter = () => {
                 <Route path={ROUTES.CHECKOUT_SUCCESS} element={<CheckoutSuccessPage/>}/>
                 <Route path={ROUTES.TERMS_AND_CONDITIONS} element={<TermsAndConditionsPage/>}/>
 
-                <Route path={ROUTES.MY_COURSES} element={<MyCoursesPage />} />
-                <Route path={ROUTES.MY_COURSE} element={<MyCoursePage />} />
-                <Route path={ROUTES.UNIT} element={<UnitPage />} />
-                <Route path={ROUTES.LESSON} element={<LessonPage />} />
-                <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} />
+                <Route element={<ProtectedRoute />}>
+                    <Route path={ROUTES.MY_COURSES} element={<MyCoursesPage />} />
+                    <Route path={ROUTES.MY_COURSE} element={<MyCoursePage />} />
+                    <Route path={ROUTES.UNIT} element={<UnitPage />} />
+                    <Route path={ROUTES.LESSON} element={<LessonPage />} />
+                    <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} />
+                </Route>
 
                 <Route path="*" element={<Navigate to={ROUTES.HOME} replace />} />
             </Routes>

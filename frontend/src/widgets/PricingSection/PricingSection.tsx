@@ -59,8 +59,8 @@ export const PricingSection = ({
                 )}
 
                 {successMessage && (
-                    <div ref={successRef}   className="w-commerce-commercecarterrorstate"
-                         style={{ margin: '0 auto 24px', maxWidth: '720px', color: 'green' }}>
+                    <div ref={successRef} className="success-message-wrapper"
+                         style={{ margin: '0 auto 24px', maxWidth: '720px', backgroundColor: 'var(--secondary--green-100)'}}>
                         <div className="success-msg">{successMessage}</div>
                     </div>
                 )}

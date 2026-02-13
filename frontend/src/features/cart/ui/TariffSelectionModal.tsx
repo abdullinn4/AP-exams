@@ -1,6 +1,6 @@
-import { useGetTariffsByCourseIdQuery } from '@/shared/api/courseApi'
-import { TariffCard } from '@/widgets/TariffCard'
-import { useAddCourseToCart } from "@/shared/lib/hooks/useAddCourseToCart"
+import {useGetTariffsByCourseIdQuery} from '@/shared/api/courseApi'
+import {TariffCard} from '@/widgets/TariffCard'
+import {useAddCourseToCart} from "@/shared/lib/hooks/useAddCourseToCart"
 import type {TariffDetails} from "@/entities/tariff/tariff.ts";
 import {useEffect, useRef} from "react";
 
@@ -19,16 +19,18 @@ export const TariffSelectionModal = ({
                                          courseTitle,
                                          courseCoverUrl,
                                      }: TariffSelectionModalProps) => {
-    const { data: tariffs = [], isLoading, error } = useGetTariffsByCourseIdQuery(courseId, {
+    const {data: tariffs = [], isLoading, error} = useGetTariffsByCourseIdQuery(courseId, {
         skip: !isOpen,
     })
-    const { addTariffToCart, errorMessage } = useAddCourseToCart({
+    const {addTariffToCart, errorMessage, successMessage} = useAddCourseToCart({
         id: courseId,
         title: courseTitle,
         coverUrl: courseCoverUrl
     })
 
     const messageRef = useRef<HTMLDivElement | null>(null)
+    const successRef = useRef<HTMLDivElement | null>(null)
+
     useEffect(() => {
         if (errorMessage && messageRef.current) {
             messageRef.current.scrollIntoView({
@@ -38,13 +40,29 @@ export const TariffSelectionModal = ({
         }
     }, [errorMessage])
 
+    useEffect(() => {
+        if (successMessage) {
+            // Скролл к success сообщению
+            if (successRef.current) {
+                successRef.current.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                })
+            }
+
+            // Автозакрытие через 5 секунд
+            const timer = setTimeout(() => {
+                onClose()
+            }, 5000)
+
+            return () => clearTimeout(timer)
+        }
+    }, [successMessage, onClose])
+
     if (!isOpen) return null
 
     const handleAddToCart = (tariff: TariffDetails) => {
-        const success = addTariffToCart(tariff)
-        if (success) {
-            onClose()
-        }
+        addTariffToCart(tariff)
     }
 
 
@@ -97,12 +115,12 @@ export const TariffSelectionModal = ({
                     </a>
 
                     {/* Title */}
-                    <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto' }}>
-                        <h4 className="display-7" style={{ margin: 0 }}>
+                    <div style={{textAlign: 'center', maxWidth: '600px', margin: '0 auto'}}>
+                        <h4 className="display-7" style={{margin: 0}}>
                             Choose your plan for{' '}
                             <span className="heading-gradient">{courseTitle}</span>
                         </h4>
-                        <p className="text-neutral-600 mg-top-8px" style={{ margin: 0 }}>
+                        <p className="text-neutral-600 mg-top-8px" style={{margin: 0}}>
                             Select the perfect plan that matches your learning goals
                         </p>
                     </div>
@@ -117,30 +135,39 @@ export const TariffSelectionModal = ({
                      }}>
 
                     {error ? (
-                        <div className="pd-sides-24px flex-vertical text-center" style={{ padding: '60px 20px' }}>
+                        <div className="pd-sides-24px flex-vertical text-center" style={{padding: '60px 20px'}}>
                             <div className="display-2 text-neutral-800 mg-bottom-24px">Failed to load plans</div>
                             <p className="text-neutral-600">Please try again later</p>
                         </div>
                     ) : tariffs.length === 0 && !isLoading ? (
-                        <div className="pd-sides-24px flex-vertical text-center" style={{ padding: '60px 20px' }}>
+                        <div className="pd-sides-24px flex-vertical text-center" style={{padding: '60px 20px'}}>
                             <div className="display-2 text-neutral-800 mg-bottom-24px">No plans available</div>
                             <p className="text-neutral-600">There are no active plans for this course</p>
                         </div>
                     ) : (
                         <div>
+                            {successMessage && (
+                                <div ref={successRef}
+                                     className="success-message-wrapper"
+                                     style={{margin: '0 auto 24px', maxWidth: '720px', backgroundColor: 'var(--secondary--green-100)'}}>
+                                    <div className="success-message-wrapper">{successMessage}</div>
+                                </div>
+                            )}
+
                             {errorMessage && (
-                                <div ref={messageRef} className="w-commerce-commercecarterrorstate error-message-wrapper"
-                                     style={{ margin: '0 auto 24px', maxWidth: '720px' }}>
+                                <div ref={messageRef}
+                                     className="w-commerce-commercecarterrorstate error-message-wrapper"
+                                     style={{margin: '0 auto 24px', maxWidth: '720px'}}>
                                     <div className="w-cart-error-msg">{errorMessage}</div>
                                 </div>
                             )}
 
                             {isLoading ? (
-                                <div className="text-center" style={{ padding: '60px 20px' }}>
+                                <div className="text-center" style={{padding: '60px 20px'}}>
                                     <div className="display-2 text-neutral-800">Loading plans...</div>
                                 </div>
                             ) : (
-                                <div className="section-bg-wrapper" style={{ width: '100%' }}>
+                                <div className="section-bg-wrapper" style={{width: '100%'}}>
                                     <div
                                         className="pricing-grid"
                                         style={{
@@ -164,7 +191,7 @@ export const TariffSelectionModal = ({
                                             />
                                         ))}
                                     </div>
-                                    <div className="blur-bg pricing-section-bg---home-v1" />
+                                    <div className="blur-bg pricing-section-bg---home-v1"/>
                                 </div>
                             )}
                         </div>

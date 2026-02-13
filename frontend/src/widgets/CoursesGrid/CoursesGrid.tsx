@@ -6,11 +6,11 @@ interface CoursesGridProps {
     title: string
     titleHighlight: string
     description: string
-    courses: Array<{
+    courses?: Array<{
         id: string
         title: string
         slug: string
-        snippet?: string
+        snippet?: string | null
         coverUrl: string | null
         wId?: string
         className?: string
@@ -24,7 +24,7 @@ export const CoursesGrid = ({
                                 title,
                                 titleHighlight,
                                 description,
-                                courses,
+                                courses = [],
                                 variant,
                                 coursesProgress,
                                 onAddToCart

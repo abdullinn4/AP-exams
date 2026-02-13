@@ -15,7 +15,7 @@ public class TariffMapper {
                 .title(dto.title())
                 .tier(dto.tier())
                 .priceCents(dto.priceCents())
-                .lemonSqueezyVariantId(dto.lemonSqueezyVariantId())
+                .paddleVariantId(dto.paddleVariantId())
                 .build();
     }
 
@@ -25,7 +25,7 @@ public class TariffMapper {
                 entity.getCourse().getId(),
                 entity.getTitle(),
                 entity.getTier(),
-                entity.getLemonSqueezyVariantId(),
+                entity.getPaddleVariantId(),
                 centsToDecimal(entity.getPriceCents()),
                 entity.getCurrency(),
                 entity.getIsActive()

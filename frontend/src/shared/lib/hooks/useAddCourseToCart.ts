@@ -45,7 +45,7 @@ export const useAddCourseToCart = (course: {
             price: tariff.price,
             currency: tariff.currency,
             addedAt: new Date().toISOString(),
-            lemonSqueezyVariantId: tariff.lemonSqueezyVariantId,
+            paddleVariantId: tariff.paddleVariantId,
         })
 
         setSuccessMessage('Course added to cart successfully')

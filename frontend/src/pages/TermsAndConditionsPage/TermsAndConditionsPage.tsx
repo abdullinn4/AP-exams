@@ -15,7 +15,10 @@ export const TermsAndConditionsPage = () => {
                 <div className="w-layout-blockcontainer container-default w-container">
                     <div className="grid-2-columns template-page-sidebar">
                         {/* Sidebar Navigation */}
-                        <div className="card template-pages---sticky-card">
+                        <div
+                            data-w-id="a7b06a97-d241-a510-7e97-e1b956bdbe73"
+                            className="card template-pages---sticky-card"
+                        >
                             <ul role="list" className="template-pages---sidebar-navigation w-list-unstyled">
                                 <li className="template-pages---nav-item-wrapper">
                                     <a href="#terms-of-service" className="template-pages---nav-item-link">
@@ -36,7 +39,10 @@ export const TermsAndConditionsPage = () => {
                         </div>
 
                         {/* Main Content */}
-                        <div className="card template-pages---text-card">
+                        <div
+                            data-w-id="a7b06a97-d241-a510-7e97-e1b956bdbe84"
+                            className="card template-pages---text-card"
+                        >
                             {/* Terms of Service */}
                             <div id="terms-of-service" className="pd-top-24px">
                                 <h2 className="mg-bottom-16px">Terms of Service for Smash AP</h2>

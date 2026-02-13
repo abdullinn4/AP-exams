@@ -22,7 +22,7 @@ public class LessonContentEntity {
     @JoinColumn(name = "lesson_id")
     private LessonEntity lesson;
 
-    @Column(name = "video_payload", columnDefinition = "jsonb")
+    @Column(name = "video_payload", columnDefinition = "text")
     private String videoPayload;
 
     @Column(name = "text_payload", columnDefinition = "text")

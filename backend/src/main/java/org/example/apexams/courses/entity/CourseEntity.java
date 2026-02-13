@@ -34,7 +34,7 @@ public class CourseEntity {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String snippet;
 
     @Column(name = "preview_video_url", columnDefinition = "TEXT")

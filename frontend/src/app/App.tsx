@@ -5,8 +5,15 @@ import {Provider} from "react-redux";
 import {store} from "@/app/store/store.ts";
 import {AppRouter} from "@/app/router/AppRouter.tsx";
 import {BrowserRouter} from "react-router-dom";
+import {useEffect} from "react";
 
 function App() {
+
+    useEffect(() => {
+        if ('scrollRestoration' in window.history) {
+            window.history.scrollRestoration = 'manual'
+        }
+    }, [])
 
     return (
         <Provider store={store}>

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.example.apexams.courses.entity.CourseEntity;
 import org.example.apexams.questionBank.entity.enums.QuestionType;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.util.UUID;
 
@@ -24,6 +26,7 @@ public class QuestionEntity {
     private CourseEntity course;
 
     @Column(name = "tags_json", columnDefinition = "jsonb")
+    @JdbcTypeCode(SqlTypes.JSON)
     private String tagsJson;
 
     @Column(name = "type", nullable = false)
@@ -34,9 +37,11 @@ public class QuestionEntity {
     private String prompt;
 
     @Column(name = "options_json", columnDefinition = "jsonb")
+    @JdbcTypeCode(SqlTypes.JSON)
     private String optionsJson;
 
     @Column(name = "answer_key_json", columnDefinition = "jsonb")
+    @JdbcTypeCode(SqlTypes.JSON)
     private String answerKeyJson;
 
     @Column(columnDefinition = "text")

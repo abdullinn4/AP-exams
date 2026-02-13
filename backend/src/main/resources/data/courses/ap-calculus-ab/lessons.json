@@ -1,0 +1,194 @@
+[
+    {
+    "unitOrder": 1,
+    "lessonOrder": 1,
+    "title": "Introduction to Limits",
+    "videoUrl": "https://www.youtube.com/watch?v=Ojiv9Smi4XE",
+    "contentFile": "unit-1-lesson-1.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 1,
+    "lessonOrder": 2,
+    "title": "Calculating Limits Analytically",
+    "videoUrl": "https://www.youtube.com/watch?v=xyz123",
+    "contentFile": "unit-1-lesson-2.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 1,
+    "lessonOrder": 3,
+    "title": "Continuity",
+    "videoUrl": "https://www.youtube.com/watch?v=abc456",
+    "contentFile": "unit-1-lesson-3.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 2,
+    "lessonOrder": 1,
+    "title": "The Derivative Concept",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-2-lesson-1.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 2,
+    "lessonOrder": 2,
+    "title": "Derivative Rules Mastery",
+    "videoUrl": "https://www.youtube.com/watch?v=Ojiv9Smi4XE",
+    "contentFile": "unit-2-lesson-2.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 3,
+    "lessonOrder": 1,
+    "title": "Chain Rule and Implicit Differentiation",
+    "videoUrl": "https://www.youtube.com/watch?v=xyz123",
+    "contentFile": "unit-3-lesson-1.md",
+    "releaseDate": "2026-02-15"},
+    {
+    "unitOrder": 3,
+    "lessonOrder": 2,
+    "title": "Higher Order Derivatives",
+    "videoUrl": "https://www.youtube.com/watch?v=abc456",
+    "contentFile": "unit-3-lesson-2.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 4,
+    "lessonOrder": 1 ,
+    "title": "Interpreting Derivatives in Context",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-4-lesson-1.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 4,
+    "lessonOrder": 2 ,
+    "title": "Related Rates",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-4-lesson-2.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 4,
+    "lessonOrder": 3 ,
+    "title": "Linearization and Limits",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-4-lesson-3.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 5,
+    "lessonOrder": 1 ,
+    "title": "Key Theorems and Extreme Values",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-5-lesson-1.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 5,
+    "lessonOrder": 2 ,
+    "title": "Function Behavior and Graphing",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-5-lesson-2.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 5,
+    "lessonOrder": 3 ,
+    "title": "Optimization Problems",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-5-lesson-3.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 6,
+    "lessonOrder": 1 ,
+    "title": "Riemann Sums and Accumulation",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-6-lesson-1.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 6,
+    "lessonOrder": 2 ,
+    "title": "Fundamental Theorem of Calculus",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-6-lesson-2.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 6,
+    "lessonOrder": 3 ,
+    "title": "Antiderivatives and Basic Integration",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-6-lesson-3.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 7,
+    "lessonOrder": 1 ,
+    "title": "Differential Equation Basics",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-7-lesson-1.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 7,
+    "lessonOrder": 2 ,
+    "title": "Solving Differential Equations",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-7-lesson-2.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 8,
+    "lessonOrder": 1 ,
+    "title": "Area Between Curves",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-8-lesson-1.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 8,
+    "lessonOrder": 2 ,
+    "title": "Volume of Solids",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-8-lesson-2.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 8,
+    "lessonOrder": 3 ,
+    "title": "Accumulation and Average Value",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-8-lesson-3.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 9,
+    "lessonOrder": 1 ,
+    "title": "Calculator Mastery",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-9-lesson-1.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 9,
+    "lessonOrder": 2 ,
+    "title": "FRQ Strategy Session",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-9-lesson-2.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 9,
+    "lessonOrder": 3 ,
+    "title": "Full Practice Exam & Review",
+    "videoUrl": "https://www.youtube.com/watch?v=def789",
+    "contentFile": "unit-9-lesson-3.md",
+    "releaseDate": null
+    }
+
+]

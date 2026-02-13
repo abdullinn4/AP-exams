@@ -9,7 +9,7 @@ export interface CartItem {
     price: number
     currency: string
     addedAt: string
-    lemonSqueezyVariantId: string
+    paddleVariantId: string
 }
 
 export interface CartState {

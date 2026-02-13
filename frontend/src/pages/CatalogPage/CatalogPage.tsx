@@ -4,7 +4,8 @@ import { Footer } from '@/widgets/Footer'
 import { CTAFooterBlock } from '@/widgets/CTAFooterBlock'
 import { CoursesGrid } from '@/widgets/CoursesGrid'
 import { TariffSelectionModal } from "@/features/cart"
-import { CATALOG_HEADER, CATALOG_COURSES } from '@/shared/config/content'
+import { CATALOG_HEADER} from '@/shared/config/content'
+import {useGetAllCoursesQuery} from "@/shared/api/courseApi.ts";
 
 export const CatalogPage = () => {
     const [selectedCourse, setSelectedCourse] = useState<{
@@ -17,18 +18,32 @@ export const CatalogPage = () => {
         setSelectedCourse({ id, title, coverUrl })
     }
 
+    const { data: courses, isLoading, error } = useGetAllCoursesQuery()
+
     return (
         <div className="page-wrapper">
             <Header />
 
-            <CoursesGrid
-                title={CATALOG_HEADER.title}
-                titleHighlight={CATALOG_HEADER.titleHighlight}
-                description={CATALOG_HEADER.description}
-                courses={CATALOG_COURSES.items}
-                variant="catalog"
-                onAddToCart={handleAddToCart}
-            />
+                <CoursesGrid
+                    title={CATALOG_HEADER.title}
+                    titleHighlight={CATALOG_HEADER.titleHighlight}
+                    description={CATALOG_HEADER.description}
+                    courses={courses || []}
+                    variant="catalog"
+                    onAddToCart={handleAddToCart}
+                />
+
+            {isLoading && (
+                <div style={{ textAlign: 'center', padding: '40px 0' }}>
+                    <p>Loading courses...</p>
+                </div>
+            )}
+
+            {error && (
+                <div style={{ textAlign: 'center', padding: '40px 0', color: 'red' }}>
+                    <p>Error loading courses. Please try again later.</p>
+                </div>
+            )}
 
             {selectedCourse && (
                 <TariffSelectionModal

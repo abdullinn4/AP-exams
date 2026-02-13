@@ -14,7 +14,7 @@ export const useAuth = () => {
         try{
             const response = await loginMutation(loginRequest).unwrap()
             tokenService.setTokens(response.accessToken, response.refreshToken)
-            navigate(ROUTES.HOME)
+            navigate(ROUTES.DASHBOARD)
             return {success: true}
         }catch (error: any){
             return {

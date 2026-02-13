@@ -46,7 +46,7 @@ public class StatsServiceImpl implements StatsService {
 
     private List<ModuleTestStats> getModuleTestStats(List<TestAttemptEntity> allAttempts) {
         Map<UUID, List<TestAttemptEntity>> groupedByTest = allAttempts.stream()
-                .filter(a -> a.getTest().getType() == TestType.MODULE_TEST)
+                .filter(a -> a.getTest().getType() == TestType.LESSON_TEST)
                 .collect(Collectors.groupingBy(a -> a.getTest().getId()));
 
         return groupedByTest.entrySet().stream()
@@ -119,15 +119,15 @@ public class StatsServiceImpl implements StatsService {
                 .count();
 
         long totalModuleTests = allAttempts.stream()
-                .filter(a -> a.getTest().getType() == TestType.MODULE_TEST)
+                .filter(a -> a.getTest().getType() == TestType.LESSON_TEST)
                 .count();
 
         long totalMockExams = allAttempts.stream()
-                .filter(a -> a.getTest().getType() == TestType.MOCK_EXAM)
+                .filter(a -> a.getTest().getType() == TestType.LESSON_TEST)
                 .count();
 
         double avgModuleTestScore = allAttempts.stream()
-                .filter(a -> a.getTest().getType() == TestType.MODULE_TEST)
+                .filter(a -> a.getTest().getType() == TestType.LESSON_TEST)
                 .mapToDouble(TestAttemptEntity::getScore)
                 .average()
                 .orElse(0.0);
