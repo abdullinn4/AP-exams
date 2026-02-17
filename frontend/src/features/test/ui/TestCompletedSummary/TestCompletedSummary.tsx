@@ -1,25 +1,18 @@
-import type { TestAttemptResult } from '@/entities/test/test'
+import type {TestAttemptSummary} from '@/entities/test/test'
 
 interface TestCompletedSummaryProps {
-    result: TestAttemptResult
+    result: TestAttemptSummary
     onViewResults: () => void
 }
 
 export const TestCompletedSummary = ({ result, onViewResults }: TestCompletedSummaryProps) => {
-    const parsedResults = (() => {
-        try {
-            return JSON.parse(result.resultJson)
-        } catch {
-            return { correctCount: 0, totalCount: 0 }
-        }
-    })();
-    const { correctCount, totalCount } = parsedResults
+    const { correctCount, totalCount, score, attemptedAt } = result
 
     const percentage = Math.round(result.score)
     const isPassed = percentage >= 70
 
     // Форматируем дату прохождения теста
-    const attemptDate = new Date(result.finishedAt).toLocaleDateString('en-US', {
+    const attemptDate = new Date(attemptedAt).toLocaleDateString('en-US', {
         day: 'numeric',
         month: 'long',
         year: 'numeric',
@@ -63,7 +56,7 @@ export const TestCompletedSummary = ({ result, onViewResults }: TestCompletedSum
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                 <span className="display-3 bold text-neutral-800">
-                                    {correctCount} out of {totalCount}
+                                   {score}%
                                 </span>
                                 {isPassed && (
                                     <span style={{

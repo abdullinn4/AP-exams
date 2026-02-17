@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.apexams.common.mapper.QuestionMapper;
 import org.example.apexams.common.mapper.TestMapper;
+import org.example.apexams.lessonProgress.service.LessonProgressService;
 import org.example.apexams.notifications.entity.enums.NotificationType;
 import org.example.apexams.notifications.service.NotificationService;
 import org.example.apexams.questionBank.dto.QuestionForStudentResponse;
@@ -46,6 +47,7 @@ public class TestAttemptServiceImpl implements TestAttemptService {
     private final NotificationService notificationService;
     private final TestService testService;
     private final QuestionMapper questionMapper;
+    private final LessonProgressService lessonProgressService;
 
 
     @Transactional
@@ -149,10 +151,20 @@ public class TestAttemptServiceImpl implements TestAttemptService {
         attempt.setScore(score);
 
         attemptRepository.save(attempt);
+
+        if (test.getLesson() != null) {
+            try {
+                lessonProgressService.completeLesson(attempt.getUser().getId(), test.getLesson().getId());
+                log.info("Lesson completed after test submission: userId={}, lessonId={}",
+                        attempt.getUser().getId(), test.getLesson().getId());
+            } catch (Exception e) {
+                log.error("Failed to complete lesson progress: {}", e.getMessage());
+            }
+        }
         log.info("Test attempt submitted: attemptId={}, score={}", attemptId, score);
 
         // Создаём уведомление о прохождении теста
-        try {
+        /*try {
             NotificationType notificationType = test.getType() == TestType.MOCK_EXAM
                     ? NotificationType.MOCK_EXAM_RESULT
                     : NotificationType.TEST_PASSED;
@@ -171,7 +183,7 @@ public class TestAttemptServiceImpl implements TestAttemptService {
             notificationService.createNotification(attempt.getUser().getId(), notificationType, payload);
         } catch (Exception e) {
             log.error("Failed to create notification for test completion: {}", e.getMessage());
-        }
+        }*/
 
         return testMapper.toDto(attempt);
     }

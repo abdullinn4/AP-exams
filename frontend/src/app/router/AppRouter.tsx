@@ -17,6 +17,7 @@ import {LessonPage} from "@/pages/LessonPage";
 import {TermsAndConditionsPage} from "@/pages/TermsAndConditionsPage";
 import {DashboardPage} from "@/pages/DashboardPage";
 import {ProtectedRoute} from "@/app/router/ProtectedRoute.tsx";
+import {PublicRoute} from "@/app/router/PublicRoute.tsx";
 
 export const AppRouter = () => {
     useWebflowAnimations()
@@ -25,8 +26,10 @@ export const AppRouter = () => {
         <>
             <ScrollManager />
             <Routes>
-                <Route path={ROUTES.SIGN_IN} element={<SignInPage />} />
-                <Route path={ROUTES.FORGOT_PASSWORD} element={<ForgotPasswordPage />} />
+                <Route element={<PublicRoute />}>
+                    <Route path={ROUTES.SIGN_IN} element={<SignInPage />} />
+                    <Route path={ROUTES.FORGOT_PASSWORD} element={<ForgotPasswordPage />} />
+                </Route>
                 <Route path={ROUTES.HOME} element={<HomePage />}/>
                 <Route path={ROUTES.ABOUT} element={<AboutPage/>}/>
                 <Route path={ROUTES.CATALOG} element={<CatalogPage/>}/>

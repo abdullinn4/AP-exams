@@ -12,8 +12,15 @@ import org.example.apexams.auth.dto.AuthRequest;
 import org.example.apexams.auth.dto.AuthResponse;
 import org.example.apexams.auth.dto.ForgotPasswordRequest;
 import org.example.apexams.auth.service.AuthService;
+import org.example.apexams.users.entity.UserEntity;
+import org.example.apexams.users.entity.enums.Role;
+import org.example.apexams.users.entity.enums.UserStatus;
+import org.example.apexams.users.repo.UserRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.Instant;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -21,6 +28,8 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "Authentication", description = "User authentication and token management")
 public class AuthController {
     private final AuthService authService;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Operation(
             summary = "User login",
@@ -72,4 +81,26 @@ public class AuthController {
         authService.forgotPassword(request);
         return ResponseEntity.ok("Password reset email sent successfully");
     }
+
+    /*@PostMapping("/admin/create-test-user")
+    public ResponseEntity<String> createTestUser() {
+        // Проверь что пользователь не существует
+        if (userRepository.existsByEmail("b@y.ru")) {
+            return ResponseEntity.badRequest().body("User already exists");
+        }
+
+        Instant now = Instant.now();
+
+        // Создай пользователя
+        UserEntity user = UserEntity.builder()
+                .email("b@y.ru")
+                .passwordHash(passwordEncoder.encode("qwerty"))
+                .discordNickname("TestAdmin")
+                .role(Role.ADMIN)
+                .build();
+
+        userRepository.save(user);
+
+        return ResponseEntity.ok("Test user created: test@example.com / password123");
+    }*/
 }

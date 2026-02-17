@@ -60,7 +60,8 @@ public class SecurityConfig {
                         /* ---------- STUDENT ---------- */
                         .requestMatchers(
                                 "/api/v1/me/**",
-                                "/api/v1/progress/**",
+                                "/api/v1/dashboard/**",
+                                "/api/v1/courses/**",
                                 "/api/v1/tests/**",
                                 "/api/v1/test-attempts/**",
                                 "/api/v1/notifications/**",

@@ -61,7 +61,9 @@ export interface TestResultDetailsResponse {
     totalCount: number;
     score: number;
     finishedAt: string;
-    questionResults: QuestionResultDetail[];
+    startedAt: string;
+    testId: string;
+    questions: QuestionResultDetail[];
 }
 
 export const TestAttemptStatus = {

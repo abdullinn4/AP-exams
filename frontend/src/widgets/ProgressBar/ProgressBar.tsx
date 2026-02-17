@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 
 interface ProgressBarProps {
-    percentage: number
+    percentage?: number
     showLabel?: boolean
     animated?: boolean
     height?: string
 }
 
 export const ProgressBar = ({
-                                percentage,
+                                percentage = 0,
                                 showLabel = true,
                                 animated = true,
                                 height = '8px'

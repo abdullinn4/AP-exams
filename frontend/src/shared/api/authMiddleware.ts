@@ -1,7 +1,7 @@
-import { isRejectedWithValue, type Middleware } from '@reduxjs/toolkit'
-import { tokenService } from '@/features/auth/lib/tokenService'
-import { baseApi } from './baseApi'
-import type { LoginResponse } from '@/entities/users/auth/auth'
+import {isRejectedWithValue, type Middleware} from '@reduxjs/toolkit'
+import {tokenService} from '@/features/auth/lib/tokenService'
+import type {LoginResponse} from '@/entities/users/auth/auth'
+import {authApi} from "@/shared/api/authApi.ts";
 
 let isRefreshing = false
 let failedQueue: Array<{
@@ -43,13 +43,13 @@ export const authMiddleware: Middleware = (api) => (next) => async (action) => {
                 isRefreshing = true
 
                 try {
-                    const result = await api.dispatch(
-                        baseApi.endpoints.refreshToken.initiate({ refreshToken })
+                    const result = await (api.dispatch as any)(
+                        authApi.endpoints.refreshToken.initiate({refreshToken})
                     )
 
                     if ('data' in result && result.data) {
                         const data = result.data as LoginResponse
-                        tokenService.setTokens(data.accessToken, data.refreshToken)
+                        tokenService.setTokens(data.tokens.accessToken, data.tokens.refreshToken)
                         processQueue()
                         isRefreshing = false
                         return next(action)
@@ -67,7 +67,7 @@ export const authMiddleware: Middleware = (api) => (next) => async (action) => {
                 }
             } else {
                 return new Promise((resolve, reject) => {
-                    failedQueue.push({ resolve, reject })
+                    failedQueue.push({resolve, reject})
                 })
             }
         }

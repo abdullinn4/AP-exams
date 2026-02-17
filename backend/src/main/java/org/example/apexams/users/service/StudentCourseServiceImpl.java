@@ -69,7 +69,9 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 
     @Override
     @Transactional(readOnly = true)
-    public CourseDetailsResponse getCourseWithUnits(UUID userId, UUID courseId) {
+    public CourseDetailsResponse getCourseWithUnits(UUID userId, String courseSlug) {
+        UUID courseId = courseService.getCourseBySlug(courseSlug).id();
+
         // Проверка доступа
         if (!enrollmentService.hasAccess(userId, courseId)) {
             throw new IllegalStateException("User does not have access to this course");

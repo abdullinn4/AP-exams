@@ -10,7 +10,7 @@ interface HeaderProps {
 }
 
 export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
-    const {isAuthenticated} = useAuth()
+    const {isAuthenticated, logout} = useAuth()
     const [isCartOpen, setIsCartOpen] = useState(false)
 
     // Выбор логотипа в зависимости от темы
@@ -113,6 +113,20 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                                                           className="dropdown-link">Dashboard</Link>
                                                                     <Link to={ROUTES.MY_COURSES}
                                                                           className="dropdown-link">My Courses</Link>
+                                                                    <button
+                                                                        onClick={logout}
+                                                                        className="dropdown-link"
+                                                                        style={{
+                                                                            background: 'none',
+                                                                            border: 'none',
+                                                                            padding: 0,
+                                                                            cursor: 'pointer',
+                                                                            textAlign: 'left',
+                                                                            width: '100%'
+                                                                        }}
+                                                                    >
+                                                                        Logout
+                                                                    </button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -161,15 +175,10 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                             marginRight: '16px'
                                         }}
                                     >
-                                        <img
-                                            src="/src/assets/webflow/images/avatar-icon.svg"
-                                            alt="Dashboard"
-                                            style={{
-                                                width: '32px',
-                                                height: '32px',
-                                                filter: theme === 'light' ? 'brightness(0) invert(1)' : 'none'
-                                            }}
-                                        />
+                                        <span
+                                            className="custom-icon-font"
+                                            style={theme === 'light' ? {color: 'white'} : {}}
+                                        ></span>
                                     </Link>
                                     <Link to={ROUTES.CATALOG}
                                           className={`button-primary small ${theme === 'light' ? 'white' : ''} w-inline-block`}>

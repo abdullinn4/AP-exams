@@ -3,24 +3,47 @@ import {Header} from '@/widgets/Header'
 import {Footer} from '@/widgets/Footer'
 import {CourseUnitsSection} from '@/widgets/CourseUnitsSection/CourseUnitsSection'
 import {CourseVideoHeroSection} from "@/widgets/CourseHeroSection"
-import {MOCK_MY_COURSE_DETAIL} from '@/shared/config/content/my-course-detail.content'
+import {useGetCourseDetailsQuery} from "@/shared/api/courseApi.ts";
 
 export const MyCoursePage = () => {
     const {slug} = useParams<{ slug: string }>()
-    const course = MOCK_MY_COURSE_DETAIL
+
+    const {data: course, error} = useGetCourseDetailsQuery(slug!, {
+        skip: !slug
+    })
+
+    if (!slug) {
+        return (
+            <div className="page-wrapper">
+                <Header/>
+                <div style={{ textAlign: 'center', padding: '100px 0' }}>
+                    <p style={{ color: 'red' }}>Course slug is missing</p>
+                </div>
+                <Footer/>
+            </div>
+        )
+    }
 
     return (
         <div className="page-wrapper">
             <Header/>
 
-            <CourseVideoHeroSection course={course}/>
+            {error ? (
+                <div style={{ textAlign: 'center', padding: '100px 0' }}>
+                    <p style={{ color: 'red' }}>Failed to load course details. Please try again later.</p>
+                </div>
+            ) : (
+                <>
+                    <CourseVideoHeroSection course={course}/>
 
-            <CourseUnitsSection
-                units={course.units}
-                isClickable={true}
-                showProgress={true}
-                courseSlug={slug}
-            />
+                    <CourseUnitsSection
+                        units={course?.units}
+                        isClickable={true}
+                        showProgress={true}
+                        courseSlug={course?.slug}
+                    />
+                </>
+            )}
 
             <Footer/>
         </div>

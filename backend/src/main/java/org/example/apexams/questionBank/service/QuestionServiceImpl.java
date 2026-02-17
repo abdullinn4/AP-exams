@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -67,21 +68,21 @@ public class QuestionServiceImpl implements QuestionService {
             String answerKeyJson = question.getAnswerKeyJson();
 
             if (question.getType() == QuestionType.SINGLE_CHOICE) {
-                // Для single choice: {"correct": "A"}
-                String correctAnswer = objectMapper.readTree(answerKeyJson).get("correct").asText();
+                // Для single choice: "A"
+                String correctAnswer = objectMapper.readTree(answerKeyJson).asText();
                 return correctAnswer.equalsIgnoreCase(userAnswer.trim());
             } else if (question.getType() == QuestionType.MULTIPLE_CHOICE) {
-                // Для multiple choice: {"correct": ["A", "C"]}
+                // Для multiple choice: ["A", "C"]
                 List<String> correctAnswers = objectMapper.readValue(
-                        objectMapper.readTree(answerKeyJson).get("correct").toString(),
+                        answerKeyJson,
                         objectMapper.getTypeFactory().constructCollectionType(List.class, String.class)
                 );
                 List<String> userAnswers = List.of(userAnswer.split(","));
                 return correctAnswers.size() == userAnswers.size() &&
-                        correctAnswers.containsAll(userAnswers);
+                        new HashSet<>(correctAnswers).containsAll(userAnswers);
             } else {
                 // Для open questions - простое сравнение строк (можно улучшить)
-                String correctAnswer = objectMapper.readTree(answerKeyJson).get("correct").asText();
+                String correctAnswer = objectMapper.readTree(answerKeyJson).asText();
                 return correctAnswer.equalsIgnoreCase(userAnswer.trim());
             }
         } catch (Exception e) {
@@ -101,11 +102,11 @@ public class QuestionServiceImpl implements QuestionService {
             String correctAnswer;
 
             if (question.getType() == QuestionType.SINGLE_CHOICE) {
-                correctAnswer = objectMapper.readTree(answerKeyJson).get("correct").asText();
+                correctAnswer = objectMapper.readTree(answerKeyJson).asText();
             } else if (question.getType() == QuestionType.MULTIPLE_CHOICE) {
-                correctAnswer = objectMapper.readTree(answerKeyJson).get("correct").toString();
+                correctAnswer = answerKeyJson;
             } else {
-                correctAnswer = objectMapper.readTree(answerKeyJson).get("correct").asText();
+                correctAnswer = objectMapper.readTree(answerKeyJson).asText();
             }
 
             return new QuestionResultResponse(

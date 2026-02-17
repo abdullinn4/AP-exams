@@ -5,6 +5,8 @@ import lombok.*;
 import org.example.apexams.notifications.entity.enums.NotificationStatus;
 import org.example.apexams.notifications.entity.enums.NotificationType;
 import org.example.apexams.users.entity.UserEntity;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -31,6 +33,7 @@ public class NotificationEntity {
     private NotificationType type;
 
     @Column(columnDefinition = "jsonb")
+    @JdbcTypeCode(SqlTypes.JSON)
     private String payloadJson;
 
     @Enumerated(EnumType.STRING)

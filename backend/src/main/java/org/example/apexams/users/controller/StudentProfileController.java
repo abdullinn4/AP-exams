@@ -27,20 +27,12 @@ import java.util.List;
 @Tag(name = "Student Profile", description = "Student profile and enrolled courses")
 public class StudentProfileController {
     private final UserService userService;
-    private final StudentCourseService studentCourseService;
 
     @Operation(summary = "Get current user profile")
     @GetMapping
     public ResponseEntity<UserResponse> getProfile(
             @Parameter(hidden = true) @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return ResponseEntity.ok(userService.getUserById(userDetails.user().getId()));
-    }
-
-    @Operation(summary = "Get enrolled courses with progress")
-    @GetMapping("/courses")
-    public ResponseEntity<List<CourseWithProgressResponse>> getMyCourses(
-            @Parameter(hidden = true) @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return ResponseEntity.ok(studentCourseService.getCoursesWithProgress(userDetails.user().getId()));
     }
 
     @Operation(summary = "Change password", description = "Change user password")

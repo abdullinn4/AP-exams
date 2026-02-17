@@ -7,6 +7,7 @@ import {ConfirmSubmitModal} from "@/widgets/ConfirmSubmitModal";
 import {TimeUpModal} from "@/widgets/TimeUpModal";
 import {useTestNavigation} from "@/features/test/model/useTestNavigation.ts";
 import {useUnloadProtection} from "@/features/test/model/useUnloadProtection.ts";
+import {OptionText} from "@/features/test/ui/OptionText";
 
 interface TestInProgressViewProps {
     testData: StartTestResponse;
@@ -93,7 +94,7 @@ export const TestInProgressView = ({testData, onSubmit, isSubmitting}: TestInPro
                                                     className="test-radio-input"
                                                     disabled={isSubmitting}
                                                 />
-                                                <span className="text-neutral-700">{option.text}</span>
+                                                <OptionText text={option.text} className="text-neutral-700"/>
                                             </label>
                                         ))}
                                     </div>
@@ -123,9 +124,7 @@ export const TestInProgressView = ({testData, onSubmit, isSubmitting}: TestInPro
                                                         className="test-checkbox-input"
                                                         disabled={isSubmitting}
                                                     />
-                                                    <span className="text-neutral-700">
-                                                        {option.text}
-                                                    </span>
+                                                    <OptionText text={option.text} className="text-neutral-700"/>
                                                 </label>
                                             )
                                         })}

@@ -1,57 +1,86 @@
 import type {LessonDetails} from "@/entities/course/course.ts";
-import {useEffect, useState} from "react";
+import {useMemo, useState} from "react";
 import {useGetTestResultDetailsQuery, useStartTestMutation, useSubmitTestMutation} from "@/shared/api/courseApi.ts";
 import {type TestAnswers, TestAttemptStatus} from "@/entities/test/test.ts";
 
 type TestView = "instruction" | "inProgress" | "summary" | "results"
 
-export const useLessonTest = (lesson: LessonDetails) => {
-    const [view, setView] = useState<TestView>("instruction")
+export const useLessonTest = (lesson?: LessonDetails) => {
+    const [manualView, setManualView] = useState<TestView | null>(null)
 
     const [startTest, {data: testData, isLoading: isStarting}] = useStartTestMutation()
 
     const [submitTest, {data: testResult, isLoading: isSubmitting}] = useSubmitTestMutation()
 
-    const attemptId = testResult?.id || lesson.testAttemptId
+    const attemptId = testResult?.id || lesson?.testAttemptId
 
     const {
         data: resultDetails,
         isLoading: isLoadingResults,
     } = useGetTestResultDetailsQuery(attemptId || '', {
-        skip: !attemptId || view !== 'results',
+        skip: !attemptId || (manualView !== 'results'),
     })
 
-    useEffect(() => {
-        if (!lesson.testId) return
+    const view = useMemo<TestView>(() => {
+        // Если есть ручное переключение view, используем его
+        if (manualView) return manualView
 
-        if (lesson.testAttemptStatus === TestAttemptStatus.COMPLETED){
-            setView('summary')
-            return;
+        // Если тест не существует, показываем instruction
+        if (!lesson?.testId) return 'instruction'
+
+        // Если тест уже завершен, показываем summary
+        if (lesson?.testAttemptStatus === TestAttemptStatus.COMPLETED) {
+            return 'summary'
         }
 
-        setView('instruction')
-    }, [lesson])
+        // По умолчанию показываем instruction
+        return 'instruction'
+    }, [lesson?.testId, lesson?.testAttemptStatus, manualView])
 
     const start = () => {
-        if (!lesson.testId) return
+        if (!lesson?.testId) {
+            console.error('No testId in lesson:', lesson)
+            return
+        }
 
         startTest(lesson.testId)
-        setView('inProgress')
+        setManualView('inProgress')
     }
 
-    const submit = (answers: TestAnswers) => {
+    const submit = async (answers: TestAnswers) => {
         if (!testData) return
 
-        submitTest({attemptId: testData.attemptId, answers})
-        setView('summary')
+        try {
+            await submitTest({attemptId: testData.attemptId, answers}).unwrap()
+            setManualView('summary')
+        } catch (error) {
+            console.error('Failed to submit test:', error)
+        }
     }
 
+    const testAttemptSummary = useMemo(() => {
+        if (testResult) {
+            try {
+                const parsed = JSON.parse(testResult.resultJson)
+                return {
+                    correctCount: parsed.correctCount,
+                    totalCount: parsed.totalCount,
+                    score: testResult.score,
+                    attemptedAt: testResult.finishedAt
+                }
+            } catch {
+                return null
+            }
+        }
+        return lesson?.testAttemptSummary || null
+    }, [testResult, lesson?.testAttemptSummary])
+
     const viewResults = () => {
-        setView('results')
+        setManualView('results')
     }
 
     const backToSummary = () => {
-        setView('summary')
+        setManualView('summary')
     }
 
     return {
@@ -59,8 +88,8 @@ export const useLessonTest = (lesson: LessonDetails) => {
 
         // data
         testData,
-        testResult,
         resultDetails,
+        testAttemptSummary,
 
         // states
         isStarting,

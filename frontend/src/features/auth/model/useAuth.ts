@@ -1,4 +1,3 @@
-// Хук для работы с авторизацией
 import {useNavigate} from "react-router-dom";
 import {useLoginMutation, useLogoutMutation} from "@/shared/api/authApi.ts";
 import type {LoginRequest} from "@/entities/users/auth/auth.ts";
@@ -13,7 +12,8 @@ export const useAuth = () => {
     const login = async (loginRequest: LoginRequest) => {
         try{
             const response = await loginMutation(loginRequest).unwrap()
-            tokenService.setTokens(response.accessToken, response.refreshToken)
+            tokenService.setTokens(response.tokens.accessToken, response.tokens.refreshToken)
+
             navigate(ROUTES.DASHBOARD)
             return {success: true}
         }catch (error: any){

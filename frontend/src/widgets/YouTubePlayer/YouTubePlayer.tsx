@@ -43,7 +43,6 @@ export const YouTubePlayer = ({ videoUrl, className = '' }: YouTubePlayerProps) 
                 title="YouTube video"
                 frameBorder="0"
                 allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-                allowFullScreen
             />
         </div>
     )

@@ -73,7 +73,7 @@ public class LessonServiceImpl implements LessonService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public LessonDetailsResponse getLessonDetails(UUID lessonId, UUID userId) {
         LessonEntity lesson = findLessonByIdOrThrow(lessonId);
         UUID courseId = lesson.getUnit().getCourse().getId();
@@ -87,15 +87,13 @@ public class LessonServiceImpl implements LessonService {
         }
         LessonContentResponse content = lessonContentService.getByLessonId(lessonId);
 
-        // ДОБАВИТЬ: Автоматически начать урок при первом просмотре
+        // Автоматически начать урок при первом просмотре
         LessonProgressResponse progress = lessonProgressService.getProgress(userId, lessonId);
-        if (progress.status() == LessonProgressStatus.NOT_STARTED || progress.status() == LessonProgressStatus.IN_PROGRESS) {
+        if (progress.status() == LessonProgressStatus.NOT_STARTED){
             progress = lessonProgressService.startLesson(userId, lessonId);
         }
 
-        TestResponse test = testService.getTestsByLesson(lessonId).stream()
-                .findFirst()
-                .orElse(null);
+        TestResponse test = testService.getTestByLesson(lessonId);
 
         TariffTier userTier = enrollmentService.getUserTier(userId, courseId)
                 .orElse(TariffTier.BASIC);

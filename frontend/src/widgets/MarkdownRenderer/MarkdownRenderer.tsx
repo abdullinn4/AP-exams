@@ -11,8 +11,13 @@ interface MarkdownRendererProps {
     content: string
     className?: string
 }
+const cleanMathContent = (content: string): string => {
+    return content.replace(/[\u2061-\u2064]/g, '')  // Убрать все невидимые math символы
+}
 
 export const MarkdownRenderer = ({ content, className = '' }: MarkdownRendererProps) => {
+    const cleanedContent = cleanMathContent(content)
+
     const components: Components = {
         code({ className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '')
@@ -83,10 +88,15 @@ export const MarkdownRenderer = ({ content, className = '' }: MarkdownRendererPr
         <div className={`rich-text w-richtext ${className}`}>
             <ReactMarkdown
                 remarkPlugins={[remarkMath, remarkGfm]}
-                rehypePlugins={[rehypeKatex]}
+                rehypePlugins={[
+                    [rehypeKatex, {
+                        strict: false,
+                        throwOnError: false
+                    }]
+                ]}
                 components={components}
             >
-                {content}
+                {cleanedContent}
             </ReactMarkdown>
         </div>
     )

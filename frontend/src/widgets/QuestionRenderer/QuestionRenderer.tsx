@@ -9,9 +9,9 @@ interface QuestionRendererProps {
 export const QuestionRenderer = ({ question, questionNumber }: QuestionRendererProps) => {
     return (
         <div>
-            <div className="mg-bottom-24px">
+            {/*<div className="mg-bottom-24px">
                 <h5>Question {questionNumber}</h5>
-            </div>
+            </div>*/}
 
             <div>
                 <MarkdownRenderer content={question.prompt} />

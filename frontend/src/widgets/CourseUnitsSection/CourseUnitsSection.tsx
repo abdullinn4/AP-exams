@@ -3,7 +3,7 @@ import { ProgressBar } from '@/widgets/ProgressBar'
 import { Link } from 'react-router-dom'
 
 interface CourseUnitsSectionProps {
-    units: Unit[] | UnitWithProgress[]
+    units?: Unit[] | UnitWithProgress[]
     isClickable?: boolean
     showProgress?: boolean
     courseSlug?: string
@@ -14,7 +14,7 @@ const isUnitWithProgress = (unit: Unit | UnitWithProgress): unit is UnitWithProg
 }
 
 export const CourseUnitsSection = ({
-                                       units,
+                                       units = [],
                                        isClickable = false,
                                        showProgress = false,
                                        courseSlug
@@ -26,6 +26,13 @@ export const CourseUnitsSection = ({
                     <div
                         data-w-id="3e8bcdc3-75c2-b6ad-3b2f-352a328fd021"
                         className="title-left---content-right center"
+                        style={{
+                            WebkitTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                            MozTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                            msTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                            transform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                            opacity: 0
+                        }}
                     >
                         <h2>Course units</h2>
                     </div>

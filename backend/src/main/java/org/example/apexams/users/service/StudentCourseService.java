@@ -14,6 +14,6 @@ public interface StudentCourseService {
 
     List<CourseWithProgressResponse> getCoursesWithProgress(UUID userId);
 
-    CourseDetailsResponse getCourseWithUnits(UUID userId, UUID courseId);
+    CourseDetailsResponse getCourseWithUnits(UUID userId, String courseSlug);
 
 }

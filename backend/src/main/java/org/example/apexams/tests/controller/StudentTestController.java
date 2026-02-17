@@ -35,7 +35,7 @@ public class StudentTestController {
     public ResponseEntity<StartTestResponse> startAttempt(
             @Parameter(description = "Test ID") @PathVariable UUID testId,
             @Parameter(hidden = true) @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return ResponseEntity.ok(testAttemptService.startTest(testId, userDetails.user().getId()));
+        return ResponseEntity.ok(testAttemptService.startTest(userDetails.user().getId(), testId));
     }
 
     @Operation(

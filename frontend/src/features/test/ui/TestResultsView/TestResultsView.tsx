@@ -2,78 +2,51 @@ import type {TestResultDetailsResponse} from '@/entities/test/test'
 import {useMemo, useState} from 'react'
 import {QuestionRenderer} from '@/widgets/QuestionRenderer'
 import {QuestionNavigationPanel} from '@/widgets/QuestionNavigationPanel'
+import {QuestionResultItem} from "@/features/test/ui/QuestionResultItem";
 
 interface TestResultsViewProps {
     resultDetails: TestResultDetailsResponse
+    onBackToSummary: () => void
 }
 
-export const TestResultsView = ({resultDetails}: TestResultsViewProps) => {
+export const TestResultsView = ({resultDetails, onBackToSummary}: TestResultsViewProps) => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 
-    const currentQuestionResult = resultDetails.questionResults[currentQuestionIndex]
+    const currentQuestionResult = resultDetails.questions[currentQuestionIndex]
 
     const goToQuestion = (index: number) => {
-        const clamped = Math.max(0, Math.min(index, resultDetails.questionResults.length - 1))
+        const clamped = Math.max(0, Math.min(index, resultDetails.questions.length - 1))
         setCurrentQuestionIndex(clamped)
     }
 
     const handleNextQuestion = () => goToQuestion(currentQuestionIndex + 1)
     const handlePreviousQuestion = () => goToQuestion(currentQuestionIndex - 1)
 
-    const parseAnswers = (answer: string): string[] => {
-        try {
-            const parsed = JSON.parse(answer)
-            return Array.isArray(parsed) ? parsed : [answer]
-        } catch {
-            return [answer]
-        }
-    }
-
-    const options = useMemo(() => {
-        if (currentQuestionResult.type !== 'MULTIPLE_CHOICE' && currentQuestionResult.type !== 'SINGLE_CHOICE') return []
-        try {
-            return JSON.parse(currentQuestionResult.optionsJson)
-        } catch {
-            return []
-        }
-    }, [currentQuestionResult.optionsJson, currentQuestionResult.type])
-
-    const userAnswers = useMemo(() => parseAnswers(currentQuestionResult.userAnswer), [currentQuestionResult.userAnswer])
-    const correctAnswers = useMemo(() => parseAnswers(currentQuestionResult.correctAnswer), [currentQuestionResult.correctAnswer])
-
     // Формируем массив статусов для QuestionNavigationPanel
-    const questionStatuses = resultDetails.questionResults.map(result =>
+    const questionStatuses = resultDetails.questions.map(result =>
         result.isCorrect ? 'correct' : 'incorrect'
     ) as ('correct' | 'incorrect')[]
 
     // Формируем массив вопросов для QuestionNavigationPanel
     const questions = useMemo(
         () =>
-            resultDetails.questionResults.map(r => ({
+            resultDetails.questions.map(r => ({
                 id: r.questionId,
                 prompt: r.prompt,
                 optionsJson: r.optionsJson,
                 type: r.type,
                 imageUrl: r.imageUrl
             })),
-        [resultDetails.questionResults]
+        [resultDetails.questions]
     )
 
-    const getOptionClassName = (optionId: string) => {
-        const isUserAnswer = userAnswers.includes(optionId)
-        const isCorrectAnswer = correctAnswers.includes(optionId)
-        return ['test-option-label', isCorrectAnswer && 'correct', isUserAnswer && !isCorrectAnswer && 'incorrect']
-            .filter(Boolean)
-            .join(' ')
-    }
 
-    const OptionTag = ({ optionId }: { optionId: string }) => {
-        const isUser = userAnswers.includes(optionId)
-        const isCorrect = correctAnswers.includes(optionId)
-
-        if (isCorrect) return <span className="text-green ml-auto font-bold">✓ Correct</span>
-        if (isUser && !isCorrect) return <span className="text-red ml-auto font-bold">✗ Your answer</span>
-        return null
+    if (!resultDetails.questions || resultDetails.questions.length === 0) {
+        return (
+            <div style={{textAlign: 'center', padding: '40px'}}>
+                <p>No results available</p>
+            </div>
+        )
     }
 
     return (
@@ -95,102 +68,7 @@ export const TestResultsView = ({resultDetails}: TestResultsViewProps) => {
                                 questionNumber={currentQuestionIndex + 1}
                             />
 
-                            <div className="mg-top-32px">
-                                {/* SINGLE CHOICE */}
-                                {currentQuestionResult.type === 'SINGLE_CHOICE' && (
-                                    <div className="test-options-wrapper">
-                                        {options.map((option: { id: string; text: string }) => (
-                                            <div key={option.id} className={getOptionClassName(option.id)}>
-                                                <input
-                                                    type="radio"
-                                                    checked={userAnswers.includes(option.id)}
-                                                    disabled
-                                                    className="test-radio-input"
-                                                />
-                                                <span className="text-neutral-700">{option.text}</span>
-                                                <OptionTag optionId={option.id} />
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-
-                                {/* MULTIPLE CHOICE */}
-                                {currentQuestionResult.type === 'MULTIPLE_CHOICE' && (
-                                    <div className="test-options-wrapper">
-                                        {options.map((option: { id: string; text: string }) => (
-                                            <div key={option.id} className={getOptionClassName(option.id)}>
-                                                <input
-                                                    type="checkbox"
-                                                    checked={userAnswers.includes(option.id)}
-                                                    disabled
-                                                    className="test-checkbox-input"
-                                                />
-                                                <span className="text-neutral-700">{option.text}</span>
-                                                <OptionTag optionId={option.id} />
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-
-                                {/* TEXT ANSWER */}
-                                {currentQuestionResult.type === 'OPEN' && (
-                                        <div>
-                                            <div className="mg-bottom-16px">
-                                                <div className="display-2 text-neutral-600 mg-bottom-8px">
-                                                    Your Answer:
-                                                </div>
-                                                <div
-                                                    className={`card ${
-                                                        currentQuestionResult.isCorrect
-                                                            ? 'bg-secondary-green-100'
-                                                            : 'bg-secondary-red-100'
-                                                    }`}
-                                                    style={{
-                                                        padding: '16px',
-                                                        borderLeft: `4px solid ${
-                                                            currentQuestionResult.isCorrect
-                                                                ? 'var(--secondary--green-400)'
-                                                                : 'var(--secondary--red-400)'
-                                                        }`,
-                                                    }}
-                                                >
-                                                    <p className="display-2 text-neutral-800">
-                                                        {currentQuestionResult.userAnswer || 'No answer provided'}
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            {!currentQuestionResult.isCorrect && (
-                                                <div>
-                                                    <div className="display-2 text-neutral-600 mg-bottom-8px">
-                                                        Correct Answer:
-                                                    </div>
-                                                    <div
-                                                        className="card bg-secondary-green-100"
-                                                        style={{
-                                                            padding: '16px',
-                                                            borderLeft:
-                                                                '4px solid var(--secondary--green-400)',
-                                                        }}
-                                                    >
-                                                        <p className="display-2 text-neutral-800">
-                                                            {currentQuestionResult.correctAnswer}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </div>
-                                    )}
-                            </div>
-
-
-                            {/* Блок объяснения */}
-                            {currentQuestionResult.explanation && (
-                                <div className="explanation-block">
-                                    <h5 className="display-3 bold text-neutral-800 mg-bottom-12px">Explanation</h5>
-                                    <p className="display-2 text-neutral-700">{currentQuestionResult.explanation}</p>
-                                </div>
-                            )}
+                            <QuestionResultItem questionResult={currentQuestionResult}/>
 
                             {/* Кнопки навигации */}
                             <div className="mg-top-32px"
@@ -207,8 +85,8 @@ export const TestResultsView = ({resultDetails}: TestResultsViewProps) => {
                                 <button
                                     className="button-primary w-button"
                                     onClick={handleNextQuestion}
-                                    disabled={currentQuestionIndex === resultDetails.questionResults.length - 1}
-                                    style={{opacity: currentQuestionIndex === resultDetails.questionResults.length - 1 ? 0.5 : 1}}
+                                    disabled={currentQuestionIndex === resultDetails.questions.length - 1}
+                                    style={{opacity: currentQuestionIndex === resultDetails.questions.length - 1 ? 0.5 : 1}}
                                 >
                                     Next Question
                                 </button>
@@ -237,6 +115,13 @@ export const TestResultsView = ({resultDetails}: TestResultsViewProps) => {
                             {resultDetails.correctCount}/{resultDetails.totalCount} correct
                         </div>
                     </div>
+                    <button
+                        onClick={onBackToSummary}
+                        className="button-primary w-button mg-top-16px"
+                        style={{width: '100%'}}
+                    >
+                        Back to Summary
+                    </button>
                 </div>
             </div>
         </div>

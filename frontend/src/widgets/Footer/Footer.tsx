@@ -99,16 +99,14 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                     <h3 className="footer-title">Utility pages</h3>
                                     <ul role="list" className="footer-column-links">
                                         <li className="footer-column-item">
-                                            <li className="footer-column-item">
-                                                <Link to={ROUTES.SIGN_IN} className="footer-item-link w-inline-block">
-                                                    <div>Sign in</div>
-                                                </Link>
-                                            </li>
-                                            <li className="footer-column-item">
-                                                <Link to={ROUTES.CATALOG} className="footer-item-link w-inline-block">
-                                                    <div>Browse Courses</div>
-                                                </Link>
-                                            </li>
+                                            <Link to={ROUTES.SIGN_IN} className="footer-item-link w-inline-block">
+                                                <div>Sign in</div>
+                                            </Link>
+                                        </li>
+                                        <li className="footer-column-item">
+                                            <Link to={ROUTES.CATALOG} className="footer-item-link w-inline-block">
+                                                <div>Browse Courses</div>
+                                            </Link>
                                         </li>
                                     </ul>
                                 </div>

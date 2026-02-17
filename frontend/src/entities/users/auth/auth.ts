@@ -3,9 +3,13 @@ export interface LoginRequest {
     password: string
 }
 
-export interface LoginResponse {
+export interface TokenPair {
     accessToken: string
     refreshToken: string
+}
+
+export interface LoginResponse {
+    tokens: TokenPair
 }
 
 export interface ForgotPasswordRequest {

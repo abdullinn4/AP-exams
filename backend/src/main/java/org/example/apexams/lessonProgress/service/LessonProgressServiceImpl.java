@@ -34,18 +34,22 @@ public class LessonProgressServiceImpl implements LessonProgressService {
     private final ObjectMapper objectMapper;
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public LessonProgressResponse getProgress(UUID userId, UUID lessonId) {
         LessonProgressEntity progress = progressRepository.findByUserIdAndLessonId(userId, lessonId)
                 .orElseGet(() -> {
                     // Если прогресса нет - создаём с NOT_STARTED
                     LessonEntity lesson = findLessonByIdOrThrow(lessonId);
                     UserEntity user = findUserByIdOrThrow(userId);
-                    return LessonProgressEntity.builder()
+                    LessonProgressEntity newProgress = LessonProgressEntity.builder()
                             .user(user)
                             .lesson(lesson)
                             .status(LessonProgressStatus.NOT_STARTED)
                             .build();
+
+                    progressRepository.save(newProgress);
+                    log.info("Created initial progress: user={}, lesson={}, status=NOT_STARTED", userId, lessonId);
+                    return newProgress;
                 });
         return progressMapper.toDto(progress);
     }

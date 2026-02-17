@@ -51,13 +51,24 @@ export const coursesApi = baseApi.injectEndpoints({
             query: ({ courseSlug, unitId, lessonId }) =>
                 `/courses/${courseSlug}/units/${unitId}/lessons/${lessonId}`,
             providesTags: (_result, _error, { lessonId }) => [{ type: 'Course', id: lessonId }],
+            async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled
+                    // Инвалидируем дашборд и курсы после успешного запроса урока
+                    dispatch(coursesApi.util.invalidateTags(['Dashboard', 'MyCourses']))
+                } catch {
+                    console.error('Failed to invalidate tags after lesson details query')
+                }
+            },
         }),
         // Тесты
         startTest: builder.mutation<StartTestResponse, string>({
-            query: (testId) => ({
-                url: `/tests/${testId}/attempts`,
-                method: 'POST',
-            }),
+            query: (testId) => {
+                return {
+                    url: `/tests/${testId}/attempts`,
+                    method: 'POST',
+                }
+            },
             invalidatesTags: ['Course'],
         }),
         submitTest: builder.mutation<TestAttemptResult, { attemptId: string; answers: TestAnswers }>({
@@ -67,10 +78,6 @@ export const coursesApi = baseApi.injectEndpoints({
                 body: answers,
             }),
             invalidatesTags: ['Course'],
-        }),
-        getTestResult: builder.query<TestAttemptResult, string>({
-            query: (attemptId) => `/test-attempts/${attemptId}/result`,
-            providesTags: (_result, _error, attemptId) => [{ type: 'Course', id: attemptId }],
         }),
         getTestResultDetails: builder.query<TestResultDetailsResponse, string>({
             query: (attemptId) => `/test-attempts/${attemptId}/details`,
@@ -93,7 +100,6 @@ export const {
     useGetLessonDetailsQuery,
     useStartTestMutation,
     useSubmitTestMutation,
-    useGetTestResultQuery,
     useGetTestResultDetailsQuery,
     useGetDashboardQuery,
 } = coursesApi

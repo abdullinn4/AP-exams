@@ -26,7 +26,7 @@ export const authApi = baseApi.injectEndpoints({
             query: (data) => ({
                 url: '/auth/refresh',
                 method: 'POST',
-                body: data
+                params: {refreshToken: data.refreshToken}
             }),
             invalidatesTags: ['Auth'],
         }),
@@ -35,7 +35,7 @@ export const authApi = baseApi.injectEndpoints({
             query: (data) => ({
                 url: '/auth/logout',
                 method: 'POST',
-                body: data
+                params: {refreshToken: data.refreshToken}
             }),
             invalidatesTags: ['Auth'],
         }),

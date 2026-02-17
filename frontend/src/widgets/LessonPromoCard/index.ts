@@ -1,0 +1,1 @@
+export {LessonPromoCard} from './LessonPromoCard'

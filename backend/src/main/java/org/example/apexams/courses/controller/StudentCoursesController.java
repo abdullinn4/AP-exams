@@ -40,10 +40,10 @@ public class StudentCoursesController {
             summary = "Get course details with modules and progress",
             description = "Returns course details including modules list and user progress. Requires enrollment."
     )
-    @GetMapping("/{courseId}")
+    @GetMapping("/{courseSlug}")
     public ResponseEntity<CourseDetailsResponse> getCourse(
             @Parameter(hidden = true) @AuthenticationPrincipal UserDetailsImpl userDetails,
-            @Parameter(description = "Course ID") @PathVariable UUID courseId) {
-        return ResponseEntity.ok(studentCourseService.getCourseWithUnits(userDetails.user().getId(), courseId));
+            @Parameter(description = "Course Slug") @PathVariable String courseSlug) {
+        return ResponseEntity.ok(studentCourseService.getCourseWithUnits(userDetails.user().getId(), courseSlug));
     }
 }

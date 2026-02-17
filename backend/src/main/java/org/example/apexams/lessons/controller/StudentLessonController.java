@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/units/{unitId}/lessons")
+@RequestMapping("/api/v1/courses/{courseSlug}/units/{unitId}/lessons")
 @PreAuthorize("hasRole('STUDENT')")
 @RequiredArgsConstructor
 @SecurityRequirement(name = "bearerAuth")

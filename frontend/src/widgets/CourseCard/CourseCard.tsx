@@ -71,7 +71,7 @@ export const CourseCard = ({ course, variant, progress, onAddToCart }: CourseCar
                         >
                             <div className="display-2 bold text-neutral-800">
                                 <div className="flex y-align-center">
-                                    <div>{variant === 'catalog' ? 'View Course' : 'Continue Learning'}</div>
+                                    <div className="link"> {variant === 'catalog' ? 'View Course' : 'Continue Learning'}</div>
                                     <div className="item-icon-right">
                                         <div className="custom-icon-font"></div>
                                     </div>
