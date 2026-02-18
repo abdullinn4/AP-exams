@@ -55,8 +55,8 @@ const OptionTag = ({
     const isUser = userAnswers.includes(optionId)
     const isCorrect = correctAnswers.includes(optionId)
 
-    if (isCorrect) return <span className="text-green ml-auto font-bold">✓ Correct</span>
-    if (isUser && !isCorrect) return <span className="text-red ml-auto font-bold">✗ Your answer</span>
+    if (isCorrect) return <span className="text-green ml-auto font-bold">Correct</span>
+    if (isUser && !isCorrect) return <span className="text-red ml-auto font-bold">Your answer</span>
     return null
 }
 

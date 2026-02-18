@@ -20,7 +20,7 @@ export function getCheckoutVariantId(items: CartItem[]): string {
 
     if (items.length === 1) {
         // Один курс - используем его variant
-        const variantId = items[0].lemonSqueezyVariantId
+        const variantId = items[0].paddleVariantId
         if (!variantId) {
             throw new Error('Tariff does not have LemonSqueezy variant ID')
         }

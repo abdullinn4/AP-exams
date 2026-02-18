@@ -29,7 +29,7 @@ export const HomePage = () => {
             tier: 'BASIC',
             price: 49,
             currency: 'USD',
-            lemonSqueezyVariantId: '1',
+            paddleVariantId: '1',
             isActive: true,
         },
         {
@@ -39,7 +39,7 @@ export const HomePage = () => {
             tier: 'PRO',
             price: 99,
             currency: 'USD',
-            lemonSqueezyVariantId: '2',
+            paddleVariantId: '2',
             isActive: true,
         },
     ]

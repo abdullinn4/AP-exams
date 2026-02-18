@@ -6,7 +6,7 @@ interface FooterProps {
 }
 
 export const Footer = ({ variant = 'full' }: FooterProps) => {
-    const logoSrc = '/src/assets/webflow/images/logo-dark-courselify-webflow-ecommerce-template.svg'
+    const logoSrc = '/src/assets/webflow/images/logo_smashap_dark.png'
 
     // Минимальный футер (Footer V3)
     if (variant === 'minimal') {
@@ -20,7 +20,7 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                     <img src={logoSrc} alt="AP Exams Logo" />
                                 </Link>
                             </div>
-                            <p>Copyright © AP Exams 2026</p>
+                            <p>Copyright © Smash AP 2026</p>
                         </div>
                     </div>
                 </div>
