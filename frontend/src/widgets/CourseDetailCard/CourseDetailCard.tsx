@@ -34,7 +34,7 @@ export const CourseDetailCard = ({ courseDetail }: CourseDetailCardProps) => {
             <div className="chapters-top-content-wrapper first">
                 <div className="chapters-top-content">
                     <div className="image-wrapper chapter-icon">
-                        <img src='/src/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png' alt="Course"/>
+                        <img src='/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png' alt="Course"/>
                     </div>
                     <div className="inner-container _418px">
                         <h2 className="display-5">{courseDetail.courseTitle}</h2>
@@ -68,7 +68,7 @@ export const CourseDetailCard = ({ courseDetail }: CourseDetailCardProps) => {
                                     <div className="chapter-card-left-content">
                                         <div className="image-wrapper play-icon">
                                             <img
-                                                src="/src/assets/webflow/images/play-icon-courselify-x-webflow-template.svg"
+                                                src="/assets/webflow/images/play-icon-courselify-x-webflow-template.svg"
                                                 alt="Play"
                                             />
                                         </div>

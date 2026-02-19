@@ -49,7 +49,7 @@ export const LessonPromoCard = () => {
                 className="image-wrapper float-image-01---cta-v7"
             >
                 <img
-                    src="/src/assets/webflow/images/square-figure-courselify-x-webflow-template.png"
+                    src="/assets/webflow/images/square-figure-courselify-x-webflow-template.png"
                     loading="eager"
                     alt=""
                     className="image rotate-15-deg"
@@ -66,7 +66,7 @@ export const LessonPromoCard = () => {
                 className="image-wrapper float-image-02---cta-v7"
             >
                 <img
-                    src="/src/assets/webflow/images/pyramid-figure-courselify-x-webflow-template.png"
+                    src="/assets/webflow/images/pyramid-figure-courselify-x-webflow-template.png"
                     loading="eager"
                     alt=""
                     className="image rotate-15-deg"
@@ -83,10 +83,10 @@ export const LessonPromoCard = () => {
                 className="image-wrapper float-image-03---cta-v7"
             >
                 <img
-                    src="/src/assets/webflow/images/circle-figure-courselify-x-webflow-template.png"
+                    src="/assets/webflow/images/circle-figure-courselify-x-webflow-template.png"
                     loading="eager"
                     sizes="(max-width: 479px) 37vw, (max-width: 991px) 23vw, (max-width: 1439px) 12vw, 161.77734375px"
-                    srcSet="/src/assets/webflow/images/circle-figure-courselify-x-webflow-template-p-500.png 500w, /src/assets/webflow/images/circle-figure-courselify-x-webflow-template.png 640w"
+                    srcSet="/assets/webflow/images/circle-figure-courselify-x-webflow-template-p-500.png 500w, /assets/webflow/imagescle-figure-courselify-x-webflow-template.png 640w"
                     alt=""
                     className="image rotate-30-deg"
                 />

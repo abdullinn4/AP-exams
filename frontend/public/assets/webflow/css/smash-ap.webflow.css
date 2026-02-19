@@ -1,6 +1,6 @@
 @font-face {
   font-family: Icon Rounded;
-  src: url('/assets/webflow/fonts/line-rounded-icon-font-brix.woff') format("woff");
+  src: url('../fonts/line-rounded-icon-font-brix.woff') format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: Social Media Icon Font BRIX;
-  src: url('/assets/webflow/fonts/social-media-icon-font-brix.woff') format("woff");
+  src: url('../fonts/social-media-icon-font-brix.woff') format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: Icon Squared;
-  src: url('/assets/webflow/fonts/fontello.woff') format("woff");
+  src: url('../fonts/fontello.woff') format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: Filled Icons;
-  src: url('/assets/webflow/fonts/fontello.woff') format("woff");
+  src: url('../fonts/fontello.woff') format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -32,7 +32,7 @@
 
 @font-face {
   font-family: Mona Sans;
-  src: url('/assets/webflow/fonts/Mona-Sans-Bold.woff') format("woff");
+  src: url('../fonts/Mona-Sans-Bold.woff') format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -40,7 +40,7 @@
 
 @font-face {
   font-family: Mona Sans;
-  src: url('/assets/webflow/fonts/Mona-Sans-ExtraBold.woff') format("woff");
+  src: url('../fonts/Mona-Sans-ExtraBold.woff') format("woff");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -48,7 +48,7 @@
 
 @font-face {
   font-family: Mona Sans;
-  src: url('/assets/webflow/fonts/Mona-Sans-Medium.woff') format("woff");
+  src: url('../fonts/Mona-Sans-Medium.woff') format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -56,7 +56,7 @@
 
 @font-face {
   font-family: Mona Sans;
-  src: url('/assets/webflow/fonts/Mona-Sans-Regular.woff') format("woff");
+  src: url('../fonts/Mona-Sans-Regular.woff') format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -64,7 +64,7 @@
 
 @font-face {
   font-family: Mona Sans;
-  src: url('/assets/webflow/fonts/Mona-Sans-SemiBold.woff') format("woff");
+  src: url('../fonts/Mona-Sans-SemiBold.woff') format("woff");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -72,7 +72,7 @@
 
 @font-face {
   font-family: Courselify Custom Arrows Webflow Ecommerce Template;
-  src: url('/assets/webflow/fonts/courselify-custom-arrows-webflow-ecommerce-template.woff') format("woff");
+  src: url('../fonts/courselify-custom-arrows-webflow-ecommerce-template.woff') format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -1496,7 +1496,7 @@ blockquote {
   background-color: var(--neutral--800);
   color: var(--neutral--100);
   text-align: center;
-  background-image: url('/assets/webflow/images/rich-text-bg-courselify-x-webflow-template.png');
+  background-image: url('../images/rich-text-bg-courselify-x-webflow-template.png');
   background-position: 0 0;
   background-size: auto;
   border: 0 solid #000;
@@ -1519,7 +1519,7 @@ figcaption {
 }
 
 .page-wrapper {
-  background-image: url('/assets/webflow/images/bg-page-image-courselify-x-webflow-template.png');
+  background-image: url('../images/bg-page-image-courselify-x-webflow-template.png');
   background-repeat: no-repeat;
   background-size: 1120px 100%;
 }
@@ -1542,7 +1542,7 @@ figcaption {
 
 .page-wrapper.full-page.coming-soon-page {
   background-color: var(--neutral--800);
-  background-image: url('/assets/webflow/images/bg-image-courselify-x-webflow-template.jpg');
+  background-image: url('../images/bg-image-courselify-x-webflow-template.jpg');
   background-size: cover;
 }
 
@@ -4608,7 +4608,7 @@ figcaption {
 .checkbox.w--redirected-checked {
   border-color: var(--neutral--800);
   background-color: var(--neutral--800);
-  background-image: url('/assets/webflow/images/check-icon.svg');
+  background-image: url('../images/check-icon.svg');
 }
 
 .checkbox.w--redirected-focus {
@@ -7427,7 +7427,7 @@ figcaption {
 
 .section-card.hero-section {
   background-color: var(--neutral--800);
-  background-image: url('/assets/webflow/images/bg-image-courselify-x-webflow-template.jpg');
+  background-image: url('../images/bg-image-courselify-x-webflow-template.jpg');
   background-size: 1354px 100%;
   padding-top: 140px;
   padding-bottom: 100px;
@@ -7483,7 +7483,7 @@ figcaption {
 
 .section-card.cta {
   background-color: var(--neutral--800);
-  background-image: url('/assets/webflow/images/bg-image-courselify-x-webflow-template.jpg');
+  background-image: url('../images/bg-image-courselify-x-webflow-template.jpg');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: 1354px 100%;
@@ -7537,7 +7537,7 @@ figcaption {
 }
 
 .section-card.template-page {
-  background-image: url('/assets/webflow/images/bg-image-courselify-x-webflow-template.jpg');
+  background-image: url('../images/bg-image-courselify-x-webflow-template.jpg');
   background-position: 0 0;
   background-size: 1354px;
   padding-top: 120px;
@@ -7545,7 +7545,7 @@ figcaption {
 }
 
 .section-card.hero-sales-page {
-  background-image: url('/assets/webflow/images/bg-image-courselify-x-webflow-template.jpg');
+  background-image: url('../images/bg-image-courselify-x-webflow-template.jpg');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: 1354px 100%;
@@ -13945,70 +13945,70 @@ figcaption {
 
 @font-face {
   font-family: 'Icon Rounded';
-  src: url('/assets/webflow/fonts/line-rounded-icon-font-brix.woff') format('woff');
+  src: url('../fonts/line-rounded-icon-font-brix.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Social Media Icon Font BRIX';
-  src: url('/assets/webflow/fonts/social-media-icon-font-brix.woff') format('woff');
+  src: url('../fonts/social-media-icon-font-brix.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Icon Squared';
-  src: url('/assets/webflow/fonts/fontello.woff') format('woff');
+  src: url('../fonts/fontello.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Filled Icons';
-  src: url('/assets/webflow/fonts/fontello.woff') format('woff');
+  src: url('../fonts/fontello.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mona Sans';
-  src: url('/assets/webflow/fonts/Mona-Sans-Bold.woff') format('woff');
+  src: url('../fonts/Mona-Sans-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mona Sans';
-  src: url('/assets/webflow/fonts/Mona-Sans-ExtraBold.woff') format('woff');
+  src: url('../fonts/Mona-Sans-ExtraBold.woff') format('woff');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mona Sans';
-  src: url('/assets/webflow/fonts/Mona-Sans-Medium.woff') format('woff');
+  src: url('../fonts/Mona-Sans-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mona Sans';
-  src: url('/assets/webflow/fonts/Mona-Sans-Regular.woff') format('woff');
+  src: url('../fonts/Mona-Sans-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mona Sans';
-  src: url('/assets/webflow/fonts/Mona-Sans-SemiBold.woff') format('woff');
+  src: url('../fonts/Mona-Sans-SemiBold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Courselify Custom Arrows Webflow Ecommerce Template';
-  src: url('/assets/webflow/fonts/courselify-custom-arrows-webflow-ecommerce-template.woff') format('woff');
+  src: url('../fonts/courselify-custom-arrows-webflow-ecommerce-template.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;

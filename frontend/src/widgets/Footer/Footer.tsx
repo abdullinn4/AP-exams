@@ -6,7 +6,7 @@ interface FooterProps {
 }
 
 export const Footer = ({ variant = 'full' }: FooterProps) => {
-    const logoSrc = '/src/assets/webflow/images/logo_smashap_dark.png'
+    const logoSrc = '/assets/webflow/images/logo_smashap_dark.svg';
 
     // Минимальный футер (Footer V3)
     if (variant === 'minimal') {
@@ -17,7 +17,7 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                         <div className="footer-bottom v2">
                             <div className="footer-logo-wrapper v3">
                                 <Link to={ROUTES.HOME} className="logo-link w-inline-block">
-                                    <img src={logoSrc} alt="AP Exams Logo" />
+                                    <img src={logoSrc} alt="AP Exams Logo" style={{width: '60%', height: 'auto'}}/>
                                 </Link>
                             </div>
                             <p>Copyright © Smash AP 2026</p>
@@ -37,7 +37,7 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                         <div id="w-node-_4ce7d77c-4018-d530-59d0-9a7e57241a47-57241a43" className="mg-top-64px mg-top-0-tablet">
                             <div className="footer-logo-wrapper">
                                 <Link to={ROUTES.HOME} className="logo-link w-inline-block">
-                                    <img src={logoSrc} alt="AP Exams Logo" />
+                                    <img src={logoSrc} alt="AP Exams Logo" style={{width: '60%', height: 'auto'}}/>
                                 </Link>
                             </div>
                             <div className="mg-top-16px mg-top-8px-tablet">
@@ -116,7 +116,7 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                     <div className="footer-bottom v1">
                         <div className="text-center">
                             <p>
-                                Copyright © AP Exams 2026
+                                Copyright © Smash AP 2026
                             </p>
                         </div>
                     </div>

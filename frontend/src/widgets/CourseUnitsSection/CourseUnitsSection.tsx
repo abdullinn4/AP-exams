@@ -49,7 +49,7 @@ export const CourseUnitsSection = ({
                                         <div className="image-wrapper chapter-icon">
                                             <img
                                                 /*src={unit.iconUrl || ''}*/
-                                                src='/src/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png'
+                                                src='/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png'
                                                 loading="eager"
                                                 alt={`${unit.title} Icon`}
                                             />

@@ -5,21 +5,21 @@ export const BlogSection = () => {
         {
             id: 1,
             title: "Getting Started with Web Design",
-            image: "/src/assets/webflow/images/blog-placeholder-1.jpg",
+            image: "/assets/webflow/images/blog-placeholder-1.jpg",
             category: "Design",
             date: "Jan 15, 2024"
         },
         {
             id: 2,
             title: "Advanced Typography Techniques",
-            image: "/src/assets/webflow/images/blog-placeholder-2.jpg",
+            image: "/assets/webflow/images/blog-placeholder-2.jpg",
             category: "Typography",
             date: "Jan 10, 2024"
         },
         {
             id: 3,
             title: "Color Theory for Beginners",
-            image: "/src/assets/webflow/images/blog-placeholder-3.jpg",
+            image: "/assets/webflow/images/blog-placeholder-3.jpg",
             category: "Color",
             date: "Jan 5, 2024"
         }

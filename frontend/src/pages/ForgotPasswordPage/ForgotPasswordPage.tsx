@@ -48,7 +48,7 @@ export const ForgotPasswordPage = () => {
                         <div data-w-id="c36fa34f-8149-2d93-e1cd-d449bf7f246c" className="card reset-password-card">                            <div className="flex-vertical text-center">
                                 <div className="image-wrapper reset-password-image">
                                     <img
-                                        src="/src/assets/webflow/images/reset-password-courselify-x-webflow-template.png"
+                                        src="/assets/webflow/images/reset-password-courselify-x-webflow-template.png"
                                         loading="eager"
                                         alt="Reset Password Icon - Courselify X Webflow Template"
                                         className="image"

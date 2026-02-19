@@ -31,7 +31,7 @@ export const CourseNavigationPanel = ({ myCourses, availableCourses }: CourseNav
                             }`}
                         >
                             <div className="chapter-category-v1">
-                                <img src="src/assets/webflow/images/start-category-icon-courselify-x-webflow-template.svg"
+                                <img src="/assets/webflow/images/start-category-icon-courselify-x-webflow-template.svg"
                                      loading="eager" alt="Start Icon - Courselify X Webflow Template"/>
                                 <div className="display-2">{course.title}</div>
                             </div>
@@ -58,7 +58,7 @@ export const CourseNavigationPanel = ({ myCourses, availableCourses }: CourseNav
                                     }`}
                                 >
                                     <div className="chapter-category-v1">
-                                        <img src="src/assets/webflow/images/start-category-icon-courselify-x-webflow-template.svg"
+                                        <img src="/assets/webflow/images/start-category-icon-courselify-x-webflow-template.svg"
                                              loading="eager" alt="Start Icon - Courselify X Webflow Template"/>
                                         <div className="display-2">{course.title}</div>
                                     </div>

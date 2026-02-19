@@ -12,7 +12,7 @@ export const CATALOG_COURSES = {
             title: 'Blockchain',
             slug: 'blockchain',
             snippet: 'Lorem ipsum dolor amet consectetur amet porttitor senectus non volutpat habitant feugiat scelerisque sed iaculis.',
-            coverUrl: 'src/assets/webflow/images/blockchain-image-courselify-x-webflow-template.jpg',
+            coverUrl: '/assets/webflow/images/blockchain-image-courselify-x-webflow-template.jpg',
             className: ''
         },
         {
@@ -21,7 +21,7 @@ export const CATALOG_COURSES = {
             title: 'Devio',
             slug: 'devio',
             snippet: 'Lorem ipsum dolor amet consectetur amet porttitor senectus non volutpat habitant feugiat scelerisque sed iaculis.',
-            coverUrl: 'src/assets/webflow/images/devio-image-courselify-x-webflow-template.jpg',
+            coverUrl: '/assets/webflow/images/devio-image-courselify-x-webflow-template.jpg',
             className: 'top-center'
         },
         {
@@ -30,7 +30,7 @@ export const CATALOG_COURSES = {
             title: 'AI Tech',
             slug: 'ai-tech',
             snippet: 'Lorem ipsum dolor amet consectetur amet porttitor senectus non volutpat habitant feugiat scelerisque sed iaculis.',
-            coverUrl: 'src/assets/webflow/images/ai-tech-image-courselify-x-webflow-template.jpg',
+            coverUrl: '/assets/webflow/images/ai-tech-image-courselify-x-webflow-template.jpg',
             className: 'top-right'
         },
         {
@@ -39,7 +39,7 @@ export const CATALOG_COURSES = {
             title: 'Dataplus',
             slug: 'dataplus',
             snippet: 'Lorem ipsum dolor amet consectetur amet porttitor senectus non volutpat habitant feugiat scelerisque sed iaculis.',
-            coverUrl: 'src/assets/webflow/images/dataplus-image-courselify-x-webflow-template.jpg',
+            coverUrl: '/assets/webflow/images/dataplus-image-courselify-x-webflow-template.jpg',
             className: 'bottom-left'
         },
         {
@@ -48,7 +48,7 @@ export const CATALOG_COURSES = {
             title: 'Darkweb',
             slug: 'darkweb',
             snippet: 'Lorem ipsum dolor amet consectetur amet porttitor senectus non volutpat habitant feugiat scelerisque sed iaculis.',
-            coverUrl: 'src/assets/webflow/images/darkweb-image-courselify-x-webflow-template.jpg',
+            coverUrl: '/assets/webflow/images/darkweb-image-courselify-x-webflow-template.jpg',
             className: 'bottom-middle'
         }
     ]

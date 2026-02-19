@@ -10,8 +10,8 @@ export const CartBadge = ({ theme = 'dark' }: CartBadgeProps) => {
     const [isHovered, setIsHovered] = useState(false)
 
     const iconSrc = theme === 'light'
-        ? (isHovered ? '/src/assets/webflow/images/white-hover-shopping-cart.svg' : '/src/assets/webflow/images/white-shopping-cart.svg')
-        : (isHovered ? '/src/assets/webflow/images/black-hover-shopping-cart.svg' : '/src/assets/webflow/images/black-shopping-cart.svg')
+        ? (isHovered ? '/assets/webflow/images/white-hover-shopping-cart.svg' : '/assets/webflow/images/white-shopping-cart.svg')
+        : (isHovered ? '/assets/webflow/images/black-hover-shopping-cart.svg' : '/assets/webflow/images/black-shopping-cart.svg')
 
     return (
         <div
@@ -49,7 +49,7 @@ export const CartBadge = ({ theme = 'dark' }: CartBadgeProps) => {
                     }}
                 >
                     <img
-                        src="/src/assets/webflow/images/circle-shopping-cart-small.svg"
+                        src="/assets/webflow/images/circle-shopping-cart-small.svg"
                         alt=""
                             style={{
                                 position: 'absolute',

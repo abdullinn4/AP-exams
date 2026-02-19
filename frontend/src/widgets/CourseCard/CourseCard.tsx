@@ -26,7 +26,7 @@ export const CourseCard = ({ course, variant, progress, onAddToCart }: CourseCar
             <div className="image-wrapper border-radius-32px overflow-hidden">
                 <img
                     /*src={course.coverUrl || ''}*/
-                    src="src/assets/webflow/images/blockchain-image-courselify-x-webflow-template.jpg"
+                    src="/assets/webflow/images/blockchain-image-courselify-x-webflow-template.jpg"
                     loading="eager"
                     sizes="(max-width: 479px) 93vw, (max-width: 767px) 95vw, (max-width: 991px) 46vw, (max-width: 1439px) 31vw, 404px"
                     alt={`${course.title} - Course Cover`}

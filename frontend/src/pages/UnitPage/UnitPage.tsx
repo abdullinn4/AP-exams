@@ -3,12 +3,12 @@ import {Header} from '@/widgets/Header'
 import {Footer} from '@/widgets/Footer'
 import {ProgressBar} from '@/widgets/ProgressBar'
 
-import notStartedIcon from '@/assets/webflow/images/not_started_icon.svg'
-import inProgressIcon from '@/assets/webflow/images/in_progress_icon.svg'
-import completedIcon from '@/assets/webflow/images/completed_icon.svg'
-import playIcon from '@/assets/webflow/images/play-icon-courselify-x-webflow-template.svg'
-import learningHoursIcon from '@/assets/webflow/images/learning-hours-icon-courselify-x-webflow-template.svg'
-import lessonsIcon from '@/assets/webflow/images/lessons-icon-courselify-x-webflow-template.svg'
+import notStartedIcon from '/assets/webflow/images/not_started_icon.svg'
+import inProgressIcon from '/assets/webflow/images/in_progress_icon.svg'
+import completedIcon from '/assets/webflow/images/completed_icon.svg'
+import playIcon from '/assets/webflow/images/play-icon-courselify-x-webflow-template.svg'
+import learningHoursIcon from '/assets/webflow/images/learning-hours-icon-courselify-x-webflow-template.svg'
+import lessonsIcon from '/assets/webflow/images/lessons-icon-courselify-x-webflow-template.svg'
 import {useGetUnitDetailsQuery} from "@/shared/api/courseApi.ts";
 
 const getStatusIcon = (status: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED') => {
@@ -69,7 +69,7 @@ export const UnitPage = () => {
                                         <div className="image-wrapper chapter-single-premium-image">
                                             <img
                                                 /*src={unit.iconUrl || ''}*/
-                                                src='/src/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png'
+                                                src='/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png'
                                                 loading="eager"
                                                 alt={`${unit?.title} Icon`}
                                                 className="image"

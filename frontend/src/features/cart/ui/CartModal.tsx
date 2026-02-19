@@ -75,7 +75,7 @@ export const CartModal = ({ isOpen, onClose}: CartModalProps) => {
                                                     <img
                                                         alt={`${item.tariffTier} Plan`}
                                                         loading="lazy"
-                                                        src={`/src/assets/webflow/images/${item.tariffTier.toLowerCase()}-plan-courselify-x-webflow-template.png`}
+                                                        src={`/assets/webflow/images/${item.tariffTier.toLowerCase()}-plan-courselify-x-webflow-template.png`}
                                                         className="max-width-64px"
                                                     />
                                                 </div>

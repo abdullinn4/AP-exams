@@ -49,7 +49,7 @@ export const WelcomeBackSection = () => {
                         className="image-wrapper float-image-left-01---home-premium"
                     >
                         <img
-                            src="/src/assets/webflow/images/pyramid-figure-courselify-x-webflow-template_1.png"
+                            src="/assets/webflow/images/pyramid-figure-courselify-x-webflow-template_1.png"
                             loading="eager"
                             alt=""
                             className="image rotate-120-deg"
@@ -68,7 +68,7 @@ export const WelcomeBackSection = () => {
                         className="image-wrapper float-image-left-02---home-premium"
                     >
                         <img
-                            src="/src/assets/webflow/images/circle-figure-courselify-x-webflow-template_1.png"
+                            src="/assets/webflow/images/circle-figure-courselify-x-webflow-template_1.png"
                             loading="eager"
                             alt=""
                             className="image rotate-150-deg"
@@ -87,10 +87,10 @@ export const WelcomeBackSection = () => {
                         className="image-wrapper float-image-left-03---home-premium"
                     >
                         <img
-                            src="/src/assets/webflow/images/square-figure-courselify-x-webflow-template_1.png"
+                            src="/assets/webflow/images/square-figure-courselify-x-webflow-template_1.png"
                             loading="eager"
                             sizes="(max-width: 479px) 13vw, (max-width: 1439px) 11vw, 128px"
-                            srcSet="/src/assets/webflow/images/square-figure-courselify-x-webflow-template_1-p-500.png 500w, /src/assets/webflow/images/square-figure-courselify-x-webflow-template_1.png 648w"
+                            srcSet="/assets/webflow/images/square-figure-courselify-x-webflow-template_1-p-500.png 500w, /assets/webflow/imagesare-figure-courselify-x-webflow-template_1.png 648w"
                             alt=""
                             className="image rotate-180-deg"
                         />
@@ -108,7 +108,7 @@ export const WelcomeBackSection = () => {
                         className="image-wrapper float-image-right---home-premium"
                     >
                         <img
-                            src="/src/assets/webflow/images/pyramid-figure-courselify-x-webflow-template.png"
+                            src="/assets/webflow/images/pyramid-figure-courselify-x-webflow-template.png"
                             loading="eager"
                             alt=""
                             className="image rotate-60-deg"
@@ -127,7 +127,7 @@ export const WelcomeBackSection = () => {
                         className="image-wrapper float-image-right-02---home-premium"
                     >
                         <img
-                            src="/src/assets/webflow/images/square-figure-courselify-x-webflow-template.png"
+                            src="/assets/webflow/images/square-figure-courselify-x-webflow-template.png"
                             loading="eager"
                             alt=""
                             className="image"
@@ -146,10 +146,10 @@ export const WelcomeBackSection = () => {
                         className="image-wrapper float-image-right-03---home-premium"
                     >
                         <img
-                            src="/src/assets/webflow/images/circle-figure-courselify-x-webflow-template.png"
+                            src="/assets/webflow/images/circle-figure-courselify-x-webflow-template.png"
                             loading="eager"
                             sizes="(max-width: 479px) 16vw, (max-width: 991px) 13vw, (max-width: 1919px) 156.494873046875px, 8vw"
-                            srcSet="/src/assets/webflow/images/circle-figure-courselify-x-webflow-template-p-500.png 500w, /src/assets/webflow/images/circle-figure-courselify-x-webflow-template.png 640w"
+                            srcSet="/assets/webflow/images/circle-figure-courselify-x-webflow-template-p-500.png 500w, /assets/webflow/imagescle-figure-courselify-x-webflow-template.png 640w"
                             alt=""
                             className="image rotate-30-deg"
                         />

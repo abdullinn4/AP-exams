@@ -15,8 +15,8 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
 
     // Выбор логотипа в зависимости от темы
     const logoSrc = theme === 'light'
-        ? '/src/assets/webflow/images/logo_smashap_white.png'
-        : '/src/assets/webflow/images/logo_smashap_dark.png'
+        ? '/assets/webflow/images/logo_smashap_white.svg'
+        : '/assets/webflow/images/logo_smashap_dark.svg'
 
 
     // Минимальный хэдер для auth страниц (Header V3)
@@ -29,8 +29,8 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                 <div className="container-default w-container">
                     <div data-w-id="b209dc69-0839-20fe-af3a-c9ee1dec5ef4" className="header-container-wrapper center">
                         <div className="logo-wrapper v1">
-                            <Link to="/" className="logo-link w-inline-block">
-                                <img src={logoSrc} alt="AP Exams Logo"/>
+                            <Link to="/" className="logo-link w-inline-block" style={{display:"flex", alignItems: 'center', justifyContent: 'center' }}>
+                                <img src={logoSrc} alt="AP Exams Logo" style={{width: '40%', height: 'auto'}}/>
                             </Link>
                         </div>
                     </div>
@@ -51,8 +51,8 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                 <div data-w-id="c7c25743-3af1-4a48-2846-73035f33d328" className="header-container-wrapper">
                     <div className="nav-menu-left-side v1">
                         <div className="logo-wrapper v1">
-                            <Link to="/" className="logo-link w-inline-block">
-                                <img src={logoSrc} alt="AP Exams Logo"/>
+                            <Link to="/" className="logo-link w-inline-block" style={{display:"flex", alignItems: 'center', justifyContent: 'center' }}>
+                                <img src={logoSrc} alt="AP Exams Logo" style={{width: '40%', height: 'auto'}}/>
                             </Link>
                         </div>
                         <nav role="navigation"

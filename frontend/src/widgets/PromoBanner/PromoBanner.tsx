@@ -5,7 +5,7 @@ export const PromoBanner = () => {
         <div className="card bg-neutral-300 mg-bottom-48px" style={{ padding: '32px' }}>
             <div className="image-wrapper mg-bottom-24px">
                 <img
-                    src="/src/assets/webflow/images/a-professional-web-designer-left-image-courselify-x-webflow-template-p-130x130q80.jpg"
+                    src="/assets/webflow/images/a-professional-web-designer-left-image-courselify-x-webflow-template-p-130x130q80.jpg"
                     alt="Promo"
                     style={{ borderRadius: '12px' }}
                 />
