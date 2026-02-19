@@ -82,10 +82,10 @@ public class AuthController {
         return ResponseEntity.ok("Password reset email sent successfully");
     }
 
-    /*@PostMapping("/admin/create-test-user")
+    @PostMapping("/admin/create-test-user")
     public ResponseEntity<String> createTestUser() {
         // Проверь что пользователь не существует
-        if (userRepository.existsByEmail("b@y.ru")) {
+        if (userRepository.existsByEmail("guest@example.ru")) {
             return ResponseEntity.badRequest().body("User already exists");
         }
 
@@ -93,14 +93,38 @@ public class AuthController {
 
         // Создай пользователя
         UserEntity user = UserEntity.builder()
-                .email("b@y.ru")
+                .email("guest@example.ru")
+                .passwordHash(passwordEncoder.encode("qwerty123"))
+                .discordNickname("Test")
+                .role(Role.STUDENT)
+                .build();
+
+        UserEntity user1 = UserEntity.builder()
+                .email("k@y.ru")
                 .passwordHash(passwordEncoder.encode("qwerty"))
-                .discordNickname("TestAdmin")
-                .role(Role.ADMIN)
+                .discordNickname("@ptoawtearr")
+                .role(Role.STUDENT)
+                .build();
+
+        UserEntity user2 = UserEntity.builder()
+                .email("m@y.ru")
+                .passwordHash(passwordEncoder.encode("qwerty"))
+                .discordNickname("@topgcoder25")
+                .role(Role.STUDENT)
+                .build();
+
+        UserEntity user3 = UserEntity.builder()
+                .email("n@y.ru")
+                .passwordHash(passwordEncoder.encode("qwerty"))
+                .discordNickname("nargv")
+                .role(Role.STUDENT)
                 .build();
 
         userRepository.save(user);
+        userRepository.save(user1);
+        userRepository.save(user2);
+        userRepository.save(user3);
 
-        return ResponseEntity.ok("Test user created: test@example.com / password123");
-    }*/
+        return ResponseEntity.ok("Test user created: guest@example.ru / qwerty123");
+    }
 }
