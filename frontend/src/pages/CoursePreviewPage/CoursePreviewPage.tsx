@@ -10,7 +10,7 @@ import {useParams} from "react-router-dom";
 
 export const CoursePreviewPage = () => {
     const {slug} = useParams<{slug: string}>()
-    const { data: course, isLoading: courseLoading, error: courseError } = useGetCourseBySlugQuery(
+    const { data: course, error} = useGetCourseBySlugQuery(
         slug || '',
         { skip: !slug } // Пропустить запрос если slug undefined
     )
@@ -20,8 +20,6 @@ export const CoursePreviewPage = () => {
     )
     const {addTariffToCart, errorMessage, successMessage} = useAddCourseToCart(
         course || { id: '', title: '', coverUrl: null })
-
-    if (courseLoading) return null
 
     // Error или нет slug
     if (!slug) {
@@ -36,42 +34,38 @@ export const CoursePreviewPage = () => {
         )
     }
 
-    if (courseError || (!courseLoading && !course)) {
-        return (
-            <div className="page-wrapper">
-                <Header />
-                <div style={{ textAlign: 'center', padding: '100px 0' }}>
-                    <p>Course not found</p>
-                </div>
-                <Footer />
-            </div>
-        )
-    }
-
     return (
         <div className="page-wrapper">
             <Header/>
 
             <CourseVideoHeroSection course={course}/>
 
-            <CourseUnitsSection
-                units={course.units}
-                isClickable={false}
-                showProgress={false}
-                courseSlug={course.slug}
-            />
+            {error ? (
+                <div style={{ textAlign: 'center', padding: '100px 0' }}>
+                    <p style={{ color: 'red' }}>Failed to load course details. Please try again later.</p>
+                </div>
+            ): (
+                <>
+                    <CourseUnitsSection
+                        units={course?.units}
+                        isClickable={false}
+                        showProgress={false}
+                        courseSlug={course?.slug}
+                    />
 
-            <PricingSection
-                title='Choose your <span class="heading-gradient">plan</span>'
-                description="Select the perfect plan that matches your learning goals"
-                tariffs={tariffs || []}
-                isLoading={tariffsLoading}
-                errorMessage={errorMessage}
-                successMessage={successMessage}
-                onTariffAction={addTariffToCart}
-                actionLabel="Add to Cart"
-                showBackground={true}
-            />
+                    <PricingSection
+                        title='Choose your <span class="heading-gradient">plan</span>'
+                        description="Select the perfect plan that matches your learning goals"
+                        tariffs={tariffs || []}
+                        isLoading={tariffsLoading}
+                        errorMessage={errorMessage}
+                        successMessage={successMessage}
+                        onTariffAction={addTariffToCart}
+                        actionLabel="Add to Cart"
+                        showBackground={true}
+                    />
+                </>
+            )}
 
             <footer className="footer-wrapper">
                 <div data-w-id="016d8e1b-8412-bb5e-68d3-3aceb3839135" className="footer-card">

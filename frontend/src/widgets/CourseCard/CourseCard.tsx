@@ -18,10 +18,15 @@ interface CourseCardProps {
 }
 
 export const CourseCard = ({ course, variant, progress, onAddToCart }: CourseCardProps) => {
+    const courseUrl = variant === 'catalog'
+        ? `/courses/${course.slug}/preview`
+        : `/courses/${course.slug}`
+
     return (
-        <div
+        <Link
+            to={courseUrl}
             data-w-id={course.wId}
-            className={`card project-card ${course.className || ''}`}
+            className={`card project-card w-inline-block ${course.className || ''}`}
         >
             <div className="image-wrapper border-radius-32px overflow-hidden">
                 <img
@@ -55,7 +60,11 @@ export const CourseCard = ({ course, variant, progress, onAddToCart }: CourseCar
                     <div className="buttons-row left">
                         {variant === 'catalog' && onAddToCart && (
                             <button
-                                onClick={onAddToCart}
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    e.stopPropagation()
+                                    onAddToCart()
+                                }}
                                 className="button-primary w-inline-block"
                             >
                                 <div className="text-block">Add to Cart</div>
@@ -65,22 +74,21 @@ export const CourseCard = ({ course, variant, progress, onAddToCart }: CourseCar
                             </button>
                         )}
 
-                        <Link
-                            to={variant === 'catalog' ? `/courses/${course.slug}/preview` : `/courses/${course.slug}`}
-                            className="link-wrapper w-inline-block"
-                        >
+                        <div className="link-wrapper w-inline-block">
                             <div className="display-2 bold text-neutral-800">
                                 <div className="flex y-align-center">
-                                    <div className="link"> {variant === 'catalog' ? 'View Course' : 'Continue Learning'}</div>
+                                    <div className="link">
+                                        {variant === 'catalog' ? 'View Course' : 'Continue Learning'}
+                                    </div>
                                     <div className="item-icon-right">
-                                        <div className="custom-icon-font"></div>
+                                        <div className="custom-icon-font"></div>
                                     </div>
                                 </div>
                             </div>
-                        </Link>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }

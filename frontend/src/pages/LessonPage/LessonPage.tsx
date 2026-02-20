@@ -8,10 +8,11 @@ import {TestInProgressView} from "@/features/test/ui/TestInProgressView"
 import {TestCompletedSummary} from "@/features/test/ui/TestCompletedSummary"
 import {TestResultsView} from "@/features/test/ui/TestResultsView";
 import {useLessonTest} from "@/features/test/model/useLessonTest.ts";
-import {useEffect, useRef} from "react";
+import {useRef} from "react";
 import {useScrollToTest} from "@/features/test/model/useScrollToTest.ts";
 import {useGetLessonDetailsQuery} from "@/shared/api/courseApi.ts";
 import {LessonPromoCard} from "@/widgets/LessonPromoCard";
+import {useWebflowReinit} from "@/shared/lib/hooks/useWebflowReinit.ts";
 
 export const LessonPage = () => {
     const {slug, unitId, lessonId} = useParams<{
@@ -42,26 +43,7 @@ export const LessonPage = () => {
     const testSectionRef = useRef<HTMLDivElement | null>(null)
     useScrollToTest(view, testSectionRef)
 
-    useEffect(() => {
-        if (!lesson || !window.Webflow) return
-
-        // Tabs
-        window.Webflow.require('tabs')?.redraw()
-
-        // Interactions
-        const ix2 = window.Webflow.require('ix2')
-        if (ix2) {
-            ix2.destroy()
-            ix2.init()
-        }
-
-        //принудительный refresh viewport
-        requestAnimationFrame(() => {
-            window.dispatchEvent(new Event('resize'))
-        })
-    }, [lesson])
-
-
+    useWebflowReinit(lesson)
 
     if (!slug || !unitId || !lessonId) {
         return (
@@ -158,9 +140,9 @@ export const LessonPage = () => {
                                     )}
                                 </div>
 
-                                <div style={{ position: 'relative' }}>
-                                    <div style={{ position: 'sticky', top: '24px' }}>
-                                        <LessonPromoCard />
+                                <div style={{position: 'relative'}}>
+                                    <div style={{position: 'sticky', top: '24px'}}>
+                                        <LessonPromoCard/>
                                     </div>
                                 </div>
                             </div>
@@ -223,7 +205,7 @@ export const LessonPage = () => {
                                                             onViewResults={viewResults}
                                                         />
                                                     ) : (
-                                                        <div style={{ textAlign: 'center', padding: '40px' }}>
+                                                        <div style={{textAlign: 'center', padding: '40px'}}>
                                                             <p>Loading results...</p>
                                                         </div>
                                                     )
@@ -233,7 +215,8 @@ export const LessonPage = () => {
                                                     isLoadingResults ? (
                                                         <p>Loading...</p>
                                                     ) : resultDetails ? (
-                                                        <TestResultsView resultDetails={resultDetails} onBackToSummary={backToSummary} />
+                                                        <TestResultsView resultDetails={resultDetails}
+                                                                         onBackToSummary={backToSummary}/>
                                                     ) : (
                                                         <button onClick={backToSummary}>Back</button>
                                                     )

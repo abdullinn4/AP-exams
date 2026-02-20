@@ -1,11 +1,12 @@
-import { useState } from "react"
-import { Header } from '@/widgets/Header'
-import { Footer } from '@/widgets/Footer'
-import { CTAFooterBlock } from '@/widgets/CTAFooterBlock'
-import { CoursesGrid } from '@/widgets/CoursesGrid'
-import { TariffSelectionModal } from "@/features/cart"
-import { CATALOG_HEADER} from '@/shared/config/content'
+import {useState} from "react"
+import {Header} from '@/widgets/Header'
+import {Footer} from '@/widgets/Footer'
+import {CTAFooterBlock} from '@/widgets/CTAFooterBlock'
+import {CoursesGrid} from '@/widgets/CoursesGrid'
+import {TariffSelectionModal} from "@/features/cart"
+import {CATALOG_HEADER} from '@/shared/config/content'
 import {useGetAllCoursesQuery} from "@/shared/api/courseApi.ts";
+import {useWebflowReinit} from "@/shared/lib/hooks/useWebflowReinit.ts";
 
 export const CatalogPage = () => {
     const [selectedCourse, setSelectedCourse] = useState<{
@@ -15,32 +16,34 @@ export const CatalogPage = () => {
     } | null>(null)
 
     const handleAddToCart = (id: string, title: string, coverUrl: string) => {
-        setSelectedCourse({ id, title, coverUrl })
+        setSelectedCourse({id, title, coverUrl})
     }
 
-    const { data: courses, isLoading, error } = useGetAllCoursesQuery()
+    const {data: courses, isLoading, error} = useGetAllCoursesQuery()
+
+    useWebflowReinit(courses)
 
     return (
         <div className="page-wrapper">
-            <Header />
+            <Header/>
 
-                <CoursesGrid
-                    title={CATALOG_HEADER.title}
-                    titleHighlight={CATALOG_HEADER.titleHighlight}
-                    description={CATALOG_HEADER.description}
-                    courses={courses || []}
-                    variant="catalog"
-                    onAddToCart={handleAddToCart}
-                />
+            <CoursesGrid
+                title={CATALOG_HEADER.title}
+                titleHighlight={CATALOG_HEADER.titleHighlight}
+                description={CATALOG_HEADER.description}
+                courses={courses || []}
+                variant="catalog"
+                onAddToCart={handleAddToCart}
+            />
 
             {isLoading && (
-                <div style={{ textAlign: 'center', padding: '40px 0' }}>
+                <div style={{textAlign: 'center', padding: '40px 0'}}>
                     <p>Loading courses...</p>
                 </div>
             )}
 
             {error && (
-                <div style={{ textAlign: 'center', padding: '40px 0', color: 'red' }}>
+                <div style={{textAlign: 'center', padding: '40px 0', color: 'red'}}>
                     <p>Error loading courses. Please try again later.</p>
                 </div>
             )}
@@ -58,12 +61,12 @@ export const CatalogPage = () => {
             <footer className="footer-wrapper">
                 <div data-w-id="016d8e1b-8412-bb5e-68d3-3aceb3839135" className="footer-card">
                     <div className="w-layout-blockcontainer container-default w-container">
-                        <CTAFooterBlock />
+                        <CTAFooterBlock/>
                     </div>
                 </div>
             </footer>
 
-            <Footer />
+            <Footer/>
         </div>
     )
 }
