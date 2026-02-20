@@ -6,11 +6,11 @@ export const HOME_HERO = {
         '/assets/webflow/images/lily-woods-avatar-image-courselify-x-webflow-template.jpg'
     ],
     trustedText: 'Trusted by over',
-    trustedCount: '10,000+',
+    trustedCount: '2,000+',
     trustedSuffix: 'students',
-    title: "It's your turn to stand out as a",
-    titleHighlight: 'web designer',
-    description: 'Lorem ipsum dolor amet consectetur pellentesque scelerisque fermentum bibendum ipsum massa cursus aliquet feugiat.',
+    title: "Turn Your",
+    titleHighlight: 'AP Stress into Perfect Score.',
+    description: 'The all-in-one prep engine for high-achieving students. From expert-led breakdowns to real-world exam simulations, we turn your hardest courses into your highest scores.',
     ctaPrimary: 'Start learning',
     ctaSecondary: 'Preview course',
     images: {
@@ -24,22 +24,21 @@ export const HOME_HERO = {
 } as const
 
 export const HOME_CHAPTERS = {
-    title: 'What will',
-    titleHighlight: 'you learn?',
-    description: 'Lorem ipsum dolor amet consectetur pellentesque scelerisque fermentum bibendum ipsum massa cursus aliquet feugiat.',
+    title: 'Is This',
+    titleHighlight: 'You? Then Hop Into SmashAP!',
     ctaPrimary: 'Start learning',
     ctaSecondary: 'Browse chapters',
     items: [
         {
             id: 1,
             wId: '4c73e9c0-4a7b-8bc8-8c70-f4b88699d580',
-            title: 'Start',
+            title: 'Need top scores on your AP exams?',
             icon: '/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png',
-            description: 'Lorem ipsum dolor amet consectetur pellentesque scelerisque fermentum.',
+            description: '',
             lessons: [
-                'Creating design concepts',
-                'Using industry-standard software',
-                'Planning design projects'
+                `Master exactly what's tested`,
+                'Proven strategies for a 5',
+                'Maximize your score, minimize stress'
             ],
             lessonsCount: 10,
             className: 'grid-item-margin-top'
@@ -47,13 +46,13 @@ export const HOME_CHAPTERS = {
         {
             id: 2,
             wId: 'e9706775-6c53-493d-9cf3-cd0dfcb76745',
-            title: 'Typography',
+            title: 'Stuck on where to start?',
             icon: '/assets/webflow/images/typography-course-icon-courselify-webflow-ecommerce-template.png',
-            description: 'Lorem ipsum dolor amet consectetur pellentesque scelerisque fermentum.',
+            description: '',
             lessons: [
-                'Typefaces, fonts and layout',
-                'Effective letter spacing',
-                'Impact on identity'
+                'Clear roadmap from 0 to 100',
+                'Focus on high-yield topics first',
+                'No fluff — just what matters'
             ],
             lessonsCount: 12,
             className: ''
@@ -61,13 +60,13 @@ export const HOME_CHAPTERS = {
         {
             id: 3,
             wId: '774c65d2-3193-ae9e-7382-e4c12b44d25e',
-            title: 'Layout',
+            title: 'Dream of getting into a top-tier college?',
             icon: '/assets/webflow/images/layout-course-icon-courselify-webflow-ecommerce-template.png',
-            description: 'Lorem ipsum dolor amet consectetur pellentesque scelerisque fermentum.',
+            description: '',
             lessons: [
-                'Composition and balance',
-                'Creating order and structure',
-                'Organizing information'
+                'Stand out with killer AP scores',
+                'Save money on tuition later',
+                'Impress admissions officers'
             ],
             lessonsCount: 8,
             className: 'grid-item-margin-top'
@@ -75,13 +74,13 @@ export const HOME_CHAPTERS = {
         {
             id: 4,
             wId: '4902c55d-7aab-3647-b637-35bac2a3d80f',
-            title: 'Color',
+            title: 'Too much material to cover?',
             icon: '/assets/webflow/images/color-course-icon-courselify-webflow-ecommerce-template.png',
-            description: 'Lorem ipsum dolor amet consectetur pellentesque scelerisque fermentum.',
+            description: '',
             lessons: [
-                'Understanding color relationships',
-                'Using color to convey emotions',
-                'Enhancing readability and clarity'
+                'Cut through the clutter',
+                'Only the essentials, nothing extra',
+                'Learn faster, retain more'
             ],
             lessonsCount: 12,
             className: 'grid-bottom-item-margin-top'
@@ -89,13 +88,13 @@ export const HOME_CHAPTERS = {
         {
             id: 5,
             wId: '680117bc-6d23-3dbd-6db9-46e5a4a97e50',
-            title: 'Imagery',
+            title: 'No clue where to start?',
             icon: '/assets/webflow/images/imagery-course-icon-courselify-webflow-ecommerce-template.png',
-            description: 'Lorem ipsum dolor amet consectetur pellentesque scelerisque fermentum.',
+            description: '',
             lessons: [
-                'Choosing the right file type',
-                'Balancing elements in an image',
-                'Enhancing and retouching images'
+                'Zero to hero study plan',
+                'Step-by-step video lessons',
+                'Know exactly what to study next'
             ],
             lessonsCount: 8,
             className: ''
@@ -103,125 +102,125 @@ export const HOME_CHAPTERS = {
         {
             id: 6,
             wId: '8c1c1686-60be-c3e5-da93-1fe51396f0a4',
-            title: 'UI Elements',
-            icon: '/assets/webflow/images/ui-elements-course-icon-courselify-webflow-ecommerce-template.png',
-            description: 'Lorem ipsum dolor amet consectetur pellentesque scelerisque fermentum.',
-            lessons: [
-                'Creating intuitive user flows',
-                'Best practices for buttons',
-                'Creating user-friendly forms'
-            ],
-            lessonsCount: 12,
-            className: 'grid-bottom-item-margin-top'
-        }
-    ]
+            title: `Don't want to hire a tutor?`,
+                icon: '/assets/webflow/images/ui-elements-course-icon-courselify-webflow-ecommerce-template.png',
+    description: '',
+    lessons: [
+    'All-in-one self-study solution',
+    'Learn at your own pace',
+    'Tutor-level guidance for less'
+],
+    lessonsCount: 12,
+    className: 'grid-bottom-item-margin-top'
+}
+]
 } as const
 
-export const HOME_WHY_COURSE = {
-    title: 'Why this',
-    titleHighlight: 'course?',
-    description1: 'Lorem ipsum dolor sit amet consectetur aenean in ornare hendrerit ac interdum ac sit etiam commodo euismod ultrices maecenas commodo amet ornare vel lacus vel et non lobortis ullamcorper quis interdum.',
-    description2: 'Lorem ipsum dolor sit amet consectetur aenean in ornare hendrerit ac interdum ac sit etiam commodo euismod ultrices maecenas commodo amet ornare vel lacus vel et non lobortis ullamcorper quis interdum.',
+    export const HOME_WHY_COURSE = {
+    title: 'Get Top Scores On Your',
+    titleHighlight: 'APs With Us.',
+    description1: '',
+    description2: '',
     ctaText: 'Start learning',
     videoImage: '/assets/webflow/images/why-this-course-image-courselify-x-webflow-template.jpg',
     playButton: '/assets/webflow/images/play-button-courselify-x-webflow-template.svg',
     stats: [
-        { value: '80', suffix: '+', label: 'Lessons' },
-        { value: '2,000', suffix: '+', label: 'Critic videos' },
-        { value: '3,500', suffix: '+', label: 'Community members' },
-        { value: '40', suffix: '+', label: 'Hours of content' }
+        { value: '10', suffix: '+', label: 'Courses' },
+        { value: '200', suffix: '+', label: 'Videos' },
+        { value: '10,000', suffix: '+', label: 'AP-Style Tasks' },
+        { value: '300', suffix: '+', label: 'Hours of content' }
     ]
 } as const
 
 export const HOME_MEET_CEO = {
-    title: 'Meet',
-    titleHighlight: 'Andy Smith',
-    description1: 'Lorem ipsum dolor sit amet consectetur dictum interdum ut orci elit cras in proin arcu mauris blandit diam velit viverra odio donec bibendum vel a in justo consequat lorem vivamus dolor neque eu purus purus sodales.',
-    description2: 'Viverra sit quis id justo placerat vestibulum venenatis nulla semper metus proin eleifend suspendisse mattis. Aliquet.',
-    ctaText: 'More about me',
+    title: 'Team That Goes',
+    titleHighlight: 'All-in For You',
+    description1: `We're more than just a team — we're your personal study squad obsessed with your success. Every lesson, strategy, and resource is built to help you score higher, stress less, and actually enjoy the journey. From day one to exam day, we're in your corner pushing you forward. No judgment, no pressure — just real support from people who genuinely care. Because your dream deserves a team that fights for it.`,
+description2: 'No fluff, no boring lectures — just real people who actually care about helping you crush your goals. When you win, we win.',
+    ctaText: 'More about us',
     image: '/assets/webflow/images/meet-andy-smith-image-courselify-x-webflow-template.jpg'
 } as const
 
-export const HOME_CTA = {
-    title: "It's your turn to stand as a",
-    titleHighlight: 'web designer',
-    description: 'Lorem ipsum dolor amet consectetur pellentesque scelerisque fermentum bibendum ipsum massa cursus aliquet feugiat.',
-    ctaPrimary: 'Start learning',
-    ctaSecondary: 'Watch video',
+    export const HOME_CTA = {
+    title: "There's no",
+    titleHighlight: '"perfect" time to start studying.',
+    description: `The clock is ticking. Start now, not tomorrow. Every day you wait is a missed opportunity to boost your score. You don't need to be ready — you just need to begin. And we'll guide you every step of the way.`,
+    ctaPrimary: 'Go to the cart',
+    ctaSecondary: 'Show all courses',
     images: {
-        main: '/assets/webflow/images/stand-as-a-web-designer-main-image-courselify-x-webflow-template.png',
+    main: '/assets/webflow/images/stand-as-a-web-designer-main-image-courselify-x-webflow-template.png',
         left: '/assets/webflow/images/stand-as-a-web-designer-image-01-courselify-x-webflow-template.png',
         rightTop: '/assets/webflow/images/stand-as-a-web-designer-image-03-courselify-x-webflow-template.png',
         rightBottom: '/assets/webflow/images/stand-as-a-web-designer-image-02-courselify-x-webflow-template.png',
         floatSquare: '/assets/webflow/images/square-figure-courselify-x-webflow-template.png',
         floatCircle: '/assets/webflow/images/circle-figure-courselify-x-webflow-template.png',
         floatPyramid: '/assets/webflow/images/pyramid-figure-courselify-x-webflow-template.png'
-    }
+}
 } as const
 
-export const HOME_FEATURES = {
+    export const HOME_FEATURES = {
     title: 'Is this course',
     titleHighlight: 'for you?',
-    description: 'Lorem ipsum dolor amet consectetur pellentesque scelerisque fermentum bibendum ipsum massa cursus aliquet feugiat.',
+    description: '',
     ctaText: 'Start learning',
     items: [
         {
             icon: '/assets/webflow/images/beginner-friendly-icon-courselify-webflow-ecommerce-template.png',
-            title: 'Beginner friendly',
-            description: 'Lorem ipsum dolor sit amet consectetur placerat ut nisl maecenas massa sem tristique vitae sed sed aliquet augue egestas pellentesque felis diame get id id sapien viverra nulla turpis magna ut pellentesque mi pulvina.',
-            maxWidth: 'max-width-92px'
-        },
-        {
-            icon: '/assets/webflow/images/amazing-community-icon-courselify-webflow-ecommerce-template.png',
-            title: 'Amazing community',
-            description: 'Neque euismod massa libero rutrum pulvinar faucibus dis massa curabitur dolor sed risus nec tincidunt eget id accumsan suspendisse sagittis phasellus nibh quam nec volutpat.',
-            maxWidth: 'max-width-102px'
-        },
-        {
-            icon: '/assets/webflow/images/live-streams-icon-courselify-webflow-ecommerce-template.png',
-            title: 'Weekly Q&A live streams',
-            description: 'Neque euismod massa libero rutrum pulvinar faucibus dis massa curabitur dolor sed risus nec tincidunt eget id accumsan suspendisse sagittis phasellus nibh quam nec volutpat.',
-            maxWidth: 'max-width-116px'
-        },
-        {
-            icon: '/assets/webflow/images/free-resources-icon-courselify-webflow-ecommerce-template.png',
-            title: '1,000+ free resources',
-            description: 'Lorem ipsum dolor sit amet consectetur placerat ut nisl maecenas massa sem tristique vitae sed sed aliquet augue egestas pellentesque felis diame get id id sapien viverra nulla turpis magna ut pellentesque mi pulvina.',
-            maxWidth: 'max-width-124px'
-        }
-    ]
+            title: `You're aiming for top scores`,
+            description: `You're not okay with just passing — you want that 5. You're willing to put in the work, but you need someone to show you exactly what to focus on.`,
+    maxWidth: 'max-width-92px'
+},
+{
+    icon: '/assets/webflow/images/amazing-community-icon-courselify-webflow-ecommerce-template.png',
+        title: 'You feel lost',
+    description: `The textbook is 500 pages long and you don't know where to start. You want a clear roadmap that tells you what actually matters.`,
+    maxWidth: 'max-width-102px'
+},
+{
+    icon: '/assets/webflow/images/live-streams-icon-courselify-webflow-ecommerce-template.png',
+        title: `You're tired of wasting time`,
+    description: `You've tried studying before but ended up focusing on the wrong things. You want system that covers what's actually on the test.`,
+    maxWidth: 'max-width-116px'
+},
+{
+    icon: '/assets/webflow/images/free-resources-icon-courselify-webflow-ecommerce-template.png',
+        title: 'Your schedule is a mess',
+    description: `Between school, sports, and life, you can't commit to rigid class times. You need something that fits around you, not the other way around.`,
+    maxWidth: 'max-width-124px'
+}
+]
 } as const
 
-export const HOME_TESTIMONIALS = {
-    title: 'What are students saying',
-    titleHighlight: 'about the course',
+    export const HOME_TESTIMONIALS = {
+    title: 'Your Success is',
+    titleHighlight: 'Our Reputation',
     items: [
         {
             quote: "Transformed my web design skills completely",
             text: "Lorem ipsum dolor sit amet consectetur integer facilisis sodales lobortis amet nibh id erat ut at viverra vulputate malesuada.",
             name: "John Carter",
-            position: "Marketing Lead at Company",
+            position: "Got «5» on AP Calculus AB",
             avatar: "/assets/webflow/images/john-carter-avatar-courselify-x-webflow-template.jpg"
         },
         {
             quote: "Incredible course, highly recommend to anyone!",
             text: "Lorem ipsum dolor sit amet consectetur integer facilisis sodales lobortis amet nibh id erat ut at viverra vulputate malesuada.",
             name: "Sophie Moore",
-            position: "Head of Design at StartUp",
+            position: "Got «5» on AP CSA",
             avatar: "/assets/webflow/images/sophie-moore-avatar-courselify-x-webflow-template.jpg"
         },
         {
             quote: "The best investment I've made for my career.",
             text: "Lorem ipsum dolor sit amet consectetur integer facilisis sodales lobortis amet nibh id erat ut at viverra vulputate malesuada.",
             name: "Matt Cannon",
-            position: "Marketing Lead at Business",
+            position: "Got «5» on AP Physics 1",
             avatar: "/assets/webflow/images/matt-cannon-avatar-courselify-x-webflow-template.jpg"
         },
         {
             quote: "It gave me the confidence to design websites",
             text: "Lorem ipsum dolor sit amet consectetur integer facilisis sodales lobortis amet nibh id erat ut at viverra vulputate malesuada.",
             name: "Sandy Houston",
-            position: "Growth Marketer at Agency",
+            position: "Got «5» on AP Statistics",
             avatar: "/assets/webflow/images/sandy-houston-avatar-courselify-x-webflow-template.jpg"
         }
     ]

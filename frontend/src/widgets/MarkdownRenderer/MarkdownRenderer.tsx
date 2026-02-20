@@ -85,7 +85,7 @@ export const MarkdownRenderer = ({ content, className = '' }: MarkdownRendererPr
     }
 
     return (
-        <div className={`rich-text w-richtext ${className}`}>
+        <div className={`rich-text w-richtext ${className}`} style={{color: '#000'}}>
             <ReactMarkdown
                 remarkPlugins={[remarkMath, remarkGfm]}
                 rehypePlugins={[

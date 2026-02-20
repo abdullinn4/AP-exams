@@ -21,15 +21,6 @@ export const authApi = baseApi.injectEndpoints({
                 body: data
             }),
         }),
-        // POST /api/v1/auth/refresh
-        refreshToken: builder.mutation<LoginResponse, {refreshToken: string}>({
-            query: (data) => ({
-                url: '/auth/refresh',
-                method: 'POST',
-                params: {refreshToken: data.refreshToken}
-            }),
-            invalidatesTags: ['Auth'],
-        }),
         // POST /api/v1/auth/logout
         logout: builder.mutation<void, {refreshToken: string}>({
             query: (data) => ({
@@ -45,6 +36,5 @@ export const authApi = baseApi.injectEndpoints({
 export const {
     useLoginMutation,
     useForgotPasswordMutation,
-    useRefreshTokenMutation,
     useLogoutMutation,
 } = authApi

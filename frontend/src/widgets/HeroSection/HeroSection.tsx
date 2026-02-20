@@ -38,7 +38,7 @@ export const HeroSection = () => {
                                         <Link to="/pricing" className="button-primary white w-inline-block">
                                             <div className="text-block">{HOME_HERO.ctaPrimary}</div>
                                             <div className="item-icon-right">
-                                                <div className="custom-icon-font"></div>
+                                                <div className="custom-icon-font"></div>
                                             </div>
                                         </Link>
                                         <Link to="/chapters" className="secondary-button white w-inline-block">

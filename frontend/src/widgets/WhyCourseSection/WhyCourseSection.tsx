@@ -12,7 +12,7 @@ export const WhyCourseSection = () => {
                             <Link to="/pricing" className="button-primary w-inline-block">
                                 <div className="text-block">{HOME_WHY_COURSE.ctaText}</div>
                                 <div className="item-icon-right">
-                                    <div className="custom-icon-font"></div>
+                                    <div className="custom-icon-font"></div>
                                 </div>
                             </Link>
                         </div>

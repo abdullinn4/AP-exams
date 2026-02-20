@@ -1,14 +1,13 @@
-import { Footer } from '@/widgets/Footer'
-import { HeroSection } from '@/widgets/HeroSection'
-import { ChaptersSection } from '@/widgets/ChaptersSection'
-import { WhyCourseSection } from '@/widgets/WhyCourseSection'
-import { MeetCEOSection } from '@/widgets/MeetCEOSection'
-import { CTASection } from '@/widgets/CTASection'
-import { FeaturesSection } from '@/widgets/FeaturesSection'
-import { TestimonialsSection } from '@/widgets/TestimonialsSection'
-import { BlogSection } from '@/widgets/BlogSection'
-import { PricingSection } from '@/widgets/PricingSection'
-import { FinalCTASection } from '@/widgets/FinalCTASection'
+import {Footer} from '@/widgets/Footer'
+import {HeroSection} from '@/widgets/HeroSection'
+import {ChaptersSection} from '@/widgets/ChaptersSection'
+import {WhyCourseSection} from '@/widgets/WhyCourseSection'
+import {MeetCEOSection} from '@/widgets/MeetCEOSection'
+import {CTASection} from '@/widgets/CTASection'
+import {FeaturesSection} from '@/widgets/FeaturesSection'
+import {TestimonialsSection} from '@/widgets/TestimonialsSection'
+import {PricingSection} from '@/widgets/PricingSection'
+import {FinalCTASection} from '@/widgets/FinalCTASection'
 import {CTAFooterBlock} from "@/widgets/CTAFooterBlock";
 import {useNavigate} from "react-router-dom";
 import type {TariffDetails} from "@/entities/tariff/tariff.ts";
@@ -43,18 +42,17 @@ export const HomePage = () => {
             isActive: true,
         },
     ]
-    
+
     return (
         <div className="page-wrapper">
-            <HeroSection />
-            <ChaptersSection />
-            <WhyCourseSection />
-            <MeetCEOSection />
-            <CTASection />
-            <FeaturesSection />
-            <TestimonialsSection />
-            <BlogSection />
-            <FinalCTASection />
+            <HeroSection/>
+            <ChaptersSection/>
+            <WhyCourseSection/>
+            <MeetCEOSection/>
+            <CTASection/>
+            <FeaturesSection/>
+            <TestimonialsSection/>
+            <FinalCTASection/>
             <PricingSection
                 title='Pricing plans <span class="heading-gradient">for you</span>'
                 description="Lorem ipsum dolor amet consectetur pellentesque scelerisque fermentum bibendum ipsum massa cursus aliquet feugiat."
@@ -70,14 +68,13 @@ export const HomePage = () => {
                     className="footer-card"
                 >
                     <div className="w-layout-blockcontainer container-default w-container">
-                        <CTAFooterBlock />
+                        <CTAFooterBlock/>
                     </div>
                 </div>
             </footer>
 
 
-
-            <Footer variant="full" />
+            <Footer variant="full"/>
         </div>
     )
 }

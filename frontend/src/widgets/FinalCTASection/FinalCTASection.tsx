@@ -13,7 +13,7 @@ export const FinalCTASection = () => {
                         <Link to="/pricing" className="button-primary w-inline-block">
                             <div className="text-block">{HOME_FAQ.ctaText}</div>
                             <div className="item-icon-right">
-                                <div className="custom-icon-font"></div>
+                                <div className="custom-icon-font"></div>
                             </div>
                         </Link>
                     </div>

@@ -3,17 +3,22 @@ import {useLoginMutation, useLogoutMutation} from "@/shared/api/authApi.ts";
 import type {LoginRequest} from "@/entities/users/auth/auth.ts";
 import {tokenService} from "@/features/auth/lib/tokenService.ts";
 import {ROUTES} from "@/app/router/routes.ts";
+import {useDispatch, useSelector} from "react-redux";
+import { setAuthenticated, clearAuth } from './authSlice'
+import type {RootState} from "@/app/store/store.ts";
 
 export const useAuth = () => {
     const navigate = useNavigate()
     const [loginMutation] = useLoginMutation()
     const [logoutMutation] = useLogoutMutation()
+    const dispatch = useDispatch()
+    const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated)
 
     const login = async (loginRequest: LoginRequest) => {
         try{
             const response = await loginMutation(loginRequest).unwrap()
             tokenService.setTokens(response.tokens.accessToken, response.tokens.refreshToken)
-
+            dispatch(setAuthenticated(true))
             navigate(ROUTES.DASHBOARD)
             return {success: true}
         }catch (error: any){
@@ -34,11 +39,10 @@ export const useAuth = () => {
             console.error('Logout failed:', error)
         } finally {
             tokenService.clearTokens()
+            dispatch(clearAuth())
             navigate(ROUTES.SIGN_IN)
         }
     }
-
-    const isAuthenticated = tokenService.isAuthenticated()
 
     return {
         login,

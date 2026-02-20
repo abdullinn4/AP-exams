@@ -11,9 +11,6 @@ export const ChaptersSection = () => {
                 <div data-w-id="34843878-4922-e140-fb72-ce72b9457d79" className="inner-container _585px center">
                     <div className="text-center">
                         <h2 className="display-9">{HOME_CHAPTERS.title} <span className="heading-gradient">{HOME_CHAPTERS.titleHighlight}</span></h2>
-                        <div className="mg-top-16px">
-                            <p>{HOME_CHAPTERS.description}</p>
-                        </div>
                     </div>
                 </div>
                 <div className="mg-top-40px">
@@ -46,11 +43,6 @@ export const ChaptersSection = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="mg-top-40px">
-                                        <Link to="/chapter" className="secondary-button w-inline-block">
-                                            <div className="text-block">Learn more</div>
-                                        </Link>
-                                    </div>
                                     <div className="chapter-badge-wrapper">
                                         <div className="badge secondary">
                                             <div>{chapter.lessonsCount} Lessons</div>
@@ -67,7 +59,7 @@ export const ChaptersSection = () => {
                         <Link to="/pricing" className="button-primary w-inline-block">
                             <div className="text-block">{HOME_CHAPTERS.ctaPrimary}</div>
                             <div className="item-icon-right">
-                                <div className="custom-icon-font"></div>
+                                <div className="custom-icon-font"></div>
                             </div>
                         </Link>
                         <Link to="/chapters" className="secondary-button w-inline-block">
