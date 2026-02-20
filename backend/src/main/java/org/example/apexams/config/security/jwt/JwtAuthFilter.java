@@ -6,6 +6,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.apexams.config.security.details.UserDetailsServiceImpl;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +19,7 @@ import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class JwtAuthFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
     private final UserDetailsServiceImpl userDetailsService;
@@ -28,6 +30,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         String authHeader = request.getHeader("Authorization");
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            log.debug("No Authorization header or invalid format for: {}", request.getRequestURI());
             filterChain.doFilter(request, response);
             return;
         }
@@ -35,6 +38,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         String token = authHeader.substring(7);
 
         if (tokenBlacklistService.isBlacklisted(token)) {
+            log.warn("Token is blacklisted for: {}", request.getRequestURI());
             filterChain.doFilter(request, response);
             return;
         }
@@ -42,13 +46,16 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         String username;
         try {
             username = jwtService.extractUsername(token);
+            log.debug("Extracted username from token: {}", username);
         } catch (JwtException e) {
+            log.error("JWT validation failed for {}: {}", request.getRequestURI(), e.getMessage());
             filterChain.doFilter(request, response);
             return;
         }
 
-        if (SecurityContextHolder.getContext().getAuthentication() == null) {
+        try {
             UserDetails user = userDetailsService.loadUserByUsername(username);
+            log.debug("Loaded user details for: {}, authorities: {}", username, user.getAuthorities());
 
             if (jwtService.isTokenValid(token, user)) {
                 UsernamePasswordAuthenticationToken auth =
@@ -63,9 +70,13 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 );
 
                 SecurityContextHolder.getContext().setAuthentication(auth);
+                log.debug("Authentication set successfully for: {}", username);
+            } else {
+                log.warn("Token validation failed for user: {}", username);
             }
+        } catch (Exception e) {
+            log.error("Failed to authenticate user {}: {}", username, e.getMessage(), e);
         }
-
         filterChain.doFilter(request, response);
     }
 }

@@ -37,9 +37,15 @@ public class TokenBlacklistService {
     //Проверить, находится ли токен в blacklist
 
     public boolean isBlacklisted(String token) {
-        String key = BLACKLIST_PREFIX + token;
-        Boolean exists = redisTemplate.hasKey(key);
-        return Boolean.TRUE.equals(exists);
+        try {
+            String key = BLACKLIST_PREFIX + token;
+            Boolean exists = redisTemplate.hasKey(key);
+            return Boolean.TRUE.equals(exists);
+        } catch (Exception e) {
+            log.error("Failed to check token blacklist (Redis error): {}", e.getMessage());
+            // Если Redis недоступен, не блокируем токен
+            return false;
+        }
     }
 
 }
