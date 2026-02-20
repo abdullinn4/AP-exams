@@ -29,7 +29,14 @@ const baseQueryWithReauth: BaseQueryFn<
 
     let result = await baseQuery(args, api, extraOptions)
 
-    if (result.error?.status === 401) {
+    if (result.error) {
+        console.log('[Auth] Request failed:', {
+            status: result.error.status,
+            url: typeof args === 'string' ? args : args.url
+        })
+    }
+
+    if (result.error?.status === 401 || result.error?.status === 403) {
 
         if (!mutex.isLocked()) {
             const release = await mutex.acquire()
