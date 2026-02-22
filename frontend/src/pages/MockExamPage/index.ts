@@ -1,0 +1,1 @@
+export {MockExamsPage} from './MockExamsPage.tsx'

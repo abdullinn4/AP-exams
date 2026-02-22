@@ -7,7 +7,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.example.apexams.config.security.details.UserDetailsImpl;
 import org.example.apexams.notifications.dto.NotificationResponse;
+import org.example.apexams.notifications.dto.SystemNotificationDto;
 import org.example.apexams.notifications.service.NotificationService;
+import org.example.apexams.users.entity.UserEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -38,5 +40,14 @@ public class StudentNotificationsController {
             @Parameter(hidden = true) @AuthenticationPrincipal UserDetailsImpl userDetails,
             @Parameter(description = "Notification ID") @PathVariable UUID notificationId) {
         return ResponseEntity.ok(notificationService.markAsRead(userDetails.user().getId(), notificationId));
+    }
+    @Operation(summary = "Get system notifications")
+    @GetMapping("/system")
+    public ResponseEntity<List<SystemNotificationDto>> getSystemNotifications(
+            @AuthenticationPrincipal UserDetailsImpl userDetails
+    ) {
+        List<SystemNotificationDto> notifications =
+                notificationService.getSystemNotifications(userDetails.user().getId());
+        return ResponseEntity.ok(notifications);
     }
 }

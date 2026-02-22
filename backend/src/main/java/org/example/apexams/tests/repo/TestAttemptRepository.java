@@ -18,4 +18,6 @@ public interface TestAttemptRepository extends JpaRepository<TestAttemptEntity, 
     int countByUserIdAndTestId(UUID userId, UUID testId);
 
     List<TestAttemptEntity> findAllByUserId(UUID userId);
+
+    List<TestAttemptEntity> findByUserIdAndTestIdIn(UUID userId, List<UUID> testIds);
 }

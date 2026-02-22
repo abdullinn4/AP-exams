@@ -15,8 +15,8 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
 
     // Выбор логотипа в зависимости от темы
     const logoSrc = theme === 'light'
-        ? '/assets/webflow/images/logo_smashap_white.svg'
-        : '/assets/webflow/images/logo_smashap_dark.svg'
+        ? '/assets/webflow/images/smashap_white_full.svg'
+        : '/assets/webflow/images/smashap_dark_full.svg'
 
 
     // Минимальный хэдер для auth страниц (Header V3)

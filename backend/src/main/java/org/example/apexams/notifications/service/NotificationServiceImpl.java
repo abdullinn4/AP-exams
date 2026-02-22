@@ -3,7 +3,10 @@ package org.example.apexams.notifications.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.apexams.common.mapper.NotificationMapper;
+import org.example.apexams.enrollments.entity.enums.EnrollmentStatus;
+import org.example.apexams.enrollments.repo.EnrollmentRepository;
 import org.example.apexams.notifications.dto.NotificationResponse;
+import org.example.apexams.notifications.dto.SystemNotificationDto;
 import org.example.apexams.notifications.entity.NotificationEntity;
 import org.example.apexams.notifications.entity.enums.NotificationStatus;
 import org.example.apexams.notifications.entity.enums.NotificationType;
@@ -13,6 +16,9 @@ import org.example.apexams.users.repo.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -24,6 +30,7 @@ public class NotificationServiceImpl implements NotificationService {
     private final NotificationRepository notificationRepository;
     private final UserRepository userRepository;
     private final NotificationMapper notificationMapper;
+    private final EnrollmentRepository enrollmentRepository;
 
     @Override
     @Transactional
@@ -104,6 +111,30 @@ public class NotificationServiceImpl implements NotificationService {
         NotificationEntity notification = findNotificationByIdOrThrow(notificationId);
         notificationRepository.delete(notification);
         log.info("Notification deleted: {}", notificationId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<SystemNotificationDto> getSystemNotifications(UUID userId) {
+        List<SystemNotificationDto> notifications = new ArrayList<>();
+
+        LocalDate today = LocalDate.now();
+        if (today.getDayOfWeek() == DayOfWeek.MONDAY) {
+            boolean hasActiveCourses = enrollmentRepository.existsByUserIdAndStatus(
+                    userId,
+                    EnrollmentStatus.ACTIVE
+            );
+
+            if (hasActiveCourses) {
+                notifications.add(SystemNotificationDto.builder()
+                        .type("WEEKLY_COURSE_REMINDER")
+                        .title("Don't forget to finish your course!")
+                        .message("Complete your way to «5»")
+                        .actionUrl("/my-courses")
+                        .build());
+            }
+        }
+        return notifications;
     }
 
     private NotificationEntity findNotificationByIdOrThrow(UUID notificationId) {

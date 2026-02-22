@@ -1,6 +1,7 @@
 package org.example.apexams.enrollments.repo;
 
 import org.example.apexams.enrollments.entity.EnrollmentEntity;
+import org.example.apexams.enrollments.entity.enums.EnrollmentStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -22,4 +23,6 @@ public interface EnrollmentRepository
     List<EnrollmentEntity> findAllByUserId(UUID userId);
 
     List<EnrollmentEntity> findAllByCourseId(UUID courseId);
+
+    boolean existsByUserIdAndStatus(UUID userId, EnrollmentStatus status);
 }

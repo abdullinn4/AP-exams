@@ -18,6 +18,8 @@ import {TermsAndConditionsPage} from "@/pages/TermsAndConditionsPage";
 import {DashboardPage} from "@/pages/DashboardPage";
 import {ProtectedRoute} from "@/app/router/ProtectedRoute.tsx";
 import {PublicRoute} from "@/app/router/PublicRoute.tsx";
+import {MockExamsPage} from "@/pages/MockExamPage";
+import {MockExamTestPage} from "@/pages/MockExamTestPage";
 
 export const AppRouter = () => {
     useWebflowAnimations()
@@ -43,6 +45,8 @@ export const AppRouter = () => {
                     <Route path={ROUTES.MY_COURSE} element={<MyCoursePage />} />
                     <Route path={ROUTES.UNIT} element={<UnitPage />} />
                     <Route path={ROUTES.LESSON} element={<LessonPage />} />
+                    <Route path={ROUTES.MOCK_EXAMS} element={<MockExamsPage />} />
+                    <Route path={ROUTES.MOCK_EXAM_TEST} element={<MockExamTestPage />} />
                     <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} />
                 </Route>
 

@@ -113,3 +113,36 @@ export interface LessonDetails {
     canContactCurator: boolean
     discordInviteUrl: string | null
 }
+
+export interface MockExamItem {
+    id: string
+    title: string
+    timeLimitSec: number
+    minTier: 'BASIC' | 'PRO'
+    isPublished: boolean
+    attemptsCount: number
+    bestScore: number
+    isCompleted: boolean
+}
+
+export interface MockExamsResponse {
+    courseId: string
+    courseTitle: string
+    mockExams: MockExamItem[]
+    totalExams: number
+    completedExams: number
+    progressPercentage: number
+}
+
+export interface MockExamDetails {
+    id: string
+    courseId: string
+    courseTitle: string
+    testTitle: string
+    timeLimitSec: number
+    minTier: 'BASIC' | 'PRO'
+
+    testAttemptId: string | null
+    testAttemptStatus: TestAttemptStatus | null
+    testAttemptSummary: TestAttemptSummary | null
+}

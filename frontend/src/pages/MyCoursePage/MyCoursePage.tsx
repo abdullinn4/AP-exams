@@ -4,6 +4,7 @@ import {Footer} from '@/widgets/Footer'
 import {CourseUnitsSection} from '@/widgets/CourseUnitsSection/CourseUnitsSection'
 import {CourseVideoHeroSection} from "@/widgets/CourseHeroSection"
 import {useGetCourseDetailsQuery} from "@/shared/api/courseApi.ts";
+import {MockExamsSection} from "@/widgets/MockExamsSection";
 
 export const MyCoursePage = () => {
     const {slug} = useParams<{ slug: string }>()
@@ -42,6 +43,9 @@ export const MyCoursePage = () => {
                         showProgress={true}
                         courseSlug={course?.slug}
                     />
+
+                    <MockExamsSection courseSlug={course?.slug}/>
+
                 </>
             )}
 

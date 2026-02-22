@@ -32,17 +32,12 @@ export const CourseDetailCard = ({ courseDetail }: CourseDetailCardProps) => {
     return (
         <div className="mg-bottom-48px">
             <div className="chapters-top-content-wrapper first">
-                <div className="chapters-top-content">
+                <div className="chapters-top-content" style={{ display: 'flex', alignItems: 'center' }}>
                     <div className="image-wrapper chapter-icon">
                         <img src='/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png' alt="Course"/>
                     </div>
                     <div className="inner-container _418px">
                         <h2 className="display-5">{courseDetail.courseTitle}</h2>
-                        {courseDetail.snippet && (
-                            <div className="mg-top-4px">
-                                <p>{courseDetail.snippet}</p>
-                            </div>
-                        )}
                     </div>
                 </div>
                 <Link
@@ -76,7 +71,7 @@ export const CourseDetailCard = ({ courseDetail }: CourseDetailCardProps) => {
                                         <h3 className="link">{lesson.lessonTitle}</h3>
 
                                     </div>
-                                    <div>{getStatusBadge(lesson.status)}</div>
+                                    <div style={{fontWeight: '600'}}>{getStatusBadge(lesson.status)}</div>
                                 </Link>
                             ))}
                         </div>

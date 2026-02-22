@@ -5,5 +5,6 @@ public enum NotificationType {
     LESSON_COMPLETED,
     TEST_PASSED,
     MOCK_EXAM_RESULT,
-    SYSTEM
+    SYSTEM,
+    WEEKLY_COURSE_REMINDER
 }

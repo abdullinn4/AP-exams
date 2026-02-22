@@ -57,7 +57,6 @@ export const LessonPage = () => {
         )
     }
 
-
     return (
         <div className="page-wrapper">
             <Header/>

@@ -10,7 +10,9 @@ export const WEBFLOW_PAGE_IDS: Record<string, string> = {
     '/my-courses': '696cb73966e9acecad098e69',
     '/courses/:slug': '696cb73966e9acecad098eec',
     '/courses/:slug/units/:unitId': '696cb73966e9acecad098ec5',
+    '/courses/:slug/mock-exams': '696cb73966e9acecad098ec5',
     '/courses/:slug/units/:unitId/lessons/:lessonId': '696cb73966e9acecad098eeb',
+    '/courses/:slug/mock-exams/:examId': '696cb73966e9acecad098eeb',
     '/terms-and-conditions': '696cb73966e9acecad098e58',
     '/dashboard': '696cb73966e9acecad098e68',
     // ... остальные

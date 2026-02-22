@@ -6,7 +6,7 @@ interface FooterProps {
 }
 
 export const Footer = ({ variant = 'full' }: FooterProps) => {
-    const logoSrc = '/assets/webflow/images/logo_smashap_dark.svg';
+    const logoSrc = '/assets/webflow/images/smashap_dark.svg';
 
     // Минимальный футер (Footer V3)
     if (variant === 'minimal') {

@@ -1,6 +1,7 @@
 package org.example.apexams.notifications.service;
 
 import org.example.apexams.notifications.dto.NotificationResponse;
+import org.example.apexams.notifications.dto.SystemNotificationDto;
 import org.example.apexams.notifications.entity.enums.NotificationType;
 
 import java.util.List;
@@ -28,4 +29,6 @@ public interface NotificationService {
 
     // Удаление уведомления
     void deleteNotification(UUID notificationId);
+
+    List<SystemNotificationDto> getSystemNotifications(UUID userId);
 }

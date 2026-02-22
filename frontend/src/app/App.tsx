@@ -6,6 +6,7 @@ import {store} from "@/app/store/store.ts";
 import {AppRouter} from "@/app/router/AppRouter.tsx";
 import {BrowserRouter} from "react-router-dom";
 import {useEffect} from "react";
+import {NotificationBadge} from "@/widgets/NotificationBadge";
 
 function App() {
 
@@ -19,8 +20,8 @@ function App() {
         <Provider store={store}>
             <BrowserRouter>
                 <AppRouter/>
+                <NotificationBadge/>
             </BrowserRouter>
-
         </Provider>
     )
 }
