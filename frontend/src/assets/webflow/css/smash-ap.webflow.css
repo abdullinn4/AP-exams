@@ -14330,3 +14330,49 @@ figcaption {
 .lesson_status_completed{
     color: #1ed760;
 }
+/* ===== Markdown элементы - все черные ===== */
+.rich-text p,
+.rich-text li,
+.rich-text strong,
+.rich-text em,
+.rich-text pre {
+    color: #000 !important;
+}
+
+/* Inline code */
+.rich-text .inline-code {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Заголовки */
+.rich-text h1,
+.rich-text h2,
+.rich-text h3,
+.rich-text h4,
+.rich-text h5,
+.rich-text h6 {
+    color: #000 !important;
+}
+
+/* Списки */
+.rich-text ul,
+.rich-text ol {
+    color: #000 !important;
+}
+
+/* Таблицы */
+.rich-text table,
+.rich-text th,
+.rich-text td {
+    color: #000 !important;
+}
+
+/* Blockquote */
+.rich-text blockquote {
+    color: #000 !important;
+    border-left: 4px solid #000;
+    padding-left: 16px;
+    margin-left: 0;
+}
