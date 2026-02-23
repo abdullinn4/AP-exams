@@ -77,7 +77,7 @@ export const coursesApi = baseApi.injectEndpoints({
                 method: 'POST',
                 body: answers,
             }),
-            invalidatesTags: ['Course'],
+            invalidatesTags: ['Course', 'Statistics', 'Dashboard', 'MyCourses'],
         }),
         getTestResultDetails: builder.query<TestResultDetailsResponse, string>({
             query: (attemptId) => `/test-attempts/${attemptId}/details`,
