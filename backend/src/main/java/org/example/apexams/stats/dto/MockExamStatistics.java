@@ -5,7 +5,6 @@ import java.util.UUID;
 public record MockExamStatistics(
         UUID examId,
         String examTitle,
-        Integer orderIndex,
 
         // Решен ли экзамен
         Boolean isSolved,

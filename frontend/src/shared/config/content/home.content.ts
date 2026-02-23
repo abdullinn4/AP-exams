@@ -1,3 +1,5 @@
+import type {TariffDetails} from "@/entities/tariff/tariff.ts";
+
 export const HOME_HERO = {
     avatars: [
         '/assets/webflow/images/john-carter-avatar-image-courselify-x-webflow-template.jpg',
@@ -249,3 +251,26 @@ export const HOME_FAQ = {
         }
     ]
 } as const
+
+export const homeTariffs: TariffDetails[] = [
+    {
+        id: 'basic',
+        courseId: 'general',
+        title: 'Basic',
+        tier: 'BASIC',
+        price: 99,
+        currency: 'USD',
+        paddleVariantId: '1',
+        isActive: true,
+    },
+    {
+        id: 'pro',
+        courseId: 'general',
+        title: 'Pro',
+        tier: 'PRO',
+        price: 199,
+        currency: 'USD',
+        paddleVariantId: '2',
+        isActive: true,
+    },
+] as const

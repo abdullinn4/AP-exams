@@ -113,6 +113,8 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                                                           className="dropdown-link">Dashboard</Link>
                                                                     <Link to={ROUTES.MY_COURSES}
                                                                           className="dropdown-link">My Courses</Link>
+                                                                    <Link to={ROUTES.STATISTICS}
+                                                                          className="dropdown-link">Statistics</Link>
                                                                     <button
                                                                         onClick={logout}
                                                                         className="dropdown-link"

@@ -15,5 +15,6 @@ export const WEBFLOW_PAGE_IDS: Record<string, string> = {
     '/courses/:slug/mock-exams/:examId': '696cb73966e9acecad098eeb',
     '/terms-and-conditions': '696cb73966e9acecad098e58',
     '/dashboard': '696cb73966e9acecad098e68',
+    '/statistics': '696cb73966e9acecad098e72',
     // ... остальные
 }

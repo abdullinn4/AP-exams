@@ -65,6 +65,7 @@ public class SecurityConfig {
                                 "/api/v1/tests/**",
                                 "/api/v1/test-attempts/**",
                                 "/api/v1/notifications/**",
+                                "/api/v1/statistics/**",
                                 "/api/v1/stats/**",
                                 "/api/v1/analytics/curator-contact"
                         ).hasRole("STUDENT")

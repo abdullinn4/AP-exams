@@ -10,7 +10,7 @@ import {PricingSection} from '@/widgets/PricingSection'
 import {FinalCTASection} from '@/widgets/FinalCTASection'
 import {CTAFooterBlock} from "@/widgets/CTAFooterBlock";
 import {useNavigate} from "react-router-dom";
-import type {TariffDetails} from "@/entities/tariff/tariff.ts";
+import {homeTariffs} from "@/shared/config/content";
 
 export const HomePage = () => {
     const navigate = useNavigate()
@@ -19,29 +19,6 @@ export const HomePage = () => {
         navigate('/courses')
     }
 
-    // Mock tariffs для HomePage
-    const homeTariffs: TariffDetails[] = [
-        {
-            id: 'basic',
-            courseId: 'general',
-            title: 'Basic',
-            tier: 'BASIC',
-            price: 99,
-            currency: 'USD',
-            paddleVariantId: '1',
-            isActive: true,
-        },
-        {
-            id: 'pro',
-            courseId: 'general',
-            title: 'Pro',
-            tier: 'PRO',
-            price: 199,
-            currency: 'USD',
-            paddleVariantId: '2',
-            isActive: true,
-        },
-    ]
 
     return (
         <div className="page-wrapper">

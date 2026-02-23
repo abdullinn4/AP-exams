@@ -16,4 +16,5 @@ export const ROUTES = {
     MOCK_EXAM_TEST: '/courses/:slug/mock-exams/:examId',
     TERMS_AND_CONDITIONS: '/terms-and-conditions',
     DASHBOARD: '/dashboard',
+    STATISTICS: '/statistics',
 } as const
