@@ -1,0 +1,17 @@
+[
+    {"title": "Basic Access",
+    "tier": "BASIC",
+    "priceCents": 9900,
+    "currency": "USD",
+    "isActive": true,
+    "paddleVariantId" : "calculusab_tariff_basic"
+    },
+    {
+    "title": "Pro Access",
+    "tier": "PRO",
+    "priceCents": 24900,
+    "currency": "USD",
+    "isActive": true,
+    "paddleVariantId": "calculusab_tariff_pro"
+    }
+]

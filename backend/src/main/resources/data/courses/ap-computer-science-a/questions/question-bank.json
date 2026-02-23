@@ -1,0 +1,1753 @@
+[
+    {
+        "id": "q-alg-001",
+        "tags": ["algorithms", "definition", "basic"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nWhich of the following best describes an algorithm?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "A programming language used to write code"},
+            {"id": "b", "text": "A step-by-step process for completing a task or solving a problem"},
+            {"id": "c", "text": "A type of computer hardware that executes instructions"},
+            {"id": "d", "text": "A software tool that checks for errors in code"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "An **algorithm** is a step-by-step process for completing a task or solving a problem. Algorithms exist independently of computers—you can describe an algorithm using written language or diagrams without writing any code.\n\n- **(A) is incorrect** because a programming language (like Java or Python) is a tool used to express algorithms, not the algorithm itself.\n- **(C) is incorrect** because computer hardware (like the CPU) executes instructions but is not an algorithm.\n- **(D) is incorrect** because a compiler or debugger checks for errors, but that is not the definition of an algorithm."
+    },
+    {
+        "id": "q-alg-002",
+        "tags": ["algorithms", "sequencing", "basic"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nA student writes the following steps to make a peanut butter sandwich:\n\n1. Get two slices of bread\n2. Open the peanut butter jar\n3. Spread peanut butter on one slice\n4. Place the other slice on top\n\nWhich term best describes the order in which these steps are performed?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Selection"},
+            {"id": "b", "text": "Repetition"},
+            {"id": "c", "text": "Sequencing"},
+            {"id": "d", "text": "Compilation"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "**Sequencing** refers to the order in which steps of an algorithm are completed—one step after another, in a specific sequence.\n\n- **(A) Selection** would involve making a decision (like \"if the jar is empty, go to the store\"), which is not present here.\n- **(B) Repetition** would involve repeating steps (like \"spread peanut butter on both slices\"), which is not present.\n- **(D) Compilation** is the process of translating code into machine language, not related to step order."
+    },
+    {
+        "id": "q-alg-003",
+        "tags": ["compiler", "translation", "syntax errors"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nWhich of the following is a primary function of a compiler?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "To execute the program line by line"},
+            {"id": "b", "text": "To translate source code into machine code and detect syntax errors"},
+            {"id": "c", "text": "To provide an interface for writing and editing code"},
+            {"id": "d", "text": "To manage memory allocation during program execution"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "A **compiler** translates source code (written by the programmer) into machine code (bytecode in Java) that the computer can execute. During this process, it detects **syntax errors**—mistakes where the rules of the programming language are not followed.\n\n- **(A) is incorrect** because executing a program line by line describes an **interpreter**, not a compiler.\n- **(C) is incorrect** because providing an interface for writing code is the job of an **IDE** (Integrated Development Environment) or text editor.\n- **(D) is incorrect** because memory allocation is handled by the Java Virtual Machine (JVM) during program execution, not by the compiler."
+    },
+    {
+        "id": "q-alg-004",
+        "tags": ["syntax errors", "compilation", "debugging"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nConsider the following Java code segment:\n\n```java\nint x = 10\nSystem.out.println(x);\n```\n\nWhen a student attempts to compile this code, the compiler reports an error. What type of error is this?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Logic error"},
+            {"id": "b", "text": "Run-time error"},
+            {"id": "c", "text": "Syntax error"},
+            {"id": "d", "text": "Exception"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "The code is missing a semicolon (`;`) at the end of the first line. In Java, every statement must end with a semicolon. This violates the **syntax rules** of the language, so it is a **syntax error**. Syntax errors are detected by the **compiler** before the program can run.\n\n- **(A) Logic error** would mean the program runs but produces wrong results—this code won't even compile.\n- **(B) Run-time error** occurs during execution, but this code never reaches execution.\n- **(D) Exception** is a type of run-time error, not a compile-time error."
+    },
+    {
+        "id": "q-alg-005",
+        "tags": ["logic errors", "testing", "debugging"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nA program compiles successfully and runs without crashing, but it produces incorrect results for some inputs. What type of error is present?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Syntax error"},
+            {"id": "b", "text": "Logic error"},
+            {"id": "c", "text": "Run-time error"},
+            {"id": "d", "text": "Compiler error"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "A **logic error** occurs when the program's algorithm is flawed—the code is syntactically correct and runs, but it doesn't do what the programmer intended. These errors are found through **testing**.\n\n- **(A) Syntax error** would have been caught by the compiler, preventing the program from running.\n- **(C) Run-time error** would cause the program to crash or terminate abnormally, not just produce wrong output.\n- **(D) Compiler error** is another term for syntax error, which would have prevented compilation."
+    },
+    {
+        "id": "q-alg-006",
+        "tags": ["exceptions", "run-time errors", "basic"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 6\n\nWhich of the following is true about an exception in Java?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "It is a type of syntax error detected by the compiler"},
+            {"id": "b", "text": "It always causes the program to produce the wrong output"},
+            {"id": "c", "text": "It is a run-time error that interrupts normal program execution"},
+            {"id": "d", "text": "It can only occur when dividing by zero"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "An **exception** is a type of **run-time error** that occurs during program execution due to an unexpected condition (like dividing by zero, accessing an invalid array index, or calling a method on a `null` reference). When an exception occurs, the normal flow of the program is interrupted.\n\n- **(A) is incorrect** because syntax errors are detected by the compiler, not exceptions.\n- **(B) is incorrect** because exceptions typically cause the program to crash, not just produce wrong output.\n- **(D) is incorrect** because there are many types of exceptions (e.g., `NullPointerException`, `ArrayIndexOutOfBoundsException`), not just division by zero."
+    },
+    {
+        "id": "q-alg-007",
+        "tags": ["compiler", "translation", "tools"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 7\n\nA programmer writes code in a text editor and then uses a tool to translate it into bytecode. During translation, the tool finds a missing semicolon and reports an error. What is this tool?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Debugger"},
+            {"id": "b", "text": "Compiler"},
+            {"id": "c", "text": "Interpreter"},
+            {"id": "d", "text": "IDE"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "A **compiler** translates source code into bytecode (for Java) and checks for syntax errors during this translation process. Finding a missing semicolon is exactly the kind of error a compiler detects.\n\n- **(A) Debugger** is a tool used to step through code and find logic errors during execution, not to translate code or find syntax errors.\n- **(C) Interpreter** executes code line by line without a separate compilation step (like Python), but Java uses a compiler.\n- **(D) IDE** (Integrated Development Environment) is a software suite that includes a compiler, editor, and debugger—but the specific tool performing the translation is the compiler."
+    },
+
+
+    {
+        "id": "q-var-001",
+        "tags": ["variables", "primitive types", "declaration", "initialization"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nWhich of the following correctly declares and initializes a variable of a primitive data type?\n\n(A) `String name = \"Alice\";`\n(B) `int score = 95;`\n(C) `double temperature = new double(98.6);`\n(D) `boolean isPassing = \"true\";`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "String name = \"Alice\";"},
+            {"id": "b", "text": "int score = 95;"},
+            {"id": "c", "text": "double temperature = new double(98.6);"},
+            {"id": "d", "text": "boolean isPassing = \"true\";"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- **(A) is incorrect** because `String` is a reference type, not a primitive.\n- **(B) is correct** because `int` is a primitive type, and `score = 95` assigns a valid integer literal.\n- **(C) is incorrect** because `double` is primitive, so you cannot use `new` to create a `double` object; that would be `Double` (wrapper class). The correct primitive initialization is `double temperature = 98.6;`.\n- **(D) is incorrect** because `boolean` primitives use the literals `true` or `false` without quotes. `\"true\"` is a `String`, not a boolean value."
+    },
+    {
+        "id": "q-var-002",
+        "tags": ["variables", "naming conventions", "identifiers"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nWhich of the following is a valid variable name in Java?\n\n(A) `2ndPlace`\n(B) `my-name`\n(C) `student_age`\n(D) `class`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "2ndPlace"},
+            {"id": "b", "text": "my-name"},
+            {"id": "c", "text": "student_age"},
+            {"id": "d", "text": "class"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "Java variable naming rules:\n- Must start with a letter, underscore (`_`), or dollar sign (`$`).\n- Subsequent characters can be letters, digits, underscores, or dollar signs.\n- Cannot be a Java reserved keyword (like `class`, `int`, `public`).\n\n- **(A) is invalid** because it starts with a digit.\n- **(B) is invalid** because hyphens (`-`) are not allowed; underscores are allowed, but hyphens are not.\n- **(C) is valid** – it starts with a letter and contains only letters and an underscore.\n- **(D) is invalid** because `class` is a reserved keyword."
+    },
+    {
+        "id": "q-var-003",
+        "tags": ["variables", "type conversion", "compilation errors"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nConsider the following code segment:\n\n```java\nint a;\ndouble b = 3.7;\na = b;\nSystem.out.println(a);\n```\n\nWhat is the result when this code is compiled and executed?\n\n(A) 3.7 is printed.\n(B) 3 is printed.\n(C) The code does not compile because of a type mismatch.\n(D) The code compiles but throws an exception at runtime.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "3.7 is printed."},
+            {"id": "b", "text": "3 is printed."},
+            {"id": "c", "text": "The code does not compile because of a type mismatch."},
+            {"id": "d", "text": "The code compiles but throws an exception at runtime."}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- The variable `a` is declared as an `int`. The variable `b` is a `double` with value 3.7.\n- Assigning a `double` to an `int` without an explicit cast is **not allowed** because it could lose precision (the fractional part).\n- Java requires explicit casting for narrowing conversions: `a = (int) b;` would compile and assign 3 (truncated).\n- Therefore, the code causes a **compiler error** (type mismatch)."
+    },
+    {
+        "id": "q-var-004",
+        "tags": ["variables", "reference types", "null"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nWhich of the following statements about reference variables is true?\n\n(A) They store the actual value of the object.\n(B) They can be assigned the value `null` to indicate no object.\n(C) They are limited to holding only primitive values.\n(D) They cannot be declared without an initial value.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "They store the actual value of the object."},
+            {"id": "b", "text": "They can be assigned the value `null` to indicate no object."},
+            {"id": "c", "text": "They are limited to holding only primitive values."},
+            {"id": "d", "text": "They cannot be declared without an initial value."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- Reference variables store the **memory address** (reference) of an object, not the object itself.\n- **(A) is false** – they store references, not the actual object data.\n- **(B) is true** – `null` is a special literal meaning the reference does not currently refer to any object.\n- **(C) is false** – reference variables are for objects, not primitives.\n- **(D) is false** – reference variables can be declared without initialization (they default to `null` for instance/class variables, but local variables must be initialized before use; however, the statement \"cannot be declared without an initial value\" is too absolute and not always true)."
+    },
+    {
+        "id": "q-var-005",
+        "tags": ["variables", "data types", "selection"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nA programmer needs to store the following pieces of information in a program:\n\n- The number of students in a class (always a whole number)\n- The average test score (may contain a decimal)\n- Whether the class has passed the exam (true or false)\n\nWhich choice declares appropriate variable types for these three values in the order given?\n\n(A) `double`, `int`, `boolean`\n(B) `int`, `double`, `boolean`\n(C) `int`, `double`, `String`\n(D) `boolean`, `int`, `double`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "double, int, boolean"},
+            {"id": "b", "text": "int, double, boolean"},
+            {"id": "c", "text": "int, double, String"},
+            {"id": "d", "text": "boolean, int, double"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The number of students is a whole number → `int` (or another integer type, but `int` is sufficient).\n- The average test score may have a decimal → `double`.\n- Whether the class passed is a true/false condition → `boolean`.\n- The correct order is `int`, `double`, `boolean`, which matches option (B)."
+    },
+
+
+    {
+        "id": "q-expr-001",
+        "tags": ["output", "print", "println", "strings"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nConsider the following code segment:\n\n```java\nSystem.out.print(\"AP\");\nSystem.out.print(\"CS\");\nSystem.out.println(\"A\");\n```\n\nWhat is printed as a result of executing this code?\n\n(A) AP CS A  \n(B) APCSA  \n(C) APCS A  \n(D) APCS A (with a newline after)",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "AP CS A"},
+            {"id": "b", "text": "APCSA"},
+            {"id": "c", "text": "APCS A"},
+            {"id": "d", "text": "APCS A (with a newline after)"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- `System.out.print` displays text and leaves the cursor on the same line.\n- The first `print` outputs \"AP\" without a newline.\n- The second `print` outputs \"CS\" immediately after, giving \"APCS\".\n- `System.out.println` outputs \"A\" and then moves the cursor to a new line.\n- The result is \"APCSA\" (no spaces) followed by a newline, but the question asks what is printed. The text printed is \"APCSA\".\n- Option (D) mentions a newline, but the printed characters are still \"APCSA\". The exact output is \"APCSA\" and then a new line, so the string printed is \"APCSA\". (B) is correct."
+    },
+    {
+        "id": "q-expr-002",
+        "tags": ["escape sequences", "strings", "literals"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nWhich of the following escape sequences produces a double quote character inside a string literal?\n\n(A) `\\n`  \n(B) `\\\\`  \n(C) `\\\"`  \n(D) `\\q`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "\\n"},
+            {"id": "b", "text": "\\\\"},
+            {"id": "c", "text": "\\\""},
+            {"id": "d", "text": "\\q"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- `\\\"` is the escape sequence for a double quote character. It allows a double quote to appear inside a string literal without terminating the string.\n- (A) `\\n` is the newline character.\n- (B) `\\\\` is the backslash character.\n- (D) `\\q` is not a valid escape sequence in Java."
+    },
+    {
+        "id": "q-expr-003",
+        "tags": ["arithmetic", "integer division", "type conversion", "widening"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nWhat is the value of `result` after the following code executes?\n\n```java\nint a = 10;\nint b = 3;\ndouble result = a / b;\n```\n\n(A) 3.0  \n(B) 3.3333333333333335  \n(C) 3  \n(D) The code does not compile.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "3.0"},
+            {"id": "b", "text": "3.3333333333333335"},
+            {"id": "c", "text": "3"},
+            {"id": "d", "text": "The code does not compile."}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- Both `a` and `b` are `int`, so `a / b` performs **integer division**, yielding the quotient with the fractional part truncated: `10 / 3 = 3` (not 3.333...).\n- The result of the division is `3`, an `int`. Then it is assigned to the `double` variable `result`, so `3` is automatically widened to `3.0`.\n- Therefore, `result` stores `3.0`.\n- Option (B) would be the result if floating-point division had occurred (e.g., if one operand were a `double`).\n- Option (C) is the integer value, but `result` is a `double`, so the stored value is `3.0`."
+    },
+    {
+        "id": "q-expr-004",
+        "tags": ["modulus", "integer division", "string concatenation", "operators"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nWhat is printed by the following code segment?\n\n```java\nint x = 17;\nint y = 5;\nSystem.out.print(x % y + \" \" + x / y);\n```\n\n(A) 2 3  \n(B) 3 2  \n(C) 2 3.4  \n(D) 3 3",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "2 3"},
+            {"id": "b", "text": "3 2"},
+            {"id": "c", "text": "2 3.4"},
+            {"id": "d", "text": "3 3"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- `x % y` computes the remainder when 17 is divided by 5, which is `2`.\n- `x / y` performs integer division, which is `3` (since 17/5 = 3 remainder 2).\n- The expression `x % y + \" \" + x / y` concatenates the values with a space in between. The `+` operator when one operand is a string performs string concatenation.\n- So the result is the string `\"2 3\"`.\n- (B) would be the output if the remainder and quotient were swapped.\n- (C) uses a decimal, but integer division yields an integer.\n- (D) is incorrect."
+    },
+    {
+        "id": "q-expr-005",
+        "tags": ["operator precedence", "arithmetic", "order of operations"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nConsider the following code segment:\n\n```java\nint p = 8;\nint q = 4;\nint r = 2;\nint result = p - q * r + p / q;\nSystem.out.println(result);\n```\n\nWhat is printed?\n\n(A) 2  \n(B) 4  \n(C) 6  \n(D) 8",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "2"},
+            {"id": "b", "text": "4"},
+            {"id": "c", "text": "6"},
+            {"id": "d", "text": "8"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- Multiplication and division have higher precedence than addition and subtraction.\n- First, `q * r = 4 * 2 = 8`.\n- Then, `p / q = 8 / 4 = 2`.\n- The expression becomes `8 - 8 + 2`.\n- Subtraction and addition are evaluated left to right: `(8 - 8) + 2 = 0 + 2 = 2`.\n- Thus, 2 is printed."
+    },
+    {
+        "id": "q-expr-006",
+        "tags": ["boolean expressions", "comparisons", "integer division", "modulus", "precedence"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 6\n\nWhich of the following expressions evaluates to `true`?\n\n(A) `(5 + 3) > (2 * 4)`  \n(B) `(10 / 3) == (10.0 / 3.0)`  \n(C) `(15 % 4) == (15 - 4 * 3)`  \n(D) `(2 + 3 * 4) == ( (2 + 3) * 4 )`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "(5 + 3) > (2 * 4)"},
+            {"id": "b", "text": "(10 / 3) == (10.0 / 3.0)"},
+            {"id": "c", "text": "(15 % 4) == (15 - 4 * 3)"},
+            {"id": "d", "text": "(2 + 3 * 4) == ( (2 + 3) * 4 )"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- (A): `5+3 = 8`, `2*4 = 8`, so `8 > 8` is `false`.\n- (B): Left side: `10 / 3` is integer division → `3`. Right side: `10.0 / 3.0` is `3.333...`. `3 == 3.333...` is `false`.\n- (C): Left side: `15 % 4 = 3`. Right side: `15 - 4*3 = 15 - 12 = 3`. So `3 == 3` is `true`.\n- (D): Left side: `2 + 3*4 = 2 + 12 = 14`. Right side: `(2+3)*4 = 5*4 = 20`. `14 == 20` is `false`."
+    },
+    {
+        "id": "q-expr-007",
+        "tags": ["division by zero", "exceptions", "runtime errors", "ArithmeticException"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 7\n\nWhat is the result of the following code?\n\n```java\nint x = 10;\nint y = 0;\nint z = x / y;\nSystem.out.println(z);\n```\n\n(A) 0  \n(B) Infinity  \n(C) The code does not compile.  \n(D) An `ArithmeticException` is thrown at runtime.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "0"},
+            {"id": "b", "text": "Infinity"},
+            {"id": "c", "text": "The code does not compile."},
+            {"id": "d", "text": "An `ArithmeticException` is thrown at runtime."}
+        ],
+        "answerKeyJson": "d",
+        "explanation": "- In Java, dividing an integer by zero causes an `ArithmeticException` at runtime.\n- The code compiles because the compiler does not detect that `y` is zero (it could be changed before division, but here it's clearly zero).\n- At runtime, when `x / y` is evaluated, the exception is thrown and the program terminates. Nothing is printed.\n- Option (B) would be possible with floating-point division, but `int` division by zero throws an exception.\n- Thus, (D) is correct."
+    },
+    {
+        "id": "q-expr-008",
+        "tags": ["escape sequences", "newline", "output", "strings"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 8\n\nConsider the following code:\n\n```java\nString str = \"Java\\nProgramming\";\nSystem.out.println(str);\n```\n\nHow many lines of output are produced?\n\n(A) 1  \n(B) 2  \n(C) 3  \n(D) The code produces a compiler error.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "1"},
+            {"id": "b", "text": "2"},
+            {"id": "c", "text": "3"},
+            {"id": "d", "text": "The code produces a compiler error."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The string literal contains the escape sequence `\\n`, which represents a newline character.\n- When printed, `\\n` causes the cursor to move to the next line.\n- The output will be:\n  ```\n  Java\n  Programming\n  ```\n- Thus, two lines are produced."
+    },
+    {
+        "id": "q-expr-009",
+        "tags": ["tracing", "output", "FRQ", "arithmetic", "string concatenation"],
+        "type": "OPEN",
+        "prompt": "## Mini Free-Response Question: Tracing Output\n\n**Directions:** Show the output of the following code segment. Write your answer exactly as it would appear on the screen.\n\n```java\nint a = 7;\nint b = 2;\nSystem.out.print(a + b);\nSystem.out.print(\" \");\nSystem.out.print(a / b);\nSystem.out.print(\" \");\nSystem.out.print(a % b);\nSystem.out.println(\" done\");\n```",
+        "imageUrl": null,
+        "optionsJson": [],
+        "answerKeyJson": "9 3 1 done",
+        "explanation": "- `a + b` = `7 + 2 = 9` → prints `9`\n- `System.out.print(\" \")` prints a space → output `9 `\n- `a / b` is integer division: `7 / 2 = 3` → prints `3` → output `9 3`\n- `System.out.print(\" \")` prints a space → output `9 3 `\n- `a % b` = `7 % 2 = 1` → prints `1` → output `9 3 1`\n- `System.out.println(\" done\")` prints ` done` followed by a newline → final output `9 3 1 done` (on one line, then newline)."
+    },
+
+
+    {
+        "id": "q-asgn-001",
+        "tags": ["variables", "local variables", "initialization", "compilation error"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nConsider the following code segment:\n\n```java\nint x;\nSystem.out.println(x);\n```\n\nWhat is the result when this code is compiled and executed?\n\n(A) 0 is printed.\n(B) null is printed.\n(C) The code compiles and runs, but prints an unpredictable value.\n(D) The code does not compile.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "0 is printed."},
+            {"id": "b", "text": "null is printed."},
+            {"id": "c", "text": "The code compiles and runs, but prints an unpredictable value."},
+            {"id": "d", "text": "The code does not compile."}
+        ],
+        "answerKeyJson": "d",
+        "explanation": "- In Java, **local variables** (variables declared inside a method) **must be initialized before they are used**.\n- The variable `x` is declared but never assigned a value.\n- The compiler detects this and reports an error: \"variable x might not have been initialized\".\n- Instance variables (declared in a class but outside methods) would be initialized to default values (0 for int), but `x` is a local variable.\n- Thus, the code does not compile."
+    },
+    {
+        "id": "q-asgn-002",
+        "tags": ["reference variables", "null", "initialization"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nWhich of the following statements correctly declares and initializes a reference variable to indicate that it does not currently refer to any object?\n\n(A) `String str = \"\";`\n(B) `String str = \"null\";`\n(C) `String str = null;`\n(D) `String str;`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "String str = \"\";"},
+            {"id": "b", "text": "String str = \"null\";"},
+            {"id": "c", "text": "String str = null;"},
+            {"id": "d", "text": "String str;"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- `null` is a special literal in Java that means a reference variable does not refer to any object.\n- (A) `\"\"` is an empty String object, not null.\n- (B) `\"null\"` is a String containing the characters n-u-l-l, not the null literal.\n- (C) `str = null;` correctly assigns the null reference.\n- (D) `String str;` declares the variable but does not initialize it; as a local variable, it would cause a compiler error if used before initialization, but as an instance variable it would default to null. The question asks for a statement that initializes it to indicate no object, so (C) is the explicit assignment."
+    },
+    {
+        "id": "q-asgn-003",
+        "tags": ["arithmetic", "integer division", "type conversion", "widening"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nWhat is the value stored in the variable `result` after the following code executes?\n\n```java\nint a = 5;\nint b = 2;\ndouble result = a / b;\n```\n\n(A) 2.0\n(B) 2.5\n(C) 2\n(D) The code does not compile because of a type mismatch.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "2.0"},
+            {"id": "b", "text": "2.5"},
+            {"id": "c", "text": "2"},
+            {"id": "d", "text": "The code does not compile because of a type mismatch."}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- `a` and `b` are both `int`, so `a / b` performs **integer division**, yielding `2` (the fractional part is truncated).\n- The result of the division (`2`) is an `int`, and it is then assigned to the `double` variable `result`. Java automatically widens the `int` to `double`, so `result` becomes `2.0`.\n- (B) would be the result if floating-point division occurred (e.g., if one operand were `double`).\n- (C) is the integer value before widening, but `result` is a `double`.\n- (D) is incorrect because the assignment is valid (widening conversion)."
+    },
+    {
+        "id": "q-asgn-004",
+        "tags": ["Scanner", "input", "methods", "nextInt"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nWhich of the following code segments correctly reads an integer from the keyboard using a `Scanner` object?\n\n(A) `Scanner sc = new Scanner(System.in); int num = sc.readInt();`\n(B) `Scanner sc = new Scanner(System.in); int num = sc.nextInt();`\n(C) `Scanner sc = new Scanner(); int num = sc.nextInt(System.in);`\n(D) `Scanner sc = new Scanner(System.in); int num = sc.nextInteger();`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Scanner sc = new Scanner(System.in); int num = sc.readInt();"},
+            {"id": "b", "text": "Scanner sc = new Scanner(System.in); int num = sc.nextInt();"},
+            {"id": "c", "text": "Scanner sc = new Scanner(); int num = sc.nextInt(System.in);"},
+            {"id": "d", "text": "Scanner sc = new Scanner(System.in); int num = sc.nextInteger();"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The correct method to read an integer from a `Scanner` is `nextInt()`.\n- (A) `readInt()` is not a method of `Scanner`.\n- (B) is correct: `Scanner sc = new Scanner(System.in); int num = sc.nextInt();`\n- (C) The `Scanner` constructor requires an input source; `new Scanner()` is not valid. Also `nextInt(System.in)` is incorrect syntax.\n- (D) `nextInteger()` is not a method of `Scanner`."
+    },
+    {
+        "id": "q-asgn-005",
+        "tags": ["Scanner", "nextLine", "input pitfalls"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nConsider the following code:\n\n```java\nScanner input = new Scanner(System.in);\nSystem.out.print(\"Enter your age: \");\nint age = input.nextInt();\nSystem.out.print(\"Enter your name: \");\nString name = input.nextLine();\nSystem.out.println(name + \" is \" + age + \" years old.\");\n```\n\nIf the user types `25` and presses Enter, then types `Alice` and presses Enter, what will be printed?\n\n(A) `Alice is 25 years old.`\n(B) ` is 25 years old.` (a blank space before \"is\")\n(C) The program throws an exception at runtime.\n(D) `25 is Alice years old.`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Alice is 25 years old."},
+            {"id": "b", "text": " is 25 years old. (a blank space before \"is\")"},
+            {"id": "c", "text": "The program throws an exception at runtime."},
+            {"id": "d", "text": "25 is Alice years old."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- After `nextInt()` reads the integer `25`, it leaves the newline character (`\\n`) in the input buffer.\n- The subsequent `nextLine()` reads that leftover newline and returns an empty string immediately, without waiting for the user's name.\n- The variable `name` becomes the empty string `\"\"`.\n- Then `System.out.println(name + \" is \" + age + \" years old.\")` prints a blank space (from `name`) followed by \" is 25 years old.\" So the output begins with a space, then \"is 25 years old.\"."
+    },
+    {
+        "id": "q-asgn-006",
+        "tags": ["operator precedence", "arithmetic"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 6\n\nWhich of the following best describes the value stored in `result` after this code executes?\n\n```java\nint x = 3;\nint y = 4;\nint result = x + y * 2;\n```\n\n(A) 11\n(B) 14\n(C) 10\n(D) 7",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "11"},
+            {"id": "b", "text": "14"},
+            {"id": "c", "text": "10"},
+            {"id": "d", "text": "7"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- Multiplication has higher precedence than addition, so `y * 2` is evaluated first: `4 * 2 = 8`.\n- Then addition: `x + 8 = 3 + 8 = 11`.\n- Thus, `result` is `11`.\n- (B) would be the result if addition were done first and then multiplied: `(3+4)*2 = 14`.\n- (C) `10` might come from `3 + 4 = 7, then 7 * 2? No, that's 14.` Not plausible.\n- (D) `7` would be `x + y` ignoring the multiplication."
+    },
+    {
+        "id": "q-asgn-007",
+        "tags": ["FRQ", "input", "Scanner", "sum"],
+        "type": "OPEN",
+        "prompt": "## Mini Free-Response Question: Reading Input\n\n**Directions:** Write a code segment that uses a `Scanner` object to read two integers from the keyboard, computes their sum, and prints the result in the format \"Sum = \" followed by the sum. Assume the `Scanner` has already been created and is named `scan`.",
+        "imageUrl": null,
+        "optionsJson": [],
+        "answerKeyJson": "int first = scan.nextInt();\nint second = scan.nextInt();\nint sum = first + second;\nSystem.out.println(\"Sum = \" + sum);",
+        "explanation": "- The code reads two integers using `nextInt()`.\n- It calculates the sum and stores it in a variable.\n- It prints the result using string concatenation to match the required format."
+    },
+
+
+
+    {
+        "id": "q-cast-001",
+        "tags": ["casting", "type conversion", "truncation"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nConsider the following code segment:\n\n```java\ndouble d = 7.8;\nint x = (int) d;\nSystem.out.println(x);\n```\n\nWhat is printed as a result of executing this code?\n\n(A) 7.8\n(B) 8\n(C) 7\n(D) The code does not compile because of a type mismatch.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "7.8"},
+            {"id": "b", "text": "8"},
+            {"id": "c", "text": "7"},
+            {"id": "d", "text": "The code does not compile because of a type mismatch."}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- The expression `(int) d` casts the `double` value `7.8` to an `int`. Casting a `double` to an `int` **truncates** the fractional part—it does **not** round.\n- The fractional part `.8` is discarded, resulting in the integer `7`.\n- The code compiles because an explicit cast is provided.\n- Thus, `7` is printed."
+    },
+    {
+        "id": "q-cast-002",
+        "tags": ["casting", "integer division", "type conversion"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nWhat is the value of `result` after the following code executes?\n\n```java\nint a = 5;\nint b = 2;\ndouble result = (double) (a / b);\n```\n\n(A) 2.0\n(B) 2.5\n(C) 2\n(D) 5.0",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "2.0"},
+            {"id": "b", "text": "2.5"},
+            {"id": "c", "text": "2"},
+            {"id": "d", "text": "5.0"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- Inside the parentheses, `a / b` is performed first because the cast `(double)` applies to the result of the division, not to the individual operands.\n- Since both `a` and `b` are `int`s, `a / b` is integer division: `5 / 2 = 2` (truncated).\n- Then `(double) 2` casts that integer result to `2.0`.\n- To get `2.5`, the cast would need to be applied to one of the operands before division, e.g., `(double) a / b`.\n- Thus, `result` is `2.0`."
+    },
+    {
+        "id": "q-cast-003",
+        "tags": ["rounding", "casting", "AP subset"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nWhich of the following expressions correctly rounds a positive `double` value `x` to the nearest integer and stores the result as an `int`?\n\n(A) `(int) x`\n(B) `(int) (x + 0.5)`\n(C) `(int) Math.round(x)`\n(D) `(int) x + 0.5`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "(int) x"},
+            {"id": "b", "text": "(int) (x + 0.5)"},
+            {"id": "c", "text": "(int) Math.round(x)"},
+            {"id": "d", "text": "(int) x + 0.5"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- Casting a `double` to an `int` truncates, not rounds. So (A) would truncate.\n- Adding `0.5` before casting is a common technique for rounding positive numbers: if the fractional part is ≥ 0.5, adding 0.5 pushes it past the next integer, and truncation yields that integer.\n- (C) `Math.round(x)` returns a `long` (or `int` for `float`), but the expression casts the result of `Math.round` to `int`. While `Math.round` does round, the question asks for \"correctly rounds ... and stores the result as an `int`\". Both (B) and (C) could work, but (C) uses a method not yet introduced (`Math.round` is not in the AP Java subset). The AP subset includes `Math.abs`, `Math.pow`, `Math.sqrt`, and `Math.random`, but not `Math.round`. Therefore, (B) is the correct AP‑style answer using only permitted operators and casting.\n- (D) is syntactically incorrect: `(int) x + 0.5` would cast `x` to `int`, then add `0.5`, resulting in a `double`, not an `int`."
+    },
+    {
+        "id": "q-cast-004",
+        "tags": ["integer overflow", "MAX_VALUE"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nConsider the following code:\n\n```java\nint max = Integer.MAX_VALUE;\nint result = max + 1;\nSystem.out.println(result);\n```\n\nWhat is printed?\n\n(A) 2147483647\n(B) -2147483648\n(C) 2147483648\n(D) The program throws an `ArithmeticException`.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "2147483647"},
+            {"id": "b", "text": "-2147483648"},
+            {"id": "c", "text": "2147483648"},
+            {"id": "d", "text": "The program throws an `ArithmeticException`."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- `Integer.MAX_VALUE` is `2,147,483,647`.\n- Adding `1` to this value causes **integer overflow**. Because `int` values are stored in a fixed 32-bit range, the result wraps around to the smallest possible `int`, which is `Integer.MIN_VALUE` = `-2,147,483,648`.\n- No exception is thrown; overflow happens silently in Java for integers.\n- Thus, `-2147483648` is printed."
+    },
+    {
+        "id": "q-cast-005",
+        "tags": ["integer division", "casting", "averaging"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nA programmer writes the following code to compute the average of two integers:\n\n```java\nint score1 = 85;\nint score2 = 92;\ndouble average = (score1 + score2) / 2;\nSystem.out.println(average);\n```\n\nWhat is printed?\n\n(A) 88.5\n(B) 88.0\n(C) 88\n(D) The code does not compile.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "88.5"},
+            {"id": "b", "text": "88.0"},
+            {"id": "c", "text": "88"},
+            {"id": "d", "text": "The code does not compile."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The expression `(score1 + score2)` is `177`, an `int`.\n- Then `177 / 2` is integer division because both operands are `int`s. The result is `88` (truncated).\n- That integer `88` is then assigned to the `double` variable `average`, becoming `88.0`.\n- To get `88.5`, at least one operand must be `double`, e.g., `(score1 + score2) / 2.0` or `(double)(score1 + score2) / 2`.\n- Thus, `88.0` is printed."
+    },
+    {
+        "id": "q-cast-006",
+        "tags": ["floating-point", "round-off error", "precision"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 6\n\nWhich of the following statements about floating-point numbers in Java is true?\n\n(A) The `double` type can represent all real numbers exactly.\n(B) Using `int` values for monetary calculations avoids rounding errors.\n(C) Adding a very small `double` to a very large `double` always produces an exact result.\n(D) The expression `0.1 + 0.2 == 0.3` evaluates to `true`.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "The `double` type can represent all real numbers exactly."},
+            {"id": "b", "text": "Using `int` values for monetary calculations avoids rounding errors."},
+            {"id": "c", "text": "Adding a very small `double` to a very large `double` always produces an exact result."},
+            {"id": "d", "text": "The expression `0.1 + 0.2 == 0.3` evaluates to `true`."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- `double` values are stored in binary and cannot represent all decimal fractions exactly, leading to **round-off errors**. (A) is false.\n- Using integers (e.g., cents instead of dollars) avoids these rounding errors, as stated in the CED: \"To avoid rounding errors that naturally occur, use `int` values.\" (B) is true.\n- Adding numbers of very different magnitudes can lose precision due to limited significant digits. (C) is false.\n- Because of round-off error, `0.1 + 0.2` typically yields `0.30000000000000004`, not exactly `0.3`, so the equality is `false`. (D) is false."
+    },
+
+
+    {
+        "id": "q-cass-001",
+        "tags": ["compound assignment", "addition", "operators"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nConsider the following code segment:\n\n```java\nint x = 5;\nx += 3;\nSystem.out.println(x);\n```\n\nWhat is printed as a result of executing this code?\n\n(A) 3\n(B) 5\n(C) 8\n(D) 53",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "3"},
+            {"id": "b", "text": "5"},
+            {"id": "c", "text": "8"},
+            {"id": "d", "text": "53"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- The compound assignment operator `+=` adds the right operand to the left operand and assigns the result back to the left variable.\n- `x += 3` is equivalent to `x = x + 3`.\n- Initially `x = 5`, so `x + 3 = 8`. Then `x` is assigned the value `8`.\n- Thus, `8` is printed."
+    },
+    {
+        "id": "q-cass-002",
+        "tags": ["compound assignment", "multiple operations"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nWhat is the value of `y` after the following code executes?\n\n```java\nint y = 10;\ny -= 4;\ny *= 2;\n```\n\n(A) 6\n(B) 8\n(C) 12\n(D) 16",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "6"},
+            {"id": "b", "text": "8"},
+            {"id": "c", "text": "12"},
+            {"id": "d", "text": "16"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- `y -= 4` is equivalent to `y = y - 4`. Starting from `10`, this gives `6`.\n- `y *= 2` is equivalent to `y = y * 2`. Now `y` is `6`, so `6 * 2 = 12`.\n- Thus, the final value of `y` is `12`."
+    },
+    {
+        "id": "q-cass-003",
+        "tags": ["compound assignment", "division", "integer division"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nConsider the following code segment:\n\n```java\nint a = 7;\nint b = 2;\na /= b;\nSystem.out.println(a);\n```\n\nWhat is printed?\n\n(A) 3.5\n(B) 3\n(C) 2\n(D) The code does not compile.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "3.5"},
+            {"id": "b", "text": "3"},
+            {"id": "c", "text": "2"},
+            {"id": "d", "text": "The code does not compile."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- `a /= b` is equivalent to `a = a / b`.\n- Both `a` and `b` are `int`, so the division is integer division: `7 / 2 = 3` (truncated).\n- The result `3` is assigned back to `a`.\n- Thus, `3` is printed.\n- Option (A) would be the result if floating-point division were used."
+    },
+    {
+        "id": "q-cass-004",
+        "tags": ["compound assignment", "equivalence"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nWhich of the following code segments has the same effect as `x = x + 5;`?\n\n(A) `x += 5;`\n(B) `x =+ 5;`\n(C) `x ++ 5;`\n(D) `x = x += 5;`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "x += 5;"},
+            {"id": "b", "text": "x =+ 5;"},
+            {"id": "c", "text": "x ++ 5;"},
+            {"id": "d", "text": "x = x += 5;"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- The compound assignment operator `+=` is specifically designed to combine addition and assignment.\n- (A) `x += 5;` is exactly equivalent to `x = x + 5;`.\n- (B) `x =+ 5;` is syntactically incorrect; `=+` is not a valid operator.\n- (C) `x ++ 5;` is syntactically incorrect; `++` is a unary operator and cannot be used this way.\n- (D) `x = x += 5;` is valid but does two assignments; it would first add 5 to `x` and then assign that result back to `x` again. While it has the same net effect, it's unnecessarily complex and not the standard equivalent."
+    },
+    {
+        "id": "q-cass-005",
+        "tags": ["increment", "decrement", "operators"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nWhat is the value of `count` after the following code executes?\n\n```java\nint count = 0;\ncount++;\ncount++;\ncount--;\n```\n\n(A) 0\n(B) 1\n(C) 2\n(D) 3",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "0"},
+            {"id": "b", "text": "1"},
+            {"id": "c", "text": "2"},
+            {"id": "d", "text": "3"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The post-increment operator `++` adds 1 to the variable.\n- The post-decrement operator `--` subtracts 1 from the variable.\n- Starting from `0`:\n  - `count++` → `count` becomes `1`\n  - `count++` → `count` becomes `2`\n  - `count--` → `count` becomes `1`\n- Thus, the final value is `1`."
+    },
+    {
+        "id": "q-cass-006",
+        "tags": ["compound assignment", "operator precedence"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 6\n\nConsider the following code segment:\n\n```java\nint m = 3;\nint n = 4;\nm *= n + 1;\nSystem.out.println(m);\n```\n\nWhat is printed?\n\n(A) 12\n(B) 13\n(C) 15\n(D) 16",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "12"},
+            {"id": "b", "text": "13"},
+            {"id": "c", "text": "15"},
+            {"id": "d", "text": "16"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- The expression `m *= n + 1` is equivalent to `m = m * (n + 1)`.\n- First, evaluate the right-hand side expression `n + 1 = 4 + 1 = 5`.\n- Then multiply: `m * 5 = 3 * 5 = 15`.\n- Assign this result back to `m`.\n- Thus, `15` is printed.\n- Option (A) would be the result of `m *= n` (without the `+ 1`).\n- Option (B) would be the result of `m = m * n + 1` (which is `3*4+1 = 13`).\n- Option (D) is not a common misinterpretation."
+    },
+    {
+        "id": "q-cass-007",
+        "tags": ["increment", "decrement", "AP restrictions"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 7\n\nWhich of the following statements about the post-increment operator `++` is true?\n\n(A) It can only be used with `int` variables, not `double` variables.\n(B) It adds 1 to the variable and can be used inside other expressions such as `arr[x++]`.\n(C) It adds 1 to the variable and must be used as a standalone statement.\n(D) It is equivalent to `x = x + 2;`.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "It can only be used with `int` variables, not `double` variables."},
+            {"id": "b", "text": "It adds 1 to the variable and can be used inside other expressions such as `arr[x++]`."},
+            {"id": "c", "text": "It adds 1 to the variable and must be used as a standalone statement."},
+            {"id": "d", "text": "It is equivalent to `x = x + 2;`."}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- The AP CSA course restricts the use of increment and decrement operators to **standalone statements** only. They cannot be used inside other expressions (e.g., `arr[x++]` is excluded).\n- (A) is false; `++` can be used with `double` variables (though it's less common).\n- (B) is false; using `++` inside expressions is explicitly excluded from the AP scope.\n- (C) is true; for the AP exam, `++` and `--` are only used as standalone statements.\n- (D) is false; `x++` is equivalent to `x = x + 1`, not `x + 2`."
+    },
+    {
+        "id": "q-cass-008",
+        "tags": ["FRQ", "compound assignment", "tracing"],
+        "type": "OPEN",
+        "prompt": "## Mini Free-Response Question: Tracing Compound Assignments\n\n**Directions:** Show the output of the following code segment. Write your answer exactly as it would appear on the screen.\n\n```java\nint x = 5;\nint y = 3;\nx += y;\ny *= 2;\nx -= y;\nSystem.out.println(\"x = \" + x + \", y = \" + y);\n```",
+        "imageUrl": null,
+        "optionsJson": [],
+        "answerKeyJson": "x = 2, y = 6",
+        "explanation": "- Start: `x = 5`, `y = 3`\n- `x += y` → `x = 5 + 3 = 8`\n- `y *= 2` → `y = 3 * 2 = 6`\n- `x -= y` → `x = 8 - 6 = 2`\n- Final values: `x = 2`, `y = 6`\n- Output string: `\"x = 2, y = 6\"`"
+    },
+
+
+    {
+        "id": "q-api-001",
+        "tags": ["API", "methods", "behaviors", "attributes"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nConsider the following partial documentation for a class named `Book`:\n\n| Method/Constructor | Description |\n|-------------------|-------------|\n| `Book(String title, String author)` | Constructs a Book object with the given title and author |\n| `String getTitle()` | Returns the title of the book |\n| `String getAuthor()` | Returns the author of the book |\n| `int getPages()` | Returns the number of pages in the book |\n\nWhich of the following are **behaviors** of a `Book` object?\n\n(A) `title` and `author`\n(B) `getTitle()`, `getAuthor()`, and `getPages()`\n(C) `Book(String title, String author)` only\n(D) `title`, `author`, and `pages`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "`title` and `author`"},
+            {"id": "b", "text": "`getTitle()`, `getAuthor()`, and `getPages()`"},
+            {"id": "c", "text": "`Book(String title, String author)` only"},
+            {"id": "d", "text": "`title`, `author`, and `pages`"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- **Attributes** are the data stored in an object (instance variables). In this class, the attributes would likely be `title`, `author`, and `pages` (though not explicitly shown, they are implied).\n- **Behaviors** are what an object can do, defined by methods. The table lists three methods: `getTitle()`, `getAuthor()`, and `getPages()`. These are the behaviors.\n- The constructor `Book(String title, String author)` is a special method used to create objects, but it is not considered a behavior of an existing object; it is used to initialize the object. However, the question asks for behaviors of a `Book` object, so the getter methods are the correct choice.\n- Option (A) and (D) list attributes, not behaviors.\n- Option (C) lists only the constructor, which is not a behavior of an already created object."
+    },
+    {
+        "id": "q-api-002",
+        "tags": ["API", "definition", "purpose"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nWhat is the primary purpose of an API (Application Program Interface) in programming?\n\n(A) To write code faster by automatically generating classes\n(B) To provide documentation that tells programmers how to use classes and methods in a library\n(C) To compile Java programs into bytecode\n(D) To manage memory allocation during program execution",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "To write code faster by automatically generating classes"},
+            {"id": "b", "text": "To provide documentation that tells programmers how to use classes and methods in a library"},
+            {"id": "c", "text": "To compile Java programs into bytecode"},
+            {"id": "d", "text": "To manage memory allocation during program execution"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- An API (Application Program Interface) is the documentation that specifies how to use a library. It describes the classes, methods, parameters, return types, and what each method does.\n- (A) describes an IDE feature or code generation tool, not an API.\n- (C) describes the function of a compiler.\n- (D) describes part of the runtime environment (JVM), not an API."
+    },
+    {
+        "id": "q-api-003",
+        "tags": ["API", "import", "ArrayList", "java.util"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nA programmer wants to use the `ArrayList` class in a Java program. Which of the following import statements is required?\n\n(A) `import java.lang.ArrayList;`\n(B) `import java.util.ArrayList;`\n(C) `import ArrayList;`\n(D) No import statement is needed because `ArrayList` is in `java.lang`.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "import java.lang.ArrayList;"},
+            {"id": "b", "text": "import java.util.ArrayList;"},
+            {"id": "c", "text": "import ArrayList;"},
+            {"id": "d", "text": "No import statement is needed because `ArrayList` is in `java.lang`."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The `ArrayList` class is part of the `java.util` package, not `java.lang`. Therefore, an import statement is required.\n- (B) correctly imports `java.util.ArrayList`.\n- (A) is incorrect because `ArrayList` is not in `java.lang`.\n- (C) is missing the package name and will cause a compiler error.\n- (D) is false; only classes in `java.lang` (like `String`, `Math`) are automatically available without an import."
+    },
+    {
+        "id": "q-api-004",
+        "tags": ["API", "attributes", "instance variables", "class design"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nConsider the following class declaration:\n\n```java\npublic class Student {\n    private String name;\n    private int id;\n    private double gpa;\n\n    public Student(String n, int i) { /* implementation */ }\n    public String getName() { return name; }\n    public int getID() { return id; }\n    public void setGPA(double g) { gpa = g; }\n}\n```\n\nWhich of the following correctly identifies the attributes of the `Student` class?\n\n(A) `getName()`, `getID()`, `setGPA()`\n(B) `name`, `id`, `gpa`\n(C) `Student`, `getName`, `getID`, `setGPA`\n(D) `public`, `private`, `String`, `int`, `double`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "`getName()`, `getID()`, `setGPA()`"},
+            {"id": "b", "text": "`name`, `id`, `gpa`"},
+            {"id": "c", "text": "`Student`, `getName`, `getID`, `setGPA`"},
+            {"id": "d", "text": "`public`, `private`, `String`, `int`, `double`"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- **Attributes** are the data stored in an object, represented by instance variables. In this class, the instance variables are `name`, `id`, and `gpa`.\n- (A) lists methods, which are behaviors.\n- (C) includes the constructor name and method names, not attributes.\n- (D) lists access modifiers and data types, not the actual attributes."
+    },
+
+
+
+    {
+        "id": "q-doc-001",
+        "tags": ["comments", "purpose", "compiler"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nWhich of the following best describes the purpose of comments in Java?\n\n(A) They are executed by the compiler to improve program performance.\n(B) They provide documentation for programmers and are ignored by the compiler.\n(C) They are required for every line of code to prevent syntax errors.\n(D) They are used to allocate memory for variables at runtime.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "They are executed by the compiler to improve program performance."},
+            {"id": "b", "text": "They provide documentation for programmers and are ignored by the compiler."},
+            {"id": "c", "text": "They are required for every line of code to prevent syntax errors."},
+            {"id": "d", "text": "They are used to allocate memory for variables at runtime."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- Comments are written for human readers—the original programmer and others who need to understand the code. They are **ignored by the compiler** and have no effect on program execution.\n- (A) is false; comments are not executed.\n- (C) is false; comments are optional and do not prevent syntax errors (though they can explain code).\n- (D) is false; memory allocation is handled by the JVM, not by comments."
+    },
+    {
+        "id": "q-doc-002",
+        "tags": ["comments", "multi-line", "syntax"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nConsider the following code segment:\n\n```java\n/* This method calculates the average\n   of three numbers */\npublic double average(double a, double b, double c) {\n    return (a + b + c) / 3.0;\n}\n```\n\nWhat type of comment is used in this code?\n\n(A) Single-line comment (`//`)\n(B) Multi-line comment (`/* */`)\n(C) Javadoc comment (`/** */`)\n(D) Inline comment",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Single-line comment (`//`)"},
+            {"id": "b", "text": "Multi-line comment (`/* */`)"},
+            {"id": "c", "text": "Javadoc comment (`/** */`)"},
+            {"id": "d", "text": "Inline comment"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The comment begins with `/*` and ends with `*/`, spanning multiple lines. This is a **multi-line comment**.\n- (A) Single-line comments begin with `//` and continue to the end of the line.\n- (C) Javadoc comments begin with `/**` and are used to generate API documentation.\n- (D) \"Inline comment\" is not a formal Java comment type; comments can appear inline, but the type is still determined by the delimiters."
+    },
+    {
+        "id": "q-doc-003",
+        "tags": ["comments", "javadoc", "documentation"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nConsider the following method:\n\n```java\n/**\n * Returns the sum of two integers.\n * \n * @param a the first integer\n * @param b the second integer\n * @return the sum of a and b\n */\npublic int add(int a, int b) {\n    return a + b;\n}\n```\n\nWhat type of comment is used in this code?\n\n(A) Single-line comment\n(B) Multi-line comment\n(C) Javadoc comment\n(D) Conditional comment",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Single-line comment"},
+            {"id": "b", "text": "Multi-line comment"},
+            {"id": "c", "text": "Javadoc comment"},
+            {"id": "d", "text": "Conditional comment"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- The comment begins with `/**` and includes special tags like `@param` and `@return`. This is a **Javadoc comment**, used to generate API documentation.\n- (A) and (B) are incorrect because the comment starts with `/**`, not `//` or `/*`.\n- (D) is not a standard Java comment type."
+    },
+    {
+        "id": "q-doc-004",
+        "tags": ["precondition", "documentation", "methods"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nConsider the following method:\n\n```java\n/**\n * Calculates the square root of a number.\n * \n * @param x a non-negative number\n * @return the square root of x\n * \n * Precondition: x >= 0\n */\npublic double sqrt(double x) {\n    return Math.sqrt(x);\n}\n```\n\nWhat is the **precondition** for this method?\n\n(A) The method returns a non-negative value.\n(B) The parameter `x` must be greater than or equal to 0.\n(C) The method will work correctly for any `double` value.\n(D) The `Math.sqrt` method must be available.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "The method returns a non-negative value."},
+            {"id": "b", "text": "The parameter `x` must be greater than or equal to 0."},
+            {"id": "c", "text": "The method will work correctly for any `double` value."},
+            {"id": "d", "text": "The `Math.sqrt` method must be available."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- A **precondition** is a condition that must be true **before** a method is called for it to behave as expected.\n- The documentation explicitly states \"Precondition: x >= 0\", meaning the caller must ensure that `x` is non-negative.\n- (A) describes a **postcondition** (what is true after the method executes).\n- (C) is false; the method will not work correctly for negative inputs.\n- (D) is always true because `Math` is in `java.lang` and always available."
+    },
+    {
+        "id": "q-doc-005",
+        "tags": ["postcondition", "documentation", "methods"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nA method is documented with the following postcondition:\n\n```java\n/**\n * Deposits money into a bank account.\n * \n * @param amount the amount to deposit (must be positive)\n * @return the new balance\n * \n * Postcondition: The account balance has increased by amount.\n */\npublic double deposit(double amount)\n```\n\nWhich of the following must be true **after** this method executes?\n\n(A) The parameter `amount` is positive.\n(B) The account balance has increased by `amount`.\n(C) The method returns the original balance.\n(D) The `amount` is added to a temporary variable.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "The parameter `amount` is positive."},
+            {"id": "b", "text": "The account balance has increased by `amount`."},
+            {"id": "c", "text": "The method returns the original balance."},
+            {"id": "d", "text": "The `amount` is added to a temporary variable."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- A **postcondition** is a condition that must be true **after** the method executes.\n- The documentation explicitly states: \"Postcondition: The account balance has increased by amount.\"\n- (A) is a precondition (what must be true before the method is called).\n- (C) contradicts the postcondition; the method returns the new balance.\n- (D) is not stated and is not a required outcome."
+    },
+    {
+        "id": "q-doc-006",
+        "tags": ["precondition", "methods", "assumptions"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 6\n\nWhich of the following is true about the relationship between preconditions and the method implementation?\n\n(A) The method should check that all preconditions are satisfied before executing.\n(B) The method assumes preconditions are met and typically does not check them.\n(C) Preconditions are automatically enforced by the compiler.\n(D) Preconditions are written after the method executes.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "The method should check that all preconditions are satisfied before executing."},
+            {"id": "b", "text": "The method assumes preconditions are met and typically does not check them."},
+            {"id": "c", "text": "Preconditions are automatically enforced by the compiler."},
+            {"id": "d", "text": "Preconditions are written after the method executes."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The CED explicitly states: \"There is no expectation that the method will check to ensure preconditions are satisfied.\" The method assumes the caller has met the preconditions.\n- (A) is false; methods are not required to check preconditions.\n- (C) is false; the compiler does not enforce preconditions.\n- (D) is false; preconditions are conditions that must be true **before** execution, not after."
+    },
+    {
+        "id": "q-doc-007",
+        "tags": ["FRQ", "precondition", "postcondition", "documentation"],
+        "type": "OPEN",
+        "prompt": "## Mini Free-Response Question: Identifying Preconditions and Postconditions\n\n**Directions:** Consider the following method documentation. Identify one precondition and one postcondition.\n\n```java\n/**\n * Withdraws money from a bank account.\n * \n * @param amount the amount to withdraw\n * @return the new balance after withdrawal\n * \n * Precondition: amount > 0\n * Precondition: balance >= amount\n * Postcondition: balance has decreased by amount\n */\npublic double withdraw(double amount)\n```",
+        "imageUrl": null,
+        "optionsJson": [],
+        "answerKeyJson": "Precondition: The parameter `amount` must be greater than 0.\nPostcondition: The account balance has decreased by `amount`.",
+        "explanation": "- The documentation explicitly lists two preconditions and one postcondition. Any one of the preconditions is acceptable, and the postcondition is clearly stated."
+    },
+
+
+
+    {
+        "id": "q-msig-001",
+        "tags": ["method overloading", "signature", "parameter types"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nConsider the following method signatures from a class named `Calculator`:\n\n```java\npublic int add(int a, int b)\npublic double add(double a, double b)\npublic int add(int a, int b, int c)\n```\n\nWhich of the following method calls would invoke the method with signature `add(double, double)`?\n\n(A) `int sum = add(5, 3);`\n(B) `double sum = add(5.0, 3.0);`\n(C) `int sum = add(5, 3, 2);`\n(D) `double sum = add(5, 3);`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "int sum = add(5, 3);"},
+            {"id": "b", "text": "double sum = add(5.0, 3.0);"},
+            {"id": "c", "text": "int sum = add(5, 3, 2);"},
+            {"id": "d", "text": "double sum = add(5, 3);"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- Method overloading allows multiple methods with the same name but different parameter lists. The signature includes the method name and the **types of parameters** in order.\n- (B) passes two `double` arguments, matching the `add(double, double)` signature.\n- (A) passes two `int` arguments, matching `add(int, int)`.\n- (C) passes three `int` arguments, matching `add(int, int, int)`.\n- (D) passes two `int` arguments; even though the result is assigned to a `double`, the method called is determined by the **argument types**, not the return type. This call would match `add(int, int)`."
+    },
+    {
+        "id": "q-msig-002",
+        "tags": ["method signature", "definition"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nWhat is the method signature of the following method?\n\n```java\npublic static String convert(int value, boolean flag)\n```\n\n(A) `convert(int, boolean)`\n(B) `public static String convert(int, boolean)`\n(C) `convert(value, flag)`\n(D) `String convert(int, boolean)`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "convert(int, boolean)"},
+            {"id": "b", "text": "public static String convert(int, boolean)"},
+            {"id": "c", "text": "convert(value, flag)"},
+            {"id": "d", "text": "String convert(int, boolean)"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- A method signature consists of the **method name** and the **ordered list of parameter types**. Return type, access modifiers, and parameter names are **not** part of the signature.\n- (A) correctly lists the name and parameter types only.\n- (B) includes the access modifier `public static` and return type `String`, which are not part of the signature.\n- (C) includes parameter names, which are not part of the signature.\n- (D) includes the return type, which is not part of the signature."
+    },
+    {
+        "id": "q-msig-003",
+        "tags": ["method call", "argument matching"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nConsider the following method:\n\n```java\npublic void display(String message, int count)\n```\n\nWhich of the following calls to this method is **valid**?\n\n(A) `display(\"Hello\", 5);`\n(B) `display(5, \"Hello\");`\n(C) `display(\"Hello\", 5.0);`\n(D) `display(\"Hello\");`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "display(\"Hello\", 5);"},
+            {"id": "b", "text": "display(5, \"Hello\");"},
+            {"id": "c", "text": "display(\"Hello\", 5.0);"},
+            {"id": "d", "text": "display(\"Hello\");"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- A method call must provide arguments that match the method's signature in **number, type, and order**.\n- The signature is `display(String, int)`. (A) provides a `String` and an `int` in the correct order, so it is valid.\n- (B) reverses the order: `int` then `String` – does not match.\n- (C) provides a `String` and a `double` – the second argument type does not match (`double` cannot be automatically converted to `int` without a cast).\n- (D) provides only one argument – wrong number of arguments."
+    },
+    {
+        "id": "q-msig-004",
+        "tags": ["void methods", "call by value"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nWhich of the following statements about void methods is true?\n\n(A) A void method can be used as part of an expression, such as `int x = obj.method() + 5;`\n(B) A void method must include a `return` statement that returns a value.\n(C) A void method is called as a standalone statement and does not return a value.\n(D) A void method cannot have parameters.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "A void method can be used as part of an expression, such as `int x = obj.method() + 5;`"},
+            {"id": "b", "text": "A void method must include a `return` statement that returns a value."},
+            {"id": "c", "text": "A void method is called as a standalone statement and does not return a value."},
+            {"id": "d", "text": "A void method cannot have parameters."}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- A void method performs an action but does **not** return a value. It is called as a standalone statement, not as part of an expression.\n- (A) is false; void methods cannot be used in expressions because they produce no value.\n- (B) is false; void methods may have a `return;` statement to exit early, but they do not return a value.\n- (C) is true.\n- (D) is false; void methods can have parameters (e.g., `public void setName(String name)`)."
+    },
+    {
+        "id": "q-msig-005",
+        "tags": ["call by value", "parameter passing", "primitives"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nConsider the following method:\n\n```java\npublic static void increment(int x) {\n    x++;\n}\n```\n\nWhat is the output of the following code?\n\n```java\nint num = 10;\nincrement(num);\nSystem.out.println(num);\n```\n\n(A) 10\n(B) 11\n(C) The code does not compile.\n(D) An exception is thrown at runtime.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "10"},
+            {"id": "b", "text": "11"},
+            {"id": "c", "text": "The code does not compile."},
+            {"id": "d", "text": "An exception is thrown at runtime."}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- Java uses **call by value** for primitive parameters. When `num` is passed to `increment`, a **copy** of its value (10) is made and stored in the parameter `x`.\n- Inside the method, `x++` increments the copy to 11, but the original variable `num` remains unchanged.\n- After the method returns, `num` still has the value 10.\n- Thus, the output is 10."
+    },
+    {
+        "id": "q-msig-006",
+        "tags": ["method overloading", "signature matching"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 6\n\nConsider the following overloaded methods:\n\n```java\npublic static void display(int num) { }\npublic static void display(String text) { }\npublic static void display(int num, String text) { }\n```\n\nWhich of the following calls will invoke the method with signature `display(int, String)`?\n\n(A) `display(5);`\n(B) `display(\"Hello\");`\n(C) `display(5, \"Hello\");`\n(D) `display(\"Hello\", 5);`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "display(5);"},
+            {"id": "b", "text": "display(\"Hello\");"},
+            {"id": "c", "text": "display(5, \"Hello\");"},
+            {"id": "d", "text": "display(\"Hello\", 5);"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- The signature `display(int, String)` requires two arguments: an `int` followed by a `String`.\n- (C) provides exactly that: `int` first, then `String`.\n- (A) calls `display(int)` (single parameter).\n- (B) calls `display(String)` (single parameter).\n- (D) provides arguments in the wrong order: `String` then `int`. No overload matches that order, so this call would cause a compiler error."
+    },
+    {
+        "id": "q-msig-007",
+        "tags": ["FRQ", "method call", "array parameter"],
+        "type": "OPEN",
+        "prompt": "## Mini Free-Response Question: Calling a Method\n\n**Directions:** Consider the following method signature:\n\n```java\npublic static double calculateAverage(int[] scores)\n```\n\nWrite a line of code that correctly calls this method, assuming you have an array named `grades` that contains integer scores. Store the result in a variable called `avg`.",
+        "imageUrl": null,
+        "optionsJson": [],
+        "answerKeyJson": "double avg = calculateAverage(grades);",
+        "explanation": "- The method expects an `int[]` argument. The array `grades` is passed directly.\n- The method returns a `double`, so the result is assigned to a `double` variable named `avg`.\n- The call is a single statement, and the returned value is captured."
+    },
+
+
+
+    {
+        "id": "q-cmeth-001",
+        "tags": ["static methods", "class methods", "method call"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nConsider the following class:\n\n```java\npublic class MathHelper {\n    public static int square(int x) {\n        return x * x;\n    }\n}\n```\n\nWhich of the following correctly calls the `square` method from a class other than `MathHelper`?\n\n(A) `int result = MathHelper.square(5);`\n(B) `MathHelper mh = new MathHelper(); int result = mh.square(5);`\n(C) `int result = square(5);`\n(D) `int result = MathHelper().square(5);`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "int result = MathHelper.square(5);"},
+            {"id": "b", "text": "MathHelper mh = new MathHelper(); int result = mh.square(5);"},
+            {"id": "c", "text": "int result = square(5);"},
+            {"id": "d", "text": "int result = MathHelper().square(5);"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- The `square` method is declared as `static`, making it a **class method**. It belongs to the class, not to any instance.\n- To call a class method from outside its class, you use the class name followed by the dot operator: `ClassName.methodName(args)`.\n- (A) correctly uses `MathHelper.square(5)`.\n- (B) attempts to call via an instance; while technically allowed in Java, it is considered poor style and is not the intended way to call static methods. The question asks for the correct way; (A) is the standard.\n- (C) would only work if called from within the `MathHelper` class itself, not from another class.\n- (D) has incorrect syntax; `MathHelper()` is a constructor call, not a class name."
+    },
+    {
+        "id": "q-cmeth-002",
+        "tags": ["static methods", "void methods", "method calls"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nConsider the following class:\n\n```java\npublic class Calculator {\n    public static double add(double a, double b) {\n        return a + b;\n    }\n    \n    public static void showResult(double value) {\n        System.out.println(\"Result: \" + value);\n    }\n}\n```\n\nA programmer writes the following code in a different class:\n\n```java\ndouble sum = Calculator.add(3.5, 2.7);\nCalculator.showResult(sum);\n```\n\nWhich statement best describes this code?\n\n(A) It will not compile because `add` is a static method and cannot be called with the class name.\n(B) It will not compile because `showResult` is a void method and cannot be called as a statement.\n(C) It will compile and run correctly.\n(D) It will compile but throw an exception at runtime.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "It will not compile because `add` is a static method and cannot be called with the class name."},
+            {"id": "b", "text": "It will not compile because `showResult` is a void method and cannot be called as a statement."},
+            {"id": "c", "text": "It will compile and run correctly."},
+            {"id": "d", "text": "It will compile but throw an exception at runtime."}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- Both `add` and `showResult` are static methods. Calling them with the class name (`Calculator.add`, `Calculator.showResult`) is the correct syntax.\n- The first line stores the returned `double` in `sum`.\n- The second line calls `showResult` as a standalone statement, which is exactly how void methods are used.\n- No errors occur; the code compiles and runs correctly."
+    },
+    {
+        "id": "q-cmeth-003",
+        "tags": ["static methods", "calls within same class"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nInside the `Calculator` class from Question 2, a new method is added:\n\n```java\npublic static void test() {\n    add(2.0, 3.0);\n    showResult(5.0);\n}\n```\n\nWill this method compile? Why or why not?\n\n(A) No, because static methods cannot call other static methods without using the class name.\n(B) No, because `add` returns a value that is not used.\n(C) Yes, because within the same class, the class name is optional when calling static methods.\n(D) Yes, but only if the methods are called with the class name.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "No, because static methods cannot call other static methods without using the class name."},
+            {"id": "b", "text": "No, because `add` returns a value that is not used."},
+            {"id": "c", "text": "Yes, because within the same class, the class name is optional when calling static methods."},
+            {"id": "d", "text": "Yes, but only if the methods are called with the class name."}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- Within the same class, static methods can call other static methods directly without using the class name. The class name is optional.\n- (C) correctly states this.\n- (A) is false; static methods can call other static methods.\n- (B) is false; it's perfectly fine to ignore the return value of a method (though sometimes a warning may be issued, it does not prevent compilation).\n- (D) is false; the class name is optional, not required."
+    },
+    {
+        "id": "q-cmeth-004",
+        "tags": ["static methods", "compilation errors", "calling syntax"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nConsider the following class:\n\n```java\npublic class Utils {\n    public static void printMessage() {\n        System.out.println(\"Hello from Utils\");\n    }\n}\n```\n\nWhich of the following code segments, appearing in a different class, will **not** compile?\n\n(A) `Utils.printMessage();`\n(B) `Utils u = new Utils(); u.printMessage();`\n(C) `printMessage();`\n(D) `Utils u = null; u.printMessage();`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Utils.printMessage();"},
+            {"id": "b", "text": "Utils u = new Utils(); u.printMessage();"},
+            {"id": "c", "text": "printMessage();"},
+            {"id": "d", "text": "Utils u = null; u.printMessage();"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- (A) compiles – correct static method call using class name.\n- (B) compiles – calling a static method through an instance reference is allowed (though discouraged).\n- (C) does **not** compile because `printMessage()` is called without a class name or object reference in a different class; the compiler cannot find the method.\n- (D) compiles – calling a static method through a `null` reference is allowed because the method is resolved at compile time based on the declared type, not the object. No exception is thrown."
+    },
+    {
+        "id": "q-cmeth-005",
+        "tags": ["static methods", "properties"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nWhich of the following statements about class methods (static methods) is true?\n\n(A) They can be called using an object reference, but it is considered poor style.\n(B) They can only be called from within the same class.\n(C) They must be called using the class name, never through an object.\n(D) They cannot be void methods.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "They can be called using an object reference, but it is considered poor style."},
+            {"id": "b", "text": "They can only be called from within the same class."},
+            {"id": "c", "text": "They must be called using the class name, never through an object."},
+            {"id": "d", "text": "They cannot be void methods."}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- (A) is true: Java allows static methods to be called through an object reference, but it is confusing and considered poor practice. The preferred way is using the class name.\n- (B) is false; static methods can be called from any class (if accessible).\n- (C) is false; while using the class name is preferred, calling through an object is syntactically allowed.\n- (D) is false; static methods can be void (e.g., `main` is static void)."
+    },
+    {
+        "id": "q-cmeth-006",
+        "tags": ["FRQ", "static method call", "assignment"],
+        "type": "OPEN",
+        "prompt": "## Mini Free-Response Question: Calling a Class Method\n\n**Directions:** Write a line of code that calls the static method `getRandom` from the `MathUtils` class. The method takes no parameters and returns a `double`. Store the result in a variable named `randomValue`.",
+        "imageUrl": null,
+        "optionsJson": [],
+        "answerKeyJson": "double randomValue = MathUtils.getRandom();",
+        "explanation": "- The method is static, so it is called using the class name `MathUtils`.\n- The method returns a `double`, so the result is assigned to a `double` variable.\n- Parentheses are required even though there are no parameters."
+    },
+
+
+
+
+
+    {
+        "id": "q-math-001",
+        "tags": ["Math class", "absolute value", "int"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nWhat is printed by the following code segment?\n\n```java\nint result = Math.abs(-7);\nSystem.out.println(result);\n```\n\n(A) -7\n(B) 0\n(C) 7\n(D) The code does not compile because `Math.abs` returns a `double`.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "-7"},
+            {"id": "b", "text": "0"},
+            {"id": "c", "text": "7"},
+            {"id": "d", "text": "The code does not compile because `Math.abs` returns a `double`."}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- The `Math.abs` method returns the absolute value of a number. For an `int` argument, it returns an `int`.\n- `Math.abs(-7)` returns `7`.\n- Thus, `7` is printed.\n- (D) is incorrect because `Math.abs` is overloaded; when passed an `int`, it returns an `int`."
+    },
+    {
+        "id": "q-math-002",
+        "tags": ["Math class", "pow", "double return"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nWhat is the value of `result` after the following code executes?\n\n```java\ndouble result = Math.pow(2, 3);\n```\n\n(A) 6\n(B) 8\n(C) 8.0\n(D) 9",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "6"},
+            {"id": "b", "text": "8"},
+            {"id": "c", "text": "8.0"},
+            {"id": "d", "text": "9"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- `Math.pow` returns a `double`, even when the arguments are integers.\n- `Math.pow(2, 3)` computes 2³ = 8, but as a `double` value, so the result is `8.0`.\n- (B) would be correct if the result were an `int`, but `result` is declared as `double` and `Math.pow` returns `double`."
+    },
+    {
+        "id": "q-math-003",
+        "tags": ["Math class", "sqrt", "double return"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nConsider the following code segment:\n\n```java\ndouble x = Math.sqrt(16);\ndouble y = Math.sqrt(25);\nSystem.out.println(x + \" \" + y);\n```\n\nWhat is printed?\n\n(A) 4.0 5.0\n(B) 4 5\n(C) 16.0 25.0\n(D) 256.0 625.0",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "4.0 5.0"},
+            {"id": "b", "text": "4 5"},
+            {"id": "c", "text": "16.0 25.0"},
+            {"id": "d", "text": "256.0 625.0"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- `Math.sqrt(16)` returns the square root of 16, which is `4.0` (as a `double`).\n- `Math.sqrt(25)` returns `5.0`.\n- The output is `4.0 5.0`."
+    },
+    {
+        "id": "q-math-004",
+        "tags": ["Math class", "random", "range", "casting"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nWhich of the following expressions generates a random integer between 1 and 10 **inclusive**?\n\n(A) `(int) (Math.random() * 10)`\n(B) `(int) (Math.random() * 10) + 1`\n(C) `(int) (Math.random() * 11)`\n(D) `(int) (Math.random() * 11) + 1`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "(int) (Math.random() * 10)"},
+            {"id": "b", "text": "(int) (Math.random() * 10) + 1"},
+            {"id": "c", "text": "(int) (Math.random() * 11)"},
+            {"id": "d", "text": "(int) (Math.random() * 11) + 1"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- `Math.random()` returns a `double` in the range [0.0, 1.0).\n- To get an integer from 1 to 10 inclusive, the range size is 10 (10 - 1 + 1 = 10). Multiply by 10 to get [0.0, 10.0), then cast to `int` to get 0‑9, then add 1 to get 1‑10.\n- (A) gives 0‑9.\n- (B) is correct.\n- (C) gives 0‑10 (0 to 10 inclusive).\n- (D) gives 1‑11."
+    },
+    {
+        "id": "q-math-005",
+        "tags": ["Math class", "random", "range analysis"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nWhat is the range of possible values returned by the expression `(int) (Math.random() * 6) + 1`?\n\n(A) 0 to 5\n(B) 1 to 5\n(C) 1 to 6\n(D) 0 to 6",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "0 to 5"},
+            {"id": "b", "text": "1 to 5"},
+            {"id": "c", "text": "1 to 6"},
+            {"id": "d", "text": "0 to 6"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- `Math.random() * 6` produces values in the range [0.0, 6.0).\n- Casting to `int` truncates, giving integers from 0 to 5.\n- Adding 1 shifts the range to 1 to 6.\n- Thus, the expression returns integers from 1 to 6 inclusive, simulating a six-sided die."
+    },
+    {
+        "id": "q-math-006",
+        "tags": ["Math class", "random", "casting", "range limits"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 6\n\nConsider the following code:\n\n```java\ndouble rand = Math.random();\nint result = (int) (rand * 100);\nSystem.out.println(result);\n```\n\nWhich of the following could **not** be printed?\n\n(A) 0\n(B) 50\n(C) 99\n(D) 100",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "0"},
+            {"id": "b", "text": "50"},
+            {"id": "c", "text": "99"},
+            {"id": "d", "text": "100"}
+        ],
+        "answerKeyJson": "d",
+        "explanation": "- `rand` is in the range [0.0, 1.0).\n- `rand * 100` is in the range [0.0, 100.0).\n- Casting to `int` truncates, so possible values are integers from 0 to 99.\n- 100 cannot be produced because `rand * 100` is always less than 100.0.\n- Thus, (D) 100 could not be printed."
+    },
+    {
+        "id": "q-math-007",
+        "tags": ["Math class", "pow", "sqrt", "Pythagorean theorem"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 7\n\nWhat is printed by the following code?\n\n```java\ndouble a = Math.sqrt(Math.pow(3, 2) + Math.pow(4, 2));\nSystem.out.println(a);\n```\n\n(A) 5.0\n(B) 7.0\n(C) 25.0\n(D) 3.0",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "5.0"},
+            {"id": "b", "text": "7.0"},
+            {"id": "c", "text": "25.0"},
+            {"id": "d", "text": "3.0"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- `Math.pow(3, 2)` returns 9.0, `Math.pow(4, 2)` returns 16.0.\n- Their sum is 25.0.\n- `Math.sqrt(25.0)` returns 5.0.\n- This calculates the length of the hypotenuse of a 3-4-5 right triangle."
+    },
+    {
+        "id": "q-math-008",
+        "tags": ["Math class", "static methods", "java.lang"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 8\n\nWhich of the following statements about the `Math` class is true?\n\n(A) The `Math` class is part of the `java.util` package and must be imported.\n(B) All methods in the `Math` class are instance methods.\n(C) The `Math` class contains only class methods (static methods).\n(D) The `Math` class cannot be used without creating a `Math` object first.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "The `Math` class is part of the `java.util` package and must be imported."},
+            {"id": "b", "text": "All methods in the `Math` class are instance methods."},
+            {"id": "c", "text": "The `Math` class contains only class methods (static methods)."},
+            {"id": "d", "text": "The `Math` class cannot be used without creating a `Math` object first."}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- The `Math` class is part of `java.lang`, so it is automatically available without an import statement. (A) is false.\n- All methods in the `Math` class are static (class methods). (B) is false, (C) is true.\n- Because they are static, you call them using the class name, not an object. (D) is false."
+    },
+    {
+        "id": "q-math-009",
+        "tags": ["FRQ", "Math class", "random", "range"],
+        "type": "OPEN",
+        "prompt": "## Mini Free-Response Question: Random Number Generation\n\n**Directions:** Write a code segment that generates a random integer between 50 and 100, inclusive, and stores it in a variable named `randomValue`.",
+        "imageUrl": null,
+        "optionsJson": [],
+        "answerKeyJson": "int randomValue = (int) (Math.random() * 51) + 50;",
+        "explanation": "- The range size is 100 - 50 + 1 = 51.\n- `Math.random() * 51` gives a double in [0.0, 51.0).\n- Casting to `int` gives integers from 0 to 50.\n- Adding 50 shifts the range to 50 to 100 inclusive."
+    },
+
+
+
+
+
+    {
+        "id": "q-obj-001",
+        "tags": ["class", "object", "relationship"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nConsider the following class definition:\n\n```java\npublic class Student {\n    private String name;\n    private int id;\n    \n    public Student(String n, int i) {\n        name = n;\n        id = i;\n    }\n}\n```\n\nWhich of the following best describes the relationship between the `Student` class and a `Student` object?\n\n(A) The class is a specific instance, and the object is the blueprint for creating that instance.\n(B) The class is the blueprint, and an object is a specific instance created from that blueprint.\n(C) The class and the object are the same thing in Java.\n(D) The class stores the data, and the object stores the methods.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "The class is a specific instance, and the object is the blueprint for creating that instance."},
+            {"id": "b", "text": "The class is the blueprint, and an object is a specific instance created from that blueprint."},
+            {"id": "c", "text": "The class and the object are the same thing in Java."},
+            {"id": "d", "text": "The class stores the data, and the object stores the methods."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- A **class** is a blueprint or template that defines the attributes and behaviors that objects of that class will have.\n- An **object** is a specific instance of a class, created using the `new` keyword, with its own copy of the instance variables.\n- (B) correctly describes this relationship.\n- (A) reverses the relationship.\n- (C) is false; a class and an object are distinct concepts.\n- (D) is false; both classes and objects can have data and methods; the class defines them, the object has its own data."
+    },
+    {
+        "id": "q-obj-002",
+        "tags": ["String", "reference", "new"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nConsider the following code:\n\n```java\nString str1 = \"Hello\";\nString str2 = str1;\nString str3 = new String(\"Hello\");\n```\n\nWhich of the following statements is true?\n\n(A) `str1`, `str2`, and `str3` all refer to the same object.\n(B) `str1` and `str2` refer to the same object; `str3` refers to a different object.\n(C) `str1`, `str2`, and `str3` each refer to different objects.\n(D) `str1` and `str3` refer to the same object; `str2` refers to a different object.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "`str1`, `str2`, and `str3` all refer to the same object."},
+            {"id": "b", "text": "`str1` and `str2` refer to the same object; `str3` refers to a different object."},
+            {"id": "c", "text": "`str1`, `str2`, and `str3` each refer to different objects."},
+            {"id": "d", "text": "`str1` and `str3` refer to the same object; `str2` refers to a different object."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- `str1` is assigned a string literal. Java may reuse the same object for identical string literals.\n- `str2 = str1` assigns the reference, so `str2` points to the same object as `str1`.\n- `str3` uses the `new` keyword, which guarantees a **new** `String` object is created, even if the content is the same.\n- Thus, `str1` and `str2` refer to the same object; `str3` refers to a different object.\n- (B) is correct."
+    },
+    {
+        "id": "q-obj-003",
+        "tags": ["Object class", "inheritance", "java.lang"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nWhich of the following statements about the `Object` class in Java is true?\n\n(A) Only classes that explicitly extend `Object` inherit from it.\n(B) The `Object` class is part of the `java.util` package.\n(C) Every class in Java is a subclass of the `Object` class, either directly or indirectly.\n(D) The `Object` class contains only static methods.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Only classes that explicitly extend `Object` inherit from it."},
+            {"id": "b", "text": "The `Object` class is part of the `java.util` package."},
+            {"id": "c", "text": "Every class in Java is a subclass of the `Object` class, either directly or indirectly."},
+            {"id": "d", "text": "The `Object` class contains only static methods."}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- In Java, **every class** is a subclass of the `Object` class. If a class does not explicitly extend another class, it implicitly extends `Object`. If it extends another class, that class eventually extends `Object`.\n- (A) is false; all classes inherit from `Object`, even if not explicitly stated.\n- (B) is false; `Object` is in `java.lang`.\n- (C) is true.\n- (D) is false; `Object` contains instance methods like `toString()` and `equals()`."
+    },
+    {
+        "id": "q-obj-004",
+        "tags": ["object creation", "constructor", "new"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nConsider the following class definition:\n\n```java\npublic class Car {\n    private String model;\n    private int year;\n    \n    public Car(String m, int y) {\n        model = m;\n        year = y;\n    }\n}\n```\n\nWhich of the following code segments correctly creates a `Car` object and stores a reference to it?\n\n(A) `Car myCar = Car(\"Toyota\", 2020);`\n(B) `Car myCar = new Car(\"Toyota\", 2020);`\n(C) `new Car myCar = Car(\"Toyota\", 2020);`\n(D) `Car myCar = new Car; myCar.model = \"Toyota\"; myCar.year = 2020;`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Car myCar = Car(\"Toyota\", 2020);"},
+            {"id": "b", "text": "Car myCar = new Car(\"Toyota\", 2020);"},
+            {"id": "c", "text": "new Car myCar = Car(\"Toyota\", 2020);"},
+            {"id": "d", "text": "Car myCar = new Car; myCar.model = \"Toyota\"; myCar.year = 2020;"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- To create an object, the `new` keyword is used followed by a call to a constructor.\n- (B) correctly uses `new Car(\"Toyota\", 2020)` to create the object and assigns the reference to `myCar`.\n- (A) is missing the `new` keyword.\n- (C) has incorrect syntax; `new` cannot be used that way.\n- (D) attempts to call the default constructor `new Car()` but no such constructor exists; also, `model` and `year` are private and cannot be accessed directly from outside the class."
+    },
+    {
+        "id": "q-obj-005",
+        "tags": ["reference equality", "String", "equals"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nWhat is the value of `count` after the following code executes?\n\n```java\nString s1 = \"apple\";\nString s2 = \"banana\";\nString s3 = s1;\ns1 = \"cherry\";\nint count = 0;\nif (s3 == s1) count++;\nif (s2 != s3) count++;\nif (s3.equals(\"apple\")) count++;\n```\n\n(A) 0\n(B) 1\n(C) 2\n(D) 3",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "0"},
+            {"id": "b", "text": "1"},
+            {"id": "c", "text": "2"},
+            {"id": "d", "text": "3"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- `s3 == s1` compares references: `s3` refers to `\"apple\"`, `s1` now refers to `\"cherry\"` → `false`, count remains 0.\n- `s2 != s3` compares references: `s2` refers to `\"banana\"`, `s3` refers to `\"apple\"` → different objects, so `true`, count becomes 1.\n- `s3.equals(\"apple\")` compares content: `\"apple\".equals(\"apple\")` → `true`, count becomes 2.\n- Final count = 2."
+    },
+    {
+        "id": "q-obj-006",
+        "tags": ["FRQ", "object creation", "constructor"],
+        "type": "OPEN",
+        "prompt": "## Mini Free-Response Question: Declaring and Creating Objects\n\n**Directions:** Write code that declares a variable of type `Student` named `student1` and initializes it with a new `Student` object. The `Student` class has a constructor that takes a `String` name and an `int` id. Use name `\"Alice\"` and id `1001`.",
+        "imageUrl": null,
+        "optionsJson": [],
+        "answerKeyJson": "Student student1 = new Student(\"Alice\", 1001);",
+        "explanation": "- The variable is declared with type `Student` and name `student1`.\n- The `new` keyword creates a new object.\n- The constructor `Student(\"Alice\", 1001)` is called with the appropriate arguments.\n- The reference to the new object is assigned to `student1`."
+    },
+
+
+
+
+
+    {
+        "id": "q-inst-001",
+        "tags": ["constructor", "object creation", "signature matching"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nConsider the following class definition:\n\n```java\npublic class Book {\n    private String title;\n    private int pages;\n    \n    public Book(String t, int p) {\n        title = t;\n        pages = p;\n    }\n}\n```\n\nWhich of the following correctly creates a `Book` object?\n\n(A) `Book b = new Book();`\n(B) `Book b = new Book(\"1984\", 328);`\n(C) `Book b = new Book(328, \"1984\");`\n(D) `Book b = Book(\"1984\", 328);`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Book b = new Book();"},
+            {"id": "b", "text": "Book b = new Book(\"1984\", 328);"},
+            {"id": "c", "text": "Book b = new Book(328, \"1984\");"},
+            {"id": "d", "text": "Book b = Book(\"1984\", 328);"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The `Book` class has a constructor with signature `Book(String, int)`. To create an object, you must use the `new` keyword followed by a constructor call with matching arguments in the correct order.\n- (B) correctly uses `new Book(\"1984\", 328)` with a `String` followed by an `int`.\n- (A) attempts to call a no-parameter constructor, but none exists, so it would cause a compiler error.\n- (C) provides arguments in the wrong order (`int` then `String`), which does not match the constructor signature.\n- (D) is missing the `new` keyword, which is required for object creation."
+    },
+    {
+        "id": "q-inst-002",
+        "tags": ["constructor", "signature matching", "compilation error"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nConsider the following class:\n\n```java\npublic class Point {\n    private int x;\n    private int y;\n    \n    public Point() {\n        x = 0;\n        y = 0;\n    }\n    \n    public Point(int x, int y) {\n        this.x = x;\n        this.y = y;\n    }\n}\n```\n\nWhich constructor is invoked by the call `new Point(5)`?\n\n(A) The no-parameter constructor `Point()`\n(B) The two-parameter constructor `Point(int, int)`\n(C) Neither; the code does not compile because there is no constructor that matches the arguments.\n(D) Both constructors are invoked.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "The no-parameter constructor `Point()`"},
+            {"id": "b", "text": "The two-parameter constructor `Point(int, int)`"},
+            {"id": "c", "text": "Neither; the code does not compile because there is no constructor that matches the arguments."},
+            {"id": "d", "text": "Both constructors are invoked."}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- The class has two constructors: one with no parameters and one with two `int` parameters. There is no constructor that takes a single `int`.\n- The call `new Point(5)` provides one `int` argument, which does not match either constructor's signature.\n- Therefore, the code does not compile. The compiler cannot find a matching constructor."
+    },
+    {
+        "id": "q-inst-003",
+        "tags": ["constructor", "initialization", "instance variables"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nConsider the following class:\n\n```java\npublic class Student {\n    private String name;\n    private int id;\n    private double gpa;\n    \n    public Student(String name, int id) {\n        this.name = name;\n        this.id = id;\n        gpa = 0.0;\n    }\n}\n```\n\nWhat are the default values of `name`, `id`, and `gpa` for a `Student` object created with `new Student(\"Alice\", 1001)`?\n\n(A) `name` is `null`, `id` is `0`, `gpa` is `0.0`\n(B) `name` is `\"Alice\"`, `id` is `1001`, `gpa` is `0.0`\n(C) `name` is `\"Alice\"`, `id` is `1001`, `gpa` is not initialized\n(D) `name` is `null`, `id` is `1001`, `gpa` is `0.0`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "`name` is `null`, `id` is `0`, `gpa` is `0.0`"},
+            {"id": "b", "text": "`name` is `\"Alice\"`, `id` is `1001`, `gpa` is `0.0`"},
+            {"id": "c", "text": "`name` is `\"Alice\"`, `id` is `1001`, `gpa` is not initialized"},
+            {"id": "d", "text": "`name` is `null`, `id` is `1001`, `gpa` is `0.0`"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The constructor explicitly initializes `name` and `id` to the provided parameter values.\n- It also explicitly sets `gpa` to `0.0`.\n- Therefore, the object's fields are set to those values, not default values.\n- Default values (0, 0.0, false, null) are only used if fields are not explicitly initialized in the constructor or declaration.\n- (B) correctly reflects the values after constructor execution."
+    },
+    {
+        "id": "q-inst-004",
+        "tags": ["constructor", "default values", "instance variables"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nConsider the following class:\n\n```java\npublic class Employee {\n    private String name;\n    private double salary;\n    \n    public Employee(String name) {\n        this.name = name;\n    }\n}\n```\n\nWhat is the value of `salary` for an `Employee` object created with `new Employee(\"Bob\")`?\n\n(A) `0.0`\n(B) `null`\n(C) The code does not compile because `salary` is not initialized.\n(D) It depends on the compiler; the value is unpredictable.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "`0.0`"},
+            {"id": "b", "text": "`null`"},
+            {"id": "c", "text": "The code does not compile because `salary` is not initialized."},
+            {"id": "d", "text": "It depends on the compiler; the value is unpredictable."}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- Instance variables (fields) are automatically initialized to default values if not explicitly set in the constructor.\n- For `double`, the default value is `0.0`.\n- The constructor does not assign a value to `salary`, so it retains its default value of `0.0`.\n- The code compiles without error because fields have default values."
+    },
+    {
+        "id": "q-inst-005",
+        "tags": ["constructor overloading", "this()", "chaining"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nConsider the following class:\n\n```java\npublic class Box {\n    private int width;\n    private int height;\n    \n    public Box(int w, int h) {\n        width = w;\n        height = h;\n    }\n    \n    public Box() {\n        this(1, 1);\n    }\n}\n```\n\nWhich of the following statements about creating `Box` objects is true?\n\n(A) `new Box()` is invalid because it calls `this(1,1)` which is not a constructor.\n(B) `new Box()` creates a `Box` object with width and height both set to 1.\n(C) `new Box(5,10)` creates a `Box` object with width 1 and height 1.\n(D) `new Box()` creates a `Box` object with width 0 and height 0.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "`new Box()` is invalid because it calls `this(1,1)` which is not a constructor."},
+            {"id": "b", "text": "`new Box()` creates a `Box` object with width and height both set to 1."},
+            {"id": "c", "text": "`new Box(5,10)` creates a `Box` object with width 1 and height 1."},
+            {"id": "d", "text": "`new Box()` creates a `Box` object with width 0 and height 0."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The class has two constructors: one that takes two `int` parameters and a no-parameter constructor.\n- The no-parameter constructor uses `this(1,1)` to call the two-parameter constructor with arguments 1 and 1, setting width and height to 1.\n- Therefore, `new Box()` creates a `Box` with width and height both 1.\n- (A) is false; `this(1,1)` is a valid constructor call.\n- (C) is false; `new Box(5,10)` would set width to 5 and height to 10.\n- (D) is false; the no-parameter constructor sets them to 1, not default values."
+    },
+    {
+        "id": "q-inst-006",
+        "tags": ["call by value", "constructor parameters"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 6\n\nConsider the following code:\n\n```java\npublic class Test {\n    private int value;\n    \n    public Test(int val) {\n        val = val * 2;\n        value = val;\n    }\n}\n\nint x = 10;\nTest t = new Test(x);\nSystem.out.println(x);\n```\n\nWhat is printed?\n\n(A) 10\n(B) 20\n(C) 0\n(D) The code does not compile because `value` is private.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "10"},
+            {"id": "b", "text": "20"},
+            {"id": "c", "text": "0"},
+            {"id": "d", "text": "The code does not compile because `value` is private."}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- Java uses **call by value** for primitive arguments. When `x` is passed to the constructor, a copy of its value (10) is made and stored in the parameter `val`.\n- Inside the constructor, `val` is modified (`val = val * 2`), but this only affects the copy. The original variable `x` remains unchanged.\n- After the constructor call, `x` still has the value 10.\n- Thus, `10` is printed."
+    },
+    {
+        "id": "q-inst-007",
+        "tags": ["FRQ", "constructor overloading", "this"],
+        "type": "OPEN",
+        "prompt": "## Mini Free-Response Question: Constructor Overloading\n\n**Directions:** Write a class `Rectangle` with two constructors:\n- A constructor that takes two `double` parameters `w` and `h` and sets the width and height.\n- A constructor that takes one `double` parameter `side` and sets both width and height to that value (creating a square).\n\nAssume the class has instance variables `width` and `height`. Write only the constructors.",
+        "imageUrl": null,
+        "optionsJson": [],
+        "answerKeyJson": "public Rectangle(double w, double h) {\n    width = w;\n    height = h;\n}\n\npublic Rectangle(double side) {\n    this(side, side);  // calls the two-parameter constructor\n}",
+        "explanation": "- The first constructor initializes width and height with the given values.\n- The second constructor uses `this(side, side)` to call the first constructor, avoiding code duplication.\n- This demonstrates constructor overloading and the use of `this()`."
+    },
+
+
+
+
+    {
+        "id": "q-imeth-001",
+        "tags": ["instance methods", "method call", "object reference"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nConsider the following class definition:\n\n```java\npublic class Student {\n    private String name;\n    private int id;\n    \n    public Student(String n, int i) {\n        name = n;\n        id = i;\n    }\n    \n    public String getName() {\n        return name;\n    }\n    \n    public int getID() {\n        return id;\n    }\n}\n```\n\nWhich of the following correctly calls an instance method on a `Student` object?\n\n(A) `String n = Student.getName();`\n(B) `Student s = new Student(\"Alice\", 1001); String n = s.getName();`\n(C) `Student s = new Student(\"Alice\", 1001); String n = Student.getName(s);`\n(D) `String n = getName(new Student(\"Alice\", 1001));`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "String n = Student.getName();"},
+            {"id": "b", "text": "Student s = new Student(\"Alice\", 1001); String n = s.getName();"},
+            {"id": "c", "text": "Student s = new Student(\"Alice\", 1001); String n = Student.getName(s);"},
+            {"id": "d", "text": "String n = getName(new Student(\"Alice\", 1001));"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- Instance methods are called on a specific object using the object reference, dot operator, and method name: `object.methodName(args)`.\n- (B) correctly creates a `Student` object and calls `getName()` on that object using the reference `s`.\n- (A) attempts to call an instance method using the class name, which is invalid for instance methods.\n- (C) attempts to pass the object as an argument to a class method, but `getName` is an instance method.\n- (D) attempts to call `getName` without an object reference; this syntax is invalid."
+    },
+    {
+        "id": "q-imeth-002",
+        "tags": ["instance methods", "null reference", "NullPointerException"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nConsider the following code:\n\n```java\nString str = null;\nint len = str.length();\nSystem.out.println(len);\n```\n\nWhat is the result when this code is executed?\n\n(A) 0 is printed.\n(B) null is printed.\n(C) The code does not compile.\n(D) A `NullPointerException` is thrown at runtime.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "0 is printed."},
+            {"id": "b", "text": "null is printed."},
+            {"id": "c", "text": "The code does not compile."},
+            {"id": "d", "text": "A `NullPointerException` is thrown at runtime."}
+        ],
+        "answerKeyJson": "d",
+        "explanation": "- The variable `str` is assigned `null`, meaning it does not refer to any object.\n- Calling an instance method (`length()`) on a `null` reference causes a `NullPointerException` at runtime.\n- The code compiles because the compiler only checks that `str` is of type `String`, not that it actually refers to an object.\n- Thus, a `NullPointerException` is thrown."
+    },
+    {
+        "id": "q-imeth-003",
+        "tags": ["instance methods", "state change", "void methods"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nConsider the following class:\n\n```java\npublic class BankAccount {\n    private double balance;\n    \n    public BankAccount(double initial) {\n        balance = initial;\n    }\n    \n    public void deposit(double amount) {\n        balance += amount;\n    }\n    \n    public double getBalance() {\n        return balance;\n    }\n}\n```\n\nWhat is printed by the following code?\n\n```java\nBankAccount account = new BankAccount(100.0);\naccount.deposit(50.0);\nSystem.out.println(account.getBalance());\n```\n\n(A) 50.0\n(B) 100.0\n(C) 150.0\n(D) The code does not compile because `deposit` is a void method.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "50.0"},
+            {"id": "b", "text": "100.0"},
+            {"id": "c", "text": "150.0"},
+            {"id": "d", "text": "The code does not compile because `deposit` is a void method."}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- A `BankAccount` object is created with an initial balance of 100.0.\n- The instance method `deposit(50.0)` is called on that object, which adds 50.0 to the balance.\n- The instance method `getBalance()` returns the current balance, which is now 150.0.\n- The code compiles and runs correctly; void methods can be called as standalone statements."
+    },
+    {
+        "id": "q-imeth-004",
+        "tags": ["reference variables", "reassignment", "instance methods"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nConsider the following two classes:\n\n```java\npublic class Person {\n    private String name;\n    \n    public Person(String n) {\n        name = n;\n    }\n    \n    public String getName() {\n        return name;\n    }\n}\n\npublic class Test {\n    public static void main(String[] args) {\n        Person p1 = new Person(\"Alice\");\n        Person p2 = p1;\n        p2 = new Person(\"Bob\");\n        System.out.println(p1.getName());\n    }\n}\n```\n\nWhat is printed?\n\n(A) Alice\n(B) Bob\n(C) null\n(D) The code does not compile.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Alice"},
+            {"id": "b", "text": "Bob"},
+            {"id": "c", "text": "null"},
+            {"id": "d", "text": "The code does not compile."}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- `p1` is assigned a new `Person` object with name \"Alice\".\n- `p2 = p1` makes `p2` refer to the same object as `p1`.\n- Then `p2 = new Person(\"Bob\")` reassigns `p2` to a **new** `Person` object with name \"Bob\". This does not affect `p1`; `p1` still refers to the original \"Alice\" object.\n- `p1.getName()` returns \"Alice\".\n- Thus, \"Alice\" is printed."
+    },
+    {
+        "id": "q-imeth-005",
+        "tags": ["immutable objects", "String methods", "instance methods"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nConsider the following code:\n\n```java\nString s1 = \"Hello\";\nString s2 = s1.toUpperCase();\nSystem.out.println(s1);\nSystem.out.println(s2);\n```\n\nWhat is printed?\n\n(A) HELLO HELLO\n(B) Hello HELLO\n(C) Hello Hello\n(D) HELLO Hello",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "HELLO HELLO"},
+            {"id": "b", "text": "Hello HELLO"},
+            {"id": "c", "text": "Hello Hello"},
+            {"id": "d", "text": "HELLO Hello"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- `s1` is a `String` object containing \"Hello\".\n- The instance method `toUpperCase()` is called on `s1`. Because `String` objects are **immutable**, this method does not change `s1`. Instead, it creates and returns a **new** `String` object containing \"HELLO\", which is assigned to `s2`.\n- `s1` remains unchanged, still referring to \"Hello\".\n- The output is \"Hello\" followed by \"HELLO\" on separate lines (due to `println`).\n- Thus, (B) is correct."
+    },
+    {
+        "id": "q-imeth-006",
+        "tags": ["FRQ", "instance methods", "object creation"],
+        "type": "OPEN",
+        "prompt": "## Mini Free-Response Question: Calling Instance Methods\n\n**Directions:** Write a code segment that creates a `BankAccount` object with an initial balance of $500. Then, call the `withdraw` method to withdraw $200. Finally, print the balance using the `getBalance` method. Assume the `BankAccount` class has the appropriate constructor and methods.",
+        "imageUrl": null,
+        "optionsJson": [],
+        "answerKeyJson": "BankAccount account = new BankAccount(500.0);\naccount.withdraw(200.0);\nSystem.out.println(account.getBalance());",
+        "explanation": "- The first line creates a `BankAccount` object with initial balance 500.0.\n- The second line calls the instance method `withdraw` on that object, passing 200.0.\n- The third line calls `getBalance` to retrieve and print the new balance (300.0)."
+    },
+
+
+
+
+    {
+        "id": "q-str-001",
+        "tags": ["String", "immutable", "toUpperCase"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nConsider the following code segment:\n\n```java\nString s = \"Java\";\ns.toUpperCase();\nSystem.out.println(s);\n```\n\nWhat is printed?\n\n(A) JAVA\n(B) Java\n(C) java\n(D) The code does not compile because the return value of `toUpperCase` is ignored.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "JAVA"},
+            {"id": "b", "text": "Java"},
+            {"id": "c", "text": "java"},
+            {"id": "d", "text": "The code does not compile because the return value of `toUpperCase` is ignored."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- `String` objects are **immutable**. The `toUpperCase()` method returns a **new** `String` object with all uppercase letters, but it does not modify the original string.\n- The returned value is not stored, so the original `s` remains unchanged.\n- Therefore, `s` still refers to `\"Java\"`, and `\"Java\"` is printed."
+    },
+    {
+        "id": "q-str-002",
+        "tags": ["String", "concatenation", "+="],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nWhat is the value of `str` after the following code executes?\n\n```java\nString str = \"Hello\";\nstr += \" World\";\n```\n\n(A) `\"Hello\"`\n(B) `\"Hello World\"`\n(C) `\" World\"`\n(D) `\"HelloWorld\"`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "\"Hello\""},
+            {"id": "b", "text": "\"Hello World\""},
+            {"id": "c", "text": "\" World\""},
+            {"id": "d", "text": "\"HelloWorld\""}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The `+=` operator is used for string concatenation. It creates a new `String` by appending `\" World\"` to the current value of `str`, and then assigns that new string back to `str`.\n- After execution, `str` refers to `\"Hello World\"`.\n- (D) would be the result without the space."
+    },
+    {
+        "id": "q-str-003",
+        "tags": ["String", "equality", "==", "equals", "literals"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nConsider the following code:\n\n```java\nString a = \"apple\";\nString b = \"apple\";\nString c = new String(\"apple\");\n```\n\nWhich of the following expressions evaluates to `true`?\n\n(A) `a == b`\n(B) `a == c`\n(C) `a.equals(c)`\n(D) Both (A) and (C)",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "a == b"},
+            {"id": "b", "text": "a == c"},
+            {"id": "c", "text": "a.equals(c)"},
+            {"id": "d", "text": "Both (A) and (C)"}
+        ],
+        "answerKeyJson": "d",
+        "explanation": "- `a` and `b` are both string literals. Java may reuse the same object for identical literals, so `a == b` could be `true` (though not guaranteed, but in practice it often is; for the AP exam, it's accepted that string literals with the same value may refer to the same object).\n- `c` is created with `new`, so it is guaranteed to be a different object from `a` and `b`. Thus `a == c` is `false`.\n- `a.equals(c)` compares the content of the strings, which is `\"apple\"` for both, so it returns `true`.\n- Therefore, both (A) and (C) are true, making (D) the correct answer."
+    },
+    {
+        "id": "q-str-004",
+        "tags": ["String", "length", "substring"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nWhat is printed by the following code?\n\n```java\nString word = \"programming\";\nSystem.out.println(word.length());\nSystem.out.println(word.substring(3, 7));\n```\n\n(A) 11\n    gram\n(B) 11\n    gram\n(C) 10\n    gram\n(D) 11\n    prog",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "11\n    gram"},
+            {"id": "b", "text": "11\n    gram"},
+            {"id": "c", "text": "10\n    gram"},
+            {"id": "d", "text": "11\n    prog"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- `\"programming\"` has 11 characters, so `length()` returns `11`.\n- `substring(3, 7)` returns characters from index 3 to index 6 (since the end index is exclusive). Indices: 0:p,1:r,2:o,3:g,4:r,5:a,6:m,7:m, etc. So indices 3-6 give `\"gram\"`.\n- The output is `11` on one line and `gram` on the next line (due to `println`).\n- (A) correctly shows this."
+    },
+    {
+        "id": "q-str-005",
+        "tags": ["String", "indexOf", "substring search"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nConsider the following code:\n\n```java\nString text = \"Mississippi\";\nint idx = text.indexOf(\"ss\");\nSystem.out.println(idx);\n```\n\nWhat is printed?\n\n(A) 1\n(B) 2\n(C) 5\n(D) 6",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "1"},
+            {"id": "b", "text": "2"},
+            {"id": "c", "text": "5"},
+            {"id": "d", "text": "6"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- `indexOf(\"ss\")` returns the index of the **first** occurrence of the substring `\"ss\"` in the string.\n- In `\"Mississippi\"`, the first `\"ss\"` occurs at indices 2 and 3 (starting at index 2). So `indexOf` returns `2`.\n- (C) would be the index of the second occurrence."
+    },
+    {
+        "id": "q-str-006",
+        "tags": ["String", "compareTo", "lexicographic"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 6\n\nWhat is printed by the following code?\n\n```java\nString s1 = \"cat\";\nString s2 = \"dog\";\nSystem.out.println(s1.compareTo(s2));\n```\n\n(A) a positive number\n(B) a negative number\n(C) 0\n(D) The code does not compile because `compareTo` requires two strings.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "a positive number"},
+            {"id": "b", "text": "a negative number"},
+            {"id": "c", "text": "0"},
+            {"id": "d", "text": "The code does not compile because `compareTo` requires two strings."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- `compareTo` compares strings lexicographically (alphabetically). `\"cat\"` comes before `\"dog\"`, so `s1.compareTo(s2)` returns a negative integer.\n- The exact value is implementation-dependent, but it will be negative.\n- Thus, a negative number is printed."
+    },
+    {
+        "id": "q-str-007",
+        "tags": ["String", "charAt", "index out of bounds"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 7\n\nConsider the following code:\n\n```java\nString str = \"Java\";\nchar ch = str.charAt(4);\nSystem.out.println(ch);\n```\n\nWhat is the result?\n\n(A) `a`\n(B) ` ` (space)\n(C) The code compiles but throws a `StringIndexOutOfBoundsException` at runtime.\n(D) The code does not compile because `charAt` expects an `int` but `4` is out of range.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "a"},
+            {"id": "b", "text": " "},
+            {"id": "c", "text": "The code compiles but throws a `StringIndexOutOfBoundsException` at runtime."},
+            {"id": "d", "text": "The code does not compile because `charAt` expects an `int` but `4` is out of range."}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- Valid indices for a string of length 4 are 0, 1, 2, 3. Index 4 is out of bounds.\n- The code compiles because the compiler doesn't check the value of the index at compile time.\n- At runtime, accessing index 4 throws a `StringIndexOutOfBoundsException`.\n- (D) is incorrect because the code does compile; the error occurs at runtime."
+    },
+    {
+        "id": "q-str-008",
+        "tags": ["String", "substring vs charAt", "one-character string"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 8\n\nWhich of the following expressions creates a one-character string containing the first character of `str`?\n\n(A) `str.charAt(0)`\n(B) `str.substring(0, 1)`\n(C) `str.substring(0)`\n(D) `str.charAt(0).toString()`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "str.charAt(0)"},
+            {"id": "b", "text": "str.substring(0, 1)"},
+            {"id": "c", "text": "str.substring(0)"},
+            {"id": "d", "text": "str.charAt(0).toString()"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- `str.substring(0, 1)` returns a substring from index 0 to 1 (exclusive), which is a single character as a `String`.\n- (A) returns a `char`, not a `String`.\n- (C) returns the substring from index 0 to the end, which is the whole string.\n- (D) is invalid because `charAt` returns a `char`, and `char` is a primitive, so you cannot call `toString()` on it."
+    },
+    {
+        "id": "q-str-009",
+        "tags": ["FRQ", "String", "substring", "concatenation"],
+        "type": "OPEN",
+        "prompt": "## Mini Free-Response Question: String Manipulation\n\n**Directions:** Write a method `public static String firstAndLast(String str)` that returns a new string consisting of the first character and the last character of the input string. For example, `firstAndLast(\"hello\")` should return `\"ho\"`. If the string length is 1, return that single character twice (e.g., `\"a\"` → `\"aa\"`). Assume the string is not empty.",
+        "imageUrl": null,
+        "optionsJson": [],
+        "answerKeyJson": "public static String firstAndLast(String str) {\n    if (str.length() == 1) {\n        return str + str;\n    }\n    return str.substring(0, 1) + str.substring(str.length() - 1);\n}",
+        "explanation": "- If the string has length 1, concatenate the string with itself to get two copies.\n- Otherwise, use `substring(0,1)` to get the first character as a string, and `substring(str.length()-1)` to get the last character as a string, then concatenate them."
+    },
+
+
+
+    {
+        "id": "q-ctrl-001",
+        "tags": ["algorithms", "building blocks", "sequencing", "selection", "repetition"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nWhich of the following best describes the three building blocks of algorithms?\n\n(A) Variables, conditionals, and loops\n(B) Sequencing, selection, and repetition\n(C) Input, processing, and output\n(D) Compilation, execution, and testing",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Variables, conditionals, and loops"},
+            {"id": "b", "text": "Sequencing, selection, and repetition"},
+            {"id": "c", "text": "Input, processing, and output"},
+            {"id": "d", "text": "Compilation, execution, and testing"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The three fundamental building blocks of algorithms are **sequencing** (steps executed in order), **selection** (making decisions based on conditions), and **repetition** (repeating steps).\n- (A) refers to programming constructs, not the abstract building blocks.\n- (C) describes the general stages of a program, not algorithm building blocks.\n- (D) describes steps in software development, not algorithm structure."
+    },
+    {
+        "id": "q-ctrl-002",
+        "tags": ["algorithms", "selection", "conditionals"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nA recipe instructs: \"If the dough is too sticky, add more flour. Otherwise, knead for five minutes.\" This is an example of which algorithm building block?\n\n(A) Sequencing\n(B) Selection\n(C) Repetition\n(D) Compilation",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Sequencing"},
+            {"id": "b", "text": "Selection"},
+            {"id": "c", "text": "Repetition"},
+            {"id": "d", "text": "Compilation"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The instruction makes a decision based on a condition (whether the dough is sticky) and chooses between two different actions. This is an example of **selection**.\n- Sequencing would be steps in order without choices.\n- Repetition would involve repeating steps (like \"knead until smooth\").\n- Compilation is not an algorithm building block."
+    },
+    {
+        "id": "q-ctrl-003",
+        "tags": ["algorithms", "repetition", "everyday examples"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nWhich of the following everyday tasks primarily involves **repetition**?\n\n(A) Deciding whether to wear a coat based on the weather\n(B) Following a recipe step by step to bake a cake\n(C) Checking each item on a shopping list one by one\n(D) Choosing a movie to watch from a list of options",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Deciding whether to wear a coat based on the weather"},
+            {"id": "b", "text": "Following a recipe step by step to bake a cake"},
+            {"id": "c", "text": "Checking each item on a shopping list one by one"},
+            {"id": "d", "text": "Choosing a movie to watch from a list of options"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- Checking each item on a shopping list involves repeating the action of looking at an item and deciding whether it's needed. This is a repetitive process.\n- (A) is selection (decision based on condition).\n- (B) is sequencing (steps in order).\n- (D) is selection (choosing one option)."
+    },
+    {
+        "id": "q-ctrl-004",
+        "tags": ["algorithms", "building blocks", "analysis"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nConsider the following algorithm for a guessing game:\n\n```\n1. Generate a secret number.\n2. Repeat until the player guesses correctly:\n3.     Ask the player for a guess.\n4.     If the guess is correct, congratulate the player.\n5.     Otherwise, tell the player if the guess is too high or too low.\n```\n\nWhich building blocks are used in this algorithm?\n\n(A) Sequencing only\n(B) Sequencing and selection only\n(C) Sequencing and repetition only\n(D) Sequencing, selection, and repetition",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Sequencing only"},
+            {"id": "b", "text": "Sequencing and selection only"},
+            {"id": "c", "text": "Sequencing and repetition only"},
+            {"id": "d", "text": "Sequencing, selection, and repetition"}
+        ],
+        "answerKeyJson": "d",
+        "explanation": "- **Sequencing** is used because the steps are executed in a specific order (generate number, then loop, etc.).\n- **Selection** is used in step 4 (if guess is correct) and step 5 (otherwise, give a hint).\n- **Repetition** is used in step 2 (repeat until guessed correctly).\n- Therefore, all three building blocks are present."
+    },
+    {
+        "id": "q-ctrl-005",
+        "tags": ["algorithms", "sequencing"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nAn algorithm is described as follows: \"Stand up, walk to the door, and open it.\" This algorithm uses which building block(s)?\n\n(A) Sequencing only\n(B) Selection only\n(C) Repetition only\n(D) Sequencing and selection",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Sequencing only"},
+            {"id": "b", "text": "Selection only"},
+            {"id": "c", "text": "Repetition only"},
+            {"id": "d", "text": "Sequencing and selection"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- The algorithm consists of three steps executed in a fixed order with no decisions and no loops. This is pure **sequencing**.\n- No selection (no condition) and no repetition are present."
+    },
+    {
+        "id": "q-ctrl-006",
+        "tags": ["algorithms", "sequencing", "importance of order"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 6\n\nWhy does the order of steps matter in an algorithm?\n\n(A) Because computers execute steps randomly.\n(B) Because some steps may depend on the results of previous steps.\n(C) Because algorithms must be written in a specific programming language.\n(D) Because order only matters for repetition, not for sequencing.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Because computers execute steps randomly."},
+            {"id": "b", "text": "Because some steps may depend on the results of previous steps."},
+            {"id": "c", "text": "Because algorithms must be written in a specific programming language."},
+            {"id": "d", "text": "Because order only matters for repetition, not for sequencing."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- The order of steps matters because later steps often rely on the results or state changes caused by earlier steps. Changing the order can lead to incorrect results.\n- (A) is false; computers execute steps sequentially as written.\n- (C) is false; algorithms can be expressed in many ways.\n- (D) is false; order matters for sequencing and selection as well."
+    },
+
+
+
+    {
+        "id": "q-bool-001",
+        "tags": ["boolean", "comparison", "relational operators"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nConsider the following code segment:\n\n```java\nint x = 7;\nint y = 10;\nboolean result = x < y;\nSystem.out.println(result);\n```\n\nWhat is printed?\n\n(A) true\n(B) false\n(C) 7\n(D) 10",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "true"},
+            {"id": "b", "text": "false"},
+            {"id": "c", "text": "7"},
+            {"id": "d", "text": "10"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- The expression `x < y` compares the values of `x` and `y`. Since 7 is less than 10, the expression evaluates to `true`.\n- The boolean value `true` is assigned to `result` and then printed.\n- (B) would be printed if the expression were false.\n- (C) and (D) are integers, not boolean values."
+    },
+    {
+        "id": "q-bool-002",
+        "tags": ["boolean", "relational operators", "comparison"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nWhich of the following expressions evaluates to `true`?\n\n(A) `5 > 7`\n(B) `3 == 4`\n(C) `8 <= 8`\n(D) `10 != 10`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "5 > 7"},
+            {"id": "b", "text": "3 == 4"},
+            {"id": "c", "text": "8 <= 8"},
+            {"id": "d", "text": "10 != 10"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- (A) `5 > 7` is false.\n- (B) `3 == 4` is false.\n- (C) `8 <= 8` is true because 8 is less than or equal to 8.\n- (D) `10 != 10` is false because 10 is equal to 10."
+    },
+    {
+        "id": "q-bool-003",
+        "tags": ["boolean", "equality", "relational operators"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nConsider the following code:\n\n```java\nint a = 5;\nint b = 5;\nint c = 10;\nboolean result1 = a == b;\nboolean result2 = a == c;\nSystem.out.print(result1 + \" \" + result2);\n```\n\nWhat is printed?\n\n(A) true true\n(B) true false\n(C) false true\n(D) false false",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "true true"},
+            {"id": "b", "text": "true false"},
+            {"id": "c", "text": "false true"},
+            {"id": "d", "text": "false false"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- `a == b` compares the values of `a` and `b`. Both are 5, so this is `true`.\n- `a == c` compares 5 and 10, which are different, so this is `false`.\n- The output is `true false`."
+    },
+    {
+        "id": "q-bool-004",
+        "tags": ["String", "reference equality", "=="],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nConsider the following code:\n\n```java\nString s1 = \"Hello\";\nString s2 = \"Hello\";\nString s3 = new String(\"Hello\");\n```\n\nWhich of the following expressions evaluates to `true`?\n\n(A) `s1 == s2`\n(B) `s1 == s3`\n(C) `s2 == s3`\n(D) None of the above",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "s1 == s2"},
+            {"id": "b", "text": "s1 == s3"},
+            {"id": "c", "text": "s2 == s3"},
+            {"id": "d", "text": "None of the above"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- `s1` and `s2` are both string literals. Java may reuse the same object for identical string literals, so `s1 == s2` may be `true` (and typically is).\n- `s3` is created with the `new` keyword, guaranteeing a new object. Therefore, `s1 == s3` and `s2 == s3` compare references to different objects and are `false`.\n- To compare the content of strings, the `equals` method should be used, not `==`."
+    },
+    {
+        "id": "q-bool-005",
+        "tags": ["boolean", "null", "comparison"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nConsider the following code:\n\n```java\nString str = null;\nboolean result = (str == null);\nSystem.out.println(result);\n```\n\nWhat is printed?\n\n(A) true\n(B) false\n(C) null\n(D) The code throws a `NullPointerException` at runtime.",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "true"},
+            {"id": "b", "text": "false"},
+            {"id": "c", "text": "null"},
+            {"id": "d", "text": "The code throws a `NullPointerException` at runtime."}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- The variable `str` is explicitly assigned `null`.\n- The expression `str == null` checks whether the reference `str` is `null`. Since it is, the expression evaluates to `true`.\n- No exception is thrown because comparing with `null` using `==` is perfectly safe.\n- Thus, `true` is printed."
+    },
+    {
+        "id": "q-bool-006",
+        "tags": ["boolean", "valid expressions"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 6\n\nWhich of the following is a valid Boolean expression in Java?\n\n(A) `x = 5`\n(B) `x > y > z`\n(C) `x <= y`\n(D) `x + y`",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "x = 5"},
+            {"id": "b", "text": "x > y > z"},
+            {"id": "c", "text": "x <= y"},
+            {"id": "d", "text": "x + y"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "- (A) `x = 5` is an assignment statement, not a Boolean expression. It does not evaluate to `true` or `false`.\n- (B) `x > y > z` is invalid syntax in Java. You cannot chain relational operators like this.\n- (C) `x <= y` is a valid relational expression that evaluates to `true` or `false`.\n- (D) `x + y` is an arithmetic expression that evaluates to a numeric value, not a boolean."
+    },
+    {
+        "id": "q-bool-007",
+        "tags": ["boolean", "relational operators"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 7\n\nWhat is printed by the following code?\n\n```java\nint age = 16;\nboolean canDrive = age >= 16;\nboolean canVote = age >= 18;\nSystem.out.println(canDrive + \" \" + canVote);\n```\n\n(A) true true\n(B) true false\n(C) false true\n(D) false false",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "true true"},
+            {"id": "b", "text": "true false"},
+            {"id": "c", "text": "false true"},
+            {"id": "d", "text": "false false"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "- `age >= 16` is `true` because 16 is greater than or equal to 16.\n- `age >= 18` is `false` because 16 is not greater than or equal to 18.\n- Therefore, `canDrive` is `true` and `canVote` is `false`.\n- The output is `true false`."
+    },
+    {
+        "id": "q-bool-008",
+        "tags": ["boolean", "logical OR", "relational operators"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 8\n\nConsider the following code:\n\n```java\nint x = 10;\nint y = 20;\nboolean check = (x > y) || (x < y);\nSystem.out.println(check);\n```\n\nWhat is printed?\n\n(A) true\n(B) false\n(C) 10\n(D) 20",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "true"},
+            {"id": "b", "text": "false"},
+            {"id": "c", "text": "10"},
+            {"id": "d", "text": "20"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "- `(x > y)` is `false` (10 > 20 is false).\n- `(x < y)` is `true` (10 < 20 is true).\n- The logical OR operator `||` returns `true` if at least one operand is `true`.\n- Since `(x < y)` is `true`, the entire expression evaluates to `true`.\n- `check` is assigned `true`, which is printed."
+    }
+]

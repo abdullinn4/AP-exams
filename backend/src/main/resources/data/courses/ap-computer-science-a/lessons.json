@@ -1,0 +1,426 @@
+[
+    {
+        "unitOrder": 1,
+        "lessonOrder": 1,
+        "title": "Introduction to Algorithms, Programming, and Compilers",
+        "videoUrl": "https://youtu.be/5czA29NrI3U",
+        "contentFile": "unit-1-lesson-1.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 2,
+        "title": "Variables and Data Types",
+        "videoUrl": "https://youtu.be/pnf-dY2rJOc",
+        "contentFile": "unit-1-lesson-2.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 3,
+        "title": "Expressions and Output",
+        "videoUrl": "https://youtu.be/imymQXE61CQ",
+        "contentFile": "unit-1-lesson-3.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 4,
+        "title": "Assignment Statements and Input",
+        "videoUrl": "https://youtu.be/yvF395xHzgE",
+        "contentFile": "unit-1-lesson-4.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 5,
+        "title": "Casting and Range of Variables",
+        "videoUrl": "https://youtu.be/sd29c3BvR5o",
+        "contentFile": "unit-1-lesson-5.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 6,
+        "title": "Compound Assignment Operators",
+        "videoUrl": "https://youtu.be/4CW8gOEDNIY",
+        "contentFile": "unit-1-lesson-6.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 7,
+        "title": "Application Program Interface (API) and Libraries",
+        "videoUrl": "https://youtu.be/43Dq2mnVfEY",
+        "contentFile": "unit-1-lesson-7.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 8,
+        "title": "Documentation with Comments",
+        "videoUrl": "https://youtu.be/f15SGCasU6c",
+        "contentFile": "unit-1-lesson-8.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 9,
+        "title": "Method Signatures",
+        "videoUrl": "https://youtu.be/aFVLOUEprsw",
+        "contentFile": "unit-1-lesson-9.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 10,
+        "title": "Calling Class Methods",
+        "videoUrl": "https://youtu.be/4Tozmm-6Qpc",
+        "contentFile": "unit-1-lesson-10.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 11,
+        "title": "Math Class",
+        "videoUrl": "https://youtu.be/a5N72DqAzmU",
+        "contentFile": "unit-1-lesson-11.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 12,
+        "title": "Objects: Instances of Classes",
+        "videoUrl": "https://youtu.be/Z7OMBz-J8OQ",
+        "contentFile": "unit-1-lesson-12.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 13,
+        "title": "Object Creation and Storage (Instantiation)",
+        "videoUrl": "https://youtu.be/McDW6RKuI2Q",
+        "contentFile": "unit-1-lesson-13.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 14,
+        "title": "Calling Instance Methods",
+        "videoUrl": "https://youtu.be/nD5lQx2tmqM",
+        "contentFile": "unit-1-lesson-14.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 15,
+        "title": "String Manipulation",
+        "videoUrl": "https://youtu.be/FxL_00sUcjo",
+        "contentFile": "unit-1-lesson-15.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 1,
+        "title": "Algorithms with Selection and Repetition",
+        "videoUrl": "https://youtu.be/rAmN3HjDwa0",
+        "contentFile": "unit-2-lesson-1.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 2,
+        "title": "Boolean Expressions",
+        "videoUrl": "https://youtu.be/kw9SKxrfL-s",
+        "contentFile": "unit-2-lesson-2.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 3,
+        "title": "if Statements",
+        "videoUrl": "https://youtu.be/8k2kkNCMFd0",
+        "contentFile": "unit-2-lesson-3.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 4,
+        "title": "Nested if Statements",
+        "videoUrl": "https://youtu.be/ohdLR2Je6qI",
+        "contentFile": "unit-2-lesson-4.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 5,
+        "title": "2.5 Compound Boolean Expressions",
+        "videoUrl": "https://youtu.be/3GhuC098Rwc",
+        "contentFile": "unit-2-lesson-5.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 6,
+        "title": "Comparing Boolean Expressions",
+        "videoUrl": "https://youtu.be/6Qhlv5eUbvg",
+        "contentFile": "unit-2-lesson-6.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 7,
+        "title": "while Loops",
+        "videoUrl": "https://youtu.be/7A_qtDuSPt8",
+        "contentFile": "unit-2-lesson-7.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 8,
+        "title": "for Loops",
+        "videoUrl": "https://youtu.be/kBuXzO12t_c",
+        "contentFile": "unit-2-lesson-8.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 9,
+        "title": "Implementing Selection and Iteration Algorithms",
+        "videoUrl": "https://youtu.be/qOQlD1jRqVs",
+        "contentFile": "unit-2-lesson-9.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 10,
+        "title": "Implementing String Algorithms",
+        "videoUrl": "https://youtu.be/ocCUriBs-Ug",
+        "contentFile": "unit-2-lesson-10.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 11,
+        "title": "Nested Iteration",
+        "videoUrl": "https://youtu.be/IcIdy6KGoT4",
+        "contentFile": "unit-2-lesson-11.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 12,
+        "title": "Informal Run-Time Analysis",
+        "videoUrl": "https://youtu.be/AHlz1YZdjPw",
+        "contentFile": "unit-2-lesson-12.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 1,
+        "title": "Abstraction and Program Design",
+        "videoUrl": "https://youtu.be/xOIXzijHR10",
+        "contentFile": "unit-3-lesson-1.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 2,
+        "title": "Impact of Program Design",
+        "videoUrl": "https://youtu.be/8RZZ2SXmi0g",
+        "contentFile": "unit-3-lesson-2.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 3,
+        "title": "Anatomy of a Class",
+        "videoUrl": "https://youtu.be/1KdLp3qE9KM",
+        "contentFile": "unit-3-lesson-3.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 4,
+        "title": "Constructors",
+        "videoUrl": "https://youtu.be/jGiLjdNHqto",
+        "contentFile": "unit-3-lesson-4.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 5,
+        "title": "Methods: How to Write Them",
+        "videoUrl": "https://youtu.be/VuiNSfd0u1E",
+        "contentFile": "unit-3-lesson-5.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 6,
+        "title": "Methods: Passing and Returning References of an Object",
+        "videoUrl": "https://youtu.be/EMVRkptTRkI",
+        "contentFile": "unit-3-lesson-6.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 7,
+        "title": "Class Variables and Methods",
+        "videoUrl": "https://youtu.be/Ln5R9uRNG_o",
+        "contentFile": "unit-3-lesson-7.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 8,
+        "title": "Scope and Access",
+        "videoUrl": "https://youtu.be/DwztCwrqMac",
+        "contentFile": "unit-3-lesson-8.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 9,
+        "title": "this Keyword",
+        "videoUrl": "https://youtu.be/3yQYx_hKR0E",
+        "contentFile": "unit-3-lesson-9.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 1,
+        "title": "Ethical and Social Issues Around Data Collection",
+        "videoUrl": "https://youtu.be/Nv9fGoTbnHc",
+        "contentFile": "unit-4-lesson-1.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 2,
+        "title": "Introduction to Using Data Sets",
+        "videoUrl": "https://youtu.be/Mf_NzOn5-0k",
+        "contentFile": "unit-4-lesson-2.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 3,
+        "title": "Array Creation and Access",
+        "videoUrl": "https://youtu.be/ocT1uGiRSrM",
+        "contentFile": "unit-4-lesson-3.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 4,
+        "title": "Array Traversals",
+        "videoUrl": "https://youtu.be/H65g3D5dzYk",
+        "contentFile": "unit-4-lesson-4.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 5,
+        "title": "Implementing Array Algorithms",
+        "videoUrl": "https://youtu.be/KpgX9QFDQgs",
+        "contentFile": "unit-4-lesson-5.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 6,
+        "title": "Using Text Files",
+        "videoUrl": "https://youtu.be/Y9CR-bY3WS4",
+        "contentFile": "unit-4-lesson-6.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 7,
+        "title": "Wrapper Classes",
+        "videoUrl": "https://youtu.be/4lqmphrZ4N8",
+        "contentFile": "unit-4-lesson-7.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 8,
+        "title": "ArrayList Methods",
+        "videoUrl": "https://youtu.be/v5nO2HrYbUc",
+        "contentFile": "unit-4-lesson-8.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 9,
+        "title": "ArrayList Traversals",
+        "videoUrl": "https://youtu.be/Xbbz7fk9Ov8",
+        "contentFile": "unit-4-lesson-9.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 10,
+        "title": "Implementing ArrayList Algorithms",
+        "videoUrl": "https://youtu.be/luTMd0FT0XQ",
+        "contentFile": "unit-4-lesson-10.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 11,
+        "title": "2D Array Creation and Access",
+        "videoUrl": "https://youtu.be/sLRQrNe2MsI",
+        "contentFile": "unit-4-lesson-11.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 12,
+        "title": "2D Array Traversals",
+        "videoUrl": "https://youtu.be/vJIPW14XGP0",
+        "contentFile": "unit-4-lesson-12.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 13,
+        "title": "Implementing 2D Array Algorithms",
+        "videoUrl": "https://youtu.be/ouPDdKT4qgY",
+        "contentFile": "unit-4-lesson-13.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 14,
+        "title": "Searching Algorithms",
+        "videoUrl": "https://youtu.be/Ut7E-9Fhq-E",
+        "contentFile": "unit-4-lesson-14.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 15,
+        "title": "Sorting Algorithms",
+        "videoUrl": "https://youtu.be/DApLgOCclJg",
+        "contentFile": "unit-4-lesson-15.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 16,
+        "title": "Recursion",
+        "videoUrl": "https://youtu.be/oYk8LLDz_7o",
+        "contentFile": "unit-4-lesson-16.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 17,
+        "title": "Recursive Searching and Sorting",
+        "videoUrl": "https://youtu.be/745keReAg9s",
+        "contentFile": "unit-4-lesson-17.md",
+        "releaseDate": null
+    }
+]

@@ -1,0 +1,34 @@
+[
+    {
+        "order": 1,
+        "title": "Using Objects and Methods ",
+        "snippet": "Data types, variables, and class methods.",
+        "description": "Unit 1 introduces foundational Java concepts, including variables, data types, and the basics of calling methods from provided classes.",
+        "iconUrl": "https://cdn.example.com/icons/limits.svg",
+        "isPublished": true
+    },
+    {
+        "order": 2,
+        "title": "Selection and Iteration",
+        "snippet": "Selection statements and iteration structures.",
+        "description": "Unit 2 covers conditional statements and loops to create programs that make choices and repeat actions.\n\n",
+        "iconUrl": "https://cdn.example.com/icons/derivative.svg",
+        "isPublished": true
+    },
+    {
+        "order": 3,
+        "title": "Class Creation",
+        "snippet": "Classes, objects, and method implementation.",
+        "description": "Unit 3 focuses on designing user-defined classes to model real-world entities with behaviors and attributes.",
+        "iconUrl": "https://cdn.example.com/icons/chain-rule.svg",
+        "isPublished": true
+    },
+    {
+        "order": 4,
+        "title": "Data Collections",
+        "snippet": "Data structures, standard algorithms, and recursion.",
+        "description": "Unit 4 introduces data structures for managing collections, standard algorithms for searching and sorting, recursion, and ethical considerations around data use.",
+        "iconUrl": "https://cdn.example.com/icons/applications.svg",
+        "isPublished": true
+    }
+]

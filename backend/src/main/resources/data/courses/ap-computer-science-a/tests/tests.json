@@ -1,0 +1,206 @@
+[
+    {
+        "unitOrder": 1,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Introduction to Algorithms, Programming, and Compilers Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-alg-001", "q-alg-002", "q-alg-003", "q-alg-004", "q-alg-005", "q-alg-006", "q-alg-007"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Variables and Data Types Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-var-001", "q-var-002", "q-var-003", "q-var-004", "q-var-005"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "Expressions and Output Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-expr-001", "q-expr-002", "q-expr-003", "q-expr-004", "q-expr-005", "q-expr-006", "q-expr-007", "q-expr-008", "q-expr-009"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 4,
+        "type": "LESSON_TEST",
+        "title": "Assignment Statements and Input Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-asgn-001", "q-asgn-002", "q-asgn-003", "q-asgn-004", "q-asgn-005", "q-asgn-006", "q-asgn-007"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 5,
+        "type": "LESSON_TEST",
+        "title": "Casting and Range of Variables Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-cast-001", "q-cast-002", "q-cast-003", "q-cast-004", "q-cast-005", "q-cast-006"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 6,
+        "type": "LESSON_TEST",
+        "title": "Compound Assignment Operators Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-cass-001", "q-cass-002", "q-cass-003", "q-cass-004", "q-cass-005", "q-cass-006", "q-cass-007", "q-cass-008"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 7,
+        "type": "LESSON_TEST",
+        "title": "Application Program Interface (API) and Libraries Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-api-001", "q-api-002", "q-api-003", "q-api-004"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 8,
+        "type": "LESSON_TEST",
+        "title": "Documentation with Comments Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-doc-001", "q-doc-002", "q-doc-003", "q-doc-004", "q-doc-005", "q-doc-006", "q-doc-007"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 9,
+        "type": "LESSON_TEST",
+        "title": "Method Signatures Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-msig-001", "q-msig-002", "q-msig-003", "q-msig-004", "q-msig-005", "q-msig-006", "q-msig-007"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 10,
+        "type": "LESSON_TEST",
+        "title": "Calling Class Methods Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-cmeth-001", "q-cmeth-002", "q-cmeth-003", "q-cmeth-004", "q-cmeth-005", "q-cmeth-006"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 11,
+        "type": "LESSON_TEST",
+        "title": "Math Class Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-math-001", "q-math-002", "q-math-003", "q-math-004", "q-math-005", "q-math-006", "q-math-007", "q-math-008", "q-math-009"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 12,
+        "type": "LESSON_TEST",
+        "title": "Objects: Instances of Classes Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-obj-001", "q-obj-002", "q-obj-003", "q-obj-004", "q-obj-005", "q-obj-006"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 13,
+        "type": "LESSON_TEST",
+        "title": "Object Creation and Storage (Instantiation) Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-inst-001", "q-inst-002", "q-inst-003", "q-inst-004", "q-inst-005", "q-inst-006", "q-inst-007"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 14,
+        "type": "LESSON_TEST",
+        "title": "Calling Instance Methods Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-imeth-001", "q-imeth-002", "q-imeth-003", "q-imeth-004", "q-imeth-005", "q-imeth-006"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 15,
+        "type": "LESSON_TEST",
+        "title": "String Manipulation Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-str-001", "q-str-002", "q-str-003", "q-str-004", "q-str-005", "q-str-006", "q-str-007", "q-str-008", "q-str-009"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Algorithms with Selection and Repetition Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-ctrl-001", "q-ctrl-002", "q-ctrl-003", "q-ctrl-004", "q-ctrl-005", "q-ctrl-006"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Boolean Expressions Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-bool-001", "q-bool-002", "q-bool-003", "q-bool-004", "q-bool-005", "q-bool-006", "q-bool-007", "q-bool-008"
+        ]
+    }
+]

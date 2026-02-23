@@ -4919,7 +4919,7 @@ figcaption {
 }
 
 .rich-text li {
-  color: var(--neutral--600);
+  color: #000;
   margin-bottom: 8px;
 }
 
