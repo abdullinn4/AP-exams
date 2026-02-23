@@ -179,6 +179,10 @@
             "q-str-001", "q-str-002", "q-str-003", "q-str-004", "q-str-005", "q-str-006", "q-str-007", "q-str-008", "q-str-009"
         ]
     },
+
+
+
+
     {
         "unitOrder": 2,
         "lessonOrder": 1,
@@ -200,7 +204,460 @@
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
-            "q-bool-001", "q-bool-002", "q-bool-003", "q-bool-004", "q-bool-005", "q-bool-006", "q-bool-007", "q-bool-008"
+            "q-bool-001", "q-bool-002", "q-bool-003", "q-bool-004", "q-bool-005", "q-bool-006", "q-bool-007"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "if Statements Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-if-001", "q-if-002", "q-if-003", "q-if-004", "q-if-005", "q-if-006", "q-if-007", "q-if-008"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 4,
+        "type": "LESSON_TEST",
+        "title": "Nested if Statements Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-nif-001", "q-nif-002", "q-nif-003", "q-nif-004", "q-nif-005", "q-nif-006", "q-nif-007"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 5,
+        "type": "LESSON_TEST",
+        "title": "Compound Boolean Expressions Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-cbool-001", "q-cbool-002", "q-cbool-003", "q-cbool-004", "q-cbool-005", "q-cbool-006", "q-cbool-007", "q-cbool-008", "q-cbool-009"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 6,
+        "type": "LESSON_TEST",
+        "title": "Comparing Boolean Expressions Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-cmpb-001", "q-cmpb-002", "q-cmpb-003", "q-cmpb-004", "q-cmpb-005", "q-cmpb-006", "q-cmpb-007", "q-cmpb-008"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 7,
+        "type": "LESSON_TEST",
+        "title": "while Loops Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-while-001", "q-while-002", "q-while-003", "q-while-004", "q-while-005", "q-while-006", "q-while-007", "q-while-008", "q-while-009"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 8,
+        "type": "LESSON_TEST",
+        "title": "for Loops Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-for-001", "q-for-002", "q-for-003", "q-for-004", "q-for-005", "q-for-006", "q-for-007", "q-for-008", "q-for-009"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 9,
+        "type": "LESSON_TEST",
+        "title": "Implementing Selection and Iteration Algorithms Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-selit-001", "q-selit-002", "q-selit-003", "q-selit-004", "q-selit-005", "q-selit-006", "q-selit-007", "q-selit-008"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 10,
+        "type": "LESSON_TEST",
+        "title": "Implementing String Algorithms Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-strimp-001", "q-strimp-002", "q-strimp-003", "q-strimp-004", "q-strimp-005", "q-strimp-006", "q-strimp-007", "q-strimp-008", "q-strimp-009"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 11,
+        "type": "LESSON_TEST",
+        "title": "Nested Iteration Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-niter-001", "q-niter-002", "q-niter-003", "q-niter-004", "q-niter-005", "q-niter-006", "q-niter-007", "q-niter-008", "q-niter-009"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 12,
+        "type": "LESSON_TEST",
+        "title": "Informal Run-Time Analysis Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-rtime-001", "q-rtime-002", "q-rtime-003", "q-rtime-004", "q-rtime-005", "q-rtime-006", "q-rtime-007", "q-rtime-008", "q-rtime-009"
+        ]
+    },
+
+
+
+
+    {
+        "unitOrder": 3,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Abstraction and Program Design Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-abst-001", "q-abst-002", "q-abst-003", "q-abst-004", "q-abst-005", "q-abst-006", "q-abst-007"
+        ]
+    },
+    {
+    "unitOrder": 3,
+    "lessonOrder": 2,
+    "type": "LESSON_TEST",
+    "title": "Impact of Program Design Quiz",
+    "timeLimitSec": 1200,
+    "minTier": "BASIC",
+    "isPublished": true,
+    "questionIds": [
+        "q-impct-001", "q-impct-002", "q-impct-003", "q-impct-004", "q-impct-005", "q-impct-006", "q-impct-007", "q-impct-008"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "Anatomy of a Class Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-anat-001", "q-anat-002", "q-anat-003", "q-anat-004", "q-anat-005", "q-anat-006", "q-anat-007", "q-anat-008"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 4,
+        "type": "LESSON_TEST",
+        "title": "Constructors Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-ctor-001", "q-ctor-002", "q-ctor-003", "q-ctor-004", "q-ctor-005", "q-ctor-006", "q-ctor-007"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 5,
+        "type": "LESSON_TEST",
+        "title": "Methods: How to Write Them Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-methw-001", "q-methw-002", "q-methw-003", "q-methw-004", "q-methw-005", "q-methw-006", "q-methw-007", "q-methw-008", "q-methw-009"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 6,
+        "type": "LESSON_TEST",
+        "title": "Methods: Passing and Returning References of an Object Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-pref-001", "q-pref-002", "q-pref-003", "q-pref-004", "q-pref-005", "q-pref-006", "q-pref-007", "q-pref-008", "q-pref-009"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 7,
+        "type": "LESSON_TEST",
+        "title": "Class Variables and Methods Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-cvm-001", "q-cvm-002", "q-cvm-003", "q-cvm-004", "q-cvm-005", "q-cvm-006", "q-cvm-007", "q-cvm-008", "q-cvm-009"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 8,
+        "type": "LESSON_TEST",
+        "title": "Scope and Access Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-scope-001", "q-scope-002", "q-scope-003", "q-scope-004", "q-scope-005", "q-scope-006", "q-scope-007"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 9,
+        "type": "LESSON_TEST",
+        "title": "this Keyword Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-this-001", "q-this-002", "q-this-003", "q-this-004", "q-this-005", "q-this-006", "q-this-007"
+        ]
+    },
+
+
+
+
+
+    {
+        "unitOrder": 4,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Ethical and Social Issues Around Data Collection Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-ethic-001", "q-ethic-002", "q-ethic-003", "q-ethic-004", "q-ethic-005", "q-ethic-006", "q-ethic-007"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Introduction to Using Data Sets Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-dset-001", "q-dset-002", "q-dset-003", "q-dset-004"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "Array Creation and Access Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-arr-001", "q-arr-002", "q-arr-003", "q-arr-004", "q-arr-005", "q-arr-006", "q-arr-007", "q-arr-008"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 4,
+        "type": "LESSON_TEST",
+        "title": "Array Traversals Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-arrt-001", "q-arrt-002", "q-arrt-003", "q-arrt-004", "q-arrt-005", "q-arrt-006", "q-arrt-007", "q-arrt-008", "q-arrt-009"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 5,
+        "type": "LESSON_TEST",
+        "title": "Implementing Array Algorithms Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-arrimp-001", "q-arrimp-002", "q-arrimp-003", "q-arrimp-004", "q-arrimp-005", "q-arrimp-006", "q-arrimp-007", "q-arrimp-008", "q-arrimp-009", "q-arrimp-010"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 6,
+        "type": "LESSON_TEST",
+        "title": "Using Text Files Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-txt-001", "q-txt-002", "q-txt-003", "q-txt-004", "q-txt-005", "q-txt-006", "q-txt-007", "q-txt-008", "q-txt-009"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 7,
+        "type": "LESSON_TEST",
+        "title": "Wrapper Classes Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-wrap-001", "q-wrap-002", "q-wrap-003", "q-wrap-004", "q-wrap-005", "q-wrap-006", "q-wrap-007", "q-wrap-008", "q-wrap-009"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 8,
+        "type": "LESSON_TEST",
+        "title": "ArrayList Methods Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-alist-001", "q-alist-002", "q-alist-003", "q-alist-004", "q-alist-005", "q-alist-006", "q-alist-007", "q-alist-008", "q-alist-009"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 9,
+        "type": "LESSON_TEST",
+        "title": "ArrayList Traversals Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-alitr-001", "q-alitr-002", "q-alitr-003", "q-alitr-004", "q-alitr-005", "q-alitr-006", "q-alitr-007", "q-alitr-008", "q-alitr-009"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 10,
+        "type": "LESSON_TEST",
+        "title": "Implementing ArrayList Algorithms Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-alimp-001", "q-alimp-002", "q-alimp-003", "q-alimp-004", "q-alimp-005", "q-alimp-006", "q-alimp-007", "q-alimp-008", "q-alimp-009", "q-alimp-010", "q-alimp-011", "q-alimp-012", "q-alimp-013"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 11,
+        "type": "LESSON_TEST",
+        "title": "2D Array Creation and Access Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-2darr-001", "q-2darr-002", "q-2darr-003", "q-2darr-004", "q-2darr-005", "q-2darr-006", "q-2darr-007", "q-2darr-008", "q-2darr-009"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 12,
+        "type": "LESSON_TEST",
+        "title": "2D Array Traversals Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-2dtr-001", "q-2dtr-002", "q-2dtr-003", "q-2dtr-004", "q-2dtr-005", "q-2dtr-006", "q-2dtr-007", "q-2dtr-008", "q-2dtr-009"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 13,
+        "type": "LESSON_TEST",
+        "title": "2D Array Traversals Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-2dalg-001", "q-2dalg-002", "q-2dalg-003", "q-2dalg-004", "q-2dalg-005", "q-2dalg-006", "q-2dalg-007", "q-2dalg-008", "q-2dalg-009", "q-2dalg-010", "q-2dalg-011", "q-2dalg-012", "q-2dalg-013"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 13,
+        "type": "LESSON_TEST",
+        "title": "Implementing 2D Array Algorithms Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-2dalg-001", "q-2dalg-002", "q-2dalg-003", "q-2dalg-004", "q-2dalg-005", "q-2dalg-006", "q-2dalg-007", "q-2dalg-008", "q-2dalg-009", "q-2dalg-010", "q-2dalg-011", "q-2dalg-012", "q-2dalg-013"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 14,
+        "type": "LESSON_TEST",
+        "title": "Searching Algorithms Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-search-001", "q-search-002", "q-search-003", "q-search-004", "q-search-005", "q-search-006", "q-search-007", "q-search-008", "q-search-009", "q-search-010", "q-search-011"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 15,
+        "type": "LESSON_TEST",
+        "title": "Sorting Algorithms Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-sort-001", "q-sort-002", "q-sort-003", "q-sort-004", "q-sort-005", "q-sort-006", "q-sort-007", "q-sort-008", "q-sort-009"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 16,
+        "type": "LESSON_TEST",
+        "title": "Recursion Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-rec-001", "q-rec-002", "q-rec-003", "q-rec-004", "q-rec-005", "q-rec-006", "q-rec-007", "q-rec-008", "q-rec-009"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 17,
+        "type": "LESSON_TEST",
+        "title": "Recursive Searching and Sorting Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-recss-001", "q-recss-002", "q-recss-003", "q-recss-004", "q-recss-005", "q-recss-006", "q-recss-007", "q-recss-008", "q-recss-009", "q-recss-010", "q-recss-011"
         ]
     }
 ]
