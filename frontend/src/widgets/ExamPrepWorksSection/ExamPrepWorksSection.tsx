@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { EXAM_PREP_STEPS } from '@/shared/config/content'
 import Swiper from 'swiper'
-import { Autoplay, Mousewheel, Pagination } from 'swiper/modules'
+import { Autoplay, Mousewheel, Pagination, EffectCoverflow, Keyboard } from 'swiper/modules'
 import 'swiper/swiper-bundle.css'
 
 export const ExamPrepWorksSection = () => {
@@ -9,22 +9,31 @@ export const ExamPrepWorksSection = () => {
 
     useEffect(() => {
         swiperRef.current = new Swiper('.exam-prep-swiper', {
-            modules: [Autoplay, Mousewheel, Pagination],
-            direction: 'horizontal',
+            modules: [Autoplay, Mousewheel, Pagination, EffectCoverflow, Keyboard],
             slidesPerView: 1,
             spaceBetween: 0,
-            mousewheel: {
-                forceToAxis: true,
-                releaseOnEdges: true,
-            },
+            grabCursor: true,
+            effect: 'coverflow',
             speed: 1500,
+            coverflowEffect: {
+                rotate: 100,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: false,
+            },
+            mousewheel: true,
+            keyboard: {
+                enabled: true,
+            },
             autoplay: {
-                delay: 4000,
+                delay: 5000,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
             },
             pagination: {
-                el: '.swiper-pagination',
+                el: '.exam-prep-pagination',
+                dynamicBullets: false,
                 clickable: true,
             },
         })
@@ -37,41 +46,69 @@ export const ExamPrepWorksSection = () => {
     }, [])
 
     return (
-        <section className="section">
-            <div className="section-card">
-                <div data-w-id="9e898e90-7c6e-18e6-7bea-3465030fade7" className="exam-prep-header">
+        <section className="section exam-prep-section">
+            <div className="w-layout-blockcontainer container-default w-container">
+                <div className="exam-prep-header">
                     <h2 className="display-9 mg-bottom-0">
                         How <span className="heading-gradient">Exam Prep Works</span>
                     </h2>
                 </div>
-                <div data-w-id="174cc1dd-b481-b118-43b3-746088e6d3bd" className="w-layout-blockcontainer container-default w-container">
-                    <div className="exam-prep-swiper swiper">
-                        <div className="swiper-wrapper">
-                            {EXAM_PREP_STEPS.map((step, index) => (
-                                <div key={step.id} className="swiper-slide exam-prep-slide">
-                                    <div className={`exam-prep-card slide-${index + 1}`}>
-                                        <div className="exam-prep-image-wrapper">
-                                            <img
-                                                src={step.image}
-                                                alt={step.title}
-                                                className="exam-prep-image"
-                                            />
-                                        </div>
-                                        <div className="exam-prep-content">
-                                            <div className="exam-prep-subtitle">{step.subtitle}</div>
-                                            <h3 className="exam-prep-title">{step.title}</h3>
-                                            <p className="exam-prep-description">{step.description}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        <div className="swiper-pagination"></div>
-                    </div>
-                </div>
             </div>
 
-
+            <div className="exam-prep-container">
+                <div className="exam-prep-swiper swiper">
+                    <div className="swiper-wrapper">
+                        {EXAM_PREP_STEPS.map((step, index) => (
+                            <div key={step.id} className="swiper-slide exam-prep-slide">
+                                <div
+                                    className={`exam-prep-card slide-${index + 1}`}
+                                    style={{ background: step.bgGradient }}
+                                >
+                                    <div className="exam-prep-card-content">
+                                        <div
+                                            className="exam-prep-card-sub-title"
+                                            style={{ color: step.subtitleColor }}
+                                        >
+                                            {step.subtitle}
+                                        </div>
+                                        <h2
+                                            className="exam-prep-card-title"
+                                            data-text={step.title}
+                                            style={{ color: step.titleColor }}
+                                        >
+                                            {step.title}
+                                        </h2>
+                                        <p
+                                            className="exam-prep-card-description"
+                                            style={{ color: step.descriptionColor }}
+                                        >
+                                            {step.description}
+                                        </p>
+                                        <div className="exam-prep-card-cta">
+                                            <a
+                                                href="#"
+                                                className="exam-prep-cta-button"
+                                                style={{
+                                                    backgroundColor: step.buttonColor,
+                                                    color: 'white'
+                                                }}
+                                            >
+                                                {step.buttonText}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div className="exam-prep-card-ghost-info">
+                                        <span style={{ backgroundColor: step.ghostInfoColor }}></span>
+                                        <div className="exam-prep-ghost-name">{step.ghostName}</div>
+                                        <div>{step.ghostRole}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="exam-prep-pagination swiper-pagination"></div>
+                </div>
+            </div>
         </section>
     )
 }

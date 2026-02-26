@@ -52,12 +52,12 @@ export const PopularCoursesSection = () => {
                                     </div>
                                 ))}
                             </div>
-                            <div className="secondary-button-icon large slider-button-left---top-right w-slider-arrow-left">
+                            <div className="secondary-button-icon large slider-button-left---top-right w-slider-arrow-left" style={{ border: '1px solid black' }}>
                                 <div className="custom-icon-font">
                                     <img src="/assets/webflow/images/arrow-left-black.svg" alt="left-arrow" style={{ height: '60%', width: '60%' }}/>
                                 </div>
                             </div>
-                            <div className="secondary-button-icon large slider-button-right---top-right w-slider-arrow-right">
+                            <div className="secondary-button-icon large slider-button-right---top-right w-slider-arrow-right" style={{ border: '1px solid black' }}>
                                 <div className="custom-icon-font">
                                     <img src="/assets/webflow/images/arrow-right-black.svg" alt="right-arrow" style={{ height: '60%', width: '60%' }}/>
                                 </div>

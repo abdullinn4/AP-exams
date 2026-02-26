@@ -1,23 +1,22 @@
-// frontend/src/widgets/HeroSlider/HeroSlider.tsx
 import { useEffect, useRef } from 'react'
 
-interface SliderImage {
+interface SliderVideo {
     src: string
     alt: string
 }
 
-const SLIDER_IMAGES_TOP: SliderImage[] = [
-    { src: '/assets/webflow/images/courselify-x-home-v1-hero-page-course-webflow-template.jpg', alt: 'AP Course Preview 1' },
-    { src: '/assets/webflow/images/courselify-x-home-v2-hero-page-course-webflow-template.jpg', alt: 'AP Course Preview 2' },
-    { src: '/assets/webflow/images/courselify-x-home-v3-hero-page-course-webflow-template.jpg', alt: 'AP Course Preview 3' },
-    { src: '/assets/webflow/images/courselify-x-home-premium-hero-page-course-webflow-template.jpg', alt: 'AP Course Preview 4' },
+const SLIDER_VIDEOS_TOP: SliderVideo[] = [
+    { src: '/assets/webflow/gifs/preview8.mp4', alt: 'AP Course Preview 1' },
+    { src: '/assets/webflow/gifs/preview2.mp4', alt: 'AP Course Preview 2' },
+    { src: '/assets/webflow/gifs/preview4.mp4', alt: 'AP Course Preview 3' },
+    { src: '/assets/webflow/gifs/preview6.mp4', alt: 'AP Course Preview 4' },
 ]
 
-const SLIDER_IMAGES_BOTTOM: SliderImage[] = [
-    { src: '/assets/webflow/images/courselify-x-chapters-hero-page-course-webflow-template.jpg', alt: 'AP Course Preview 5' },
-    { src: '/assets/webflow/images/courselify-x-chapter-single-hero-page-course-webflow-template.jpg', alt: 'AP Course Preview 6' },
-    { src: '/assets/webflow/images/courselify-x-blog-v1-hero-page-course-webflow-template.jpg', alt: 'AP Course Preview 7' },
-    { src: '/assets/webflow/images/courselify-x-blog-v2-hero-page-course-webflow-template.jpg', alt: 'AP Course Preview 8' },
+const SLIDER_VIDEOS_BOTTOM: SliderVideo[] = [
+    { src: '/assets/webflow/gifs/preview5.mp4', alt: 'AP Course Preview 5' },
+    { src: '/assets/webflow/gifs/preview1.mp4', alt: 'AP Course Preview 6' },
+    { src: '/assets/webflow/gifs/preview7.mp4', alt: 'AP Course Preview 7' },
+    { src: '/assets/webflow/gifs/preview3.mp4', alt: 'AP Course Preview 8' },
 ]
 
 export const HeroSlider = () => {
@@ -83,12 +82,15 @@ export const HeroSlider = () => {
                     transition: 'transform 0.3s ease-out' // ✅ Увеличено с 0.1s до 0.3s
                 }}
             >
-                {SLIDER_IMAGES_TOP.map((image, idx) => (
+                {SLIDER_VIDEOS_TOP.map((video, idx) => (
                     <div key={idx} className="sales-home---hero-link-wrapper w-inline-block">
-                        <img
-                            src={image.src}
-                            loading="eager"
-                            alt={image.alt}
+                        <video
+                            src={video.src}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
                     </div>
                 ))}
@@ -99,15 +101,18 @@ export const HeroSlider = () => {
                 style={{
                     willChange: 'transform',
                     transformStyle: 'preserve-3d',
-                    transition: 'transform 0.3s ease-out' // ✅ Увеличено с 0.1s до 0.3s
+                    transition: 'transform 0.3s ease-out'
                 }}
             >
-                {SLIDER_IMAGES_BOTTOM.map((image, idx) => (
+                {SLIDER_VIDEOS_BOTTOM.map((video, idx) => (
                     <div key={idx} className="sales-home---hero-link-wrapper w-inline-block">
-                        <img
-                            src={image.src}
-                            loading="eager"
-                            alt={image.alt}
+                        <video
+                            src={video.src}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
                     </div>
                 ))}
