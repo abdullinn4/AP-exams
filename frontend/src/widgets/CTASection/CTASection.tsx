@@ -17,17 +17,11 @@ export const CTASection = () => {
                         </div>
                         <div className="mg-top-48px">
                             <div className="buttons-row left">
-                                <Link to="/pricing" className="button-primary white w-inline-block">
-                                    <div className="text-block">{HOME_CTA.ctaPrimary}</div>
-                                    <div className="item-icon-right">
-                                        <div className="custom-icon-font"></div>
-                                    </div>
-                                </Link>
-                                <a href="#" className="lighbox-button-wrapper w-inline-block w-lightbox">
+                                <Link to="/courses" className="lighbox-button-wrapper w-inline-block w-lightbox">
                                     <div className="secondary-button white">
                                         <div>{HOME_CTA.ctaSecondary}</div>
                                     </div>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

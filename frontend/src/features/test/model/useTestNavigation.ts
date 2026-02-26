@@ -1,9 +1,12 @@
 import type {StartTestResponse, TestAnswers} from "@/entities/test/test.ts";
 import {useState} from "react";
 
-export const useTestNavigation = (testData: StartTestResponse) => {
+export const useTestNavigation = (
+    testData: StartTestResponse,
+    initialAnswers?: TestAnswers
+) => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-    const [answers, setAnswers] = useState<TestAnswers>({})
+    const [answers, setAnswers] = useState<TestAnswers>(initialAnswers || {})
 
     const currentQuestion = testData.questions[currentQuestionIndex]
 

@@ -3,6 +3,7 @@ package org.example.apexams.common.exception;
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.example.apexams.tests.dto.StartTestResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -145,6 +146,16 @@ public class GlobalExceptionHandler {
         );
 
         return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
+    }
+
+    @ExceptionHandler(ActiveAttemptExistsException.class)
+    public ResponseEntity<StartTestResponse> handleActiveAttemptExists(
+            ActiveAttemptExistsException ex) {
+
+        // Возвращаем существующий attempt в теле 409 ответа
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(ex.getExistingAttempt());
     }
 
     // 500 - Internal Server Error (непредвиденные ошибки)

@@ -592,18 +592,6 @@
         "unitOrder": 4,
         "lessonOrder": 13,
         "type": "LESSON_TEST",
-        "title": "2D Array Traversals Quiz",
-        "timeLimitSec": 1200,
-        "minTier": "BASIC",
-        "isPublished": true,
-        "questionIds": [
-            "q-2dalg-001", "q-2dalg-002", "q-2dalg-003", "q-2dalg-004", "q-2dalg-005", "q-2dalg-006", "q-2dalg-007", "q-2dalg-008", "q-2dalg-009", "q-2dalg-010", "q-2dalg-011", "q-2dalg-012", "q-2dalg-013"
-        ]
-    },
-    {
-        "unitOrder": 4,
-        "lessonOrder": 13,
-        "type": "LESSON_TEST",
         "title": "Implementing 2D Array Algorithms Quiz",
         "timeLimitSec": 1200,
         "minTier": "BASIC",

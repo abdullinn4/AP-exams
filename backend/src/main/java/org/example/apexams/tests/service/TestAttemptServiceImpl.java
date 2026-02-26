@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.apexams.common.exception.ActiveAttemptExistsException;
 import org.example.apexams.common.mapper.QuestionMapper;
 import org.example.apexams.common.mapper.TestMapper;
 import org.example.apexams.lessonProgress.service.LessonProgressService;
@@ -61,42 +62,45 @@ public class TestAttemptServiceImpl implements TestAttemptService {
             throw new IllegalStateException("User does not have access to this test");
         }
 
-        // Проверка: можно ли начать новую попытку (только одна попытка)
-        int existingAttempts = attemptRepository.countByUserIdAndTestId(userId, testId);
-        if (existingAttempts > 0) {
-            throw new IllegalStateException("Test already attempted. Only one attempt is allowed.");
+        // 1. Проверяем, есть ли активная попытка (finishedAt IS NULL)
+        Optional<TestAttemptEntity> existingAttempt = attemptRepository
+                .findActiveAttemptByUserAndTest(userId, testId);
+
+        if (existingAttempt.isPresent()) {
+            TestAttemptEntity attempt = existingAttempt.get();
+
+            // 2. Проверяем, не истекло ли время теста
+            if (isAttemptExpired(attempt)) {
+                // Автоматически завершаем истекшую попытку
+                log.info("Auto-finishing expired attempt: attemptId={}", attempt.getId());
+                attempt.setFinishedAt(Instant.now());
+
+                // Сохраняем пустые ответы и 0 баллов
+                try {
+                    attempt.setAnswersJson(objectMapper.writeValueAsString(new HashMap<>()));
+                    Map<String, Object> resultJson = new HashMap<>();
+                    resultJson.put("correctCount", 0);
+                    resultJson.put("totalCount", getTestQuestionCount(testId));
+                    resultJson.put("results", new HashMap<>());
+                    attempt.setResultJson(objectMapper.writeValueAsString(resultJson));
+                } catch (Exception e) {
+                    log.error("Error saving expired attempt results: {}", e.getMessage());
+                }
+                attempt.setScore(0);
+                attemptRepository.save(attempt);
+
+                // Создаем новую попытку
+                return createNewAttempt(user, test);
+            }
+
+            // 3. Возвращаем существующую активную попытку через 409
+            log.info("Active attempt exists: attemptId={}", attempt.getId());
+            throw new ActiveAttemptExistsException(
+                    "Active attempt already exists",
+                    mapToStartTestResponse(attempt)
+            );
         }
-
-        // Получаем вопросы из test_questions
-        List<QuestionEntity> questions = testQuestionRepository.findAllByTestIdOrderByOrderIndex(testId)
-                .stream()
-                .map(TestQuestionEntity::getQuestion)
-                .toList();
-
-        // Создаём попытку
-        TestAttemptEntity attempt = TestAttemptEntity.builder()
-                .test(test)
-                .user(user)
-                .startedAt(Instant.now())
-                .build();
-
-        attemptRepository.save(attempt);
-        log.info("Test attempt started: user={}, test={}, attemptId={}", userId, testId, attempt.getId());
-
-        // Преобразуем вопросы в DTO (без правильных ответов)
-        List<QuestionForStudentResponse> questionDtos = questions.stream()
-                .map(questionMapper::toStudentDto)
-                .collect(Collectors.toList());
-
-
-        return new StartTestResponse(
-                attempt.getId(),
-                test.getId(),
-                test.getTitle(),
-                test.getTimeLimitSec(),
-                attempt.getStartedAt(),
-                questionDtos
-        );
+        return createNewAttempt(user, test);
     }
 
     @Override
@@ -333,5 +337,66 @@ public class TestAttemptServiceImpl implements TestAttemptService {
     private UserEntity findUserByIdOrThrow(UUID userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("User not found: " + userId));
+    }
+
+    // Проверка истечения времени теста
+    private boolean isAttemptExpired(TestAttemptEntity attempt) {
+        if (attempt.getStartedAt() == null || attempt.getTest().getTimeLimitSec() == 0) {
+            return false;
+        }
+
+        Instant expiresAt = attempt.getStartedAt()
+                .plusSeconds(attempt.getTest().getTimeLimitSec());
+
+        return Instant.now().isAfter(expiresAt);
+    }
+
+    // Создание новой попытки
+    private StartTestResponse createNewAttempt(UserEntity user, TestEntity test) {
+        // Получаем вопросы из test_questions
+        List<QuestionEntity> questions = testQuestionRepository
+                .findAllByTestIdOrderByOrderIndex(test.getId())
+                .stream()
+                .map(TestQuestionEntity::getQuestion)
+                .toList();
+
+        // Создаём попытку
+        TestAttemptEntity attempt = TestAttemptEntity.builder()
+                .test(test)
+                .user(user)
+                .startedAt(Instant.now())
+                .build();
+
+        attemptRepository.save(attempt);
+        log.info("Test attempt started: user={}, test={}, attemptId={}",
+                user.getId(), test.getId(), attempt.getId());
+
+        return mapToStartTestResponse(attempt);
+    }
+    // Маппинг в DTO
+    private StartTestResponse mapToStartTestResponse(TestAttemptEntity attempt) {
+        List<QuestionEntity> questions = testQuestionRepository
+                .findAllByTestIdOrderByOrderIndex(attempt.getTest().getId())
+                .stream()
+                .map(TestQuestionEntity::getQuestion)
+                .toList();
+
+        List<QuestionForStudentResponse> questionDtos = questions.stream()
+                .map(questionMapper::toStudentDto)
+                .collect(Collectors.toList());
+
+        return new StartTestResponse(
+                attempt.getId(),
+                attempt.getTest().getId(),
+                attempt.getTest().getTitle(),
+                attempt.getTest().getTimeLimitSec(),
+                attempt.getStartedAt(),
+                questionDtos
+        );
+    }
+
+    // Получить количество вопросов
+    private int getTestQuestionCount(UUID testId) {
+        return testQuestionRepository.findAllByTestIdOrderByOrderIndex(testId).size();
     }
 }

@@ -77,7 +77,7 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                     >
                                         <div
                                             className={`dropdown-toggle ${theme === 'light' ? 'white' : ''} w-dropdown-toggle`}>
-                                            <div style={theme === 'light' ? {color: 'white'} : {}}>Pages</div>
+                                            <div className={theme === 'light' ? 'pages-text-light' : ''}>Pages</div>
                                             <div
                                                 className="icon-font-squared dropdown-arrow"
                                                 style={theme === 'light' ? {color: 'white'} : {}}

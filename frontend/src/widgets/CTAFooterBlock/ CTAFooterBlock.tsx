@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import {ROUTES} from "@/app/router/routes.ts";
 
 export const CTAFooterBlock = () => {
     return (
@@ -9,7 +10,7 @@ export const CTAFooterBlock = () => {
                 </h2>
             </div>
             <div className="buttons-row wrap---tablet">
-                <Link to="/pricing" className="button-primary white w-inline-block">
+                <Link to={ROUTES.CATALOG} className="button-primary white w-inline-block">
                     <div className="text-block">Start learning</div>
                     <div className="item-icon-right">
                         <div className="custom-icon-font"></div>

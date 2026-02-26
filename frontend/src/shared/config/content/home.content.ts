@@ -2,19 +2,19 @@ import type {TariffDetails} from "@/entities/tariff/tariff.ts";
 
 export const HOME_HERO = {
     avatars: [
-        '/assets/webflow/images/john-carter-avatar-image-courselify-x-webflow-template.jpg',
-        '/assets/webflow/images/sophie-moore-avatar-image-courselify-x-webflow-template.jpg',
-        '/assets/webflow/images/andy-smith-avatar-image-courselify-x-webflow-template.jpg',
-        '/assets/webflow/images/lily-woods-avatar-image-courselify-x-webflow-template.jpg'
+        '/assets/webflow/images/preview_avatar_1.PNG',
+        '/assets/webflow/images/preview_avatar_2.PNG',
+        '/assets/webflow/images/preview_avatar_3.PNG',
+        '/assets/webflow/images/preview_avatar_4.jpg'
     ],
     trustedText: 'Trusted by over',
     trustedCount: '2,000+',
     trustedSuffix: 'students',
-    title: "Turn Your",
-    titleHighlight: 'AP Stress into Perfect Score.',
-    description: 'The all-in-one prep engine for high-achieving students. From expert-led breakdowns to real-world exam simulations, we turn your hardest courses into your highest scores.',
+    title: "The most effective",
+    titleHighlight: 'AP Prep for 99$',
+    description: 'The online school that actually prepares you for AP exams. We\'ll help you save on tuition — and dramatically improve your odds of getting into your dream college.',
     ctaPrimary: 'Start learning',
-    ctaSecondary: 'Preview course',
+    ctaSecondary: 'Who we are?',
     images: {
         main: '/assets/webflow/images/its-your-turn-to-stand-as-a-web-designer-right-image-courselify-x-webflow-template.png',
         float: '/assets/webflow/images/its-your-turn-to-stand-as-a-web-designer-left-image-courselify-x-webflow-template.png',
@@ -36,27 +36,15 @@ export const HOME_CHAPTERS = {
             wId: '4c73e9c0-4a7b-8bc8-8c70-f4b88699d580',
             title: 'Need top scores on your AP exams?',
             icon: '/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png',
-            description: '',
-            lessons: [
-                `Master exactly what's tested`,
-                'Proven strategies for a 5',
-                'Maximize your score, minimize stress'
-            ],
-            lessonsCount: 10,
+            type: 'text',
             className: 'grid-item-margin-top'
         },
         {
             id: 2,
             wId: 'e9706775-6c53-493d-9cf3-cd0dfcb76745',
-            title: 'Stuck on where to start?',
-            icon: '/assets/webflow/images/typography-course-icon-courselify-webflow-ecommerce-template.png',
-            description: '',
-            lessons: [
-                'Clear roadmap from 0 to 100',
-                'Focus on high-yield topics first',
-                'No fluff — just what matters'
-            ],
-            lessonsCount: 12,
+            title: '',
+            image: '/assets/webflow/images/chapters_section_1.png',
+            type: 'image',
             className: ''
         },
         {
@@ -64,57 +52,34 @@ export const HOME_CHAPTERS = {
             wId: '774c65d2-3193-ae9e-7382-e4c12b44d25e',
             title: 'Dream of getting into a top-tier college?',
             icon: '/assets/webflow/images/layout-course-icon-courselify-webflow-ecommerce-template.png',
-            description: '',
-            lessons: [
-                'Stand out with killer AP scores',
-                'Save money on tuition later',
-                'Impress admissions officers'
-            ],
-            lessonsCount: 8,
+            type: 'text',
             className: 'grid-item-margin-top'
         },
         {
             id: 4,
             wId: '4902c55d-7aab-3647-b637-35bac2a3d80f',
-            title: 'Too much material to cover?',
-            icon: '/assets/webflow/images/color-course-icon-courselify-webflow-ecommerce-template.png',
-            description: '',
-            lessons: [
-                'Cut through the clutter',
-                'Only the essentials, nothing extra',
-                'Learn faster, retain more'
-            ],
-            lessonsCount: 12,
+            title: '',
+            image: '/assets/webflow/images/chapters_section_2.png',
+            type: 'image',
             className: 'grid-bottom-item-margin-top'
         },
         {
             id: 5,
             wId: '680117bc-6d23-3dbd-6db9-46e5a4a97e50',
-            title: 'No clue where to start?',
+            title: 'Worried about spending too much on a tutor?',
             icon: '/assets/webflow/images/imagery-course-icon-courselify-webflow-ecommerce-template.png',
-            description: '',
-            lessons: [
-                'Zero to hero study plan',
-                'Step-by-step video lessons',
-                'Know exactly what to study next'
-            ],
-            lessonsCount: 8,
+            type: 'text',
             className: ''
         },
         {
             id: 6,
             wId: '8c1c1686-60be-c3e5-da93-1fe51396f0a4',
-            title: `Don't want to hire a tutor?`,
-                icon: '/assets/webflow/images/ui-elements-course-icon-courselify-webflow-ecommerce-template.png',
-    description: '',
-    lessons: [
-    'All-in-one self-study solution',
-    'Learn at your own pace',
-    'Tutor-level guidance for less'
-],
-    lessonsCount: 12,
-    className: 'grid-bottom-item-margin-top'
-}
+            title: '',
+            image: '/assets/webflow/gifs/chapters_section_3.gif.mp4',
+            type: 'video',
+            className: 'grid-bottom-item-margin-top'
+
+        }
 ]
 } as const
 
@@ -160,70 +125,98 @@ description2: 'No fluff, no boring lectures — just real people who actually ca
 }
 } as const
 
-    export const HOME_FEATURES = {
-    title: 'Is this course',
-    titleHighlight: 'for you?',
-    description: '',
+export const HOME_FEATURES = {
+    title: 'Top-tier AP prep for the',
+    titleHighlight: 'price of one tutoring session',
     ctaText: 'Start learning',
     items: [
         {
-            icon: '/assets/webflow/images/beginner-friendly-icon-courselify-webflow-ecommerce-template.png',
-            title: `You're aiming for top scores`,
-            description: `You're not okay with just passing — you want that 5. You're willing to put in the work, but you need someone to show you exactly what to focus on.`,
-    maxWidth: 'max-width-92px'
-},
-{
-    icon: '/assets/webflow/images/amazing-community-icon-courselify-webflow-ecommerce-template.png',
-        title: 'You feel lost',
-    description: `The textbook is 500 pages long and you don't know where to start. You want a clear roadmap that tells you what actually matters.`,
-    maxWidth: 'max-width-102px'
-},
-{
-    icon: '/assets/webflow/images/live-streams-icon-courselify-webflow-ecommerce-template.png',
-        title: `You're tired of wasting time`,
-    description: `You've tried studying before but ended up focusing on the wrong things. You want system that covers what's actually on the test.`,
-    maxWidth: 'max-width-116px'
-},
-{
-    icon: '/assets/webflow/images/free-resources-icon-courselify-webflow-ecommerce-template.png',
-        title: 'Your schedule is a mess',
-    description: `Between school, sports, and life, you can't commit to rigid class times. You need something that fits around you, not the other way around.`,
-    maxWidth: 'max-width-124px'
-}
-]
+            // Standard Tutor (левый блок)
+            title: 'Standard Tutor',
+            features: [
+                '✗ Works with a limited number of students and has little practical experience',
+                '✗ Relies on textbooks and publicly available resources',
+                '✗ Not available to support you anytime',
+                '✗ A mountain of notes, printouts, and files that are easy to get confused in'
+            ],
+            price: 'From $30 per lesson',
+            result: 'The result? Good scores are possible — but at a high cost and with no extra perks :/',
+            showIcon: false,
+            logo: undefined,
+            priceHighlight: undefined,
+            priceSuffix: undefined,
+            isCenter: undefined
+        },
+        {
+            // SmashAP (центральный блок)
+            title: '',
+            logo: '/assets/webflow/images/smashap_white_full.svg',
+            features: [
+                '✓ Proven track record teaching generations of AP students',
+                '✓ Expert tutors explain complex topics in simple terms',
+                '✓ A strong community and mentors to keep you motivated',
+                '✓ Everything in one place: videos, practice tests, and materials'
+            ],
+            price: 'From $99',
+            priceHighlight: true, // для градиента
+            priceSuffix: ' for the ENTIRE course',
+            result: 'The result? Stress-free prep that guarantees exam success at an unbeatable price :)',
+            showIcon: false,
+            isCenter: true
+        },
+        {
+            // Self-Study (правый блок)
+            title: 'Self-Study',
+            features: [
+                '✗ You have to search for materials on your own among old and outdated resources',
+                '✗ Risk misunderstanding something and losing valuable points',
+                '✗ Loss of motivation due to lack of support',
+                '✗ Lots of links and notes that you need to keep track of'
+            ],
+            price: `$0 if you don't purchase the prep books`,
+            result: `The result? You're in a panic by late April, hire a tutor, and have to start all over from the beginning :(`,
+            showIcon: false,
+            logo: undefined,
+            priceHighlight: undefined,
+            priceSuffix: undefined,
+            isCenter: undefined
+        }
+    ]
 } as const
 
-    export const HOME_TESTIMONIALS = {
+export const HOME_TESTIMONIALS = {
     title: 'Your Success is',
     titleHighlight: 'Our Reputation',
     items: [
         {
-            quote: "Transformed my web design skills completely",
-            text: "Lorem ipsum dolor sit amet consectetur integer facilisis sodales lobortis amet nibh id erat ut at viverra vulputate malesuada.",
-            name: "John Carter",
-            position: "Got «5» on AP Calculus AB",
-            avatar: "/assets/webflow/images/john-carter-avatar-courselify-x-webflow-template.jpg"
+            quote: "My parents were about to drop like $800 on a private tutor because I was drowning in related rates. Then I found Smash AP. Video lessons, lesson notes, practice tests—everything was absolutely beautiful. Huge respect for the Unit Smash Time lessons, fr. Prof. G explains stuff like he actually remembers what it's like to be confused. Saved my parents like six hundred bucks and I walked out of that exam feeling solid. Scored a 4 and my dad finally got off my back about my math grade. Huge financial W for the family.",
+            name: "Marcus 12th Grade (Atlanta, GA)",
+            position: "AP Calculus BC",
+            avatar: "/assets/webflow/images/marcus_avatar_review.PNG"
         },
         {
-            quote: "Incredible course, highly recommend to anyone!",
-            text: "Lorem ipsum dolor sit amet consectetur integer facilisis sodales lobortis amet nibh id erat ut at viverra vulputate malesuada.",
-            name: "Sophie Moore",
-            position: "Got «5» on AP CSA",
-            avatar: "/assets/webflow/images/sophie-moore-avatar-courselify-x-webflow-template.jpg"
+            quote: "Okay so I took CSA because I thought it was gonna be easy (spoiler: it wasn't). I was genuinely struggling. Prof. Marat lays everything out in such a concise, clear way. Then I sharpened everything with a ton of practice problems. On the webinars, nobody makes you feel dumb for asking questions—everyone's just trying to lock in. Got a 5 and now I'm actually considering majoring in CS next year. This site lowkey changed my whole career path. Thanks, Smash AP.",
+            name: "Jessica 12th Grade (Seattle, WA)",
+            position: "AP Computer Science Principles",
+            avatar: "/assets/webflow/images/jessica_avatar_review.PNG"
         },
         {
-            quote: "The best investment I've made for my career.",
-            text: "Lorem ipsum dolor sit amet consectetur integer facilisis sodales lobortis amet nibh id erat ut at viverra vulputate malesuada.",
-            name: "Matt Cannon",
-            position: "Got «5» on AP Physics 1",
-            avatar: "/assets/webflow/images/matt-cannon-avatar-courselify-x-webflow-template.jpg"
+            quote: "My actual teacher was sweet but she retired halfway through the year and we got a sub who had no idea what she was doing. I was STRESSED about the rhetorical analysis essays. Amelia is literally so funny and actually explains things like a normal person. I started looking forward to studying again. The webinars were especially helpful and honestly kinda lovely? Ended up with a 5 and I swear it's because the videos made me feel like I had a real teacher again. Bestie for real.",
+            name: "Danielle 12th Grade (Nashville, TN)",
+            position: "AP English Language",
+            avatar: "/assets/webflow/images/danielle_avatar_review.PNG"
         },
         {
-            quote: "It gave me the confidence to design websites",
-            text: "Lorem ipsum dolor sit amet consectetur integer facilisis sodales lobortis amet nibh id erat ut at viverra vulputate malesuada.",
-            name: "Sandy Houston",
-            position: "Got «5» on AP Statistics",
-            avatar: "/assets/webflow/images/sandy-houston-avatar-courselify-x-webflow-template.jpg"
+            quote: "So I'm not gonna lie... I did absolutely nothing all semester. Like I was fully locked in on Fortnite and forgot school existed. Week before the exam I'm panicking because I don't know a single thing about acids and bases. Grinded Smash AP for like 5 days straight, no sleep, just straight chem. The practice problems are set up exactly like the real exam. Pulled a 4 and my friends called me a hacker. Highly recommend this school. Doesn't matter what level you're at now, you'll find something new here.",
+            name: "Tyler 12th Grade (Phoenix, AZ)",
+            position: "AP Chemistry",
+            avatar: "/assets/webflow/images/tyler_avatar_review.PNG"
+        },
+        {
+            quote: "My counselor told me if I passed this exam I could skip intro psych in college and save like 3 grand on tuition. So obviously I locked in. Smash AP has all the info you need—aligned with the exam and course book—but explained in such an easy way to understand. The review videos are actually kinda vibey, with a bunch of solved exam-style problems. I was scoring 5s on practice tests by the end. Passed easy and now I'm basically saving my future self thousands of dollars. Highly recommend this online school.",
+            name: "Ashley 12th Grade (Orlando, FL)",
+            position: "AP Psychology",
+            avatar: "/assets/webflow/images/ashley_avatar_review.PNG"
         }
     ]
 } as const
@@ -234,20 +227,20 @@ export const HOME_FAQ = {
     ctaText: 'Start learning',
     items: [
         {
-            question: 'What are the prerequisites?',
-            answer: 'Lorem ipsum dolor sit amet consectetur. In consequat nunc adipiscing mi laoreet. Nunc amet est et dui. Volutpat suscipit tincidunt faucibus tincidunt viverra. Id aliquam aliquam curabitur at massa massa malesuada. Nisl non pretium vel.'
+            question: 'Is it realistic to start preparing now?',
+            answer: 'Yes! Our courses are designed to help you make the most of the time you have left — even if it\'s less than a month before the exam. You\'ll cover key topics and fill in any gaps in your knowledge. Plus, mentors (on Pro plans) will make sure you actually understand everything and keep you motivated along the way. That\'s why prepping with SmashAP is as effective as it gets!'
         },
         {
-            question: 'Can I test the lessons?',
-            answer: 'Lorem ipsum dolor sit amet consectetur. In consequat nunc adipiscing mi laoreet. Nunc amet est et dui. Volutpat suscipit tincidunt faucibus tincidunt viverra. Id aliquam aliquam curabitur at massa massa malesuada. Nisl non pretium vel.'
+            question: 'How many subjects can I choose?',
+            answer: 'As many as you want! You\'ll study on a single online platform, so all your lessons, tests, and materials are stored in one place with a user-friendly interface. That\'s why studying multiple subjects at once in our school is super comfortable.'
         },
         {
-            question: 'Do you prove a certificate of completion?',
-            answer: 'Lorem ipsum dolor sit amet consectetur. In consequat nunc adipiscing mi laoreet. Nunc amet est et dui. Volutpat suscipit tincidunt faucibus tincidunt viverra. Id aliquam aliquam curabitur at massa massa malesuada. Nisl non pretium vel.'
+            question: 'What are the pricing plans?',
+            answer: '1) BASIC: Full platform access — all materials, video lessons, online practice tests, webinars, and our community included. 2) PRO: Everything in BASIC, plus one-on-one mentor support to help you with any questions along the way.'
         },
         {
-            question: 'Is there a way to get a discount?',
-            answer: 'Lorem ipsum dolor sit amet consectetur. In consequat nunc adipiscing mi laoreet. Nunc amet est et dui. Volutpat suscipit tincidunt faucibus tincidunt viverra. Id aliquam aliquam curabitur at massa massa malesuada. Nisl non pretium vel.'
+            question: 'What do I need for SmashAP?',
+            answer: 'A device, good internet, and the drive to score high. That\'s it — no textbooks or extra materials required.'
         }
     ]
 } as const
@@ -273,4 +266,120 @@ export const homeTariffs: TariffDetails[] = [
         paddleVariantId: '2',
         isActive: true,
     },
+] as const
+
+export const HOME_POPULAR_COURSES = {
+    title: 'Popular',
+    titleHighlight: 'Courses',
+    ctaText: 'All Courses',
+    ctaLink: '/courses',
+    courses: [
+        {
+            id: 'ap-calculus-ab',
+            title: 'AP Calculus AB',
+            slug: 'ap-calculus-ab',
+            snippet: 'Master derivatives, integrals, and the fundamental theorem of calculus with real-world applications.',
+            coverUrl: '/assets/webflow/images/blockchain-image-courselify-x-webflow-template.jpg',
+            wId: 'popular-course-1'
+        },
+        {
+            id: 'ap-physics-1',
+            title: 'AP Physics 1',
+            slug: 'ap-physics-1',
+            snippet: 'Explore mechanics, energy, waves, and electricity through hands-on problem-solving.',
+            coverUrl: '/assets/webflow/images/blockchain-image-courselify-x-webflow-template.jpg',
+            wId: 'popular-course-2'
+        },
+        {
+            id: 'ap-chemistry',
+            title: 'AP Chemistry',
+            slug: 'ap-chemistry',
+            snippet: 'Dive into atomic structure, chemical reactions, thermodynamics, and equilibrium.',
+            coverUrl: '/assets/webflow/images/blockchain-image-courselify-x-webflow-template.jpg',
+            wId: 'popular-course-3'
+        },
+        {
+            id: 'ap-biology',
+            title: 'AP Biology',
+            slug: 'ap-biology',
+            snippet: 'Study evolution, genetics, ecology, and cellular processes with lab-based learning.',
+            coverUrl: '/assets/webflow/images/blockchain-image-courselify-x-webflow-template.jpg',
+            wId: 'popular-course-4'
+        }
+    ]
+} as const
+
+export interface Course {
+    id: number
+    title: string
+    shortTitle: string
+    description: string
+    image: string
+    slug: string
+}
+
+export const COURSES_DATA: Course[] = [
+    {
+        id: 1,
+        title: 'AP Calculus AB',
+        shortTitle: 'AP Calc AB',
+        description: 'Tired? Smash your AP Calc exam with a complete online course packed with engaging video solutions, lectures, and hundreds of practice problems. We cover the official curriculum end-to-end, giving you the ultimate toolkit to boost your score and master calculus the easy way.',
+        image: '/assets/webflow/images/slider1.jpg',
+        slug: 'ap-calculus-ab'
+    },
+    {
+        id: 2,
+        title: 'AP Computer Science Principles',
+        shortTitle: 'AP CS Principles',
+        description: 'Stop wasting hours searching through scattered tutorials and outdated forums. We’ve consolidated every single concept you need for the AP CSP exam into one seamless, all-in-one course, so you can finally stop hunting for answers and start mastering the material. Buy right now and own your exam confidence!',
+        image: '/assets/webflow/images/slider2.jpg',
+        slug: 'ap-cs-principles'
+    },
+    {
+        id: 3,
+        title: 'AP Calculus BC',
+        shortTitle: 'AP Calc BC',
+        description: 'It’s everything you need to dominate the AP Calc exam: the full CollegeBoard curriculum, broken down simply, with tons of practice and videos for every tricky task. Master this and you will smash AP. Guaranteed.',
+        image: '/assets/webflow/images/slider3.jpg',
+        slug: 'ap-calculus-bc'
+    },
+    {
+        id: 4,
+        title: 'AP Computer Science A',
+        shortTitle: 'AP CS A',
+        description: 'Master every single topic College Board requires for AP CS A — ALL 55. We don\'t guess what\'s on the exam—we follow their official description to the letter, so every video, every theory lesson, and every test serves a purpose: your success. Enroll today and be certain—you\'ve learned exactly what College Board expects!"',
+        image: '/assets/webflow/images/slider4.jpg',
+        slug: 'ap-cs-a'
+    },
+    {
+        id: 5,
+        title: 'AP Lang',
+        shortTitle: 'AP L',
+        description: 'Get the exact skills you need for the AP Lang exam without the boring lectures. We cover all the course material with clear video walkthroughs and plenty of practice, making it super simple to understand what the graders are looking for.',
+        image: '/assets/webflow/images/slider5.jpg',
+        slug: 'ap-l'
+    }
+]
+export const EXAM_PREP_STEPS = [
+    {
+        id: 1,
+        subtitle: '#1 Step',
+        title: 'Choose Your Course',
+        description: 'Select the AP course you want to master from our comprehensive catalog of subjects.',
+        image: '/assets/webflow/images/chapters_section_2.png'
+    },
+    {
+        id: 2,
+        subtitle: '#2 Step',
+        title: 'Learn & Practice',
+        description: 'Work through our structured lessons and practice problems designed to build your skills.',
+        image: '/assets/webflow/images/chapters_section_2.png'
+    },
+    {
+        id: 3,
+        subtitle: '#3 Step',
+        title: 'Ace Your Exam',
+        description: 'Take practice tests and review your progress to ensure you\'re ready for exam day.',
+        image: '/assets/webflow/images/chapters_section_2.png'
+    }
 ] as const

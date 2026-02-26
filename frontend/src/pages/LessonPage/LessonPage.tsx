@@ -29,6 +29,7 @@ export const LessonPage = () => {
     const {
         view,
         testData,
+        savedAnswers,
         resultDetails,
         isStarting,
         isSubmitting,
@@ -194,6 +195,7 @@ export const LessonPage = () => {
                                                         testData={testData}
                                                         onSubmit={submitTest}
                                                         isSubmitting={isSubmitting}
+                                                        initialAnswers={savedAnswers}
                                                     />
                                                 )}
 

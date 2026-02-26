@@ -1,8 +1,19 @@
 import { Link } from 'react-router-dom'
 import { Header } from '@/widgets/Header'
 import { HOME_HERO } from '@/shared/config/content'
+import {HeroSlider} from "@/widgets/HeroSlider";
+import {ROUTES} from "@/app/router/routes.ts";
+import * as React from "react";
 
 export const HeroSection = () => {
+    const handleScrollToWhyCourse = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault()
+        const element = document.getElementById('why-course-section')
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+    }
+
     return (
         <section className="section-card-padding top">
             <div className="position-relative">
@@ -35,15 +46,19 @@ export const HeroSection = () => {
                                 </p>
                                 <div className="mg-top-40px">
                                     <div className="buttons-row left">
-                                        <Link to="/pricing" className="button-primary white w-inline-block">
+                                        <Link to={ROUTES.CATALOG} className="button-primary white w-inline-block">
                                             <div className="text-block">{HOME_HERO.ctaPrimary}</div>
                                             <div className="item-icon-right">
                                                 <div className="custom-icon-font"></div>
                                             </div>
                                         </Link>
-                                        <Link to="/chapters" className="secondary-button white w-inline-block">
+                                        <a
+                                            href="#why-course-section"
+                                            onClick={handleScrollToWhyCourse}
+                                            className="secondary-button white w-inline-block"
+                                        >
                                             <div className="text-block">{HOME_HERO.ctaSecondary}</div>
-                                        </Link>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -76,6 +91,8 @@ export const HeroSection = () => {
                     <div className="full-section-bg-wrapper">
                         <img src={HOME_HERO.images.bgTexture} loading="eager" alt="" className="fit-cover width-100" />
                     </div>
+
+                    <HeroSlider/>
                 </div>
             </div>
         </section>

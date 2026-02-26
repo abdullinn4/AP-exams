@@ -7808,21 +7808,28 @@ figcaption {
 }
 
 .testimonial-card-v2-wrapper._01 {
-  z-index: 1;
-  inset: 20% auto auto 6%;
+    z-index: 1;
+    inset: 20% auto auto 5%; /* ✅ Изменено: top с 20% на 15%, left с 6% на 3% */
 }
 
 .testimonial-card-v2-wrapper._02 {
-  top: 3%;
+    top: 0%; /* ✅ Изменено с 3% на 0% */
+    left: 37%; /* ✅ Добавлено центрирование */
 }
 
 .testimonial-card-v2-wrapper._03 {
-  bottom: 4%;
-  left: 30%;
+    bottom: 10%; /* ✅ Изменено с 4% на 15% */
+    left: 35%; /* ✅ Изменено с 30% на 37% для центрирования */
 }
 
 .testimonial-card-v2-wrapper._04 {
-  right: 3%;
+    right: 3%;
+    top: 18%; /* ✅ Добавлено для контроля вертикальной позиции */
+}
+
+.testimonial-card-v2-wrapper._05 {
+    right: 8%; /* ✅ Добавлено для 5-й карточки */
+    top: 70%;
 }
 
 .testimonial-card-v2---text {
@@ -7853,7 +7860,7 @@ figcaption {
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 750px;
+  min-height: 950px;
   margin-top: 88px;
   display: flex;
   position: relative;
@@ -8644,6 +8651,37 @@ figcaption {
   .sales-home---hero-link-wrapper {
     box-shadow: 0 2px 4px 0 var(--neutral-shadow--01);
   }
+    .testimonial-cards-wrapper---home-v2 {
+        min-height: 1100px; /* ✅ Увеличено для больших экранов */
+    }
+
+    .testimonial-card-v2-wrapper {
+        max-width: 380px; /* ✅ Увеличено с 320px для больших экранов */
+    }
+
+    .testimonial-card-v2-wrapper._01 {
+        inset: 18% auto auto 8%; /* ✅ Больше отступы слева */
+    }
+
+    .testimonial-card-v2-wrapper._02 {
+        top: 2%;
+        left: 38%; /* ✅ Центрирование */
+    }
+
+    .testimonial-card-v2-wrapper._03 {
+        bottom: 12%;
+        left: 38%; /* ✅ Центрирование */
+    }
+
+    .testimonial-card-v2-wrapper._04 {
+        right: 8%; /* ✅ Больше отступ справа */
+        top: 20%;
+    }
+
+    .testimonial-card-v2-wrapper._05 {
+        right: 12%; /* ✅ Больше отступ справа */
+        top: 68%;
+    }
 }
 
 @media screen and (max-width: 991px) {
@@ -9860,33 +9898,36 @@ figcaption {
     flex-wrap: wrap;
     justify-content: space-around;
   }
+    .testimonial-cards-wrapper---home-v2 {
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 24px 40px;
+        margin-top: 0 !important;
+    }
 
-  .features-grid---home-v2 {
-    grid-template-columns: 1fr;
-    margin-top: 64px;
-  }
 
-  .testimonial-card-v2-wrapper {
-    z-index: 1;
-    width: 40%;
-  }
+    .testimonial-card-v2-wrapper {
+        width: 90%;
+        max-width: 600px;
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        inset: auto !important;
+        margin: 0 auto 32px;
+    }
 
-  .testimonial-card-v2-wrapper._01 {
-    top: 20%;
-  }
-
-  .testimonial-card-v2-wrapper._02 {
-    top: 2%;
-    right: 8%;
-  }
-
-  .testimonial-card-v2-wrapper._03 {
-    left: 12%;
-  }
-
-  .testimonial-card-v2-wrapper._04 {
-    bottom: 20%;
-  }
+    .testimonial-card-v2-wrapper._01,
+    .testimonial-card-v2-wrapper._02,
+    .testimonial-card-v2-wrapper._03,
+    .testimonial-card-v2-wrapper._04,
+    .testimonial-card-v2-wrapper._05 {
+        position: relative;
+        display: block;
+    }
 
   .testimonial-card-v2---text {
     font-size: 16px;
@@ -9899,11 +9940,6 @@ figcaption {
   .testimonial-card-v2---avatar-wrapper {
     width: 64px;
     height: 64px;
-  }
-
-  .testimonial-cards-wrapper---home-v2 {
-    min-height: 555px;
-    margin-top: 72px;
   }
 
   .hero-top-content---home-v3 {
@@ -11467,6 +11503,35 @@ figcaption {
   .testimonial-cards-wrapper---home-v2 {
     margin-top: 64px;
   }
+
+    .testimonial-cards-wrapper---home-v2 {
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 32px 16px;
+    }
+
+    .testimonial-card-v2-wrapper {
+        width: 95%;
+        max-width: none;
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        inset: auto !important;
+        margin: 0 auto 24px !important;
+    }
+
+    .testimonial-card-v2-wrapper._01,
+    .testimonial-card-v2-wrapper._02,
+    .testimonial-card-v2-wrapper._03,
+    .testimonial-card-v2-wrapper._04,
+    .testimonial-card-v2-wrapper._05 {
+        position: relative;
+        display: block;
+    }
 
   .hero-top-content---home-v3 {
     margin-bottom: 48px;
@@ -14375,4 +14440,757 @@ figcaption {
     border-left: 4px solid #000;
     padding-left: 16px;
     margin-left: 0;
+}
+
+/* Оригинальный класс (для справки) */
+.testimonial-section---home-v2 {
+    background-color: #F5F5F7;
+}
+
+/* ✅ Новый темно-фиолетовый вариант с фоновым изображением как у hero-section */
+.testimonial-section---home-v2-purple {
+    background-color: var(--neutral--800);
+    background-image: url('/assets/webflow/images/rich-text-bg-courselify-x-webflow-template.png');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 1354px 100%;
+}
+
+.testimonial-section---home-v2-purple .testimonial-card-v2---text {
+    color: #0a0913 !important;
+}
+/* Квадратные блоки для ChaptersSection */
+.chapter-card-square {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.chapter-card-square > div {
+    padding: 48px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.chapter-card-square .display-4 {
+    font-size: 32px !important;
+    line-height: 1.2 !important;
+}
+
+.chapter-icon-large {
+    max-width: 120px !important;
+    width: 100% !important;
+}
+
+.chapter-media-fill {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.chapter-card-square:has(.chapter-media-fill) {
+    position: relative;
+}
+/* FeaturesSection Redesign */
+.feature-card-redesign {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Увеличенный заголовок */
+.feature-card-title {
+    font-size: 36px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+}
+
+/* Логотип для центрального блока */
+.feature-logo-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+/* Список фич */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list-item {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+
+}
+
+/* Цена (подзаголовок) */
+.feature-price {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+
+/* Результат (маленький серый текст) */
+.feature-result {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+.course-slider-section {
+    background-color: var(--neutral--800);
+    padding-top: 80px;
+    padding-bottom: 0;
+    overflow: hidden;
+}
+
+.course-slider-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.slider {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    margin-left: calc(-50vw + 50%);
+}
+
+.slider .mainslides .block {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0 0 0 0;
+}
+
+.slider .mainslides .block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider .mainslides .block .content {
+    position: absolute;
+    top: 20%;  /* было 35%, делаем выше */
+    width: 1140px;
+    max-width: 80%;
+    left: 45%;
+    transform: translateX(-50%);
+    padding-right: 30%;
+    box-sizing: border-box;
+    color: #fff;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.slider .mainslides .block .title {
+    font-family: var(--main-font);
+    font-size: 55px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: #fff;
+}
+
+.slider .mainslides .block .description {
+    font-family: var(--main-font);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-top: 24px;
+    margin-bottom: 40px;
+    width: 70%;
+    color: var(--neutral--200);
+}
+
+.slider .mainslides .block .buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.slider .mainslides .block .buttons .button-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.cards {
+    position: absolute;
+    bottom: 50px;
+    left: 44%;
+    width: max-content;
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+}
+
+.cards .block {
+    width: 200px;
+    height: 293px;
+    flex-shrink: 0;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.cards .block:hover {
+    transform: translateY(-10px);
+}
+
+.cards .block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.cards .block::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease;
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.cards .block:hover::before {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.cards .block .content {
+    color: #fff;
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    right: 10px;
+    text-align: center;
+    z-index: 2;
+}
+
+.cards .block .content .title {
+    font-family: var(--main-font);
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.cards .buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.cards .buttons .button-secondary-white {
+    background-color: #fff;
+    color: var(--neutral--800);
+    border: none;
+    border-radius: 100px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--main-font);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cards .buttons .button-secondary-white:hover {
+    background-color: var(--neutral--200);
+    transform: translateY(-2px);
+}
+
+.nav {
+    position: absolute;
+    bottom: 50px;
+    right: 72%;
+    z-index: 100;
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav .secondary-button-icon {
+    cursor: pointer;
+}
+
+.nav .secondary-button-icon:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Animations */
+.slider .mainslides .block:nth-child(1) {
+    z-index: 1;
+}
+
+.slider .mainslides .block:nth-child(1) .content .title,
+.slider .mainslides .block:nth-child(1) .content .description,
+.slider .mainslides .block:nth-child(1) .content .buttons {
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent 0.5s 1s linear 1 forwards;
+}
+
+@keyframes showContent {
+    to {
+        transform: translateY(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+.slider .mainslides .block:nth-child(1) .content .title {
+    animation-delay: 1.2s !important;
+}
+
+.slider .mainslides .block:nth-child(1) .content .description {
+    animation-delay: 1.4s !important;
+}
+
+.slider .mainslides .block:nth-child(1) .content .buttons {
+    animation-delay: 1.6s !important;
+}
+
+.slider.next .mainslides .block:nth-child(1) img {
+    width: 200px;
+    height: 293px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    border-radius: 30px;
+    animation: showImage 0.5s linear 1 forwards;
+}
+
+@keyframes showImage {
+    to {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+.slider.next .cards .block:nth-last-child(1) {
+    overflow: hidden;
+    animation: showThumbnail 0.5s linear 1 forwards;
+}
+
+@keyframes showThumbnail {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+}
+
+.slider.next .cards {
+    animation: effectNext 0.5s linear 1 forwards;
+}
+
+@keyframes effectNext {
+    from {
+        transform: translateX(150px);
+    }
+}
+
+.slider.prev .mainslides .block:nth-child(2) {
+    z-index: 2;
+}
+
+.slider.prev .mainslides .block:nth-child(2) img {
+    animation: outFrame 0.5s linear 1 forwards;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+@keyframes outFrame {
+    to {
+        width: 200px;
+        height: 293px;
+        bottom: 50px;
+        left: 44%;
+        border-radius: 20px;
+    }
+}
+
+.slider.prev .cards .block:nth-child(1) {
+    overflow: hidden;
+    opacity: 0;
+    animation: showThumbnail 0.5s linear 1 forwards;
+}
+
+.slider.next .nav button,
+.slider.prev .nav button {
+    pointer-events: none;
+}
+
+/* Mobile responsive */
+@media screen and (max-width: 991px) {
+    .slider {
+        height: 80vh;
+    }
+
+    .slider .mainslides .block .content {
+        padding-right: 0;
+        top: 3%;
+    }
+
+    .slider .mainslides .block .title {
+        font-size: 56px;
+    }
+
+    .slider .mainslides .block .description {
+        font-size: 16px;
+        width: 90%;
+    }
+
+    .cards {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 30px;
+    }
+
+    .cards .block {
+        width: 150px;
+        height: 220px;
+    }
+
+    .nav {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .course-slider-header {
+        margin-bottom: 40px;
+    }
+
+    .slider {
+        height: 70vh;
+    }
+
+    .slider .mainslides .block .content {
+        top: 5%;  /* текст в самом верху */
+    }
+
+    .slider .mainslides .block .title {
+        font-size: 40px;
+    }
+
+    .slider .mainslides .block .description {
+        font-size: 14px;
+    }
+
+    .cards {
+        gap: 10px;
+    }
+
+    .cards .block {
+        width: 120px;
+        height: 176px;
+    }
+
+    .cards .block .content .title {
+        font-size: 14px;
+    }
+
+    .cards .buttons .button-secondary-white {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    /* Скрыть стрелки навигации */
+    .nav {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .slider .mainslides .block .content {
+        top: 3%;  /* еще выше для маленьких экранов */
+    }
+
+    .slider .mainslides .block .title {
+        font-size: 32px;
+    }
+
+    .slider .mainslides .block .description {
+        font-size: 12px;
+    }
+
+    .cards .block {
+        width: 100px;
+        height: 147px;
+    }
+
+    /* Стрелки уже скрыты из предыдущего медиа-запроса */
+    .nav {
+        display: none;
+    }
+}
+.nav .secondary-button-icon {
+    cursor: pointer;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.nav .secondary-button-icon:hover:not(:disabled) {
+    background-color: var(--neutral--800);
+}
+
+.nav .secondary-button-icon .custom-icon-font img {
+    transition: filter 0.3s ease;
+}
+
+.nav .secondary-button-icon:hover:not(:disabled) .custom-icon-font img {
+    filter: brightness(0) invert(1);
+}
+
+.nav .secondary-button-icon:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.secondary-button-icon:hover:not(:disabled) .custom-icon-font img {
+    filter: brightness(0) invert(1);
+}
+.secondary-button-icon:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.exam-prep-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.exam-prep-swiper {
+    height: 80vh;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.exam-prep-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.exam-prep-card {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 70vh;
+    border-radius: 50px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 60px;
+    margin: 0 auto;
+    background: linear-gradient(331deg, var(--neutral--800) 0%, var(--neutral--600) 100%);
+}
+
+.exam-prep-swiper .swiper-pagination,
+.exam-prep-swiper.swiper-horizontal > .swiper-pagination-bullets,
+.exam-prep-swiper .swiper-pagination-bullets.swiper-pagination-horizontal {
+    position: absolute !important;
+    bottom: 30px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    text-align: center !important;
+    width: auto !important;
+    z-index: 10;
+}
+
+.exam-prep-card.slide-1 {
+    background: linear-gradient(331deg, #2e0916 0%, #200a2b 100%);
+}
+
+.exam-prep-card.slide-2 {
+    background: linear-gradient(331deg, #8a87c1 0%, #e8cafb 100%);
+}
+
+.exam-prep-card.slide-3 {
+    background: linear-gradient(331deg, #5b874b 0%, #0c3720 100%);
+}
+
+.exam-prep-image-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 40px;
+}
+
+.exam-prep-image {
+    max-width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+}
+
+.exam-prep-content {
+    flex: 1;
+    color: #fff;
+}
+
+.exam-prep-subtitle {
+    font-family: var(--main-font);
+    color: var(--primary--02);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.exam-prep-title {
+    font-family: var(--main-font);
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.exam-prep-description {
+    font-family: var(--main-font);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--neutral--200);
+    max-width: 400px;
+}
+
+.exam-prep-swiper .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: #000;
+    opacity: 0.3;
+    border-radius: 50%;
+    margin: 0 16px;
+    transition: all 0.3s ease;
+}
+
+.exam-prep-swiper .swiper-pagination-bullet-active {
+    width: 12px;
+    height: 12px;
+    background: #000;
+    opacity: 1;
+}
+
+/* Анимации для активного слайда */
+.swiper-slide-active .exam-prep-subtitle {
+    animation: bounceIn 1s 0.5s both;
+}
+
+.swiper-slide-active .exam-prep-title {
+    animation: jackInTheBox 1s 0.8s both;
+}
+
+.swiper-slide-active .exam-prep-description {
+    animation: bounceIn 1s 0.1s both;
+}
+
+.swiper-slide-active .exam-prep-image {
+    animation: fadeInLeft 1.5s 0.3s both;
+}
+
+/* Mobile responsive */
+@media screen and (max-width: 991px) {
+    .exam-prep-swiper {
+        height: 70vh;
+    }
+
+    .exam-prep-card {
+        flex-direction: column;
+        padding: 40px 30px;
+        height: auto;
+        min-height: 60vh;
+    }
+
+    .exam-prep-image-wrapper {
+        padding-right: 0;
+        padding-bottom: 20px;
+        max-height: 300px;
+    }
+
+    .exam-prep-image {
+        max-height: 250px;
+    }
+
+    .exam-prep-content {
+        text-align: center;
+    }
+
+    .exam-prep-title {
+        font-size: 36px;
+    }
+
+    .exam-prep-description {
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .exam-prep-header {
+        margin-bottom: 40px;
+    }
+
+    .exam-prep-card {
+        border-radius: 30px;
+        padding: 30px 20px;
+    }
+
+    .exam-prep-title {
+        font-size: 28px;
+    }
+
+    .exam-prep-description {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .exam-prep-title {
+        font-size: 24px;
+    }
+
+    .exam-prep-description {
+        font-size: 14px;
+    }
+
+    .exam-prep-subtitle {
+        font-size: 14px;
+    }
+}
+.pages-text-light {
+    color: white;
+}
+
+@media screen and (max-width: 991px) {
+    .pages-text-light {
+        color: var(--neutral--800) !important;
+    }
 }

@@ -2,9 +2,12 @@ package org.example.apexams.tests.repo;
 
 import org.example.apexams.tests.entity.TestAttemptEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -20,4 +23,13 @@ public interface TestAttemptRepository extends JpaRepository<TestAttemptEntity, 
     List<TestAttemptEntity> findAllByUserId(UUID userId);
 
     List<TestAttemptEntity> findByUserIdAndTestIdIn(UUID userId, List<UUID> testIds);
+
+    @Query("SELECT ta FROM TestAttemptEntity ta " +
+            "WHERE ta.user.id = :userId " +
+            "AND ta.test.id = :testId " +
+            "AND ta.finishedAt IS NULL")
+    Optional<TestAttemptEntity> findActiveAttemptByUserAndTest(
+            @Param("userId") UUID userId,
+            @Param("testId") UUID testId
+    );
 }

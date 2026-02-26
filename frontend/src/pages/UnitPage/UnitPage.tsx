@@ -2,10 +2,6 @@ import {Link, useParams} from 'react-router-dom'
 import {Header} from '@/widgets/Header'
 import {Footer} from '@/widgets/Footer'
 import {ProgressBar} from '@/widgets/ProgressBar'
-
-import notStartedIcon from '/assets/webflow/images/not_started_icon.svg'
-import inProgressIcon from '/assets/webflow/images/in_progress_icon.svg'
-import completedIcon from '/assets/webflow/images/completed_icon.svg'
 import playIcon from '/assets/webflow/images/play-icon-courselify-x-webflow-template.svg'
 import learningHoursIcon from '/assets/webflow/images/learning-hours-icon-courselify-x-webflow-template.svg'
 import lessonsIcon from '/assets/webflow/images/lessons-icon-courselify-x-webflow-template.svg'
@@ -14,11 +10,11 @@ import {useGetUnitDetailsQuery} from "@/shared/api/courseApi.ts";
 const getStatusIcon = (status: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED') => {
     switch (status) {
         case 'COMPLETED':
-            return completedIcon
+            return <span style={{ color: '#A6EB61' }}>✔️</span>
         case 'IN_PROGRESS':
-            return inProgressIcon
+            return <span style={{ color: '#EBE061' }}>⏳</span>
         case 'NOT_STARTED':
-            return notStartedIcon
+            return <span style={{ color: '#F43F3F' }}>❌</span>
     }
 }
 
@@ -145,11 +141,7 @@ export const UnitPage = () => {
                                                             <div className="divider-details large"></div>
                                                             {/* Status Icon */}
                                                             <div className="image-wrapper play-icon">
-                                                                <img
-                                                                    src={getStatusIcon(lesson.progressStatus)}
-                                                                    loading="eager"
-                                                                    alt={lesson.progressStatus}
-                                                                />
+                                                                {getStatusIcon(lesson.progressStatus)}
                                                             </div>
                                                         </div>
                                                     </Link>

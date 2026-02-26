@@ -6,16 +6,17 @@ import {QuestionNavigationPanel} from "@/widgets/QuestionNavigationPanel";
 import {ConfirmSubmitModal} from "@/widgets/ConfirmSubmitModal";
 import {TimeUpModal} from "@/widgets/TimeUpModal";
 import {useTestNavigation} from "@/features/test/model/useTestNavigation.ts";
-import {useUnloadProtection} from "@/features/test/model/useUnloadProtection.ts";
 import {OptionText} from "@/features/test/ui/OptionText";
+import {useConfirmExit} from "@/features/test/model/useConfirmExit.ts";
 
 interface TestInProgressViewProps {
     testData: StartTestResponse;
     onSubmit: (answers: TestAnswers) => void;
     isSubmitting: boolean;
+    initialAnswers?: TestAnswers;
 }
 
-export const TestInProgressView = ({testData, onSubmit, isSubmitting}: TestInProgressViewProps) => {
+export const TestInProgressView = ({testData, onSubmit, isSubmitting, initialAnswers}: TestInProgressViewProps) => {
     const {
         currentQuestionIndex,
         currentQuestion,
@@ -26,19 +27,28 @@ export const TestInProgressView = ({testData, onSubmit, isSubmitting}: TestInPro
         goTo,
         isFirst,
         isLast
-    } = useTestNavigation(testData)
+    } = useTestNavigation(testData, initialAnswers)
 
     const [showConfirmModal, setShowConfirmModal] = useState(false)
     const [showTimeUpModal, setShowTimeUpModal] = useState(false)
     const hasCompletedRef = useRef(false);
 
-    useUnloadProtection(!showTimeUpModal && !isSubmitting);
+    const {clearProgress} = useConfirmExit({
+        attemptId: testData.attemptId,
+        answers,
+        isActive: !showTimeUpModal && !isSubmitting,
+        timeLimitSec: testData.timeLimitSec
+    })
+
+
+    const handleConfirm = async () => {
+        setShowConfirmModal(false)
+        await onSubmit(answers)
+        clearProgress()
+    }
 
     const handleFinish = () => setShowConfirmModal(true)
-    const handleConfirm = () => {
-        setShowConfirmModal(false);
-        onSubmit(answers);
-    };
+
     const handleTimeUp = () => {
         if (hasCompletedRef.current) return;
         hasCompletedRef.current = true;
@@ -47,6 +57,7 @@ export const TestInProgressView = ({testData, onSubmit, isSubmitting}: TestInPro
         setTimeout(() => {
             setShowTimeUpModal(false);
             onSubmit(answers);
+            clearProgress();
         }, 2000);
     }
 
@@ -59,6 +70,7 @@ export const TestInProgressView = ({testData, onSubmit, isSubmitting}: TestInPro
             return [];
         }
     }, [currentQuestion]);
+
 
     return (
         <div>
@@ -78,7 +90,8 @@ export const TestInProgressView = ({testData, onSubmit, isSubmitting}: TestInPro
                                 {currentQuestion.type === 'SINGLE_CHOICE' && (
                                     <div className="test-options-wrapper">
                                         {options.map((option: { id: string; text: string }) => (
-                                            <label key={option.id} className="test-option-label">
+                                            <label key={option.id} className="test-option-label"
+                                                   style={{fontWeight: '400'}}>
                                                 <input
                                                     type="radio"
                                                     name={`question-${currentQuestion.id}`}
@@ -109,7 +122,8 @@ export const TestInProgressView = ({testData, onSubmit, isSubmitting}: TestInPro
                                                 : []
 
                                             return (
-                                                <label key={option.id} className="test-option-label">
+                                                <label key={option.id} className="test-option-label"
+                                                       style={{fontWeight: '400'}}>
                                                     <input
                                                         type="checkbox"
                                                         value={option.id}
@@ -198,6 +212,7 @@ export const TestInProgressView = ({testData, onSubmit, isSubmitting}: TestInPro
             )}
 
             {showTimeUpModal && <TimeUpModal isOpen={showTimeUpModal}/>}
+
         </div>
     );
 };

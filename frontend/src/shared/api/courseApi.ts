@@ -69,7 +69,7 @@ export const coursesApi = baseApi.injectEndpoints({
                     method: 'POST',
                 }
             },
-            invalidatesTags: ['Course'],
+            invalidatesTags: ['Course', 'Dashboard', 'MyCourses'],
         }),
         submitTest: builder.mutation<TestAttemptResult, { attemptId: string; answers: TestAnswers }>({
             query: ({ attemptId, answers }) => ({

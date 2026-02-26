@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom'
 import { HOME_WHY_COURSE } from '@/shared/config/content'
+import {ROUTES} from "@/app/router/routes.ts";
 
 export const WhyCourseSection = () => {
     return (
-        <section className="section-card-padding">
+        <section id="why-course-section" className="section">
             <div className="section-card">
                 <div className="w-layout-blockcontainer container-default w-container">
                     <div data-w-id="3d388a41-0fb9-3d4a-6162-054e74091a48" className="stats-top-content-grid">
                         <h2 className="display-9">{HOME_WHY_COURSE.title} <span className="heading-gradient">{HOME_WHY_COURSE.titleHighlight}</span></h2>
                         <div className="mg-top-16px-tablet">
-                            <Link to="/pricing" className="button-primary w-inline-block">
+                            <Link to={ROUTES.CATALOG} className="button-primary w-inline-block">
                                 <div className="text-block">{HOME_WHY_COURSE.ctaText}</div>
                                 <div className="item-icon-right">
                                     <div className="custom-icon-font"></div>

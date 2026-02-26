@@ -8,8 +8,7 @@ interface TestCompletedSummaryProps {
 export const TestCompletedSummary = ({ result, onViewResults }: TestCompletedSummaryProps) => {
     const { correctCount, totalCount, score, attemptedAt } = result
 
-    const percentage = Math.round(result.score)
-    const isPassed = percentage >= 70
+    const percentage = Math.round(score)
 
     // Форматируем дату прохождения теста
     const attemptDate = new Date(attemptedAt).toLocaleDateString('en-US', {
@@ -56,15 +55,8 @@ export const TestCompletedSummary = ({ result, onViewResults }: TestCompletedSum
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                 <span className="display-3 bold text-neutral-800">
-                                   {score}%
+                                   {percentage}%
                                 </span>
-                                {isPassed && (
-                                    <span style={{
-                                        color: '#10b981',
-                                        fontSize: '20px',
-                                        fontWeight: 'bold'
-                                    }}>✓</span>
-                                )}
                             </div>
                         </div>
 

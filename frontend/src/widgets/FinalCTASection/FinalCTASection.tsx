@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom'
 import { HOME_FAQ } from '@/shared/config/content'
+import {ROUTES} from "@/app/router/routes.ts";
 
 export const FinalCTASection = () => {
     return (
-        <section className="section-card-padding">
+        <section className="section">
             <div className="section-card">
                 <div className="w-layout-blockcontainer container-default w-container">
                     <div data-w-id="ce63cfa8-00b3-0766-ede8-8f40b1a913ac" className="title-left---content-right center">
                         <div className="inner-container _525px _100-tablet">
                             <h2 className="display-9"><span className="heading-gradient">{HOME_FAQ.title}</span> {HOME_FAQ.titleHighlight}</h2>
                         </div>
-                        <Link to="/pricing" className="button-primary w-inline-block">
+                        <Link to={ROUTES.CATALOG} className="button-primary w-inline-block">
                             <div className="text-block">{HOME_FAQ.ctaText}</div>
                             <div className="item-icon-right">
                                 <div className="custom-icon-font"></div>
