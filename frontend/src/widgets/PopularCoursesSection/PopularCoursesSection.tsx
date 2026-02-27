@@ -14,7 +14,7 @@ export const PopularCoursesSection = () => {
     }, [])
 
     return (
-        <section className="section-card-padding">
+        <section className="section">
             <div className="section-card">
                 <div className="w-layout-blockcontainer container-default w-container">
                     <div data-w-id="f402fcd4-a56b-275f-aeb1-72593824ca6a" className="inner-container _704px center-tablet">
@@ -52,12 +52,12 @@ export const PopularCoursesSection = () => {
                                     </div>
                                 ))}
                             </div>
-                            <div className="secondary-button-icon large slider-button-left---top-right w-slider-arrow-left" style={{ border: '1px solid black' }}>
+                            <div className="secondary-button-icon large slider-button-left---top-right w-slider-arrow-left">
                                 <div className="custom-icon-font">
                                     <img src="/assets/webflow/images/arrow-left-black.svg" alt="left-arrow" style={{ height: '60%', width: '60%' }}/>
                                 </div>
                             </div>
-                            <div className="secondary-button-icon large slider-button-right---top-right w-slider-arrow-right" style={{ border: '1px solid black' }}>
+                            <div className="secondary-button-icon large slider-button-right---top-right w-slider-arrow-right">
                                 <div className="custom-icon-font">
                                     <img src="/assets/webflow/images/arrow-right-black.svg" alt="right-arrow" style={{ height: '60%', width: '60%' }}/>
                                 </div>

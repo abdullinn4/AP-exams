@@ -2,7 +2,7 @@ import {HOME_FEATURES} from '@/shared/config/content'
 
 export const FeaturesSection = () => {
     return (
-        <section className="section-card-padding">
+        <section className="section">
             <div className="w-layout-blockcontainer container-default w-container">
                 <div className="z-index-2">
                     <div
@@ -77,7 +77,8 @@ export const FeaturesSection = () => {
 
                                     {/* Заголовок */}
                                     <div className="mg-top-24px">
-                                        <h3 className={`feature-card-title ${isCenter ? 'text-neutral-100' : 'text-neutral-800'}`}>
+                                        <h3 className={`feature-card-title ${isCenter ? 'text-neutral-100' : 'text-neutral-800'}`}
+                                        >
                                             {feature.title}
                                         </h3>
                                     </div>
@@ -109,7 +110,7 @@ export const FeaturesSection = () => {
 
                                     {/* Результат */}
                                     <div className="mg-top-16px">
-                                        <p className={`feature-result ${isCenter ? 'text-neutral-100' : 'text-neutral-800'}`}>
+                                        <p className={`feature-result`}>
                                             {feature.result}
                                         </p>
                                     </div>

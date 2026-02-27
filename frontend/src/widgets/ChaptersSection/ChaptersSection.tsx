@@ -2,7 +2,7 @@ import {HOME_CHAPTERS} from "@/shared/config/content";
 
 export const ChaptersSection = () => {
     return (
-        <section id="chapters" className="section-card-padding">
+        <section id="chapters" className="section">
             <div className="w-layout-blockcontainer container-default w-container">
                 <div data-w-id="34843878-4922-e140-fb72-ce72b9457d79" className="inner-container _585px center">
                     <div className="text-center">

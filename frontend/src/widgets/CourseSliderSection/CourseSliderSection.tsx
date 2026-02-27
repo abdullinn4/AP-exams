@@ -86,9 +86,9 @@ export const CourseSliderSection = () => {
                                         className="button-primary w-inline-block"
                                         onClick={() => window.location.href = `/courses/${course.slug}/preview`}
                                     >
-                                        <div className="text-block">View Course</div>
+                                        <div className="text-block">Explore Course</div>
                                         <div className="item-icon-right">
-                                            <div className="custom-icon-font"></div>
+                                            <div className="custom-icon-font"></div>
                                         </div>
                                     </button>
                                 </div>
@@ -109,9 +109,12 @@ export const CourseSliderSection = () => {
                                         onClick={(e) => {
                                             e.stopPropagation()
                                             handleThumbnailClick(courses.indexOf(course))
+                                            window.location.href = `/courses/${course.slug}/preview`
                                         }}
                                     >
-                                        <div className="text-block">See Course</div>
+                                        <div className="text-block">
+                                            See Course
+                                        </div>
                                     </button>
                                 </div>
                             </div>

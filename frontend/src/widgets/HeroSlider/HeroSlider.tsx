@@ -1,23 +1,6 @@
 import { useEffect, useRef } from 'react'
+import {SLIDER_VIDEOS_BOTTOM, SLIDER_VIDEOS_TOP} from "@/shared/config/content";
 
-interface SliderVideo {
-    src: string
-    alt: string
-}
-
-const SLIDER_VIDEOS_TOP: SliderVideo[] = [
-    { src: '/assets/webflow/gifs/preview8.mp4', alt: 'AP Course Preview 1' },
-    { src: '/assets/webflow/gifs/preview2.mp4', alt: 'AP Course Preview 2' },
-    { src: '/assets/webflow/gifs/preview4.mp4', alt: 'AP Course Preview 3' },
-    { src: '/assets/webflow/gifs/preview6.mp4', alt: 'AP Course Preview 4' },
-]
-
-const SLIDER_VIDEOS_BOTTOM: SliderVideo[] = [
-    { src: '/assets/webflow/gifs/preview5.mp4', alt: 'AP Course Preview 5' },
-    { src: '/assets/webflow/gifs/preview1.mp4', alt: 'AP Course Preview 6' },
-    { src: '/assets/webflow/gifs/preview7.mp4', alt: 'AP Course Preview 7' },
-    { src: '/assets/webflow/gifs/preview3.mp4', alt: 'AP Course Preview 8' },
-]
 
 export const HeroSlider = () => {
     const containerRef = useRef<HTMLDivElement>(null)
@@ -33,7 +16,7 @@ export const HeroSlider = () => {
             const scrollDelta = currentScrollY - lastScrollY
 
             // Накапливаем смещение на основе скролла (сильно замедлено)
-            scrollOffsetRef.current += scrollDelta * 0.003 // ✅ Уменьшено с 0.01 до 0.003
+            scrollOffsetRef.current += scrollDelta * 0.003
 
             if (topRowRef.current) {
                 // Верхний ряд: скролл вниз → движение влево (отрицательное значение)

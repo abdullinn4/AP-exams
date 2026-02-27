@@ -2509,11 +2509,13 @@ figcaption {
   padding: 1.5px;
 }
 
+
 .card.feature-card-v2 {
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   padding: 48px 44px;
   display: flex;
+    text-align: center;
 }
 
 .card.feature-card-v2.top {
@@ -4577,6 +4579,14 @@ figcaption {
   align-items: start;
 }
 
+.chapters-grid.v1 .chapter-card-v1:nth-child(1) {
+    background-color: #ff8762;
+}
+
+.chapters-grid.v1 .chapter-card-v1:nth-child(3) {
+    background-color: #793aff;
+}
+
 .grid-3-columns.chapters-grid.v1 {
   grid-row-gap: 0px;
 }
@@ -5896,8 +5906,8 @@ figcaption {
 }
 
 .section {
-  padding-top: 200px;
-  padding-bottom: 200px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .section.small {
@@ -6732,13 +6742,19 @@ figcaption {
 }
 
 .sales-home---pages-container {
-  grid-row-gap: 28px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 80px;
-  display: flex;
-  position: relative;
+    grid-row-gap: 28px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    display: flex;
+    max-width: none;
+}
+
+/* Убрать ограничение ширины у section-card для HeroSlider */
+.section-card.hero-section {
+    overflow: visible;
+
 }
 
 .sales-home---pages-row {
@@ -7423,6 +7439,7 @@ figcaption {
   padding-bottom: 200px;
   position: relative;
   overflow: hidden;
+
 }
 
 .section-card.hero-section {
@@ -7668,6 +7685,66 @@ figcaption {
 
 .stat-row---home-v1.bottom {
   grid-template-columns: 1fr .8fr;
+}
+
+/* 10+ courses - черный фон, белый текст */
+.stat-row---home-v1:first-child .stat-card-v1:nth-child(1) {
+    background-color: #000;
+    color: #fff;
+}
+
+.stat-row---home-v1:first-child .stat-card-v1:nth-child(1) .display-9,
+.stat-row---home-v1:first-child .stat-card-v1:nth-child(1) .text-neutral-800 {
+    color: #fff !important;
+}
+
+.stat-row---home-v1:first-child .stat-card-v1:nth-child(1) .text-color-primary-1 {
+    color: #fff !important;
+}
+
+/* 200+ videos - светло-фиолетовый фон, черный текст */
+.stat-row---home-v1:first-child .stat-card-v1:nth-child(2) {
+    background-color: #793aff;
+    color: #000;
+}
+
+.stat-row---home-v1:first-child .stat-card-v1:nth-child(2) .display-9,
+.stat-row---home-v1:first-child .stat-card-v1:nth-child(2) .text-neutral-800 {
+    color: #000 !important;
+}
+
+.stat-row---home-v1:first-child .stat-card-v1:nth-child(2) .text-color-primary-1 {
+    color: #000 !important;
+}
+
+/* 10,000+ tasks - оранжевый фон, черный текст */
+.stat-row---home-v1.bottom .stat-card-v1:nth-child(1) {
+    background-color: #ff8762;
+    color: #000;
+}
+
+.stat-row---home-v1.bottom .stat-card-v1:nth-child(1) .display-9,
+.stat-row---home-v1.bottom .stat-card-v1:nth-child(1) .text-neutral-800 {
+    color: #000 !important;
+}
+
+.stat-row---home-v1.bottom .stat-card-v1:nth-child(1) .text-color-primary-1 {
+    color: #000 !important;
+}
+
+/* 300+ hours - темно-фиолетовый фон, белый текст */
+.stat-row---home-v1.bottom .stat-card-v1:nth-child(2) {
+    background-image: url('/assets/webflow/images/rich-text-bg-courselify-x-webflow-template.png');
+    color: #fff;
+}
+
+.stat-row---home-v1.bottom .stat-card-v1:nth-child(2) .display-9,
+.stat-row---home-v1.bottom .stat-card-v1:nth-child(2) .text-neutral-800 {
+    color: #fff !important;
+}
+
+.stat-row---home-v1.bottom .stat-card-v1:nth-child(2) .text-color-primary-1 {
+    color: #fff !important;
 }
 
 .features-grid---home-v1 {
@@ -9903,8 +9980,11 @@ figcaption {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 0 24px 40px;
+        padding: 24px 40px;
         margin-top: 0 !important;
+    }
+    .image{
+        display: none;
     }
 
 
@@ -10050,6 +10130,12 @@ figcaption {
   .brix-badges-wrapper {
     right: 35px;
   }
+}
+@media screen and (max-width: 991px) {
+    .features-grid---home-v2 {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -14665,6 +14751,7 @@ figcaption {
 
 .slider .mainslides .button-primary .text-block {
     color: inherit;
+
 }
 
 .slider .mainslides .button-primary .custom-icon-font {
@@ -14775,7 +14862,7 @@ figcaption {
     width: 300px;
     max-width: 30%;
     display: flex;
-    gap: 10px;
+    gap: 30px;
     align-items: center;
 }
 
@@ -15030,7 +15117,13 @@ figcaption {
     cursor: not-allowed;
 }
 /* ========== EXAM PREP WORKS SECTION ========== */
-
+.exam-prep-card-sub-title,
+.exam-prep-card-title,
+.exam-prep-card-description,
+.exam-prep-cta-button,
+.exam-prep-ghost-name {
+    font-family: 'Mona Sans', sans-serif;
+}
 .exam-prep-section {
     overflow: hidden;
 }
@@ -15181,6 +15274,7 @@ figcaption {
     font-weight: 500;
     font-size: 0.9vw;
     max-width: 300px;
+    line-height: 1.2;
 }
 
 .exam-prep-card-cta {
@@ -15188,9 +15282,8 @@ figcaption {
 }
 
 .exam-prep-cta-button {
-    display: inline-block;
+    line-height: 1.2;
     padding: 20px 40px;
-    font-family: Arial, sans-serif;
     font-size: 12px;
     text-decoration: none;
     text-align: center;
@@ -15455,6 +15548,58 @@ figcaption {
         bottom: 10px !important;
     }
 }
+.exam-prep-card-video {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 380px;
+    height: 380px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Слайд 1 - видео слева */
+.slide-1 .exam-prep-card-video {
+    left: 5%;
+    right: auto;
+}
+
+/* Слайд 2 - видео справа */
+.slide-2 .exam-prep-card-video {
+    right: 5%;
+    left: auto;
+}
+
+/* Слайд 3 - видео слева */
+.slide-3 .exam-prep-card-video {
+    left: 5%;
+    right: auto;
+}
+
+.exam-prep-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 991px) {
+    .exam-prep-card-video {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .exam-prep-card-video {
+        width: 150px;
+        height: 150px;
+        top: 60px;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%);
+    }
+}
+
 .pages-text-light {
     color: white;
 }

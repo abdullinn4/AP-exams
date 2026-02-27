@@ -14,7 +14,7 @@ export const HOME_HERO = {
     titleHighlight: 'AP Prep for 99$',
     description: 'The online school that actually prepares you for AP exams. We\'ll help you save on tuition — and dramatically improve your odds of getting into your dream college.',
     ctaPrimary: 'Start learning',
-    ctaSecondary: 'Who we are?',
+    ctaSecondary: 'Who we are',
     images: {
         main: '/assets/webflow/images/its-your-turn-to-stand-as-a-web-designer-right-image-courselify-x-webflow-template.png',
         float: '/assets/webflow/images/its-your-turn-to-stand-as-a-web-designer-left-image-courselify-x-webflow-template.png',
@@ -35,7 +35,7 @@ export const HOME_CHAPTERS = {
             id: 1,
             wId: '4c73e9c0-4a7b-8bc8-8c70-f4b88699d580',
             title: 'Need top scores on your AP exams?',
-            icon: '/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png',
+            icon: '/assets/webflow/images/beginner-friendly-icon-courselify-webflow-ecommerce-template.png',
             type: 'text',
             className: 'grid-item-margin-top'
         },
@@ -51,7 +51,7 @@ export const HOME_CHAPTERS = {
             id: 3,
             wId: '774c65d2-3193-ae9e-7382-e4c12b44d25e',
             title: 'Dream of getting into a top-tier college?',
-            icon: '/assets/webflow/images/layout-course-icon-courselify-webflow-ecommerce-template.png',
+            icon: '/assets/webflow/images/free-resources-icon-courselify-webflow-ecommerce-template.png',
             type: 'text',
             className: 'grid-item-margin-top'
         },
@@ -67,7 +67,7 @@ export const HOME_CHAPTERS = {
             id: 5,
             wId: '680117bc-6d23-3dbd-6db9-46e5a4a97e50',
             title: 'Worried about spending too much on a tutor?',
-            icon: '/assets/webflow/images/imagery-course-icon-courselify-webflow-ecommerce-template.png',
+            icon: '/assets/webflow/images/amazing-community-icon-courselify-webflow-ecommerce-template.png',
             type: 'text',
             className: ''
         },
@@ -113,12 +113,9 @@ description2: 'No fluff, no boring lectures — just real people who actually ca
     titleHighlight: '"perfect" time to start studying.',
     description: `The clock is ticking. Start now, not tomorrow. Every day you wait is a missed opportunity to boost your score. You don't need to be ready — you just need to begin. And we'll guide you every step of the way.`,
     ctaPrimary: 'Go to the cart',
-    ctaSecondary: 'Show all courses',
+    ctaSecondary: 'View all courses',
     images: {
-    main: '/assets/webflow/images/stand-as-a-web-designer-main-image-courselify-x-webflow-template.png',
-        left: '/assets/webflow/images/stand-as-a-web-designer-image-01-courselify-x-webflow-template.png',
-        rightTop: '/assets/webflow/images/stand-as-a-web-designer-image-03-courselify-x-webflow-template.png',
-        rightBottom: '/assets/webflow/images/stand-as-a-web-designer-image-02-courselify-x-webflow-template.png',
+    main: '',
         floatSquare: '/assets/webflow/images/square-figure-courselify-x-webflow-template.png',
         floatCircle: '/assets/webflow/images/circle-figure-courselify-x-webflow-template.png',
         floatPyramid: '/assets/webflow/images/pyramid-figure-courselify-x-webflow-template.png'
@@ -195,7 +192,7 @@ export const HOME_TESTIMONIALS = {
             avatar: "/assets/webflow/images/marcus_avatar_review.PNG"
         },
         {
-            quote: "Okay so I took CSA because I thought it was gonna be easy (spoiler: it wasn't). I was genuinely struggling. Prof. Marat lays everything out in such a concise, clear way. Then I sharpened everything with a ton of practice problems. On the webinars, nobody makes you feel dumb for asking questions—everyone's just trying to lock in. Got a 5 and now I'm actually considering majoring in CS next year. This site lowkey changed my whole career path. Thanks, Smash AP.",
+            quote: "Okay so I took CSP because I thought it was gonna be easy (spoiler: it wasn't). I was genuinely struggling. Prof. Marat lays everything out in such a concise, clear way. Then I sharpened everything with a ton of practice problems. On the webinars, nobody makes you feel dumb for asking questions—everyone's just trying to lock in. Got a 5 and now I'm actually considering majoring in CS next year. This site lowkey changed my whole career path. Thanks, Smash AP.",
             name: "Jessica 12th Grade (Seattle, WA)",
             position: "AP Computer Science Principles",
             avatar: "/assets/webflow/images/jessica_avatar_review.PNG"
@@ -236,7 +233,7 @@ export const HOME_FAQ = {
         },
         {
             question: 'What are the pricing plans?',
-            answer: '1) BASIC: Full platform access — all materials, video lessons, online practice tests, webinars, and our community included. 2) PRO: Everything in BASIC, plus one-on-one mentor support to help you with any questions along the way.'
+            answer: '1) BASIC: Full platform access — all materials, video lessons, online practice tests, webinars, and our community included.'
         },
         {
             question: 'What do I need for SmashAP?',
@@ -363,12 +360,13 @@ export const COURSES_DATA: Course[] = [
 export const EXAM_PREP_STEPS = [
     {
         id: 1,
-        subtitle: '#1 Top Scariest Ghost',
-        title: 'RESPAWN THE SPOOKY SKULL',
-        description: 'In search for cute little puppy, Captain Sem has come back from his tragic death. With his hogwarts certified power he promise to be a hero for all of ghostkind.',
-        ghostName: 'Captain Sem',
-        ghostRole: 'Veteran Spooky Ghost',
-        buttonText: 'Book Now',
+        subtitle: 'All materials. One place. No drama',
+        title: 'OUR PLATFORM',
+        description: 'The slickest interface you\'ve ever touched. Crisp videos, straight-to-the-point text, and tons of tests—all in AP style. Practice drills, full exam simulations—the whole package. No fluff. Just results.',
+        ghostName: 'Convenient platform',
+        ghostRole: 'that has everything',
+        buttonText: 'Choose a course',
+        video: '/assets/webflow/gifs/preview7.mp4',
         subtitleColor: '#FF5B79',
         titleColor: '#fff',
         descriptionColor: '#fff',
@@ -378,12 +376,13 @@ export const EXAM_PREP_STEPS = [
     },
     {
         id: 2,
-        subtitle: '#2 top Best duo',
-        title: 'BRING BACK MY COTTON CANDY',
-        description: 'Adino steals his brother cotton candy and eats them all in one bite, such a hungry beast. Grahami can\'t hold any longer his anger to Adino.',
-        ghostName: 'Adino & Grahami',
-        ghostRole: 'No words can describe them',
-        buttonText: 'Book Now',
+        subtitle: 'Free webinars every week',
+        title: 'SUPPORT & COMMUNITY',
+        description: 'Free webinars. Every week. Level up with live sessions and get your questions answered on the spot. Plus, we\'re everywhere you hang—Discord, Insta, TikTok. Daily content, real talk, and a whole community rooting for you. We\'re not just support. We\'re your squad.',
+        ghostName: 'Join our Discord',
+        ghostRole: 'and also Instagram & Tiktok',
+        buttonText: 'Move to Discord',
+        video: '/assets/webflow/gifs/preview2.mp4',
         subtitleColor: '#303056',
         titleColor: '#303056',
         descriptionColor: '#303056',
@@ -393,12 +392,13 @@ export const EXAM_PREP_STEPS = [
     },
     {
         id: 3,
-        subtitle: '#3 Top Creepy Ghost',
-        title: 'UOOOO!! TRICK OR TREAT!!',
-        description: 'Hi I\'m Reiza, people call me "The Labu" currently I\'m trying to learn something new, building my own bike with parts only made from Malaysia.',
-        ghostName: 'The Labu "Reiza"',
-        ghostRole: 'The Living Pumpkin',
-        buttonText: 'Book Now',
+        subtitle: 'New Exams. Every Week',
+        title: 'Endless AP Practice.',
+        description: 'Fresh exams dropping every week. Simulate the real deal, track your progress, and lock in them concepts. You studied. Now prove it. No surprises on test day. Just mastery.',
+        ghostName: 'Master',
+        ghostRole: 'What You\'ve Learned',
+        buttonText: 'Coming soon',
+        video: '/assets/webflow/gifs/preview3.mp4',
         subtitleColor: '#fff',
         titleColor: '#fff',
         descriptionColor: '#fff',
@@ -407,3 +407,22 @@ export const EXAM_PREP_STEPS = [
         bgGradient: 'linear-gradient(331deg, #5b874b 0%, #0c3720 100%)',
     }
 ] as const
+
+interface SliderVideo {
+    src: string
+    alt: string
+}
+
+export const SLIDER_VIDEOS_TOP: SliderVideo[] = [
+    { src: '/assets/webflow/gifs/preview1.mp4', alt: 'AP Course Preview 1' },
+    { src: '/assets/webflow/gifs/preview7.mp4', alt: 'AP Course Preview 2' },
+    { src: '/assets/webflow/gifs/preview3.mp4', alt: 'AP Course Preview 3' },
+    { src: '/assets/webflow/gifs/preview5.mp4', alt: 'AP Course Preview 4' },
+]
+
+export const SLIDER_VIDEOS_BOTTOM: SliderVideo[] = [
+    { src: '/assets/webflow/gifs/preview8.mp4', alt: 'AP Course Preview 5' },
+    { src: '/assets/webflow/gifs/preview2.mp4', alt: 'AP Course Preview 6' },
+    { src: '/assets/webflow/gifs/preview4.mp4', alt: 'AP Course Preview 7' },
+    { src: '/assets/webflow/gifs/preview6.mp4', alt: 'AP Course Preview 8' },
+]

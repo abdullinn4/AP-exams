@@ -3,7 +3,7 @@ import { HOME_CTA } from '@/shared/config/content'
 
 export const CTASection = () => {
     return (
-        <section className="section-card-padding">
+        <section className="section">
             <div data-w-id="b59a59eb-8135-53d7-934d-15fd43cb5117" className="section-card cta v1">
                 <div className="w-layout-grid grid-2-columns cta-v1-grid">
                     <div data-w-id="1e6ebfa9-6b59-fb8a-6b39-bffb1716ae84">
@@ -12,7 +12,7 @@ export const CTASection = () => {
                         </h2>
                         <div className="inner-container _525px _100-tablet">
                             <div className="mg-top-16px">
-                                <p className="text-neutral-400">{HOME_CTA.description}</p>
+                                <p className="text-neutral-400" style={{ color: '#fff', fontSize: '20px' }}>{HOME_CTA.description}</p>
                             </div>
                         </div>
                         <div className="mg-top-48px">
@@ -33,15 +33,6 @@ export const CTASection = () => {
                             alt="Stand as a Web Designer" 
                             className="image position-relative floating-image---down"
                         />
-                        <div className="image-wrapper left-image---cta-v1 floating-image---up">
-                            <img src={HOME_CTA.images.left} loading="eager" alt="" className="image" />
-                        </div>
-                        <div className="image-wrapper right-image-01---cta-v1 floating-image---up">
-                            <img src={HOME_CTA.images.rightTop} loading="eager" alt="" className="image" />
-                        </div>
-                        <div className="image-wrapper right-image-02---cta-v1 floating-image---down">
-                            <img src={HOME_CTA.images.rightBottom} loading="eager" alt="" className="image" />
-                        </div>
                         <div data-w-id="3b0e7f5d-d15c-be14-3d10-f79e13daafde" className="image-wrapper float-image-01---cta-v1">
                             <img src={HOME_CTA.images.floatSquare} loading="eager" alt="" className="image rotate-15-deg" />
                         </div>

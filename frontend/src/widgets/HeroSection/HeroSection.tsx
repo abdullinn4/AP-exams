@@ -15,7 +15,7 @@ export const HeroSection = () => {
     }
 
     return (
-        <section className="section-card-padding top">
+        <section className="section top">
             <div className="position-relative">
                 <Header variant="full" theme="light" />
                 <div data-w-id="fa95ee18-0a5c-64ab-0aaf-ae790687b46c" className="section-card hero-section">

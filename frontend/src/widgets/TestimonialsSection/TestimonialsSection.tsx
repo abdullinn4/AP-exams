@@ -19,7 +19,7 @@ export const TestimonialsSection = () => {
                         >
                             <div className="text-block">Start learning</div>
                             <div className="item-icon-right">
-                                <div className="custom-icon-font"></div>
+                                <div className="custom-icon-font"></div>
                             </div>
                         </Link>
                     </div>
@@ -41,7 +41,7 @@ export const TestimonialsSection = () => {
                                 className={`testimonial-card-v2-wrapper _0${idx + 1}`}
                             >
                                 <div className="card testimonial-card-v2">
-                                    <div className="testimonial-card-v2---text" style={{fontSize: '13px', lineHeight: '1.5'}}>"{testimonial.quote}"</div>
+                                    <div className="testimonial-card-v2---text" style={{fontSize: '13px', lineHeight: '1.5', fontWeight: '500'}}>"{testimonial.quote}"</div>
                                     <div>
                                         <div className="display-1 bold text-neutral-800 ">{testimonial.name}</div>
                                         <div className="testimonial-card-v2---details-text">{testimonial.position}</div>

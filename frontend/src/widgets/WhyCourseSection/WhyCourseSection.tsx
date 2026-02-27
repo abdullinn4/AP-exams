@@ -39,7 +39,7 @@ export const WhyCourseSection = () => {
                                 {HOME_WHY_COURSE.stats.slice(0, 2).map((stat, idx) => (
                                     <div key={idx} className="card stat-card-v1">
                                         <div className="display-9 bold text-neutral-800">{stat.value}<span className="text-color-primary-1">{stat.suffix}</span></div>
-                                        <div>{stat.label}</div>
+                                        <div className="display-5 text-neutral-800">{stat.label}</div>
                                     </div>
                                 ))}
                             </div>
@@ -47,7 +47,7 @@ export const WhyCourseSection = () => {
                                 {HOME_WHY_COURSE.stats.slice(2, 4).map((stat, idx) => (
                                     <div key={idx} className="card stat-card-v1">
                                         <div className="display-9 bold text-neutral-800">{stat.value}<span className="text-color-primary-1">{stat.suffix}</span></div>
-                                        <div>{stat.label}</div>
+                                        <div className="display-4 text-neutral-800">{stat.label}</div>
                                     </div>
                                 ))}
                             </div>

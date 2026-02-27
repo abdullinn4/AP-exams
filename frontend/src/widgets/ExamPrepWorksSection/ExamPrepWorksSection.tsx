@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { EXAM_PREP_STEPS } from '@/shared/config/content'
 import Swiper from 'swiper'
-import { Autoplay, Mousewheel, Pagination, EffectCoverflow, Keyboard } from 'swiper/modules'
+import { Autoplay, Mousewheel, Pagination, EffectCoverflow, Keyboard, Navigation} from 'swiper/modules'
 import 'swiper/swiper-bundle.css'
 
 export const ExamPrepWorksSection = () => {
@@ -9,7 +9,7 @@ export const ExamPrepWorksSection = () => {
 
     useEffect(() => {
         swiperRef.current = new Swiper('.exam-prep-swiper', {
-            modules: [Autoplay, Mousewheel, Pagination, EffectCoverflow, Keyboard],
+            modules: [Autoplay, Mousewheel, Pagination, EffectCoverflow, Keyboard, Navigation],
             slidesPerView: 1,
             spaceBetween: 0,
             grabCursor: true,
@@ -22,19 +22,25 @@ export const ExamPrepWorksSection = () => {
                 modifier: 1,
                 slideShadows: false,
             },
-            mousewheel: true,
+            mousewheel: {
+                forceToAxis: true,
+            },
             keyboard: {
                 enabled: true,
             },
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false,
-                pauseOnMouseEnter: true,
+                pauseOnMouseEnter: false,
             },
             pagination: {
                 el: '.exam-prep-pagination',
                 dynamicBullets: false,
                 clickable: true,
+            },
+            navigation: {
+                nextEl: '.exam-prep-next',
+                prevEl: '.exam-prep-prev',
             },
         })
 
@@ -64,6 +70,19 @@ export const ExamPrepWorksSection = () => {
                                     className={`exam-prep-card slide-${index + 1}`}
                                     style={{ background: step.bgGradient }}
                                 >
+                                    {step.video && (
+                                        <div className="exam-prep-card-video">
+                                            <video
+                                                src={step.video}
+                                                autoPlay
+                                                loop
+                                                muted
+                                                playsInline
+                                                className="exam-prep-video"
+                                            />
+                                        </div>
+                                    )}
+
                                     <div className="exam-prep-card-content">
                                         <div
                                             className="exam-prep-card-sub-title"
@@ -107,6 +126,9 @@ export const ExamPrepWorksSection = () => {
                         ))}
                     </div>
                     <div className="exam-prep-pagination swiper-pagination"></div>
+
+                    <div className="exam-prep-prev swiper-button-prev" style={{color: '#000'}}></div>
+                    <div className="exam-prep-next swiper-button-next" style={{color: '#000'}}></div>
                 </div>
             </div>
         </section>
