@@ -110,7 +110,7 @@ export const FeaturesSection = () => {
 
                                     {/* Результат */}
                                     <div className="mg-top-16px">
-                                        <p className={`feature-result`}>
+                                        <p className={`feature-result`} style={isCenter ? {color: '#fff'} : {}}>
                                             {feature.result}
                                         </p>
                                     </div>
