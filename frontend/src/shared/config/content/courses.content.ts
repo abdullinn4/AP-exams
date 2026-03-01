@@ -1,7 +1,7 @@
 export const CATALOG_HEADER = {
     title: 'What will you',
     titleHighlight: 'learn?',
-    description: 'Lorem ipsum dolor amet consectetur pellentesque scelerisque fermentum bibendum ipsum massa cursus aliquet feugiat.'
+    description: ''
 } as const
 
 export const CATALOG_COURSES = {
