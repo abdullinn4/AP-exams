@@ -20,22 +20,21 @@ export const CourseUnitsSection = ({
                                        courseSlug
                                    }: CourseUnitsSectionProps) => {
     return (
-        <div className="w-layout-blockcontainer container-default w-container">
-            <div className="inner-container _865px center">
-                <div className="mg-top-80px">
-                    <div
-                        data-w-id="3e8bcdc3-75c2-b6ad-3b2f-352a328fd021"
-                        className="title-left---content-right center"
-                        style={{
-                            WebkitTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
-                            MozTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
-                            msTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
-                            transform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
-                            opacity: 0
-                        }}
-                    >
-                        <h2>Course units</h2>
-                    </div>
+        <div className="w-layout-blockcontainer container-default w-container"
+             data-w-id="6208ffc4-ee75-3175-0b70-625d2f1fe180"
+             style={{
+                 WebkitTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                 MozTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                 msTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                 transform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                 opacity: 0
+             }}>
+
+            <div className="mg-top-80px">
+                <div
+                    className="title-left---content-right center"
+                >
+                    <h2>Course Breakdown</h2>
                 </div>
                 <div className="mg-top-32px mg-bottom-80px">
                     <div className="w-layout-grid grid-1-column gap-row-24px">

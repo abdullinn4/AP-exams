@@ -36,6 +36,17 @@ export const HeroSection = () => {
                                         {HOME_HERO.trustedText} <span className="bold text-neutral-100">{HOME_HERO.trustedCount}</span> {HOME_HERO.trustedSuffix}
                                     </div>
                                 </div>
+
+                                {/* Мобильное изображение - показывается только на малых экранах */}
+                                <div className="hero-mobile-image mg-top-32px">
+                                    <img
+                                        src={HOME_HERO.images.main}
+                                        loading="lazy"
+                                        alt="Hero Image"
+                                        className="image"
+                                    />
+                                </div>
+
                                 <div className="mg-top-32px">
                                     <h1 className="display-10 text-neutral-100">
                                         {HOME_HERO.title} <span className="heading-gradient">{HOME_HERO.titleHighlight}</span>
@@ -49,7 +60,7 @@ export const HeroSection = () => {
                                         <Link to={ROUTES.CATALOG} className="button-primary white w-inline-block">
                                             <div className="text-block">{HOME_HERO.ctaPrimary}</div>
                                             <div className="item-icon-right">
-                                                <div className="custom-icon-font"></div>
+                                                <div className="custom-icon-font"></div>
                                             </div>
                                         </Link>
                                         <a
@@ -63,21 +74,19 @@ export const HeroSection = () => {
                                 </div>
                             </div>
                             <div data-w-id="7c05c230-fecd-bfaf-c56b-58783c2d6d1c" className="image-container hero-image---home-v1">
-                                <img 
-                                    src={HOME_HERO.images.main} 
-                                    loading="lazy" 
-                                    alt="Hero Image" 
+                                <img
+                                    src={HOME_HERO.images.main}
+                                    loading="lazy"
+                                    alt="Hero Image"
                                     className="image z-index-1 floating-image---down"
                                 />
                                 <div className="blur-bg hero-bg---home-v1"></div>
-                                <div className="image-wrapper hero-float-image---home-v1 floating-image---up">
-                                    <img src={HOME_HERO.images.float} loading="eager" alt="" className="image" />
-                                </div>
+
                                 <div data-w-id="10aaa36f-a5fa-5307-350c-2670b8214199" className="image-wrapper float-image-01---hero-home-v1">
                                     <img src={HOME_HERO.images.floatPyramid} loading="eager" alt="" className="image rotate-60-deg" />
                                 </div>
                                 <div data-w-id="7fb39435-788a-a0e2-eebf-8fa67eedace6" className="image-wrapper float-image-02---hero-home-v1">
-                                    <img src={HOME_HERO.images.floatSquare} loading="eager" alt="" className="image" />
+                                    <img src={HOME_HERO.images.floatSquare} loading="eager" alt="" className="image rotate-60-deg" />
                                 </div>
                                 <div data-w-id="8dea4324-cda8-84c2-908d-22dfcf9d549a" className="image-wrapper float-image-03---hero-home-v1">
                                     <img src={HOME_HERO.images.floatCircle} loading="eager" alt="" className="image rotate-30-deg" />

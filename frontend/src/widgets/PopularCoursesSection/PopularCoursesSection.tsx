@@ -3,7 +3,15 @@ import { Link } from 'react-router-dom'
 import { CourseCard } from '@/widgets/CourseCard'
 import { HOME_POPULAR_COURSES } from '@/shared/config/content'
 
-export const PopularCoursesSection = () => {
+interface PopularCoursesSectionProps {
+    title?: string
+    titleHighlight?: string
+}
+
+export const PopularCoursesSection = ({
+                                          title = HOME_POPULAR_COURSES.title,
+                                          titleHighlight = HOME_POPULAR_COURSES.titleHighlight
+                                      }: PopularCoursesSectionProps) => {
     const sliderRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -15,13 +23,13 @@ export const PopularCoursesSection = () => {
 
     return (
         <section className="section">
-            <div className="section-card">
+            <div className="section-card" style={{ paddingBottom: '5rem', paddingTop: '5rem' }}>
                 <div className="w-layout-blockcontainer container-default w-container">
                     <div data-w-id="f402fcd4-a56b-275f-aeb1-72593824ca6a" className="inner-container _704px center-tablet">
                         <div className="center-content---tablet">
                             <h2 className="display-9">
-                                {HOME_POPULAR_COURSES.title}{' '}
-                                <span className="heading-gradient">{HOME_POPULAR_COURSES.titleHighlight}</span>
+                                {title}{' '}
+                                <span className="heading-gradient">{titleHighlight}</span>
                             </h2>
                         </div>
                     </div>
@@ -54,12 +62,12 @@ export const PopularCoursesSection = () => {
                             </div>
                             <div className="secondary-button-icon large slider-button-left---top-right w-slider-arrow-left">
                                 <div className="custom-icon-font">
-                                    <img src="/assets/webflow/images/arrow-left-black.svg" alt="left-arrow" style={{ height: '60%', width: '60%' }}/>
+                                    <img src="/assets/webflow/images/arrow-left_black.svg" alt="left-arrow"/>
                                 </div>
                             </div>
                             <div className="secondary-button-icon large slider-button-right---top-right w-slider-arrow-right">
                                 <div className="custom-icon-font">
-                                    <img src="/assets/webflow/images/arrow-right-black.svg" alt="right-arrow" style={{ height: '60%', width: '60%' }}/>
+                                    <img src="/assets/webflow/images/arrow-right_black.svg" alt="right-arrow"/>
                                 </div>
                             </div>
                             <div className="hidden w-slider-nav w-round w-num"></div>

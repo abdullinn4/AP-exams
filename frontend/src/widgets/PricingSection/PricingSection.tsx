@@ -38,10 +38,15 @@ export const PricingSection = ({
     }, [errorMessage, successMessage])
 
     return (
-        <section className="section">
-            <div className="w-layout-blockcontainer container-default w-container">
-                {/* Title */}
-                <div data-w-id="9e898e90-7c6e-18e6-7bea-3465030fade7" className="text-center mg-bottom-64px">
+
+        <div
+            className="w-layout-blockcontainer container-default w-container"
+            style={{paddingTop: '5rem', paddingBottom: '5rem'}}
+        >
+            <div className="mg-top-80px">
+                <div
+                    className="text-center mg-bottom-64px"
+                >
                     <h2 className="display-9" dangerouslySetInnerHTML={{ __html: title }} />
                     <div className="mg-top-16px">
                         <div className="inner-container _528px center">
@@ -100,6 +105,6 @@ export const PricingSection = ({
                     </div>
                 )}
             </div>
-        </section>
+        </div>
     )
 }

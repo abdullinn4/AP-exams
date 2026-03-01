@@ -1,5 +1,3 @@
-import type {TariffDetails} from "@/entities/tariff/tariff.ts";
-
 export const HOME_HERO = {
     avatars: [
         '/assets/webflow/images/preview_avatar_1.PNG',
@@ -16,8 +14,7 @@ export const HOME_HERO = {
     ctaPrimary: 'Start learning',
     ctaSecondary: 'Who we are',
     images: {
-        main: '/assets/webflow/images/its-your-turn-to-stand-as-a-web-designer-right-image-courselify-x-webflow-template.png',
-        float: '/assets/webflow/images/its-your-turn-to-stand-as-a-web-designer-left-image-courselify-x-webflow-template.png',
+        main: '/assets/webflow/images/a_preview.png',
         floatPyramid: '/assets/webflow/images/pyramid-figure-courselify-x-webflow-template.png',
         floatSquare: '/assets/webflow/images/square-figure-courselify-x-webflow-template.png',
         floatCircle: '/assets/webflow/images/circle-figure-courselify-x-webflow-template.png',
@@ -80,10 +77,10 @@ export const HOME_CHAPTERS = {
             className: 'grid-bottom-item-margin-top'
 
         }
-]
+    ]
 } as const
 
-    export const HOME_WHY_COURSE = {
+export const HOME_WHY_COURSE = {
     title: 'Get Top Scores On Your',
     titleHighlight: 'APs With Us.',
     description1: '',
@@ -92,10 +89,10 @@ export const HOME_CHAPTERS = {
     videoImage: '/assets/webflow/images/why-this-course-image-courselify-x-webflow-template.jpg',
     playButton: '/assets/webflow/images/play-button-courselify-x-webflow-template.svg',
     stats: [
-        { value: '10', suffix: '+', label: 'Courses' },
-        { value: '200', suffix: '+', label: 'Videos' },
-        { value: '10,000', suffix: '+', label: 'AP-Style Tasks' },
-        { value: '300', suffix: '+', label: 'Hours of content' }
+        {value: '10', suffix: '+', label: 'Courses'},
+        {value: '200', suffix: '+', label: 'Videos'},
+        {value: '10,000', suffix: '+', label: 'AP-Style Tasks'},
+        {value: '300', suffix: '+', label: 'Hours of content'}
     ]
 } as const
 
@@ -103,23 +100,23 @@ export const HOME_MEET_CEO = {
     title: 'Team That Goes',
     titleHighlight: 'All-in For You',
     description1: `We're more than just a team — we're your personal study squad obsessed with your success. Every lesson, strategy, and resource is built to help you score higher, stress less, and actually enjoy the journey. From day one to exam day, we're in your corner pushing you forward. No judgment, no pressure — just real support from people who genuinely care. Because your dream deserves a team that fights for it.`,
-description2: 'No fluff, no boring lectures — just real people who actually care about helping you crush your goals. When you win, we win.',
+    description2: 'No fluff, no boring lectures — just real people who actually care about helping you crush your goals. When you win, we win.',
     ctaText: 'More about us',
     image: '/assets/webflow/images/meet-andy-smith-image-courselify-x-webflow-template.jpg'
 } as const
 
-    export const HOME_CTA = {
+export const HOME_CTA = {
     title: "There's no",
     titleHighlight: '"perfect" time to start studying.',
     description: `The clock is ticking. Start now, not tomorrow. Every day you wait is a missed opportunity to boost your score. You don't need to be ready — you just need to begin. And we'll guide you every step of the way.`,
     ctaPrimary: 'Go to the cart',
     ctaSecondary: 'View all courses',
     images: {
-    main: '',
+        main: '/assets/webflow/images/trio-cta-section.PNG',
         floatSquare: '/assets/webflow/images/square-figure-courselify-x-webflow-template.png',
         floatCircle: '/assets/webflow/images/circle-figure-courselify-x-webflow-template.png',
         floatPyramid: '/assets/webflow/images/pyramid-figure-courselify-x-webflow-template.png'
-}
+    }
 } as const
 
 export const HOME_FEATURES = {
@@ -242,29 +239,6 @@ export const HOME_FAQ = {
     ]
 } as const
 
-export const homeTariffs: TariffDetails[] = [
-    {
-        id: 'basic',
-        courseId: 'general',
-        title: 'Basic',
-        tier: 'BASIC',
-        price: 99,
-        currency: 'USD',
-        paddleVariantId: '1',
-        isActive: true,
-    },
-    {
-        id: 'pro',
-        courseId: 'general',
-        title: 'Pro',
-        tier: 'PRO',
-        price: 199,
-        currency: 'USD',
-        paddleVariantId: '2',
-        isActive: true,
-    },
-] as const
-
 export const HOME_POPULAR_COURSES = {
     title: 'Popular',
     titleHighlight: 'Courses',
@@ -272,35 +246,35 @@ export const HOME_POPULAR_COURSES = {
     ctaLink: '/courses',
     courses: [
         {
-            id: 'ap-calculus-ab',
-            title: 'AP Calculus AB',
-            slug: 'ap-calculus-ab',
-            snippet: 'Master derivatives, integrals, and the fundamental theorem of calculus with real-world applications.',
-            coverUrl: '/assets/webflow/images/blockchain-image-courselify-x-webflow-template.jpg',
+            id: 'ap-csp-breaking-code',
+            title: 'AP CSP: Breaking Code',
+            slug: 'ap-csp-breaking-code',
+            snippet: 'All you need to smash AP Computer Science Principles 2026',
+            coverUrl: '/assets/webflow/images/breaking-code.png',
             wId: 'popular-course-1'
         },
         {
-            id: 'ap-physics-1',
-            title: 'AP Physics 1',
-            slug: 'ap-physics-1',
-            snippet: 'Explore mechanics, energy, waves, and electricity through hands-on problem-solving.',
-            coverUrl: '/assets/webflow/images/blockchain-image-courselify-x-webflow-template.jpg',
+            id: 'ap-csa-escape-the-matrix',
+            title: 'AP CSA: Escape the Matrix ',
+            slug: 'ap-csa-escape-the-matrix',
+            snippet: 'All you need to smash AP Computer Science A 2026',
+            coverUrl: '/assets/webflow/images/escape-the-matrix.png',
             wId: 'popular-course-2'
         },
         {
-            id: 'ap-chemistry',
-            title: 'AP Chemistry',
-            slug: 'ap-chemistry',
-            snippet: 'Dive into atomic structure, chemical reactions, thermodynamics, and equilibrium.',
-            coverUrl: '/assets/webflow/images/blockchain-image-courselify-x-webflow-template.jpg',
+            id: 'ap-calc-ab-game-of-graphs',
+            title: 'AP Calc BC: 67 Problems',
+            slug: 'ap-calc-ab-game-of-graphs',
+            snippet: 'Description: All you need to smash AP Calculus BC 2026',
+            coverUrl: '/assets/webflow/images/67_problems.png',
             wId: 'popular-course-3'
         },
         {
-            id: 'ap-biology',
-            title: 'AP Biology',
-            slug: 'ap-biology',
-            snippet: 'Study evolution, genetics, ecology, and cellular processes with lab-based learning.',
-            coverUrl: '/assets/webflow/images/blockchain-image-courselify-x-webflow-template.jpg',
+            id: 'ap-calc-bc-67-problems',
+            title: 'AP Calc AB: Game of Graphs',
+            slug: 'ap-calc-bc-67-problems',
+            snippet: 'All you need to smash AP Calculus AB 2026',
+            coverUrl: '/assets/webflow/images/game-of-graphs.png',
             wId: 'popular-course-4'
         }
     ]
@@ -317,27 +291,27 @@ export interface Course {
 
 export const COURSES_DATA: Course[] = [
     {
-        id: 1,
+        id: 2,
         title: 'AP Calculus AB',
         shortTitle: 'AP Calc AB',
         description: 'Tired? Smash your AP Calc exam with a complete online course packed with engaging video solutions, lectures, and hundreds of practice problems. We cover the official curriculum end-to-end, giving you the ultimate toolkit to boost your score and master calculus the easy way.',
-        image: '/assets/webflow/images/slider1.jpg',
+        image: '/assets/webflow/images/AP Calculus AB.png',
         slug: 'ap-calculus-ab'
     },
     {
-        id: 2,
+        id: 1,
         title: 'AP Computer Science Principles',
         shortTitle: 'AP CS Principles',
         description: 'Stop wasting hours searching through scattered tutorials and outdated forums. We’ve consolidated every single concept you need for the AP CSP exam into one seamless, all-in-one course, so you can finally stop hunting for answers and start mastering the material. Buy right now and own your exam confidence!',
-        image: '/assets/webflow/images/slider2.jpg',
+        image: '/assets/webflow/images/AP Computer Science Principles.png',
         slug: 'ap-cs-principles'
     },
     {
         id: 3,
-        title: 'AP Calculus BC',
-        shortTitle: 'AP Calc BC',
-        description: 'It’s everything you need to dominate the AP Calc exam: the full CollegeBoard curriculum, broken down simply, with tons of practice and videos for every tricky task. Master this and you will smash AP. Guaranteed.',
-        image: '/assets/webflow/images/slider3.jpg',
+        title: 'AP Psychology',
+        shortTitle: 'AP P',
+        description: 'Can\'t tell your Freud from your Piaget? We make every psychologist, theory, and concept crystal clear. Our streamlined course uses dynamic videos, smart mnemonics, and targeted practice to help you finally master the material—and crush the exam.',
+        image: '/assets/webflow/images/AP Psychology.png',
         slug: 'ap-calculus-bc'
     },
     {
@@ -345,15 +319,23 @@ export const COURSES_DATA: Course[] = [
         title: 'AP Computer Science A',
         shortTitle: 'AP CS A',
         description: 'Master every single topic College Board requires for AP CS A — ALL 55. We don\'t guess what\'s on the exam—we follow their official description to the letter, so every video, every theory lesson, and every test serves a purpose: your success. Enroll today and be certain—you\'ve learned exactly what College Board expects!"',
-        image: '/assets/webflow/images/slider4.jpg',
+        image: '/assets/webflow/images/AP Computer Science A.png',
         slug: 'ap-cs-a'
     },
     {
         id: 5,
+        title: 'AP Calculus BC',
+        shortTitle: 'AP Calc BC',
+        description: 'It’s everything you need to dominate the AP Calc exam: the full CollegeBoard curriculum, broken down simply, with tons of practice and videos for every tricky task. Master this and you will smash AP. Guaranteed.',
+        image: '/assets/webflow/images/AP Calculus BC.png',
+        slug: 'ap-l'
+    },
+    {
+        id: 6,
         title: 'AP Lang',
-        shortTitle: 'AP L',
+        shortTitle: 'AP Lang',
         description: 'Get the exact skills you need for the AP Lang exam without the boring lectures. We cover all the course material with clear video walkthroughs and plenty of practice, making it super simple to understand what the graders are looking for.',
-        image: '/assets/webflow/images/slider5.jpg',
+        image: '/assets/webflow/images/AP Lang.png',
         slug: 'ap-l'
     }
 ]
@@ -367,12 +349,12 @@ export const EXAM_PREP_STEPS = [
         ghostRole: 'that has everything',
         buttonText: 'Choose a course',
         video: '/assets/webflow/gifs/preview7.mp4',
-        subtitleColor: '#FF5B79',
+        subtitleColor: '#FF8A3C',
         titleColor: '#fff',
         descriptionColor: '#fff',
-        buttonColor: '#FF5B79',
-        ghostInfoColor: '#FF5B79',
-        bgGradient: 'linear-gradient(331deg, #2e0916 0%, #200a2b 100%)',
+        buttonColor: '#FF8A3C',
+        ghostInfoColor: '#FF8A3C',
+        bgGradient: 'linear-gradient(331deg, #1b1b40 0%, #303056 100%)',
     },
     {
         id: 2,
@@ -399,12 +381,12 @@ export const EXAM_PREP_STEPS = [
         ghostRole: 'What You\'ve Learned',
         buttonText: 'Coming soon',
         video: '/assets/webflow/gifs/preview3.mp4',
-        subtitleColor: '#fff',
-        titleColor: '#fff',
-        descriptionColor: '#fff',
-        buttonColor: '#A7DE93',
-        ghostInfoColor: '#A7DE93',
-        bgGradient: 'linear-gradient(331deg, #5b874b 0%, #0c3720 100%)',
+        subtitleColor: '#000',
+        titleColor: '#000',
+        descriptionColor: '#000',
+        buttonColor: '#5B3A8C',
+        ghostInfoColor: '#5B3A8C',
+        bgGradient: 'linear-gradient(331deg, #FF8A3C 0%, #fbc099 100%)',
     }
 ] as const
 
@@ -414,15 +396,15 @@ interface SliderVideo {
 }
 
 export const SLIDER_VIDEOS_TOP: SliderVideo[] = [
-    { src: '/assets/webflow/gifs/preview1.mp4', alt: 'AP Course Preview 1' },
-    { src: '/assets/webflow/gifs/preview7.mp4', alt: 'AP Course Preview 2' },
-    { src: '/assets/webflow/gifs/preview3.mp4', alt: 'AP Course Preview 3' },
-    { src: '/assets/webflow/gifs/preview5.mp4', alt: 'AP Course Preview 4' },
+    {src: '/assets/webflow/gifs/preview1.mp4', alt: 'AP Course Preview 1'},
+    {src: '/assets/webflow/gifs/preview7.mp4', alt: 'AP Course Preview 2'},
+    {src: '/assets/webflow/gifs/preview3.mp4', alt: 'AP Course Preview 3'},
+    {src: '/assets/webflow/gifs/preview5.mp4', alt: 'AP Course Preview 4'},
 ]
 
 export const SLIDER_VIDEOS_BOTTOM: SliderVideo[] = [
-    { src: '/assets/webflow/gifs/preview8.mp4', alt: 'AP Course Preview 5' },
-    { src: '/assets/webflow/gifs/preview2.mp4', alt: 'AP Course Preview 6' },
-    { src: '/assets/webflow/gifs/preview4.mp4', alt: 'AP Course Preview 7' },
-    { src: '/assets/webflow/gifs/preview6.mp4', alt: 'AP Course Preview 8' },
+    {src: '/assets/webflow/gifs/preview8.mp4', alt: 'AP Course Preview 5'},
+    {src: '/assets/webflow/gifs/preview2.mp4', alt: 'AP Course Preview 6'},
+    {src: '/assets/webflow/gifs/preview4.mp4', alt: 'AP Course Preview 7'},
+    {src: '/assets/webflow/gifs/preview6.mp4', alt: 'AP Course Preview 8'},
 ]

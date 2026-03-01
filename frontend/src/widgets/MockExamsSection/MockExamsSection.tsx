@@ -12,13 +12,14 @@ export const MockExamsSection = ({ courseSlug }: MockExamsSectionProps) => {
     })
 
     return (
-        <div className="w-layout-blockcontainer container-default w-container">
+        <div>
             {error ? (
                 <div style={{ textAlign: 'center', padding: '100px 0' }}>
                     <p style={{ color: 'red' }}>Failed to load test details. Please try again later.</p>
                 </div>
             ) : (
-                <div className="inner-container _865px center">
+                <div className="w-layout-blockcontainer container-default w-container">
+
                     <div className="mg-top-32px mg-bottom-80px">
                         <div className="w-layout-grid grid-1-column gap-row-24px">
                             <Link

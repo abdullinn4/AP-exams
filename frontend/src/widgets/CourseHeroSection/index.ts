@@ -1,1 +1,1 @@
-export {CourseVideoHeroSection} from './CourseVideoHeroSection.tsx'
+export {CourseHeroSection} from './CourseHeroSection.tsx'

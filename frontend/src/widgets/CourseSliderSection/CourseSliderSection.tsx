@@ -65,10 +65,10 @@ export const CourseSliderSection = () => {
 
     return (
         <section className="section">
-            <div className="section-card">
+            <div className="section-card" style={{ paddingBottom: '5rem', paddingTop: '5rem' }}>
                 <div data-w-id="f402fcd4-a56b-275f-aeb1-72593824ca6a" className="w-layout-blockcontainer container-default w-container">
                     <div className="course-slider-header">
-                        <h2 className="display-9 mg-bottom-0">
+                        <h2 className="display-9">
                             Choose your goal — <span className="heading-gradient">and we'll get you there</span>
                         </h2>
                     </div>
@@ -125,21 +125,21 @@ export const CourseSliderSection = () => {
 
                     <div className="nav">
                         <button
-                            className="secondary-button-icon large"
+                            className="secondary-button-icon"
                             onClick={() => showSlider('prev')}
                             disabled={isAnimating}
                         >
                             <div className="custom-icon-font">
-                                <img src="/assets/webflow/images/arrow-left-black.svg" alt="left-arrow" style={{ height: '60%', width: '60%' }}/>
+                                <img src="/assets/webflow/images/arrow-left_black.svg" alt="left-arrow"/>
                             </div>
                         </button>
                         <button
-                            className="secondary-button-icon large"
+                            className="secondary-button-icon"
                             onClick={() => showSlider('next')}
                             disabled={isAnimating}
                         >
                             <div className="custom-icon-font">
-                                <img src="/assets/webflow/images/arrow-right-black.svg" alt="right-arrow" style={{ height: '60%', width: '60%' }}/>
+                                <img src="/assets/webflow/images/arrow-right_black.svg" alt="right-arrow"/>
                             </div>
                         </button>
                     </div>

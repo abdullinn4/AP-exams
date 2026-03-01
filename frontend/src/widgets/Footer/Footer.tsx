@@ -28,7 +28,7 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
         )
     }
 
-    // Полный футер (Footer V1) - исправленный
+    // Полный футер (Footer V1)
     return (
         <footer data-w-id="016d8e1b-8412-bb5e-68d3-3aceb3839135" className="footer-wrapper">
             <div className="footer-card">
@@ -41,27 +41,25 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                 </Link>
                             </div>
                             <div className="mg-top-16px mg-top-8px-tablet">
-                                <p>Lorem ipsum dolor sit amet lorem consectetur pretium neque leo eu nibh neque ultricies pellentesque.</p>
+                                <p>Online School that will really  prepare you to your AP exams</p>
                             </div>
                             <div className="mg-top-24px mg-top-16px-tablet">
                                 <div className="social-media-grid">
-                                    <a href="https://www.facebook.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
-                                        <div className="icon-font-social-media"></div>
-                                    </a>
+
                                     <a href="https://www.twitter.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
                                         <div className="icon-font-social-media"></div>
                                     </a>
                                     <a href="https://www.instagram.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
                                         <div className="icon-font-social-media"></div>
                                     </a>
-                                    <a href="https://www.linkedin.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
-                                        <div className="icon-font-social-media"></div>
-                                    </a>
+
                                     <a href="https://www.youtube.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
                                         <div className="icon-font-social-media"></div>
                                     </a>
-                                    <a href="https://www.dribbble.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
-                                        <div className="icon-font-social-media"></div>
+                                    <a href="https://www.tiktok.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                        <div className="icon-font-social-media">
+                                            <img src="/assets/webflow/images/tiktok-icon.svg" alt="tiktok-icon"/>
+                                        </div>
                                     </a>
                                 </div>
                             </div>
@@ -78,25 +76,55 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                                 </Link>
                                             </li>
                                             <li className="footer-column-item">
+                                                <Link to={ROUTES.CATALOG} className="footer-item-link w-inline-block">
+                                                    <div>Buy Courses</div>
+                                                </Link>
+                                            </li>
+                                            <li className="footer-column-item">
                                                 <Link to={ROUTES.ABOUT} className="footer-item-link w-inline-block">
                                                     <div>About</div>
-                                                </Link>
-                                            </li>
-                                            <li className="footer-column-item">
-                                                <Link to={ROUTES.CATALOG} className="footer-item-link w-inline-block">
-                                                    <div>Courses</div>
-                                                </Link>
-                                            </li>
-                                            <li className="footer-column-item">
-                                                <Link to={ROUTES.TERMS_AND_CONDITIONS} className="footer-item-link w-inline-block">
-                                                    <div>Terms & Conditions</div>
                                                 </Link>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div id="w-node-_4ce7d77c-4018-d530-59d0-9a7e57241a6c-57241a43">
-                                    <h3 className="footer-title">Utility pages</h3>
+                                    <h3 className="footer-title">Courses</h3>
+                                    <ul role="list" className="footer-column-links">
+                                        <li className="footer-column-item">
+                                            <Link to='/courses/ap-calc-ab-game-of-graphs/preview' className="footer-item-link w-inline-block">
+                                                <div>AP Calc AB</div>
+                                            </Link>
+                                        </li>
+                                        <li className="footer-column-item">
+                                            <Link to='/courses/ap-csp-breaking-code/preview' className="footer-item-link w-inline-block">
+                                                <div>AP Cs P</div>
+                                            </Link>
+                                        </li>
+                                        <li className="footer-column-item">
+                                            <Link to='/courses/ap-calc-bc-67-problems/preview' className="footer-item-link w-inline-block">
+                                                <div>AP Calc BC</div>
+                                            </Link>
+                                        </li>
+                                        <li className="footer-column-item">
+                                            <Link to='/courses/ap-csa-escape-the-matrix/preview' className="footer-item-link w-inline-block">
+                                                <div>AP Cs A</div>
+                                            </Link>
+                                        </li>
+                                        <li className="footer-column-item">
+                                            <Link to='/courses/ap-lang/preview' className="footer-item-link w-inline-block">
+                                                <div>AP Lang</div>
+                                            </Link>
+                                        </li>
+                                        <li className="footer-column-item">
+                                            <Link to='/courses/ap-psych/preview' className="footer-item-link w-inline-block">
+                                                <div>AP Psych</div>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="w-node-_4ce7d77c-4018-d530-59d0-9a7e57241a6c-57241a43">
+                                    <h3 className="footer-title">Other</h3>
                                     <ul role="list" className="footer-column-links">
                                         <li className="footer-column-item">
                                             <Link to={ROUTES.SIGN_IN} className="footer-item-link w-inline-block">
@@ -104,8 +132,8 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                             </Link>
                                         </li>
                                         <li className="footer-column-item">
-                                            <Link to={ROUTES.CATALOG} className="footer-item-link w-inline-block">
-                                                <div>Browse Courses</div>
+                                            <Link to={ROUTES.TERMS_AND_CONDITIONS} className="footer-item-link w-inline-block">
+                                                <div>Terms & Conditions</div>
                                             </Link>
                                         </li>
                                     </ul>

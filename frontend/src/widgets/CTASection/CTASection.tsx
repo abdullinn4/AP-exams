@@ -10,6 +10,17 @@ export const CTASection = () => {
                         <h2 className="display-9 text-neutral-100">
                             {HOME_CTA.title} <span className="heading-gradient">{HOME_CTA.titleHighlight}</span>
                         </h2>
+
+                        {/* Мобильное изображение - показывается только на малых экранах */}
+                        <div className="cta-mobile-image mg-top-32px">
+                            <img
+                                src={HOME_CTA.images.main}
+                                loading="eager"
+                                alt="Stand as a Web Designer"
+                                className="image"
+                            />
+                        </div>
+
                         <div className="inner-container _525px _100-tablet">
                             <div className="mg-top-16px">
                                 <p className="text-neutral-400" style={{ color: '#fff', fontSize: '20px' }}>{HOME_CTA.description}</p>
@@ -27,11 +38,12 @@ export const CTASection = () => {
                     </div>
                     <div data-w-id="d3e8bab9-1a86-5716-e12d-7503b0a51d95" className="image-container main-image---cta-v1">
                         <div className="blur-bg bg-cta-v1"></div>
-                        <img 
-                            src={HOME_CTA.images.main} 
-                            loading="eager" 
-                            alt="Stand as a Web Designer" 
-                            className="image position-relative floating-image---down"
+                        <img
+                            src={HOME_CTA.images.main}
+                            loading="eager"
+                            alt="Stand as a Web Designer"
+                            className="image z-index-1 floating-image---down"
+                            style={{ width: '90%' }}
                         />
                         <div data-w-id="3b0e7f5d-d15c-be14-3d10-f79e13daafde" className="image-wrapper float-image-01---cta-v1">
                             <img src={HOME_CTA.images.floatSquare} loading="eager" alt="" className="image rotate-15-deg" />
