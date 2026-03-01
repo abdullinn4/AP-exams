@@ -254,25 +254,25 @@ export const HOME_POPULAR_COURSES = {
             wId: 'popular-course-1'
         },
         {
-            id: 'ap-csa-escape-the-matrix',
+            id: 'ap-computer-science-a',
             title: 'AP CSA: Escape the Matrix ',
-            slug: 'ap-csa-escape-the-matrix',
+            slug: 'ap-computer-science-a',
             snippet: 'All you need to smash AP Computer Science A 2026',
             coverUrl: '/assets/webflow/images/escape-the-matrix.png',
             wId: 'popular-course-2'
         },
         {
-            id: 'ap-calc-ab-game-of-graphs',
+            id: 'ap-calc-bc-67-problems',
             title: 'AP Calc BC: 67 Problems',
-            slug: 'ap-calc-ab-game-of-graphs',
+            slug: 'ap-calc-bc-67-problems',
             snippet: 'Description: All you need to smash AP Calculus BC 2026',
             coverUrl: '/assets/webflow/images/67_problems.png',
             wId: 'popular-course-3'
         },
         {
-            id: 'ap-calc-bc-67-problems',
+            id: 'ap-calculus-ab',
             title: 'AP Calc AB: Game of Graphs',
-            slug: 'ap-calc-bc-67-problems',
+            slug: 'ap-calculus-ab',
             snippet: 'All you need to smash AP Calculus AB 2026',
             coverUrl: '/assets/webflow/images/game-of-graphs.png',
             wId: 'popular-course-4'
@@ -320,7 +320,7 @@ export const COURSES_DATA: Course[] = [
         shortTitle: 'AP CS A',
         description: 'Master every single topic College Board requires for AP CS A — ALL 55. We don\'t guess what\'s on the exam—we follow their official description to the letter, so every video, every theory lesson, and every test serves a purpose: your success. Enroll today and be certain—you\'ve learned exactly what College Board expects!"',
         image: '/assets/webflow/images/AP Computer Science A.png',
-        slug: 'ap-cs-a'
+        slug: 'ap-computer-science-a'
     },
     {
         id: 5,
