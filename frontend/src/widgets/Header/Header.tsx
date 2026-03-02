@@ -10,7 +10,7 @@ interface HeaderProps {
 }
 
 export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
-    const {isAuthenticated, logout} = useAuth()
+    const {isAuthenticated} = useAuth()
     const [isCartOpen, setIsCartOpen] = useState(false)
 
     // Выбор логотипа в зависимости от темы
@@ -29,7 +29,8 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                 <div className="container-default w-container">
                     <div data-w-id="b209dc69-0839-20fe-af3a-c9ee1dec5ef4" className="header-container-wrapper center">
                         <div className="logo-wrapper v1">
-                            <Link to="/" className="logo-link w-inline-block" style={{display:"flex", alignItems: 'center', justifyContent: 'center' }}>
+                            <Link to="/" className="logo-link w-inline-block"
+                                  style={{display: "flex", alignItems: 'center', justifyContent: 'center'}}>
                                 <img src={logoSrc} alt="AP Exams Logo" style={{width: 'auto', height: '60px'}}/>
                             </Link>
                         </div>
@@ -51,7 +52,8 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                 <div data-w-id="c7c25743-3af1-4a48-2846-73035f33d328" className="header-container-wrapper">
                     <div className="nav-menu-left-side v1">
                         <div className="logo-wrapper v1">
-                            <Link to="/" className="logo-link w-inline-block" style={{display:"flex", alignItems: 'center', justifyContent: 'center' }}>
+                            <Link to="/" className="logo-link w-inline-block"
+                                  style={{display: "flex", alignItems: 'center', justifyContent: 'center'}}>
                                 <img src={logoSrc} alt="AP Exams Logo" style={{width: 'auto', height: '40px'}}/>
                             </Link>
                         </div>
@@ -64,7 +66,7 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                     </Link>
                                 </li>
                                 <li className="link-nav-item">
-                                    <Link to="/about" className={linkClass}>
+                                    <Link to="/" className={linkClass}>
                                         About
                                     </Link>
                                 </li>
@@ -94,7 +96,7 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                                             <div className="dropdown-link-column">
                                                                 <Link to={ROUTES.HOME}
                                                                       className="dropdown-link">Home</Link>
-                                                                <Link to={ROUTES.ABOUT}
+                                                                <Link to="/"
                                                                       className="dropdown-link">About</Link>
                                                                 <Link to={ROUTES.CATALOG}
                                                                       className="dropdown-link">Courses</Link>
@@ -104,35 +106,38 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    {isAuthenticated && (
-                                                        <div>
-                                                            <h3 className="dropdown-title">My Learning</h3>
-                                                            <div className="w-layout-grid main-pages-wrapper">
-                                                                <div className="dropdown-link-column">
-                                                                    <Link to={ROUTES.DASHBOARD}
-                                                                          className="dropdown-link">Dashboard</Link>
-                                                                    <Link to={ROUTES.MY_COURSES}
-                                                                          className="dropdown-link">My Courses</Link>
-                                                                    <Link to={ROUTES.STATISTICS}
-                                                                          className="dropdown-link">Statistics</Link>
-                                                                    <button
-                                                                        onClick={logout}
-                                                                        className="dropdown-link"
-                                                                        style={{
-                                                                            background: 'none',
-                                                                            border: 'none',
-                                                                            padding: 0,
-                                                                            cursor: 'pointer',
-                                                                            textAlign: 'left',
-                                                                            width: '100%'
-                                                                        }}
-                                                                    >
-                                                                        Logout
-                                                                    </button>
-                                                                </div>
+                                                    <div>
+                                                        <h3 className="dropdown-title">Courses</h3>
+                                                        <div className="w-layout-grid main-pages-wrapper">
+                                                            <div className="dropdown-link-column">
+                                                                <Link to='/courses/ap-calc-ab-game-of-graphs/preview'
+                                                                      className="footer-item-link w-inline-block">
+                                                                    <div>AP Calc AB</div>
+                                                                </Link>
+                                                                <Link to='/courses/ap-csp-breaking-code/preview'
+                                                                      className="footer-item-link w-inline-block">
+                                                                    <div>AP Cs P</div>
+                                                                </Link>
+                                                                <Link to='/courses/ap-calc-bc-67-problems/preview'
+                                                                      className="footer-item-link w-inline-block">
+                                                                    <div>AP Calc BC</div>
+                                                                </Link>
+                                                                <Link to='/courses/ap-csa-escape-the-matrix/preview'
+                                                                      className="footer-item-link w-inline-block">
+                                                                    <div>AP Cs A</div>
+                                                                </Link>
+                                                                <Link to='/courses/ap-lang/preview'
+                                                                      className="footer-item-link w-inline-block">
+                                                                    <div>AP Lang</div>
+                                                                </Link>
+                                                                <Link to='/courses/ap-psych/preview'
+                                                                      className="footer-item-link w-inline-block">
+                                                                    <div>AP Psych</div>
+                                                                </Link>
                                                             </div>
                                                         </div>
-                                                    )}
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </nav>

@@ -81,7 +81,7 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                                 </Link>
                                             </li>
                                             <li className="footer-column-item">
-                                                <Link to={ROUTES.ABOUT} className="footer-item-link w-inline-block">
+                                                <Link to="/" className="footer-item-link w-inline-block">
                                                     <div>About</div>
                                                 </Link>
                                             </li>

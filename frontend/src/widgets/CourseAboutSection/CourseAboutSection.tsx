@@ -18,7 +18,7 @@ export const CourseAboutSection = ({ course }: CourseAboutSectionProps) => {
         >
             <div className="rich-text w-richtext">
                 <h2>About the course</h2>
-                <p>{course?.description}</p>
+                <p style={{whiteSpace: 'pre-line', paddingTop: '10px', paddingBottom: '10px' }}>{course?.description}</p>
             </div>
 
             <div className="image-wrapper video-bg-image-wrapper">

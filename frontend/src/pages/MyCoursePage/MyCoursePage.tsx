@@ -7,6 +7,7 @@ import {MockExamsSection} from "@/widgets/MockExamsSection";
 import {CourseStructureCard} from "@/widgets/CourseStructureCard";
 import {CourseHeroSection} from "@/widgets/CourseHeroSection";
 import {CourseAboutSection} from "@/widgets/CourseAboutSection";
+import {useGetMockExamsQuery} from "@/shared/api/mockExamApi.ts";
 
 export const MyCoursePage = () => {
     const {slug} = useParams<{ slug: string }>()
@@ -14,6 +15,12 @@ export const MyCoursePage = () => {
     const {data: course, error} = useGetCourseDetailsQuery(slug!, {
         skip: !slug
     })
+
+    const { data: mockExamsData } = useGetMockExamsQuery(course?.slug || '', {
+        skip: !course?.slug
+    })
+
+    const totalLessons = course?.units?.reduce((sum, unit) => sum + unit.totalLessons, 0) || 0
 
     if (!slug) {
         return (
@@ -31,7 +38,6 @@ export const MyCoursePage = () => {
         <div className="page-wrapper">
             <div className="course-preview-sticky-container">
                 <CourseHeroSection course={course}/>
-
 
                 {error ? (
                     <div style={{textAlign: 'center', padding: '100px 0'}}>
@@ -66,7 +72,12 @@ export const MyCoursePage = () => {
                                             opacity: 0
                                         }}
                                         className="course-preview-sidebar">
-                                        <CourseStructureCard/>
+                                        <CourseStructureCard
+                                            totalLessons={totalLessons}
+                                            totalUnits={course?.units?.length || 0}
+                                            totalMockExams={mockExamsData?.totalExams}
+                                            showStartButton={false}
+                                        />
                                         <div className="mg-top-24px">
 
                                         </div>
@@ -74,7 +85,12 @@ export const MyCoursePage = () => {
 
                                     {/* Mobile Version */}
                                     <div className="course-preview-sidebar-mobile">
-                                        <CourseStructureCard/>
+                                        <CourseStructureCard
+                                            totalLessons={totalLessons}
+                                            totalUnits={course?.units?.length || 0}
+                                            totalMockExams={mockExamsData?.totalExams}
+                                            showStartButton={false}
+                                        />
                                     </div>
                                 </div>
                             </div>

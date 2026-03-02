@@ -3,10 +3,11 @@ import { ProgressBar } from '@/widgets/ProgressBar'
 import { useGetMockExamsQuery } from '@/shared/api/mockExamApi'
 
 interface MockExamsSectionProps {
-    courseSlug?: string
+    courseSlug?: string,
+    isPreview?: boolean
 }
 
-export const MockExamsSection = ({ courseSlug }: MockExamsSectionProps) => {
+export const MockExamsSection = ({ courseSlug, isPreview }: MockExamsSectionProps) => {
     const { data: mockExamsData, error } = useGetMockExamsQuery(courseSlug!, {
         skip: !courseSlug
     })
@@ -19,46 +20,70 @@ export const MockExamsSection = ({ courseSlug }: MockExamsSectionProps) => {
                 </div>
             ) : (
                 <div className="w-layout-blockcontainer container-default w-container">
-
                     <div className="mg-top-32px mg-bottom-80px">
                         <div className="w-layout-grid grid-1-column gap-row-24px">
-                            <Link
-                                to={`/courses/${courseSlug}/mock-exams`}
-                                className="card chapter-premium-card w-inline-block"
-                            >
-                                <div className="chapter-premium-card---left-content">
-                                    <div className="image-wrapper chapter-icon">
-                                        <img
-                                            src='/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png'
-                                            loading="eager"
-                                            alt="Exam Tests Icon"
-                                        />
-                                    </div>
-                                    <div className="inner-container _460px">
-                                        <h2 className="display-5 title">Exam Tests</h2>
-                                        <div className="mg-top-4px">
-                                            <p>Practice with full-length mock exams to test your knowledge</p>
-                                        </div>
-                                        <div className="mg-top-16px">
-                                            <ProgressBar
-                                                percentage={mockExamsData?.progressPercentage}
-                                                animated={true}
-                                                height="6px"
+                            {isPreview ? (
+                                <div className="card chapter-premium-card w-inline-block">
+                                    <div className="chapter-premium-card---left-content">
+                                        <div className="image-wrapper chapter-icon">
+                                            <img
+                                                src='/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png'
+                                                loading="eager"
+                                                alt="Exam Tests Icon"
                                             />
                                         </div>
+                                        <div className="inner-container _460px">
+                                            <h2 className="display-5 title">Exam Tests</h2>
+                                            <div className="mg-top-4px">
+                                                <p>Practice with full-length mock exams to test your knowledge</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="chapter-premium-card---right-content">
-                                    <div className="badge secondary">
-                                        <div>{mockExamsData?.totalExams} Tests</div>
-                                    </div>
-                                    <div className="display-2 bold text-neutral-800">
-                                        <div className="link">
-                                            <div>Browse tests</div>
+                                    <div className="chapter-premium-card---right-content">
+                                        <div className="badge secondary">
+                                            <div>{mockExamsData?.totalExams} Tests</div>
                                         </div>
                                     </div>
                                 </div>
-                            </Link>
+                            ) : (
+                                <Link
+                                    to={`/courses/${courseSlug}/mock-exams`}
+                                    className="card chapter-premium-card w-inline-block"
+                                >
+                                    <div className="chapter-premium-card---left-content">
+                                        <div className="image-wrapper chapter-icon">
+                                            <img
+                                                src='/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png'
+                                                loading="eager"
+                                                alt="Exam Tests Icon"
+                                            />
+                                        </div>
+                                        <div className="inner-container _460px">
+                                            <h2 className="display-5 title">Exam Tests</h2>
+                                            <div className="mg-top-4px">
+                                                <p>Practice with full-length mock exams to test your knowledge</p>
+                                            </div>
+                                            <div className="mg-top-16px">
+                                                <ProgressBar
+                                                    percentage={mockExamsData?.progressPercentage}
+                                                    animated={true}
+                                                    height="6px"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="chapter-premium-card---right-content">
+                                        <div className="badge secondary">
+                                            <div>{mockExamsData?.totalExams} Tests</div>
+                                        </div>
+                                        <div className="display-2 bold text-neutral-800">
+                                            <div className="link">
+                                                <div>Browse tests</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Link>
+                            )}
                         </div>
                     </div>
                 </div>

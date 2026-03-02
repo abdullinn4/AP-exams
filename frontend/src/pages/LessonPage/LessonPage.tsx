@@ -13,6 +13,8 @@ import {useScrollToTest} from "@/features/test/model/useScrollToTest.ts";
 import {useGetLessonDetailsQuery} from "@/shared/api/courseApi.ts";
 import {LessonPromoCard} from "@/widgets/LessonPromoCard";
 import {useWebflowReinit} from "@/shared/lib/hooks/useWebflowReinit.ts";
+import {useLessonNavigation} from "@/shared/lib/hooks/useLessonNavigation.ts";
+import {LessonNavigationButtons} from "@/widgets/LessonNavigationButtons";
 
 export const LessonPage = () => {
     const {slug, unitId, lessonId} = useParams<{
@@ -40,6 +42,8 @@ export const LessonPage = () => {
         viewResults,
         backToSummary,
     } = useLessonTest(lesson)
+
+    const navigation = useLessonNavigation(slug!, unitId!, lessonId!)
 
     const testSectionRef = useRef<HTMLDivElement | null>(null)
     useScrollToTest(view, testSectionRef)
@@ -152,20 +156,35 @@ export const LessonPage = () => {
                         <div className="mg-top-80px">
                             <div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100"
                                  className="w-tabs">
-                                <div className="tabs-menu-wrapper w-tab-menu">
-                                    <a data-w-tab="Tab 1" className="tab-button w-inline-block w-tab-link w--current">
-                                        <div>Theory</div>
-                                    </a>
-                                    {lesson?.testId && (
-                                        <a data-w-tab="Tab 2" className="tab-button w-inline-block w-tab-link">
-                                            <div>Test</div>
+                                <div className="tabs-menu-wrapper w-tab-menu" style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    flexWrap: 'wrap',
+                                    gap: '16px'
+                                }}>
+                                    <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                                        <a data-w-tab="Tab 1" className="tab-button w-inline-block w-tab-link w--current">
+                                            <div>Theory</div>
                                         </a>
-                                    )}
-                                    {/*{lesson?.canContactCurator && (
+                                        {lesson?.testId && (
+                                            <a data-w-tab="Tab 2" className="tab-button w-inline-block w-tab-link">
+                                                <div>Test</div>
+                                            </a>
+                                        )}
+                                        {/*{lesson?.canContactCurator && (
                                         <a data-w-tab="Tab 3" className="tab-button w-inline-block w-tab-link">
                                             <div>Contact Curator</div>
                                         </a>
                                     )}*/}
+                                    </div>
+
+                                    <LessonNavigationButtons
+                                        prevUrl={navigation.prevUrl}
+                                        nextUrl={navigation.nextUrl}
+                                        hasPrev={navigation.hasPrev}
+                                        hasNext={navigation.hasNext}
+                                    />
                                 </div>
 
                                 <div className="mg-top-40px w-tab-content">

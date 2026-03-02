@@ -26,7 +26,7 @@ export const CourseSliderSection = () => {
         timeoutRef.current = window.setTimeout(() => {
             setIsAnimating(false)
             setAnimationType(null)
-        }, 500)
+        }, 450)
 
         resetAutoPlay()
     }

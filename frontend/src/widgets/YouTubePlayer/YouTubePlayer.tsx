@@ -36,9 +36,6 @@ export const YouTubePlayer = ({ videoUrl, className = '' }: YouTubePlayerProps) 
             <iframe
                 className="embedly-embed"
                 src={embedUrl}
-                width="100%"
-                height="100%"
-                style={{ aspectRatio: '16/9' }}
                 scrolling="no"
                 title="YouTube video"
                 frameBorder="0"

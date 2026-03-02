@@ -247,36 +247,37 @@ export const HOME_POPULAR_COURSES = {
     courses: [
         {
             id: 'ap-csp-breaking-code',
-            title: 'AP CSP: Breaking Code',
+            title: 'CSP: Breaking Code',
             slug: 'ap-csp-breaking-code',
             snippet: 'All you need to smash AP Computer Science Principles 2026',
             coverUrl: '/assets/webflow/images/breaking-code.png',
             wId: 'popular-course-1'
         },
         {
-            id: 'ap-computer-science-a',
-            title: 'AP CSA: Escape the Matrix ',
-            slug: 'ap-computer-science-a',
-            snippet: 'All you need to smash AP Computer Science A 2026',
-            coverUrl: '/assets/webflow/images/escape-the-matrix.png',
-            wId: 'popular-course-2'
-        },
-        {
-            id: 'ap-calc-bc-67-problems',
-            title: 'AP Calc BC: 67 Problems',
-            slug: 'ap-calc-bc-67-problems',
-            snippet: 'Description: All you need to smash AP Calculus BC 2026',
-            coverUrl: '/assets/webflow/images/67_problems.png',
-            wId: 'popular-course-3'
-        },
-        {
             id: 'ap-calculus-ab',
-            title: 'AP Calc AB: Game of Graphs',
+            title: 'Calc AB: Game of Graphs',
             slug: 'ap-calculus-ab',
             snippet: 'All you need to smash AP Calculus AB 2026',
             coverUrl: '/assets/webflow/images/game-of-graphs.png',
+            wId: 'popular-course-2'
+        },
+        {
+            id: 'ap-computer-science-a',
+            title: 'CSA: Escape the Matrix ',
+            slug: 'ap-computer-science-a',
+            snippet: 'All you need to smash AP Computer Science A 2026',
+            coverUrl: '/assets/webflow/images/escape-the-matrix.png',
+            wId: 'popular-course-3'
+        },
+        {
+            id: 'ap-calc-bc-67-problems',
+            title: 'Calc BC: 67 Problems',
+            slug: 'ap-calc-bc-67-problems',
+            snippet: 'All you need to smash AP Calculus BC 2026',
+            coverUrl: '/assets/webflow/images/67_problems.png',
             wId: 'popular-course-4'
-        }
+        },
+
     ]
 } as const
 
@@ -301,7 +302,7 @@ export const COURSES_DATA: Course[] = [
     {
         id: 1,
         title: 'AP Computer Science Principles',
-        shortTitle: 'AP CS Principles',
+        shortTitle: 'AP CS P',
         description: 'Stop wasting hours searching through scattered tutorials and outdated forums. We’ve consolidated every single concept you need for the AP CSP exam into one seamless, all-in-one course, so you can finally stop hunting for answers and start mastering the material. Buy right now and own your exam confidence!',
         image: '/assets/webflow/images/AP Computer Science Principles.png',
         slug: 'ap-cs-principles'
@@ -309,7 +310,7 @@ export const COURSES_DATA: Course[] = [
     {
         id: 3,
         title: 'AP Psychology',
-        shortTitle: 'AP P',
+        shortTitle: 'AP Psych',
         description: 'Can\'t tell your Freud from your Piaget? We make every psychologist, theory, and concept crystal clear. Our streamlined course uses dynamic videos, smart mnemonics, and targeted practice to help you finally master the material—and crush the exam.',
         image: '/assets/webflow/images/AP Psychology.png',
         slug: 'ap-calculus-bc'
