@@ -161,11 +161,11 @@ export const LessonPage = () => {
                                             <div>Test</div>
                                         </a>
                                     )}
-                                    {lesson?.canContactCurator && (
+                                    {/*{lesson?.canContactCurator && (
                                         <a data-w-tab="Tab 3" className="tab-button w-inline-block w-tab-link">
                                             <div>Contact Curator</div>
                                         </a>
-                                    )}
+                                    )}*/}
                                 </div>
 
                                 <div className="mg-top-40px w-tab-content">
@@ -227,7 +227,7 @@ export const LessonPage = () => {
                                         </div>
                                     )}
 
-                                    {/* Contact Curator Tab */}
+                                    {/* Contact Curator Tab
                                     {lesson?.canContactCurator && (
                                         <div data-w-tab="Tab 3" className="w-tab-pane">
                                             <div className="card tab-card">
@@ -252,7 +252,7 @@ export const LessonPage = () => {
                                                 )}
                                             </div>
                                         </div>
-                                    )}
+                                    )}*/}
                                 </div>
                             </div>
                         </div>
