@@ -5,7 +5,6 @@ export const TARIFF_DESCRIPTIONS = {
             "Access to all lessons",
             "Exclusive videos",
             "Exclusive AP-style tests",
-            "Monthly Q&A sessions",
         ]
     },
     PRO: {
