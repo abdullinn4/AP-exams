@@ -2,9 +2,9 @@ import {HOME_CHAPTERS} from "@/shared/config/content";
 
 export const ChaptersSection = () => {
     return (
-        <section id="chapters" className="section">
+        <section id="chapters" className="section top">
             <div className="w-layout-blockcontainer container-default w-container">
-                <div data-w-id="34843878-4922-e140-fb72-ce72b9457d79" className="inner-container _585px center">
+                <div data-w-id="34843878-4922-e140-fb72-ce72b9457d79" className="inner-container _704px center">
                     <div className="text-center">
                         <h2 className="display-9">{HOME_CHAPTERS.title} <span
                             className="heading-gradient">{HOME_CHAPTERS.titleHighlight}</span></h2>

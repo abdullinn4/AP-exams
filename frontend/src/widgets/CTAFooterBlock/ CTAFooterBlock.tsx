@@ -6,7 +6,7 @@ export const CTAFooterBlock = () => {
         <div className="footer-cta">
             <div className="inner-container _625px">
                 <h2 className="display-9 text-neutral-100">
-                    Start your <span className="heading-gradient">way to «5»</span>
+                    Start your <span className="heading-gradient">way to «5» with SmashAP</span>
                 </h2>
             </div>
             <div className="buttons-row wrap---tablet">
@@ -15,9 +15,6 @@ export const CTAFooterBlock = () => {
                     <div className="item-icon-right">
                         <div className="custom-icon-font"></div>
                     </div>
-                </Link>
-                <Link to="#" className="secondary-button white w-inline-block">
-                    <div className="text-block">Watch video</div>
                 </Link>
             </div>
             <div className="blur-bg footer-v1"></div>

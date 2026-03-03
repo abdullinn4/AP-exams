@@ -98,7 +98,7 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                         </li>
                                         <li className="footer-column-item">
                                             <Link to='/courses/ap-csp-breaking-code/preview' className="footer-item-link w-inline-block">
-                                                <div>AP Cs P</div>
+                                                <div>AP CS P</div>
                                             </Link>
                                         </li>
                                         <li className="footer-column-item">
@@ -108,7 +108,7 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                         </li>
                                         <li className="footer-column-item">
                                             <Link to='/courses/ap-csa-escape-the-matrix/preview' className="footer-item-link w-inline-block">
-                                                <div>AP Cs A</div>
+                                                <div>AP CS A</div>
                                             </Link>
                                         </li>
                                         <li className="footer-column-item">

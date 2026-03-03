@@ -52,7 +52,7 @@ export const ExamPrepWorksSection = () => {
     }, [])
 
     return (
-        <section className="section exam-prep-section">
+        <section className="section exam-prep-section top">
             <div className="w-layout-blockcontainer container-default w-container">
                 <div className="exam-prep-header">
                     <h2 className="display-9 mg-bottom-0">

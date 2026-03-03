@@ -15,7 +15,7 @@ export const HeroSection = () => {
     }
 
     return (
-        <section className="section top">
+        <section className="section-card-padding top">
             <div className="position-relative">
                 <Header variant="full" theme="light" />
                 <div data-w-id="fa95ee18-0a5c-64ab-0aaf-ae790687b46c" className="section-card hero-section">
@@ -52,9 +52,6 @@ export const HeroSection = () => {
                                         {HOME_HERO.title} <span className="heading-gradient">{HOME_HERO.titleHighlight}</span>
                                     </h1>
                                 </div>
-                                <p className="text-neutral-400">
-                                    {HOME_HERO.description}
-                                </p>
                                 <div className="mg-top-40px">
                                     <div className="buttons-row left">
                                         <Link to={ROUTES.CATALOG} className="button-primary white w-inline-block">

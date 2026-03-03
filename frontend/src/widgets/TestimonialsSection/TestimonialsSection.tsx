@@ -4,8 +4,8 @@ import {ROUTES} from "@/app/router/routes.ts";
 
 export const TestimonialsSection = () => {
     return (
-        <section className="section">
-            <div data-w-id="f402fcd4-a56b-275f-aeb1-72593824ca6a" className="section-card testimonial-section---home-v2-purple">
+        <section className="section-card-padding top">
+            <div data-w-id="f402fcd4-a56b-275f-aeb1-72593824ca6a" className="section-card testimonial-section---home-v2-purple" style={{paddingBottom: '10rem'}}>
                 <div className="w-layout-blockcontainer container-default width-100 w-container">
                     <div data-w-id="ef77529f-1336-8fb1-c66b-8948ce1e97d7" className="title-left---content-right">
                         <div className="inner-container _704px _100-tablet">
@@ -52,7 +52,6 @@ export const TestimonialsSection = () => {
                                         src={testimonial.avatar}
                                         loading="eager"
                                         alt={`${testimonial.name} Avatar`}
-                                        className="image"
                                     />
                                 </div>
                             </div>

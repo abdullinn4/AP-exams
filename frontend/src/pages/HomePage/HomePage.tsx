@@ -19,8 +19,8 @@ export const HomePage = () => {
             <WhyCourseSection/>
             <ChaptersSection/>
             <ExamPrepWorksSection/>
-            <CTASection/>
             <CourseSliderSection/>
+            <CTASection/>
             <PopularCoursesSection/>
             <TestimonialsSection/>
             <FeaturesSection/>

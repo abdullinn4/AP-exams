@@ -16,11 +16,11 @@ export const LessonPromoCard = () => {
         >
             <div className="z-index-1">
                 <h2 className="display-5 text-neutral-100">
-                    It's your turn to stand as a <span className="heading-gradient">web designer</span>
+                    Your voice <span className="heading-gradient">matters</span>
                 </h2>
                 <div className="mg-top-12px">
                     <p className="text-neutral-400">
-                        Lorem ipsum dolor amet consectetur adipiscing elit duis mauris fringilla.
+                        Send your feedback and help us build a better platform for you!
                     </p>
                 </div>
                 <div className="mg-top-24px">
@@ -29,7 +29,7 @@ export const LessonPromoCard = () => {
                             to={ROUTES.CATALOG}
                             className="button-primary white w-inline-block"
                         >
-                            <div className="text-block">Start learning</div>
+                            <div className="text-block">Go to discord</div>
                             <div className="item-icon-right">
                                 <div className="custom-icon-font"></div>
                             </div>

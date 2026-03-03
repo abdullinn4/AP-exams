@@ -4,7 +4,7 @@ import {ROUTES} from "@/app/router/routes.ts";
 
 export const FinalCTASection = () => {
     return (
-        <section className="section">
+        <section className="section-card-padding top" style={{paddingBottom: '5rem'}}>
             <div className="section-card">
                 <div className="w-layout-blockcontainer container-default w-container">
                     <div data-w-id="ce63cfa8-00b3-0766-ede8-8f40b1a913ac" className="title-left---content-right center">

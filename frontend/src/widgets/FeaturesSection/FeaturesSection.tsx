@@ -2,7 +2,7 @@ import {HOME_FEATURES} from '@/shared/config/content'
 
 export const FeaturesSection = () => {
     return (
-        <section className="section">
+        <section className="section top">
             <div className="w-layout-blockcontainer container-default w-container">
                 <div className="z-index-2">
                     <div

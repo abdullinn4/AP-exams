@@ -2833,7 +2833,7 @@ figcaption {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 130px 24px;
+  padding: 145px 24px;
   display: flex;
   position: sticky;
   top: 32px;
@@ -6479,7 +6479,7 @@ figcaption {
 .dropdown-pd.dropdown-v4 {
   background-color: var(--neutral--100);
   border-radius: 24px;
-  min-width: 940px;
+  min-width: 440px;
   padding: 40px 48px;
 }
 
@@ -6745,7 +6745,11 @@ figcaption {
     display: flex;
     max-width: none;
 }
-
+@media (max-width: 767px) {
+    .sales-home---pages-container {
+        overflow: hidden;
+    }
+}
 /* Убрать ограничение ширины у section-card для HeroSlider */
 .section-card.hero-section {
     overflow: visible;
@@ -7430,8 +7434,8 @@ figcaption {
   max-width: 1354px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 200px;
-  padding-bottom: 200px;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   position: relative;
   overflow: hidden;
 
@@ -12186,8 +12190,7 @@ figcaption {
   }
 
   .container-default {
-    padding-left: 16px;
-    padding-right: 16px;
+      padding: 16px;
   }
 
   .notification-bar-padding.v4 {
@@ -12218,8 +12221,8 @@ figcaption {
   }
 
   .section, .section.small {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   .section.cta-sales-home {
@@ -12635,8 +12638,8 @@ figcaption {
   }
 
   .testimonial-card-v2---avatar-wrapper {
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
   }
 
   .testimonial-cards-wrapper---home-v2 {
@@ -14807,7 +14810,7 @@ figcaption {
     transform: translateY(50px);
     filter: blur(20px);
     opacity: 0;
-    animation: showContent 0.25s 0.2s ease forwards;
+    animation: showContent 0.5s 1s linear 1 forwards;
 }
 
 @keyframes showContent {
@@ -14819,15 +14822,15 @@ figcaption {
 }
 
 .slider .mainslides .block:nth-child(1) .content .title {
-    animation-delay: 1.2s !important;
+    animation-delay: 0.6s !important;
 }
 
 .slider .mainslides .block:nth-child(1) .content .description {
-    animation-delay: 1.4s !important;
+    animation-delay: 0.6s !important;
 }
 
 .slider .mainslides .block:nth-child(1) .content .buttons {
-    animation-delay: 1.6s !important;
+    animation-delay: 0.6s !important;
 }
 
 .slider.next .mainslides .block:nth-child(1) img {
@@ -14987,7 +14990,7 @@ figcaption {
 
 @media screen and (max-width: 479px) {
     .slider .mainslides .block .content {
-        top: 3%;  /* еще выше для маленьких экранов */
+        top: 37%;
     }
 
     .slider .mainslides .block .title {
@@ -15006,6 +15009,10 @@ figcaption {
     /* Стрелки уже скрыты из предыдущего медиа-запроса */
     .nav {
         display: none;
+    }
+
+    .text-block{
+
     }
 }
 .nav .secondary-button-icon {
@@ -15038,13 +15045,6 @@ figcaption {
     cursor: not-allowed;
 }
 /* ========== EXAM PREP WORKS SECTION ========== */
-.exam-prep-card-sub-title,
-.exam-prep-card-title,
-.exam-prep-card-description,
-.exam-prep-cta-button,
-.exam-prep-ghost-name {
-    font-family: 'Mona Sans', sans-serif;
-}
 .exam-prep-section {
     overflow: hidden;
 }
@@ -15062,6 +15062,7 @@ figcaption {
 .exam-prep-swiper {
     height: 100%;
     width: 100%;
+    overflow: visible;
 }
 
 .exam-prep-slide {
@@ -15159,7 +15160,6 @@ figcaption {
     font-size: 3vw;
     line-height: 1;
     margin: 14px 0 25px;
-    text-transform: uppercase;
     position: relative;
 }
 
@@ -15193,9 +15193,9 @@ figcaption {
 
 .exam-prep-card-description {
     font-weight: 500;
-    font-size: 0.9vw;
+    font-size: 1.1vw;
     max-width: 300px;
-    line-height: 1.2;
+    line-height: 1.5;
 }
 
 .exam-prep-card-cta {
@@ -15434,7 +15434,8 @@ figcaption {
 
     .exam-prep-card {
         height: 70vh;
-        width: 95vw;
+        width: 100%;
+        max-width: 95%;
         border-radius: 30px;
     }
 
@@ -15449,16 +15450,19 @@ figcaption {
     .exam-prep-card-description {
         font-size: 9px;
     }
+    .description {
+        display: none;
+    }
 }
 
 @media (max-width: 479px) {
     .exam-prep-container {
         height: 75vh;
     }
-
     .exam-prep-card {
         height: 65vh;
         border-radius: 20px;
+        overflow: hidden;
     }
 
     .exam-prep-card-title {
@@ -15468,6 +15472,10 @@ figcaption {
     .exam-prep-pagination {
         bottom: 10px !important;
     }
+    .description {
+        display: none;
+    }
+
 }
 .exam-prep-card-video {
     position: absolute;
@@ -15569,6 +15577,11 @@ figcaption {
     stroke-dashoffset: 1;
     opacity: 1;
     transform-origin: 0px 0px 0px;
+}
+@media screen and (max-width: 767px) {
+    .slider-button {
+        display: none;
+    }
 }
 
 .exam-prep-section .slider-button .slider-svg-arrow {
@@ -15717,7 +15730,7 @@ figcaption {
         display: flex;
         align-items: center;
         max-width: 100%;
-        margin: 30px;
+        margin: 30px 0;
     }
 }
 /* HeroSection - text-align center на мобильных */
@@ -15797,11 +15810,11 @@ figcaption {
         display: flex;
         align-items: center;
         max-width: 100%;
-        margin: 30px;
+        margin: 30px 0;
     }
 }
 
-/* CTASection - главное изображение поверх float иконок */
+/* CTASe.container-defaultction - главное изображение поверх float иконок */
 .image-container.main-image---cta-v1 .image.position-relative {
     position: relative;
     z-index: 10 !important;

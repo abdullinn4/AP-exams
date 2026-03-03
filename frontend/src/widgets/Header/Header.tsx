@@ -79,7 +79,7 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                     >
                                         <div
                                             className={`dropdown-toggle ${theme === 'light' ? 'white' : ''} w-dropdown-toggle`}>
-                                            <div className={theme === 'light' ? 'pages-text-light' : ''}>Pages</div>
+                                            <div className={theme === 'light' ? 'pages-text-light' : ''}>Courses</div>
                                             <div
                                                 className="icon-font-squared dropdown-arrow"
                                                 style={theme === 'light' ? {color: 'white'} : {}}
@@ -91,22 +91,6 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                             <div className="dropdown-pd dropdown-v4">
                                                 <div className="w-layout-grid dropodown-column-wrapper">
                                                     <div>
-                                                        <h3 className="dropdown-title">Main pages</h3>
-                                                        <div className="w-layout-grid main-pages-wrapper">
-                                                            <div className="dropdown-link-column">
-                                                                <Link to={ROUTES.HOME}
-                                                                      className="dropdown-link">Home</Link>
-                                                                <Link to="/"
-                                                                      className="dropdown-link">About</Link>
-                                                                <Link to={ROUTES.CATALOG}
-                                                                      className="dropdown-link">Courses</Link>
-                                                                <Link to={ROUTES.TERMS_AND_CONDITIONS}
-                                                                      className="dropdown-link">Terms &
-                                                                    Conditions</Link>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div>
                                                         <h3 className="dropdown-title">Courses</h3>
                                                         <div className="w-layout-grid main-pages-wrapper">
                                                             <div className="dropdown-link-column">
@@ -116,7 +100,7 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                                                 </Link>
                                                                 <Link to='/courses/ap-csp-breaking-code/preview'
                                                                       className="footer-item-link w-inline-block">
-                                                                    <div>AP Cs P</div>
+                                                                    <div>AP CS P</div>
                                                                 </Link>
                                                                 <Link to='/courses/ap-calc-bc-67-problems/preview'
                                                                       className="footer-item-link w-inline-block">
@@ -124,7 +108,7 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                                                 </Link>
                                                                 <Link to='/courses/ap-csa-escape-the-matrix/preview'
                                                                       className="footer-item-link w-inline-block">
-                                                                    <div>AP Cs A</div>
+                                                                    <div>AP CS A</div>
                                                                 </Link>
                                                                 <Link to='/courses/ap-lang/preview'
                                                                       className="footer-item-link w-inline-block">

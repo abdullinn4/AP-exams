@@ -3,7 +3,7 @@ import { HOME_CTA } from '@/shared/config/content'
 
 export const CTASection = () => {
     return (
-        <section className="section">
+        <section className="section-card-padding top">
             <div data-w-id="b59a59eb-8135-53d7-934d-15fd43cb5117" className="section-card cta v1">
                 <div className="w-layout-grid grid-2-columns cta-v1-grid">
                     <div data-w-id="1e6ebfa9-6b59-fb8a-6b39-bffb1716ae84">

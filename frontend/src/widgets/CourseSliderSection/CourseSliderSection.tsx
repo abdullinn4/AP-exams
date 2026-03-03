@@ -64,8 +64,8 @@ export const CourseSliderSection = () => {
     const orderedCourses = getOrderedCourses()
 
     return (
-        <section className="section">
-            <div className="section-card" style={{ paddingBottom: '5rem', paddingTop: '5rem' }}>
+        <section className="section-card-padding top">
+            <div className="section-card">
                 <div data-w-id="f402fcd4-a56b-275f-aeb1-72593824ca6a" className="w-layout-blockcontainer container-default w-container">
                     <div className="course-slider-header">
                         <h2 className="display-9">
@@ -114,7 +114,7 @@ export const CourseSliderSection = () => {
                                             }}
                                         >
                                             <div className="text-block">
-                                                See Course
+                                                View
                                             </div>
                                         </button>
                                     </div>

@@ -344,7 +344,7 @@ export const EXAM_PREP_STEPS = [
     {
         id: 1,
         subtitle: 'All materials. One place. No drama',
-        title: 'OUR PLATFORM',
+        title: 'Our platform',
         description: 'The slickest interface you\'ve ever touched. Crisp videos, straight-to-the-point text, and tons of tests—all in AP style. Practice drills, full exam simulations—the whole package. No fluff. Just results.',
         ghostName: 'Convenient platform',
         ghostRole: 'that has everything',
@@ -360,7 +360,7 @@ export const EXAM_PREP_STEPS = [
     {
         id: 2,
         subtitle: 'Free webinars every week',
-        title: 'SUPPORT & COMMUNITY',
+        title: 'Support & Community',
         description: 'Free webinars. Every week. Level up with live sessions and get your questions answered on the spot. Plus, we\'re everywhere you hang—Discord, Insta, TikTok. Daily content, real talk, and a whole community rooting for you. We\'re not just support. We\'re your squad.',
         ghostName: 'Join our Discord',
         ghostRole: 'and also Instagram & Tiktok',
@@ -404,8 +404,8 @@ export const SLIDER_VIDEOS_TOP: SliderVideo[] = [
 ]
 
 export const SLIDER_VIDEOS_BOTTOM: SliderVideo[] = [
-    {src: '/assets/webflow/gifs/preview8.mp4', alt: 'AP Course Preview 5'},
-    {src: '/assets/webflow/gifs/preview2.mp4', alt: 'AP Course Preview 6'},
-    {src: '/assets/webflow/gifs/preview4.mp4', alt: 'AP Course Preview 7'},
-    {src: '/assets/webflow/gifs/preview6.mp4', alt: 'AP Course Preview 8'},
+    {src: '/assets/webflow/gifs/preview2.mp4', alt: 'AP Course Preview 5'},
+    {src: '/assets/webflow/gifs/preview8.mp4', alt: 'AP Course Preview 6'},
+    {src: '/assets/webflow/gifs/preview6.mp4', alt: 'AP Course Preview 7'},
+    {src: '/assets/webflow/gifs/preview4.mp4', alt: 'AP Course Preview 8'},
 ]
