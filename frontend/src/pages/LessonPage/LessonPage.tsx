@@ -3,18 +3,12 @@ import {Header} from '@/widgets/Header'
 import {Footer} from '@/widgets/Footer'
 import {YouTubePlayer} from '@/widgets/YouTubePlayer'
 import {MarkdownRenderer} from '@/widgets/MarkdownRenderer'
-import {TestInstructionView} from "@/features/test/ui/TestInstructionView/TestInstructionView.tsx"
-import {TestInProgressView} from "@/features/test/ui/TestInProgressView"
-import {TestCompletedSummary} from "@/features/test/ui/TestCompletedSummary"
-import {TestResultsView} from "@/features/test/ui/TestResultsView";
-import {useLessonTest} from "@/features/test/model/useLessonTest.ts";
-import {useRef} from "react";
-import {useScrollToTest} from "@/features/test/model/useScrollToTest.ts";
 import {useGetLessonDetailsQuery} from "@/shared/api/courseApi.ts";
 import {LessonPromoCard} from "@/widgets/LessonPromoCard";
 import {useWebflowReinit} from "@/shared/lib/hooks/useWebflowReinit.ts";
 import {useLessonNavigation} from "@/shared/lib/hooks/useLessonNavigation.ts";
 import {LessonNavigationButtons} from "@/widgets/LessonNavigationButtons";
+import {LessonTestSection} from "@/features/test/ui/LessonTestSection";
 
 export const LessonPage = () => {
     const {slug, unitId, lessonId} = useParams<{
@@ -28,25 +22,7 @@ export const LessonPage = () => {
         {skip: !slug || !unitId || !lessonId}
     )
 
-    const {
-        view,
-        testData,
-        savedAnswers,
-        resultDetails,
-        isStarting,
-        isSubmitting,
-        isLoadingResults,
-        testAttemptSummary,
-        startTest,
-        submitTest,
-        viewResults,
-        backToSummary,
-    } = useLessonTest(lesson)
-
     const navigation = useLessonNavigation(slug!, unitId!, lessonId!)
-
-    const testSectionRef = useRef<HTMLDivElement | null>(null)
-    useScrollToTest(view, testSectionRef)
 
     useWebflowReinit(lesson)
 
@@ -154,17 +130,26 @@ export const LessonPage = () => {
 
                         {/* Tabs Section */}
                         <div className="mg-top-80px">
-                            <div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100"
-                                 className="w-tabs">
-                                <div className="tabs-menu-wrapper w-tab-menu" style={{
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                    alignItems: 'center',
-                                    flexWrap: 'wrap',
-                                    gap: '16px'
+                            <div style={{position: 'relative'}}>
+                                <div style={{
+                                    position: 'absolute',
+                                    top: '0',
+                                    right: '0',
+                                    zIndex: 10
                                 }}>
-                                    <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                                        <a data-w-tab="Tab 1" className="tab-button w-inline-block w-tab-link w--current">
+                                    <LessonNavigationButtons
+                                        prevUrl={navigation.prevUrl}
+                                        nextUrl={navigation.nextUrl}
+                                        hasPrev={navigation.hasPrev}
+                                        hasNext={navigation.hasNext}
+                                    />
+                                </div>
+                                <div data-current="Tab 1" data-easing="ease" data-duration-in="300"
+                                     data-duration-out="100"
+                                     className="w-tabs">
+                                    <div className="tabs-menu-wrapper w-tab-menu">
+                                        <a data-w-tab="Tab 1"
+                                           className="tab-button w-inline-block w-tab-link w--current">
                                             <div>Theory</div>
                                         </a>
                                         {lesson?.testId && (
@@ -176,77 +161,25 @@ export const LessonPage = () => {
                                         <a data-w-tab="Tab 3" className="tab-button w-inline-block w-tab-link">
                                             <div>Contact Curator</div>
                                         </a>
-                                    )}*/}
+                                        )}*/}
                                     </div>
 
-                                    <LessonNavigationButtons
-                                        prevUrl={navigation.prevUrl}
-                                        nextUrl={navigation.nextUrl}
-                                        hasPrev={navigation.hasPrev}
-                                        hasNext={navigation.hasNext}
-                                    />
-                                </div>
-
-                                <div className="mg-top-40px w-tab-content">
-                                    {/* Theory Tab */}
-                                    <div data-w-tab="Tab 1" className="w-tab-pane w--tab-active">
-                                        <div className="card tab-card">
-                                            {lesson?.textPayload && (
-                                                <MarkdownRenderer content={lesson.textPayload}/>
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    {/* Test Tab */}
-                                    {lesson?.testId && (
-                                        <div data-w-tab="Tab 2" className="w-tab-pane" ref={testSectionRef}>
+                                    <div className="mg-top-40px w-tab-content">
+                                        {/* Theory Tab */}
+                                        <div data-w-tab="Tab 1" className="w-tab-pane w--tab-active">
                                             <div className="card tab-card">
-                                                {view === 'instruction' && (
-                                                    <TestInstructionView
-                                                        lesson={lesson}
-                                                        onStartTest={startTest}
-                                                        isLoading={isStarting}
-                                                    />
+                                                {lesson?.textPayload && (
+                                                    <MarkdownRenderer content={lesson.textPayload}/>
                                                 )}
-
-                                                {view === 'inProgress' && testData && (
-                                                    <TestInProgressView
-                                                        testData={testData}
-                                                        onSubmit={submitTest}
-                                                        isSubmitting={isSubmitting}
-                                                        initialAnswers={savedAnswers}
-                                                    />
-                                                )}
-
-                                                {view === 'summary' && (
-                                                    testAttemptSummary ? (
-                                                        <TestCompletedSummary
-                                                            result={testAttemptSummary}
-                                                            onViewResults={viewResults}
-                                                        />
-                                                    ) : (
-                                                        <div style={{textAlign: 'center', padding: '40px'}}>
-                                                            <p>Loading results...</p>
-                                                        </div>
-                                                    )
-                                                )}
-
-                                                {view === 'results' && (
-                                                    isLoadingResults ? (
-                                                        <p>Loading...</p>
-                                                    ) : resultDetails ? (
-                                                        <TestResultsView resultDetails={resultDetails}
-                                                                         onBackToSummary={backToSummary}/>
-                                                    ) : (
-                                                        <button onClick={backToSummary}>Back</button>
-                                                    )
-                                                )}
-
                                             </div>
                                         </div>
-                                    )}
 
-                                    {/* Contact Curator Tab
+                                        {/* Test Tab */}
+                                        {lesson?.testId && (
+                                            <LessonTestSection key={lesson.id} lesson={lesson}/>
+                                        )}
+
+                                        {/* Contact Curator Tab
                                     {lesson?.canContactCurator && (
                                         <div data-w-tab="Tab 3" className="w-tab-pane">
                                             <div className="card tab-card">
@@ -272,6 +205,7 @@ export const LessonPage = () => {
                                             </div>
                                         </div>
                                     )}*/}
+                                    </div>
                                 </div>
                             </div>
                         </div>
