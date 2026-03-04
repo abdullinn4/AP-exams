@@ -11869,7 +11869,7 @@ figcaption {
   }
 
   .card.testimonial-card-v2 {
-    padding: 12px;
+
   }
 
   .card.about-card {
@@ -15715,16 +15715,20 @@ figcaption {
         width: 100%;
         max-width: 400px;
         margin: auto;
-        border-radius: 24px;
+        border-radius: 50%;
         overflow: hidden;
+
+        box-shadow:
+                0 0 60px 30px rgba(255, 255, 255, 0.05),
+                0 0 100px 50px rgba(255, 255, 255, 0.05);
     }
 
     .hero-mobile-image img {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 30px;
+        display: block;
+        width: 100%;
+        border-radius: 24px;
     }
+
 
     /* Скрыть десктопное изображение */
     .image-container.hero-image---home-v1 {
@@ -15787,13 +15791,14 @@ figcaption {
         margin: auto;
         border-radius: 24px;
         overflow: hidden;
+        box-shadow:
+                0 0 60px 30px rgba(255, 255, 255, 0.05),
+                0 0 100px 50px rgba(255, 255, 255, 0.05);
     }
 
     .cta-mobile-image img {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 30px;
+        display: block;
+        width: 100%;
     }
 
     /* Скрыть десктопное изображение */
@@ -15927,6 +15932,7 @@ figcaption {
     0 0 100px 50px rgba(255, 255, 255, 0.05);
 }
 
+
 /* Border radius for circular image in HeroSection */
 .image-container.hero-image---home-v1 > .image.floating-image---down {
     border-radius: 50%;
@@ -16005,4 +16011,14 @@ figcaption {
     width: 100%;
     display: block;
     border: 0;
+}
+.logo-wrapper {
+    flex-shrink: 0;
+}
+/* Fix: Показывать логотип на мобильных устройствах */
+@media screen and (max-width: 991px) {
+    .logo-wrapper .image,
+    .logo-link .image {
+        display: inline-block !important;
+    }
 }
