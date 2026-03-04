@@ -10,7 +10,7 @@ import {PopularCoursesSection} from "@/widgets/PopularCoursesSection";
 import {CourseHeroSection} from "@/widgets/CourseHeroSection";
 import {CourseAboutSection} from "@/widgets/CourseAboutSection";
 import {CourseStructureCard} from "@/widgets/CourseStructureCard";
-import {useGetMockExamsQuery} from "@/shared/api/mockExamApi.ts";
+import {useGetMockExamsPreviewQuery} from "@/shared/api/mockExamApi.ts";
 import {MockExamsSection} from "@/widgets/MockExamsSection";
 
 export const CoursePreviewPage = () => {
@@ -26,7 +26,7 @@ export const CoursePreviewPage = () => {
     const {addTariffToCart, errorMessage, successMessage} = useAddCourseToCart(
         course || {id: '', title: '', coverUrl: null})
 
-    const { data: mockExamsData } = useGetMockExamsQuery(course?.slug || '', {
+    const { data: mockExamsData } = useGetMockExamsPreviewQuery(course?.slug || '', {
         skip: !course?.slug
     })
 

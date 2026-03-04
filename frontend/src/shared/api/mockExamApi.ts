@@ -1,5 +1,5 @@
 import {baseApi} from "@/shared/api/baseApi.ts";
-import type {MockExamDetails, MockExamsResponse} from "@/entities/course/course.ts";
+import type {MockExamDetails, MockExamsPreviewResponse, MockExamsResponse} from "@/entities/course/course.ts";
 
 export const mockExamsApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -15,7 +15,13 @@ export const mockExamsApi = baseApi.injectEndpoints({
                 { type: 'Course', id: examId }
             ],
         }),
+        getMockExamsPreview: builder.query<MockExamsPreviewResponse, string>({
+            query: (courseSlug) => `/public/courses/${courseSlug}/mock-exams`,
+            providesTags: (_result, _error, courseSlug) => [
+                { type: 'Course', id: `mock-exams-${courseSlug}` }
+            ],
+        })
     }),
 })
 
-export const { useGetMockExamsQuery, useGetMockExamDetailsQuery } = mockExamsApi
+export const { useGetMockExamsQuery, useGetMockExamDetailsQuery, useGetMockExamsPreviewQuery } = mockExamsApi

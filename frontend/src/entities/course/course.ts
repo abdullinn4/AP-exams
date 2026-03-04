@@ -150,3 +150,9 @@ export interface MockExamDetails {
     testAttemptStatus: TestAttemptStatus | null
     testAttemptSummary: TestAttemptSummary | null
 }
+
+export interface MockExamsPreviewResponse{
+    courseId: string,
+    courseTitle: string,
+    totalExams: number
+}

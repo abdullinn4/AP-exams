@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ProgressBar } from '@/widgets/ProgressBar'
-import { useGetMockExamsQuery } from '@/shared/api/mockExamApi'
+import {useGetMockExamsPreviewQuery, useGetMockExamsQuery} from '@/shared/api/mockExamApi'
 
 interface MockExamsSectionProps {
     courseSlug?: string,
@@ -8,9 +8,15 @@ interface MockExamsSectionProps {
 }
 
 export const MockExamsSection = ({ courseSlug, isPreview }: MockExamsSectionProps) => {
-    const { data: mockExamsData, error } = useGetMockExamsQuery(courseSlug!, {
-        skip: !courseSlug
+    const previewQuery = useGetMockExamsPreviewQuery(courseSlug!, {
+        skip: !isPreview || !courseSlug,
     })
+
+    const fullQuery = useGetMockExamsQuery(courseSlug!, {
+        skip: isPreview || !courseSlug,
+    })
+
+    const error = isPreview ? previewQuery.error : fullQuery.error
 
     return (
         <div>
@@ -23,7 +29,7 @@ export const MockExamsSection = ({ courseSlug, isPreview }: MockExamsSectionProp
                     <div className="mg-top-32px mg-bottom-80px">
                         <div className="w-layout-grid grid-1-column gap-row-24px">
                             {isPreview ? (
-                                <div className="card chapter-premium-card w-inline-block">
+                                <div className="card chapter-premium-card">
                                     <div className="chapter-premium-card---left-content">
                                         <div className="image-wrapper chapter-icon">
                                             <img
@@ -41,7 +47,7 @@ export const MockExamsSection = ({ courseSlug, isPreview }: MockExamsSectionProp
                                     </div>
                                     <div className="chapter-premium-card---right-content">
                                         <div className="badge secondary">
-                                            <div>{mockExamsData?.totalExams} Tests</div>
+                                            <div>{previewQuery.data?.totalExams} Tests</div>
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +71,7 @@ export const MockExamsSection = ({ courseSlug, isPreview }: MockExamsSectionProp
                                             </div>
                                             <div className="mg-top-16px">
                                                 <ProgressBar
-                                                    percentage={mockExamsData?.progressPercentage}
+                                                    percentage={fullQuery.data?.progressPercentage}
                                                     animated={true}
                                                     height="6px"
                                                 />
@@ -74,7 +80,7 @@ export const MockExamsSection = ({ courseSlug, isPreview }: MockExamsSectionProp
                                     </div>
                                     <div className="chapter-premium-card---right-content">
                                         <div className="badge secondary">
-                                            <div>{mockExamsData?.totalExams} Tests</div>
+                                            <div>{fullQuery.data?.totalExams} Tests</div>
                                         </div>
                                         <div className="display-2 bold text-neutral-800">
                                             <div className="link">

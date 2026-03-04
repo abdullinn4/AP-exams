@@ -7,10 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.apexams.courses.entity.CourseEntity;
 import org.example.apexams.courses.repo.CourseRepository;
 import org.example.apexams.enrollments.service.EnrollmentService;
-import org.example.apexams.tests.dto.MockExamDetailsResponse;
-import org.example.apexams.tests.dto.MockExamItemResponse;
-import org.example.apexams.tests.dto.MockExamsResponse;
-import org.example.apexams.tests.dto.TestAttemptSummary;
+import org.example.apexams.tests.dto.*;
 import org.example.apexams.tests.entity.TestAttemptEntity;
 import org.example.apexams.tests.entity.TestEntity;
 import org.example.apexams.tests.entity.enums.TestAttemptStatus;
@@ -156,6 +153,22 @@ public class MockExamServiceImpl implements MockExamService{
                 testAttemptId,
                 testAttemptStatus,
                 testAttemptSummary
+        );
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public MockExamsPreviewResponse getMockExamsPreview(UUID courseId) {
+        CourseEntity course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new IllegalArgumentException("Course not found: " + courseId));
+
+        // Получаем все Mock Exams для курса
+        List<TestEntity> mockExams = testRepository.findByCourseIdAndType(courseId, TestType.MOCK_EXAM);
+
+        return new MockExamsPreviewResponse(
+                course.getId(),
+                course.getTitle(),
+                mockExams.size()
         );
     }
 
