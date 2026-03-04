@@ -247,24 +247,24 @@ export const HOME_POPULAR_COURSES = {
     courses: [
         {
             id: 'ap-csp-breaking-code',
-            title: 'CSP: Breaking Code',
+            title: 'CS P: Breaking Code',
             slug: 'ap-csp-breaking-code',
             snippet: 'All you need to smash AP Computer Science Principles 2026',
             coverUrl: '/assets/webflow/images/breaking-code.png',
             wId: 'popular-course-1'
         },
         {
-            id: 'ap-calculus-ab',
+            id: 'ap-calc-ab-game-of-graphs',
             title: 'Calc AB: Game of Graphs',
-            slug: 'ap-calculus-ab',
+            slug: 'ap-calc-ab-game-of-graphs',
             snippet: 'All you need to smash AP Calculus AB 2026',
             coverUrl: '/assets/webflow/images/game-of-graphs.png',
             wId: 'popular-course-2'
         },
         {
-            id: 'ap-computer-science-a',
-            title: 'CSA: Escape the Matrix ',
-            slug: 'ap-computer-science-a',
+            id: 'ap-csa-escape-the-matrix',
+            title: 'CS A: Escape the Matrix ',
+            slug: 'ap-csa-escape-the-matrix',
             snippet: 'All you need to smash AP Computer Science A 2026',
             coverUrl: '/assets/webflow/images/escape-the-matrix.png',
             wId: 'popular-course-3'

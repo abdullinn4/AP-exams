@@ -44,6 +44,7 @@ public class TariffEntity {
     private Integer priceCents;
 
     @Column(length = 3, nullable = false)
+    @Builder.Default
     private String currency = "USD";
 
     @Column(name = "is_active", nullable = false)
