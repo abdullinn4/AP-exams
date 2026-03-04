@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api/v1/public/courses")
+@RequestMapping("/api/v1/public/courses")
 @RequiredArgsConstructor
 @Tag(name = "Public Courses", description = "Public course catalog and preview (no authentication required)")
 public class PublicCourseController {
