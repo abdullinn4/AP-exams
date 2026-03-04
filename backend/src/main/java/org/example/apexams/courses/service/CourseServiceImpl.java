@@ -92,6 +92,14 @@ public class CourseServiceImpl implements CourseService {
             course.setPreviewVideoUrl(dto.previewVideoUrl());
         }
 
+        if (dto.introVideoUrl() != null) {
+            course.setIntroVideoUrl(dto.introVideoUrl());
+        }
+
+        if (dto.courseImageUrl() != null) {
+            course.setCourseImageUrl(dto.courseImageUrl());
+        }
+
         if (dto.coverUrl() != null) {
             course.setCoverUrl(dto.coverUrl());
         }

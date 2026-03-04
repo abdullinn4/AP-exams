@@ -9,8 +9,6 @@ import org.example.apexams.courses.dto.CourseWithUnitsResponse;
 import org.example.apexams.courses.service.CourseService;
 import org.example.apexams.tariffs.dto.TariffResponse;
 import org.example.apexams.tariffs.service.TariffService;
-import org.example.apexams.units.dto.UnitResponse;
-import org.example.apexams.units.service.UnitService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

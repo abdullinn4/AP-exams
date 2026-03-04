@@ -15,6 +15,8 @@ public record CourseDetailsResponse(
         String snippet,
         String previewVideoUrl,
         String coverUrl,
+        String introVideoUrl,
+        String courseImageUrl,
         CourseStatus status,
         String discordInviteUrl,
 

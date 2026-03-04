@@ -13,6 +13,8 @@ public record CourseResponse(
         String snippet,
         String previewVideoUrl,
         String coverUrl,
+        String introVideoUrl,
+        String courseImageUrl,
         CourseStatus status,
         String discordInviteUrl,
         Instant createdAt,

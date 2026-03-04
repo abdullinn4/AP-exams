@@ -13,6 +13,8 @@ public record CreateCourseRequest(
         String snippet,
         String previewVideoUrl,
         String coverUrl,
+        String introVideoUrl,
+        String courseImageUrl,
         String discordInviteUrl
 ) {
 }

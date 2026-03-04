@@ -36,12 +36,11 @@ export const CourseHeroSection = ({ course }: CourseHeroSectionProps) => {
                             >
                                 <div className="blur-bg hero-bg---chapter-single"></div>
                                 <img
-                                    src="/assets/webflow/images/start-image-courselify-x-webflow-template.png"
+                                    src={course?.courseImageUrl}
                                     loading="eager"
                                     alt="Course Image"
                                     className="image position-relative"
                                 />
-
                             </div>
                         </div>
                     </div>

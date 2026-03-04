@@ -20,6 +20,8 @@ public class CourseMapper {
                 courseEntity.getSnippet(),
                 courseEntity.getPreviewVideoUrl(),
                 courseEntity.getCoverUrl(),
+                courseEntity.getIntroVideoUrl(),
+                courseEntity.getCourseImageUrl(),
                 courseEntity.getStatus(),
                 courseEntity.getDiscordInviteUrl(),
                 courseEntity.getCreatedAt(),
@@ -36,6 +38,8 @@ public class CourseMapper {
                 courseEntity.getSnippet(),
                 courseEntity.getPreviewVideoUrl(),
                 courseEntity.getCoverUrl(),
+                courseEntity.getIntroVideoUrl(),
+                courseEntity.getCourseImageUrl(),
                 courseEntity.getStatus(),
                 courseEntity.getDiscordInviteUrl(),
                 courseEntity.getCreatedAt(),
@@ -53,6 +57,8 @@ public class CourseMapper {
                 .previewVideoUrl(dto.previewVideoUrl())
                 .coverUrl(dto.coverUrl())
                 .discordInviteUrl(dto.discordInviteUrl())
+                .courseImageUrl(dto.courseImageUrl())
+                .introVideoUrl(dto.introVideoUrl())
                 .build();
     }
 }

@@ -40,8 +40,14 @@ public class CourseEntity {
     @Column(name = "preview_video_url", columnDefinition = "TEXT")
     private String previewVideoUrl;
 
+    @Column(name = "intro_video_url", columnDefinition = "TEXT")
+    private String introVideoUrl;
+
     @Column(name = "cover_url", columnDefinition = "TEXT")
     private String coverUrl;
+
+    @Column(name = "course_image_url", columnDefinition = "TEXT")
+    private String courseImageUrl;
 
     @Enumerated(EnumType.STRING)
     @Builder.Default

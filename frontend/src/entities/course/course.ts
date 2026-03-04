@@ -8,6 +8,8 @@ export interface CourseDetails {
     description: string | null
     previewVideoUrl: string | undefined
     coverUrl: string | null
+    introVideoUrl: string | undefined
+    courseImageUrl: string | undefined
     status: 'DRAFT' | 'PUBLISHED'
     discordInviteUrl: string | null
     createdAt: string
@@ -77,6 +79,8 @@ export interface CourseDetailsWithProgress {
     snippet: string | null
     previewVideoUrl: string | undefined
     coverUrl: string | null
+    introVideoUrl: string | undefined
+    courseImageUrl: string | undefined
     status: 'DRAFT' | 'PUBLISHED'
     discordInviteUrl: string | null
     units: UnitWithProgress[]

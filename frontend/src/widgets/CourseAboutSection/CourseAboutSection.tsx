@@ -2,9 +2,10 @@ import type { CourseDetails, CourseDetailsWithProgress } from "@/entities/course
 
 interface CourseAboutSectionProps {
     course?: CourseDetails | CourseDetailsWithProgress
+    variant: 'preview' | 'my-course'
 }
 
-export const CourseAboutSection = ({ course }: CourseAboutSectionProps) => {
+export const CourseAboutSection = ({ course, variant }: CourseAboutSectionProps) => {
     return (
         <div
             data-w-id="614b9de1-cbf3-7c3e-6b04-8d9a1f6faa86"
@@ -33,7 +34,7 @@ export const CourseAboutSection = ({ course }: CourseAboutSectionProps) => {
                             border: 0,
                             borderRadius: '32px'
                         }}
-                        src={course?.previewVideoUrl}
+                        src={variant === 'preview' ? course?.previewVideoUrl : course?.introVideoUrl}
                         title={`${course?.title} - Preview Video`}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen

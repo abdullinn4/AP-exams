@@ -63,7 +63,7 @@ export const CoursePreviewPage = () => {
                             <div className="course-preview-grid-layout">
                                 {/* Left Column - Main Content */}
                                 <div className="course-preview-main-content">
-                                    <CourseAboutSection course={course}/>
+                                    <CourseAboutSection course={course} variant={'preview'}/>
 
                                     <CourseUnitsSection
                                         units={course?.units}

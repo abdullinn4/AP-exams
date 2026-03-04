@@ -6649,14 +6649,31 @@ figcaption {
 }
 
 .image-container.hero-image-chapter-single {
+    bottom: 0;
   justify-content: center;
-  align-items: center;
-  width: 20%;
+  align-items: flex-end;
+  width: 120%;
   max-width: 226px;
   display: flex;
   position: absolute;
   right: 12%;
 }
+.hero-image-chapter-single img {
+    width: 180%;
+    max-width: none;
+    display: block;
+}
+@media (max-width: 767px) {
+    .hero-grid---chapters-single-page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-image-chapter-single {
+        order: -1; /* картинка вверх */
+    }
+}
+
 
 .hover-rotate-card-wrapper {
   perspective: 2000px;

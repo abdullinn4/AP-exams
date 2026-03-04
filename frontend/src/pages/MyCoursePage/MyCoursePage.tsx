@@ -50,7 +50,7 @@ export const MyCoursePage = () => {
                             <div className="w-layout-blockcontainer container-default w-container">
                                 <div className="course-preview-grid-layout">
                                     <div className="course-preview-main-content">
-                                        <CourseAboutSection course={course}/>
+                                        <CourseAboutSection course={course} variant={'my-course'}/>
 
                                         <CourseUnitsSection
                                             units={course?.units}

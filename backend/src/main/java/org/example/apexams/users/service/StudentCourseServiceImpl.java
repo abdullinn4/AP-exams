@@ -112,6 +112,8 @@ public class StudentCourseServiceImpl implements StudentCourseService {
                 course.snippet(),
                 course.previewVideoUrl(),
                 course.coverUrl(),
+                course.introVideoUrl(),
+                course.courseImageUrl(),
                 course.status(),
                 course.discordInviteUrl(),
                 unitsWithProgress
@@ -183,6 +185,8 @@ public class StudentCourseServiceImpl implements StudentCourseService {
                 course.snippet(),
                 course.previewVideoUrl(),
                 course.coverUrl(),
+                course.introVideoUrl(),
+                course.courseImageUrl(),
                 course.status(),
                 course.discordInviteUrl(),
                 Collections.emptyList()
