@@ -248,7 +248,7 @@ export const HOME_POPULAR_COURSES = {
         {
             id: 'ap-csp-breaking-code',
             title: 'CS P: Breaking Code',
-            slug: 'ap-csp-breaking-code',
+            slug: 'coming-soon/ap-csp-breaking-code',
             snippet: 'All you need to smash AP Computer Science Principles 2026',
             coverUrl: '/assets/webflow/images/breaking-code.png',
             wId: 'popular-course-1'
@@ -272,7 +272,7 @@ export const HOME_POPULAR_COURSES = {
         {
             id: 'ap-calc-bc-67-problems',
             title: 'Calc BC: 67 Problems',
-            slug: 'ap-calc-bc-67-problems',
+            slug: 'coming-soon/ap-calc-bc-67-problems',
             snippet: 'All you need to smash AP Calculus BC 2026',
             coverUrl: '/assets/webflow/images/67_problems.png',
             wId: 'popular-course-4'
@@ -297,7 +297,7 @@ export const COURSES_DATA: Course[] = [
         shortTitle: 'AP Calc AB',
         description: 'Tired? Smash your AP Calc exam with a complete online course packed with engaging video solutions, lectures, and hundreds of practice problems. We cover the official curriculum end-to-end, giving you the ultimate toolkit to boost your score and master calculus the easy way.',
         image: '/assets/webflow/images/AP Calculus AB.png',
-        slug: 'ap-calculus-ab'
+        slug: 'ap-calc-ab-game-of-graphs'
     },
     {
         id: 1,
@@ -305,7 +305,7 @@ export const COURSES_DATA: Course[] = [
         shortTitle: 'AP CS P',
         description: 'Stop wasting hours searching through scattered tutorials and outdated forums. We’ve consolidated every single concept you need for the AP CSP exam into one seamless, all-in-one course, so you can finally stop hunting for answers and start mastering the material. Buy right now and own your exam confidence!',
         image: '/assets/webflow/images/AP Computer Science Principles.png',
-        slug: 'ap-cs-principles'
+        slug: 'coming-soon/ap-csp-breaking-code'
     },
     {
         id: 3,
@@ -313,7 +313,7 @@ export const COURSES_DATA: Course[] = [
         shortTitle: 'AP Psych',
         description: 'Can\'t tell your Freud from your Piaget? We make every psychologist, theory, and concept crystal clear. Our streamlined course uses dynamic videos, smart mnemonics, and targeted practice to help you finally master the material—and crush the exam.',
         image: '/assets/webflow/images/AP Psychology.png',
-        slug: 'ap-calculus-bc'
+        slug: 'coming-soon/ap-psych'
     },
     {
         id: 4,
@@ -321,7 +321,7 @@ export const COURSES_DATA: Course[] = [
         shortTitle: 'AP CS A',
         description: 'Master every single topic College Board requires for AP CS A — ALL 55. We don\'t guess what\'s on the exam—we follow their official description to the letter, so every video, every theory lesson, and every test serves a purpose: your success. Enroll today and be certain—you\'ve learned exactly what College Board expects!"',
         image: '/assets/webflow/images/AP Computer Science A.png',
-        slug: 'ap-computer-science-a'
+        slug: 'ap-csa-escape-the-matrix'
     },
     {
         id: 5,
@@ -329,7 +329,7 @@ export const COURSES_DATA: Course[] = [
         shortTitle: 'AP Calc BC',
         description: 'It’s everything you need to dominate the AP Calc exam: the full CollegeBoard curriculum, broken down simply, with tons of practice and videos for every tricky task. Master this and you will smash AP. Guaranteed.',
         image: '/assets/webflow/images/AP Calculus BC.png',
-        slug: 'ap-l'
+        slug: 'coming-soon/ap-calc-bc-67-problems'
     },
     {
         id: 6,
@@ -337,7 +337,7 @@ export const COURSES_DATA: Course[] = [
         shortTitle: 'AP Lang',
         description: 'Get the exact skills you need for the AP Lang exam without the boring lectures. We cover all the course material with clear video walkthroughs and plenty of practice, making it super simple to understand what the graders are looking for.',
         image: '/assets/webflow/images/AP Lang.png',
-        slug: 'ap-l'
+        slug: 'coming-soon/ap-lang'
     }
 ]
 export const EXAM_PREP_STEPS = [

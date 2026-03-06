@@ -3,6 +3,7 @@ import {tokenService} from "@/features/auth/lib/tokenService.ts";
 import type {BaseQueryFn, FetchArgs, FetchBaseQueryError} from "@reduxjs/toolkit/query";
 import { Mutex } from 'async-mutex'
 import {clearAuth, setAuthenticated} from "@/features/auth/model/authSlice.ts";
+import {getUserKey} from "@/shared/lib/userKey/userKey.ts";
 
 // Базовая настройка для всех API запросов
 const baseQuery = fetchBaseQuery({
@@ -12,6 +13,8 @@ const baseQuery = fetchBaseQuery({
         if (token){
             headers.set("Authorization", `Bearer ${token}`)
         }
+        headers.set("X-UserKey", getUserKey())
+
         return headers
     },
 })
@@ -89,6 +92,6 @@ const baseQueryWithReauth: BaseQueryFn<
 export const baseApi = createApi({
     reducerPath: "api",
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['Auth', 'Courses', 'User', 'Dashboard', 'MyCourses', "Course", "Tariffs", "Notifications", "Statistics"],
+    tagTypes: ['Auth', 'Courses', 'User', 'Dashboard', 'MyCourses', "Course", "Tariffs", "Notifications", "Statistics", "CourseLike"],
     endpoints: () => ({}),
 })

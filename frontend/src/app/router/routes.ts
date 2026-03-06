@@ -17,4 +17,5 @@ export const ROUTES = {
     TERMS_AND_CONDITIONS: '/terms-and-conditions',
     DASHBOARD: '/dashboard',
     STATISTICS: '/statistics',
+    COMING_SOON_COURSE: '/courses/coming-soon/:slug/preview',
 } as const

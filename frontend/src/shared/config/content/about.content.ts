@@ -16,4 +16,11 @@ export const ABOUT_PORTFOLIO = {
         left: '/assets/webflow/images/a-professional-web-designer-left-image-courselify-x-webflow-template.jpg',
         right: '/assets/webflow/images/a-professional-web-designer-right-image-courselify-x-webflow-template.jpg'
     }
+
+} as const
+
+export const ABOUT_QUOTE = {
+    quote: `"We built SmashAP to give students the ultimate toolkit for AP success.
+    Whether you're watching a video or drilling a test, we're right there with
+    you every step of the way"`
 } as const

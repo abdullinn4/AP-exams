@@ -98,11 +98,11 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                                                       className="footer-item-link w-inline-block">
                                                                     <div>AP Calc AB</div>
                                                                 </Link>
-                                                                <Link to='/courses/ap-csp-breaking-code/preview'
+                                                                <Link to='/courses/coming-soon/ap-csp-breaking-code/preview'
                                                                       className="footer-item-link w-inline-block">
                                                                     <div>AP CS P</div>
                                                                 </Link>
-                                                                <Link to='/courses/ap-calc-bc-67-problems/preview'
+                                                                <Link to='/courses/coming-soon/ap-calc-bc-67-problems/preview'
                                                                       className="footer-item-link w-inline-block">
                                                                     <div>AP Calc BC</div>
                                                                 </Link>
@@ -110,11 +110,11 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                                                       className="footer-item-link w-inline-block">
                                                                     <div>AP CS A</div>
                                                                 </Link>
-                                                                <Link to='/courses/ap-lang/preview'
+                                                                <Link to='/courses/coming-soon/ap-lang/preview'
                                                                       className="footer-item-link w-inline-block">
                                                                     <div>AP Lang</div>
                                                                 </Link>
-                                                                <Link to='/courses/ap-psych/preview'
+                                                                <Link to='/courses/coming-soon/ap-psych/preview'
                                                                       className="footer-item-link w-inline-block">
                                                                     <div>AP Psych</div>
                                                                 </Link>

@@ -1,9 +1,13 @@
 import {Header} from '@/widgets/Header'
 import {Footer} from '@/widgets/Footer'
-import {ABOUT_HERO, ABOUT_PORTFOLIO} from '@/shared/config/content'
+import {ABOUT_HERO, ABOUT_PORTFOLIO, ABOUT_QUOTE} from '@/shared/config/content'
 import {CTAFooterBlock} from "@/widgets/CTAFooterBlock";
+import {VideoCircle} from "@/widgets/VideoCircle";
+import { useState } from "react";
 
 export const AboutPage = () => {
+    const [activeVideo, setActiveVideo] = useState<string | null>(null)
+
     return (
         <div className="page-wrapper v2">
             <section className="section-card-padding top">
@@ -40,7 +44,6 @@ export const AboutPage = () => {
                                         sizes="(max-width: 479px) 87vw, (max-width: 767px) 90vw, (max-width: 991px) 45vw, (max-width: 1439px) 47vw, 600px"
                                         srcSet={`${ABOUT_HERO.images.main.replace('.jpg', '-p-500.jpg')} 500w, ${ABOUT_HERO.images.main.replace('.jpg', '-p-800.jpg')} 800w, ${ABOUT_HERO.images.main.replace('.jpg', '-p-1080.jpg')} 1080w, ${ABOUT_HERO.images.main} 1806w`}
                                         alt={`Hello Im ${ABOUT_HERO.name} - Courselify X Webflow Template`}
-                                        className="image"
                                     />
                                 </div>
                             </div>
@@ -63,7 +66,6 @@ export const AboutPage = () => {
                                         sizes="(max-width: 479px) 87vw, (max-width: 767px) 90vw, (max-width: 991px) 41vw, (max-width: 1439px) 42vw, 544px"
                                         srcSet={`${ABOUT_HERO.images.secondary.replace('.jpg', '-p-500.jpg')} 500w, ${ABOUT_HERO.images.secondary.replace('.jpg', '-p-800.jpg')} 800w, ${ABOUT_HERO.images.secondary.replace('.jpg', '-p-1080.jpg')} 1080w, ${ABOUT_HERO.images.secondary} 1638w`}
                                         alt={`Hello Im ${ABOUT_HERO.name} - Courselify X Webflow Template`}
-                                        className="image"
                                     />
                                 </div>
                                 <div className="inner-container _525px _100-tablet">
@@ -103,7 +105,6 @@ export const AboutPage = () => {
                                     sizes="(max-width: 479px) 77vw, (max-width: 991px) 46vw, (max-width: 1439px) 23vw, 309.6484375px"
                                     srcSet={`${ABOUT_PORTFOLIO.images.left.replace('.jpg', '-p-500.jpg')} 500w, ${ABOUT_PORTFOLIO.images.left.replace('.jpg', '-p-800.jpg')} 800w, ${ABOUT_PORTFOLIO.images.left} 1240w`}
                                     alt="A Professional Web Designer - Courselify X Webflow Template"
-                                    className="image cover-image"
                                 />
                             </div>
                             <div
@@ -124,7 +125,6 @@ export const AboutPage = () => {
                                     sizes="(max-width: 479px) 77vw, (max-width: 991px) 46vw, (max-width: 1439px) 23vw, 309.65625px"
                                     srcSet={`${ABOUT_PORTFOLIO.images.right.replace('.jpg', '-p-500.jpg')} 500w, ${ABOUT_PORTFOLIO.images.right.replace('.jpg', '-p-800.jpg')} 800w, ${ABOUT_PORTFOLIO.images.right} 1240w`}
                                     alt="A Professional Web Designer - Courselify X Webflow Template"
-                                    className="image cover-image"
                                 />
                             </div>
                         </div>
@@ -151,12 +151,53 @@ export const AboutPage = () => {
                 </div>
             </section>
 
-            <section className="section-card-padding" style={{paddingBottom: '5rem'}}>
+            <section className="section-card-padding">
                 <div
                     data-w-id="19870dc9-2082-ec46-dd5a-7e8dd29abf2c"
-                    style={{opacity: 0}}
-                    className="section-card cta-v3"
+                    className="container-default w-container about-quote-container"
                 >
+
+                    <VideoCircle
+                        id="video1"
+                        videoSrc="/assets/webflow/gifs/about_1_video.mp4"
+                        borderColor="var(--primary--02)"
+                        position="top-left"
+                        activeVideo={activeVideo}
+                        setActiveVideo={setActiveVideo}
+                    />
+
+                    <VideoCircle
+                        id="video2"
+                        videoSrc="/assets/webflow/gifs/about_2_video.mp4"
+                        borderColor="#a78bfa"
+                        position="top-right"
+                        activeVideo={activeVideo}
+                        setActiveVideo={setActiveVideo}
+                    />
+
+                    <div className="about-quote-content">
+                        <div className="about-quote-text">
+                            {ABOUT_QUOTE.quote}
+                        </div>
+                    </div>
+
+                    <img
+                        className="about-quote-svg-1"
+                        src="/assets/webflow/images/pyramid-figure-courselify-x-webflow-template.png"
+                        alt="icon"
+                    />
+
+                    <img
+                        className="about-quote-svg-2"
+                        src="/assets/webflow/images/square-figure-courselify-x-webflow-template.png"
+                        alt="icon"
+                    />
+
+                    <img
+                        className="about-quote-svg-3"
+                        src="/assets/webflow/images/circle-figure-courselify-x-webflow-template.png"
+                        alt="icon"
+                    />
 
                 </div>
             </section>

@@ -18,7 +18,7 @@ interface CourseCardProps {
 }
 
 export const CourseCard = ({ course, variant, progress, onAddToCart }: CourseCardProps) => {
-    const courseUrl = variant === 'catalog'
+    const courseUrl = (variant === 'catalog' || variant === 'popular-courses')
         ? `/courses/${course.slug}/preview`
         : `/courses/${course.slug}`
 

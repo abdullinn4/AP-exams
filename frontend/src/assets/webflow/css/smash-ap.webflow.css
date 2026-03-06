@@ -15742,7 +15742,7 @@ figcaption {
         align-items: center;
         justify-content: center;
         max-width: 350px;
-        margin: 30px;
+        margin: 30px auto;
     }
 }
 
@@ -15751,7 +15751,7 @@ figcaption {
         display: flex;
         align-items: center;
         max-width: 100%;
-        margin: 30px 0;
+        margin: 30px auto;
     }
 }
 /* HeroSection - text-align center на мобильных */
@@ -15813,7 +15813,7 @@ figcaption {
         align-items: center;
         justify-content: center;
         max-width: 400px;
-        margin: 30px;
+        margin: 30px auto;
     }
 
     /* Text-align center для заголовка и текста */
@@ -15832,7 +15832,7 @@ figcaption {
         display: flex;
         align-items: center;
         max-width: 100%;
-        margin: 30px 0;
+        margin: 30px auto;
     }
 }
 
@@ -16021,4 +16021,227 @@ figcaption {
     .logo-link .image {
         display: inline-block !important;
     }
+    .logo-wrapper img,
+    .logo-link img {
+        display: inline-block !important;
+    }
+}
+
+.video-circle-wrapper {
+    position: absolute;
+    z-index: 10;
+}
+
+.video-circle-wrapper.top-left {
+    top: 40px;
+    left: 40px;
+}
+
+.video-circle-wrapper.top-right {
+    top: 60%;
+    right: 40px;
+
+}
+
+.video-circle {
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.video-circle.expanded {
+    width: 240px;
+    height: 240px;
+}
+
+.video-circle-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-circle-sound {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+.video-circle-sound img {
+    width: 48px;
+    height: 48px;
+}
+.about-quote-container {
+    margin-bottom: 4rem;
+    border-radius: 32px;
+    padding: 100px 100px;
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+.about-quote-content {
+    max-width: 850px;
+    text-align: center;
+    z-index: 5;
+    transform: rotate(-3deg);
+}
+
+.about-quote-text {
+    background-image: url('/assets/webflow/images/rich-text-bg-courselify-x-webflow-template.png');
+    color: white;
+    font-size: 38px;
+    line-height: 1.5;
+    font-weight: 500;
+    margin: 0;
+    padding: 60px 40px;
+    border-radius: 34px;
+}
+
+.about-quote-svg-1 {
+    position: absolute;
+    top: 5%;
+    left: 40%;
+    width: 100px;
+    height: 100px;
+    z-index: 10;
+}
+
+.about-quote-svg-2 {
+    position: absolute;
+    bottom: 50%;
+    right: 13%;
+    width: 100px;
+    height: 100px;
+    z-index: 10;
+}
+.about-quote-svg-3 {
+    position: absolute;
+    bottom: 5%;
+    left: 20%;
+    width: 100px;
+    height: 100px;
+    z-index: 10;
+}
+@media screen and (max-width: 991px) {
+
+    .video-circle-wrapper.top-left {
+        top: 30px;
+        left: 30px;
+    }
+
+    .video-circle-wrapper.top-right {
+
+        right: 30px;
+    }
+
+    .video-circle {
+        width: 140px;
+        height: 140px;
+    }
+
+    .video-circle.expanded {
+        width: 180px;
+        height: 180px;
+    }
+
+    .about-quote-container {
+        padding: 100px 60px;
+    }
+
+    .about-quote-text {
+        font-size: 28px;
+    }
+    .about-quote-svg-1 {
+        display: none;
+    }
+    .about-quote-svg-2 {
+        display: none;
+    }
+    .about-quote-svg-3 {
+        display: none;
+    }
+
+}
+@media screen and (max-width: 767px) {
+
+    .video-circle-wrapper.top-left {
+        top: 20px;
+        left: 20px;
+    }
+
+    .video-circle-wrapper.top-right {
+        right: 20px;
+    }
+
+    .video-circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .video-circle.expanded {
+        width: 150px;
+        height: 150px;
+    }
+
+    .about-quote-container {
+        padding: 80px 40px;
+    }
+
+    .about-quote-text {
+        padding: 80px 40px;
+        font-size: 24px;
+    }
+
+}
+@media screen and (max-width: 479px) {
+    .about-quote-container {
+        margin-bottom: 0;
+    }
+
+    .video-circle-wrapper.top-left {
+        top: 15%;
+        left: 15px;
+    }
+
+    .video-circle-wrapper.top-right {
+        top: 65%;
+        right: 15px;
+    }
+
+    .video-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .video-circle.expanded {
+        width: 130px;
+        height: 130px;
+    }
+
+    .about-quote-container {
+        padding: 20px 20px;
+    }
+
+    .about-quote-text {
+        padding: 30px 20px;
+        font-size: 17px;
+    }
+    .video-circle-sound img {
+        width: 28px;
+        height: 28px;
+    }
+
 }
