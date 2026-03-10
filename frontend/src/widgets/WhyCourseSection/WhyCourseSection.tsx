@@ -22,17 +22,11 @@ export const WhyCourseSection = () => {
                     </div>
                     <div className="w-layout-grid grid-2-columns stats-grid-wrapper---home-v1">
                         <div data-w-id="0a90b4e8-7a1e-2305-bd6a-ed7d223593fb" className="image-wrapper video-bg-image-wrapper">
-                            <img 
-                                src={HOME_WHY_COURSE.videoImage} 
-                                loading="eager" 
-                                alt="Why this Course" 
+                            <video
+                                src={HOME_WHY_COURSE.videoImage}
                                 className="video-bg-image"
+                                controls
                             />
-                            <div className="bg-overlay">
-                                <a href="#" className="lightbox-video-icon-wrapper w-inline-block w-lightbox">
-                                    <img src={HOME_WHY_COURSE.playButton} loading="eager" alt="Play Button" className="play-button-image" />
-                                </a>
-                            </div>
                         </div>
                         <div data-w-id="99cfc867-4269-c8a4-a611-afe3e06388c3" className="grid-1-column gap-row-28px gap-row-16px-tablet">
                             <div className="stat-row---home-v1">

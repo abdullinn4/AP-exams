@@ -2,8 +2,8 @@ export const ABOUT_HERO = {
     name: 'Kamil',
     name2: 'Marat',
     images: {
-        main: '/assets/webflow/images/hello-im-andy-smith-left-image-courselify-x-webflow-template.jpg',
-        secondary: '/assets/webflow/images/hello-im-andy-smith-left-image-courselify-x-webflow-template-1.jpg'
+        main: '/assets/webflow/images/k_about.png',
+        secondary: '/assets/webflow/images/m_about.png'
     }
 } as const
 
@@ -13,8 +13,8 @@ export const ABOUT_PORTFOLIO = {
     description: 'For over 5 years, we have been creating and testing our preparation technique on several\n' +
         'generations of graduates and have compiled it in our courses.',
     images: {
-        left: '/assets/webflow/images/a-professional-web-designer-left-image-courselify-x-webflow-template.jpg',
-        right: '/assets/webflow/images/a-professional-web-designer-right-image-courselify-x-webflow-template.jpg'
+        left: '/assets/webflow/images/m_block_tutors.png',
+        right: '/assets/webflow/images/m_block _tutors.png'
     }
 
 } as const

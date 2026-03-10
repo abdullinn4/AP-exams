@@ -14,7 +14,7 @@ export const HOME_HERO = {
     ctaPrimary: 'Start learning',
     ctaSecondary: 'Who we are',
     images: {
-        main: '/assets/webflow/images/a_preview.png',
+        main: '/assets/webflow/images/preview.png',
         floatPyramid: '/assets/webflow/images/pyramid-figure-courselify-x-webflow-template.png',
         floatSquare: '/assets/webflow/images/square-figure-courselify-x-webflow-template.png',
         floatCircle: '/assets/webflow/images/circle-figure-courselify-x-webflow-template.png',
@@ -86,7 +86,7 @@ export const HOME_WHY_COURSE = {
     description1: '',
     description2: '',
     ctaText: 'Start learning',
-    videoImage: '/assets/webflow/images/why-this-course-image-courselify-x-webflow-template.jpg',
+    videoImage: '/assets/webflow/gifs/main_preview.mp4',
     playButton: '/assets/webflow/images/play-button-courselify-x-webflow-template.svg',
     stats: [
         {value: '10', suffix: '+', label: 'Courses'},
@@ -112,7 +112,7 @@ export const HOME_CTA = {
     ctaPrimary: 'Go to the cart',
     ctaSecondary: 'View all courses',
     images: {
-        main: '/assets/webflow/images/trio-cta-section.PNG',
+        main: '/assets/webflow/images/noperfect.png',
         floatSquare: '/assets/webflow/images/square-figure-courselify-x-webflow-template.png',
         floatCircle: '/assets/webflow/images/circle-figure-courselify-x-webflow-template.png',
         floatPyramid: '/assets/webflow/images/pyramid-figure-courselify-x-webflow-template.png'
@@ -349,7 +349,7 @@ export const EXAM_PREP_STEPS = [
         ghostName: 'Convenient platform',
         ghostRole: 'that has everything',
         buttonText: 'Choose a course',
-        video: '/assets/webflow/gifs/preview7.mp4',
+        video: '/assets/webflow/gifs/platform.mp4',
         subtitleColor: '#FF8A3C',
         titleColor: '#fff',
         descriptionColor: '#fff',
@@ -365,7 +365,7 @@ export const EXAM_PREP_STEPS = [
         ghostName: 'Join our Discord',
         ghostRole: 'and also Instagram & Tiktok',
         buttonText: 'Move to Discord',
-        video: '/assets/webflow/gifs/preview2.mp4',
+        video: '/assets/webflow/gifs/support.mp4',
         subtitleColor: '#303056',
         titleColor: '#303056',
         descriptionColor: '#303056',
@@ -381,7 +381,7 @@ export const EXAM_PREP_STEPS = [
         ghostName: 'Master',
         ghostRole: 'What You\'ve Learned',
         buttonText: 'Coming soon',
-        video: '/assets/webflow/gifs/preview3.mp4',
+        video: '/assets/webflow/gifs/test.mp4',
         subtitleColor: '#000',
         titleColor: '#000',
         descriptionColor: '#000',

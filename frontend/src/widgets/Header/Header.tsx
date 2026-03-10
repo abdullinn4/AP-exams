@@ -66,7 +66,7 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                     </Link>
                                 </li>
                                 <li className="link-nav-item">
-                                    <Link to="/" className={linkClass}>
+                                    <Link to="/about" className={linkClass}>
                                         About
                                     </Link>
                                 </li>

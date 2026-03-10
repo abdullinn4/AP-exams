@@ -159,7 +159,7 @@ export const AboutPage = () => {
 
                     <VideoCircle
                         id="video1"
-                        videoSrc="/assets/webflow/gifs/about_1_video.mp4"
+                        videoSrc="/assets/webflow/gifs/marat_circle.mp4"
                         borderColor="var(--primary--02)"
                         position="top-left"
                         activeVideo={activeVideo}
@@ -168,7 +168,7 @@ export const AboutPage = () => {
 
                     <VideoCircle
                         id="video2"
-                        videoSrc="/assets/webflow/gifs/about_2_video.mp4"
+                        videoSrc="/assets/webflow/gifs/kamil_circle.mp4"
                         borderColor="#a78bfa"
                         position="top-right"
                         activeVideo={activeVideo}
