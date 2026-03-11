@@ -34,11 +34,11 @@ public class OrderEntity {
     @JoinColumn(name = "tariff_id", nullable = false)
     private TariffEntity tariff;
 
-    @Column(name = "lemonsqueezy_checkout_id", unique = true)
-    private String lemonSqueezyCheckoutId;
+    @Column(name = "paypro_checkout_id")
+    private String payProCheckoutId;
 
-    @Column(name = "lemonsqueezy_order_id")
-    private String lemonSqueezyOrderId;
+    @Column(name = "paypro_order_id")
+    private String payProOrderId;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)

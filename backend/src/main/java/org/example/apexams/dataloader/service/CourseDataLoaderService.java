@@ -207,7 +207,7 @@ public class CourseDataLoaderService {
                 .priceCents(dto.getPriceCents())
                 .currency(dto.getCurrency())
                 .isActive(dto.getIsActive())
-                .paddleVariantId(dto.getPaddleVariantId())
+                .payProVariantId(dto.getPayProVariantId())
                 .build();
         return tariffRepository.save(tariff);
     }

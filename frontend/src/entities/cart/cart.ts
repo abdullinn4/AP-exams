@@ -9,7 +9,7 @@ export interface CartItem {
     price: number
     currency: string
     addedAt: string
-    paddleVariantId: string
+    payProProductId: string
 }
 
 export interface CartState {

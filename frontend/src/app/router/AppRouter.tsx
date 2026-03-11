@@ -22,6 +22,7 @@ import {MockExamsPage} from "@/pages/MockExamPage";
 import {MockExamTestPage} from "@/pages/MockExamTestPage";
 import {StatisticsPage} from "@/pages/StatisticsPage";
 import {ComingSoonCoursePage} from "@/pages/ComingSoonCoursePage";
+import { CheckoutCancelPage } from "@/pages/CheckoutCancelPage";
 
 export const AppRouter = () => {
     useWebflowAnimations()
@@ -40,6 +41,7 @@ export const AppRouter = () => {
                 <Route path={ROUTES.COURSE_PREVIEW} element={<CoursePreviewPage />}/>
                 <Route path={ROUTES.CHECKOUT} element={<CheckoutPage />}/>
                 <Route path={ROUTES.CHECKOUT_SUCCESS} element={<CheckoutSuccessPage/>}/>
+                <Route path={ROUTES.CHECKOUT_CANCEL} element={<CheckoutCancelPage/>}/>
                 <Route path={ROUTES.TERMS_AND_CONDITIONS} element={<TermsAndConditionsPage/>}/>
                 <Route path={ROUTES.COMING_SOON_COURSE} element={<ComingSoonCoursePage/>}/>
 

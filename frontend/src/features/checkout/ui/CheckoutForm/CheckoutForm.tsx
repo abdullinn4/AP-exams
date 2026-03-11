@@ -1,4 +1,4 @@
-import {useEffect, useCallback, useState} from 'react'
+import {useCallback, useEffect, useState} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {type CheckoutFormData, checkoutSchema} from '@/features/checkout/lib/checkoutSchema'
@@ -7,7 +7,6 @@ import {OrderItemsBlock} from '@/features/checkout/ui/OrderItemsBlock'
 import type {CartItem} from '@/entities/cart/cart'
 import {tokenService} from '@/features/auth/lib/tokenService'
 import {usePrepareCheckoutMutation} from '@/shared/api/checkoutApi'
-import {getCheckoutVariantId} from '@/features/checkout/lib/bundleVariants'
 
 interface CheckoutFormProps {
     items: CartItem[]
@@ -23,6 +22,7 @@ export const CheckoutForm = ({items, onSubmitTrigger}: CheckoutFormProps) => {
         defaultValues: {
             email: '',
             discordNickname: '',
+            acceptedTerms: false,
         },
     })
 
@@ -48,14 +48,22 @@ export const CheckoutForm = ({items, onSubmitTrigger}: CheckoutFormProps) => {
         setError(null)
 
         try {
-            // Получаем variant ID (обычный или bundle)
-            const variantId = getCheckoutVariantId(items)
 
             // Собираем tariff IDs
             const tariffIds = items.map(item => item.tariffId)
 
+            // Вызываем API для создания checkout session
+            const response = await prepareCheckout({
+                email: data.email,
+                discordNickname: data.discordNickname,
+                tariffIds,
+                acceptedTerms: data.acceptedTerms,
+                acceptedAt: new Date().toISOString(),
+            }).unwrap()
+
             // Сохраняем данные для success страницы
-            sessionStorage.setItem('checkoutFormData', JSON.stringify({
+            localStorage.setItem('checkoutFormData', JSON.stringify({
+                checkoutId: response.checkoutId,
                 email: data.email,
                 discordNickname: data.discordNickname,
                 tariffIds,
@@ -67,22 +75,20 @@ export const CheckoutForm = ({items, onSubmitTrigger}: CheckoutFormProps) => {
                     tariffTier: item.tariffTier,
                     price: item.price,
                     currency: item.currency,
+                    payProProductId: item.payProProductId,
                 }))
             }))
 
-            // Вызываем API для создания checkout session
-            const response = await prepareCheckout({
-                email: data.email,
-                discordNickname: data.discordNickname,
-                tariffIds,
-                variantId,
-            }).unwrap()
-
-            // Редиректим на LemonSqueezy для оплаты
-            window.location.href = response.lemonSqueezyCheckoutUrl
-        } catch (err) {
-            console.error('Checkout preparation failed:', err)
-            setError('Failed to prepare checkout. Please try again.')
+            // Редиректим для оплаты
+            window.location.href = response.payProCheckoutUrl
+        } catch (err: any) {
+            if (err.response?.data?.message?.includes("already enrolled")) {
+                setError('You are already enrolled in this course.')
+                console.error('You are already enrolled in this course.')
+            }else{
+                console.error('Checkout preparation failed:', err)
+                setError('Failed to prepare checkout. Please try again.')
+            }
         }
     }, [items, prepareCheckout])
 
@@ -98,14 +104,14 @@ export const CheckoutForm = ({items, onSubmitTrigger}: CheckoutFormProps) => {
     return (
         <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
-                <CustomerInfoFields/>
-                <OrderItemsBlock items={items}/>
-
                 {error && (
                     <div className="error-message-wrapper mg-top-16px" style={{display: 'block'}}>
                         <div>{error}</div>
                     </div>
                 )}
+
+                <CustomerInfoFields/>
+                <OrderItemsBlock items={items}/>
             </form>
         </FormProvider>
     )

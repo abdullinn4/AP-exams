@@ -24,8 +24,12 @@ export const WhyCourseSection = () => {
                         <div data-w-id="0a90b4e8-7a1e-2305-bd6a-ed7d223593fb" className="image-wrapper video-bg-image-wrapper">
                             <video
                                 src={HOME_WHY_COURSE.videoImage}
-                                className="video-bg-image"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
                                 controls
+                                className="video-bg-image"
                             />
                         </div>
                         <div data-w-id="99cfc867-4269-c8a4-a611-afe3e06388c3" className="grid-1-column gap-row-28px gap-row-16px-tablet">

@@ -4,6 +4,7 @@ export const ROUTES = {
     FORGOT_PASSWORD: '/forgot-password',
     CHECKOUT: '/checkout',
     CHECKOUT_SUCCESS: '/checkout/success',
+    CHECKOUT_CANCEL: '/checkout/cancel',
     ABOUT: '/about',
     CATALOG: '/courses',
     NOT_FOUND: '/404',

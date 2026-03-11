@@ -1,5 +1,9 @@
 import {baseApi} from "@/shared/api/baseApi.ts";
-import type {CheckoutPrepareRequest, CheckoutPrepareResponse} from "@/entities/checkout/checkout.ts";
+import type {
+    CheckoutPrepareRequest,
+    CheckoutPrepareResponse,
+    OrdersByCheckoutResponse
+} from "@/entities/checkout/checkout.ts";
 
 export const checkoutApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -10,9 +14,17 @@ export const checkoutApi = baseApi.injectEndpoints({
                 body: data,
             }),
         }),
+        getOrdersByCheckoutId: builder.query<OrdersByCheckoutResponse, string>({
+            query: (checkoutId) => ({
+                url: `/orders/by-checkout/${checkoutId}`,
+                method: 'GET',
+            }),
+        }),
     }),
 })
 
 export const {
     usePrepareCheckoutMutation,
+    useGetOrdersByCheckoutIdQuery,
+    useLazyGetOrdersByCheckoutIdQuery
 } = checkoutApi

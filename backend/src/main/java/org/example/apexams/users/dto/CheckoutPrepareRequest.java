@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
-import java.util.UUID;
 
 public record CheckoutPrepareRequest(
         @Email
@@ -16,10 +15,13 @@ public record CheckoutPrepareRequest(
         @NotBlank
         String discordNickname,
 
-        @NotEmpty(message = "At least one tariff must be provided")
-        List<UUID> tariffIds,
+        @NotEmpty(message = "At least one tariff must be selected")
+        List<String> tariffIds,
 
-        @NotNull(message = "Variant ID is required")
-        String variantId  // Фронт передает либо обычный variant, либо bundle
+        @NotNull(message = "Terms acceptance is required")
+        Boolean acceptedTerms,
+
+        @NotBlank(message = "Acceptance timestamp is required")
+        String acceptedAt // ISO 8601 format
 ) {
 }

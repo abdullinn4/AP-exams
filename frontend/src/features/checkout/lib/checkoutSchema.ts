@@ -7,6 +7,10 @@ export const checkoutSchema = z.object({
     discordNickname: z.string()
         .min(3, 'Discord nickname must be at least 3 characters')
         .max(32, 'Discord nickname must be less than 32 characters'),
+    acceptedTerms: z.boolean()
+        .refine(val => val === true, {
+            message: 'You must accept the Terms of Service and Privacy Policy to continue'
+        })
 })
 
 export type CheckoutFormData = z.infer<typeof checkoutSchema>

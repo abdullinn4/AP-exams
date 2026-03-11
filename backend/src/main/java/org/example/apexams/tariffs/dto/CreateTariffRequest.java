@@ -14,7 +14,7 @@ public record CreateTariffRequest(
         @NotNull
         TariffTier tier,
         @NotNull
-        String paddleVariantId,
+        String payProVariantId,
         @NotNull
         Integer priceCents
 ) {

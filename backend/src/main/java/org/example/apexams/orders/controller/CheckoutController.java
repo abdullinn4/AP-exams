@@ -3,6 +3,7 @@ package org.example.apexams.orders.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.apexams.orders.dto.CheckoutResponse;
@@ -23,11 +24,12 @@ public class CheckoutController {
 
     @Operation(
             summary = "Prepare checkout session",
-            description = "Create LemonSqueezy checkout session for course purchase. Creates user if not exists."
+            description = "Create PayPro checkout session for course purchase. Creates user if not exists."
     )
     @PostMapping("/prepare")
     public ResponseEntity<CheckoutResponse> prepareCheckout(
-            @Parameter(description = "User and tariff information") @Valid @RequestBody CheckoutPrepareRequest request) {
-        return ResponseEntity.ok(checkoutService.prepareCheckout(request));
+            @Parameter(description = "User and tariff information") @Valid @RequestBody CheckoutPrepareRequest request,
+            HttpServletRequest httpRequest) {
+        return ResponseEntity.ok(checkoutService.prepareCheckout(request, httpRequest));
     }
 }

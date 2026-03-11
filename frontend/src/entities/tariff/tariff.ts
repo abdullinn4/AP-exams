@@ -5,6 +5,6 @@ export interface TariffDetails {
     tier: 'BASIC' | 'PRO'
     price: number
     currency: string
-    paddleVariantId: string
+    payProProductId: string
     isActive: boolean
 }

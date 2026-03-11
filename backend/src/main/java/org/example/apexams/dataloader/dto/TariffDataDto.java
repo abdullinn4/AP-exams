@@ -9,5 +9,5 @@ public class TariffDataDto {
     private Integer priceCents;
     private String currency;
     private Boolean isActive;
-    private String paddleVariantId;
+    private String payProVariantId;
 }

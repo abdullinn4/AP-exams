@@ -1,8 +1,9 @@
 import {type CheckoutFormData} from "@/features/checkout/lib/checkoutSchema.ts";
-import {useForm} from "react-hook-form";
+import {useFormContext} from "react-hook-form";
+import { Link } from "react-router-dom";
 
 export const CustomerInfoFields = () => {
-    const {register, formState: {errors, isSubmitting}} = useForm<CheckoutFormData>()
+    const {register, formState: {errors, isSubmitting}} = useFormContext<CheckoutFormData>()
 
     return (
         <div className="card checkout-block">
@@ -48,6 +49,60 @@ export const CustomerInfoFields = () => {
                     <p className="text-100 text-neutral-600 mg-top-8px">
                         We'll use this to add you to our Discord community
                     </p>
+                </div>
+                <div>
+                    <label
+                        className="w-commerce-commercecheckoutcheckboxlabel checkbox-wrapper"
+                        style={{
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                            cursor: isSubmitting ? 'not-allowed' : 'pointer'
+                        }}
+                    >
+                        <input
+                            type="checkbox"
+                            className="w-commerce-commercecheckoutcheckboxinput checkbox w-checkbox-input"
+                            disabled={isSubmitting}
+                            {...register('acceptedTerms')}
+                            style={{ marginTop: '2px' }}
+                        />
+                        <span className="w-form-label" style={{ marginLeft: '8px', lineHeight: '1.6' }}>
+                            I agree to the{' '}
+                            <Link
+                                to="/terms#terms-of-service"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-link"
+                                style={{
+                                    textDecoration: 'underline',
+                                    color: 'var(--primary--01)',
+                                    fontWeight: 600
+                                }}
+                            >
+                                Terms of Service
+                            </Link>
+                            {' '}and{' '}
+                            <Link
+                                to="/terms#privacy-policy"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-link"
+                                style={{
+                                    textDecoration: 'underline',
+                                    color: 'var(--primary--01)',
+                                    fontWeight: 600
+                                }}
+                            >
+                                Privacy Policy
+                            </Link>
+                            {' '}*
+                        </span>
+                    </label>
+                    {errors.acceptedTerms && (
+                        <div className="error-message-wrapper mg-top-8px" style={{ display: 'block' }}>
+                            <div>{errors.acceptedTerms.message}</div>
+                        </div>
+                    )}
                 </div>
             </fieldset>
         </div>

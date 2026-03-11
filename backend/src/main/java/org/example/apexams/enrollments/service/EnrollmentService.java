@@ -47,4 +47,6 @@ public interface EnrollmentService {
 
     // Статистика по курсу (админ)
     //EnrollmentStats getCourseStats(UUID courseId);
+
+    void revokeEnrollment(UserEntity user, CourseEntity course);
 }

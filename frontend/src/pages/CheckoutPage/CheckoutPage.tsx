@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {Header} from '@/widgets/Header'
 import {Footer} from '@/widgets/Footer'
@@ -9,6 +9,8 @@ import {useCart} from '@/features/cart'
 export const CheckoutPage = () => {
     const navigate = useNavigate()
     const { items } = useCart()
+    const [submitForm, setSubmitForm] = useState<(() => void) | null>(null)
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     // Редирект если корзина пуста
     useEffect(() => {
@@ -36,11 +38,19 @@ export const CheckoutPage = () => {
 
                     <div className="w-commerce-commercecheckoutformcontainer checkout-form">
                         <div className="w-commerce-commercelayoutmain checkout-col-left">
-                            <CheckoutForm items={items} />
+                            <CheckoutForm items={items}
+                                  onSubmitTrigger={(submitFn, isSubmittingState) => {
+                                      setSubmitForm(() => submitFn)
+                                      setIsSubmitting(isSubmittingState)
+                                  }}
+                            />
                         </div>
 
                         <div className="w-commerce-commercelayoutsidebar checkout-col-right">
-                            <OrderSummary items={items} />
+                            <OrderSummary items={items}
+                                  onSubmit={submitForm || undefined}
+                                  isSubmitting={isSubmitting}
+                            />
                         </div>
                     </div>
                 </div>

@@ -199,6 +199,38 @@ public class EnrollmentServiceImpl implements EnrollmentService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    @Transactional
+    public void revokeEnrollment(UserEntity user, CourseEntity course) {
+        Optional<EnrollmentEntity> enrollmentOpt = enrollmentRepository.findByUserIdAndCourseId(
+                user.getId(),
+                course.getId()
+        );
+
+        if (enrollmentOpt.isEmpty()) {
+            log.warn("No enrollment found to revoke: user={}, course={}",
+                    user.getEmail(), course.getSlug());
+            return;
+        }
+
+        EnrollmentEntity enrollment = enrollmentOpt.get();
+
+        if (enrollment.getStatus() == EnrollmentStatus.REVOKED) {
+            log.warn("Enrollment already revoked: user={}, course={}",
+                    user.getEmail(), course.getSlug());
+            return;
+        }
+
+        enrollment.setStatus(EnrollmentStatus.REVOKED);
+        enrollment.setAccessTo(Instant.now()); // Закрываем доступ
+        enrollmentRepository.save(enrollment);
+
+        log.info("Enrollment revoked: user={}, course={}, previousStatus={}",
+                user.getEmail(),
+                course.getSlug(),
+                enrollment.getStatus());
+    }
+
     private boolean isEnrollmentValid(EnrollmentEntity enrollment) {
         Instant now = Instant.now();
 

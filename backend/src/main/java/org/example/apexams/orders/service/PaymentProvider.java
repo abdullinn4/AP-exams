@@ -7,7 +7,7 @@ import org.example.apexams.users.entity.UserEntity;
 import java.util.List;
 
 public interface PaymentProvider {
-    String createCheckoutSession(UserEntity user, List<TariffEntity> tariffs, String variantId);
+    String createCheckoutSession(UserEntity user, List<TariffEntity> tariffs, String checkoutId);
 
     void handleWebhook(String payload, String signature);
 }

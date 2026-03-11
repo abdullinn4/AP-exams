@@ -45,7 +45,7 @@ export const useAddCourseToCart = (course: {
             price: tariff.price,
             currency: tariff.currency,
             addedAt: new Date().toISOString(),
-            paddleVariantId: tariff.paddleVariantId,
+            payProProductId: tariff.payProProductId,
         })
 
         setSuccessMessage('Course added to cart successfully')

@@ -1,37 +1,31 @@
 package org.example.apexams.email.service;
 
-import com.sendgrid.Method;
-import com.sendgrid.Request;
-import com.sendgrid.Response;
-import com.sendgrid.SendGrid;
-import com.sendgrid.helpers.mail.Mail;
-import com.sendgrid.helpers.mail.objects.Content;
-import com.sendgrid.helpers.mail.objects.Email;
+import jakarta.mail.internet.MimeMessage;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
+import java.util.List;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class EmailServiceImpl implements EmailService {
 
-    @Value("${sendgrid.api.key}")
-    private String sendGridApiKey;
+    private final JavaMailSender mailSender;
 
-    @Value("${sendgrid.from.email}")
+    @Value("${spring.mail.username}")
     private String fromEmail;
-
-    @Value("${sendgrid.from.name}")
-    private String fromName;
 
     @Value("${app.frontend.url}")
     private String frontendUrl;
 
     @Override
     public void sendPasswordEmail(String toEmail, String password) {
-        String subject = "Your AP Exams Platform Password";
+        String subject = "Your SmashAP Password";
         String htmlBody = buildPasswordEmailHtml(toEmail, password);
         sendEmail(toEmail, subject, htmlBody);
     }
@@ -58,34 +52,66 @@ public class EmailServiceImpl implements EmailService {
     }
 
     private void sendEmail(String toEmail, String subject, String htmlBody) {
-        Email from = new Email(fromEmail, fromName);
-        Email to = new Email(toEmail);
-        Content content = new Content("text/html", htmlBody);
-        Mail mail = new Mail(from, subject, to, content);
-
-        SendGrid sg = new SendGrid(sendGridApiKey);
-        Request request = new Request();
-
         try {
-            request.setMethod(Method.POST);
-            request.setEndpoint("mail/send");
-            request.setBody(mail.build());
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-            Response response = sg.api(request);
+            helper.setFrom(fromEmail, "SmashAP");
+            helper.setTo(toEmail);
+            helper.setSubject(subject);
+            helper.setText(htmlBody, true); // true = HTML
 
-            if (response.getStatusCode() >= 200 && response.getStatusCode() < 300) {
-                log.info("Email sent successfully to: {}", toEmail);
-            } else {
-                log.error("SendGrid error. Status: {}, Body: {}",
-                        response.getStatusCode(), response.getBody());
-                throw new RuntimeException("Failed to send email");
-            }
+            mailSender.send(message);
 
-        } catch (IOException e) {
-            log.error("Failed to send email to {}: {}", toEmail, e.getMessage());
+            log.info("Email sent successfully to: {}", toEmail);
+
+        } catch (Exception e) {
+            log.error("Failed to send email to {}: {}", toEmail, e.getMessage(), e);
             throw new RuntimeException("Failed to send email", e);
         }
     }
+
+    @Override
+    public void sendPurchaseConfirmationEmail(String toEmail, List<String> courseNames) {
+        String subject = courseNames.size() == 1
+                ? "Course Purchase Confirmed - " + courseNames.getFirst()
+                : "Courses Purchase Confirmed - " + courseNames.size() + " courses";
+
+        String htmlBody = buildPurchaseConfirmationHtml(courseNames);
+        sendEmail(toEmail, subject, htmlBody);
+    }
+
+    private String buildPurchaseConfirmationHtml(List<String> courseNames) {
+        StringBuilder coursesHtml = new StringBuilder();
+        for (String courseName : courseNames) {
+            coursesHtml.append(String.format(
+                    "<li style='padding: 10px; background-color: #f8f9fa; margin: 5px 0; border-radius: 5px;'>%s</li>",
+                    courseName
+            ));
+        }
+
+        return String.format(
+                "<!DOCTYPE html>" +
+                        "<html>" +
+                        "<head><meta charset='UTF-8'></head>" +
+                        "<body style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>" +
+                        "<div style='background-color: #f8f9fa; padding: 30px; border-radius: 10px;'>" +
+                        "<h2 style='color: #333; margin-top: 0;'>🎉 Purchase Successful!</h2>" +
+                        "<p style='color: #666; font-size: 16px;'>Thank you for your purchase! You now have access to:</p>" +
+                        "<ul style='list-style: none; padding: 0;'>%s</ul>" +
+                        "<div style='margin-top: 30px; padding: 20px; background-color: white; border-radius: 5px;'>" +
+                        "<p style='margin: 0; color: #666;'>Start learning now:</p>" +
+                        "<a href='%s/courses' style='display: inline-block; margin-top: 15px; padding: 12px 30px; background-color: #7C3AED; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;'>Go to My Courses</a>" +
+                        "</div>" +
+                        "<p style='color: #999; font-size: 14px; margin-top: 30px;'>If you have any questions, contact us at support@smashap.com</p>" +
+                        "</div>" +
+                        "</body>" +
+                        "</html>",
+                coursesHtml,
+                frontendUrl
+        );
+    }
+
 
     private String buildPasswordEmailHtml(String email, String password) {
         return String.format(

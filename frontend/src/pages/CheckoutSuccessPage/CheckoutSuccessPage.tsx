@@ -1,55 +1,150 @@
 import {useEffect, useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useSearchParams} from 'react-router-dom'
 import {Header} from '@/widgets/Header'
 import {Footer} from '@/widgets/Footer'
 import {formatPrice} from '@/shared/lib/utils/money'
 import {ROUTES} from '@/app/router/routes'
-
-interface CheckoutSuccessItem {
-    courseId: string
-    courseTitle: string
-    tariffId: string
-    tariffTitle: string
-    tariffTier: string
-    price: number
-    currency: string
-}
-
-interface CheckoutSuccessData {
-    email: string
-    discordNickname: string
-    tariffIds: string[]
-    items: CheckoutSuccessItem[]
-}
+import {useCart} from '@/features/cart/model/useCart'
+import {useLazyGetOrdersByCheckoutIdQuery} from '@/shared/api/checkoutApi'
 
 export const CheckoutSuccessPage = () => {
     const navigate = useNavigate()
-    const [checkoutData, setCheckoutData] = useState<CheckoutSuccessData | null>(null)
+    const {clear: clearCart} = useCart()
+    const [searchParams] = useSearchParams()
+    const [getOrders, {data: orderData, isLoading, isError}] = useLazyGetOrdersByCheckoutIdQuery()
+    const [pollingCount, setPollingCount] = useState(0)
+    const [checkoutId, setCheckoutId] = useState<string | null>(null)
 
     useEffect(() => {
-        const data = sessionStorage.getItem('checkoutFormData')
-        if (!data) {
-            navigate(ROUTES.CHECKOUT)
-            return
+        //Очищаем URL от лишних параметров PayPro
+        const cleanUrl = window.location.origin + window.location.pathname
+        if (window.location.search) {
+            window.history.replaceState({}, '', cleanUrl)
         }
 
-        try {
-            const parsedData = JSON.parse(data) as CheckoutSuccessData
-            queueMicrotask(() => setCheckoutData(parsedData))
-            // Очищаем данные после использования
-            sessionStorage.removeItem('checkoutFormData')
-        } catch (error) {
-            console.error('Failed to parse checkout data:', error)
-            navigate(ROUTES.CHECKOUT)
-        }
-    }, [navigate])
+        //Пытаемся получить checkoutId из localStorage (если webhook быстрее redirect)
+        const storedData = localStorage.getItem('checkoutFormData')
+        let extractedCheckoutId: string | null = null
 
-    if (!checkoutData) {
-        return null
+        if (storedData) {
+            try {
+                const parsed = JSON.parse(storedData)
+                // Можно добавить checkoutId в localStorage при prepareCheckout
+                extractedCheckoutId = parsed.checkoutId
+            } catch (e) {
+                console.error('Failed to parse stored checkout data:', e)
+            }
+        }
+
+        //Если нет в localStorage, пробуем получить из URL параметров
+        if (!extractedCheckoutId) {
+            extractedCheckoutId = searchParams.get('checkout_id')
+        }
+
+        if (extractedCheckoutId) {
+            setCheckoutId(extractedCheckoutId)
+            //Запрашиваем данные с backend
+            getOrders(extractedCheckoutId)
+        } else {
+            console.warn('No checkoutId found')
+        }
+    }, [searchParams, getOrders])
+
+    // Polling: проверяем статус каждые 2 секунды если заказ еще pending
+    useEffect(() => {
+        if (!checkoutId || !orderData) return
+
+        if (orderData.overallStatus === 'pending' && pollingCount < 30) {
+            const timer = setTimeout(() => {
+                console.log('Polling order status...', pollingCount + 1)
+                getOrders(checkoutId)
+                setPollingCount(prev => prev + 1)
+            }, 2000)
+
+            return () => clearTimeout(timer)
+        }
+
+        // Когда заказ completed - очищаем корзину
+        if (orderData.overallStatus === 'completed') {
+            clearCart()
+            localStorage.removeItem('checkoutFormData')
+        }
+    }, [orderData, checkoutId, pollingCount, getOrders, clearCart])
+
+    if (isLoading || !orderData) {
+        return (
+            <div className="page-wrapper">
+                <Header variant="full" theme="dark"/>
+                <section className="section top">
+                    <div className="w-layout-blockcontainer container-default w-container">
+                        <div className="inner-container _600px text-center">
+                            <div style={{fontSize: '64px', marginBottom: '24px'}}>⏳</div>
+                            <h1 className="mg-bottom-16px">Processing Your Payment...</h1>
+                            <p className="text-200">
+                                Please wait while we confirm your purchase. This usually takes a few seconds.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <Footer variant="full"/>
+            </div>
+        )
     }
 
-    const totalPrice = checkoutData.items.reduce((sum, item) => sum + item.price, 0)
-    const currency = checkoutData.items[0]?.currency || 'USD'
+    if (isError || !checkoutId) {
+        return (
+            <div className="page-wrapper">
+                <Header variant="full" theme="dark"/>
+                <section className="section top">
+                    <div className="w-layout-blockcontainer container-default w-container">
+                        <div className="inner-container _600px text-center">
+                            <div style={{fontSize: '64px', marginBottom: '24px'}}>❌</div>
+                            <h1 className="mg-bottom-16px">Something Went Wrong</h1>
+                            <p className="text-200 mg-bottom-32px">
+                                We couldn't find your order. Please contact support if you were charged.
+                            </p>
+                            <button
+                                onClick={() => navigate(ROUTES.HOME)}
+                                className="button-primary"
+                            >
+                                Go to Home
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <Footer variant="full"/>
+            </div>
+        )
+    }
+
+    // Если заказ еще pending после 30 попыток
+    if (orderData.overallStatus === 'pending' && pollingCount >= 30) {
+        return (
+            <div className="page-wrapper">
+                <Header variant="full" theme="dark"/>
+                <section className="section top">
+                    <div className="w-layout-blockcontainer container-default w-container">
+                        <div className="inner-container _600px text-center">
+                            <div style={{fontSize: '64px', marginBottom: '24px'}}>⏰</div>
+                            <h1 className="mg-bottom-16px">Payment Processing</h1>
+                            <p className="text-200 mg-bottom-32px">
+                                Your payment is still being processed. You will receive an email confirmation once it's complete.
+                            </p>
+                            <button
+                                onClick={() => navigate(ROUTES.HOME)}
+                                className="button-primary"
+                            >
+                                Go to Home
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <Footer variant="full"/>
+            </div>
+        )
+    }
+
+    const totalPrice = orderData.totalAmountCents / 100
 
     return (
         <div className="page-wrapper">
@@ -58,6 +153,7 @@ export const CheckoutSuccessPage = () => {
             <section className="section top">
                 <div className="w-layout-blockcontainer container-default w-container">
                     <div className="inner-container _600px mg-bottom-48px text-center">
+                        <div style={{fontSize: '64px', marginBottom: '16px'}}>🎉</div>
                         <h1 className="mg-bottom-16px">Order Confirmation</h1>
                         <p className="text-200">
                             Thanks for your purchase! You will receive access details and course information via email shortly.
@@ -66,6 +162,46 @@ export const CheckoutSuccessPage = () => {
 
                     <div className="w-layout-grid checkout-form" style={{gridTemplateColumns: '1fr'}}>
                         <div style={{maxWidth: '800px', margin: '0 auto', width: '100%'}}>
+                            {/* Email Notification Block */}
+                            <div className="card checkout-block" style={{
+                                backgroundColor: '#f0fdf4',
+                                border: '2px solid #86efac',
+                                marginBottom: '24px'
+                            }}>
+                                <div className="w-commerce-commercecheckoutblockcontent checkout-block-content">
+                                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '16px'}}>
+                                        <div style={{fontSize: '32px', lineHeight: '1'}}>📧</div>
+                                        <div style={{flex: 1}}>
+                                            <h3 className="display-6 mg-bottom-8px" style={{color: '#166534'}}>
+                                                Check Your Email
+                                            </h3>
+                                            <p className="text-200 mg-bottom-12px" style={{color: '#15803d'}}>
+                                                We've sent a confirmation email to <strong>{orderData.userEmail}</strong> with:
+                                            </p>
+                                            <ul style={{
+                                                listStyle: 'none',
+                                                padding: 0,
+                                                margin: 0,
+                                                color: '#15803d'
+                                            }}>
+                                                <li className="text-200" style={{marginBottom: '8px'}}>
+                                                    ✓ Your auto-generated password for login
+                                                </li>
+                                                <li className="text-200" style={{marginBottom: '8px'}}>
+                                                    ✓ Course access details
+                                                </li>
+                                                <li className="text-200">
+                                                    ✓ Getting started guide
+                                                </li>
+                                            </ul>
+                                            <p className="text-100 mg-top-12px" style={{color: '#166534', fontStyle: 'italic'}}>
+                                                💡 Don't see the email? Check your spam folder!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             {/* Customer Info */}
                             <div className="card checkout-block">
                                 <div className="w-commerce-commercecheckoutblockheader checkout-block-header">
@@ -74,11 +210,11 @@ export const CheckoutSuccessPage = () => {
                                 <fieldset className="w-commerce-commercecheckoutblockcontent checkout-block-content">
                                     <div className="mg-bottom-24px">
                                         <div className="text-200 text-weight-semibold mg-bottom-8px">Email</div>
-                                        <div className="text-200 text-neutral-600">{checkoutData.email}</div>
+                                        <div className="text-200 text-neutral-600">{orderData.userEmail}</div>
                                     </div>
                                     <div>
                                         <div className="text-200 text-weight-semibold mg-bottom-8px">Discord Nickname</div>
-                                        <div className="text-200 text-neutral-600">{checkoutData.discordNickname}</div>
+                                        <div className="text-200 text-neutral-600">{orderData.discordNickname}</div>
                                     </div>
                                 </fieldset>
                             </div>
@@ -89,9 +225,9 @@ export const CheckoutSuccessPage = () => {
                                     <h2 className="display-6">Purchased Courses</h2>
                                 </div>
                                 <fieldset className="w-commerce-commercecheckoutblockcontent checkout-block-content">
-                                    {checkoutData.items.map((item, index) => (
+                                    {orderData.items.map((item, index) => (
                                         <div
-                                            key={item.tariffId}
+                                            key={item.orderId}
                                             className="order-item"
                                             style={index > 0 ? {marginTop: '16px', paddingTop: '16px', borderTop: '1px solid #e5e7eb'} : {}}
                                         >
@@ -101,7 +237,7 @@ export const CheckoutSuccessPage = () => {
                                                     {item.tariffTitle} - {item.tariffTier}
                                                 </p>
                                                 <div className="text-200 text-weight-semibold">
-                                                    {formatPrice(item.price, item.currency)}
+                                                    {formatPrice(item.priceCents / 100, item.currency)}
                                                 </div>
                                             </div>
                                         </div>
@@ -112,7 +248,7 @@ export const CheckoutSuccessPage = () => {
                                         <div className="w-commerce-commercecheckoutsummarylineitem">
                                             <div className="text-200 text-weight-semibold">Total Paid</div>
                                             <div className="text-200 text-weight-semibold">
-                                                {formatPrice(totalPrice, currency)}
+                                                {formatPrice(totalPrice, orderData.currency)}
                                             </div>
                                         </div>
                                     </div>
@@ -120,10 +256,16 @@ export const CheckoutSuccessPage = () => {
                             </div>
 
                             {/* Action Buttons */}
-                            <div className="mg-top-32px" style={{display: 'flex', gap: '16px', justifyContent: 'center'}}>
+                            <div className="mg-top-32px" style={{display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap'}}>
+                                <button
+                                    onClick={() => navigate(ROUTES.SIGN_IN)}
+                                    className="button-primary"
+                                >
+                                    Sign In to Start Learning
+                                </button>
                                 <button
                                     onClick={() => navigate(ROUTES.HOME)}
-                                    className="button-primary"
+                                    className="button-secondary"
                                 >
                                     Go to Home
                                 </button>

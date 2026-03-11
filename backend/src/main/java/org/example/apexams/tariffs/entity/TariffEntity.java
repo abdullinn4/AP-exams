@@ -37,8 +37,8 @@ public class TariffEntity {
     @Column(nullable = false)
     private TariffTier tier = BASIC;
 
-    @Column(name = "paddle_variant_id")
-    private String paddleVariantId;
+    @Column(name = "paypro_variant_id")
+    private String payProVariantId;
 
     @Column(name = "price_cents", nullable = false)
     private Integer priceCents;
