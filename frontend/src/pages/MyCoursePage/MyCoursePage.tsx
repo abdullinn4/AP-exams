@@ -8,6 +8,7 @@ import {CourseStructureCard} from "@/widgets/CourseStructureCard";
 import {CourseHeroSection} from "@/widgets/CourseHeroSection";
 import {CourseAboutSection} from "@/widgets/CourseAboutSection";
 import {useGetMockExamsQuery} from "@/shared/api/mockExamApi.ts";
+import {DashboardTabNavigation} from "@/widgets/DashboardTabNavigation";
 
 export const MyCoursePage = () => {
     const {slug} = useParams<{ slug: string }>()
@@ -25,7 +26,7 @@ export const MyCoursePage = () => {
     if (!slug) {
         return (
             <div className="page-wrapper">
-                <Header/>
+                <Header variant="protected" />
                 <div style={{textAlign: 'center', padding: '100px 0'}}>
                     <p style={{color: 'red'}}>Course slug is missing</p>
                 </div>
@@ -37,7 +38,7 @@ export const MyCoursePage = () => {
     return (
         <div className="page-wrapper">
             <div className="course-preview-sticky-container">
-                <CourseHeroSection course={course}/>
+                <CourseHeroSection course={course} variant="my-course"/>
 
                 {error ? (
                     <div style={{textAlign: 'center', padding: '100px 0'}}>
@@ -72,14 +73,15 @@ export const MyCoursePage = () => {
                                             opacity: 0
                                         }}
                                         className="course-preview-sidebar">
-                                        <CourseStructureCard
-                                            totalLessons={totalLessons}
-                                            totalUnits={course?.units?.length || 0}
-                                            totalMockExams={mockExamsData?.totalExams}
-                                            showStartButton={false}
-                                        />
-                                        <div className="mg-top-24px">
-
+                                        <div className="card chapters-side-card">
+                                            <div className="position-sticky" style={{ top: '24px' }}>
+                                                <DashboardTabNavigation
+                                                    activeTab="my-courses"
+                                                    onTabChange={(tab) => {
+                                                        window.location.href = `/dashboard?tab=${tab}`
+                                                    }}
+                                                />
+                                            </div>
                                         </div>
                                     </aside>
 

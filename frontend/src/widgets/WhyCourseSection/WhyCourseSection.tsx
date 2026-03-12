@@ -28,7 +28,6 @@ export const WhyCourseSection = () => {
                                 muted
                                 loop
                                 playsInline
-                                controls
                                 className="video-bg-image"
                             />
                         </div>

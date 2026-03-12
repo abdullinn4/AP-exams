@@ -24,17 +24,19 @@ export const CheckoutSuccessPage = () => {
             window.history.replaceState({}, '', window.location.pathname);
         }
 
-        //Пытаемся получить checkoutId из localStorage (если webhook быстрее redirect)
-        const storedData = localStorage.getItem('checkoutFormData')
         let extractedCheckoutId: string | null = checkoutIdFromUrl
 
-        if (!extractedCheckoutId && storedData) {
-            try {
-                const parsed = JSON.parse(storedData)
-                // Можно добавить checkoutId в localStorage при prepareCheckout
-                extractedCheckoutId = parsed.checkoutId
-            } catch (e) {
-                console.error('Failed to parse stored checkout data:', e)
+        // Fallback: пытаемся из localStorage (на случай если что-то пошло не так)
+        if (!extractedCheckoutId) {
+            const storedData = localStorage.getItem('checkoutFormData');
+            if (storedData) {
+                try {
+                    const parsed = JSON.parse(storedData)
+                    // Можно добавить checkoutId в localStorage при prepareCheckout
+                    extractedCheckoutId = parsed.checkoutId
+                } catch (e) {
+                    console.error('Failed to parse stored checkout data:', e)
+                }
             }
         }
 

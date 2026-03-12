@@ -3,13 +3,14 @@ import { Header } from "../Header"
 
 interface CourseHeroSectionProps {
     course?: CourseDetails | CourseDetailsWithProgress
+    variant?: "preview" | "my-course"
 }
 
-export const CourseHeroSection = ({ course }: CourseHeroSectionProps) => {
+export const CourseHeroSection = ({ course, variant }: CourseHeroSectionProps) => {
     return (
         <section className="section-card-padding top">
             <div data-w-id="182aa569-7882-5e75-85a4-ac41b78d6019" style={{ opacity: 0 }} className="position-relative">
-                <Header variant="full" theme="light" />
+                <Header variant={variant === "my-course" ? "protected" : "full"} theme="light" />
                 <div className="section-card hero-section chapter-single-page">
                     <div className="w-layout-blockcontainer container-default w-container">
                         <div className="w-layout-grid grid-2-columns hero-grid---chapters-single-page">

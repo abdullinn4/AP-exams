@@ -4,11 +4,11 @@ export const WelcomeBackSection = () => {
     return (
         <section className="section-card-padding top">
             <div className="position-relative">
-                <Header theme="light" variant="full"/>
+                <Header theme="light" variant="protected"/>
 
                 <div
                     data-w-id="e92fc6e6-6ac6-91e0-84ef-7f2f96af7395"
-                    style={{ opacity: 0 }}
+                    style={{ opacity: 0, height: '300px' }}
                     className="section-card hero-section home-premium"
                 >
                     <div className="w-layout-blockcontainer container-default z-index-1 width-100 w-container">

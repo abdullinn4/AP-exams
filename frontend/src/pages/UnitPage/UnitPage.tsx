@@ -3,9 +3,8 @@ import {Header} from '@/widgets/Header'
 import {Footer} from '@/widgets/Footer'
 import {ProgressBar} from '@/widgets/ProgressBar'
 import playIcon from '/assets/webflow/images/play-icon-courselify-x-webflow-template.svg'
-import learningHoursIcon from '/assets/webflow/images/learning-hours-icon-courselify-x-webflow-template.svg'
-import lessonsIcon from '/assets/webflow/images/lessons-icon-courselify-x-webflow-template.svg'
 import {useGetUnitDetailsQuery} from "@/shared/api/courseApi.ts";
+import {DashboardTabNavigation} from "@/widgets/DashboardTabNavigation";
 
 const getStatusIcon = (status: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED') => {
     switch (status) {
@@ -28,7 +27,7 @@ export const UnitPage = () => {
     if (!slug || !unitId) {
         return (
             <div className="page-wrapper">
-                <Header/>
+                <Header variant="protected" />
                 <div style={{textAlign: 'center', padding: '100px 0'}}>
                     <p style={{color: 'red'}}>Course slug or unit ID is missing</p>
                 </div>
@@ -39,7 +38,7 @@ export const UnitPage = () => {
 
     return (
         <div className="page-wrapper">
-            <Header/>
+            <Header variant="protected" />
 
             {error ? (
                 <div style={{textAlign: 'center', padding: '100px 0'}}>
@@ -71,7 +70,7 @@ export const UnitPage = () => {
                                                 className="image"
                                             />
                                         </div>
-                                        <h1 className="display-10" style={{flex: 1, margin: 0}}>{unit?.title}</h1>
+                                        <h1 className="display-7" style={{flex: 1, margin: 0}}>{unit?.title}</h1>
                                     </div>
                                     <div className="mg-top-16px">
                                         <p>{unit?.snippet}</p>
@@ -163,29 +162,13 @@ export const UnitPage = () => {
                                     }}
                                     className="card chapter-information-card"
                                 >
-                                    <h2 className="display-5">Unit information</h2>
-                                    <div className="mg-top-12px">
-                                        <p>{unit?.snippet}</p>
-                                    </div>
-                                    <div className="mg-top-24px">
-                                        <div className="w-layout-grid grid-1-column gap-row-24px">
-                                            <div className="chapter-information-wrapper">
-                                                <img
-                                                    src={learningHoursIcon}
-                                                    loading="eager"
-                                                    alt="Learning Hours Icon"
-                                                />
-                                                <div>3+ learning hours</div>
-                                            </div>
-                                            <div className="chapter-information-wrapper">
-                                                <img
-                                                    src={lessonsIcon}
-                                                    loading="eager"
-                                                    alt="Lessons"
-                                                />
-                                                <div>{unit?.totalLessons} lessons</div>
-                                            </div>
-                                        </div>
+                                    <div className="position-sticky" style={{ top: '24px' }}>
+                                        <DashboardTabNavigation
+                                            activeTab="my-courses"
+                                            onTabChange={(tab) => {
+                                                window.location.href = `/dashboard?tab=${tab}`
+                                            }}
+                                        />
                                     </div>
                                 </div>
                             </div>

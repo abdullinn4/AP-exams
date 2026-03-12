@@ -5,12 +5,12 @@ import {CartBadge, CartModal} from "@/features/cart";
 import {useState} from "react";
 
 interface HeaderProps {
-    variant?: 'full' | 'minimal'
+    variant?: 'full' | 'minimal' | 'protected'
     theme?: 'light' | 'dark'
 }
 
 export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
-    const {isAuthenticated} = useAuth()
+    const {isAuthenticated, logout} = useAuth()
     const [isCartOpen, setIsCartOpen] = useState(false)
 
     // Выбор логотипа в зависимости от темы
@@ -43,6 +43,113 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
     // Полный хэдер (Header V1)
     const headerClass = theme === 'light' ? 'header-wrapper light w-nav' : 'header-wrapper w-nav'
     const linkClass = theme === 'light' ? 'link header-link---dark-mode' : 'link'
+
+    // Protected хэдер для защищенных роутов
+    if (variant === 'protected') {
+        return (
+            <div data-w-id="c5a10a2d-1ce6-df65-3882-e8a1991bf291" data-animation="default" data-collapse="medium"
+                 data-duration="400"
+                 data-easing="ease" data-easing2="ease" role="banner" className={headerClass}>
+                <div className="container-default w-container">
+                    <div data-w-id="c7c25743-3af1-4a48-2846-73035f33d328" className="header-container-wrapper">
+                        {/* Левая часть - только лого */}
+                        <div className="nav-menu-left-side v1">
+                            <div className="logo-wrapper v1">
+                                <Link to="/" className="logo-link w-inline-block"
+                                      style={{display: "flex", alignItems: 'center', justifyContent: 'center'}}>
+                                    <img src={logoSrc} alt="AP Exams Logo" style={{width: 'auto', height: '40px'}}/>
+                                </Link>
+                            </div>
+                        </div>
+
+                        {/* Правая часть - иконки */}
+                        <div className="nav-menu-right-side">
+                            <div className="buttons-row nav-menu-hidden-on-mobile" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                                {/* Dashboard Icon */}
+                                <Link
+                                    to={ROUTES.DASHBOARD}
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        transition: 'filter 0.2s ease'
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        const img = e.currentTarget.querySelector('img')
+                                        if (img) img.style.filter = 'brightness(0) saturate(100%) invert(38%) sepia(88%) saturate(2234%) hue-rotate(241deg) brightness(95%) contrast(92%)'
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        const img = e.currentTarget.querySelector('img')
+                                        if (img) img.style.filter = theme === 'light' ? 'brightness(0) invert(1)' : 'none'
+                                    }}
+                                >
+                                    <img
+                                        src="/assets/webflow/images/User.svg"
+                                        alt="Dashboard"
+                                        style={{
+                                            width: '24px',
+                                            height: '24px',
+                                            filter: theme === 'light' ? 'brightness(0) invert(1)' : 'none',
+                                            transition: 'filter 0.2s ease'
+                                        }}
+                                    />
+                                </Link>
+
+                                {/* Cart Icon */}
+                                <a
+                                    className="w-commerce-commercecartopenlink cart-button w-inline-block"
+                                    role="button"
+                                    aria-label="Open cart"
+                                    href="#"
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        setIsCartOpen(true)
+                                    }}
+                                >
+                                    <CartBadge theme={theme}/>
+                                </a>
+
+                                {/* Logout Icon */}
+                                <button
+                                    onClick={logout}
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        background: 'none',
+                                        border: 'none',
+                                        cursor: 'pointer',
+                                        padding: 0,
+                                        transition: 'filter 0.2s ease'
+                                    }}
+                                    title="Logout"
+                                    onMouseEnter={(e) => {
+                                        const img = e.currentTarget.querySelector('img')
+                                        if (img) img.style.filter = 'brightness(0) saturate(100%) invert(38%) sepia(88%) saturate(2234%) hue-rotate(241deg) brightness(95%) contrast(92%)'
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        const img = e.currentTarget.querySelector('img')
+                                        if (img) img.style.filter = theme === 'light' ? 'brightness(0) invert(1)' : 'none'
+                                    }}
+                                >
+                                    <img
+                                        src="/assets/webflow/images/Log out.svg"
+                                        alt="Logout"
+                                        style={{
+                                            width: '24px',
+                                            height: '24px',
+                                            filter: theme === 'light' ? 'brightness(0) invert(1)' : 'none',
+                                            transition: 'filter 0.2s ease'
+                                        }}
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)}/>
+            </div>
+        )
+    }
+
 
     return (
         <div data-w-id="c5a10a2d-1ce6-df65-3882-e8a1991bf291" data-animation="default" data-collapse="medium"
@@ -159,17 +266,30 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                 <>
                                     <Link
                                         to={ROUTES.DASHBOARD}
-                                        className="w-inline-block"
                                         style={{
                                             display: 'flex',
                                             alignItems: 'center',
-                                            marginRight: '16px'
+                                            transition: 'filter 0.2s ease'
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            const img = e.currentTarget.querySelector('img')
+                                            if (img) img.style.filter = 'brightness(0) saturate(100%) invert(38%) sepia(88%) saturate(2234%) hue-rotate(241deg) brightness(95%) contrast(92%)'
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            const img = e.currentTarget.querySelector('img')
+                                            if (img) img.style.filter = theme === 'light' ? 'brightness(0) invert(1)' : 'none'
                                         }}
                                     >
-                                        <span
-                                            className="custom-icon-font"
-                                            style={theme === 'light' ? {color: 'white'} : {}}
-                                        ></span>
+                                        <img
+                                            src="/assets/webflow/images/User.svg"
+                                            alt="Dashboard"
+                                            style={{
+                                                width: '24px',
+                                                height: '24px',
+                                                filter: theme === 'light' ? 'brightness(0) invert(1)' : 'none',
+                                                transition: 'filter 0.2s ease'
+                                            }}
+                                        />
                                     </Link>
                                     <Link to={ROUTES.CATALOG}
                                           className={`button-primary small ${theme === 'light' ? 'white' : ''} w-inline-block`}>

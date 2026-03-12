@@ -40,7 +40,7 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/api/v1/public/**",
                                 "/api/admin/data-loader/**",
-                                "/api/v1/orders/**",
+                                "/api/v1/paypro/**",
                                 "/"
                         ).permitAll()
 

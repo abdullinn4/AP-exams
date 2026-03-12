@@ -47,7 +47,7 @@ export const MockExamTestPage = () => {
     if (!examId) {
         return (
             <div className="page-wrapper">
-                <Header />
+                <Header variant="protected" />
                 <div style={{ textAlign: 'center', padding: '100px 0' }}>
                     <p style={{ color: 'red' }}>Exam ID is missing</p>
                 </div>
@@ -58,7 +58,7 @@ export const MockExamTestPage = () => {
 
     return (
         <div className="page-wrapper">
-            <Header />
+            <Header variant="protected" />
 
             {error ? (
                 <div style={{ textAlign: 'center', padding: '100px 0' }}>

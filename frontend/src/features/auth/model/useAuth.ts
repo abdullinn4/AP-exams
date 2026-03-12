@@ -40,7 +40,7 @@ export const useAuth = () => {
         } finally {
             tokenService.clearTokens()
             dispatch(clearAuth())
-            navigate(ROUTES.SIGN_IN)
+            navigate(ROUTES.HOME)
         }
     }
 

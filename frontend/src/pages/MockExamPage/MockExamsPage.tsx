@@ -17,7 +17,7 @@ export const MockExamsPage = () => {
     if (!slug) {
         return (
             <div className="page-wrapper">
-                <Header />
+                <Header variant="protected" />
                 <div style={{ textAlign: 'center', padding: '100px 0' }}>
                     <p style={{ color: 'red' }}>Course slug is missing</p>
                 </div>
@@ -28,7 +28,7 @@ export const MockExamsPage = () => {
 
     return (
         <div className="page-wrapper">
-            <Header />
+            <Header variant="protected" />
 
             {error ? (
                 <div style={{ textAlign: 'center', padding: '100px 0' }}>
@@ -60,7 +60,7 @@ export const MockExamsPage = () => {
                                                 className="image"
                                             />
                                         </div>
-                                        <h1 className="display-10" style={{ flex: 1, margin: 0 }}>Exam Tests</h1>
+                                        <h1 className="display-7" style={{ flex: 1, margin: 0 }}>Exam Tests</h1>
                                     </div>
                                     <div className="mg-top-16px">
                                         <p>Practice with full-length mock exams to test your knowledge and prepare for the real exam</p>

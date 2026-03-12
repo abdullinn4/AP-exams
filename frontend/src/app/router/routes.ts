@@ -9,14 +9,14 @@ export const ROUTES = {
     CATALOG: '/courses',
     NOT_FOUND: '/404',
     COURSE_PREVIEW: '/courses/:slug/preview',
-    MY_COURSES: '/my-courses',
     MY_COURSE: '/courses/:slug',
     UNIT: '/courses/:slug/units/:unitId',
     LESSON: '/courses/:slug/units/:unitId/lessons/:lessonId',
     MOCK_EXAMS: '/courses/:slug/mock-exams',
     MOCK_EXAM_TEST: '/courses/:slug/mock-exams/:examId',
     TERMS_AND_CONDITIONS: '/terms-and-conditions',
+
     DASHBOARD: '/dashboard',
-    STATISTICS: '/statistics',
+
     COMING_SOON_COURSE: '/courses/coming-soon/:slug/preview',
 } as const

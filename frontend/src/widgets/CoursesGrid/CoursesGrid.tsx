@@ -18,6 +18,7 @@ interface CoursesGridProps {
     variant: 'catalog' | 'my-courses'
     coursesProgress?: CourseWithProgress[]
     onAddToCart?: (courseId: string, title: string, coverUrl: string) => void
+    disableAnimations?: boolean
 }
 
 export const CoursesGrid = ({
@@ -27,14 +28,15 @@ export const CoursesGrid = ({
                                 courses = [],
                                 variant,
                                 coursesProgress,
-                                onAddToCart
+                                onAddToCart,
+                                disableAnimations = false
                             }: CoursesGridProps) => {
     return (
         <section className="section top">
             <div className="w-layout-blockcontainer container-default w-container">
                 <div
-                    data-w-id="b2447a67-5892-f160-6c20-f07401875c38"
-                    style={{
+                    data-w-id={disableAnimations ? {} : "b2447a67-5892-f160-6c20-f07401875c38"}
+                    style={disableAnimations ? {} : {
                         WebkitTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
                         MozTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
                         msTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
@@ -53,8 +55,8 @@ export const CoursesGrid = ({
                     </div>
                 </div>
                 <div
-                    data-w-id="b77c8737-6df8-1c39-d38e-0639668f6b8b"
-                    style={{
+                    data-w-id={disableAnimations ? {} : "b77c8737-6df8-1c39-d38e-0639668f6b8b"}
+                    style={disableAnimations ? {} : {
                         WebkitTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
                         MozTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
                         msTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',

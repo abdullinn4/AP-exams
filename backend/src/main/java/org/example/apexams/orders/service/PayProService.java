@@ -61,6 +61,9 @@ public class PayProService implements PaymentProvider {
     @Value("${app.frontend.url}")
     private String frontendUrl;
 
+    @Value("${app.backend.url}")
+    private String backendUrl;
+
     @Override
     public String createCheckoutSession(UserEntity user, List<TariffEntity> tariffs, String checkoutId) {
         try {
@@ -174,8 +177,8 @@ public class PayProService implements PaymentProvider {
             builder.queryParam("secret-key", secretKey);
             log.info("Test mode enabled for checkout: {}", checkoutId);
         }
-        builder.queryParam("success-url", frontendUrl + "/checkout/success");
-        builder.queryParam("cancel-url", frontendUrl + "/checkout/cancel");
+        builder.queryParam("success-url", backendUrl + "/api/v1/paypro/success");
+        builder.queryParam("cancel-url", backendUrl + "/api/v1/paypro/cancel");
 
         return builder.build().toUriString();
     }

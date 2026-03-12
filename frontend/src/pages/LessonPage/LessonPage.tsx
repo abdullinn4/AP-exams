@@ -29,7 +29,7 @@ export const LessonPage = () => {
     if (!slug || !unitId || !lessonId) {
         return (
             <div className="page-wrapper">
-                <Header/>
+                <Header variant="protected" />
                 <div style={{textAlign: 'center', padding: '100px 0'}}>
                     <p style={{color: 'red'}}>Course slug, unit ID or lesson ID is missing</p>
                 </div>
@@ -40,7 +40,7 @@ export const LessonPage = () => {
 
     return (
         <div className="page-wrapper">
-            <Header/>
+            <Header variant="protected" />
 
             {error ? (
                 <div style={{textAlign: 'center', padding: '100px 0'}}>

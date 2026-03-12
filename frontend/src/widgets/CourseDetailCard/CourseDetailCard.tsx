@@ -53,12 +53,13 @@ export const CourseDetailCard = ({ courseDetail }: CourseDetailCardProps) => {
             <div className="mg-top-32px">
                 <div className="position-relative">
                     <div className="z-index-1">
-                        <div className="w-layout-grid grid-1-column gap-row-24px">
+                        <div className="w-layout-grid grid-1-column gap-row-24px" >
                             {courseDetail.lessons.map((lesson) => (
                                 <Link
                                     key={lesson.lessonId}
                                     to={`/courses/${courseDetail.courseSlug}/units/${lesson.unitId}/lessons/${lesson.lessonId}`}
                                     className="card chapter-card-v3 w-inline-block"
+                                    style={{background: '#f9fafb' }}
                                 >
                                     <div className="chapter-card-left-content">
                                         <div className="image-wrapper play-icon">
