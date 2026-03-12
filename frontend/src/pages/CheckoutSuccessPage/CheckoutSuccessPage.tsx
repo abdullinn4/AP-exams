@@ -63,11 +63,10 @@ export const CheckoutSuccessPage = () => {
             return () => clearTimeout(timer)
         }
 
-        // Когда заказ completed - очищаем корзину
-        if (orderData.overallStatus === 'completed') {
-            clearCart()
-            localStorage.removeItem('checkoutFormData')
-        }
+        // очищаем корзину
+        clearCart()
+        localStorage.removeItem('checkoutFormData')
+
     }, [orderData, checkoutId, pollingCount, getOrders, clearCart])
 
     if (isLoading || !orderData) {
