@@ -16,17 +16,19 @@ export const CheckoutSuccessPage = () => {
     const [checkoutId, setCheckoutId] = useState<string | null>(null)
 
     useEffect(() => {
-        //Очищаем URL от лишних параметров PayPro
-        const cleanUrl = window.location.origin + window.location.pathname
+        // Получаем checkout_id из URL (от paypro-redirect.html)
+        const checkoutIdFromUrl = searchParams.get('checkout_id');
+
+        // Очищаем URL от параметров
         if (window.location.search) {
-            window.history.replaceState({}, '', cleanUrl)
+            window.history.replaceState({}, '', window.location.pathname);
         }
 
         //Пытаемся получить checkoutId из localStorage (если webhook быстрее redirect)
         const storedData = localStorage.getItem('checkoutFormData')
-        let extractedCheckoutId: string | null = null
+        let extractedCheckoutId: string | null = checkoutIdFromUrl
 
-        if (storedData) {
+        if (!extractedCheckoutId && storedData) {
             try {
                 const parsed = JSON.parse(storedData)
                 // Можно добавить checkoutId в localStorage при prepareCheckout
@@ -36,17 +38,12 @@ export const CheckoutSuccessPage = () => {
             }
         }
 
-        //Если нет в localStorage, пробуем получить из URL параметров
-        if (!extractedCheckoutId) {
-            extractedCheckoutId = searchParams.get('checkout_id')
-        }
-
         if (extractedCheckoutId) {
-            setCheckoutId(extractedCheckoutId)
-            //Запрашиваем данные с backend
-            getOrders(extractedCheckoutId)
+            console.log('Found checkoutId:', extractedCheckoutId);
+            setCheckoutId(extractedCheckoutId);
+            getOrders(extractedCheckoutId);
         } else {
-            console.warn('No checkoutId found')
+            console.warn('No checkoutId found');
         }
     }, [searchParams, getOrders])
 
