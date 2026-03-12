@@ -88,18 +88,24 @@ public class PayProService implements PaymentProvider {
     @Transactional
     public void handleWebhook(String payload, String signature) {
         try {
-            // Парсим webhook данные (application/x-www-form-urlencoded)
             Map<String, String> params = parseFormUrlEncoded(payload);
 
             String ipnTypeId = params.get("IPN_TYPE_ID");
             String ipnTypeName = params.get("IPN_TYPE_NAME");
+            String testMode = params.get("TEST_MODE");
+            boolean isTestMode = "1".equals(testMode);
 
-            log.info("Processing PayPro webhook: type={} ({})", ipnTypeName, ipnTypeId);
+            log.info("Processing PayPro webhook: type={} ({}), testMode={}",
+                    ipnTypeName, ipnTypeId, isTestMode ? "TEST" : "LIVE");
 
-            // Проверяем подпись
-            if (!verifyWebhookSignature(params, signature)) {
-                log.error("Invalid webhook signature!");
-                throw new SecurityException("Invalid webhook signature");
+            // В test mode НЕ проверяем signature (PayPro может не отправлять его)
+            if (!isTestMode) {
+                if (!verifyWebhookSignature(params, signature)) {
+                    log.error("Invalid webhook signature!");
+                    throw new SecurityException("Invalid webhook signature");
+                }
+            } else {
+                log.warn("Skipping signature verification in test mode");
             }
 
             // Обрабатываем разные типы событий
@@ -112,11 +118,8 @@ public class PayProService implements PaymentProvider {
             }
 
         } catch (IllegalArgumentException | IllegalStateException e) {
-            // Логические ошибки - retry не поможет
             log.error("Webhook ignored due to validation error: {}", e.getMessage());
-            // НЕ бросаем исключение - PayPro не будет retry
         } catch (Exception e) {
-            // Технические ошибки - нужен retry
             log.error("Webhook processing failed (will retry): {}", e.getMessage(), e);
             throw new RuntimeException("Webhook processing failed", e);
         }

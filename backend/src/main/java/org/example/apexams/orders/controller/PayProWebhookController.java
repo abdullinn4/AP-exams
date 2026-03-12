@@ -7,6 +7,8 @@ import org.example.apexams.orders.service.PayProService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/v1/webhooks/paypro")
 @RequiredArgsConstructor
@@ -24,24 +26,23 @@ public class PayProWebhookController {
     @PostMapping
     public ResponseEntity<String> handleWebhook(
             @RequestBody String payload,
-            @RequestHeader(value = "SIGNATURE", required = false) String signature
+            @RequestHeader(value = "SIGNATURE", required = false) String signature,
+            @RequestHeader Map<String, String> headers  // ← Добавляем все headers
     ) {
         try {
             log.info("Received PayPro webhook, payload length: {}", payload.length());
+            log.info("All webhook headers: {}", headers);  // ← Логируем все headers
 
             // Обрабатываем webhook
             payProService.handleWebhook(payload, signature);
 
-            // PayPro ожидает HTTP 200 для успешной обработки
             return ResponseEntity.ok("OK");
 
         } catch (SecurityException e) {
-            // Неверная подпись
             log.error("Webhook signature verification failed: {}", e.getMessage());
             return ResponseEntity.status(403).body("FORBIDDEN");
 
         } catch (Exception e) {
-            // Любая другая ошибка
             log.error("Webhook processing failed: {}", e.getMessage(), e);
             return ResponseEntity.status(500).body("ERROR");
         }

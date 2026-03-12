@@ -75,7 +75,7 @@ export const CheckoutSuccessPage = () => {
                 <Header variant="full" theme="dark"/>
                 <section className="section top">
                     <div className="w-layout-blockcontainer container-default w-container">
-                        <div className="inner-container _600px text-center">
+                        <div className="inner-container text-center">
                             <div style={{fontSize: '64px', marginBottom: '24px'}}>⏳</div>
                             <h1 className="mg-bottom-16px">Processing Your Payment...</h1>
                             <p className="text-200">
@@ -95,7 +95,7 @@ export const CheckoutSuccessPage = () => {
                 <Header variant="full" theme="dark"/>
                 <section className="section top">
                     <div className="w-layout-blockcontainer container-default w-container">
-                        <div className="inner-container _600px text-center">
+                        <div className="inner-container text-center">
                             <div style={{fontSize: '64px', marginBottom: '24px'}}>❌</div>
                             <h1 className="mg-bottom-16px">Something Went Wrong</h1>
                             <p className="text-200 mg-bottom-32px">
@@ -122,7 +122,7 @@ export const CheckoutSuccessPage = () => {
                 <Header variant="full" theme="dark"/>
                 <section className="section top">
                     <div className="w-layout-blockcontainer container-default w-container">
-                        <div className="inner-container _600px text-center">
+                        <div className="inner-container text-center">
                             <div style={{fontSize: '64px', marginBottom: '24px'}}>⏰</div>
                             <h1 className="mg-bottom-16px">Payment Processing</h1>
                             <p className="text-200 mg-bottom-32px">
@@ -150,7 +150,7 @@ export const CheckoutSuccessPage = () => {
 
             <section className="section top">
                 <div className="w-layout-blockcontainer container-default w-container">
-                    <div className="inner-container _600px mg-bottom-48px text-center">
+                    <div className="inner-container mg-bottom-48px text-center">
                         <div style={{fontSize: '64px', marginBottom: '16px'}}>🎉</div>
                         <h1 className="mg-bottom-16px">Order Confirmation</h1>
                         <p className="text-200">
