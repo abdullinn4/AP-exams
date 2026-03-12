@@ -5,8 +5,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -22,38 +22,40 @@ public class PayProRedirectController {
     private String frontendUrl;
 
     /**
-     * Обрабатывает POST redirect от PayPro на success page.
-     * PayPro отправляет начальные параметры через GET и данные заказа через POST.
+     * Обрабатывает GET/POST redirect от PayPro на success page.
+     * PayPro может отправлять как GET с параметрами в URL, так и POST с form data.
      *
      * Scenarios: Fulfilled, Review, Waiting for payment
      */
-    @PostMapping("/success")
+    @RequestMapping(value = "/success", method = {RequestMethod.GET, RequestMethod.POST})
     public RedirectView handleSuccessRedirect(
             @RequestParam Map<String, String> allParams,
             HttpServletRequest request) {
 
         try {
+            String method = request.getMethod();
+
             // Извлекаем ключевые параметры
-            String checkoutId = allParams.get("X_CHECKOUT_ID");
+            String checkoutId = allParams.get("x-checkout-id");
             String orderId = allParams.get("ORDER_ID");
             String orderStatus = allParams.get("ORDER_STATUS");
             String customerEmail = allParams.get("CUSTOMER_EMAIL");
             String testMode = allParams.get("TEST_MODE");
             String ipnTypeName = allParams.get("IPN_TYPE_NAME");
 
-            log.info("PayPro success redirect: checkoutId={}, orderId={}, status={}, email={}, ipnType={}, testMode={}, totalParams={}",
-                    checkoutId, orderId, orderStatus, customerEmail, ipnTypeName,
+            log.info("PayPro success redirect [{}]: checkoutId={}, orderId={}, status={}, email={}, ipnType={}, testMode={}, totalParams={}",
+                    method, checkoutId, orderId, orderStatus, customerEmail, ipnTypeName,
                     "1".equals(testMode) ? "TEST" : "LIVE", allParams.size());
 
             // Валидация обязательных параметров
             if (checkoutId == null || checkoutId.isBlank()) {
-                log.error("Missing X_CHECKOUT_ID in PayPro redirect. Available params: {}", allParams.keySet());
+                log.error("Missing x-checkout-id in PayPro redirect. Available params: {}", allParams.keySet());
                 // Редиректим на success page без параметров - там будет fallback
                 return new RedirectView(frontendUrl + "/checkout/success", true);
             }
 
             // Логируем все параметры для дебага (только в test режиме)
-            if ("1".equals(testMode)) {
+            if ("true".equals(allParams.get("use-test-mode"))) {
                 log.debug("All PayPro redirect params: {}", allParams);
             }
 
@@ -72,24 +74,26 @@ public class PayProRedirectController {
     }
 
     /**
-     * Обрабатывает POST redirect от PayPro на cancel page.
+     * Обрабатывает GET/POST redirect от PayPro на cancel page.
      *
      * Scenario: Declined automatically
      */
-    @PostMapping("/cancel")
+    @RequestMapping(value = "/cancel", method = {RequestMethod.GET, RequestMethod.POST})
     public RedirectView handleCancelRedirect(
-            @RequestParam Map<String, String> allParams) {
+            @RequestParam Map<String, String> allParams,
+            HttpServletRequest request) {
 
         try {
-            String checkoutId = allParams.get("X_CHECKOUT_ID");
+            String method = request.getMethod();
+            String checkoutId = allParams.get("x-checkout-id");
             String testMode = allParams.get("TEST_MODE");
             String actionReason = allParams.get("ACTION_REASON");
 
-            log.info("PayPro cancel redirect: checkoutId={}, reason={}, testMode={}, totalParams={}",
-                    checkoutId, actionReason, "1".equals(testMode) ? "TEST" : "LIVE", allParams.size());
+            log.info("PayPro cancel redirect [{}]: checkoutId={}, reason={}, testMode={}, totalParams={}",
+                    method, checkoutId, actionReason, "1".equals(testMode) ? "TEST" : "LIVE", allParams.size());
 
             // Логируем все параметры для дебага (только в test режиме)
-            if ("1".equals(testMode)) {
+            if ("true".equals(allParams.get("use-test-mode"))) {
                 log.debug("All PayPro cancel params: {}", allParams);
             }
 
