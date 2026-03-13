@@ -199,7 +199,9 @@ public class PayProService implements PaymentProvider {
         String payProOrderId = params.get("ORDER_ID");
         String orderStatus = params.get("ORDER_STATUS");
         String customerEmail = params.get("BILLING_EMAIL");
-        String checkoutId = params.get("x-checkout-id");
+        
+        String checkoutId = extractCheckoutId(params);
+
         String testMode = params.get("TEST_MODE");
         boolean isTestOrder = "1".equals(testMode);
 
@@ -438,5 +440,33 @@ public class PayProService implements PaymentProvider {
             log.error("Failed to parse form-urlencoded payload: {}", e.getMessage(), e);
             throw new RuntimeException("Failed to parse webhook payload", e);
         }
+    }
+
+    private String extractCheckoutId(Map<String, String> params) {
+
+        // иногда PayPro может прислать напрямую
+        String direct = params.get("x-checkout-id");
+        if (direct != null && !direct.isBlank()) {
+            return direct;
+        }
+
+        String customFields = params.get("ORDER_CUSTOM_FIELDS");
+
+        if (customFields == null || customFields.isBlank()) {
+            return null;
+        }
+
+        String[] fields = customFields.split(",");
+
+        for (String field : fields) {
+
+            String[] kv = field.split("=", 2);
+
+            if (kv.length == 2 && kv[0].equals("x-checkout-id")) {
+                return kv[1];
+            }
+        }
+
+        return null;
     }
 }
