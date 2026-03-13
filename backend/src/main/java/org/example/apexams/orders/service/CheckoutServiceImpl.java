@@ -119,8 +119,7 @@ public class CheckoutServiceImpl implements CheckoutService {
                     if (!existingUser.getEmail().equalsIgnoreCase(request.email())) {
                         log.warn("Discord nickname already in use: {}", request.discordNickname());
 
-                        throw new ResponseStatusException(
-                                HttpStatus.BAD_REQUEST,
+                        throw new IllegalArgumentException(
                                 "This Discord nickname is already linked to another account."
                         );
                     }
@@ -133,8 +132,7 @@ public class CheckoutServiceImpl implements CheckoutService {
                         log.warn("Discord nickname mismatch for user {}: existing={}, request={}",
                                 request.email(), user.getDiscordNickname(), request.discordNickname());
 
-                        throw new ResponseStatusException(
-                                HttpStatus.BAD_REQUEST,
+                        throw new IllegalArgumentException(
                                 "The Discord nickname does not match the one associated with this account."
                         );
                     }

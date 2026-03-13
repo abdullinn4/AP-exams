@@ -41,16 +41,13 @@ export const useAuth = () => {
         } catch (error) {
             console.error('Logout failed:', error)
         } finally {
-            // Сначала уходим на публичную страницу
-            navigate(ROUTES.HOME, { replace: true })
+            tokenService.clearTokens()
+            dispatch(clearAuth())
+            dispatch(clearCart())
+            dispatch(baseApi.util.resetApiState())
 
-            // Потом чистим состояние
-            setTimeout(() => {
-                tokenService.clearTokens()
-                dispatch(clearAuth())
-                dispatch(clearCart())
-                dispatch(baseApi.util.resetApiState())
-            }, 0)
+            // Используем window.location для жесткого редиректа
+            window.location.href = '/'
         }
     }
 
