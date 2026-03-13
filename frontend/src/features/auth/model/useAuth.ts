@@ -41,11 +41,16 @@ export const useAuth = () => {
         } catch (error) {
             console.error('Logout failed:', error)
         } finally {
-            tokenService.clearTokens()
-            dispatch(clearAuth())
-            dispatch(clearCart())
-            dispatch(baseApi.util.resetApiState())
+            // Сначала уходим на публичную страницу
             navigate(ROUTES.HOME, { replace: true })
+
+            // Потом чистим состояние
+            setTimeout(() => {
+                tokenService.clearTokens()
+                dispatch(clearAuth())
+                dispatch(clearCart())
+                dispatch(baseApi.util.resetApiState())
+            }, 0)
         }
     }
 

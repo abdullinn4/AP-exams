@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import {useChangePasswordMutation} from "@/shared/api/authApi.ts";
 
 const passwordSchema = z.object({
     currentPassword: z.string().min(1, 'Current password is required'),
@@ -18,6 +19,8 @@ export const SettingsTab = () => {
     const [success, setSuccess] = useState(false)
     const [error, setError] = useState<string | null>(null)
 
+    const [changePassword] = useChangePasswordMutation()
+
     const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<PasswordFormData>({
         resolver: zodResolver(passwordSchema)
     })
@@ -27,15 +30,19 @@ export const SettingsTab = () => {
             setError(null)
             setSuccess(false)
 
-            // TODO: Implement API call
-            console.log('Change password:', data)
-
-            await new Promise(resolve => setTimeout(resolve, 1000))
+            await changePassword({
+                currentPassword: data.currentPassword,
+                newPassword: data.newPassword
+            }).unwrap()
 
             setSuccess(true)
             reset()
         } catch (err: any) {
-            setError(err.message || 'Failed to change password')
+            if (err?.data?.message) {
+                setError(err.data.message)
+            } else {
+                setError('Failed to change password')
+            }
         }
     }
 
@@ -50,6 +57,35 @@ export const SettingsTab = () => {
                     </p>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
+
+                        {success && (
+                            <div style={{
+                                padding: '12px',
+                                backgroundColor: '#f0fdf4',
+                                border: '1px solid #86efac',
+                                borderRadius: '8px',
+                                marginBottom: '16px'
+                            }}>
+                                <p style={{ color: '#166534', margin: 0 }}>
+                                    ✓ Password changed successfully!
+                                </p>
+                            </div>
+                        )}
+
+                        {error && (
+                            <div style={{
+                                padding: '12px',
+                                backgroundColor: '#fef2f2',
+                                border: '1px solid #fca5a5',
+                                borderRadius: '8px',
+                                marginBottom: '16px'
+                            }}>
+                                <p style={{ color: '#991b1b', margin: 0 }}>
+                                    {error}
+                                </p>
+                            </div>
+                        )}
+
                         <div style={{ marginBottom: '24px' }}>
                             <label className="text-200 text-weight-semibold" style={{ display: 'block', marginBottom: '8px' }}>
                                 Current Password
@@ -101,33 +137,7 @@ export const SettingsTab = () => {
                             )}
                         </div>
 
-                        {success && (
-                            <div style={{
-                                padding: '12px',
-                                backgroundColor: '#f0fdf4',
-                                border: '1px solid #86efac',
-                                borderRadius: '8px',
-                                marginBottom: '16px'
-                            }}>
-                                <p style={{ color: '#166534', margin: 0 }}>
-                                    ✓ Password changed successfully!
-                                </p>
-                            </div>
-                        )}
 
-                        {error && (
-                            <div style={{
-                                padding: '12px',
-                                backgroundColor: '#fef2f2',
-                                border: '1px solid #fca5a5',
-                                borderRadius: '8px',
-                                marginBottom: '16px'
-                            }}>
-                                <p style={{ color: '#991b1b', margin: 0 }}>
-                                    {error}
-                                </p>
-                            </div>
-                        )}
 
                         <button
                             type="submit"

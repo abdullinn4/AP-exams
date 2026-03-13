@@ -22,7 +22,6 @@ export const CheckoutSuccessPage = () => {
 
     useEffect(() => {
         if (checkoutId) {
-            console.log('Found checkoutId:', checkoutId);
             getOrders(checkoutId);
 
             // Очищаем URL
@@ -247,7 +246,7 @@ export const CheckoutSuccessPage = () => {
                                 </button>
                                 <button
                                     onClick={() => navigate(ROUTES.HOME)}
-                                    className="button-secondary"
+                                    className="button-secondary-white"
                                 >
                                     Go to Home
                                 </button>

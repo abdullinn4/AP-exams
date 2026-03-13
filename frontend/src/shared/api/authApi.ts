@@ -1,5 +1,6 @@
 import {baseApi} from "@/shared/api/baseApi.ts";
 import type {ForgotPasswordRequest, LoginRequest, LoginResponse} from "@/entities/users/auth/auth.ts";
+import type {ChangePasswordRequest} from "@/entities/users/student/student.ts";
 
 
 export const authApi = baseApi.injectEndpoints({
@@ -30,6 +31,13 @@ export const authApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ['Auth'],
         }),
+        changePassword: builder.mutation<void, ChangePasswordRequest>({
+            query: (body) => ({
+                url: "/me/password",
+                method: "PUT",
+                body
+            })
+        })
     }),
 })
 
@@ -37,4 +45,5 @@ export const {
     useLoginMutation,
     useForgotPasswordMutation,
     useLogoutMutation,
+    useChangePasswordMutation
 } = authApi

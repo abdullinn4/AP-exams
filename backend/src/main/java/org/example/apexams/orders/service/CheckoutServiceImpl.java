@@ -17,8 +17,10 @@ import org.example.apexams.users.dto.CheckoutPrepareRequest;
 import org.example.apexams.users.entity.UserEntity;
 import org.example.apexams.users.repo.UserRepository;
 import org.example.apexams.users.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Instant;
 import java.util.List;
@@ -110,9 +112,37 @@ public class CheckoutServiceImpl implements CheckoutService {
     }
 
     private UserEntity findOrCreateUser(CheckoutPrepareRequest request) {
+
+        // Проверяем что Discord nickname не занят другим пользователем
+        userRepository.findByDiscordNickname(request.discordNickname())
+                .ifPresent(existingUser -> {
+                    if (!existingUser.getEmail().equalsIgnoreCase(request.email())) {
+                        log.warn("Discord nickname already in use: {}", request.discordNickname());
+
+                        throw new ResponseStatusException(
+                                HttpStatus.BAD_REQUEST,
+                                "This Discord nickname is already linked to another account."
+                        );
+                    }
+                });
+
         return userRepository.findByEmail(request.email())
+                .map(user -> {
+                    // Проверяем совпадает ли Discord
+                    if (!user.getDiscordNickname().equalsIgnoreCase(request.discordNickname())) {
+                        log.warn("Discord nickname mismatch for user {}: existing={}, request={}",
+                                request.email(), user.getDiscordNickname(), request.discordNickname());
+
+                        throw new ResponseStatusException(
+                                HttpStatus.BAD_REQUEST,
+                                "The Discord nickname does not match the one associated with this account."
+                        );
+                    }
+
+                    return user;
+                })
                 .orElseGet(() -> {
-                    // Создаем пользователя и СРАЗУ отправляем пароль
+                    // Создаем пользователя
                     String password = userService.createUser(request);
                     emailService.sendPasswordEmail(request.email(), password);
 

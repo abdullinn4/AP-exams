@@ -11,7 +11,7 @@ import java.util.UUID;
 public interface UserRepository extends JpaRepository<UserEntity, UUID> {
     Optional<UserEntity> findByEmail(String email);
 
-    Optional<UserEntity> findByEmailAndDiscordNickname(String email, String discordNickname);
+    Optional<UserEntity> findByDiscordNickname(String discordNickname);
 
     boolean existsByEmail(String email);
 

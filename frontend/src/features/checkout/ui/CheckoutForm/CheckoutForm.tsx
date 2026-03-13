@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from 'react'
+import {useCallback, useEffect, useRef, useState} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {type CheckoutFormData, checkoutSchema} from '@/features/checkout/lib/checkoutSchema'
@@ -17,6 +17,22 @@ export const CheckoutForm = ({items, onSubmitTrigger}: CheckoutFormProps) => {
     const [prepareCheckout, {isLoading: isPreparingCheckout}] = usePrepareCheckoutMutation()
     const [error, setError] = useState<string | null>(null)
 
+    const errorRef = useRef<HTMLDivElement | null>(null)
+
+    useEffect(() => {
+        if (!error) return
+
+        const el = errorRef.current
+        if (!el) return
+
+        requestAnimationFrame(() => {
+            el.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+            })
+        })
+    }, [error])
+
     const methods = useForm<CheckoutFormData>({
         resolver: zodResolver(checkoutSchema),
         defaultValues: {
@@ -32,11 +48,8 @@ export const CheckoutForm = ({items, onSubmitTrigger}: CheckoutFormProps) => {
         if (token) {
             try {
                 const payload = JSON.parse(atob(token.split('.')[1]))
-                if (payload.email) {
-                    methods.setValue('email', payload.email)
-                }
-                if (payload.discordNickname) {
-                    methods.setValue('discordNickname', payload.discordNickname)
+                if (payload.sub) {
+                    methods.setValue('email', payload.sub)
                 }
             } catch (error) {
                 console.error('Failed to parse token:', error)
@@ -82,10 +95,12 @@ export const CheckoutForm = ({items, onSubmitTrigger}: CheckoutFormProps) => {
             // Редиректим для оплаты
             window.location.href = response.payProCheckoutUrl
         } catch (err: any) {
-            if (err.response?.data?.message?.includes("already enrolled")) {
-                setError('You are already enrolled in this course.')
-                console.error('You are already enrolled in this course.')
-            }else{
+            const message = err?.data?.message
+
+            if (message) {
+                setError(message)
+                console.error(message)
+            } else {
                 console.error('Checkout preparation failed:', err)
                 setError('Failed to prepare checkout. Please try again.')
             }
@@ -105,7 +120,7 @@ export const CheckoutForm = ({items, onSubmitTrigger}: CheckoutFormProps) => {
         <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
                 {error && (
-                    <div className="error-message-wrapper mg-top-16px" style={{display: 'block'}}>
+                    <div ref={errorRef} className="error-message-wrapper mg-top-16px" style={{display: 'block'}}>
                         <div>{error}</div>
                     </div>
                 )}

@@ -93,13 +93,13 @@ export const CheckoutCancelPage = () => {
                                 </button>
                                 <button
                                     onClick={() => navigate(ROUTES.CATALOG)}
-                                    className="button-secondary"
+                                    className="button-secondary-white"
                                 >
                                     Browse Courses
                                 </button>
                                 <button
                                     onClick={() => navigate(ROUTES.HOME)}
-                                    className="button-secondary"
+                                    className="button-primary"
                                 >
                                     Go to Home
                                 </button>
