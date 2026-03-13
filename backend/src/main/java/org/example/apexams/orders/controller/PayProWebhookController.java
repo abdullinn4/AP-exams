@@ -30,6 +30,7 @@ public class PayProWebhookController {
             @RequestHeader Map<String, String> headers  // ← Добавляем все headers
     ) {
         try {
+            log.info("Webhook payload: {}", payload);
             log.info("Received PayPro webhook, payload length: {}", payload.length());
             log.info("All webhook headers: {}", headers);  // ← Логируем все headers
 

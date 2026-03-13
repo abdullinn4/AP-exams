@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/checkout")
 @RequiredArgsConstructor
-@Tag(name = "Checkout", description = "Course purchase and LemonSqueezy checkout")
+@Tag(name = "Checkout", description = "Course purchase and PayPro checkout")
 public class CheckoutController {
     private final CheckoutService checkoutService;
 

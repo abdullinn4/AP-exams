@@ -21,7 +21,8 @@ export const CartBadge = ({ theme = 'dark' }: CartBadgeProps) => {
             style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '4px'
+                gap: '4px',
+                position: 'relative'
             }}
         >
             <img
