@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useMemo, useState} from 'react'
 import {useNavigate, useSearchParams} from 'react-router-dom'
 import {Header} from '@/widgets/Header'
 import {Footer} from '@/widgets/Footer'
@@ -13,61 +13,45 @@ export const CheckoutSuccessPage = () => {
     const [searchParams] = useSearchParams()
     const [getOrders, {data: orderData, isLoading, isError}] = useLazyGetOrdersByCheckoutIdQuery()
     const [pollingCount, setPollingCount] = useState(0)
-    const [checkoutId, setCheckoutId] = useState<string | null>(null)
+    // Получаем checkoutId один раз при монтировании
+    const checkoutId = useMemo(
+        () => searchParams.get('checkout_id') ||
+            JSON.parse(localStorage.getItem('checkoutFormData') || '{}')?.checkoutId,
+        [searchParams]
+    );
 
     useEffect(() => {
-        // Получаем checkout_id из URL (от paypro-redirect.html)
-        const checkoutIdFromUrl = searchParams.get('checkout_id');
+        if (checkoutId) {
+            console.log('Found checkoutId:', checkoutId);
+            getOrders(checkoutId);
 
-        // Очищаем URL от параметров
-        if (window.location.search) {
+            // Очищаем URL
             window.history.replaceState({}, '', window.location.pathname);
         }
-
-        let extractedCheckoutId: string | null = checkoutIdFromUrl
-
-        // Fallback: пытаемся из localStorage (на случай если что-то пошло не так)
-        if (!extractedCheckoutId) {
-            const storedData = localStorage.getItem('checkoutFormData');
-            if (storedData) {
-                try {
-                    const parsed = JSON.parse(storedData)
-                    // Можно добавить checkoutId в localStorage при prepareCheckout
-                    extractedCheckoutId = parsed.checkoutId
-                } catch (e) {
-                    console.error('Failed to parse stored checkout data:', e)
-                }
-            }
-        }
-
-        if (extractedCheckoutId) {
-            console.log('Found checkoutId:', extractedCheckoutId);
-            setCheckoutId(extractedCheckoutId);
-            getOrders(extractedCheckoutId);
-        } else {
-            console.warn('No checkoutId found');
-        }
-    }, [searchParams, getOrders])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [searchParams]);
 
     // Polling: проверяем статус каждые 2 секунды если заказ еще pending
     useEffect(() => {
-        if (!checkoutId || !orderData) return
+        if (!checkoutId || !orderData) return;
 
         if (orderData.overallStatus === 'pending' && pollingCount < 30) {
             const timer = setTimeout(() => {
-                console.log('Polling order status...', pollingCount + 1)
-                getOrders(checkoutId)
-                setPollingCount(prev => prev + 1)
-            }, 2000)
+                console.log('Polling order status...', pollingCount + 1);
+                getOrders(checkoutId);
+                setPollingCount(prev => prev + 1);
+            }, 2000);
 
-            return () => clearTimeout(timer)
+            return () => clearTimeout(timer);
         }
 
-        // очищаем корзину
-        clearCart()
-        localStorage.removeItem('checkoutFormData')
-
-    }, [orderData, checkoutId, pollingCount, getOrders, clearCart])
+        if (orderData.overallStatus === 'completed') {
+            console.log("Order completed");
+            clearCart();
+            localStorage.removeItem('checkoutFormData');
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [orderData, pollingCount, checkoutId]);
 
     if (isLoading || !orderData) {
         return (

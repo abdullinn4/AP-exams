@@ -19,6 +19,7 @@ interface CoursesGridProps {
     coursesProgress?: CourseWithProgress[]
     onAddToCart?: (courseId: string, title: string, coverUrl: string) => void
     disableAnimations?: boolean
+    compact?: boolean
 }
 
 export const CoursesGrid = ({
@@ -29,7 +30,8 @@ export const CoursesGrid = ({
                                 variant,
                                 coursesProgress,
                                 onAddToCart,
-                                disableAnimations = false
+                                disableAnimations = false,
+                                compact
                             }: CoursesGridProps) => {
     return (
         <section className="section top">
@@ -89,6 +91,7 @@ export const CoursesGrid = ({
                                             course.title,
                                             course.coverUrl || ''
                                         ) : undefined}
+                                        compact={compact}
                                     />
                                 )
                             })}

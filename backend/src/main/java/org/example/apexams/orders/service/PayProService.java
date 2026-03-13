@@ -199,7 +199,7 @@ public class PayProService implements PaymentProvider {
         String payProOrderId = params.get("ORDER_ID");
         String orderStatus = params.get("ORDER_STATUS");
         String customerEmail = params.get("BILLING_EMAIL");
-        
+
         String checkoutId = extractCheckoutId(params);
 
         String testMode = params.get("TEST_MODE");

@@ -1,11 +1,31 @@
 import type {CartItem, CartState} from "@/entities/cart/cart.ts";
+import { tokenService } from "@/features/auth/lib/tokenService";
 import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
 
-const CART_STORAGE_KEY = 'ap-exams-cart'
+const CART_STORAGE_KEY_PREFIX = 'ap-exams-cart'
+
+const getCartKey = (userEmail?: string | null): string => {
+    return userEmail
+        ? `${CART_STORAGE_KEY_PREFIX}-${userEmail}`
+        : `${CART_STORAGE_KEY_PREFIX}-anonymous`
+}
+
+const getUserEmail = (): string | null => {
+    const token = tokenService.getAccessToken()
+    if (!token) return null
+    try {
+        const payload = JSON.parse(atob(token.split(".")[1]))
+        return payload.email || null
+    } catch {
+        return null
+    }
+}
 
 const loadCartFromStorage = (): CartState => {
-    try{
-        const stored = localStorage.getItem(CART_STORAGE_KEY)
+    try {
+        const userEmail = getUserEmail()
+        const key = getCartKey(userEmail)
+        const stored = localStorage.getItem(key)
         if (stored) {
             return JSON.parse(stored)
         }
@@ -17,7 +37,9 @@ const loadCartFromStorage = (): CartState => {
 
 const saveCartToStorage = (state: CartState) => {
     try {
-        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(state))
+        const userEmail = getUserEmail()
+        const key = getCartKey(userEmail)
+        localStorage.setItem(key, JSON.stringify(state))
     } catch (error) {
         console.error('Failed to save cart to localStorage:', error)
     }
@@ -66,8 +88,14 @@ const cartSlice = createSlice({
             state.totalPrice = 0
             saveCartToStorage(state)
         },
+        reloadCart: (state) => {
+            const freshCart = loadCartFromStorage()
+            state.items = freshCart.items
+            state.totalItems = freshCart.totalItems
+            state.totalPrice = freshCart.totalPrice
+        },
     }
 })
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions
+export const { addToCart, removeFromCart, clearCart, reloadCart } = cartSlice.actions
 export default cartSlice.reducer

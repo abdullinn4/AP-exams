@@ -103,7 +103,7 @@ public class EmailServiceImpl implements EmailService {
                         "<p style='margin: 0; color: #666;'>Start learning now:</p>" +
                         "<a href='%s/courses' style='display: inline-block; margin-top: 15px; padding: 12px 30px; background-color: #7C3AED; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;'>Go to My Courses</a>" +
                         "</div>" +
-                        "<p style='color: #999; font-size: 14px; margin-top: 30px;'>If you have any questions, contact us at support@smashap.com</p>" +
+                        "<p style='color: #999; font-size: 14px; margin-top: 30px;'>If you have any questions, contact us at info@smashap.com</p>" +
                         "</div>" +
                         "</body>" +
                         "</html>",

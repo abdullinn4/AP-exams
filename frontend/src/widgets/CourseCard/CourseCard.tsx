@@ -15,9 +15,10 @@ interface CourseCardProps {
     variant: 'catalog' | 'my-courses' | 'popular-courses'
     progress?: Pick<CourseWithProgress, 'progressPercentage' | 'tier'>
     onAddToCart?: () => void
+    compact?: boolean
 }
 
-export const CourseCard = ({ course, variant, progress, onAddToCart }: CourseCardProps) => {
+export const CourseCard = ({ course, variant, progress, onAddToCart, compact }: CourseCardProps) => {
     const courseUrl = (variant === 'catalog' || variant === 'popular-courses')
         ? `/courses/${course.slug}/preview`
         : `/courses/${course.slug}`
@@ -74,7 +75,8 @@ export const CourseCard = ({ course, variant, progress, onAddToCart }: CourseCar
                                     e.stopPropagation()
                                     onAddToCart()
                                 }}
-                                className={`button-primary w-inline-block`}
+                                className={`button-primary w-inline-block ${compact ? 'button-compact' : ''}`}
+                                style={compact ? { padding: '12px 20px', fontSize: '14px' } : {}}
                             >
                                 <div className="text-block">Add to Cart</div>
                                 <div className="item-icon-right">
@@ -84,11 +86,13 @@ export const CourseCard = ({ course, variant, progress, onAddToCart }: CourseCar
                         )}
 
                         <div className="link-wrapper w-inline-block">
-                            <div className="display-2 bold text-neutral-800">
+                            <div className={`display-2 bold text-neutral-800 ${compact ? 'compact-link' : ''}`}
+                                 style={compact ? { fontSize: '14px' } : {}}>
                                 <div className="flex y-align-center">
                                     <div className="link">
-                                        {(variant === 'catalog' || variant === 'popular-courses') ? 'View Course' : 'Continue Learning'}
-                                    </div>
+                                        {(variant === 'catalog' || variant === 'popular-courses')
+                                            ? (compact ? 'View' : 'View Course')
+                                            : 'Continue Learning'}                                    </div>
                                     <div className="item-icon-right">
                                         <div className="custom-icon-font"></div>
                                     </div>

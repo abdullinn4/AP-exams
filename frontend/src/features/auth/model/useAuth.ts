@@ -6,6 +6,8 @@ import {ROUTES} from "@/app/router/routes.ts";
 import {useDispatch, useSelector} from "react-redux";
 import { setAuthenticated, clearAuth } from './authSlice'
 import type {RootState} from "@/app/store/store.ts";
+import {clearCart, reloadCart} from "@/features/cart/model/cartSlice";
+import {baseApi} from "@/shared/api/baseApi.ts";
 
 export const useAuth = () => {
     const navigate = useNavigate()
@@ -19,6 +21,7 @@ export const useAuth = () => {
             const response = await loginMutation(loginRequest).unwrap()
             tokenService.setTokens(response.tokens.accessToken, response.tokens.refreshToken)
             dispatch(setAuthenticated(true))
+            dispatch(reloadCart())
             navigate(ROUTES.DASHBOARD)
             return {success: true}
         }catch (error: any){
@@ -40,7 +43,9 @@ export const useAuth = () => {
         } finally {
             tokenService.clearTokens()
             dispatch(clearAuth())
-            navigate(ROUTES.HOME)
+            dispatch(clearCart())
+            dispatch(baseApi.util.resetApiState())
+            navigate(ROUTES.HOME, { replace: true })
         }
     }
 

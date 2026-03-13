@@ -39,6 +39,7 @@ export const CatalogTab = ({ dashboard, error }: CatalogTabProps) => {
                 variant="catalog"
                 onAddToCart={handleAddToCart}
                 disableAnimations={true}
+                compact={true}
             />
 
             {selectedCourse && (
