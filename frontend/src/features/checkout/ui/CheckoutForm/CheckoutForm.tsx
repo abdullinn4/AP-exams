@@ -114,7 +114,8 @@ export const CheckoutForm = ({items, onSubmitTrigger}: CheckoutFormProps) => {
                 isPreparingCheckout
             )
         }
-    }, [methods.handleSubmit, isPreparingCheckout, onSubmit, onSubmitTrigger])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isPreparingCheckout, onSubmitTrigger])
 
     useEffect(() => {
         return () => {
@@ -122,6 +123,16 @@ export const CheckoutForm = ({items, onSubmitTrigger}: CheckoutFormProps) => {
             setError(null)
         }
     }, [reset])
+
+    useEffect(() => {
+        const subscription = methods.watch(() => {
+            if (error) {
+                setError(null)
+                reset()
+            }
+        })
+        return () => subscription.unsubscribe()
+    }, [methods, error, reset])
 
     return (
         <FormProvider {...methods}>

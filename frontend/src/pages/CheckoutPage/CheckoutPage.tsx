@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useCallback, useEffect, useRef, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {Header} from '@/widgets/Header'
 import {Footer} from '@/widgets/Footer'
@@ -9,7 +9,7 @@ import {useCart} from '@/features/cart'
 export const CheckoutPage = () => {
     const navigate = useNavigate()
     const { items } = useCart()
-    const [submitForm, setSubmitForm] = useState<(() => void) | null>(null)
+    const submitFormRef = useRef<(() => void) | null>(null)
     const [isSubmitting, setIsSubmitting] = useState(false)
 
     // Редирект если корзина пуста
@@ -18,6 +18,12 @@ export const CheckoutPage = () => {
             navigate('/catalog')
         }
     }, [items.length, navigate])
+
+    // Прокидываем функцию сабмита в CheckoutForm один раз
+    const handleSubmitTrigger = useCallback((submitFn: () => void, isSubmittingState: boolean) => {
+        submitFormRef.current = submitFn
+        setIsSubmitting(isSubmittingState)
+    }, [])
 
     if (items.length === 0) {
         return null
@@ -38,18 +44,14 @@ export const CheckoutPage = () => {
 
                     <div className="w-commerce-commercecheckoutformcontainer checkout-form">
                         <div className="w-commerce-commercelayoutmain checkout-col-left">
-                            <CheckoutForm items={items}
-                                  onSubmitTrigger={(submitFn, isSubmittingState) => {
-                                      setSubmitForm(() => submitFn)
-                                      setIsSubmitting(isSubmittingState)
-                                  }}
-                            />
+                            <CheckoutForm items={items} onSubmitTrigger={handleSubmitTrigger}/>
                         </div>
 
                         <div className="w-commerce-commercelayoutsidebar checkout-col-right">
-                            <OrderSummary items={items}
-                                  onSubmit={submitForm || undefined}
-                                  isSubmitting={isSubmitting}
+                            <OrderSummary
+                                items={items}
+                                onSubmit={() => submitFormRef.current?.()}
+                                isSubmitting={isSubmitting}
                             />
                         </div>
                     </div>
