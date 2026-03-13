@@ -41,6 +41,14 @@ const baseQueryWithReauth: BaseQueryFn<
 
     if (result.error?.status === 401 || result.error?.status === 403) {
 
+        const hasToken = !!tokenService.getAccessToken()
+
+        // Если нет токена - это анонимный пользователь, не пытаемся refresh
+        if (!hasToken) {
+            console.log('[Auth] No token, skipping refresh')
+            return result
+        }
+
         if (!mutex.isLocked()) {
             const release = await mutex.acquire()
 
@@ -74,6 +82,7 @@ const baseQueryWithReauth: BaseQueryFn<
                 console.error('[Auth] Token refresh failed:', error)
                 tokenService.clearTokens()
                 api.dispatch(clearAuth())
+
                 window.location.href = '/sign-in'
 
             } finally {

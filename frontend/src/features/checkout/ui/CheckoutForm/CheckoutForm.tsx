@@ -116,24 +116,12 @@ export const CheckoutForm = ({items, onSubmitTrigger}: CheckoutFormProps) => {
         }
     }, [methods.handleSubmit, isPreparingCheckout, onSubmit, onSubmitTrigger])
 
-    // Сбрасываем RTK Query state при размонтировании
     useEffect(() => {
         return () => {
-            reset() // ← Очищаем failed state
+            reset()
             setError(null)
         }
     }, [reset])
-
-    // Очищаем ошибку при изменении формы
-    useEffect(() => {
-        const subscription = methods.watch(() => {
-            if (error) {
-                setError(null)
-                reset() // ← Очищаем failed state
-            }
-        })
-        return () => subscription.unsubscribe()
-    }, [methods, error, reset])
 
     return (
         <FormProvider {...methods}>

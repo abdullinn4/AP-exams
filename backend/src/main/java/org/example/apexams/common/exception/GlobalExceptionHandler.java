@@ -175,4 +175,25 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
+
+    @ExceptionHandler({
+            AlreadyEnrolledException.class,
+            DiscordAlreadyLinkedException.class,
+            InvalidDiscordException.class
+    })
+    public ResponseEntity<ErrorResponse> handleBusinessConflict(
+            RuntimeException ex,
+            HttpServletRequest request
+    ) {
+        log.warn("Business conflict: {}", ex.getMessage());
+
+        ErrorResponse response = ErrorResponse.of(
+                HttpStatus.CONFLICT.value(),
+                "Conflict",
+                ex.getMessage(),
+                request.getRequestURI()
+        );
+
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
+    }
 }
