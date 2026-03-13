@@ -14,7 +14,7 @@ interface CheckoutFormProps {
 }
 
 export const CheckoutForm = ({items, onSubmitTrigger}: CheckoutFormProps) => {
-    const [prepareCheckout, {isLoading: isPreparingCheckout}] = usePrepareCheckoutMutation()
+    const [prepareCheckout, {isLoading: isPreparingCheckout, reset}] = usePrepareCheckoutMutation()
     const [error, setError] = useState<string | null>(null)
 
     const errorRef = useRef<HTMLDivElement | null>(null)
@@ -115,6 +115,25 @@ export const CheckoutForm = ({items, onSubmitTrigger}: CheckoutFormProps) => {
             )
         }
     }, [methods.handleSubmit, isPreparingCheckout, onSubmit, onSubmitTrigger])
+
+    // Сбрасываем RTK Query state при размонтировании
+    useEffect(() => {
+        return () => {
+            reset() // ← Очищаем failed state
+            setError(null)
+        }
+    }, [reset])
+
+    // Очищаем ошибку при изменении формы
+    useEffect(() => {
+        const subscription = methods.watch(() => {
+            if (error) {
+                setError(null)
+                reset() // ← Очищаем failed state
+            }
+        })
+        return () => subscription.unsubscribe()
+    }, [methods, error, reset])
 
     return (
         <FormProvider {...methods}>
