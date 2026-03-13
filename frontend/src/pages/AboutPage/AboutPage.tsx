@@ -1,12 +1,10 @@
 import {Header} from '@/widgets/Header'
 import {Footer} from '@/widgets/Footer'
-import {ABOUT_HERO, ABOUT_PORTFOLIO, ABOUT_QUOTE} from '@/shared/config/content'
+import {ABOUT_HERO, ABOUT_PORTFOLIO} from '@/shared/config/content'
 import {CTAFooterBlock} from "@/widgets/CTAFooterBlock";
-import {VideoCircle} from "@/widgets/VideoCircle";
-import { useState } from "react";
+import {QuoteWithVideos} from "@/widgets/QuoteWithVideos";
 
 export const AboutPage = () => {
-    const [activeVideo, setActiveVideo] = useState<string | null>(null)
 
     return (
         <div className="page-wrapper v2">
@@ -102,9 +100,9 @@ export const AboutPage = () => {
                                 <img
                                     src={ABOUT_PORTFOLIO.images.left}
                                     loading="eager"
-                                    sizes="(max-width: 479px) 77vw, (max-width: 991px) 46vw, (max-width: 1439px) 23vw, 309.6484375px"
-                                    srcSet={`${ABOUT_PORTFOLIO.images.left.replace('.jpg', '-p-500.jpg')} 500w, ${ABOUT_PORTFOLIO.images.left.replace('.jpg', '-p-800.jpg')} 800w, ${ABOUT_PORTFOLIO.images.left} 1240w`}
+                                    sizes="(max-width: 479px) 77vw, (max-width: 991px) 46vw, (max-width: 1439px) 23vw, 310px"
                                     alt="A Professional Web Designer - Courselify X Webflow Template"
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 />
                             </div>
                             <div
@@ -122,9 +120,9 @@ export const AboutPage = () => {
                                 <img
                                     src={ABOUT_PORTFOLIO.images.right}
                                     loading="eager"
-                                    sizes="(max-width: 479px) 77vw, (max-width: 991px) 46vw, (max-width: 1439px) 23vw, 309.65625px"
-                                    srcSet={`${ABOUT_PORTFOLIO.images.right.replace('.jpg', '-p-500.jpg')} 500w, ${ABOUT_PORTFOLIO.images.right.replace('.jpg', '-p-800.jpg')} 800w, ${ABOUT_PORTFOLIO.images.right} 1240w`}
+                                    sizes="(max-width: 479px) 77vw, (max-width: 991px) 46vw, (max-width: 1439px) 23vw, 310px"
                                     alt="A Professional Web Designer - Courselify X Webflow Template"
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 />
                             </div>
                         </div>
@@ -151,57 +149,7 @@ export const AboutPage = () => {
                 </div>
             </section>
 
-            <section className="section-card-padding">
-                <div
-                    data-w-id="19870dc9-2082-ec46-dd5a-7e8dd29abf2c"
-                    className="container-default w-container about-quote-container"
-                >
-
-                    <VideoCircle
-                        id="video1"
-                        videoSrc="/assets/webflow/gifs/marat_circle.mp4"
-                        borderColor="var(--primary--02)"
-                        position="top-left"
-                        activeVideo={activeVideo}
-                        setActiveVideo={setActiveVideo}
-                    />
-
-                    <VideoCircle
-                        id="video2"
-                        videoSrc="/assets/webflow/gifs/kamil_circle.mp4"
-                        borderColor="#a78bfa"
-                        position="top-right"
-                        activeVideo={activeVideo}
-                        setActiveVideo={setActiveVideo}
-                    />
-
-                    <div className="about-quote-content">
-                        <div className="about-quote-text">
-                            {ABOUT_QUOTE.quote}
-                        </div>
-                    </div>
-
-                    <img
-                        className="about-quote-svg-1"
-                        src="/assets/webflow/images/pyramid-figure-courselify-x-webflow-template.png"
-                        alt="icon"
-                    />
-
-                    <img
-                        className="about-quote-svg-2"
-                        src="/assets/webflow/images/square-figure-courselify-x-webflow-template.png"
-                        alt="icon"
-                    />
-
-                    <img
-                        className="about-quote-svg-3"
-                        src="/assets/webflow/images/circle-figure-courselify-x-webflow-template.png"
-                        alt="icon"
-                    />
-
-                </div>
-            </section>
-
+            <QuoteWithVideos variant="about"/>
 
             <footer className="footer-wrapper">
                 <div data-w-id="016d8e1b-8412-bb5e-68d3-3aceb3839135" className="footer-card">

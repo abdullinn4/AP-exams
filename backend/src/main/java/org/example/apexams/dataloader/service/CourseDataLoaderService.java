@@ -151,6 +151,8 @@ public class CourseDataLoaderService {
                 .coverUrl(dto.getCoverUrl())
                 .discordInviteUrl(dto.getDiscordInviteUrl())
                 .status(CourseStatus.valueOf(dto.getStatus()))
+                .introVideoUrl(dto.getIntroVideoUrl())
+                .courseImageUrl(dto.getCourseImageUrl())
                 .createdAt(now)
                 .updatedAt(now)
                 .build();

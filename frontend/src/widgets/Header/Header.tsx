@@ -31,7 +31,7 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                         <div className="logo-wrapper v1">
                             <Link to="/" className="logo-link w-inline-block"
                                   style={{display: "flex", alignItems: 'center', justifyContent: 'center'}}>
-                                <img src={logoSrc} alt="AP Exams Logo" style={{width: 'auto', height: '60px'}}/>
+                                <img src={logoSrc} alt="AP Exams Logo"/>
                             </Link>
                         </div>
                     </div>
@@ -57,7 +57,7 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                             <div className="logo-wrapper v1">
                                 <Link to="/" className="logo-link w-inline-block"
                                       style={{display: "flex", alignItems: 'center', justifyContent: 'center'}}>
-                                    <img src={logoSrc} alt="AP Exams Logo" style={{width: 'auto', height: '40px'}}/>
+                                    <img src={logoSrc} alt="AP Exams Logo" />
                                 </Link>
                             </div>
                         </div>
@@ -161,7 +161,7 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                         <div className="logo-wrapper v1">
                             <Link to="/" className="logo-link w-inline-block"
                                   style={{display: "flex", alignItems: 'center', justifyContent: 'center'}}>
-                                <img src={logoSrc} alt="AP Exams Logo" style={{width: 'auto', height: '40px'}}/>
+                                <img src={logoSrc} alt="AP Exams Logo"/>
                             </Link>
                         </div>
                         <nav role="navigation"

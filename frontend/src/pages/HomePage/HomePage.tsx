@@ -10,6 +10,7 @@ import {CTAFooterBlock} from "@/widgets/CTAFooterBlock";
 import {PopularCoursesSection} from "@/widgets/PopularCoursesSection";
 import {CourseSliderSection} from "@/widgets/CourseSliderSection";
 import {ExamPrepWorksSection} from "@/widgets/ExamPrepWorksSection";
+import {QuoteWithVideos} from "@/widgets/QuoteWithVideos";
 
 export const HomePage = () => {
 
@@ -24,6 +25,7 @@ export const HomePage = () => {
             <PopularCoursesSection/>
             <TestimonialsSection/>
             <FeaturesSection/>
+            <QuoteWithVideos/>
             <FinalCTASection/>
 
             <footer className="footer-wrapper">

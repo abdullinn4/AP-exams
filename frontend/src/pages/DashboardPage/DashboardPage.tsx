@@ -62,7 +62,7 @@ export const DashboardPage = () => {
 
             <section className="section home-premium-section">
                 <div className="w-layout-blockcontainer container-default w-container">
-                    <div className="w-layout-grid grid-2-columns chapters-grid---home-premium-page">
+                    <div className="w-layout-grid grid-2-columns chapters-grid---home-premium-page" style={{ gridTemplateColumns: '1fr auto' }}>
                         {/* Левая колонка - контент вкладок с белым фоном */}
                         <div
                             id="w-node-_95ddbba0-9678-167b-678d-d86ffb290ed1-ad098e68"
@@ -104,9 +104,11 @@ export const DashboardPage = () => {
                                 MozTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
                                 msTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
                                 transform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
-                                opacity: 0
+                                opacity: 0,
+                                minWidth: '300px'
                             }}
                             className="card chapters-side-card"
+
                         >
                             <div className="position-sticky" style={{ top: '24px' }}>
                                 <DashboardTabNavigation

@@ -14,7 +14,7 @@ export const ABOUT_PORTFOLIO = {
         'generations of graduates and have compiled it in our courses.',
     images: {
         left: '/assets/webflow/images/m_block_tutors.png',
-        right: '/assets/webflow/images/m_block _tutors.png'
+        right: '/assets/webflow/images/m_block2_tutors.png'
     }
 
 } as const

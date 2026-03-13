@@ -12,5 +12,7 @@ public class CourseDataDto {
     private String coverUrl;
     private String discordInviteUrl;
     private String status;
+    private String introVideoUrl;
+    private String courseImageUrl;
 }
 

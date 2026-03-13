@@ -74,13 +74,15 @@ export const ExamPrepWorksSection = () => {
                                         {step.video && (
                                             <div className="exam-prep-card-video">
                                                 <video
-                                                    src={step.video}
                                                     autoPlay
                                                     loop
                                                     muted
                                                     playsInline
                                                     className="exam-prep-video"
-                                                />
+                                                    style={{ mixBlendMode: 'screen'}}
+                                                >
+                                                    <source src={step.video} type="video/mp4"/>
+                                                </video>
                                             </div>
                                         )}
 
