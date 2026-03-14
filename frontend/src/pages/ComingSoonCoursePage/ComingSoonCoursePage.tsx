@@ -43,22 +43,19 @@ export const ComingSoonCoursePage = () => {
                                 <div className="mg-top-24px">
                                     <div className="social-media-grid">
 
-                                        <a href="https://www.twitter.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
-                                            <div className="icon-font-social-media"></div>
-                                        </a>
-                                        <a href="https://www.instagram.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                        <a href="https://www.instagram.com/smashap.official?igsh=NHY3eDVqdjhsbTh5&utm_source=qr" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
                                             <div className="icon-font-social-media"></div>
                                         </a>
 
-                                        <a href="https://www.youtube.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                        <a href="https://youtube.com/@smashap?si=bqFvfUA016Ev1q2i" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
                                             <div className="icon-font-social-media"></div>
                                         </a>
-                                        <a href="https://www.tiktok.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                        <a href="https://www.tiktok.com/@km_lab?_r=1&_t=ZG-94g9DkFtr4S" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
                                             <div className="icon-font-social-media">
                                                 <img src="/assets/webflow/images/tiktok-icon.svg" alt="tiktok-icon"/>
                                             </div>
                                         </a>
-                                        <a href="https://www.discord.com/" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                        <a href="https://discord.gg/etvUeM62" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
                                             <div className="icon-font-social-media">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                      fill="currentColor" className="bi bi-discord" viewBox="0 0 16 16">

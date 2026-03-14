@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { ROUTES } from '@/app/router/routes'
 
 export const LessonPromoCard = () => {
     return (
@@ -26,7 +25,7 @@ export const LessonPromoCard = () => {
                 <div className="mg-top-24px">
                     <div className="buttons-row">
                         <Link
-                            to={ROUTES.CATALOG}
+                            to="https://discord.gg/etvUeM62"
                             className="button-primary white w-inline-block"
                         >
                             <div className="text-block">Go to discord</div>

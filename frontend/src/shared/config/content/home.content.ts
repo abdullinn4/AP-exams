@@ -255,7 +255,7 @@ export const HOME_POPULAR_COURSES = {
         },
         {
             id: 'ap-calc-ab-multiverse-of-calculus',
-            title: 'Calc AB: Game of Graphs',
+            title: 'Calc AB: Multiverse of Calculus',
             slug: 'ap-calc-ab-multiverse-of-calculus',
             snippet: 'All you need to smash AP Calculus AB 2026',
             coverUrl: '/assets/webflow/images/game-of-graphs.png',

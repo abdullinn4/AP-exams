@@ -206,19 +206,19 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                                         <h3 className="dropdown-title">Courses</h3>
                                                         <div className="w-layout-grid main-pages-wrapper">
                                                             <div className="dropdown-link-column">
-                                                                <Link to='/courses/ap-calc-ab-game-of-graphs/preview'
+                                                                <Link to='/courses/ap-calc-ab-multiverse-of-calculus/preview'
                                                                       className="footer-item-link w-inline-block">
                                                                     <div>AP Calc AB</div>
                                                                 </Link>
-                                                                <Link to='/courses/coming-soon/ap-csp-breaking-code/preview'
+                                                                <Link to='/courses/ap-cs-principles-breaking-code/preview'
                                                                       className="footer-item-link w-inline-block">
                                                                     <div>AP CS P</div>
                                                                 </Link>
-                                                                <Link to='/courses/coming-soon/ap-calc-bc-67-problems/preview'
+                                                                <Link to='/courses/ap-calc-bc-67-problems/preview'
                                                                       className="footer-item-link w-inline-block">
                                                                     <div>AP Calc BC</div>
                                                                 </Link>
-                                                                <Link to='/courses/ap-csa-escape-the-matrix/preview'
+                                                                <Link to='/courses/ap-cs-a-escape-the-matrix/preview'
                                                                       className="footer-item-link w-inline-block">
                                                                     <div>AP CS A</div>
                                                                 </Link>
