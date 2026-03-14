@@ -5001,7 +5001,7 @@
     {
         "id": "q-crt-004",
         "tags": ["create task", "practice prompt 2c", "data abstraction"],
-        "type": "FREE_RESPONSE",
+        "type": "OPEN",
         "prompt": "## Practice Set 1: Study Buddy Finder (continued)\n\n## Prompt 2(c)\n\nSuppose you are provided with a procedure `isEqual(value1, value2)` that returns `true` if the two values are equal and `false` otherwise. Using the list `students` identified in the List section of your PPR, explain in **detailed steps** an algorithm that uses `isEqual` to count the number of students whose subject is \"Math\". Your explanation must be detailed enough for someone else to write the program code.",
         "imageUrl": null,
         "explanation": "**Scoring Guidelines:**\n- The algorithm should:\n  - Initialize a counter (e.g., `count ← 0`)\n  - Iterate over each element in `students`\n  - For each entry, extract the subject part (e.g., by finding the colon)\n  - Call `isEqual(subject, \"Math\")` to compare\n  - If true, increment counter\n  - After loop, output or return the count\n- Explanation should be step-by-step, not just code."
