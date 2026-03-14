@@ -683,7 +683,7 @@
         {
             "id": "q-ur-bi1-022",
             "tags": ["creative development", "multi-select", "development phases"],
-            "type": "MULTI_SELECT",
+            "type": "MULTIPLE_CHOICE",
             "prompt": "## Question 22\n\n**Multi-select:** A team is developing a new fitness app. They have completed the investigating phase and are now in the design phase. Which of the following activities are appropriate for the design phase?\nSelect **two** answers.",
             "imageUrl": null,
             "optionsJson": [
@@ -728,7 +728,7 @@
         {
             "id": "q-ur-bi1-025",
             "tags": ["creative development", "multi-select", "debugging techniques"],
-            "type": "MULTI_SELECT",
+            "type": "MULTIPLE_CHOICE",
             "prompt": "## Question 25\n\n**Multi-select:** A programmer is trying to find and fix errors in their code. Which of the following are effective debugging techniques?\nSelect **two** answers.",
             "imageUrl": null,
             "optionsJson": [
@@ -1189,7 +1189,7 @@
     {
         "id": "q-inf-012",
         "tags": ["data challenges", "cleaning", "scalability", "multi-select"],
-        "type": "MULTI_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "## Question 12\n\n**Multi-select:** A data analyst is preparing to analyze a large dataset of customer transactions. Which of the following are common challenges they might face?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -1249,7 +1249,7 @@
     {
         "id": "q-inf-016",
         "tags": ["visualization", "correlation vs causation", "multi-select"],
-        "type": "MULTI_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "## Question 16\n\n**Multi-select:** A data analyst creates a visualization showing that sales increase during certain months. Which of the following could be valid conclusions?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -1598,7 +1598,7 @@
         {
             "id": "q-ur-bi2-021",
             "tags": ["data", "correlation vs causation", "multi-select"],
-            "type": "MULTI_SELECT",
+            "type": "MULTIPLE_CHOICE",
             "prompt": "## Question 21\n\n**Multi-select:** A study finds that people who eat more chocolate tend to have more Nobel laureates per capita in their country. Which of the following are valid interpretations?\nSelect **two** answers.",
             "imageUrl": null,
             "optionsJson": [
@@ -1613,7 +1613,7 @@
         {
             "id": "q-ur-bi2-022",
             "tags": ["data", "binary numbers", "multi-select"],
-            "type": "MULTI_SELECT",
+            "type": "MULTIPLE_CHOICE",
             "prompt": "## Question 22\n\n**Multi-select:** Which of the following are true about bits and bytes?\nSelect **two** answers.",
             "imageUrl": null,
             "optionsJson": [
@@ -3530,7 +3530,7 @@
         {
             "id": "q-ur-bi3-031",
             "tags": ["algorithms", "multi-select", "list operations"],
-            "type": "MULTI_SELECT",
+            "type": "MULTIPLE_CHOICE",
             "prompt": "## Question 31\n\n**Multi-select:** Which of the following are valid ways to create a list in AP CSP pseudocode?\nSelect **two** answers.",
             "imageUrl": null,
             "optionsJson": [
@@ -3545,7 +3545,7 @@
         {
             "id": "q-ur-bi3-032",
             "tags": ["algorithms", "multi-select", "algorithm equivalence"],
-            "type": "MULTI_SELECT",
+            "type": "MULTIPLE_CHOICE",
             "prompt": "## Question 32\n\n**Multi-select:** Two different algorithms are designed to solve the same problem. Which of the following statements are true?\nSelect **two** answers.",
             "imageUrl": null,
             "optionsJson": [
@@ -3560,7 +3560,7 @@
         {
             "id": "q-ur-bi3-033",
             "tags": ["algorithms", "multi-select", "binary search"],
-            "type": "MULTI_SELECT",
+            "type": "MULTIPLE_CHOICE",
             "prompt": "## Question 33\n\n**Multi-select:** Which of the following are true about binary search?\nSelect **two** answers.",
             "imageUrl": null,
             "optionsJson": [
@@ -3575,7 +3575,7 @@
         {
             "id": "q-ur-bi3-034",
             "tags": ["algorithms", "multi-select", "procedural abstraction"],
-            "type": "MULTI_SELECT",
+            "type": "MULTIPLE_CHOICE",
             "prompt": "## Question 34\n\n**Multi-select:** Which of the following are benefits of using procedural abstraction?\nSelect **two** answers.",
             "imageUrl": null,
             "optionsJson": [
@@ -3650,7 +3650,7 @@
         {
             "id": "q-ur-bi3-039",
             "tags": ["algorithms", "multi-select", "efficiency"],
-            "type": "MULTI_SELECT",
+            "type": "MULTIPLE_CHOICE",
             "prompt": "## Question 39\n\n**Multi-select:** Which of the following efficiencies are considered to run in **unreasonable time** for large inputs?\nSelect **two** answers.",
             "imageUrl": null,
             "optionsJson": [
@@ -4778,7 +4778,7 @@
         {
             "id": "q-ur-bi5-018",
             "tags": ["impact", "digital divide", "multi-select"],
-            "type": "MULTI_SELECT",
+            "type": "MULTIPLE_CHOICE",
             "prompt": "## Question 18\n\n**Multi-select:** Which of the following contribute to the digital divide?\nSelect **two** answers.",
             "imageUrl": null,
             "optionsJson": [
@@ -4793,7 +4793,7 @@
         {
             "id": "q-ur-bi5-019",
             "tags": ["impact", "bias", "multi-select"],
-            "type": "MULTI_SELECT",
+            "type": "MULTIPLE_CHOICE",
             "prompt": "## Question 19\n\n**Multi-select:** At which stages can bias be introduced into a computing innovation?\nSelect **two** answers.",
             "imageUrl": null,
             "optionsJson": [
@@ -4808,7 +4808,7 @@
         {
             "id": "q-ur-bi5-020",
             "tags": ["impact", "crowdsourcing", "citizen science"],
-            "type": "MULTI_SELECT",
+            "type": "MULTIPLE_CHOICE",
             "prompt": "## Question 20\n\n**Multi-select:** Which of the following are examples of citizen science?\nSelect **two** answers.",
             "imageUrl": null,
             "optionsJson": [
@@ -4943,7 +4943,7 @@
         {
             "id": "q-ur-bi5-029",
             "tags": ["impact", "digital divide", "solutions"],
-            "type": "MULTI_SELECT",
+            "type": "MULTIPLE_CHOICE",
             "prompt": "## Question 29\n\n**Multi-select:** Which of the following actions could help bridge the digital divide?\nSelect **two** answers.",
             "imageUrl": null,
             "optionsJson": [
@@ -4958,7 +4958,7 @@
         {
             "id": "q-ur-bi5-030",
             "tags": ["impact", "bias", "mitigation"],
-            "type": "MULTI_SELECT",
+            "type": "MULTIPLE_CHOICE",
             "prompt": "## Question 30\n\n**Multi-select:** Which practices can help reduce bias in algorithmic systems?\nSelect **two** answers.",
             "imageUrl": null,
             "optionsJson": [
