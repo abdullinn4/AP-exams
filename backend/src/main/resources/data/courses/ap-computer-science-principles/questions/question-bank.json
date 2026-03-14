@@ -137,7 +137,7 @@
     {
         "id": "q-pdc-010",
         "tags": ["investigation", "requirements", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "## Question 10\n\n**Multi‑select:** A team is in the **investigating phase** of developing a new study app. Which of the following activities are appropriate?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -304,7 +304,7 @@
     {
         "id": "q-ade-009",
         "tags": ["edge cases", "testing", "lists", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 9\n\n**Multi-select:** A programmer is testing a procedure that finds the minimum value in a list. Which of the following test inputs would be appropriate to check edge cases?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -913,7 +913,7 @@
     {
         "id": "q-drc-012",
         "tags": ["lossless compression", "applications", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 12\n\n**Multi-select:** A programmer is deciding whether to use lossless or lossy compression for different types of files. For which of the following situations would lossless compression be the better choice?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -1003,7 +1003,7 @@
     {
         "id": "q-drc-018",
         "tags": ["lossless compression", "factors", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 18\n\n**Multi-select:** Which of the following factors affect how much a file can be compressed using a lossless compression algorithm?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -1811,7 +1811,7 @@
     {
         "id": "q-vdl-010",
         "tags": ["lists", "benefits", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 10\n\n**Multi-select:** A programmer is deciding whether to use a list to store data. Which of the following are benefits of using a list?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -1871,7 +1871,7 @@
     {
         "id": "q-vdl-014",
         "tags": ["lists", "copying", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 14\n\n**Multi-select:** A programmer writes the following code:\n\n```\nlist1 ← [1, 2, 3]\nlist2 ← list1\nlist1[1] ← 99\n```\n\nAfter this code runs, what are the contents of `list1` and `list2`?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -2116,7 +2116,7 @@
     {
         "id": "q-exp-012",
         "tags": ["MOD", "applications", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 12\n\n**Multi-select:** A programmer is writing code that uses the `MOD` operator. For which of the following tasks would `MOD` be useful?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -2191,7 +2191,7 @@
     {
         "id": "q-exp-017",
         "tags": ["Boolean expressions", "logic", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 17\n\n**Multi-select:** A programmer is writing a game where a player gets a bonus if their score is at least 100 and they have collected a power-up, OR if they have completed all levels. Which of the following Boolean expressions correctly represent this logic?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -2329,7 +2329,7 @@
     {
         "id": "q-csi-008",
         "tags": ["loops", "iteration", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 8\n\n**Multi-select:** A programmer is writing a loop to process each element in a list called `items`. Which of the following loops will correctly iterate through all elements of the list?\nSelect **two** answers.\n\nA) \n```\ni ← 1\nREPEAT UNTIL (i > LENGTH(items))\n{\n    DISPLAY(items[i])\n    i ← i + 1\n}\n```\n\nB) \n```\ni ← 0\nREPEAT UNTIL (i = LENGTH(items))\n{\n    DISPLAY(items[i])\n    i ← i + 1\n}\n```\n\nC) \n```\nFOR EACH item IN items\n{\n    DISPLAY(item)\n}\n```\n\nD) \n```\ni ← 1\nREPEAT LENGTH(items) TIMES\n{\n    DISPLAY(items[i])\n    i ← i + 1\n}\n```",
         "imageUrl": null,
         "optionsJson": [
@@ -2434,7 +2434,7 @@
     {
         "id": "q-csi-015",
         "tags": ["Boolean expressions", "range", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 15\n\n**Multi-select:** A programmer is writing code to check if a number is between 10 and 20 inclusive. Which of the following Boolean expressions correctly implement this check?\nSelect **two** answers.\n\nA) `num ≥ 10 AND num ≤ 20`\nB) `num > 10 AND num < 20`\nC) `NOT (num < 10) AND NOT (num > 20)`\nD) `num ≥ 10 OR num ≤ 20`",
         "imageUrl": null,
         "optionsJson": [
@@ -2509,7 +2509,7 @@
     {
         "id": "q-csi-020",
         "tags": ["loops", "REPEAT UNTIL", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 20\n\n**Multi-select:** Which of the following statements about `REPEAT UNTIL (condition)` loops are true?\nSelect **two** answers.\n\nA) The loop body will always execute at least once\nB) The loop body may never execute if the condition is initially true\nC) The loop continues as long as the condition is false\nD) The loop continues as long as the condition is true",
         "imageUrl": null,
         "optionsJson": [
@@ -2634,7 +2634,7 @@
     {
         "id": "q-pro-008",
         "tags": ["procedures", "parameters", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 8\n\n**Multi-select:** A programmer is designing a procedure to calculate the area of a rectangle. Which of the following are appropriate reasons to use parameters in this procedure?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -2709,7 +2709,7 @@
     {
         "id": "q-pro-013",
         "tags": ["libraries", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 13\n\n**Multi-select:** A programmer is writing a program that uses a library of mathematical functions. Which of the following are benefits of using a well-designed library?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -2784,7 +2784,7 @@
     {
         "id": "q-pro-018",
         "tags": ["procedures", "characteristics", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 18\n\n**Multi-select:** Which of the following statements about procedures are true?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -2911,7 +2911,7 @@
     {
         "id": "q-alg-008",
         "tags": ["simulation", "applications", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 8\n\n**Multi-select:** Which of the following situations would be appropriate for using a simulation rather than a real-world experiment?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -3016,7 +3016,7 @@
     {
         "id": "q-alg-015",
         "tags": ["binary search", "characteristics", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 15\n\n**Multi-select:** Which of the following statements about binary search are true?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -3061,7 +3061,7 @@
     {
         "id": "q-alg-018",
         "tags": ["simulation", "benefits", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 18\n\n**Multi-select:** Which of the following are reasons why simulations are useful?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -3791,7 +3791,7 @@
     {
         "id": "q-ifp-008",
         "tags": ["internet", "redundancy", "decentralization", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 8\n\n**Multi-select:** Which of the following are benefits of the Internet's decentralized, redundant design?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -3896,7 +3896,7 @@
     {
         "id": "q-ifp-015",
         "tags": ["distributed computing", "challenges", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 15\n\n**Multi-select:** A programmer is designing a distributed system to process large amounts of data. Which of the following challenges might they face?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -4021,7 +4021,7 @@
     {
         "id": "q-ebd-008",
         "tags": ["digital divide", "examples", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 8\n\n**Multi-select:** Which of the following are examples of the digital divide?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -4111,7 +4111,7 @@
     {
         "id": "q-ebd-014",
         "tags": ["digital divide", "policy", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 14\n\n**Multi-select:** A city government wants to ensure that a new public Wi-Fi initiative does not widen the digital divide. Which of the following actions would help achieve this goal?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -4235,7 +4235,7 @@
     {
         "id": "q-cps-007",
         "tags": ["crowdsourcing", "examples", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 7\n\n**Multi-select:** Which of the following are examples of crowdsourcing?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -4280,7 +4280,7 @@
     {
         "id": "q-cps-010",
         "tags": ["crowdsourcing", "benefits", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 10\n\n**Multi-select:** Which of the following are potential benefits of using crowdsourcing for scientific research?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -4402,7 +4402,7 @@
     {
         "id": "q-les-008",
         "tags": ["multifactor authentication", "security", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 8\n\n**Multi-select:** Which of the following are examples of multifactor authentication?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
@@ -4492,7 +4492,7 @@
     {
         "id": "q-les-014",
         "tags": ["copyright", "Creative Commons", "open source", "AP CSP"],
-        "type": "MULTIPLE_SELECT",
+        "type": "MULTIPLE_CHOICE",
         "prompt": "### Question 14\n\n**Multi-select:** Which of the following are legal ways to use materials created by someone else?\nSelect **two** answers.",
         "imageUrl": null,
         "optionsJson": [
