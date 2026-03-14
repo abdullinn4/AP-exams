@@ -1,4 +1,4 @@
-### 2.4: Nested if Statements
+### Nested if Statements
 
 ### What Are Nested if Statements?
 

@@ -1,5 +1,5 @@
 
-### 1.8: Documentation with Comments
+### Documentation with Comments
 
 
 ### What Are Comments?

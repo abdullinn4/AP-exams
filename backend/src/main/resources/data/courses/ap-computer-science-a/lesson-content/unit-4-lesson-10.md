@@ -1,4 +1,4 @@
-### 4.10: Implementing ArrayList Algorithms
+### Implementing ArrayList Algorithms
 
 
 ### Why ArrayList Algorithms Matter

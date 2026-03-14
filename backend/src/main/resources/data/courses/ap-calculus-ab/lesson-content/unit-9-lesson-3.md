@@ -1,168 +1,176 @@
-# **Lesson 23: FRQ Strategy Session**
+# Final Review
 
-### **23.1 Understanding the FRQ Section**
-
-**Exam Structure (2026 AP Calculus AB Exam):**
-
-- **Section II:** Free-Response Questions (FRQs)
-- **Total Time:** 1 hour 30 minutes
-- **Part A (30 minutes):** 2 problems → **Graphing calculator REQUIRED**
-- **Part B (60 minutes):** 4 problems → **Graphing calculator NOT PERMITTED**
-- **Total Weight:** 50% of your AP score
-
-**Question Types & Common Themes:**
-While each exam is unique, the six FRQs typically assess the following:
-
-1. **Question 1: Analytical/Graphical (No Calculator)**
-    - Often involves analysis of functions using derivatives (increasing/decreasing, concavity, extrema) or limits.
-    - May include a tabular or graphical representation of a function.
-2. **Question 2: Particle Motion / Rates (No Calculator)**
-    - Classic particle motion along a line (position, velocity, acceleration).
-    - Interpretation of integrals in context (displacement vs. distance).
-    - Related rates problems also appear here.
-3. **Question 3: Graphical / "Area-Volume" (No Calculator)**
-    - Analysis of a graph of $f$ or $f'$.
-    - Often involves Riemann sums, definite integral interpretation, and the Fundamental Theorem of Calculus (FTC).
-    - May ask for area or average value.
-4. **Question 4: Modeling / Differential Equations (Calculator)**
-    - A real-world modeling problem, often involving a differential equation.
-    - Requires solving via separation of variables, interpreting slope fields, or using Euler's method.
-    - Expect exponential growth/decay, logistic growth, or Newton's Law of Cooling.
-5. **Question 5: "The Big One" – Integration / Accumulation (Calculator)**
-    - The most complex, multi-step problem.
-    - Involves setting up an integral for area, volume (disc/washer), or accumulation in context.
-    - Requires careful interpretation of a word problem and clear setup.
-6. **Question 6: Series / BC-only topic (Not for AB)**
-    - *Note: For Calculus AB, there are only 6 FRQs total, but one is a BC-only question that AB students do not answer. In practice, AB students answer Questions 1-5 and one other question that is common to both exams.*
-
-**The "Common Questions":** The AP Calculus AB and BC exams share three common FRQs. These are typically the modeling, integration/accumulation, and analytical/graphical questions.
+We're going to connect all the disparate units into a single, beautiful framework. The AP Exam isn't just about memorizing formulas; it's about understanding the relationship between concepts. Let's lock that in.
 
 ---
 
-### **23.2 Decoding the Scoring Rubric & Maximizing Points**
+## Part 1: The Foundation – Limits & Continuity (Units 1 & 2)
 
-**How FRQs are Scored:**
-Each FRQ is worth 9 points. The points are awarded for specific **"grading targets"** or steps in your solution. You don't need a perfect answer to get most of the points.
+Before we can talk about change (derivatives) or accumulation (integrals), we need the language of "approaching." That's limits.
 
-**The 9-Point Rubric Structure:**
+**1. What is a Limit?**
+- **Intuitively:** The value a function *intends* to reach as $x$ gets closer and closer to a value $c$ (from both sides).
+- **Graphically:** Where the graph is *headed* as you trace along it towards a specific $x$-value. Holes don't matter for the limit's existence.
+- **Algebraically:** $\lim_{x\to c} f(x) = L$
 
-1. **Point 1 (The "Set-Up" Point):** Often awarded for writing a correct integral, derivative, or equation that addresses the problem.
-2. **Points 2-3 (The "Process" Points):** Awarded for correct application of calculus techniques (e.g., applying the Chain Rule, evaluating an integral, solving a differential equation).
-3. **Point 4 (The "Answer" Point):** The correct numerical answer or expression, often with proper units.
-4. **Points 5-7 (The "Justification/Communication" Points):** Awarded for correct reasoning, referencing theorems by name (e.g., "By the Mean Value Theorem..."), interpreting in context, or providing necessary explanations.
-5. **Points 8-9 (The "Complexity" Points):** Reserved for multi-step reasoning, handling special cases, or demonstrating deep understanding.
+**2. When Does a Limit Not Exist (DNE)?**
+1.  Left-hand limit $\neq$ Right-hand limit (e.g., piecewise functions at a jump, or $\lim_{x\to 0} |x|/x$).
+2.  Unbounded behavior (e.g., $\lim_{x\to 0} 1/x^2$). We often say it's $\infty$, but technically the limit DNE because it's not a finite number.
+3.  Oscillating behavior (e.g., $\lim_{x\to 0} \sin(1/x)$).
 
-**The Golden Rule: SHOW. YOUR. WORK.** The readers can only give points for what they see on the page. If you make a mistake early but use correct methods afterward, you can still earn **"follow-through" points**.
+**3. The All-Important Connection: Continuity**
+A function $f(x)$ is continuous at $x = c$ if and only if **ALL THREE** are true:
+1.  $f(c)$ is defined.
+2.  $\lim_{x\to c} f(x)$ exists.
+3.  $\lim_{x\to c} f(x) = f(c)$.
 
----
-
-### **23.3 Mastering the Task Verbs**
-
-The exam uses specific verbs to tell you what is required. Your response must match the verb.
-
-| Task Verb | What It Means & What to Do |
-| --- | --- |
-| **Approximate** | Use numerical methods (Riemann sums, Euler's method, calculator). **Write the expression you are evaluating** (e.g., `(1)(f(1)) + (1)(f(2))`), then state the decimal approximation. |
-| **Calculate / Write an expression** | **You must write the mathematical expression** (integral, derivative, equation) **first**. Then compute its value. "Calculate" implies both steps. |
-| **Determine** | Apply a definition or theorem to find a value, interval, or solution. Show the work that leads to your conclusion. (e.g., "Set $f'(x)=0$...") |
-| **Estimate** | Similar to approximate, often from a graph or table. Explain your method. |
-| **Evaluate** | Find the numerical value. Show the substitution and computation steps. |
-| **Explain / Justify** | **This is where you earn the big points.** Give a reason. Use complete sentences. Reference specific theorems. (e.g., "$f$ is decreasing because $f'(x) < 0$ on that interval.") |
-| **Identify / Indicate** | Can be a short answer. No explanation needed. (e.g., "The maximum occurs at $x=3$.") |
-| **Interpret** | Explain the meaning of a result **in the context of the problem**, including units. (e.g., "This integral represents the total number of gallons of water that leaked from the tank from $t=0$ to $t=5$ hours.") |
-| **Represent** | Use mathematical notation, graphs, or tables. Be clear and organized. |
-| **Verify** | Confirm that conditions are met. (e.g., "To use the Mean Value Theorem, $f$ must be continuous on $[a,b]$ and differentiable on $(a,b)$. Here, $f$ is a polynomial, so it is continuous and differentiable everywhere. The conditions are met.") |
+- **Key Theorem: Intermediate Value Theorem (IVT)**
+    - If $f$ is **continuous** on $[a, b]$ and $k$ is any number between $f(a)$ and $f(b)$, then there exists at least one $c$ in $(a, b)$ such that $f(c) = k$.
+    - **What it's good for:** Proving a root exists. If $f(a)$ and $f(b)$ have opposite signs, there must be a zero in between.
 
 ---
 
-### **23.4 Attack Strategy for Each FRQ Type**
+## Part 2: The Derivative – The Heart of Change (Units 2, 3, 4)
 
-**General Strategy for All FRQs:**
+A derivative is the mathematical embodiment of **rate of change**.
 
-1. **Read the entire problem first.** Underline key information and the final question.
-2. **Identify the task verbs.** Circle them. They are your checklist.
-3. **Plan your response.** Sketch a quick outline or graph in the margin.
-4. **Write neatly and label all parts (a, b, c...).**
-5. **Use correct notation:** $dy/dx$, $f'(x)$, proper integral and limit notation.
-6. **Don't erase a whole solution if you think it's wrong.** Cross it out with a single line—you might get partial credit. Start fresh if needed.
+**1. The Definition (You MUST know this!)**
+$$f'(x) = \lim_{h\to 0} \frac{f(x+h) - f(x)}{h}$$
+- **Graphically:** The slope of the tangent line to the curve at a point.
+- **Physically:** Instantaneous rate of change (e.g., velocity = derivative of position).
 
-**No-Calculator Questions (Part B):**
+**2. Differentiability implies Continuity**
+- If $f$ is differentiable at $x = c$ (the derivative exists), then $f$ is continuous at $x = c$.
+- The converse is **not** true. A function can be continuous but have a sharp corner (cusp) or a vertical tangent, making it not differentiable.
 
-- **Expect simpler arithmetic.** Answers often involve $\pi$, $e$, $\ln$, or square roots. Leave them exact.
-- **Show all algebraic steps.** Factoring, simplifying fractions, solving equations.
-- **If you get a "messy" number,** you likely made an error. Rework it.
+**3. The Derivative Rules Cheat Sheet**
+- **Power Rule:** $\frac{d}{dx}[x^n] = n x^{n-1}$
+- **Product Rule:** $\frac{d}{dx}[f(x)g(x)] = f'(x)g(x) + f(x)g'(x)$
+- **Quotient Rule:** $\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}$ (Remember: "low d-high minus high d-low, square the bottom and away we go.")
+- **Chain Rule:** $\frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)$ (The "outside-inside" rule. This is everywhere!)
+- **Derivatives of Key Functions:**
+    - $\frac{d}{dx}[\sin x] = \cos x$
+    - $\frac{d}{dx}[\cos x] = -\sin x$
+    - $\frac{d}{dx}[\tan x] = \sec^2 x$
+    - $\frac{d}{dx}[e^x] = e^x$
+    - $\frac{d}{dx}[\ln x] = \frac{1}{x}$
 
-**Calculator-Active Questions (Part A):**
-
-- **Write the setup before you touch the calculator.** Example: "Volume = $\pi \int_0^2 ( (5)^2 - (f(x))^2 ) dx$".
-- **Then state:** "Using the calculator, this evaluates to approximately 42.036."
-- **Round to 3 decimal places** unless otherwise specified.
-- **You can use the calculator to check your algebra.** If you solve an equation and get $x=2$, plug it back in to verify.
-
----
-
-### **23.5 Partial Credit Salvage Guide**
-
-Even if you're stuck, you can earn points.
-
-**If you blank on how to start:**
-
-- Write down relevant **definitions or formulas**. (e.g., "Average value = $\frac{1}{b-a} \int f(x) dx$")
-- **Draw a picture.** Label it with given information.
-- **Write something related to the problem.** If it's a rate problem, write $\int \text{rate } dt = \text{net change}$.
-
-**If you make a mistake early:**
-
-- **State: "Assume [incorrect result] is correct. Then..."** and proceed correctly. You can earn follow-through points for correct method applied to your wrong number.
-
-**If you run out of time:**
-
-- **Write a bullet-point outline** of the steps you would take. You might get a point for demonstrating understanding.
-
-**Common "Point Grabbers":**
-
-- **+1** for writing the correct integral with limits and integrand.
-- **+1** for stating the name of a theorem you are using.
-- **+1** for including **units** in a final answer.
-- **+1** for labeling axes and scales if you draw a graph.
-- **+1** for using proper limit notation when evaluating an improper integral.
+**4. Implicit Differentiation**
+- **When to use it:** When you can't (or don't want to) solve for $y$ in terms of $x$.
+- **How to do it:** Differentiate every term with respect to $x$. Whenever you differentiate a $y$, multiply by $\frac{dy}{dx}$ (that's the chain rule!). Then, solve for $\frac{dy}{dx}$.
 
 ---
 
-### **23.6 Practice Dissection of an FRQ Prompt**
+## Part 3: Applying the Derivative – The "What" and "Why" (Unit 5)
 
-**Sample Prompt (Part a from a real FRQ):**
-"The rate at which water flows into a tank, in gallons per minute, is given by a differentiable function $R(t)$. The table below gives values of $R(t)$ measured at 5-minute intervals for $0 \le t \le 30$.
-$t$ (min) | 0 | 5 | 10 | 15 | 20 | 25 | 30
-$R(t)$ (gal/min) | 0 | 5 | 7 | 8 | 10 | 12 | 13
-(a) Use a right Riemann sum with 6 subintervals to approximate $\int_0^{30} R(t) dt$. Explain the meaning of your answer in the context of the problem, including units."
+This is where we use $f'$ and $f''$ to understand the behavior of $f$.
 
-**Our Strategic Response:**
+| Concept | Calculus Condition | Graphical Interpretation |
+| :--- | :--- | :--- |
+| **Function Increasing** | $f'(x) > 0$ | Graph is going up as $x$ increases. |
+| **Function Decreasing** | $f'(x) < 0$ | Graph is going down as $x$ increases. |
+| **Local (Relative) Max/Min** | $f'(x) = 0$ or DNE (critical point) AND $f'$ changes sign. | Peak or valley. |
+| **Absolute (Global) Extrema** | Candidates: critical points inside $(a,b)$ + endpoints $a$ and $b$. | Highest/lowest point on the entire interval. |
+| **Concave Up** | $f''(x) > 0$ | "Holds water"; slope is increasing. |
+| **Concave Down** | $f''(x) < 0$ | "Spills water"; slope is decreasing. |
+| **Point of Inflection** | $f''(x) = 0$ or DNE AND $f''$ changes sign. | Point where concavity changes. |
 
-1. **Identify Verbs:** "Use... to approximate" and "Explain the meaning."
-2. **Plan:** Right Riemann sum means use endpoints: $t=5,10,15,20,25,30$. Width = $\Delta t = 5$.
-3. **Write Setup First:**
-    - "$\int_0^{30} R(t) dt \approx \Delta t [R(5) + R(10) + R(15) + R(20) + R(25) + R(30)]$"
-    - "$= 5 [5 + 7 + 8 + 10 + 12 + 13]$"
-4. **Calculate:**
-    - "$= 5 (55) = 275$"
-5. **Interpret (Crucial for the point):**
-    - "This approximation represents the total amount of water, in gallons, that flowed into the tank from $t=0$ to $t=30$ minutes."
-6. **Check:** We used the correct values, stated the meaning, and included units.
+**Key Theorems**
+- **Mean Value Theorem (MVT):** If $f$ is continuous on $[a, b]$ and differentiable on $(a, b)$, then there exists a $c$ in $(a, b)$ such that $$f'(c) = \frac{f(b) - f(a)}{b - a}.$$
+    - **What it means:** There is a point where the instantaneous rate of change equals the *average* rate of change over the interval. The slope of the tangent line equals the slope of the secant line.
+
+**Optimization (The Big Kahuna)**
+1.  Draw a picture and define variables.
+2.  Write the equation you want to **maximize/minimize** (primary equation).
+3.  Write the **constraint** equation (the thing that is fixed).
+4.  Use the constraint to solve for one variable and substitute into the primary equation (now one variable).
+5.  Take the derivative, find critical points.
+6.  Justify it's a max or min (e.g., first or second derivative test) and state the answer in a sentence.
 
 ---
 
-### **Lesson 23 Summary**
+## Part 4: The Integral – The Accumulator (Units 6 & 8)
 
-**FRQ Success Checklist:**
+If the derivative is a rate of change, the integral is the accumulation of that change.
 
-- [ ] Read the entire problem and underline task verbs.
-- [ ] For calculator problems, write the exact setup before calculating.
-- [ ] For "explain/justify" questions, use complete sentences and theorem names.
-- [ ] Show every step of your work—no mental math.
-- [ ] Use proper notation ($dx$, $\lim$, etc.).
-- [ ] Include units in final answers.
-- [ ] If stuck, write down relevant formulas and definitions for partial credit.
-- [ ] Manage your time: ~15 minutes per question for Part B, ~15 minutes per question for Part A.
+**1. The Definite Integral**
+- $$\int_a^b f(x) \, dx$$
+- **Geometrically:** The net signed area between the curve $y = f(x)$ and the $x$-axis, from $x=a$ to $x=b$.
+- **Physically:** If $v(t)$ is velocity, $\int_a^b v(t) \, dt$ is the **net change** in position (displacement). $\int_a^b |v(t)| \, dt$ is total distance traveled.
+- If $f(x)$ is the rate of change, the integral gives the total accumulation.
 
-**Remember:** The FRQ section is designed to assess your **communication of calculus concepts** as much as your computational skill. Think of it as showing your mathematical reasoning to a reader who wants to give you points. Be clear, be thorough, and don't leave any part blank.
+**2. The Fundamental Theorem of Calculus (FTC) – The Superglue**
+This theorem connects derivatives and integrals. It's the most important idea in the course.
+- **FTC Part 1:** $$\frac{d}{dx}\left[ \int_a^x f(t) \, dt \right] = f(x)$$
+    - *Translation:* Taking the derivative of an integral "undoes" the integral and returns the original function. The derivative of an accumulator is the rate.
+- **FTC Part 2:** $$\int_a^b f(x) \, dx = F(b) - F(a), \quad \text{where } F'(x) = f(x).$$
+    - *Translation:* To evaluate a definite integral, find an **antiderivative** $F$ of the integrand $f$, and subtract its value at the bottom from its value at the top.
+
+**3. The Indefinite Integral ($\int f(x) \, dx = F(x) + C$)**
+This is the general antiderivative. The $+C$ represents the family of all functions whose derivative is $f(x)$. **Don't forget the $+C$!**
+
+**4. Basic Antiderivative Rules (Reverse of Derivatives)**
+- $\int x^n \, dx = \frac{x^{n+1}}{n+1} + C,\; n\neq -1$
+- $\int \frac{1}{x} \, dx = \ln|x| + C$
+- $\int \cos x \, dx = \sin x + C$
+- $\int \sin x \, dx = -\cos x + C$
+- $\int e^x \, dx = e^x + C$
+
+**5. Techniques of Integration (AB Only)**
+- **Substitution (u-sub):** The reverse of the Chain Rule. Look for a function and its derivative (up to a constant) inside the integral. Let $u$ = the "inside" function.
+    - *Don't forget* to change the limits of integration when doing a definite integral with u-sub.
+
+**6. Area and Volume (Unit 8 Applications)**
+- **Area between two curves:** $$\int_a^b [\text{Top Function} - \text{Bottom Function}] \, dx$$ (or $\int_c^d [\text{Right} - \text{Left}] \, dy$ for horizontal slices).
+- **Volume of Revolution:**
+    - **Disk Method:** No hole. $$V = \pi \int_a^b [R(x)]^2 \, dx$$
+    - **Washer Method:** Has a hole. $$V = \pi \int_a^b [R(x)^2 - r(x)^2] \, dx$$
+    - **Cross-Sections:** Volume is the integral of the area of the slices. $$V = \int_a^b A(x) \, dx$$ (where $A(x)$ is the area of the cross-section).
+
+---
+
+## Part 5: Differential Equations (Unit 7)
+
+Equations involving derivatives. We solve them to find the original function.
+
+**1. Slope Fields**
+- A graphical way to visualize a differential equation $\frac{dy}{dx} = \dots$.
+- At each grid point $(x, y)$, draw a tiny slope line with slope equal to the value of the right-hand side.
+- A solution to the DE is a curve that follows these slope lines.
+
+**2. Solving by Separation of Variables**
+1.  Get all the $y$'s and $dy$'s on one side, all the $x$'s and $dx$'s on the other. (Multiply/divide, treating $\frac{dy}{dx}$ as a fraction).
+2.  Put an integral sign on both sides: $$\int [y\text{-stuff}] \, dy = \int [x\text{-stuff}] \, dx.$$
+3.  Integrate both sides. (Don't forget $+C$ on the $x$-side!).
+4.  If you have an initial condition $y(x_0) = y_0$, use it to solve for $C$. This gives the **particular solution**.
+
+**3. Exponential Models (Growth & Decay)**
+- The model: $\frac{dy}{dt} = ky$ (Rate of change is proportional to the amount present).
+- The solution: $$y(t) = y_0 e^{kt}.$$
+    - $k > 0$ => Growth (population, compound interest)
+    - $k < 0$ => Decay (radioactive decay, Newton's Law of Cooling)
+
+---
+
+## Part 6: Exam Strategy & Common Pitfalls
+
+**The Calculator Section (Part B)**
+- **Know your calculator!** Practice finding intersections, numerical derivatives (`nDeriv`), and definite integrals (`fnInt`) quickly.
+- You can use it to check analytical work, but the AP graders want to see the calculus setup first. Show the integral, *then* state the calculator value.
+
+**The No-Calculator Section (Part A)**
+- Simplify answers (e.g., $\pi/4$ not a decimal).
+- Know your unit circle values for trig.
+- Practice algebraic manipulation quickly and accurately.
+
+**Common Mistakes to Avoid**
+1.  **Forgetting the $+C$ on indefinite integrals.**
+2.  **Confusing average value** $\displaystyle \frac{1}{b-a}\int_a^b f(x)\,dx$ with the **average rate of change** $\displaystyle \frac{f(b)-f(a)}{b-a}$.
+3.  **Misinterpreting the problem:** Is it asking for $f'(x)$ (derivative) or $f(x)$ (original function)?
+4.  **Incorrect Chain Rule:** Especially with trig and exponential functions.
+5.  **Not justifying answers on free response.** "Because $f'$ changes from positive to negative at $x=2$, $f$ has a relative max." That sentence is worth a point.
+6.  **Algebra errors:** Dropping negative signs, distributing exponents incorrectly.
+
+---
+
+You are ready. You have the tools. Now, go and practice tackling full exams on our website. You've got this. 

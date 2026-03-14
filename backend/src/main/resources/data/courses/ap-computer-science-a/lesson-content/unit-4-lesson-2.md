@@ -1,4 +1,4 @@
-### 4.2: Introduction to Using Data Sets
+### Introduction to Using Data Sets
 
 ### What is a Data Set?
 

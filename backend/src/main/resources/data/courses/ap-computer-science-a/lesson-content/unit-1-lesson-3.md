@@ -1,4 +1,4 @@
-### 1.3: Expressions and Output
+### Expressions and Output
 
 ### Displaying Output: `System.out.print` and `System.out.println`
 

@@ -1,5 +1,5 @@
 
-### 1.6: Compound Assignment Operators
+### Compound Assignment Operators
 
 
 ### What Are Compound Assignment Operators?

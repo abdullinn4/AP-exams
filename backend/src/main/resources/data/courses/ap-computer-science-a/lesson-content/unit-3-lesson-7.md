@@ -1,4 +1,4 @@
-### 3.7: Class Variables and Methods
+### Class Variables and Methods
 
 ### What Are Class Variables?
 

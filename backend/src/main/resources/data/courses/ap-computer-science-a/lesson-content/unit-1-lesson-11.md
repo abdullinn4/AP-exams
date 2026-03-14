@@ -1,5 +1,5 @@
 
-### 1.11: Math Class
+### Math Class
 
 
 ### The `Math` Class

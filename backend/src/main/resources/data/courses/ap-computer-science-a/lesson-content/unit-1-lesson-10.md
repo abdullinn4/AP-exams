@@ -1,5 +1,5 @@
 
-### 1.10: Calling Class Methods
+### Calling Class Methods
 
 ### What Are Class Methods?
 

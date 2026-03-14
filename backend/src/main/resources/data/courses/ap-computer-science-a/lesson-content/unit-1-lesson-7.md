@@ -1,5 +1,5 @@
 
-### 1.7: Application Program Interface (API) and Libraries
+### Application Program Interface (API) and Libraries
 
 
 ### What is a Library?

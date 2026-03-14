@@ -1,4 +1,4 @@
-### 3.5: Methods: How to Write Them
+### Methods: How to Write Them
 
 ### What is a Method?
 

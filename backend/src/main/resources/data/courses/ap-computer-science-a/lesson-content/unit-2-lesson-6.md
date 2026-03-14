@@ -1,4 +1,4 @@
-### 2.6: Comparing Boolean Expressions
+### Comparing Boolean Expressions
 
 ### Equivalent Boolean Expressions
 

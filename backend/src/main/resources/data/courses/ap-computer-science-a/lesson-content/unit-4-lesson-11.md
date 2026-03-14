@@ -1,4 +1,4 @@
-### 4.11: 2D Array Creation and Access
+### 2D Array Creation and Access
 
 ### What is a 2D Array?
 

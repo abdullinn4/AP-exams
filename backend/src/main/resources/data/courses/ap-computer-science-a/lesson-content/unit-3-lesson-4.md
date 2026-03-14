@@ -1,4 +1,4 @@
-### 3.4: Constructors
+### Constructors
 
 ### What is a Constructor?
 

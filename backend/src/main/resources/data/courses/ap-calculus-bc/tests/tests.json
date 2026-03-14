@@ -1,0 +1,603 @@
+[
+    {
+        "unitOrder": 1,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Introduction to Limits Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-lim-001", "q-lim-002", "q-lim-003", "q-lim-004", "q-lim-005",
+            "q-lim-006", "q-lim-007", "q-lim-008", "q-lim-009", "q-lim-010",
+            "q-lim-011", "q-lim-012", "q-lim-013", "q-lim-014", "q-lim-015",
+            "q-lim-016", "q-lim-017", "q-lim-018", "q-lim-019", "q-lim-020"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Calculating Limits Algebraically Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-lim2-001", "q-lim2-002", "q-lim2-003", "q-lim2-004", "q-lim2-005",
+            "q-lim2-006", "q-lim2-007", "q-lim2-008", "q-lim2-009", "q-lim2-010",
+            "q-lim2-011", "q-lim2-012", "q-lim2-013", "q-lim2-014", "q-lim2-015",
+            "q-lim2-016", "q-lim2-017", "q-lim2-018", "q-lim2-019", "q-lim2-020"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "Continuity and Theorems Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-cont-001", "q-cont-002", "q-cont-003", "q-cont-004", "q-cont-005",
+            "q-cont-006", "q-cont-007", "q-cont-008", "q-cont-009", "q-cont-010",
+            "q-cont-011", "q-cont-012", "q-cont-013", "q-cont-014", "q-cont-015",
+            "q-cont-016", "q-cont-017", "q-cont-018", "q-cont-019", "q-cont-020"
+        ]
+    },
+    {
+        "type": "MOCK_EXAM",
+        "title": "Unit 1: Limits and Continuity Mock Exam",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-lim-001", "q-lim-003", "q-lim-005", "q-lim-007", "q-lim-010",
+            "q-lim-012", "q-lim-015", "q-lim-018", "q-lim2-002", "q-lim2-004",
+            "q-lim2-006", "q-lim2-008", "q-lim2-010", "q-lim2-012", "q-lim2-015",
+            "q-lim2-018", "q-cont-001", "q-cont-004", "q-cont-007", "q-cont-015"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "The Derivative Concept Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-deriv-001", "q-deriv-002", "q-deriv-003", "q-deriv-004", "q-deriv-005",
+            "q-deriv-006", "q-deriv-007", "q-deriv-008", "q-deriv-009", "q-deriv-010",
+            "q-deriv-011", "q-deriv-012", "q-deriv-013", "q-deriv-014", "q-deriv-015",
+            "q-deriv-016", "q-deriv-017", "q-deriv-018", "q-deriv-019", "q-deriv-020"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Derivative Rules Mastery Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-drules-001", "q-drules-002", "q-drules-003", "q-drules-004", "q-drules-005",
+            "q-drules-006", "q-drules-007", "q-drules-008", "q-drules-009", "q-drules-010",
+            "q-drules-011", "q-drules-012", "q-drules-013", "q-drules-014", "q-drules-015",
+            "q-drules-016", "q-drules-017", "q-drules-018", "q-drules-019", "q-drules-020"
+        ]
+    },
+    {
+        "type": "MOCK_EXAM",
+        "title": "Unit 2: Differentiation Fundamentals Mock Exam",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-deriv-002", "q-deriv-004", "q-deriv-006", "q-deriv-008", "q-deriv-010",
+            "q-deriv-012", "q-deriv-015", "q-deriv-018", "q-deriv-020", "q-drules-001",
+            "q-drules-003", "q-drules-005", "q-drules-007", "q-drules-009", "q-drules-011",
+            "q-drules-013", "q-drules-015", "q-drules-017", "q-drules-019", "q-drules-020"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Chain Rule and Implicit Differentiation Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-chain-001", "q-chain-002", "q-chain-003", "q-chain-004", "q-chain-005",
+            "q-chain-006", "q-chain-007", "q-chain-008", "q-chain-009", "q-chain-010",
+            "q-chain-011", "q-chain-012", "q-chain-013", "q-chain-014", "q-chain-015",
+            "q-chain-016", "q-chain-017", "q-chain-018", "q-chain-019", "q-chain-020"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Higher Order Derivatives Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-higher-001", "q-higher-002", "q-higher-003", "q-higher-004", "q-higher-005",
+            "q-higher-006", "q-higher-007", "q-higher-008", "q-higher-009", "q-higher-010",
+            "q-higher-011", "q-higher-012", "q-higher-013", "q-higher-014", "q-higher-015",
+            "q-higher-016", "q-higher-017", "q-higher-018", "q-higher-019", "q-higher-020"
+        ]
+    },
+    {
+        "type": "MOCK_EXAM",
+        "title": "Unit 3: Advanced Differentiation Mock Exam",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-chain-001", "q-chain-003", "q-chain-005", "q-chain-007", "q-chain-009",
+            "q-chain-011", "q-chain-013", "q-chain-015", "q-chain-017", "q-chain-019",
+            "q-higher-002", "q-higher-004", "q-higher-006", "q-higher-008", "q-higher-010",
+            "q-higher-012", "q-higher-014", "q-higher-016", "q-higher-018", "q-higher-020"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Interpreting Derivatives in Context Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-apps-001", "q-apps-002", "q-apps-003", "q-apps-004", "q-apps-005",
+            "q-apps-006", "q-apps-007", "q-apps-008", "q-apps-009", "q-apps-010",
+            "q-apps-011", "q-apps-012", "q-apps-013", "q-apps-014", "q-apps-015",
+            "q-apps-016", "q-apps-017", "q-apps-018", "q-apps-019", "q-apps-020"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Related Rates Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-related-001", "q-related-002", "q-related-003", "q-related-004", "q-related-005",
+            "q-related-006", "q-related-007", "q-related-008", "q-related-009", "q-related-010",
+            "q-related-011", "q-related-012", "q-related-013", "q-related-014", "q-related-015",
+            "q-related-016", "q-related-017", "q-related-018", "q-related-019", "q-related-020"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "Linearization and Limits Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-linear-001", "q-linear-002", "q-linear-003", "q-linear-004", "q-linear-005",
+            "q-lim-001", "q-lim-015", "q-lim2-008", "q-lim2-011", "q-deriv-005",
+            "q-deriv-015", "q-chain-005", "q-chain-020", "q-apps-010", "q-apps-019",
+            "q-apps-020", "q-related-007", "q-related-020", "q-higher-003", "q-higher-011"
+        ]
+    },
+    {
+        "type": "MOCK_EXAM",
+        "title": "Unit 4: Contextual Applications Mock Exam",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-apps-001", "q-apps-003", "q-apps-005", "q-apps-007", "q-apps-009",
+            "q-apps-011", "q-apps-013", "q-apps-015", "q-apps-017", "q-apps-019",
+            "q-related-002", "q-related-004", "q-related-006", "q-related-008", "q-related-010",
+            "q-related-012", "q-related-014", "q-related-016", "q-related-018", "q-linear-001"
+        ]
+    },
+    {
+        "unitOrder": 5,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Key Theorems and Extreme Values Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-theorems-001", "q-theorems-002", "q-theorems-003", "q-theorems-004", "q-theorems-005",
+            "q-theorems-006", "q-theorems-007", "q-theorems-008", "q-theorems-009", "q-theorems-010",
+            "q-theorems-011", "q-theorems-012", "q-theorems-013", "q-theorems-014", "q-theorems-015",
+            "q-theorems-016", "q-theorems-017", "q-theorems-018", "q-theorems-019", "q-theorems-020"
+        ]
+    },
+    {
+        "unitOrder": 5,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Function Behavior and Graphing Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-behavior-001", "q-behavior-002", "q-behavior-003", "q-behavior-004", "q-behavior-005",
+            "q-behavior-006", "q-behavior-007", "q-behavior-008", "q-behavior-009", "q-behavior-010",
+            "q-behavior-011", "q-behavior-012", "q-behavior-013", "q-behavior-014", "q-behavior-015",
+            "q-behavior-016", "q-behavior-017", "q-behavior-018", "q-behavior-019", "q-behavior-020"
+        ]
+    },
+    {
+        "unitOrder": 5,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "Optimization Problems Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-opt-001", "q-opt-002", "q-opt-003", "q-opt-004", "q-opt-005",
+            "q-opt-006", "q-opt-007", "q-opt-008", "q-opt-009", "q-opt-010",
+            "q-opt-011", "q-opt-012", "q-opt-013", "q-opt-014", "q-opt-015",
+            "q-opt-016", "q-opt-017", "q-opt-018", "q-opt-019", "q-opt-020"
+        ]
+    },
+    {
+        "type": "MOCK_EXAM",
+        "title": "Unit 5: Analytical Applications of Differentiation Mock Exam",
+        "timeLimitSec": 2400,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-theorems-001", "q-theorems-005", "q-theorems-010", "q-theorems-015",
+            "q-behavior-002", "q-behavior-007", "q-behavior-012", "q-behavior-017",
+            "q-opt-003", "q-opt-008", "q-opt-013", "q-opt-018",
+            "q-theorems-003", "q-theorems-008", "q-theorems-013", "q-theorems-018",
+            "q-behavior-004", "q-behavior-009", "q-behavior-014", "q-behavior-019"
+        ]
+    },
+    {
+        "unitOrder": 6,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Riemann Sums and Accumulation Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-riemann-001", "q-riemann-002", "q-riemann-003", "q-riemann-004", "q-riemann-005",
+            "q-riemann-006", "q-riemann-007", "q-riemann-008", "q-riemann-009", "q-riemann-010",
+            "q-riemann-011", "q-riemann-012", "q-riemann-013", "q-riemann-014", "q-riemann-015",
+            "q-riemann-016", "q-riemann-017", "q-riemann-018", "q-riemann-019", "q-riemann-020"
+        ]
+    },
+    {
+        "unitOrder": 6,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Fundamental Theorem of Calculus Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-ftc-001", "q-ftc-002", "q-ftc-003", "q-ftc-004", "q-ftc-005",
+            "q-ftc-006", "q-ftc-007", "q-ftc-008", "q-ftc-009", "q-ftc-010",
+            "q-ftc-011", "q-ftc-012", "q-ftc-013", "q-ftc-014", "q-ftc-015",
+            "q-ftc-016", "q-ftc-017", "q-ftc-018", "q-ftc-019", "q-ftc-020"
+        ]
+    },
+    {
+        "unitOrder": 6,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "Antiderivatives and Basic Integration Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-int-001", "q-int-002", "q-int-003", "q-int-004", "q-int-005",
+            "q-int-006", "q-int-007", "q-int-008", "q-int-009", "q-int-010",
+            "q-int-011", "q-int-012", "q-int-013", "q-int-014", "q-int-015",
+            "q-int-016", "q-int-017", "q-int-018", "q-int-019", "q-int-020"
+        ]
+    },
+    {
+        "unitOrder": 6,
+        "lessonOrder": 4,
+        "type": "LESSON_TEST",
+        "title": "BC-ONLY Integration Techniques",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-int-001", "q-int-002", "q-int-003", "q-int-004", "q-int-005",
+            "q-int-006", "q-int-007", "q-int-008", "q-int-009", "q-int-010",
+            "q-int-011", "q-int-012", "q-int-013", "q-int-014", "q-int-015",
+            "q-int-016", "q-int-017", "q-int-018", "q-int-019", "q-int-020"
+        ]
+    },
+    {
+        "type": "MOCK_EXAM",
+        "title": "Unit 6: Integration and Accumulation of Change Mock Exam",
+        "timeLimitSec": 2400,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-riemann-002", "q-riemann-007", "q-riemann-012", "q-riemann-017",
+            "q-ftc-003", "q-ftc-008", "q-ftc-013", "q-ftc-018",
+            "q-int-004", "q-int-009", "q-int-014", "q-int-019",
+            "q-riemann-005", "q-riemann-010", "q-riemann-015", "q-riemann-020",
+            "q-ftc-005", "q-ftc-010", "q-ftc-015", "q-ftc-020"
+        ]
+    },
+    {
+        "unitOrder": 7,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Differential Equation Basics Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-diff-eq-001", "q-diff-eq-002", "q-diff-eq-003", "q-diff-eq-004", "q-diff-eq-005",
+            "q-diff-eq-006", "q-diff-eq-007", "q-diff-eq-008", "q-diff-eq-009", "q-diff-eq-010",
+            "q-diff-eq-011", "q-diff-eq-012", "q-diff-eq-013", "q-diff-eq-014", "q-diff-eq-015",
+            "q-diff-eq-016", "q-diff-eq-017", "q-diff-eq-018", "q-diff-eq-019", "q-diff-eq-020"
+        ]
+    },
+    {
+        "unitOrder": 7,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Solving Differential Equations Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-diff-solve-001", "q-diff-solve-002", "q-diff-solve-003", "q-diff-solve-004", "q-diff-solve-005",
+            "q-diff-solve-006", "q-diff-solve-007", "q-diff-solve-008", "q-diff-solve-009", "q-diff-solve-010",
+            "q-diff-solve-011", "q-diff-solve-012", "q-diff-solve-013", "q-diff-solve-014", "q-diff-solve-015",
+            "q-diff-solve-016", "q-diff-solve-017", "q-diff-solve-018", "q-diff-solve-019", "q-diff-solve-020"
+        ]
+    },
+    {
+        "unitOrder": 7,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "BC-ONLY Differential Equations",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-diff-solve-001", "q-diff-solve-002", "q-diff-solve-003", "q-diff-solve-004", "q-diff-solve-005",
+            "q-diff-solve-006", "q-diff-solve-007", "q-diff-solve-008", "q-diff-solve-009", "q-diff-solve-010",
+            "q-diff-solve-011", "q-diff-solve-012", "q-diff-solve-013", "q-diff-solve-014", "q-diff-solve-015",
+            "q-diff-solve-016", "q-diff-solve-017", "q-diff-solve-018", "q-diff-solve-019", "q-diff-solve-020"
+        ]
+    },
+    {
+        "type": "MOCK_EXAM",
+        "title": "Unit 7: Differential Equations Mock Exam",
+        "timeLimitSec": 2400,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-diff-eq-001", "q-diff-eq-005", "q-diff-eq-010", "q-diff-eq-015",
+            "q-diff-solve-002", "q-diff-solve-007", "q-diff-solve-012", "q-diff-solve-017",
+            "q-diff-eq-003", "q-diff-eq-008", "q-diff-eq-013", "q-diff-eq-018",
+            "q-diff-solve-004", "q-diff-solve-009", "q-diff-solve-014", "q-diff-solve-019",
+            "q-diff-eq-006", "q-diff-eq-011", "q-diff-eq-016", "q-diff-eq-020"
+        ]
+    },
+    {
+        "unitOrder": 8,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Area Between Curves Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-area-001", "q-area-002", "q-area-003", "q-area-004", "q-area-005",
+            "q-area-006", "q-area-007", "q-area-008", "q-area-009", "q-area-010",
+            "q-area-011", "q-area-012", "q-area-013", "q-area-014", "q-area-015",
+            "q-area-016", "q-area-017", "q-area-018", "q-area-019", "q-area-020"
+        ]
+    },
+    {
+        "unitOrder": 8,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Volume of Solids Quiz",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-vol-001", "q-vol-002", "q-vol-003", "q-vol-004", "q-vol-005",
+            "q-vol-006", "q-vol-007", "q-vol-008", "q-vol-009", "q-vol-010",
+            "q-vol-011", "q-vol-012", "q-vol-013", "q-vol-014", "q-vol-015",
+            "q-vol-016", "q-vol-017", "q-vol-018", "q-vol-019", "q-vol-020"
+        ]
+    },
+    {
+        "unitOrder": 8,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "Accumulation and Average Value Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-acc-001", "q-acc-002", "q-acc-003", "q-acc-004", "q-acc-005",
+            "q-acc-006", "q-acc-007", "q-acc-008", "q-acc-009", "q-acc-010",
+            "q-acc-011", "q-acc-012", "q-acc-013", "q-acc-014", "q-acc-015",
+            "q-acc-016", "q-acc-017", "q-acc-018", "q-acc-019", "q-acc-020"
+        ]
+    },
+    {
+        "unitOrder": 8,
+        "lessonOrder": 4,
+        "type": "LESSON_TEST",
+        "title": "BC-ONLY Applications",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-acc-001", "q-acc-002", "q-acc-003", "q-acc-004", "q-acc-005",
+            "q-acc-006", "q-acc-007", "q-acc-008", "q-acc-009", "q-acc-010",
+            "q-acc-011", "q-acc-012", "q-acc-013", "q-acc-014", "q-acc-015",
+            "q-acc-016", "q-acc-017", "q-acc-018", "q-acc-019", "q-acc-020"
+        ]
+    },
+    {
+        "type": "MOCK_EXAM",
+        "title": "Unit 8: Applications of Integration Mock Exam",
+        "timeLimitSec": 2400,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-area-002", "q-area-007", "q-area-012", "q-area-017",
+            "q-vol-003", "q-vol-008", "q-vol-013", "q-vol-018",
+            "q-acc-004", "q-acc-009", "q-acc-014", "q-acc-019",
+            "q-area-005", "q-area-010", "q-area-015", "q-area-020",
+            "q-vol-006", "q-vol-011", "q-vol-016", "q-vol-020"
+        ]
+    },
+    {
+        "unitOrder": 9,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Parametric Equations",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-area-001", "q-area-002", "q-area-003", "q-area-004", "q-area-005",
+            "q-area-006", "q-area-007", "q-area-008", "q-area-009", "q-area-010",
+            "q-area-011", "q-area-012", "q-area-013", "q-area-014", "q-area-015",
+            "q-area-016", "q-area-017", "q-area-018", "q-area-019", "q-area-020"
+        ]
+    },
+    {
+        "unitOrder": 9,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Vector-Valued Functions",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-vol-001", "q-vol-002", "q-vol-003", "q-vol-004", "q-vol-005",
+            "q-vol-006", "q-vol-007", "q-vol-008", "q-vol-009", "q-vol-010",
+            "q-vol-011", "q-vol-012", "q-vol-013", "q-vol-014", "q-vol-015",
+            "q-vol-016", "q-vol-017", "q-vol-018", "q-vol-019", "q-vol-020"
+        ]
+    },
+    {
+        "unitOrder": 9,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "Polar Coordinates",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-acc-001", "q-acc-002", "q-acc-003", "q-acc-004", "q-acc-005",
+            "q-acc-006", "q-acc-007", "q-acc-008", "q-acc-009", "q-acc-010",
+            "q-acc-011", "q-acc-012", "q-acc-013", "q-acc-014", "q-acc-015",
+            "q-acc-016", "q-acc-017", "q-acc-018", "q-acc-019", "q-acc-020"
+        ]
+    },
+    {
+        "type": "MOCK_EXAM",
+        "title": "Unit 9: Parametric, Polar, and Vector-Valued Functions Mock Exam",
+        "timeLimitSec": 2400,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-area-002", "q-area-007", "q-area-012", "q-area-017",
+            "q-vol-003", "q-vol-008", "q-vol-013", "q-vol-018",
+            "q-acc-004", "q-acc-009", "q-acc-014", "q-acc-019",
+            "q-area-005", "q-area-010", "q-area-015", "q-area-020",
+            "q-vol-006", "q-vol-011", "q-vol-016", "q-vol-020"
+        ]
+    },
+    {
+        "unitOrder": 10,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Sequences and Series Fundamentals",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-area-001", "q-area-002", "q-area-003", "q-area-004", "q-area-005",
+            "q-area-006", "q-area-007", "q-area-008", "q-area-009", "q-area-010",
+            "q-area-011", "q-area-012", "q-area-013", "q-area-014", "q-area-015",
+            "q-area-016", "q-area-017", "q-area-018", "q-area-019", "q-area-020"
+        ]
+    },
+    {
+        "unitOrder": 10,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Convergence Tests",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-vol-001", "q-vol-002", "q-vol-003", "q-vol-004", "q-vol-005",
+            "q-vol-006", "q-vol-007", "q-vol-008", "q-vol-009", "q-vol-010",
+            "q-vol-011", "q-vol-012", "q-vol-013", "q-vol-014", "q-vol-015",
+            "q-vol-016", "q-vol-017", "q-vol-018", "q-vol-019", "q-vol-020"
+        ]
+    },
+    {
+        "unitOrder": 10,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "Power Series Part 1",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-acc-001", "q-acc-002", "q-acc-003", "q-acc-004", "q-acc-005",
+            "q-acc-006", "q-acc-007", "q-acc-008", "q-acc-009", "q-acc-010",
+            "q-acc-011", "q-acc-012", "q-acc-013", "q-acc-014", "q-acc-015",
+            "q-acc-016", "q-acc-017", "q-acc-018", "q-acc-019", "q-acc-020"
+        ]
+    },
+        {
+        "unitOrder": 10,
+        "lessonOrder": 4,
+        "type": "LESSON_TEST",
+        "title": "Power Series Part 2",
+        "timeLimitSec": 1800,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-acc-001", "q-acc-002", "q-acc-003", "q-acc-004", "q-acc-005",
+            "q-acc-006", "q-acc-007", "q-acc-008", "q-acc-009", "q-acc-010",
+            "q-acc-011", "q-acc-012", "q-acc-013", "q-acc-014", "q-acc-015",
+            "q-acc-016", "q-acc-017", "q-acc-018", "q-acc-019", "q-acc-020"
+        ]
+    },
+    {
+        "type": "MOCK_EXAM",
+        "title": "Unit 10: Infinite Sequences and Series Mock Exam",
+        "timeLimitSec": 2400,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-area-002", "q-area-007", "q-area-012", "q-area-017",
+            "q-vol-003", "q-vol-008", "q-vol-013", "q-vol-018",
+            "q-acc-004", "q-acc-009", "q-acc-014", "q-acc-019",
+            "q-area-005", "q-area-010", "q-area-015", "q-area-020",
+            "q-vol-006", "q-vol-011", "q-vol-016", "q-vol-020"
+        ]
+    }
+]

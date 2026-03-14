@@ -1,4 +1,4 @@
-### 4.12: 2D Array Traversals
+### 2D Array Traversals
 
 
 ### What is 2D Array Traversal?

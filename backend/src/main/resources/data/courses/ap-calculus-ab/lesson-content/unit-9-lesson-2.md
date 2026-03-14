@@ -1,6 +1,6 @@
-# **Lesson 23: FRQ Strategy Session**
+# **FRQ Strategy Session**
 
-### **23.1 Understanding the FRQ Section**
+### **Understanding the FRQ Section**
 
 **Exam Structure (2026 AP Calculus AB Exam):**
 
@@ -39,7 +39,7 @@ While each exam is unique, the six FRQs typically assess the following:
 
 ---
 
-### **23.2 Decoding the Scoring Rubric & Maximizing Points**
+### **Decoding the Scoring Rubric & Maximizing Points**
 
 **How FRQs are Scored:**
 Each FRQ is worth 9 points. The points are awarded for specific **"grading targets"** or steps in your solution. You don't need a perfect answer to get most of the points.
@@ -56,7 +56,7 @@ Each FRQ is worth 9 points. The points are awarded for specific **"grading targe
 
 ---
 
-### **23.3 Mastering the Task Verbs**
+### **Mastering the Task Verbs**
 
 The exam uses specific verbs to tell you what is required. Your response must match the verb.
 
@@ -75,7 +75,7 @@ The exam uses specific verbs to tell you what is required. Your response must ma
 
 ---
 
-### **23.4 Attack Strategy for Each FRQ Type**
+## **Attack Strategy for Each FRQ Type**
 
 **General Strategy for All FRQs:**
 
@@ -101,7 +101,7 @@ The exam uses specific verbs to tell you what is required. Your response must ma
 
 ---
 
-### **23.5 Partial Credit Salvage Guide**
+### **Partial Credit Salvage Guide**
 
 Even if you're stuck, you can earn points.
 
@@ -129,7 +129,7 @@ Even if you're stuck, you can earn points.
 
 ---
 
-### **23.6 Practice Dissection of an FRQ Prompt**
+### **Practice Dissection of an FRQ Prompt**
 
 **Sample Prompt (Part a from a real FRQ):**
 "The rate at which water flows into a tank, in gallons per minute, is given by a differentiable function $R(t)$. The table below gives values of $R(t)$ measured at 5-minute intervals for $0 \le t \le 30$. 
@@ -152,9 +152,7 @@ $R(t)$ (gal/min) | 0 | 5 | 7 | 8 | 10 | 12 | 13
 
 ---
 
-### **Lesson 23 Summary**
-
-**FRQ Success Checklist:**
+### **FRQ Success Checklist:**
 
 - [ ] Read the entire problem and underline task verbs.
 - [ ] For calculator problems, write the exact setup before calculating.

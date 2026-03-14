@@ -1,4 +1,4 @@
-### 2.9: Implementing Selection and Iteration Algorithms
+### Implementing Selection and Iteration Algorithms
 
 ### What Are Standard Algorithms?
 

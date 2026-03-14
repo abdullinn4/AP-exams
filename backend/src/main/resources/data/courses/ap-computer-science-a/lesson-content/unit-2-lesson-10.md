@@ -1,4 +1,4 @@
-### 2.10: Implementing String Algorithms
+### Implementing String Algorithms
 
 ### Why String Algorithms Matter
 

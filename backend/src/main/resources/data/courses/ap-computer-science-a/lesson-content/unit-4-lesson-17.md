@@ -1,4 +1,4 @@
-### 4.17: Recursive Searching and Sorting
+### Recursive Searching and Sorting
 
 
 ### Recursive String and Collection Traversal

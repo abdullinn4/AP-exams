@@ -1,188 +1,467 @@
-# **Lesson 18: Solving Differential Equations**
+# Solving Differential Equations
 
-### **18.1 Separation of Variables**
+In the last lesson, you learned what differential equations are and how to verify solutions. Now, let's actually **solve** them! Our first and most important method is **separation of variables**.
 
-**Definition:**
+Some differential equations can be rearranged so that all the $\displaystyle y$ stuff is on one side and all the $\displaystyle x$ stuff is on the other. Once separated, we can integrate both sides.
+
+### **Definition:**
+
 A first-order differential equation is **separable** if it can be written in the form:
-$$\frac{dy}{dx} = g(x) \, h(y)$$
+
+$$
+\displaystyle \frac{dy}{dx} = g(x) \cdot h(y)
+$$
+
 or equivalently,
-$$\frac{dy}{dx} = \frac{g(x)}{f(y)}$$
-The method of **separation of variables** involves rearranging the equation so that all terms involving $y$ are on one side and all terms involving $x$ are on the other, and then integrating both sides:
-$$\int f(y) \, dy = \int g(x) \, dx$$
 
-**Comments:**
+$$
+\displaystyle \frac{dy}{dx} = \frac{g(x)}{f(y)}
+$$
 
-- **Why it works:** We treat $\frac{dy}{dx}$ as a fraction (though it's not, but it's justified by the chain rule). Multiply both sides by $dx$ and by $f(y)$ to separate.
-- **Integration:** After separation, integrate each side with respect to its own variable. Remember to include a constant of integration on one side (usually denoted $C$).
-- **Solving for $y$:** Sometimes we can solve explicitly for $y$ as a function of $x$. Other times, the solution is given implicitly.
-- **Domain Considerations:** The solution may have restrictions based on the original differential equation (e.g., division by zero, square roots of negatives).
+**Why "Separable"?** Because we can separate the variables—get all $\displaystyle x$'s with $\displaystyle dx$ and all $\displaystyle y$'s with $\displaystyle dy$.
 
-**Examples:**
+#### **The Method: Four Clear Steps**
 
-1. **Basic Separation:** Solve $\frac{dy}{dx} = 3x^2 y$.
-    - Separate: $\frac{1}{y} \, dy = 3x^2 \, dx$, assuming $y \neq 0$.
-    - Integrate: $\int \frac{1}{y} \, dy = \int 3x^2 \, dx \Rightarrow \ln|y| = x^3 + C$.
-    - Solve for $y$: $|y| = e^{x^3 + C} = e^C e^{x^3}$. Let $A = e^C$ (positive). Then $y = A e^{x^3}$. Note that $A > 0$, but we also lost the solution $y=0$ when we divided by $y$. Checking, $y=0$ is indeed a solution (since derivative 0 and right side 0). So the general solution is $y = A e^{x^3}$, where $A$ is any real constant (including 0, since $A=0$ gives $y=0$).
-2. **Implicit Solution:** Solve $\frac{dy}{dx} = \frac{x}{y}$.
-    - Separate: $y \, dy = x \, dx$.
-    - Integrate: $\int y \, dy = \int x \, dx \Rightarrow \frac{y^2}{2} = \frac{x^2}{2} + C$.
-    - Multiply by 2: $y^2 = x^2 + 2C$. Let $K = 2C$, then $y^2 = x^2 + K$, or $y = \pm \sqrt{x^2 + K}$. This is an implicit relation.
-3. **With Initial Condition:** Solve $\frac{dy}{dx} = e^{x-y}$, $y(0) = \ln 2$.
-    - Rewrite: $e^{-y} dy = e^x dx$.
-    - Integrate: $-e^{-y} = e^x + C$.
-    - Solve: $e^{-y} = -e^x - C$. Let $D = -C$: $e^{-y} = D - e^x$.
-    - Use initial condition: when $x=0$, $y=\ln 2$, so $e^{-\ln 2} = \frac{1}{2} = D - e^0 = D - 1 \Rightarrow D = \frac{3}{2}$.
-    - Thus, $e^{-y} = \frac{3}{2} - e^x$. Solve: $-y = \ln\left( \frac{3}{2} - e^x \right) \Rightarrow y = -\ln\left( \frac{3}{2} - e^x \right)$. Note the domain: $\frac{3}{2} - e^x > 0 \Rightarrow e^x < \frac{3}{2} \Rightarrow x < \ln(1.5)$.
+1. **Separate:** Rearrange to get $\displaystyle f(y) \, dy = g(x) \, dx$
+2. **Integrate:** $\displaystyle \int f(y) \, dy = \int g(x) \, dx$
+3. **Solve:** If possible, solve for $\displaystyle y$ in terms of $\displaystyle x$
+4. **Include the constant:** Don't forget $\displaystyle +C$ (on one side only!)
+
+**The Intuition (Why This Works):**
+We treat $\displaystyle \frac{dy}{dx}$ as a fraction (informally) and "multiply" both sides by $\displaystyle dx$. While not mathematically rigorous at this level, it's justified by the chain rule and it works. Think of it as:
+
+$$
+\displaystyle \frac{dy}{dx} = g(x)h(y) \quad \Rightarrow \quad \frac{1}{h(y)} \, dy = g(x) \, dx
+$$
+
+Now both sides are ready to integrate.
 
 ---
 
-### **18.2 General and Particular Solutions**
+**Example 1: Basic Separation – The Classic Pattern**
+Solve $\displaystyle \frac{dy}{dx} = 3x^2 y$.
 
-**Definition:**
+*Let's walk through this step-by-step:*
 
-- The **general solution** to a differential equation includes arbitrary constants and represents all possible solutions.
-- A **particular solution** is obtained by specifying an **initial condition** (e.g., $y(x_0) = y_0$) to determine the constant(s).
+**Step 1: Separate**
+We want all $\displaystyle y$'s with $\displaystyle dy$ and all $\displaystyle x$'s with $\displaystyle dx$.
 
-For a first-order differential equation, the general solution contains one arbitrary constant. The particular solution is unique (under reasonable conditions) and passes through a given point in the plane.
+$$
+\displaystyle \frac{1}{y} \, dy = 3x^2 \, dx \quad \text{(assuming } y \neq 0\text{)}
+$$
 
-**Comments:**
+**Step 2: Integrate**
+Now integrate both sides:
 
-- **Existence and Uniqueness:** For a first-order differential equation $\frac{dy}{dx} = f(x, y)$ with $f$ continuous, there exists a solution passing through each point $(x_0, y_0)$. If $f$ and $\frac{\partial f}{\partial y}$ are continuous, the solution is unique.
-- **Using Definite Integrals:** For a differential equation of the form $\frac{dy}{dx} = f(x)$ with initial condition $y(a) = y_0$, the particular solution can be written directly as:
-$$y(x) = y_0 + \int_a^x f(t) \, dt$$
-This is an application of the Fundamental Theorem of Calculus.
+$$
+\displaystyle \int \frac{1}{y} \, dy = \int 3x^2 \, dx
+$$
 
-**Examples:**
+This gives us:
 
-1. **Particular Solution via Integration:** Solve $\frac{dy}{dx} = \cos x$, $y(\pi) = 3$.
-    - General solution: $y = \int \cos x \, dx = \sin x + C$.
-    - Use initial condition: $3 = \sin \pi + C = 0 + C \Rightarrow C = 3$.
-    - Particular solution: $y = \sin x + 3$.
-    - Alternatively, using definite integral: $y(x) = 3 + \int_{\pi}^x \cos t \, dt = 3 + (\sin x - \sin \pi) = 3 + \sin x$.
-2. **Finding Constant:** Find the particular solution of $\frac{dy}{dx} = 2xy$ passing through $(0, 5)$.
-    - Separate: $\frac{1}{y} dy = 2x dx$ (assuming $y \neq 0$).
-    - Integrate: $\ln|y| = x^2 + C$.
-    - Exponentiate: $|y| = e^{x^2 + C} = e^C e^{x^2}$. Let $A = e^C$ (positive). Then $y = A e^{x^2}$.
-    - Use $y(0)=5$: $5 = A e^0 = A \Rightarrow A = 5$.
-    - So particular solution: $y = 5 e^{x^2}$.
-3. **Domain Restrictions:** Solve $\frac{dy}{dx} = \frac{1}{x}$ with $y(1) = 2$. What is the domain of the solution?
-    - Integrate: $y = \ln|x| + C$.
-    - With $y(1)=2$: $2 = \ln 1 + C = 0 + C \Rightarrow C = 2$.
-    - So $y = \ln|x| + 2$. The original differential equation is undefined at $x=0$, so the solution is valid on intervals not containing 0. Since the initial condition is at $x=1 > 0$, the domain is $x > 0$. Thus, we can drop absolute value: $y = \ln x + 2$, $x > 0$.
+$$
+\displaystyle \ln|y| = x^3 + C
+$$
 
----
+**Step 3: Solve for $\displaystyle y$**
+We need to "undo" the natural log:
 
-### **18.3 Exponential Growth and Decay Models**
+$$
+\displaystyle |y| = e^{x^3 + C} = e^C \cdot e^{x^3}
+$$
 
-**Definition:**
-The differential equation $\frac{dy}{dt} = ky$, where $k$ is a constant, models **exponential growth** (if $k > 0$) or **exponential decay** (if $k < 0$).
+Let $\displaystyle A = e^C$. Since $\displaystyle e^C > 0$, we have:
 
-The general solution is:
-$$y(t) = y_0 e^{kt}$$
-where $y_0 = y(0)$ is the initial value at time $t = 0$.
+$$
+\displaystyle |y| = A e^{x^3} \quad (A > 0)
+$$
 
-**Comments:**
+So either $\displaystyle y = A e^{x^3}$ or $\displaystyle y = -A e^{x^3}$.
 
-- **Derivation:** Separate variables: $\frac{1}{y} dy = k \, dt$, integrate to get $\ln|y| = kt + C$, then exponentiate.
-- **Doubling/Half-Life:**
-    - For growth, the **doubling time** $T$ satisfies $2y_0 = y_0 e^{kT} \Rightarrow e^{kT} = 2 \Rightarrow T = \frac{\ln 2}{k}$.
-    - For decay, the **half-life** $T_{1/2}$ satisfies $\frac{1}{2} y_0 = y_0 e^{kT_{1/2}} \Rightarrow e^{kT_{1/2}} = \frac{1}{2} \Rightarrow T_{1/2} = \frac{\ln(1/2)}{k} = -\frac{\ln 2}{k}$. Since $k < 0$ for decay, $T_{1/2}$ is positive.
-- **Common Applications:** Population growth (with unlimited resources), radioactive decay, compound interest (continuously compounded), Newton's Law of Cooling (which leads to a shifted exponential).
+**Step 4: The Special Case**
+Wait! We divided by $\displaystyle y$ initially. What if $\displaystyle y = 0$?
+- Original equation: $\displaystyle \frac{d}{dx}(0) = 0$
+- Right side: $\displaystyle 3x^2 \cdot 0 = 0$
 
-**Examples:**
+So $\displaystyle y = 0$ is also a solution!
 
-1. **Population Growth:** A bacteria culture starts with 500 bacteria and grows at a rate proportional to its size. After 3 hours, there are 8000 bacteria. Find the number after 5 hours.
-    - Model: $\frac{dP}{dt} = kP$, $P(0)=500$, $P(3)=8000$.
-    - Solution: $P(t) = 500 e^{kt}$.
-    - Use $P(3)=8000$: $8000 = 500 e^{3k} \Rightarrow e^{3k} = 16 \Rightarrow 3k = \ln 16 = 4\ln 2 \Rightarrow k = \frac{4}{3} \ln 2$.
-    - Then $P(5) = 500 e^{5k} = 500 e^{5 \cdot \frac{4}{3} \ln 2} = 500 e^{\frac{20}{3} \ln 2} = 500 \cdot 2^{20/3}$. Approximate: $2^{20/3} = 2^{6.6667} \approx 101.6$, so $P(5) \approx 500 \times 101.6 = 50,800$ bacteria.
-2. **Radioactive Decay:** Carbon-14 has a half-life of 5730 years. If a bone initially contains 100 mg of Carbon-14, how much remains after 2000 years?
-    - Decay model: $\frac{dA}{dt} = kA$, with $k < 0$. Half-life: $T_{1/2} = 5730$. Since $A(t) = A_0 e^{kt}$, we have $\frac{1}{2} = e^{k \cdot 5730} \Rightarrow k = \frac{\ln(1/2)}{5730} = -\frac{\ln 2}{5730}$.
-    - Then $A(2000) = 100 e^{2000k} = 100 e^{-2000 \ln 2 / 5730} = 100 e^{-(2000/5730) \ln 2} = 100 \cdot 2^{-2000/5730}$.
-    - Approximate: exponent $\approx -0.3490$, so $2^{-0.3490} \approx 0.785$. Thus, about 78.5 mg remains.
-3. **Newton's Law of Cooling:** The temperature of an object changes at a rate proportional to the difference between its temperature and the ambient temperature. If $T(t)$ is the object's temperature, $T_a$ is ambient temperature, then:
-$$\frac{dT}{dt} = -k(T - T_a)$$
-where $k > 0$. This is separable and leads to $T(t) = T_a + (T_0 - T_a)e^{-kt}$, where $T_0 = T(0)$.
-    - Example: A cup of coffee at 90°C is placed in a room at 20°C. After 2 minutes, it cools to 60°C. When will it reach 30°C?
-    - Model: $T(t) = 20 + (90-20)e^{-kt} = 20 + 70e^{-kt}$. Given $T(2)=60$: $60 = 20 + 70e^{-2k} \Rightarrow 40 = 70e^{-2k} \Rightarrow e^{-2k} = \frac{4}{7} \Rightarrow -2k = \ln(4/7) \Rightarrow k = -\frac{1}{2} \ln(4/7) = \frac{1}{2} \ln(7/4)$.
-    - Find $t$ such that $T(t)=30$: $30 = 20 + 70e^{-kt} \Rightarrow 10 = 70e^{-kt} \Rightarrow e^{-kt} = 1/7 \Rightarrow -kt = \ln(1/7) \Rightarrow t = -\frac{1}{k} \ln(1/7) = \frac{\ln 7}{k}$. Substitute $k$: $t = \frac{\ln 7}{\frac{1}{2} \ln(7/4)} = \frac{2 \ln 7}{\ln(7/4)} \approx \frac{2(1.9459)}{0.5596} \approx 6.96$ minutes.
+**Putting It All Together:**
+We can include $\displaystyle y = 0$ by letting $\displaystyle A$ be any real number:
+
+$$
+\boxed{y = A e^{x^3}} \quad \text{where } A \text{ is any constant}
+$$
+
+**Visual Check:** This is a family of exponential curves. When $\displaystyle A=0$, we get the horizontal line $\displaystyle y=0$.
 
 ---
 
-### **18.4 Motion Along a Line**
+**Example 2: Implicit Solution – When It's Okay to Leave It**
+Solve $\displaystyle \frac{dy}{dx} = \frac{x}{y}$.
 
-**Definition:**
-If an object moves along a straight line with acceleration $a(t)$, velocity $v(t)$, and position $s(t)$, then:
-$$a(t) = \frac{dv}{dt}, \quad v(t) = \frac{ds}{dt}$$
-Given acceleration and initial conditions $v(t_0) = v_0$, $s(t_0) = s_0$, we can solve differential equations to find velocity and position.
+*Step-by-step:*
 
-**Comments:**
+**Step 1: Separate**
 
-- **Integration Process:** Velocity is an antiderivative of acceleration, and position is an antiderivative of velocity.
-- **Constant Acceleration:** If acceleration is constant $a$, then $v(t) = v_0 + at$ and $s(t) = s_0 + v_0 t + \frac{1}{2} a t^2$.
-- **Variable Acceleration:** Use integration with initial conditions.
+$$
+\displaystyle y \, dy = x \, dx
+$$
 
-**Examples:**
+**Step 2: Integrate**
 
-1. **Given Acceleration:** A particle moves along the x-axis with acceleration $a(t) = 2t + 1$ (in m/s²). At $t=0$, its velocity is -4 m/s and its position is 10 m. Find $s(t)$.
-    - Velocity: $v(t) = \int a(t) \, dt = \int (2t+1) \, dt = t^2 + t + C_1$.
-    - Use $v(0) = -4$: $0+0+C_1 = -4 \Rightarrow C_1 = -4$. So $v(t) = t^2 + t - 4$.
-    - Position: $s(t) = \int v(t) \, dt = \int (t^2 + t - 4) \, dt = \frac{t^3}{3} + \frac{t^2}{2} - 4t + C_2$.
-    - Use $s(0)=10$: $C_2 = 10$. Thus, $s(t) = \frac{t^3}{3} + \frac{t^2}{2} - 4t + 10$.
-2. **Velocity from Acceleration with Initial Condition:** An object is dropped from rest (so initial velocity 0). Acceleration due to gravity is approximately -9.8 m/s². Find velocity as a function of time.
-    - $\frac{dv}{dt} = -9.8$, with $v(0)=0$.
-    - Integrate: $v(t) = \int -9.8 \, dt = -9.8t + C$. Use $v(0)=0$: $C=0$, so $v(t) = -9.8t$.
+$$
+\displaystyle \int y \, dy = \int x \, dx
+$$
 
----
+$$
+\displaystyle \frac{y^2}{2} = \frac{x^2}{2} + C
+$$
 
-### **Lesson 18 Summary**
+**Step 3: Simplify**
+Multiply by 2: $\displaystyle y^2 = x^2 + 2C$
+Let $\displaystyle K = 2C$: $\displaystyle \boxed{y^2 = x^2 + K}$
 
-**Key Solution Methods:**
-
-- **Separation of Variables:** For equations of the form $\frac{dy}{dx} = g(x)h(y)$. Separate and integrate.
-- **Direct Integration:** For $\frac{dy}{dx} = f(x)$, integrate: $y = \int f(x) \, dx + C$.
-
-**Exponential Model:**
-
-- $\frac{dy}{dt} = ky$ ⇒ $y(t) = y_0 e^{kt}$.
-- Doubling time: $T = \frac{\ln 2}{k}$ (for $k>0$).
-- Half-life: $T_{1/2} = -\frac{\ln 2}{k}$ (for $k<0$).
-
-**Particular Solutions:**
-
-- Use initial conditions to determine constants.
-- Can be expressed as $y(x) = y_0 + \int_{x_0}^x f(t) \, dt$ for $\frac{dy}{dx} = f(x)$.
-
-**Motion:**
-
-- Integrate acceleration to get velocity, then integrate velocity to get position, using initial conditions.
+**Note:** We could solve for $\displaystyle y$: $\displaystyle y = \pm \sqrt{x^2 + K}$, but sometimes leaving it as $\displaystyle y^2 = x^2 + K$ is cleaner, especially if we need to use an initial condition later.
 
 ---
 
-### **Additional Practice Problems**
+**Example 3: With an Initial Condition – Finding One Specific Curve**
+Solve $\displaystyle \frac{dy}{dx} = e^{x-y}$ with $\displaystyle y(0) = \ln 2$.
 
-Solve each differential equation. If an initial condition is given, find the particular solution.
+*Step-by-step:*
 
-1. $\frac{dy}{dx} = \frac{x^2}{y}$, $y(0) = 2$
-2. $\frac{dy}{dx} = e^{2x-y}$, $y(0) = \ln 3$
-3. $\frac{dP}{dt} = 0.03P$, $P(0) = 500$
-4. $\frac{dy}{dx} = \frac{\sin x}{y}$, $y(\pi) = 3$
-5. A radioactive substance decays at a rate proportional to the amount present. If half of the original amount remains after 1000 years, find the percentage remaining after 300 years.
-6. The velocity of a particle is given by $v(t) = 3t^2 - 2t + 1$. If the particle is at position $s=5$ at $t=1$, find $s(t)$.
-7. Solve $\frac{dy}{dx} = 2x(1+y^2)$, $y(0) = 1$.
-8. Newton's Law of Cooling: A pie is taken out of an oven at 200°F and placed in a room at 70°F. After 30 minutes, it cools to 150°F. How long will it take to cool to 100°F?
-9. Find the particular solution of $\frac{dy}{dx} = \frac{y^2}{x}$ passing through (1, 1).
-10. A population grows according to $\frac{dP}{dt} = 0.05P$. If the initial population is 1000, find the population after 10 years.
+**Step 1: Rewrite and Separate**
+First, note $\displaystyle e^{x-y} = e^x \cdot e^{-y}$. So:
 
-**Selected Solutions:**
+$$
+\displaystyle \frac{dy}{dx} = e^x e^{-y}
+$$
 
-1. Separate: $y \, dy = x^2 \, dx$. Integrate: $\frac{y^2}{2} = \frac{x^3}{3} + C$. With $y(0)=2$: $\frac{4}{2}=2 = 0 + C \Rightarrow C=2$. So $\frac{y^2}{2} = \frac{x^3}{3} + 2 \Rightarrow y^2 = \frac{2x^3}{3} + 4 \Rightarrow y = \sqrt{\frac{2x^3}{3}+4}$ (positive since y(0)=2>0).
-2. Rewrite: $e^y dy = e^{2x} dx$. Integrate: $e^y = \frac{1}{2} e^{2x} + C$. With $y(0)=\ln 3$: $e^{\ln 3}=3 = \frac{1}{2} e^0 + C = \frac{1}{2} + C \Rightarrow C = \frac{5}{2}$. So $e^y = \frac{1}{2} e^{2x} + \frac{5}{2} = \frac{1}{2}(e^{2x}+5)$. Then $y = \ln\left( \frac{e^{2x}+5}{2} \right)$.
-3. General solution: $P(t) = 500 e^{0.03t}$. (Particular: $P(0)=500$ gives $P_0=500$.)
-4. Separate: $y \, dy = \sin x \, dx$. Integrate: $\frac{y^2}{2} = -\cos x + C$. With $y(\pi)=3$: $\frac{9}{2} = -\cos\pi + C = -(-1)+C = 1+C \Rightarrow C = \frac{9}{2}-1 = \frac{7}{2}$. So $\frac{y^2}{2} = -\cos x + \frac{7}{2} \Rightarrow y^2 = -2\cos x + 7 \Rightarrow y = \sqrt{7-2\cos x}$ (positive since y(π)=3>0).
-5. Let A(t) be amount. $\frac{dA}{dt} = kA$, half-life 1000 years: $A(1000) = \frac{1}{2}A_0$. So $\frac{1}{2} = e^{1000k} \Rightarrow k = \frac{\ln(1/2)}{1000} = -\frac{\ln 2}{1000}$. Then $A(300) = A_0 e^{300k} = A_0 e^{-300 \ln 2 / 1000} = A_0 e^{-0.3 \ln 2} = A_0 \cdot 2^{-0.3}$. Compute: $2^{-0.3} \approx 0.812$. So about 81.2% remains.
-6. Position: $s(t) = \int v(t) dt = \int (3t^2-2t+1) dt = t^3 - t^2 + t + C$. Use s(1)=5: $1-1+1+C=5 \Rightarrow 1+C=5 \Rightarrow C=4$. So $s(t)= t^3 - t^2 + t + 4$.
-7. Separate: $\frac{dy}{1+y^2} = 2x \, dx$. Integrate: $\arctan y = x^2 + C$. With y(0)=1: $\arctan 1 = \frac{\pi}{4} = 0 + C \Rightarrow C=\frac{\pi}{4}$. So $\arctan y = x^2 + \frac{\pi}{4} \Rightarrow y = \tan\left( x^2 + \frac{\pi}{4} \right)$.
-8. Newton's Law of Cooling: $T(t) = T_a + (T_0 - T_a)e^{-kt}$. Here $T_a=70$, $T_0=200$. So $T(t)=70+130e^{-kt}$. Given T(30)=150: $150=70+130e^{-30k} \Rightarrow 80=130e^{-30k} \Rightarrow e^{-30k}=80/130=8/13 \Rightarrow -30k=\ln(8/13) \Rightarrow k=-\frac{1}{30}\ln(8/13)=\frac{1}{30}\ln(13/8)$. Now find t when T=100: $100=70+130e^{-kt} \Rightarrow 30=130e^{-kt} \Rightarrow e^{-kt}=30/130=3/13 \Rightarrow -kt=\ln(3/13) \Rightarrow t=-\frac{1}{k}\ln(3/13)=\frac{\ln(13/3)}{k}$. Substitute k: $t=\frac{\ln(13/3)}{\frac{1}{30}\ln(13/8)} = 30 \frac{\ln(13/3)}{\ln(13/8)}$. Compute: ln(13/3)≈ln(4.333)≈1.466, ln(13/8)≈ln(1.625)≈0.485. So t≈30*(1.466/0.485)≈30*3.024≈90.7 minutes.
-9. Separate: $\frac{dy}{y^2} = \frac{dx}{x}$. Integrate: $-\frac{1}{y} = \ln|x| + C$. With (1,1): $-1 = \ln 1 + C = 0+C \Rightarrow C=-1$. So $-\frac{1}{y} = \ln|x| - 1 \Rightarrow \frac{1}{y} = 1 - \ln|x| \Rightarrow y = \frac{1}{1-\ln|x|}$. Domain: x>0 (since ln|x|, but original equation has x in denominator, so x≠0. Also need 1-ln|x|≠0 ⇒ ln|x|≠1 ⇒ |x|≠e. Since initial point is at x=1, we take x>0 and x≠e. So for x in (0,e) ∪ (e,∞).
-10. $P(t)=1000 e^{0.05t}$. At t=10: $P(10)=1000 e^{0.5} \approx 1000*1.6487=1648.7$. So about 1649.
+Separate: $\displaystyle e^{-y} \, dy = e^x \, dx$
+
+**Step 2: Integrate**
+
+$$
+\displaystyle \int e^{-y} \, dy = \int e^x \, dx
+$$
+
+$$
+\displaystyle -e^{-y} = e^x + C
+$$
+
+**Step 3: Solve for $\displaystyle y$**
+Multiply by -1: $\displaystyle e^{-y} = -e^x - C$
+Let $\displaystyle D = -C$: $\displaystyle e^{-y} = D - e^x$
+Take natural log: $\displaystyle -y = \ln(D - e^x)$
+So: $\displaystyle y = -\ln(D - e^x)$
+
+**Step 4: Apply Initial Condition**
+$\displaystyle y(0) = \ln 2$ means when $\displaystyle x=0$, $\displaystyle y=\ln 2$:
+
+$$
+\displaystyle \ln 2 = -\ln(D - e^0) = -\ln(D - 1)
+$$
+
+Multiply by -1: $\displaystyle -\ln 2 = \ln(D - 1)$
+Exponentiate: $\displaystyle e^{-\ln 2} = D - 1$
+$\displaystyle \frac{1}{2} = D - 1 \Rightarrow D = \frac{3}{2}$
+
+**Final Answer:**
+
+$$
+\boxed{y = -\ln\left(\frac{3}{2} - e^x\right)}
+$$
+
+**Domain Check:** We need $\displaystyle \frac{3}{2} - e^x > 0$ (can't take log of a non-positive number).
+So $\displaystyle e^x < \frac{3}{2} \Rightarrow x < \ln(1.5)$.
+
+---
+
+## **From General to Particular: Finding Specific Solutions**
+
+Remember in Lesson 1 how we looked at limits from both sides? Here we have a similar duality:
+
+**General Solution:** Contains an arbitrary constant $\displaystyle C$. Represents a **family** of curves. Like having all possible paths.
+
+**Particular Solution:** Obtained by applying an **initial condition**. Gives one specific curve from the family. Like choosing your exact path.
+
+#### **The Process:**
+1. Find the general solution (usually via separation or direct integration)
+2. Plug the initial condition into the general solution
+3. Solve for $\displaystyle C$
+4. Write the particular solution with the determined $\displaystyle C$
+
+---
+
+**Example 1: Direct Integration – The Simplest Case**
+Solve $\displaystyle \frac{dy}{dx} = \cos x$ with $\displaystyle y(\pi) = 3$.
+
+*Step-by-step:*
+1. **General solution:** $\displaystyle y = \int \cos x \, dx = \sin x + C$
+2. **Use initial condition:** $\displaystyle 3 = \sin \pi + C = 0 + C \Rightarrow C = 3$
+3. **Particular solution:** $\displaystyle \boxed{y = \sin x + 3}$
+
+**Alternative using definite integrals:**
+We can write directly using the Fundamental Theorem of Calculus:
+
+$$
+\displaystyle y(x) = 3 + \int_{\pi}^x \cos t \, dt = 3 + (\sin x - \sin \pi) = \sin x + 3
+$$
+
+This method automatically handles the constant!
+
+---
+
+**Example 2: With Separation – The Full Process**
+Find the particular solution of $\displaystyle \frac{dy}{dx} = 2xy$ passing through $\displaystyle (0, 5)$.
+
+*Step-by-step:*
+1. **Separate and integrate:** 
+   $\displaystyle \frac{1}{y} \, dy = 2x \, dx \Rightarrow \ln|y| = x^2 + C$
+2. **Solve for $\displaystyle y$:** 
+   $\displaystyle |y| = e^{x^2 + C} = e^C e^{x^2}$
+   Let $\displaystyle A = e^C > 0$: $\displaystyle y = A e^{x^2}$
+   (Check $\displaystyle y=0$: not possible with initial condition $\displaystyle y=5$, so okay)
+3. **Use initial condition:** 
+   $\displaystyle 5 = A e^{0} = A \Rightarrow A = 5$
+4. **Particular solution:** $\displaystyle \boxed{y = 5e^{x^2}}$
+
+**Visual:** This is a steeper version of the basic exponential curve, passing through $\displaystyle (0,5)$.
+
+---
+
+**Example 3: Mind the Domain! – Where the Solution Lives**
+Solve $\displaystyle \frac{dy}{dx} = \frac{1}{x}$ with $\displaystyle y(1) = 2$. What's the domain?
+
+*Step-by-step:*
+1. **Integrate:** $\displaystyle y = \ln|x| + C$
+2. **Use initial condition:** $\displaystyle 2 = \ln 1 + C = 0 + C \Rightarrow C = 2$
+3. **So $\displaystyle y = \ln|x| + 2$**
+
+**But wait!** The original equation $\displaystyle \frac{dy}{dx} = \frac{1}{x}$ is undefined at $\displaystyle x=0$. Our initial point is at $\displaystyle x=1 > 0$. So we take the right branch:
+
+$$
+\boxed{y = \ln x + 2, \quad x > 0}
+$$
+
+**Why not both branches?** Because our solution must be continuous and differentiable on an interval containing our initial point. The function $\displaystyle \ln|x|$ has a break at $\displaystyle x=0$, so we can only take one side.
+
+---
+
+## **Exponential Growth and Decay: Nature's Favorite Pattern**
+
+This is one of the most important applications of differential equations. The pattern appears everywhere: populations, investments, radioactive decay, cooling, and more.
+
+#### **The Model:**
+
+$$
+\displaystyle \frac{dy}{dt} = ky
+$$
+
+- If $\displaystyle k > 0$: **Exponential growth** (population, investments)
+- If $\displaystyle k < 0$: **Exponential decay** (radioactive decay, cooling)
+
+#### **The Solution (Derivation):**
+Let's derive it step by step:
+
+1. **Separate:** $\displaystyle \frac{1}{y} \, dy = k \, dt$
+2. **Integrate:** $\displaystyle \int \frac{1}{y} \, dy = \int k \, dt$
+   $\displaystyle \Rightarrow \ln|y| = kt + C$
+3. **Solve:** $\displaystyle |y| = e^{kt + C} = e^C e^{kt}$
+   Let $\displaystyle y_0 = \pm e^C$ (the initial value at $\displaystyle t=0$):
+
+   $$
+   \boxed{y(t) = y_0 e^{kt}}
+   $$
+
+**Key Features:**
+- **Doubling time** (for growth): Time it takes for $\displaystyle y$ to double.
+  $\displaystyle 2y_0 = y_0 e^{kT} \Rightarrow e^{kT} = 2 \Rightarrow T = \frac{\ln 2}{k}$
+- **Half-life** (for decay): Time it takes for $\displaystyle y$ to halve.
+  $\displaystyle \frac{1}{2}y_0 = y_0 e^{kT_{1/2}} \Rightarrow e^{kT_{1/2}} = \frac{1}{2} \Rightarrow T_{1/2} = \frac{\ln(1/2)}{k} = -\frac{\ln 2}{k}$
+  (Since $\displaystyle k < 0$, $\displaystyle T_{1/2}$ is positive.)
+
+---
+
+**Example 1: Bacteria Growth – Watching Numbers Explode**
+A bacteria culture starts with 500 bacteria and grows at a rate proportional to its size. After 3 hours, there are 8000 bacteria. Find the number after 5 hours.
+
+*Step-by-step:*
+
+**Step 1: Set Up the Model**
+
+$$
+\displaystyle \frac{dP}{dt} = kP, \quad P(0) = 500, \quad P(3) = 8000
+$$
+
+**Step 2: General Solution**
+$\displaystyle P(t) = 500 e^{kt}$ (using $\displaystyle P(0)=500$)
+
+**Step 3: Find $\displaystyle k$ using $\displaystyle P(3)=8000$**
+$\displaystyle 8000 = 500 e^{3k} \Rightarrow e^{3k} = 16$
+Take ln: $\displaystyle 3k = \ln 16 = 4\ln 2$
+So: $\displaystyle k = \frac{4}{3} \ln 2 \approx 0.9242$
+
+**Step 4: Find $\displaystyle P(5)$**
+$\displaystyle P(5) = 500 e^{5k} = 500 e^{5 \cdot \frac{4}{3} \ln 2} = 500 e^{\frac{20}{3} \ln 2}$
+Simplify: $\displaystyle = 500 \cdot 2^{20/3}$
+
+**Calculate:**
+$\displaystyle 2^{20/3} = 2^{6.6667} \approx 101.6$
+$\displaystyle \boxed{P(5) \approx 500 \times 101.6 \approx 50{,}800 \text{ bacteria}}$
+
+**Insight:** Notice how $\displaystyle 2^{20/3} = (2^{4})^{5/3} = 16^{5/3}$. Since we had 16× growth in 3 hours, in 5 hours we get $\displaystyle 16^{5/3}$× growth.
+
+---
+
+**Example 2: Radioactive Decay – The Relentless Clock**
+Carbon-14 has a half-life of 5730 years. If a bone initially contains 100 mg of Carbon-14, how much remains after 2000 years?
+
+*Step-by-step:*
+
+**Step 1: Model**
+$\displaystyle \frac{dA}{dt} = kA$, with $\displaystyle k < 0$, $\displaystyle A(0) = 100$
+
+**Step 2: Find $\displaystyle k$ from half-life**
+Half-life means: $\displaystyle \frac{1}{2} = e^{k \cdot 5730}$
+So: $\displaystyle k = \frac{\ln(1/2)}{5730} = -\frac{\ln 2}{5730} \approx -0.00012097$
+
+**Step 3: Find $\displaystyle A(2000)$**
+$\displaystyle A(2000) = 100 e^{2000k} = 100 e^{-2000 \ln 2 / 5730}$
+Simplify: $\displaystyle = 100 \cdot 2^{-2000/5730}$
+
+**Calculate:**
+Exponent: $\displaystyle -2000/5730 \approx -0.3490$
+$\displaystyle 2^{-0.3490} \approx 0.785$
+$\displaystyle \boxed{A(2000) \approx 78.5 \text{ mg}}$
+
+**Real-world connection:** This is how carbon dating works! By measuring remaining Carbon-14, we can estimate age.
+
+---
+
+**Example 3: Newton's Law of Cooling – Your Coffee's Journey**
+A cup of coffee at 90°C is placed in a room at 20°C. After 2 minutes, it cools to 60°C. When will it reach 30°C?
+
+*Step-by-step:*
+
+**Step 1: The Model**
+Newton's Law: $\displaystyle \frac{dT}{dt} = -k(T - T_a)$ where $\displaystyle T_a = 20$ (ambient temperature).
+This is separable! The solution is:
+
+$\displaystyle T(t) = T_a + (T_0 - T_a)e^{-kt} = 20 + (90-20)e^{-kt} = 20 + 70e^{-kt}$
+
+**Step 2: Find $\displaystyle k$ using $\displaystyle T(2)=60$**
+$\displaystyle 60 = 20 + 70e^{-2k} \Rightarrow 40 = 70e^{-2k}$
+$\displaystyle e^{-2k} = \frac{4}{7}$
+Take ln: $\displaystyle -2k = \ln(4/7)$
+$\displaystyle k = -\frac{1}{2}\ln(4/7) = \frac{1}{2}\ln(7/4) \approx 0.280$
+
+**Step 3: Find $\displaystyle t$ when $\displaystyle T=30$**
+$\displaystyle 30 = 20 + 70e^{-kt} \Rightarrow 10 = 70e^{-kt}$
+$\displaystyle e^{-kt} = \frac{1}{7}$
+Take ln: $\displaystyle -kt = \ln(1/7)$
+$\displaystyle t = -\frac{1}{k}\ln(1/7) = \frac{\ln 7}{k}$
+
+**Substitute $\displaystyle k$:**
+$\displaystyle t = \frac{\ln 7}{\frac{1}{2}\ln(7/4)} = \frac{2\ln 7}{\ln(7/4)}$
+
+**Calculate:**
+$\displaystyle \ln 7 \approx 1.9459$, $\displaystyle \ln(7/4) \approx \ln(1.75) \approx 0.5596$
+$\displaystyle \boxed{t \approx \frac{2 \times 1.9459}{0.5596} \approx 6.96 \text{ minutes}}$
+
+**Observation:** Notice it took 2 minutes to drop from 90°C to 60°C (a 30° drop), but about 7 minutes to drop from 90°C to 30°C (a 60° drop). Cooling slows down as it gets closer to room temperature!
+
+---
+
+### **Motion Along a Line: Putting It All Together**
+
+We've seen motion problems before in Lesson 8. Now we can handle them more elegantly with differential equations!
+
+#### **The Relationships (The Derivative Chain):**
+- Acceleration: $\displaystyle a(t) = \frac{dv}{dt}$ (rate of change of velocity)
+- Velocity: $\displaystyle v(t) = \frac{ds}{dt}$ (rate of change of position)
+- Position: $\displaystyle s(t)$
+
+Given acceleration and initial conditions, we integrate to find velocity, then integrate again to find position. It's like working backwards from how things change to what they actually are.
+
+---
+
+**Example 1: Variable Acceleration – A Changing Force**
+A particle moves along the x-axis with acceleration $\displaystyle a(t) = 2t + 1$ (in m/s²). At $\displaystyle t=0$, its velocity is -4 m/s and its position is 10 m. Find $\displaystyle s(t)$.
+
+*Step-by-step:*
+
+**Step 1: Find velocity from acceleration**
+$\displaystyle v(t) = \int a(t) \, dt = \int (2t+1) \, dt = t^2 + t + C_1$
+
+**Use initial condition $\displaystyle v(0) = -4$:**
+$\displaystyle -4 = 0^2 + 0 + C_1 \Rightarrow C_1 = -4$
+So: $\displaystyle v(t) = t^2 + t - 4$
+
+**Step 2: Find position from velocity**
+$\displaystyle s(t) = \int v(t) \, dt = \int (t^2 + t - 4) \, dt = \frac{t^3}{3} + \frac{t^2}{2} - 4t + C_2$
+
+**Use initial condition $\displaystyle s(0) = 10$:**
+$\displaystyle 10 = 0 + 0 - 0 + C_2 \Rightarrow C_2 = 10$
+
+**Final Answer:**
+
+$$
+\boxed{s(t) = \frac{t^3}{3} + \frac{t^2}{2} - 4t + 10}
+$$
+
+**Interpretation:** The particle starts at position 10, moving left (negative velocity). The acceleration is positive and increasing, so eventually it slows down, stops, and starts moving right.
+
+---
+
+**Example 2: Free Fall – Gravity's Constant Pull**
+An object is dropped from rest (initial velocity 0). Acceleration due to gravity is approximately -9.8 m/s². Find velocity as a function of time.
+
+*Step-by-step:*
+1. $\displaystyle \frac{dv}{dt} = -9.8$, $\displaystyle v(0) = 0$
+2. Integrate: $\displaystyle v(t) = \int -9.8 \, dt = -9.8t + C$
+3. Use initial condition: $\displaystyle 0 = -9.8(0) + C \Rightarrow C = 0$
+4. So $\displaystyle \boxed{v(t) = -9.8t}$ (negative indicates downward direction)
+
+**Follow-up:** What about position?
+$\displaystyle s(t) = \int v(t) \, dt = \int -9.8t \, dt = -4.9t^2 + C_2$
+If dropped from height $\displaystyle h$: $\displaystyle s(0) = h$, so $\displaystyle C_2 = h$
+Thus: $\displaystyle s(t) = h - 4.9t^2$
+
+The famous free-fall equation!
+
+---
+
+### **Your Differential Equation Toolkit**
+
+#### **Separation of Variables:**
+- **When to use:** When you can write $\displaystyle \frac{dy}{dx} = g(x)h(y)$
+- **Steps:** Separate → Integrate → Solve → Apply initial condition
+- **Watch out:** Domain restrictions, lost solutions when dividing
+
+#### **Exponential Models:**
+- **General form:** $\displaystyle \frac{dy}{dt} = ky \Rightarrow y(t) = y_0 e^{kt}$
+- **Growth ($\displaystyle k>0$):** Doubling time $\displaystyle T = \frac{\ln 2}{k}$
+- **Decay ($\displaystyle k<0$):** Half-life $\displaystyle T_{1/2} = -\frac{\ln 2}{k}$
+- **Newton's Law of Cooling:** $\displaystyle \frac{dT}{dt} = -k(T - T_a) \Rightarrow T(t) = T_a + (T_0 - T_a)e^{-kt}$
+
+#### **Motion Problems:**
+- **Process:** Integrate acceleration → velocity (+ constant)
+  Integrate velocity → position (+ constant)
+- **Always need:** Two initial conditions (velocity and position usually)
+
+#### **Key Tips for Success:**
+1. **Check first:** Is the equation separable?
+2. **Constants matter:** Don't forget $\displaystyle +C$, but only on one side
+3. **Initial conditions:** Use them to find particular solutions
+4. **Domain awareness:** Watch for division by zero, logs of negatives
+5. **Verify:** Plug your solution back into the original equation
+
+#### **Connections to Previous Lessons:**
+- **From Lesson 1:** Limits helped us understand instantaneous rates
+- **From Lesson 4:** Derivatives gave us rates of change
+- **Now:** We're reversing derivatives (integration) to find functions from their rates
+
+---
+
+**Looking Ahead:** In the next unit, we'll use integration to find areas between curves and volumes of solids. The separation of variables technique you mastered today will reappear when we solve more complex applied problems. Keep practicing—fluency with these techniques is key to AP Calculus success!

@@ -1,4 +1,4 @@
-### 3.9: this Keyword
+### this Keyword
 
 ### What is the `this` Keyword?
 

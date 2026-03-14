@@ -1,4 +1,4 @@
-### 1.5: Casting and Range of Variables
+### Casting and Range of Variables
 
 ### What is Casting?
 

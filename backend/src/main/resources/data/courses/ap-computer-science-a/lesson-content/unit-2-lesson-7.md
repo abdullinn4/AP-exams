@@ -1,4 +1,4 @@
-### 2.7: while Loops
+### while Loops
 
 ### What is Iteration?
 

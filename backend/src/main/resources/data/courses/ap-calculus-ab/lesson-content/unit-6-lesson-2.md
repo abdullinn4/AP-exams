@@ -1,208 +1,382 @@
-# Lesson 15: The Fundamental Theorem of Calculus
+# The Fundamental Theorem of Calculus
 
-### **15.1 Accumulation Functions and the First Fundamental Theorem of Calculus**
+Let's be honest—evaluating definite integrals by taking the limit of Riemann sums is kind of a pain. Actually, it's really, really hard. Isn't there a faster way?
 
-**Definition:**
-An **accumulation function** is a function defined by a definite integral with a variable upper limit. For a continuous function $f$ on an interval containing $a$, define:
-$$
-F(x) = \int_a^x f(t) \, dt
-$$
-This function accumulates the net area under the curve of $f$ from $a$ to $x$.
+Yes. The Fundamental Theorem of Calculus is about to show you how it's done.
 
-**The First Fundamental Theorem of Calculus (FTC Part 1):**
-If $f$ is continuous on an interval containing $a$, then the accumulation function $F(x) = \int_a^x f(t) \, dt$ is differentiable for every $x$ in that interval, and
-$$
-F'(x) = \frac{d}{dx} \left[ \int_a^x f(t) \, dt \right] = f(x)
-$$
-That is, the derivative of an integral with respect to its upper limit is the integrand evaluated at that upper limit.
+First, though, we need to talk about antiderivatives.
 
-**Comments:**
+## **Antiderivatives**
 
-*   **Key Insight:** The process of integration (accumulation) and differentiation (rate of change) are inverse operations. FTC Part 1 tells us that every continuous function has an antiderivative, specifically its accumulation function.
-*   **Interpretation:** If $f$ represents a rate of change, then $F(x)$ gives the total accumulated change from a starting point $a$ to $x$. The rate at which this accumulation changes at $x$ is exactly $f(x)$.
-*   **Graphical Behavior:** Given the graph of $f$, we can deduce properties of $F$:
-    *   Where $f > 0$, $F$ is increasing.
-    *   Where $f < 0$, $F$ is decreasing.
-    *   Local extrema of $F$ occur where $f(x) = 0$ (critical points).
-    *   Concavity of $F$ is determined by the sign of $f'$; equivalently, since $F''(x) = f'(x)$, $F$ is concave up where $f$ is increasing.
-*   **Variable Limits:** If the upper limit is a function of $x$, say $g(x)$, then by the chain rule:
-    $$
-    \frac{d}{dx} \left[ \int_a^{g(x)} f(t) \, dt \right] = f(g(x)) \cdot g'(x)
-    $$
-    Similarly, if the lower limit is variable, use the fact that swapping limits introduces a negative sign.
+Imagine someone hands you the function $\displaystyle f(x) = 3x^2$ and says, "Find a function $\displaystyle F$ whose derivative is $\displaystyle f$." Based on what you know about derivatives, you might quickly say $\displaystyle F(x) = x^3$, because
 
-**Examples:**
+$$\displaystyle \frac{d}{dx}[x^3] = 3x^2.$$
 
-1.  **Basic FTC Part 1:** Find $F'(x)$ if $F(x) = \int_2^x (t^2 + 1) \, dt$.
-    *   By FTC Part 1, $F'(x) = x^2 + 1$.
-2.  **Chain Rule Application:** Find $\frac{d}{dx} \left[ \int_0^{x^2} \sin t \, dt \right]$.
-    *   Let $u = x^2$. Then $\frac{d}{dx} \int_0^{u} \sin t \, dt = \sin(u) \cdot \frac{du}{dx} = \sin(x^2) \cdot 2x$.
-3.  **Variable Lower Limit:** Find $\frac{d}{dx} \left[ \int_x^3 \sqrt{t^3 + 1} \, dt \right]$.
-    *   First, swap limits: $\int_x^3 f(t) \, dt = -\int_3^x f(t) \, dt$.
-    *   Then derivative: $-\frac{d}{dx} \int_3^x \sqrt{t^3+1} \, dt = -\sqrt{x^3+1}$.
-4.  **Analyzing an Accumulation Function:** Let $F(x) = \int_{-2}^x f(t) \, dt$, where the graph of $f$ is given.
-    *   Identify where $F$ has local maxima/minima (where $f(x) = 0$ and changes sign).
-    *   Determine intervals where $F$ is increasing/decreasing (sign of $f$).
+We call $\displaystyle F$ an **antiderivative** of $\displaystyle f$.
 
----
+#### Definition of an Antiderivative
 
-### **15.2 Properties of Definite Integrals**
+A function $\displaystyle F$ is an **antiderivative** of a function $\displaystyle f$ on an interval $\displaystyle I$ if
 
-**Definition:**
-Let $f$ and $g$ be integrable functions on an interval containing $a$, $b$, and $c$. The definite integral satisfies the following properties:
+$$\displaystyle F'(x) = f(x)$$
 
-1.  **Constant Multiple:** $\int_a^b k f(x) \, dx = k \int_a^b f(x) \, dx$, for any constant $k$.
-2.  **Sum/Difference:** $\int_a^b [f(x) \pm g(x)] \, dx = \int_a^b f(x) \, dx \pm \int_a^b g(x) \, dx$.
-3.  **Reversal of Limits:** $\int_a^b f(x) \, dx = -\int_b^a f(x) \, dx$.
-4.  **Additivity Over Intervals:** $\int_a^b f(x) \, dx = \int_a^c f(x) \, dx + \int_c^b f(x) \, dx$, for any $c$ between $a$ and $b$.
-5.  **Integral of Constant:** $\int_a^b c \, dx = c(b-a)$.
-6.  **Zero Width Interval:** $\int_a^a f(x) \, dx = 0$.
+for every $\displaystyle x$ in $\displaystyle I$.
 
-**Comments:**
+Notice the wording: $\displaystyle F$ is called *an* antiderivative, not *the* antiderivative. Why? Because there isn't just one. For example, all of the following are antiderivatives of $\displaystyle f(x)=3x^2$:
 
-*   These properties allow us to simplify and compute integrals using geometry or known values.
-*   The additivity property is especially useful for piecewise functions or functions with discontinuities.
-*   If $f$ has a removable or jump discontinuity at a point inside $[a, b]$, the definite integral can still be evaluated by splitting at that point (the integral is defined as the limit of Riemann sums, which exist for bounded functions with finitely many discontinuities).
-*   **Geometric Evaluation:** When $f$ is given graphically or by a formula that corresponds to simple geometric shapes (lines, semicircles, etc.), we can compute the integral as the net area.
+- $\displaystyle F_1(x) = x^3$
+- $\displaystyle F_2(x) = x^3 - 4$
+- $\displaystyle F_3(x) = x^3 + 91$
 
-**Examples:**
+In fact, for any constant $\displaystyle C$, the function $\displaystyle F(x) = x^3 + C$ is an antiderivative of $\displaystyle 3x^2$. So once you have one antiderivative, you can get infinitely many by adding different constants.
 
-1.  **Using Geometry:** Evaluate $\int_0^4 (2x + 1) \, dx$ by interpreting it as area.
-    *   The graph is a line from (0,1) to (4,9). The region is a trapezoid.
-    *   Area = average height × width = $\frac{1+9}{2} \times 4 = 5 \times 4 = 20$.
-2.  **Piecewise Function:** Evaluate $\int_{-1}^3 f(x) \, dx$, where $f(x) = \begin{cases} x+2 & \text{if } x \le 1 \\ 4 - x & \text{if } x > 1 \end{cases}$.
-    *   Split at $x=1$: $\int_{-1}^3 f(x) \, dx = \int_{-1}^1 (x+2) \, dx + \int_1^3 (4-x) \, dx$.
-    *   First integral: area under line from (-1,1) to (1,3) (trapezoid or compute): $\left[ \frac{1}{2}x^2 + 2x \right]_{-1}^1 = (0.5+2) - (0.5-2) = 2.5 - (-1.5) = 4$.
-    *   Second integral: area under line from (1,3) to (3,1): $\left[ 4x - \frac{1}{2}x^2 \right]_1^3 = (12 - 4.5) - (4 - 0.5) = 7.5 - 3.5 = 4$.
-    *   Total = $4 + 4 = 8$.
-3.  **Using Properties:** Given $\int_1^5 f(x) \, dx = 8$ and $\int_3^5 f(x) \, dx = 5$, find $\int_1^3 f(x) \, dx$.
-    *   By additivity: $\int_1^5 = \int_1^3 + \int_3^5 \Rightarrow 8 = \int_1^3 + 5 \Rightarrow \int_1^3 = 3$.
+We can even state a theorem here:
+
+If $\displaystyle F$ is an antiderivative of $\displaystyle f$ on an interval $\displaystyle I$, then a function $\displaystyle G$ is also an antiderivative of $\displaystyle f$ on $\displaystyle I$ **if and only if** it can be written as
+
+$$\displaystyle G(x) = F(x) + C$$
+
+for all $\displaystyle x$ in $\displaystyle I$, where $\displaystyle C$ is some constant.
+
+In other words, any two antiderivatives of the same function differ only by a constant. That's why we talk about the **family** of antiderivatives, and why the most general antiderivative of $\displaystyle f$ is written as $\displaystyle F(x) + C$, where $\displaystyle C$ is called the **constant of integration**.
+
+The process of finding all antiderivatives of a function is called **antidifferentiation** or **indefinite integration**, and it's denoted by the integral symbol $\displaystyle \int$.
+
+If $\displaystyle F$ is an antiderivative of $\displaystyle f$, then the general antiderivative is written as
+
+$$\displaystyle \int f(x) \, dx = F(x) + C.$$
+
+Here:
+- $\displaystyle \int$ is the **integral sign**,
+- $\displaystyle f(x)$ is the **integrand**,
+- $\displaystyle dx$ tells us that $\displaystyle x$ is the **variable of integration**,
+- $\displaystyle C$ is the **constant of integration**.
+
+The expression $\displaystyle \int f(x) \, dx$ is read as "the antiderivative of $\displaystyle f$ with respect to $\displaystyle x$." The term **indefinite integral** is just another name for antiderivative.
 
 ---
 
-### **15.3 Antiderivatives and the Second Fundamental Theorem of Calculus**
+## **The Inverse Relationship Between Integration and Differentiation**
 
-**Definition:**
-An **antiderivative** of a function $f$ is a function $F$ such that $F'(x) = f(x)$ for all $x$ in the domain of $f$. The process of finding an antiderivative is called **indefinite integration**, denoted by $\int f(x) \, dx = F(x) + C$, where $C$ is an arbitrary constant.
+Integration and differentiation are inverse operations. You can see this in two key equations:
 
-**The Second Fundamental Theorem of Calculus (FTC Part 2):**
-If $f$ is continuous on $[a, b]$ and $F$ is any antiderivative of $f$ (i.e., $F'(x) = f(x)$), then:
+1. If $\displaystyle F'(x) = f(x)$, then
+   $$\displaystyle \int f(x) \, dx = F(x) + C,$$
+   which can also be written as
+   $$\displaystyle \int F'(x) \, dx = F(x) + C.$$
+   This says integration "undoes" differentiation—up to that constant.
+
+2. Conversely, if $\displaystyle \int f(x) \, dx = F(x) + C$, then differentiating the antiderivative gives back the original function:
+   $$\displaystyle \frac{d}{dx} \left[ \int f(x) \, dx \right] = f(x).$$
+   This says differentiation "undoes" integration.
+
+Because of this inverse relationship, every differentiation formula can be flipped into an integration formula. Here's a summary of basic integration rules, all derived from derivatives you already know.
+
+---
+
+### Basic Integration Rules
+
+| Differentiation Formula | Integration Formula |
+|------------------------|---------------------|
+| $\displaystyle \frac{d}{dx}[C] = 0$ | $\displaystyle \int 0 \, dx = C$ |
+| $\displaystyle \frac{d}{dx}[kx] = k$ | $\displaystyle \int k \, dx = kx + C$ |
+| $\displaystyle \frac{d}{dx}[kf(x)] = kf'(x)$ | $\displaystyle \int k f(x) \, dx = k \int f(x) \, dx$ |
+| $\displaystyle \frac{d}{dx}[f(x) \pm g(x)] = f'(x) \pm g'(x)$ | $\displaystyle \int [f(x) \pm g(x)] \, dx = \int f(x) \, dx \pm \int g(x) \, dx$ |
+| $\displaystyle \frac{d}{dx}[x^n] = nx^{n-1}$ | $\displaystyle \int x^n \, dx = \frac{x^{n+1}}{n+1} + C, \quad n \neq -1$ |
+| $\displaystyle \frac{d}{dx}[\sin x] = \cos x$ | $\displaystyle \int \cos x \, dx = \sin x + C$ |
+| $\displaystyle \frac{d}{dx}[\cos x] = -\sin x$ | $\displaystyle \int \sin x \, dx = -\cos x + C$ |
+| $\displaystyle \frac{d}{dx}[\tan x] = \sec^2 x$ | $\displaystyle \int \sec^2 x \, dx = \tan x + C$ |
+| $\displaystyle \frac{d}{dx}[\sec x] = \sec x \tan x$ | $\displaystyle \int \sec x \tan x \, dx = \sec x + C$ |
+| $\displaystyle \frac{d}{dx}[\cot x] = -\csc^2 x$ | $\displaystyle \int \csc^2 x \, dx = -\cot x + C$ |
+| $\displaystyle \frac{d}{dx}[\csc x] = -\csc x \cot x$ | $\displaystyle \int \csc x \cot x \, dx = -\csc x + C$ |
+
+These rules are the foundation for finding indefinite integrals. Don't forget: every antiderivative comes with that arbitrary constant $\displaystyle C$, because differentiation wipes out constant terms.
+
+We'll look at these formulas more closely in the next lesson—don't worry.
+
+## **The Fundamental Theorem of Calculus:**
+
+If $\displaystyle f$ is continuous on $\displaystyle [a, b]$ and $\displaystyle F$ is **any** antiderivative of $\displaystyle f$ on $\displaystyle [a, b]$, then:
+
 $$
-\int_a^b f(x) \, dx = F(b) - F(a) = \left. F(x) \right|_a^b
+\displaystyle \int_a^b f(x) \, dx = F(b) - F(a)
 $$
 
-**Comments:**
+**Notation:** We often write $\displaystyle F(b) - F(a)$ as $\displaystyle \left. F(x) \right|_a^b$ or $\displaystyle [F(x)]_a^b$.
 
-*   **Power of FTC Part 2:** It allows us to compute definite integrals exactly by finding an antiderivative and evaluating at the endpoints, rather than taking limits of Riemann sums.
-*   **Choosing the Antiderivative:** Any antiderivative works because the constant $C$ cancels when subtracting $F(b) - F(a)$.
-*   **Connection to FTC Part 1:** The accumulation function $F(x) = \int_a^x f(t) \, dt$ is *one* antiderivative of $f$. All others differ by a constant.
-*   **Notation:** The evaluation bar $\big|_a^b$ means substitute $b$ and $a$ into the expression and subtract.
+1.  **It connects the two branches of calculus.** The definite integral (a limit of sums) is computed using the antiderivative (the inverse of differentiation).
+2.  **The Constant $\displaystyle C$ Cancels!** Notice: $\displaystyle (F(b)+C) - (F(a)+C) = F(b)-F(a)$. So we can just use the simplest antiderivative (set $\displaystyle C=0$).
+3.  **It turns hard limit problems into easy algebra**—find $\displaystyle F$, plug in, subtract.
 
-**Examples:**
+**Let's prove it.**
 
-1.  **Basic FTC Part 2:** Evaluate $\int_1^3 (2x + 1) \, dx$.
-    *   Find an antiderivative: $F(x) = x^2 + x$.
-    *   Then $\int_1^3 (2x+1) \, dx = F(3) - F(1) = (9+3) - (1+1) = 12 - 2 = 10$.
-2.  **Using Different Antiderivatives:** Evaluate $\int_0^{\pi} \cos x \, dx$.
-    *   Antiderivative: $F(x) = \sin x$. (Could also use $\sin x + 5$, etc.)
-    *   $\int_0^{\pi} \cos x \, dx = \sin(\pi) - \sin(0) = 0 - 0 = 0$.
-3.  **Integral of a Polynomial:** Evaluate $\int_{-1}^2 (x^3 - 4x) \, dx$.
-    *   Antiderivative: $F(x) = \frac{x^4}{4} - 2x^2$.
-    *   $F(2) = \frac{16}{4} - 2(4) = 4 - 8 = -4$.
-    *   $F(-1) = \frac{1}{4} - 2(1) = 0.25 - 2 = -1.75$.
-    *   So integral $= (-4) - (-1.75) = -2.25$.
+The key idea is to rewrite $\displaystyle F(b) - F(a)$ in a clever way, then connect it to Riemann sums.
 
----
+**Step 1: Set up a partition.**  
+Take any partition of $\displaystyle [a, b]$:
 
-### **15.4 Evaluating Definite Integrals Analytically**
+$$\displaystyle a = x_0 < x_1 < x_2 < \cdots < x_{n-1} < x_n = b.$$
 
-**Definition:**
-Using FTC Part 2, we can evaluate definite integrals by:
+**Step 2: Write $\displaystyle F(b)-F(a)$ as a telescoping sum.**  
+Add and subtract intermediate terms:
 
-1.  Finding an antiderivative of the integrand.
-2.  Evaluating it at the upper and lower limits.
-3.  Subtracting.
+$$
+\displaystyle \begin{aligned}
+F(b) - F(a) &= F(x_n) - F(x_{n-1}) \\
+&\quad + F(x_{n-1}) - F(x_{n-2}) \\
+&\quad + \cdots \\
+&\quad + F(x_1) - F(x_0).
+\end{aligned}
+$$
 
-For more complicated integrands, we may need to use algebraic simplification, substitution (u-substitution), or other integration techniques (covered in Lesson 16).
+This simplifies nicely to
 
-**Comments:**
+$$\displaystyle F(b)-F(a) = \sum_{i=1}^{n} \bigl[F(x_i) - F(x_{i-1})\bigr].$$
 
-*   **Check Continuity:** FTC requires the integrand to be continuous on the interval of integration. If there is a discontinuity, we may need to split the integral.
-*   **Absolute Value:** For integrals involving absolute value, split the interval where the expression inside changes sign.
-*   **Symmetry:** For even and odd functions on symmetric intervals, we can simplify:
-    *   If $f$ is even ($f(-x)=f(x)$), then $\int_{-a}^a f(x) \, dx = 2 \int_0^a f(x) \, dx$.
-    *   If $f$ is odd ($f(-x)=-f(x)$), then $\int_{-a}^a f(x) \, dx = 0$.
+**Step 3: Apply the Mean Value Theorem.**  
+On each subinterval $\displaystyle [x_{i-1}, x_i]$, the function $\displaystyle F$ is continuous and differentiable (since $\displaystyle F$ is an antiderivative of $\displaystyle f$, it must be differentiable). By the Mean Value Theorem, there exists some $\displaystyle x^*_i$ in $\displaystyle (x_{i-1}, x_i)$ such that
 
-**Examples:**
+$$\displaystyle F'(x^*_i) = \frac{F(x_i) - F(x_{i-1})}{x_i - x_{i-1}}.$$
 
-1.  **Integral with Absolute Value:** Evaluate $\int_{-2}^3 |x| \, dx$.
-    *   Split at $x=0$: $\int_{-2}^3 |x| \, dx = \int_{-2}^0 (-x) \, dx + \int_0^3 x \, dx$.
-    *   Antiderivative for $-x$ is $-\frac{x^2}{2}$, for $x$ is $\frac{x^2}{2}$.
-    *   First part: $\left. -\frac{x^2}{2} \right|_{-2}^0 = 0 - (-\frac{4}{2}) = 0 - (-2) = 2$.
-    *   Second part: $\left. \frac{x^2}{2} \right|_0^3 = \frac{9}{2} - 0 = 4.5$.
-    *   Total $= 2 + 4.5 = 6.5$.
-2.  **Using Symmetry:** Evaluate $\int_{-\pi/2}^{\pi/2} \sin^3 x \cos x \, dx$.
-    *   Check parity: $\sin^3(-x) = -\sin^3 x$, $\cos(-x) = \cos x$, so the integrand is odd (odd × even = odd). The interval is symmetric about 0.
-    *   Therefore, the integral is 0.
-3.  **Rational Function:** Evaluate $\int_1^2 \frac{x^2 + 1}{x} \, dx$.
-    *   Simplify: $\frac{x^2+1}{x} = x + \frac{1}{x}$.
-    *   Antiderivative: $\frac{x^2}{2} + \ln|x|$.
-    *   Evaluate: $\left( \frac{4}{2} + \ln 2 \right) - \left( \frac{1}{2} + \ln 1 \right) = (2 + \ln 2) - (0.5 + 0) = 1.5 + \ln 2$.
-4.  **Discontinuity Consideration:** Evaluate $\int_0^2 \frac{1}{x-1} \, dx$.
-    *   The integrand has a vertical asymptote at $x=1$, so the integral is improper (not covered until later). However, if we try to apply FTC directly, we get $\ln|x-1| \big|_0^2 = \ln 1 - \ln 1 = 0$, but this is incorrect because the function is not continuous on [0,2]. The integral actually diverges. So we must be cautious.
+But $\displaystyle F'(x^*_i) = f(x^*_i)$, so we can rewrite the difference as
 
----
+$$\displaystyle F(x_i) - F(x_{i-1}) = f(x^*_i) \, (x_i - x_{i-1}).$$
 
-### **Lesson 15 Summary**
+**Step 4: Rewrite $\displaystyle F(b)-F(a)$ as a Riemann sum.**  
+Let $\displaystyle \Delta x_i = x_i - x_{i-1}$. Then
 
-**First Fundamental Theorem of Calculus:**
+$$\displaystyle F(b)-F(a) = \sum_{i=1}^{n} f(x^*_i) \, \Delta x_i.$$
 
-*   If $F(x) = \int_a^x f(t) \, dt$ and $f$ is continuous, then $F'(x) = f(x)$.
-*   Derivatives and integrals are inverse operations.
+This equation is powerful: for **any** partition of $\displaystyle [a, b]$, we can pick the points $\displaystyle x^*_i$ (guaranteed by the Mean Value Theorem) so that $\displaystyle F(b)-F(a)$ equals exactly a Riemann sum of $\displaystyle f$.
 
-**Properties of Definite Integrals:**
+**Step 5: Take the limit as the partition refines.**  
+As the norm of the partition goes to zero ($\displaystyle \|\Delta\| \to 0$), the Riemann sum approaches the definite integral (provided the limit exists, which Theorem 4.4 guarantees for continuous functions). Therefore,
 
-*   Linearity: integral of sum = sum of integrals; constant multiple.
-*   Reversing limits changes sign.
-*   Additivity over intervals.
-*   Useful for geometric evaluation and manipulating integrals.
+$$\displaystyle F(b)-F(a) = \lim_{\|\Delta\|\to 0} \sum_{i=1}^{n} f(c_i) \Delta x_i = \int_a^b f(x) \, dx.$$
 
-**Second Fundamental Theorem of Calculus:**
+**Conclusion:** This shows that the definite integral can be evaluated simply by finding an antiderivative $\displaystyle F$ and computing $\displaystyle F(b)-F(a)$.
 
-*   If $f$ is continuous on $[a,b]$ and $F$ is any antiderivative of $f$, then $\int_a^b f(x) \, dx = F(b) - F(a)$.
-*   This provides a method to compute definite integrals exactly.
+**Example 1**
+Evaluate $\displaystyle \int_1^3 (2x + 1) \, dx$.
 
-**Key Skills:**
+*   Find an antiderivative: $\displaystyle F(x) = x^2 + x$. (Check: $\displaystyle F'(x)=2x+1$ ✔)
+*   Apply FTC: $\displaystyle F(3) - F(1) = (9+3) - (1+1) = 12 - 2 = \boxed{10}$.
+*   *Check with geometry: It's a trapezoid from (1,3) to (3,7). Area = 0.5*(3+7)*2=10.*
 
-*   Given an accumulation function, differentiate it using FTC Part 1 (with chain rule if limits are functions).
-*   Evaluate definite integrals using geometry (areas of triangles, circles, trapezoids).
-*   Evaluate definite integrals analytically by finding an antiderivative and applying FTC Part 2.
-*   Use properties of integrals to simplify calculations.
+**Example 2**
+Evaluate $\displaystyle \int_0^{\pi} \cos x \, dx$.
+
+*   An antiderivative is $\displaystyle F(x) = \sin x$. (Could also use $\displaystyle \sin x + 5$.)
+*   $\displaystyle \int_0^{\pi} \cos x \, dx = \sin(\pi) - \sin(0) = 0 - 0 = \boxed{0}$.
+
+**Example 3**
+Evaluate $\displaystyle \int_{-1}^2 (x^3 - 4x) \, dx$.
+
+*   Antiderivative: $\displaystyle F(x) = \frac{x^4}{4} - 2x^2$.
+*   $\displaystyle F(2) = \frac{16}{4} - 2(4) = 4 - 8 = -4$.
+*   $\displaystyle F(-1) = \frac{1}{4} - 2(1) = \frac{1}{4} - 2 = -\frac{7}{4}$.
+*   $\displaystyle \int_{-1}^2 (x^3 - 4x) \, dx = F(2) - F(-1) = (-4) - \left(-\frac{7}{4}\right) = -4 + \frac{7}{4} = -\frac{16}{4} + \frac{7}{4} = \boxed{-\frac{9}{4}}$.
 
 ---
 
-### **Additional Practice Problems**
+## Two Ways to Think About the Definite Integral
 
-1.  Let $F(x) = \int_0^x \sqrt{t^2+1} \, dt$. Find $F'(2)$.
-2.  Find $\frac{d}{dx} \int_{x^2}^{x^3} \cos(t^2) \, dt$. (Hint: Split the integral at a constant, e.g., 0.)
-3.  Evaluate $\int_{-3}^3 (9 - x^2) \, dx$ using geometry.
-4.  Given $\int_0^2 f(x) \, dx = 6$ and $\int_1^3 f(x) \, dx = 4$, find $\int_0^3 f(x) \, dx$ and $\int_2^1 f(x) \, dx$.
-5.  Evaluate $\int_1^4 \left( 3\sqrt{x} - \frac{2}{x^2} \right) \, dx$.
-6.  Evaluate $\int_0^{\pi} (2\sin x - 3\cos x) \, dx$.
-7.  The graph of $f$ consists of line segments from (0,0) to (2,2) to (3,0). Let $g(x) = \int_0^x f(t) \, dt$. Find $g(3)$, and determine where $g$ has a local maximum.
-8.  Evaluate $\int_{-1}^2 |2x-1| \, dx$.
-9.  Use symmetry to evaluate $\int_{-\pi}^{\pi} x^2 \sin x \, dx$.
-10. Find the value of $c$ such that $\int_0^c (2x - 4) \, dx = 0$.
+When we write a definite integral, the variable inside is a "dummy variable"—it doesn't matter what letter we use. But the limits of integration can be either constants or variables, and that changes how we interpret the result.
 
-**Selected Solutions:**
+### 1. The Definite Integral as a Number
 
-1.  By FTC Part 1, $F'(x) = \sqrt{x^2+1}$. So $F'(2) = \sqrt{4+1} = \sqrt{5}$.
-2.  Let $G(u) = \int_0^u \cos(t^2) \, dt$. Then $\int_{x^2}^{x^3} \cos(t^2) \, dt = G(x^3) - G(x^2)$. Derivative: $G'(x^3) \cdot 3x^2 - G'(x^2) \cdot 2x = \cos((x^3)^2) \cdot 3x^2 - \cos((x^2)^2) \cdot 2x = 3x^2 \cos(x^6) - 2x \cos(x^4)$.
-3.  The integrand is a parabola opening downward with vertex at (0,9), x-intercepts at ±3. The area is a semicircle? Actually it's a parabola, but we can compute area as area under curve from -3 to 3. Since it's even, $2 \int_0^3 (9-x^2) dx = 2 [9x - x^3/3]_0^3 = 2[(27-9) - 0] = 2[18] = 36$. So integral = 36.
-4.  We need more information to find $\int_0^3 f(x) dx$. Possibly use additivity: $\int_0^3 = \int_0^1 + \int_1^3$. We know $\int_1^3 = 4$, but we don't know $\int_0^1$. However, we know $\int_0^2 = 6$ and $\int_1^3 = 4$. From additivity: $\int_0^2 = \int_0^1 + \int_1^2 = 6$. Also $\int_1^3 = \int_1^2 + \int_2^3 = 4$. So we have two equations: Let A = $\int_0^1$, B = $\int_1^2$, C = $\int_2^3$. Then A+B=6, B+C=4. We want $\int_0^3 = A+B+C = (A+B)+C = 6+C$, but C is unknown. Actually from B+C=4, we have C=4-B. And A=6-B. So we need B to determine. Not enough info. For $\int_2^1 f(x) dx = -\int_1^2 f(x) dx = -B$. So cannot find numerical values without additional information. Possibly the problem expects us to use given data to find specific values? Maybe assume something like f is linear? Without additional info, we can't find unique answers. Perhaps there's a typo? Alternatively, if we assume the function is such that the integrals over [0,2] and [1,3] are given, we can't determine the integral over [0,3] uniquely. So maybe the problem is to express in terms of known integrals? For example, $\int_0^3 = \int_0^2 + \int_2^3$, and $\int_2^3 = \int_1^3 - \int_1^2$. Still need $\int_1^2$. But we can find $\int_1^2$ if we also know that the function is, say, constant? Not given. So perhaps the intended answer is not numerical? I'll check: Given $\int_0^2 f = 6$ and $\int_1^3 f = 4$. We can find $\int_0^3 f$ if we know $\int_2^3 f$. But we don't. So maybe the problem is incomplete. However, sometimes they ask: find $\int_0^3 f(x) dx$ if $\int_0^2 f = 6$, $\int_2^3 f = 5$, etc. Here, not given. So I'll skip numerical answer.
-5.  Antiderivative: $3 \cdot \frac{2}{3} x^{3/2} - 2 \cdot (-1) x^{-1} = 2x^{3/2} + \frac{2}{x}$. Evaluate: $[2(4^{3/2}) + 2/4] - [2(1^{3/2}) + 2/1] = [2(8) + 0.5] - [2 + 2] = (16+0.5) - 4 = 12.5$.
-6.  Antiderivative: $-2\cos x - 3\sin x$. Evaluate: at π: $-2(-1) - 3(0) = 2$; at 0: $-2(1) - 0 = -2$. So integral = 2 - (-2) = 4.
-7.  Graph: f is a line from (0,0) to (2,2): slope 1, so f(t)=t on [0,2]. Then line from (2,2) to (3,0): slope -2, equation: y = -2(t-2)+2 = -2t+6. So f(t) = { t for 0≤t≤2; -2t+6 for 2≤t≤3 }. g(3) = ∫_0^3 f(t) dt = area from 0 to 2 (triangle: 0.5*2*2=2) + area from 2 to 3 (triangle: 0.5*1*2=1) = 3. g has local max where g'(x)=f(x)=0. f(x)=0 at x=3? Actually f(x)=0 at x=0 and x=3. But g' changes from positive to negative at x=2? Actually f is positive on (0,2) and negative on (2,3). So g increases on (0,2) and decreases on (2,3). So local maximum at x=2.
-8.  |2x-1| changes sign at x=0.5. Split: ∫_{-1}^{0.5} -(2x-1) dx + ∫_{0.5}^2 (2x-1) dx. First: ∫ (1-2x) dx = x - x^2 |_{-1}^{0.5} = (0.5 - 0.25) - (-1 - 1) = 0.25 - (-2) = 2.25. Second: ∫ (2x-1) dx = x^2 - x |_{0.5}^2 = (4-2) - (0.25-0.5) = 2 - (-0.25) = 2.25. Total = 4.5.
-9.  The function $x^2 \sin x$ is odd (even × odd = odd). Symmetric interval, so integral = 0.
-10. ∫_0^c (2x-4) dx = [x^2 - 4x]_0^c = c^2 - 4c. Set =0: c(c-4)=0 ⇒ c=0 or c=4. c=0 is trivial, so c=4.
+If both limits are constants, the definite integral gives a single fixed number:
+
+$$\displaystyle \int_a^b f(x) \, dx = \text{a constant}$$
+
+Here, $\displaystyle x$ is just a placeholder. It doesn't matter if we write $\displaystyle f(x)$, $\displaystyle f(t)$, or $\displaystyle f(u)$—the result is the same number.
+
+The most important thing here is that any definite integral is a finite number—an area under the curve. But what if we try to turn that integral into a function?
+
+### 2. The Definite Integral as a Function of $\displaystyle x$
+
+Now suppose we let the upper limit be a variable, like $\displaystyle x$, and to avoid confusion we use a different letter (say $\displaystyle t$) inside the integral:
+
+$$\displaystyle F(x) = \int_a^x f(t) \, dt$$
+
+Now $\displaystyle F$ is a **function** of $\displaystyle x$. As $\displaystyle x$ changes, the area under the curve from $\displaystyle a$ to $\displaystyle x$ accumulates. This is called an **accumulation function**.
+
+So before, when you had a constant $\displaystyle b$ in the upper limit and $\displaystyle f$ represented a rate of change, the integral $\displaystyle \int_a^b f(t) \, dt$ gave you the net accumulated change. But you can always get that same number from the accumulation function: just plug in $\displaystyle x = b$.
+
+---
+
+## Example: Building a Function from an Integral
+
+Let's define
+
+$$\displaystyle F(x) = \int_0^x \cos t \, dt$$
+
+and evaluate $\displaystyle F$ at $\displaystyle x = 0, \frac{\pi}{6}, \frac{\pi}{4}, \frac{\pi}{3}, \frac{\pi}{2}$.
+
+**Step 1: Find a formula for $\displaystyle F(x)$**  
+Instead of computing five separate integrals, treat $\displaystyle x$ as a constant temporarily and integrate:
+
+$$\displaystyle \int_0^x \cos t \, dt = \sin t \Big|_0^x = \sin x - \sin 0 = \sin x.$$
+
+So $\displaystyle F(x) = \sin x$.
+
+**Step 2: Plug in the values**  
+
+- $\displaystyle F(0) = \sin 0 = 0$
+- $\displaystyle F\left(\frac{\pi}{6}\right) = \sin \frac{\pi}{6} = \frac{1}{2}$
+- $\displaystyle F\left(\frac{\pi}{4}\right) = \sin \frac{\pi}{4} = \frac{\sqrt{2}}{2}$
+- $\displaystyle F\left(\frac{\pi}{3}\right) = \sin \frac{\pi}{3} = \frac{\sqrt{3}}{2}$
+- $\displaystyle F\left(\frac{\pi}{2}\right) = \sin \frac{\pi}{2} = 1$
+
+**What's happening here?**  
+Think of $\displaystyle F(x)$ as the **accumulated area** under $\displaystyle f(t) = \cos t$ from $\displaystyle t = 0$ to $\displaystyle t = x$.  
+- At $\displaystyle x = 0$, no area has been collected, so $\displaystyle F(0) = 0$.
+- At $\displaystyle x = \frac{\pi}{2}$, we've swept out the whole area under one hump of the cosine curve, so $\displaystyle F\left(\frac{\pi}{2}\right) = 1$.
+
+This idea of an integral as an "accumulator" shows up everywhere in applications—think total distance from velocity, or total growth from a rate.
+
+---
+
+Notice what happened in the example: the derivative of $\displaystyle F(x)$ gave us back the original function we integrated:
+
+$$\displaystyle \frac{d}{dx}[F(x)] = \frac{d}{dx}[\sin x] = \cos x = \frac{d}{dx}\left[ \int_0^x \cos t \, dt \right].$$
+
+That's no coincidence. It's the **Second Fundamental Theorem of Calculus**.
+
+## **The Second Fundamental Theorem of Calculus**
+
+If $\displaystyle f$ is continuous on an open interval $\displaystyle I$ containing $\displaystyle a$, then for every $\displaystyle x$ in $\displaystyle I$:
+
+$$\displaystyle \frac{d}{dx} \left[ \int_a^x f(t) \, dt \right] = f(x).$$
+
+**In words:**  
+If you first integrate $\displaystyle f$ from a fixed starting point $\displaystyle a$ up to a variable top limit $\displaystyle x$, then take the derivative with respect to $\displaystyle x$, you get back the original function $\displaystyle f$ (evaluated at $\displaystyle x$).
+
+This theorem tells us that integration and differentiation are truly inverse processes—even when the integral defines a function with a variable upper limit.
+
+**Let's See It In Action:**
+
+**Example 1: The Basic FTC Part 1**
+Find $\displaystyle F'(x)$ if $\displaystyle F(x) = \int_2^x (t^2 + 1) \, dt$.
+
+*   By FTC Part 1: $\displaystyle F'(x) = \boxed{x^2 + 1}$. Simple as that.
+
+**Example 2: Chain Rule Application**
+Find $\displaystyle \frac{d}{dx} \left[ \int_0^{x^2} \sin t \, dt \right]$.
+
+*   Here, the upper limit is $\displaystyle u(x) = x^2$, and $\displaystyle u'(x) = 2x$.
+*   Apply the rule: $\displaystyle \sin(x^2) \cdot 2x = \boxed{2x \sin(x^2)}$.
+
+**Example 3: Variable Lower Limit**
+Find $\displaystyle \frac{d}{dx} \left[ \int_x^3 \sqrt{t^3 + 1} \, dt \right]$.
+
+*   **Trick:** Swap the limits to make the variable the upper limit. Remember, swapping changes the sign: $\displaystyle \int_x^3 f(t) \, dt = -\int_3^x f(t) \, dt$.
+*   Now differentiate: $\displaystyle \frac{d}{dx} \left[ -\int_3^x \sqrt{t^3+1} \, dt \right] = -\sqrt{x^3+1}$.
+*   So the answer is $\displaystyle \boxed{-\sqrt{x^3+1}}$.
+
+---
+
+### **Properties of Definite Integrals**
+
+Before we dive deeper, we need some tools to manipulate integrals. These properties are pretty intuitive if you think of integrals as net area.
+
+**The Essential Properties:**
+Let $\displaystyle f$ and $\displaystyle g$ be integrable functions, and let $\displaystyle a$, $\displaystyle b$, $\displaystyle c$ be real numbers.
+
+1.  **Constant Multiple:** $\displaystyle \int_a^b k \cdot f(x) \, dx = k \int_a^b f(x) \, dx$
+    *   *Stretching the graph vertically stretches the area by the same factor.*
+2.  **Sum/Difference:** $\displaystyle \int_a^b [f(x) \pm g(x)] \, dx = \int_a^b f(x) \, dx \pm \int_a^b g(x) \, dx$
+    *   *The area under a sum is the sum of the areas.*
+3.  **Reversal of Limits:** $\displaystyle \int_a^b f(x) \, dx = -\int_b^a f(x) \, dx$
+    *   *Reversing the direction of accumulation gives the opposite net result.*
+4.  **Additivity Over Intervals:** $\displaystyle \int_a^b f(x) \, dx = \int_a^c f(x) \, dx + \int_c^b f(x) \, dx$ for any $\displaystyle c$.
+    *   *You can find the total area by adding the areas of adjacent regions.*
+5.  **Integral of a Constant:** $\displaystyle \int_a^b c \, dx = c \cdot (b - a)$
+    *   *Area of a rectangle: height × width.*
+6.  **Zero-Width Interval:** $\displaystyle \int_a^a f(x) \, dx = 0$
+    *   *No accumulation happens over zero distance.*
+
+**Why These Matter:**
+*   **They let us compute integrals using geometry.** If you can see triangles, trapezoids, and semicircles, you can get the exact integral without any fancy antiderivatives.
+*   **They let us handle piecewise functions** by splitting the integral at the break points.
+*   **They simplify complex problems** by breaking them into pieces we already know.
+
+**Example 1: Geometry is Your Friend**
+Evaluate $\displaystyle \int_0^4 (2x + 1) \, dx$ by interpreting it as area.
+
+*   The graph is a line from $\displaystyle (0,1)$ to $\displaystyle (4,9)$. The region is a trapezoid.
+*   Area of a trapezoid = $\displaystyle \frac{1}{2} \times (\text{base}_1 + \text{base}_2) \times \text{height}$.
+*   Bases: $\displaystyle f(0)=1$, $\displaystyle f(4)=9$. Height: $\displaystyle 4-0=4$.
+*   Area = $\displaystyle \frac{1}{2} (1 + 9) \times 4 = \frac{1}{2} \times 10 \times 4 = \boxed{20}$.
+
+**Example 2: Handling a Piecewise Function**
+Evaluate $\displaystyle \int_{-1}^3 f(x) \, dx$, where
+
+$\displaystyle f(x) = \begin{cases} x+2 & \text{if } x \le 1 \\ 4 - x & \text{if } x > 1 \end{cases}$.
+
+*   **Split the integral** at the break point, $\displaystyle x=1$:
+    $\displaystyle \int_{-1}^3 f(x) \, dx = \int_{-1}^1 (x+2) \, dx + \int_1^3 (4-x) \, dx$.
+*   **First integral (area under line from -1 to 1):**
+    *   Geometry: It's a trapezoid from $\displaystyle x=-1$ to $\displaystyle x=1$. At $\displaystyle x=-1$, $\displaystyle f(-1)=1$. At $\displaystyle x=1$, $\displaystyle f(1)=3$. Height = 2.
+    *   Area = $\displaystyle \frac{1}{2}(1+3) \times 2 = 4$.
+    *   Or, use antiderivative: $\displaystyle \int (x+2) dx = \frac{x^2}{2} + 2x$. Evaluate: $\displaystyle [0.5+2] - [0.5 - 2] = 2.5 - (-1.5)=4$.
+*   **Second integral (area under line from 1 to 3):**
+    *   At $\displaystyle x=1$, $\displaystyle f(1)=3$. At $\displaystyle x=3$, $\displaystyle f(3)=1$. Height = 2.
+    *   Area = $\displaystyle \frac{1}{2}(3+1) \times 2 = 4$.
+    *   Or, antiderivative: $\displaystyle \int (4-x) dx = 4x - \frac{x^2}{2}$. Evaluate: $\displaystyle [12-4.5] - [4-0.5] = 7.5 - 3.5 = 4$.
+*   **Total:** $\displaystyle 4 + 4 = \boxed{8}$.
+
+**Example 3: Using Properties to Find Unknowns**
+Given $\displaystyle \int_1^5 f(x) \, dx = 8$ and $\displaystyle \int_3^5 f(x) \, dx = 5$, find $\displaystyle \int_1^3 f(x) \, dx$.
+
+*   By additivity: $\displaystyle \int_1^5 f = \int_1^3 f + \int_3^5 f$.
+*   So, $\displaystyle 8 = \int_1^3 f + 5$.
+*   Therefore, $\displaystyle \int_1^3 f = \boxed{3}$.
+
+---
+
+### **Putting It All Together: Analytical Evaluation Strategies**
+
+Now we combine FTC Part 2 with algebraic tricks to handle more complicated integrals.
+
+**Key Strategies:**
+1.  **Simplify the Integrand:** Use algebra to rewrite the function in a form where you can easily find an antiderivative (expand, split fractions, use trig identities).
+2.  **Handle Absolute Values:** Split the integral at points where the expression inside the absolute value equals zero.
+3.  **Exploit Symmetry:**
+    *   **Even Functions** ($\displaystyle f(-x)=f(x)$): $\displaystyle \int_{-a}^a f(x) \, dx = 2\int_0^a f(x) \, dx$.
+    *   **Odd Functions** ($\displaystyle f(-x)=-f(x)$): $\displaystyle \int_{-a}^a f(x) \, dx = 0$.
+4.  **Watch for Discontinuities:** FTC Part 2 requires continuity on $\displaystyle [a, b]$. If $\displaystyle f$ has a discontinuity (like a vertical asymptote), the integral is "improper" and needs special handling—we'll get to that later.
+
+**Example 1: Integral with Absolute Value**
+Evaluate $\displaystyle \int_{-2}^3 |x| \, dx$.
+
+*   $\displaystyle |x|$ changes behavior at $\displaystyle x=0$. Split the integral:
+    $\displaystyle \int_{-2}^3 |x| \, dx = \int_{-2}^0 |x| \, dx + \int_{0}^3 |x| \, dx$.
+*   On $\displaystyle [-2,0]$, $\displaystyle |x| = -x$. On $\displaystyle [0,3]$, $\displaystyle |x| = x$.
+*   $\displaystyle \int_{-2}^0 (-x) dx = \left[ -\frac{x^2}{2} \right]_{-2}^0 = 0 - (-\frac{4}{2}) = 2$.
+*   $\displaystyle \int_{0}^3 x dx = \left[ \frac{x^2}{2} \right]_0^3 = \frac{9}{2} - 0 = 4.5$.
+*   Total: $\displaystyle 2 + 4.5 = \boxed{6.5}$.
+
+**Example 2: Using Symmetry**
+Evaluate $\displaystyle \int_{-\pi/2}^{\pi/2} \sin^3 x \cos x \, dx$.
+
+*   Check if the integrand is odd or even.
+    *   Let $\displaystyle f(x) = \sin^3 x \cos x$.
+    *   $\displaystyle f(-x) = \sin^3(-x) \cos(-x) = (-\sin x)^3 \cos x = -\sin^3 x \cos x = -f(x)$.
+    *   So $\displaystyle f$ is an **odd** function. The interval $\displaystyle [-\pi/2, \pi/2]$ is symmetric about 0.
+*   Therefore, by symmetry, $\displaystyle \int_{-\pi/2}^{\pi/2} \sin^3 x \cos x \, dx = \boxed{0}$.
+*   *You could also do a u-substitution (u = sin x), but symmetry is way faster!*
+
+**Example 3: Simplify First**
+Evaluate $\displaystyle \int_1^2 \frac{x^2 + 1}{x} \, dx$.
+
+*   Simplify the integrand: $\displaystyle \frac{x^2+1}{x} = x + \frac{1}{x}$.
+*   Antiderivative: $\displaystyle F(x) = \frac{x^2}{2} + \ln|x|$.
+*   Evaluate: $\displaystyle F(2) - F(1) = \left(\frac{4}{2} + \ln 2\right) - \left(\frac{1}{2} + \ln 1\right) = (2 + \ln 2) - (0.5 + 0) = \boxed{1.5 + \ln 2}$.
+
+**Example 4: A Warning About Continuity**
+Can we evaluate $\displaystyle \int_0^2 \frac{1}{x-1} \, dx$ using FTC Part 2?
+
+*   The integrand $\displaystyle f(x) = \frac{1}{x-1}$ has a vertical asymptote (infinite discontinuity) at $\displaystyle x=1$, which is inside $\displaystyle [0,2]$.
+*   **FTC Part 2 does not apply** because $\displaystyle f$ is not continuous on $\displaystyle [0,2]$.
+*   If we blindly applied it with $\displaystyle F(x) = \ln|x-1|$, we'd get $\displaystyle \ln|1| - \ln|1| = 0$, which is wrong. The integral actually diverges (goes to infinity). We'll learn how to handle these "improper integrals" later.

@@ -179,6 +179,18 @@
             "q-str-001", "q-str-002", "q-str-003", "q-str-004", "q-str-005", "q-str-006", "q-str-007", "q-str-008", "q-str-009"
         ]
     },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 16,
+        "type": "LESSON_TEST",
+        "title": "Unit 1 Smash Time Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-urev1-001", "q-urev1-002", "q-urev1-003", "q-urev1-004", "q-urev1-005", "q-urev1-006", "q-urev1-007", "q-urev1-008", "q-urev1-009", "q-urev1-010", "q-urev1-011", "q-urev1-012", "q-urev1-013", "q-urev1-014", "q-urev1-015", "q-urev1-016", "q-urev1-017", "q-urev1-0018", "q-urev1-0019", "q-urev1-0020", "q-urev1-0021", "q-urev1-0022", "q-urev1-0023", "q-urev1-0024"
+        ]
+    },
 
 
 
@@ -327,6 +339,18 @@
             "q-rtime-001", "q-rtime-002", "q-rtime-003", "q-rtime-004", "q-rtime-005", "q-rtime-006", "q-rtime-007", "q-rtime-008", "q-rtime-009"
         ]
     },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 13,
+        "type": "LESSON_TEST",
+        "title": "Unit 2 Smash Time Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-urev2-001", "q-urev2-002", "q-urev2-003", "q-urev2-004", "q-urev2-005", "q-urev2-006", "q-urev2-007", "q-urev2-008", "q-urev2-009", "q-urev2-010", "q-urev2-011", "q-urev2-012", "q-urev2-013", "q-urev2-014", "q-urev2-015", "q-urev2-016", "q-urev2-017", "q-urev2-0018", "q-urev2-0019", "q-urev2-0020", "q-urev2-0021", "q-urev2-0022"
+        ]
+    },
 
 
 
@@ -437,6 +461,18 @@
         "isPublished": true,
         "questionIds": [
             "q-this-001", "q-this-002", "q-this-003", "q-this-004", "q-this-005", "q-this-006", "q-this-007"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 10,
+        "type": "LESSON_TEST",
+        "title": "this Keyword Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-urev3-001", "q-urev3-002", "q-urev3-003", "q-urev3-004", "q-urev3-005", "q-urev3-006", "q-urev3-007", "q-urev3-008", "q-urev3-009", "q-urev3-010", "q-urev3-011", "q-urev3-012", "q-urev3-013", "q-urev3-014", "q-urev3-015", "q-urev3-016", "q-urev1-017"
         ]
     },
 
@@ -646,6 +682,18 @@
         "isPublished": true,
         "questionIds": [
             "q-recss-001", "q-recss-002", "q-recss-003", "q-recss-004", "q-recss-005", "q-recss-006", "q-recss-007", "q-recss-008", "q-recss-009", "q-recss-010", "q-recss-011"
+        ]
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 18,
+        "type": "LESSON_TEST",
+        "title": "Unit 4 Smash Time Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-urev4-001", "q-urev4-002", "q-urev4-003", "q-urev4-004", "q-urev4-005", "q-urev4-006", "q-urev4-007", "q-urev4-008", "q-urev4-009", "q-urev4-010", "q-urev4-011", "q-urev4-012", "q-urev4-013", "q-urev4-014", "q-urev4-015", "q-urev4-016", "q-urev4-017", "q-urev4-0018", "q-urev4-0019", "q-urev4-0020", "q-urev4-0021", "q-urev4-0022", "q-urev4-0023", "q-urev4-0024", "q-urev4-0025", "q-urev4-0026", "q-urev4-0027"
         ]
     }
 ]

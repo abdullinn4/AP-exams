@@ -1,4 +1,4 @@
-### 4.6: Reading Data from Files
+### Reading Data from Files
 
 
 ### Why Read from Files?

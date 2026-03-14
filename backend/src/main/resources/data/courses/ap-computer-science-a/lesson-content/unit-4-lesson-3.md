@@ -1,4 +1,4 @@
-### 4.3: Array Creation and Access
+### Array Creation and Access
 
 
 ### What is an Array?

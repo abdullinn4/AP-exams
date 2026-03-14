@@ -1,4 +1,4 @@
-### 4.14: Searching Algorithms
+### Searching Algorithms
 
 
 ### What is Searching?

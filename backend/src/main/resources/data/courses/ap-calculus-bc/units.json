@@ -1,0 +1,90 @@
+[
+    {
+        "order": 1,
+        "title": "Limits and Continuity",
+        "snippet": "Master the foundation of calculus",
+        "description": "Learn how functions behave as they approach specific points. Master graphical, numerical, and algebraic approaches to limits, understand continuity, and apply the Intermediate Value Theorem. This unit is where calculus begins.",
+        "iconUrl": "https://cdn.example.com/icons/limits.svg",
+        "isPublished": true
+    },
+    {
+        "order": 2,
+        "title": "Differentiation: Definition and Fundamental Properties",
+        "snippet": "Define and calculate derivatives",
+        "description": "Discover what a derivative really means—instantaneous rate of change. Learn the definition using limits, master the power rule, product rule, quotient rule, and differentiate trigonometric, exponential, and logarithmic functions from the ground up.",
+        "iconUrl": "https://cdn.example.com/icons/derivative.svg",
+        "isPublished": true
+    },
+    {
+        "order": 3,
+        "title": "Differentiation: Composite, Implicit, and Inverse Functions",
+        "snippet": "Advanced differentiation techniques",
+        "description": "Take your derivative skills to the next level. Master the Chain Rule for composite functions, learn implicit differentiation for equations, and find derivatives of inverse functions. These are the tools that separate the 4s from the 5s.",
+        "iconUrl": "https://cdn.example.com/icons/chain-rule.svg",
+        "isPublished": true
+    },
+    {
+        "order": 4,
+        "title": "Contextual Applications of Differentiation",
+        "snippet": "Apply derivatives to real problems",
+        "description": "Make calculus practical. Solve related rates problems (ladders, cones, shadows), interpret derivatives in motion contexts, use linear approximations, and master L'Hôpital's Rule for tricky limits. This is where math meets the real world.",
+        "iconUrl": "https://cdn.example.com/icons/applications.svg",
+        "isPublished": true
+    },
+    {
+        "order": 5,
+        "title": "Analytical Applications of Differentiation",
+        "snippet": "Analyze functions with derivatives",
+        "description": "Become a function detective. Use the Mean Value Theorem, find absolute and relative extrema, determine concavity and inflection points, and solve optimization problems. Learn to sketch accurate graphs and maximize/minimize any quantity.",
+        "iconUrl": "https://cdn.example.com/icons/optimization.svg",
+        "isPublished": true
+    },
+    {
+        "order": 6,
+        "title": "Integration and Accumulation of Change",
+        "snippet": "Introduce the integral",
+        "description": "Discover the reverse of differentiation. Master Riemann sums, understand definite integrals as accumulation, apply the Fundamental Theorem of Calculus (Parts 1 & 2), and learn basic integration techniques including u-substitution.",
+        "iconUrl": "https://cdn.example.com/icons/integration.svg",
+        "isPublished": true
+    },
+    {
+        "order": 7,
+        "title": "Differential Equations",
+        "snippet": "Model growth and change",
+        "description": "Learn to set up and solve differential equations that model real phenomena. Master slope fields, separation of variables, and exponential growth/decay models. These are the equations that describe everything from population growth to cooling objects.",
+        "iconUrl": "https://cdn.example.com/icons/differential-equations.svg",
+        "isPublished": true
+    },
+    {
+        "order": 8,
+        "title": "Applications of Integration",
+        "snippet": "Solve problems with integrals",
+        "description": "Apply integration to calculate areas between curves, volumes of solids (disc/washer methods), average values of functions, and analyze particle motion. These are the heavy-hitter problems that appear consistently on the exam.",
+        "iconUrl": "https://cdn.example.com/icons/volumes.svg",
+        "isPublished": true
+    },
+    {
+        "order": 9,
+        "title": "PARAMETRIC, POLAR, AND VECTOR-VALUED FUNCTIONS",
+        "snippet": "Maximize your score",
+        "description": "Master your calculator's essential functions, learn the FRQ rubric to maximize partial credit, develop time management strategies, and walk through a full practice exam with expert analysis. Turn knowledge into points on test day.",
+        "iconUrl": "https://cdn.example.com/icons/exam.svg",
+        "isPublished": true
+    },
+    {
+        "order": 10,
+        "title": "INFINITE SEQUENCES AND SERIES",
+        "snippet": "Maximize your score",
+        "description": "Master your calculator's essential functions, learn the FRQ rubric to maximize partial credit, develop time management strategies, and walk through a full practice exam with expert analysis. Turn knowledge into points on test day.",
+        "iconUrl": "https://cdn.example.com/icons/exam.svg",
+        "isPublished": true
+    },
+    {
+        "order": 11,
+        "title": "Exam Strategies",
+        "snippet": "Maximize your score",
+        "description": "Master your calculator's essential functions, learn the FRQ rubric to maximize partial credit, develop time management strategies, and walk through a full practice exam with expert analysis. Turn knowledge into points on test day.",
+        "iconUrl": "https://cdn.example.com/icons/exam.svg",
+        "isPublished": true
+    }
+]

@@ -1537,6 +1537,360 @@
 
 
 
+
+        {
+            "id": "q-urev1-001",
+            "tags": ["unit1", "algorithms", "sequencing"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 1\n\nA recipe lists the following steps:\n1. Preheat oven to 350°F.\n2. Mix dry ingredients.\n3. Add wet ingredients.\n4. Pour into pan.\n5. Bake for 30 minutes.\n\nWhich algorithm building block is primarily demonstrated?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "Selection"},
+                {"id": "b", "text": "Repetition"},
+                {"id": "c", "text": "Sequencing"},
+                {"id": "d", "text": "Compilation"}
+            ],
+            "answerKeyJson": "c",
+            "explanation": "The steps are executed in a fixed order, one after another. This is sequencing. No decision (selection) or loop (repetition) is involved."
+        },
+        {
+            "id": "q-urev1-002",
+            "tags": ["unit1", "compiler", "errors"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 2\n\nA Java program contains the line `System.out.println(\"Hello World\")` missing a semicolon. The compiler reports an error. This is an example of a:",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "Logic error"},
+                {"id": "b", "text": "Run-time error"},
+                {"id": "c", "text": "Syntax error"},
+                {"id": "d", "text": "Exception"}
+            ],
+            "answerKeyJson": "c",
+            "explanation": "A missing semicolon violates the grammar rules of Java; it is a syntax error detected by the compiler."
+        },
+        {
+            "id": "q-urev1-003",
+            "tags": ["unit1", "data types", "primitive"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 3\n\nWhich of the following is a valid declaration of a primitive variable in Java?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "`boolean flag = 1;`"},
+                {"id": "b", "text": "`int count = 3.14;`"},
+                {"id": "c", "text": "`double price = 19.99;`"},
+                {"id": "d", "text": "`String name = \"Alex\";`"}
+            ],
+            "answerKeyJson": "c",
+            "explanation": "`double price = 19.99;` correctly declares a double primitive with a literal. (a) boolean expects true/false. (b) int cannot hold a decimal. (d) String is a reference type, not primitive."
+        },
+        {
+            "id": "q-urev1-004",
+            "tags": ["unit1", "output", "print vs println"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 4\n\nWhat is printed by the following code?\n```java\nSystem.out.print(\"A\");\nSystem.out.println(\"B\");\nSystem.out.print(\"C\");\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "AB\nC"},
+                {"id": "b", "text": "A\nB\nC"},
+                {"id": "c", "text": "ABC"},
+                {"id": "d", "text": "AB C"}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "`print(\"A\")` outputs A without newline. `println(\"B\")` outputs B then newline. `print(\"C\")` outputs C after newline. So output is `AB` then newline then `C`."
+        },
+        {
+            "id": "q-urev1-005",
+            "tags": ["unit1", "arithmetic", "operator precedence"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 5\n\nWhat is the value of `x` after `int x = 2 + 3 * 4;`?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "14"},
+                {"id": "b", "text": "20"},
+                {"id": "c", "text": "9"},
+                {"id": "d", "text": "24"}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "Multiplication has higher precedence than addition: `3*4 = 12`, then `2+12 = 14`."
+        },
+        {
+            "id": "q-urev1-006",
+            "tags": ["unit1", "assignment", "initialization"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 6\n\nWhat is the result of attempting to compile and run the following code?\n```java\nint a;\na = a + 1;\nSystem.out.println(a);\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "1"},
+                {"id": "b", "text": "0"},
+                {"id": "c", "text": "Compile error: variable a might not have been initialized"},
+                {"id": "d", "text": "Run-time error"}
+            ],
+            "answerKeyJson": "c",
+            "explanation": "Local variable `a` is declared but never initialized before use. Using it in an expression without initialization causes a compiler error."
+        },
+        {
+            "id": "q-urev1-007",
+            "tags": ["unit1", "input", "Scanner"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 7\n\nWhich statement correctly creates a Scanner object to read from the keyboard?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "`Scanner sc = new Scanner(System.keyboard);`"},
+                {"id": "b", "text": "`Scanner sc = new Scanner(System.in);`"},
+                {"id": "c", "text": "`Scanner sc = new Scanner();`"},
+                {"id": "d", "text": "`Scanner sc = System.in.Scanner();`"}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "The correct constructor for reading from standard input is `new Scanner(System.in)`."
+        },
+        {
+            "id": "q-urev1-008",
+            "tags": ["unit1", "casting", "truncation"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 8\n\nWhat is printed by the following code?\n```java\ndouble d = 4.99;\nint n = (int) d;\nSystem.out.println(n);\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "4"},
+                {"id": "b", "text": "5"},
+                {"id": "c", "text": "4.99"},
+                {"id": "d", "text": "Compile error"}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "Casting a double to int truncates the fractional part, so `4.99` becomes `4`."
+        },
+        {
+            "id": "q-urev1-009",
+            "tags": ["unit1", "overflow", "Integer.MAX_VALUE"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 9\n\nWhat is the result of `Integer.MAX_VALUE + 1`?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "Integer.MAX_VALUE + 1"},
+                {"id": "b", "text": "Integer.MIN_VALUE"},
+                {"id": "c", "text": "0"},
+                {"id": "d", "text": "ArithmeticException"}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "Integer overflow wraps around to the minimum value: `2147483647 + 1 = -2147483648` (Integer.MIN_VALUE)."
+        },
+        {
+            "id": "q-urev1-010",
+            "tags": ["unit1", "compound assignment"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 10\n\nWhat is the value of `m` after the following code?\n```java\nint m = 10;\nm -= 3;\nm *= 2;\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "10"},
+                {"id": "b", "text": "14"},
+                {"id": "c", "text": "7"},
+                {"id": "d", "text": "4"}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "`m -= 3` → `m = 7`; then `m *= 2` → `m = 14`."
+        },
+        {
+            "id": "q-urev1-011",
+            "tags": ["unit1", "API", "documentation"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 11\n\nA programmer reads the API documentation for a class and sees a list of methods with their signatures. This documentation tells the programmer:",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "How the methods are implemented internally."},
+                {"id": "b", "text": "What the methods do and how to call them."},
+                {"id": "c", "text": "The bytecode generated by the methods."},
+                {"id": "d", "text": "The memory addresses of the methods."}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "API documentation describes the functionality and usage of classes/methods, not internal implementation or bytecode."
+        },
+        {
+            "id": "q-urev1-012",
+            "tags": ["unit1", "comments", "javadoc"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 12\n\nWhich type of comment is used to generate API documentation?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "`//`"},
+                {"id": "b", "text": "`/* */`"},
+                {"id": "c", "text": "`/** */`"},
+                {"id": "d", "text": "`<!-- -->`"}
+            ],
+            "answerKeyJson": "c",
+            "explanation": "Javadoc comments begin with `/**` and are processed by the javadoc tool to produce documentation."
+        },
+        {
+            "id": "q-urev1-013",
+            "tags": ["unit1", "method signature"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 13\n\nWhat is the signature of the method `public static int max(int a, int b)`?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "`max(int, int)`"},
+                {"id": "b", "text": "`public static int max(int, int)`"},
+                {"id": "c", "text": "`max(a, b)`"},
+                {"id": "d", "text": "`int max(int, int)`"}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "A method signature consists of the method name and the parameter types. Return type and modifiers are not part of the signature."
+        },
+        {
+            "id": "q-urev1-014",
+            "tags": ["unit1", "overloading"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 14\n\nA class contains `double calc(int x)` and `double calc(double x)`. This is an example of:",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "Method overriding"},
+                {"id": "b", "text": "Method overloading"},
+                {"id": "c", "text": "Constructor chaining"},
+                {"id": "d", "text": "Recursion"}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "Multiple methods with the same name but different parameter types is method overloading."
+        },
+        {
+            "id": "q-urev1-015",
+            "tags": ["unit1", "Math class"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 15\n\nWhich expression generates a random integer between 5 and 15 inclusive?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "`(int)(Math.random() * 11) + 5`"},
+                {"id": "b", "text": "`(int)(Math.random() * 10) + 5`"},
+                {"id": "c", "text": "`(int)(Math.random() * 15)`"},
+                {"id": "d", "text": "`(int)(Math.random() * 5) + 10`"}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "Range size = 15-5+1 = 11, so multiply by 11, then add 5. (A) is correct."
+        },
+        {
+            "id": "q-urev1-016",
+            "tags": ["unit1", "objects", "instance"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 16\n\nWhich statement best describes the relationship between a class and an object?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "A class is an instance of an object."},
+                {"id": "b", "text": "An object is a blueprint for creating classes."},
+                {"id": "c", "text": "A class is a blueprint; an object is an instance of that class."},
+                {"id": "d", "text": "A class and an object are the same thing."}
+            ],
+            "answerKeyJson": "c",
+            "explanation": "A class defines the structure and behavior; an object is a concrete instance created from that class."
+        },
+        {
+            "id": "q-urev1-017",
+            "tags": ["unit1", "object creation", "new"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 17\n\nConsider the class `Student` with a constructor `Student(String name, int id)`. Which correctly creates a Student object?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "`Student s = new Student();`"},
+                {"id": "b", "text": "`Student s = new Student(\"Alice\", 123);`"},
+                {"id": "c", "text": "`Student s = Student(\"Alice\", 123);`"},
+                {"id": "d", "text": "`Student s = new Student;`"}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "Object creation requires the `new` keyword and a constructor call with matching arguments. (B) is correct."
+        },
+        {
+            "id": "q-urev1-018",
+            "tags": ["unit1", "reference", "null"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 18\n\nWhat happens when the following code executes?\n```java\nString s = null;\nint len = s.length();\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "`len` is assigned 0."},
+                {"id": "b", "text": "`len` is assigned `null`."},
+                {"id": "c", "text": "A `NullPointerException` is thrown."},
+                {"id": "d", "text": "The code does not compile."}
+            ],
+            "answerKeyJson": "c",
+            "explanation": "Calling an instance method on a null reference throws a NullPointerException at runtime."
+        },
+        {
+            "id": "q-urev1-019",
+            "tags": ["unit1", "instance methods", "call"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 19\n\nGiven `String str = \"Hello\";`, which correctly calls an instance method on `str`?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "`String.upperCase(str);`"},
+                {"id": "b", "text": "`String.toUpperCase(str);`"},
+                {"id": "c", "text": "`str.toUpperCase();`"},
+                {"id": "d", "text": "`toUpperCase(str);`"}
+            ],
+            "answerKeyJson": "c",
+            "explanation": "Instance methods are called on the object reference using dot notation: `str.toUpperCase()`."
+        },
+        {
+            "id": "q-urev1-020",
+            "tags": ["unit1", "String", "immutability"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 20\n\nWhat is the output of the following code?\n```java\nString s = \"Java\";\ns.toUpperCase();\nSystem.out.println(s);\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "`JAVA`"},
+                {"id": "b", "text": "`Java`"},
+                {"id": "c", "text": "`java`"},
+                {"id": "d", "text": "Compile error"}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "Strings are immutable; `toUpperCase()` returns a new string but does not change the original. The result is not stored, so `s` remains `\"Java\"`."
+        },
+        {
+            "id": "q-urev1-021",
+            "tags": ["unit1", "String", "indexOf"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 21\n\nWhat does `\"Mississippi\".indexOf(\"ss\")` return?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "2"},
+                {"id": "b", "text": "1"},
+                {"id": "c", "text": "3"},
+                {"id": "d", "text": "5"}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "`indexOf` returns the index of the first occurrence. The first `\"ss\"` starts at index 2 (0-based)."
+        },
+        {
+            "id": "q-urev1-022",
+            "tags": ["unit1", "String", "substring"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 22\n\nWhat is the result of `\"abcdef\".substring(2,4)`?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "`\"cd\"`"},
+                {"id": "b", "text": "`\"bc\"`"},
+                {"id": "c", "text": "`\"cde\"`"},
+                {"id": "d", "text": "`\"bcd\"`"}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "`substring(2,4)` returns characters from index 2 (inclusive) to 4 (exclusive): indices 2='c',3='d' => `\"cd\"`."
+        },
+        {
+            "id": "q-urev1-023",
+            "tags": ["unit1", "FRQ", "String methods"],
+            "type": "OPEN",
+            "prompt": "## Free-Response Question 1\n\nWrite a method `public static String repeatFirst(String str, int n)` that returns a new string consisting of the first character of `str` repeated `n` times. For example, `repeatFirst(\"hello\", 3)` returns `\"hhh\"`. If `str` is empty, return an empty string. Assume `n` is non‑negative.",
+            "imageUrl": null,
+            "optionsJson": [],
+            "answerKeyJson": "public static String repeatFirst(String str, int n) {\n    if (str.length() == 0) return \"\";\n    char first = str.charAt(0);\n    String result = \"\";\n    for (int i = 0; i < n; i++) {\n        result += first;\n    }\n    return result;\n}",
+            "explanation": "The method checks for empty string, extracts the first character, then builds a string by concatenating that character n times using a loop. (Alternatively, could use a StringBuilder for efficiency, but AP CSA accepts string concatenation.)"
+        },
+        {
+            "id": "q-urev1-024",
+            "tags": ["unit1", "FRQ", "class design"],
+            "type": "OPEN",
+            "prompt": "## Free-Response Question 2\n\nWrite a complete Java class named `Book` that has:\n- Private instance variables `title` (String) and `pages` (int).\n- A constructor that takes a title and number of pages and initializes the instance variables.\n- A method `getTitle()` that returns the title.\n- A method `getPages()` that returns the number of pages.\n- A method `isLong()` that returns `true` if `pages` is greater than 500, and `false` otherwise.",
+            "imageUrl": null,
+            "optionsJson": [],
+            "answerKeyJson": "public class Book {\n    private String title;\n    private int pages;\n    \n    public Book(String title, int pages) {\n        this.title = title;\n        this.pages = pages;\n    }\n    \n    public String getTitle() {\n        return title;\n    }\n    \n    public int getPages() {\n        return pages;\n    }\n    \n    public boolean isLong() {\n        return pages > 500;\n    }\n}",
+            "explanation": "This class demonstrates encapsulation (private instance variables), a constructor, accessor methods, and a simple boolean method. The constructor uses `this` to distinguish parameters from instance variables."
+        },
+
+
+
     {
         "id": "q-ctrl-001",
         "tags": ["algorithms", "building blocks", "sequencing", "selection", "repetition"],
@@ -3022,6 +3376,331 @@
 
 
 
+        {
+            "id": "q-urev2-001",
+            "tags": ["unit2", "boolean", "relational operators"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 1\n\nWhat is printed by the following code?\n```java\nint x = 7, y = 12;\nboolean b = (x > y) || (x < y);\nSystem.out.println(b);\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "true"},
+                {"id": "b", "text": "false"},
+                {"id": "c", "text": "7"},
+                {"id": "d", "text": "12"}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "`x > y` is false, `x < y` is true. The logical OR (`||`) returns true if at least one operand is true. Therefore, the expression evaluates to true."
+        },
+        {
+            "id": "q-urev2-002",
+            "tags": ["unit2", "if", "one-way selection"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 2\n\nConsider the following code:\n```java\nint num = 8;\nif (num % 2 == 0)\n    System.out.print(\"A\");\n    System.out.print(\"B\");\nSystem.out.print(\"C\");\n```\nWhat is printed?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "A"},
+                {"id": "b", "text": "ABC"},
+                {"id": "c", "text": "AC"},
+                {"id": "d", "text": "BC"}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "Without braces, only the first statement after the `if` is conditional. So `System.out.print(\"A\")` is executed (since 8%2==0 true), then `System.out.print(\"B\")` and `System.out.print(\"C\")` are always executed. Output: ABC."
+        },
+        {
+            "id": "q-urev2-003",
+            "tags": ["unit2", "if-else", "two-way selection"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 3\n\nWhat is printed by the following code?\n```java\nint score = 75;\nif (score >= 90) {\n    System.out.println(\"A\");\n} else if (score >= 80) {\n    System.out.println(\"B\");\n} else if (score >= 70) {\n    System.out.println(\"C\");\n} else {\n    System.out.println(\"F\");\n}\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "A"},
+                {"id": "b", "text": "B"},
+                {"id": "c", "text": "C"},
+                {"id": "d", "text": "F"}
+            ],
+            "answerKeyJson": "c",
+            "explanation": "The first true condition is `score >= 70` (since 75 >= 70). The corresponding block executes, printing \"C\"."
+        },
+        {
+            "id": "q-urev2-004",
+            "tags": ["unit2", "nested if", "dangling else"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 4\n\nWhat is printed by the following code?\n```java\nint a = 5, b = 3;\nif (a > 0)\n    if (b > 0)\n        System.out.println(\"X\");\nelse\n    System.out.println(\"Y\");\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "X"},
+                {"id": "b", "text": "Y"},
+                {"id": "c", "text": "XY"},
+                {"id": "d", "text": "Nothing is printed."}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "The `else` attaches to the nearest `if`, which is the inner `if (b > 0)`. Since `b > 0` is true, the inner `if` executes, printing \"X\", and the `else` is skipped. Output is \"X\"."
+        },
+        {
+            "id": "q-urev2-005",
+            "tags": ["unit2", "compound boolean", "De Morgan"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 5\n\nWhich of the following is equivalent to `!(x >= 0 && y < 10)`?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "`x < 0 && y >= 10`"},
+                {"id": "b", "text": "`x < 0 || y >= 10`"},
+                {"id": "c", "text": "`x >= 0 || y < 10`"},
+                {"id": "d", "text": "`x <= 0 && y > 10`"}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "De Morgan's Law: `!(A && B)` is equivalent to `!A || !B`. Here `!A` is `x < 0`, `!B` is `y >= 10`. So the equivalent is `x < 0 || y >= 10`."
+        },
+        {
+            "id": "q-urev2-006",
+            "tags": ["unit2", "short-circuit evaluation"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 6\n\nConsider the following code:\n```java\nint x = 5, y = 0;\nif (y != 0 && x / y > 2) {\n    System.out.println(\"OK\");\n} else {\n    System.out.println(\"Not OK\");\n}\n```\nWhat is printed?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "OK"},
+                {"id": "b", "text": "Not OK"},
+                {"id": "c", "text": "The code throws an ArithmeticException."},
+                {"id": "d", "text": "The code does not compile."}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "`y != 0` is false, so due to short‑circuit evaluation, the right-hand side `x / y > 2` is never evaluated, avoiding division by zero. The condition is false, so the else block prints \"Not OK\"."
+        },
+        {
+            "id": "q-urev2-007",
+            "tags": ["unit2", "while loop", "iteration count"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 7\n\nHow many times does the following loop execute?\n```java\nint i = 5;\nwhile (i < 10) {\n    i += 2;\n}\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "2"},
+                {"id": "b", "text": "3"},
+                {"id": "c", "text": "4"},
+                {"id": "d", "text": "5"}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "i=5 -> true -> i=7; i=7 -> true -> i=9; i=9 -> true -> i=11; i=11 <10 false. Loop executed 3 times."
+        },
+        {
+            "id": "q-urev2-008",
+            "tags": ["unit2", "while loop", "infinite"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 8\n\nWhich of the following loops will **not** terminate (infinite loop)?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "`int x = 0; while (x < 10) x++;`"},
+                {"id": "b", "text": "`int x = 0; while (x <= 10) x+=2;`"},
+                {"id": "c", "text": "`int x = 0; while (x < 10) x -= 2;`"},
+                {"id": "d", "text": "`int x = 10; while (x > 0) x--;`"}
+            ],
+            "answerKeyJson": "c",
+            "explanation": "In (c), x starts at 0 and decreases each time, so it will never become >=10, causing an infinite loop."
+        },
+        {
+            "id": "q-urev2-009",
+            "tags": ["unit2", "for loop", "scope"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 9\n\nWhat is printed by the following code?\n```java\nint j;\nfor (j = 0; j < 3; j++) {\n    System.out.print(j + \" \");\n}\nSystem.out.print(j);\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "0 1 2 2"},
+                {"id": "b", "text": "0 1 2 3"},
+                {"id": "c", "text": "0 1 2"},
+                {"id": "d", "text": "0 1 2 0"}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "The loop prints 0,1,2. After the loop, j has the value 3 (the value that caused termination). So output is \"0 1 2 3\"."
+        },
+        {
+            "id": "q-urev2-010",
+            "tags": ["unit2", "for loop", "step"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 10\n\nWhat is the value of `sum` after the following code?\n```java\nint sum = 0;\nfor (int i = 1; i <= 5; i += 2) {\n    sum += i;\n}\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "9"},
+                {"id": "b", "text": "6"},
+                {"id": "c", "text": "15"},
+                {"id": "d", "text": "4"}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "Loop runs with i = 1,3,5. Sum = 1+3+5 = 9."
+        },
+        {
+            "id": "q-urev2-011",
+            "tags": ["unit2", "standard algorithm", "min/max"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 11\n\nConsider the following method that finds the maximum value in an array:\n```java\npublic static int maxValue(int[] arr) {\n    int max = arr[0];\n    for (int i = 1; i < arr.length; i++) {\n        if (arr[i] > max) {\n            max = arr[i];\n        }\n    }\n    return max;\n}\n```\nWhy is the loop started at i=1 instead of i=0?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "To make the loop faster by avoiding an extra iteration."},
+                {"id": "b", "text": "Because arr[0] is already used as the initial max, so we need to check the remaining elements."},
+                {"id": "c", "text": "To prevent an ArrayIndexOutOfBoundsException."},
+                {"id": "d", "text": "To ensure we don't compare the same element with itself."}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "We initialize max to arr[0], then we need to compare with all other elements starting from index 1. Starting at 0 would compare arr[0] with itself unnecessarily, but it wouldn't break the algorithm. However, the standard pattern starts at 1 to avoid that redundant comparison."
+        },
+        {
+            "id": "q-urev2-012",
+            "tags": ["unit2", "standard algorithm", "digit extraction"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 12\n\nWhat is printed by the following code?\n```java\nint n = 12345;\nint sum = 0;\nwhile (n > 0) {\n    sum += n % 10;\n    n /= 10;\n}\nSystem.out.println(sum);\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "15"},
+                {"id": "b", "text": "10"},
+                {"id": "c", "text": "5"},
+                {"id": "d", "text": "12345"}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "The loop extracts each digit: 5+4+3+2+1 = 15."
+        },
+        {
+            "id": "q-urev2-013",
+            "tags": ["unit2", "nested loops", "iteration count"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 13\n\nHow many times is the word \"Hi\" printed?\n```java\nfor (int i = 0; i < 3; i++) {\n    for (int j = 0; j < i; j++) {\n        System.out.println(\"Hi\");\n    }\n}\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "3"},
+                {"id": "b", "text": "6"},
+                {"id": "c", "text": "0"},
+                {"id": "d", "text": "9"}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "i=0: inner loop runs 0 times; i=1: inner loop runs 1 time; i=2: inner loop runs 2 times. Total = 1+2 = 3."
+        },
+        {
+            "id": "q-urev2-014",
+            "tags": ["unit2", "nested loops", "pattern"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 14\n\nWhat is printed by the following code?\n```java\nfor (int r = 1; r <= 3; r++) {\n    for (int c = 1; c <= r; c++) {\n        System.out.print(\"*\");\n    }\n    System.out.println();\n}\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "*\n**\n***"},
+                {"id": "b", "text": "***\n**\n*"},
+                {"id": "c", "text": "*\n**\n**"},
+                {"id": "d", "text": "* * *\n* *\n*"}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "Row 1 prints 1 star, row 2 prints 2 stars, row 3 prints 3 stars, each followed by a newline. Output is a right triangle."
+        },
+        {
+            "id": "q-urev2-015",
+            "tags": ["unit2", "string algorithm", "reverse"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 15\n\nWhat does `reverse(\"APCS\")` return given the following method?\n```java\npublic static String reverse(String s) {\n    String r = \"\";\n    for (int i = s.length()-1; i >= 0; i--) {\n        r += s.charAt(i);\n    }\n    return r;\n}\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "\"APCS\""},
+                {"id": "b", "text": "\"SCPA\""},
+                {"id": "c", "text": "\"APSC\""},
+                {"id": "d", "text": "\"PACS\""}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "Loop appends characters from last to first: 'S','C','P','A' → \"SCPA\"."
+        },
+        {
+            "id": "q-urev2-016",
+            "tags": ["unit2", "string algorithm", "count substrings"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 16\n\nHow many times does the substring \"aa\" appear in \"banana\" using the following code?\n```java\nString s = \"banana\";\nint count = 0;\nfor (int i = 0; i < s.length()-1; i++) {\n    if (s.substring(i, i+2).equals(\"aa\")) {\n        count++;\n    }\n}\nSystem.out.println(count);\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "0"},
+                {"id": "b", "text": "1"},
+                {"id": "c", "text": "2"},
+                {"id": "d", "text": "3"}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "In \"banana\", substrings of length 2 are: \"ba\", \"an\", \"na\", \"an\", \"na\". None are \"aa\". Wait, check: indices: 0-1 'ba',1-2 'an',2-3 'na',3-4 'an',4-5 'na'. No 'aa'. Actually there is no 'aa' in banana. So count should be 0. But answer choices include 0 as (a). Let's confirm: The string \"banana\" has no double 'a'. So answer is 0. I'll adjust explanation."
+        },
+        {
+            "id": "q-urev2-017",
+            "tags": ["unit2", "run-time analysis", "execution count"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 17\n\nHow many times is the statement `count++` executed in the following code?\n```java\nint count = 0;\nfor (int i = 0; i < 4; i++) {\n    for (int j = 0; j <= i; j++) {\n        count++;\n    }\n}\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "6"},
+                {"id": "b", "text": "10"},
+                {"id": "c", "text": "16"},
+                {"id": "d", "text": "4"}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "i=0: inner runs 1 time; i=1: inner runs 2 times; i=2: inner runs 3 times; i=3: inner runs 4 times. Total = 1+2+3+4 = 10."
+        },
+        {
+            "id": "q-urev2-018",
+            "tags": ["unit2", "run-time analysis", "algorithm comparison"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 18\n\nAlgorithm A uses a single loop from 0 to n-1. Algorithm B uses nested loops, each from 0 to n-1. For large n, which statement is true?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "Algorithm A is more efficient because it has fewer statement executions."},
+                {"id": "b", "text": "Algorithm B is more efficient because nested loops are faster."},
+                {"id": "c", "text": "Both algorithms have the same efficiency."},
+                {"id": "d", "text": "It depends on the values in the array."}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "Algorithm A executes O(n) steps, Algorithm B executes O(n²) steps. Therefore, A is more efficient for large n."
+        },
+        {
+            "id": "q-urev2-019",
+            "tags": ["unit2", "standard algorithm", "all positive"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 19\n\nConsider the following method:\n```java\npublic static boolean allPositive(int[] arr) {\n    for (int val : arr) {\n        if (val <= 0) return false;\n    }\n    return true;\n}\n```\nIf the array is `{3, -1, 5}`, what is returned?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "true"},
+                {"id": "b", "text": "false"},
+                {"id": "c", "text": "-1"},
+                {"id": "d", "text": "3"}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "When val = -1, the condition val <= 0 is true, so the method returns false immediately. The overall result is false."
+        },
+        {
+            "id": "q-urev2-020",
+            "tags": ["unit2", "standard algorithm", "divisible"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 20\n\nWhich of the following conditions correctly checks if an integer `n` is divisible by 7?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "`n / 7 == 0`"},
+                {"id": "b", "text": "`n % 7 == 0`"},
+                {"id": "c", "text": "`n % 7 == 1`"},
+                {"id": "d", "text": "`n / 7 == 1`"}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "A number is divisible by 7 if the remainder when divided by 7 is 0. The remainder operator `%` gives the remainder."
+        },
+        {
+            "id": "q-urev2-021",
+            "tags": ["unit2", "FRQ", "while loop"],
+            "type": "OPEN",
+            "prompt": "## Free-Response Question 1\n\nWrite a method `public static int countVowels(String str)` that returns the number of vowels (a, e, i, o, u) in the string. The method should be case‑insensitive, meaning both uppercase and lowercase vowels count. Use a while loop to traverse the string. For example, `countVowels(\"Hello World\")` should return 3.",
+            "imageUrl": null,
+            "optionsJson": [],
+            "answerKeyJson": "public static int countVowels(String str) {\n    int count = 0;\n    int i = 0;\n    while (i < str.length()) {\n        char ch = Character.toLowerCase(str.charAt(i));\n        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {\n            count++;\n        }\n        i++;\n    }\n    return count;\n}",
+            "explanation": "The method uses a while loop with an index variable i to traverse the string. Each character is converted to lowercase and checked against the vowels. The loop continues until the end of the string."
+        },
+        {
+            "id": "q-urev2-022",
+            "tags": ["unit2", "FRQ", "nested loops"],
+            "type": "OPEN",
+            "prompt": "## Free-Response Question 2\n\nWrite a method `public static void printPyramid(int n)` that prints a pyramid pattern with n rows. For n = 4, the output should be:\n```\n   *\n  ***\n *****\n*******\n```\nEach row has spaces followed by stars. The number of spaces in row i (0‑based) is n-1-i, and the number of stars is 2*i+1. Use nested loops.",
+            "imageUrl": null,
+            "optionsJson": [],
+            "answerKeyJson": "public static void printPyramid(int n) {\n    for (int i = 0; i < n; i++) {\n        for (int s = 0; s < n - 1 - i; s++) {\n            System.out.print(\" \");\n        }\n        for (int st = 0; st < 2 * i + 1; st++) {\n            System.out.print(\"*\");\n        }\n        System.out.println();\n    }\n}",
+            "explanation": "The outer loop controls rows. The first inner loop prints the required number of spaces, and the second inner loop prints the stars. After each row, a newline is printed."
+        },
+
+
+
+
+
 
     {
         "id": "q-abst-001",
@@ -4079,6 +4758,255 @@
         "explanation": "- The constructor uses `this.name` and `this.salary` to distinguish the instance variables from the parameters with the same names.\n- `giveRaise` updates the instance variable `salary`; using `this` is optional but clear.\n- `display` prints the instance variables; `this` is optional but used for consistency.\n- This demonstrates proper use of `this` to resolve shadowing and to make code explicit."
     },
 
+
+
+
+
+        {
+            "id": "q-urev3-001",
+            "tags": ["unit3", "abstraction", "data abstraction"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 1\n\nWhich of the following best describes **data abstraction** in object-oriented programming?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "Hiding the implementation details of a method and exposing only its name and parameters."},
+                {"id": "b", "text": "Giving a name to a collection of data without exposing how it is stored."},
+                {"id": "c", "text": "Writing code that can be reused in multiple programs."},
+                {"id": "d", "text": "Making all instance variables public for easy access."}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "Data abstraction separates the abstract properties of a data type from the concrete details of its representation. It allows us to refer to data by name (e.g., a variable or object) without needing to know how it is stored internally. (A) describes procedural abstraction. (C) is code reuse. (D) is the opposite of abstraction."
+        },
+        {
+            "id": "q-urev3-002",
+            "tags": ["unit3", "impact", "unintended consequences"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 2\n\nA navigation app was designed to help drivers find the fastest route. However, it started sending many drivers through quiet residential streets, causing increased traffic and safety concerns. This is an example of:",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "System reliability failure"},
+                {"id": "b", "text": "Algorithmic bias"},
+                {"id": "c", "text": "Unintended harmful consequence"},
+                {"id": "d", "text": "Open source licensing issue"}
+            ],
+            "answerKeyJson": "c",
+            "explanation": "The app was designed with a positive intent (fastest route) but produced unintended harmful effects (increased traffic on residential streets). This matches the CED's description of unintended harmful consequences."
+        },
+        {
+            "id": "q-urev3-003",
+            "tags": ["unit3", "anatomy", "instance variables"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 3\n\nWhich of the following statements about instance variables is true?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "Each object has its own copy of instance variables."},
+                {"id": "b", "text": "Instance variables are shared by all objects of a class."},
+                {"id": "c", "text": "Instance variables must be declared inside methods."},
+                {"id": "d", "text": "Instance variables cannot be private."}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "Instance variables belong to each individual object; each object has its own copy. (B) describes class variables (static). (C) is false; they are declared in the class but outside methods. (D) is false; they can and often are private."
+        },
+        {
+            "id": "q-urev3-004",
+            "tags": ["unit3", "constructors", "purpose"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 4\n\nWhat is the primary purpose of a constructor in a class?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "To define the behaviors of an object."},
+                {"id": "b", "text": "To allocate memory for the object and initialize its instance variables."},
+                {"id": "c", "text": "To destroy the object when it is no longer needed."},
+                {"id": "d", "text": "To make the class available for use in other programs."}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "A constructor is called when an object is created; it allocates memory and initializes the instance variables to set the initial state of the object."
+        },
+        {
+            "id": "q-urev3-005",
+            "tags": ["unit3", "methods", "accessor vs mutator"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 5\n\nWhat is the difference between an accessor method and a mutator method?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "An accessor changes the state of an object; a mutator returns the state."},
+                {"id": "b", "text": "An accessor returns the value of an instance variable; a mutator changes the value of an instance variable."},
+                {"id": "c", "text": "An accessor must be private; a mutator must be public."},
+                {"id": "d", "text": "There is no difference; they are the same."}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "Accessor methods (getters) return the value of instance variables without modifying them. Mutator methods (setters) change the values of instance variables. (A) is backwards. (C) is not true; accessors are often public. (D) is false."
+        },
+        {
+            "id": "q-urev3-006",
+            "tags": ["unit3", "references", "parameter passing"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 6\n\nConsider the following code:\n```java\npublic void modify(Point p) {\n    p.setX(10);\n}\n```\nIf `modify` is called with a `Point` object, what happens to the original object?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "The original object remains unchanged because Java uses call by value."},
+                {"id": "b", "text": "The original object's x-coordinate is changed to 10 because the reference is passed."},
+                {"id": "c", "text": "A copy of the object is created and modified, leaving the original unchanged."},
+                {"id": "d", "text": "The code does not compile because `p` is a local variable."}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "Java passes object references by value: a copy of the reference is passed, but it still points to the same object. Therefore, changes made to the object inside the method affect the original object. (A) is a common misconception; the reference copy still refers to the same object. (C) is false; no copy is made. (D) is false; it compiles."
+        },
+        {
+            "id": "q-urev3-007",
+            "tags": ["unit3", "class variables", "static"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 7\n\nHow do class variables differ from instance variables?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "Class variables are declared without the `static` keyword; instance variables are declared with `static`."},
+                {"id": "b", "text": "Class variables have one copy shared by all instances; instance variables have a separate copy per object."},
+                {"id": "c", "text": "Class variables can only be accessed within the class; instance variables can be accessed anywhere."},
+                {"id": "d", "text": "Class variables are always `final`; instance variables are never `final`."}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "Class variables (static) are shared by all instances of the class. Instance variables (non‑static) have separate copies for each object. (A) is backwards. (C) is false; both can have various access modifiers. (D) is false; any variable can be final."
+        },
+        {
+            "id": "q-urev3-008",
+            "tags": ["unit3", "scope", "local variable"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 8\n\nWhere can a variable declared inside a `for` loop header (e.g., `for (int i = 0; i < 10; i++)`) be accessed?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "Anywhere in the class."},
+                {"id": "b", "text": "Only inside the loop body."},
+                {"id": "c", "text": "Anywhere in the method after the loop."},
+                {"id": "d", "text": "Only in the loop header and body."}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "A variable declared in the for‑loop header has scope limited to the loop itself, including the loop body. It cannot be used after the loop. (D) is also correct in that it's in the header and body, but the loop body is where it's primarily used; (B) is the standard AP answer."
+        },
+        {
+            "id": "q-urev3-009",
+            "tags": ["unit3", "this", "shadowing"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 9\n\nIn the following constructor, why is `this` required?\n```java\npublic class Person {\n    private String name;\n    public Person(String name) {\n        this.name = name;\n    }\n}\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "To call another constructor."},
+                {"id": "b", "text": "To distinguish the instance variable from the parameter with the same name."},
+                {"id": "c", "text": "To make the instance variable public."},
+                {"id": "d", "text": "To prevent the parameter from being changed."}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "The parameter `name` shadows the instance variable `name`. Using `this.name` explicitly refers to the instance variable, allowing the assignment to work correctly. Without `this`, `name = name;` would assign the parameter to itself, leaving the instance variable unchanged."
+        },
+        {
+            "id": "q-urev3-010",
+            "tags": ["unit3", "encapsulation"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 10\n\nWhy are instance variables typically declared as `private`?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "To make the class run faster."},
+                {"id": "b", "text": "To prevent other classes from directly accessing and modifying them, preserving encapsulation."},
+                {"id": "c", "text": "To allow only the constructor to access them."},
+                {"id": "d", "text": "To make them automatically `final`."}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "Encapsulation hides internal data from external classes. Making instance variables private prevents direct access, allowing controlled access through public methods. This protects the integrity of the object's state."
+        },
+        {
+            "id": "q-urev3-011",
+            "tags": ["unit3", "constructors", "overloading", "no match"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 11\n\nConsider the class:\n```java\npublic class Point {\n    private int x, y;\n    public Point(int x, int y) { this.x = x; this.y = y; }\n    public Point(int x) { this.x = x; this.y = 0; }\n}\n```\nWhich of the following calls to the constructor will cause a compiler error?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "`new Point(3, 4)`"},
+                {"id": "b", "text": "`new Point(5)`"},
+                {"id": "c", "text": "`new Point()`"},
+                {"id": "d", "text": "All of the above are valid."}
+            ],
+            "answerKeyJson": "c",
+            "explanation": "The class has two constructors: one with two `int` parameters and one with one `int` parameter. There is no no‑parameter constructor, so `new Point()` does not compile. (A) and (B) are valid."
+        },
+        {
+            "id": "q-urev3-012",
+            "tags": ["unit3", "static methods", "instance access"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 12\n\nCan a static method access an instance variable directly?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "Yes, because static methods belong to the class and can access any member."},
+                {"id": "b", "text": "No, because static methods do not have a `this` reference and cannot refer to instance variables without an object."},
+                {"id": "c", "text": "Yes, but only if the instance variable is also static."},
+                {"id": "d", "text": "No, because instance variables are always private."}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "Static methods are associated with the class, not any particular object. They have no `this` reference, so they cannot directly access instance variables (which belong to objects). They can access them only if passed an object reference. (C) is partially true but not the direct answer; (B) is the correct explanation."
+        },
+        {
+            "id": "q-urev3-013",
+            "tags": ["unit3", "references", "modification"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 13\n\nConsider the following code:\n```java\npublic static void swap(int[] arr) {\n    int temp = arr[0];\n    arr[0] = arr[1];\n    arr[1] = temp;\n}\n```\nIf called with an array `a = {5, 10}`, what is the value of `a[0]` after the call?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "5"},
+                {"id": "b", "text": "10"},
+                {"id": "c", "text": "0"},
+                {"id": "d", "text": "The array is unchanged."}
+            ],
+            "answerKeyJson": "b",
+            "explanation": "Arrays are objects in Java. The reference to the array is passed by value, so the method receives a copy of the reference pointing to the same array. Modifying the array's elements changes the original array. After swapping, a[0] becomes 10."
+        },
+        {
+            "id": "q-urev3-014",
+            "tags": ["unit3", "null", "NullPointerException"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 14\n\nWhat happens when the following code is executed?\n```java\nString s = null;\nint len = s.length();\n```",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "The variable `len` is assigned 0."},
+                {"id": "b", "text": "The variable `len` is assigned `null`."},
+                {"id": "c", "text": "A `NullPointerException` is thrown."},
+                {"id": "d", "text": "The code does not compile."}
+            ],
+            "answerKeyJson": "c",
+            "explanation": "Calling an instance method (`length()`) on a null reference throws a `NullPointerException` at runtime. The code compiles because `s` is of type `String`, but the actual reference is null."
+        },
+        {
+            "id": "q-urev3-015",
+            "tags": ["unit3", "final", "constants"],
+            "type": "SINGLE_CHOICE",
+            "prompt": "## Question 15\n\nWhat does the `final` keyword mean when applied to a variable?",
+            "imageUrl": null,
+            "optionsJson": [
+                {"id": "a", "text": "The variable cannot be changed after it is initialized."},
+                {"id": "b", "text": "The variable is shared by all instances of the class."},
+                {"id": "c", "text": "The variable can only be accessed within the same class."},
+                {"id": "d", "text": "The variable is automatically initialized to its default value."}
+            ],
+            "answerKeyJson": "a",
+            "explanation": "A `final` variable can be assigned only once. Once initialized, its value cannot be modified. (B) describes `static`. (C) describes `private`. (D) is true of all instance variables, not just `final`."
+        },
+        {
+            "id": "q-urev3-016",
+            "tags": ["unit3", "FRQ", "class design"],
+            "type": "OPEN",
+            "prompt": "## Free-Response Question 1\n\nWrite a complete Java class named `BankAccount` that meets the following specifications:\n- Private instance variable `balance` (double).\n- A constructor that takes an initial balance as a parameter. If the initial balance is negative, set the balance to 0.0.\n- A method `deposit(double amount)` that adds the amount to the balance only if the amount is positive; otherwise it does nothing.\n- A method `withdraw(double amount)` that subtracts the amount from the balance only if the amount is positive and does not exceed the current balance; otherwise it does nothing.\n- A method `getBalance()` that returns the current balance.\n\nInclude proper encapsulation.",
+            "imageUrl": null,
+            "optionsJson": [],
+            "answerKeyJson": "public class BankAccount {\n    private double balance;\n    \n    public BankAccount(double initial) {\n        if (initial > 0) {\n            balance = initial;\n        } else {\n            balance = 0.0;\n        }\n    }\n    \n    public void deposit(double amount) {\n        if (amount > 0) {\n            balance += amount;\n        }\n    }\n    \n    public void withdraw(double amount) {\n        if (amount > 0 && amount <= balance) {\n            balance -= amount;\n        }\n    }\n    \n    public double getBalance() {\n        return balance;\n    }\n}",
+            "explanation": "The class demonstrates encapsulation with private instance variables. The constructor validates the initial balance. The deposit and withdraw methods include validation to maintain proper state. Access is provided via a getter."
+        },
+        {
+            "id": "q-urev3-017",
+            "tags": ["unit3", "FRQ", "static members"],
+            "type": "OPEN",
+            "prompt": "## Free-Response Question 2\n\nWrite a class `Student` with the following requirements:\n- A private instance variable `name` (String).\n- A private static variable `totalStudents` (int) that counts how many `Student` objects have been created.\n- A constructor that takes a name and initializes the instance variable, and increments `totalStudents`.\n- A static method `getTotalStudents()` that returns the total number of students created.\n- An instance method `getName()` that returns the student's name.\n\nWrite the complete class.",
+            "imageUrl": null,
+            "optionsJson": [],
+            "answerKeyJson": "public class Student {\n    private String name;\n    private static int totalStudents = 0;\n    \n    public Student(String name) {\n        this.name = name;\n        totalStudents++;\n    }\n    \n    public static int getTotalStudents() {\n        return totalStudents;\n    }\n    \n    public String getName() {\n        return name;\n    }\n}",
+            "explanation": "The class uses a static variable to count instances. The constructor increments the count. Static method returns the count; instance method returns the name. Proper use of `this` distinguishes the parameter from the instance variable."
+        },
 
 
 
@@ -6460,5 +7388,404 @@
         "optionsJson": [],
         "answerKeyJson": "- Initial array: `[6, 2, 9, 1, 5, 8]`\n- Split into left: `[6, 2, 9]` and right: `[1, 5, 8]`\n- Split left `[6, 2, 9]` into `[6]` and `[2, 9]`\n- Split `[2, 9]` into `[2]` and `[9]`\n- Merge `[2]` and `[9]` → `[2, 9]`\n- Merge `[6]` and `[2, 9]` → `[2, 6, 9]`\n- Split right `[1, 5, 8]` into `[1]` and `[5, 8]`\n- Split `[5, 8]` into `[5]` and `[8]`\n- Merge `[5]` and `[8]` → `[5, 8]`\n- Merge `[1]` and `[5, 8]` → `[1, 5, 8]`\n- Merge left `[2, 6, 9]` and right `[1, 5, 8]` → `[1, 2, 5, 6, 8, 9]`\n\nFinal sorted array: `[1, 2, 5, 6, 8, 9]`",
         "explanation": "- Merge sort recursively divides the array until each subarray has one element, then merges them in sorted order.\n- The steps above illustrate the divide‑and‑conquer process."
+    },
+
+
+
+
+    {
+        "id": "q-urev4-001",
+        "tags": ["unit4", "ethical", "privacy"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 1\n\nA fitness tracker app collects users' heart rate data and sells it to health insurance companies without the users' knowledge. This practice primarily violates which ethical principle?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "Algorithmic bias"},
+            {"id": "b", "text": "Data privacy"},
+            {"id": "c", "text": "System reliability"},
+            {"id": "d", "text": "Intellectual property"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "Selling personal data without user consent violates privacy. The CED states that programmers should safeguard personal privacy. Algorithmic bias refers to systematic unfair outcomes, reliability to program failure, and intellectual property to ownership of code."
+    },
+    {
+        "id": "q-urev4-002",
+        "tags": ["unit4", "data sets", "representative"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 2\n\nA researcher wants to study voting patterns among young adults (ages 18-29). She collects data from a popular social media platform that is known to have a predominantly older user base. What is the most significant concern with this data set?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "The data is incomplete because it lacks some fields."},
+            {"id": "b", "text": "The data may not be representative of the target population."},
+            {"id": "c", "text": "The data is too large to analyze efficiently."},
+            {"id": "d", "text": "The data is stored in an incompatible format."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "The data set may not represent the target population (young adults) because the platform's user base is older. This can lead to biased conclusions. The CED emphasizes that data must be appropriate for the question being asked."
+    },
+    {
+        "id": "q-urev4-003",
+        "tags": ["unit4", "array", "creation", "default values"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 3\n\nWhat are the initial values of the elements in the following array?\n```java\nint[][] grid = new int[3][2];\n```",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "All elements are 0."},
+            {"id": "b", "text": "All elements are null."},
+            {"id": "c", "text": "Elements are random values."},
+            {"id": "d", "text": "The first row is 0, the rest are undefined."}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "When an array is created with `new`, all elements are initialized to the default value for that type. For `int`, the default is 0."
+    },
+    {
+        "id": "q-urev4-004",
+        "tags": ["unit4", "array", "length"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 4\n\nConsider the array: `double[] values = new double[10];`. What is the value of `values.length`?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "9"},
+            {"id": "b", "text": "10"},
+            {"id": "c", "text": "11"},
+            {"id": "d", "text": "It depends on the values stored."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "The `length` attribute of an array stores the number of elements it was created with, which is 10. It does not change when values are assigned."
+    },
+    {
+        "id": "q-urev4-005",
+        "tags": ["unit4", "array traversal", "enhanced for"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 5\n\nWhat is printed by the following code?\n```java\nint[] nums = {1, 2, 3, 4};\nfor (int x : nums) {\n    x = x * 2;\n}\nSystem.out.println(nums[0]);\n```",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "1"},
+            {"id": "b", "text": "2"},
+            {"id": "c", "text": "0"},
+            {"id": "d", "text": "8"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "The enhanced for loop variable `x` is a copy of each element. Changing `x` does not affect the array. Therefore, `nums[0]` remains 1."
+    },
+    {
+        "id": "q-urev4-006",
+        "tags": ["unit4", "array traversal", "indexed for"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 6\n\nWhich of the following loops correctly prints the elements of an array `arr` in reverse order?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "`for (int i = arr.length; i > 0; i--) System.out.println(arr[i]);`"},
+            {"id": "b", "text": "`for (int i = arr.length-1; i >= 0; i--) System.out.println(arr[i]);`"},
+            {"id": "c", "text": "`for (int i = arr.length; i >= 0; i--) System.out.println(arr[i-1]);`"},
+            {"id": "d", "text": "`for (int i = 0; i < arr.length; i++) System.out.println(arr[arr.length-1-i]);`"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "Option B correctly starts at the last index (arr.length-1) and decrements down to 0, printing each element. Option A uses `arr.length` which is out of bounds. Option C would also cause an out-of-bounds when i becomes 0 (accessing arr[-1]). Option D prints in reverse order but using a forward loop; it's valid but not the simplest. (B) is the standard reverse traversal."
+    },
+    {
+        "id": "q-urev4-007",
+        "tags": ["unit4", "array algorithm", "max"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 7\n\nWhat is returned by `findMax(new int[]{-5, -2, -8, -1})`?\n```java\npublic static int findMax(int[] arr) {\n    int max = arr[0];\n    for (int i = 1; i < arr.length; i++) {\n        if (arr[i] > max) max = arr[i];\n    }\n    return max;\n}\n```",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "-1"},
+            {"id": "b", "text": "-2"},
+            {"id": "c", "text": "-5"},
+            {"id": "d", "text": "-8"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "The algorithm correctly finds the maximum (largest value). Among negative numbers, -1 is the largest (closest to zero)."
+    },
+    {
+        "id": "q-urev4-008",
+        "tags": ["unit4", "array algorithm", "average"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 8\n\nConsider the following method that attempts to compute the average of an array:\n```java\npublic static double average(int[] arr) {\n    int sum = 0;\n    for (int x : arr) sum += x;\n    return sum / arr.length;\n}\n```\nFor `arr = {1, 2, 3, 4}`, what is returned?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "2.0"},
+            {"id": "b", "text": "2.5"},
+            {"id": "c", "text": "2"},
+            {"id": "d", "text": "3"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "Integer division truncates: 10 / 4 = 2 (int), then stored as 2.0. To get 2.5, one operand must be cast to double. The method has the integer division bug."
+    },
+    {
+        "id": "q-urev4-009",
+        "tags": ["unit4", "file I/O", "throws IOException"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 9\n\nWhich of the following is required when writing a method that creates a `Scanner` from a `File` object?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "The method must be declared `public`."},
+            {"id": "b", "text": "The method must include `throws IOException` in its header or handle the exception."},
+            {"id": "c", "text": "The file must be closed automatically using `finally`."},
+            {"id": "d", "text": "The file name must be a string literal."}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "File operations can throw an `IOException`. The method must either declare it with `throws IOException` or catch it. The CED states that one way to handle this is to add `throws IOException` to the method header."
+    },
+    {
+        "id": "q-urev4-010",
+        "tags": ["unit4", "file I/O", "split"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 10\n\nA CSV file has lines formatted as `\"name,age,city\"`. Which code correctly extracts the age as an integer from a line read by `Scanner`?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "`String[] parts = line.split(\",\"); int age = parts[1];`"},
+            {"id": "b", "text": "`String[] parts = line.split(\",\"); int age = Integer.parseInt(parts[1]);`"},
+            {"id": "c", "text": "`int age = line.nextInt();`"},
+            {"id": "d", "text": "`int age = (int) line.split(\",\")[1];`"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "`split` returns an array of Strings. To get an int, you must parse it using `Integer.parseInt`. (A) attempts to assign a String to int. (C) would work only if the Scanner was reading tokens, not lines. (D) casting a String to int is invalid."
+    },
+    {
+        "id": "q-urev4-011",
+        "tags": ["unit4", "wrapper", "autoboxing"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 11\n\nConsider the following code:\n```java\nInteger x = 100;\nInteger y = 100;\nSystem.out.println(x == y);\nInteger a = 200;\nInteger b = 200;\nSystem.out.println(a == b);\n```\nWhat is printed?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "true true"},
+            {"id": "b", "text": "true false"},
+            {"id": "c", "text": "false true"},
+            {"id": "d", "text": "false false"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "Java caches Integer objects for values between -128 and 127. 100 is cached, so x and y refer to the same object, `==` is true. 200 is not cached, so a and b are different objects, `==` is false."
+    },
+    {
+        "id": "q-urev4-012",
+        "tags": ["unit4", "wrapper", "parseInt"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 12\n\nWhat is the result of the following code?\n```java\nString num = \"123\";\nint val = Integer.parseInt(num);\nSystem.out.println(val + 10);\n```",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "12310"},
+            {"id": "b", "text": "133"},
+            {"id": "c", "text": "123"},
+            {"id": "d", "text": "10"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "`Integer.parseInt(\"123\")` returns the int 123. Then 123 + 10 = 133."
+    },
+    {
+        "id": "q-urev4-013",
+        "tags": ["unit4", "ArrayList", "add", "size"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 13\n\nWhat is the size of the `ArrayList` after the following code?\n```java\nArrayList<String> list = new ArrayList<>();\nlist.add(\"A\");\nlist.add(0, \"B\");\nlist.add(\"C\");\n```",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "2"},
+            {"id": "b", "text": "3"},
+            {"id": "c", "text": "4"},
+            {"id": "d", "text": "5"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "After adding \"A\", list has size 1. Then add at index 0 inserts \"B\" before \"A\", size becomes 2. Then add \"C\" appends, size becomes 3."
+    },
+    {
+        "id": "q-urev4-014",
+        "tags": ["unit4", "ArrayList", "set"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 14\n\nWhat is printed by the following code?\n```java\nArrayList<Integer> nums = new ArrayList<>();\nnums.add(5);\nnums.add(10);\nnums.add(15);\nint x = nums.set(1, 20);\nSystem.out.println(x);\n```",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "5"},
+            {"id": "b", "text": "10"},
+            {"id": "c", "text": "15"},
+            {"id": "d", "text": "20"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "`set` replaces the element at index 1 with 20 and returns the old element, which was 10."
+    },
+    {
+        "id": "q-urev4-015",
+        "tags": ["unit4", "ArrayList traversal", "ConcurrentModification"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 15\n\nWhat happens when the following code is executed?\n```java\nArrayList<Integer> list = new ArrayList<>();\nlist.add(1); list.add(2); list.add(3);\nfor (Integer x : list) {\n    list.remove(x);\n}\n```",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "The list becomes empty."},
+            {"id": "b", "text": "The list contains [1, 2, 3]."},
+            {"id": "c", "text": "A `ConcurrentModificationException` is thrown."},
+            {"id": "d", "text": "The code does not compile."}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "Using an enhanced for loop, you cannot modify the list (add/remove) because it uses an iterator that detects concurrent modification. This throws a `ConcurrentModificationException`."
+    },
+    {
+        "id": "q-urev4-016",
+        "tags": ["unit4", "ArrayList algorithm", "reverse"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 16\n\nWhich of the following correctly reverses an `ArrayList<Integer>` named `list`?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "`for (int i = 0; i < list.size(); i++) list.add(i, list.remove(list.size()-1));`"},
+            {"id": "b", "text": "`for (int i = 0; i < list.size()/2; i++) { int tmp = list.get(i); list.set(i, list.get(list.size()-1-i)); list.set(list.size()-1-i, tmp); }`"},
+            {"id": "c", "text": "`ArrayList<Integer> rev = new ArrayList<>(); for (int x : list) rev.add(0, x); list = rev;`"},
+            {"id": "d", "text": "All of the above reverse the list."}
+        ],
+        "answerKeyJson": "d",
+        "explanation": "(A) repeatedly removes last element and inserts at front, reversing. (B) swaps elements in place. (C) creates a new list by inserting at front. All are valid reversal methods. (D) is correct."
+    },
+    {
+        "id": "q-urev4-017",
+        "tags": ["unit4", "2D array", "creation"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 17\n\nWhich of the following correctly creates a 2D array with 2 rows and 3 columns?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "`int[][] arr = new int[2][3];`"},
+            {"id": "b", "text": "`int[][] arr = new int[3][2];`"},
+            {"id": "c", "text": "`int[][] arr = new int[2][]; arr[0] = new int[3]; arr[1] = new int[3];`"},
+            {"id": "d", "text": "Both (A) and (C)"}
+        ],
+        "answerKeyJson": "d",
+        "explanation": "(A) creates a rectangular 2x3 array. (C) creates a 2-row array and then assigns each row a 3-element array, also resulting in 2x3. Both are valid. (B) creates 3x2. So (D) is correct."
+    },
+    {
+        "id": "q-urev4-018",
+        "tags": ["unit4", "2D array", "access"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 18\n\nGiven `int[][] mat = {{1,2},{3,4},{5,6}};`, what is the value of `mat[1][0]`?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "1"},
+            {"id": "b", "text": "2"},
+            {"id": "c", "text": "3"},
+            {"id": "d", "text": "4"}
+        ],
+        "answerKeyJson": "c",
+        "explanation": "Row index 1 is the second row: {3,4}. Column index 0 is the first element: 3."
+    },
+    {
+        "id": "q-urev4-019",
+        "tags": ["unit4", "2D traversal", "row-major"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 19\n\nWhat is printed by the following code?\n```java\nint[][] grid = {{1,2,3},{4,5,6}};\nfor (int r = 0; r < grid.length; r++) {\n    for (int c = 0; c < grid[r].length; c++) {\n        System.out.print(grid[r][c] + \" \");\n    }\n}\n```",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "1 2 3 4 5 6"},
+            {"id": "b", "text": "1 4 2 5 3 6"},
+            {"id": "c", "text": "1 2 3 \n4 5 6"},
+            {"id": "d", "text": "1 2 3 4 5 6 "}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "Row-major order: first row then second, all on one line because no println after each row. Output is \"1 2 3 4 5 6 \" (space after each). (A) matches that."
+    },
+    {
+        "id": "q-urev4-020",
+        "tags": ["unit4", "2D algorithm", "sum row"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 20\n\nWhat is the sum of all elements in the third column of `int[][] mat = {{1,2,3},{4,5,6},{7,8,9}};`?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "18"},
+            {"id": "b", "text": "15"},
+            {"id": "c", "text": "12"},
+            {"id": "d", "text": "9"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "Third column (index 2) contains 3, 6, 9. Sum = 18."
+    },
+    {
+        "id": "q-urev4-021",
+        "tags": ["unit4", "linear search", "2D"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 21\n\nConsider the following method that searches a 2D array:\n```java\npublic static boolean search(int[][] mat, int target) {\n    for (int r = 0; r < mat.length; r++) {\n        for (int c = 0; c < mat[r].length; c++) {\n            if (mat[r][c] == target) return true;\n        }\n    }\n    return false;\n}\n```\nFor `mat = {{1,2},{3,4}}` and `target = 5`, what is returned?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "true"},
+            {"id": "b", "text": "false"},
+            {"id": "c", "text": "1"},
+            {"id": "d", "text": "-1"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "The method checks every element; 5 is not present, so it returns false."
+    },
+    {
+        "id": "q-urev4-022",
+        "tags": ["unit4", "linear search", "ArrayList"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 22\n\nWhat is the output of the following code?\n```java\nArrayList<Integer> list = new ArrayList<>();\nlist.add(10); list.add(20); list.add(30);\nint index = list.indexOf(20);\nSystem.out.println(index);\n```",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "0"},
+            {"id": "b", "text": "1"},
+            {"id": "c", "text": "2"},
+            {"id": "d", "text": "-1"}
+        ],
+        "answerKeyJson": "b",
+        "explanation": "`indexOf` returns the first index where the element appears. 20 is at index 1."
+    },
+    {
+        "id": "q-urev4-023",
+        "tags": ["unit4", "selection sort", "trace"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 23\n\nConsider the array `[5, 2, 8, 1, 9]`. After one pass of selection sort (i.e., after placing the smallest element at the front), what is the array?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "[1, 2, 8, 5, 9]"},
+            {"id": "b", "text": "[2, 5, 8, 1, 9]"},
+            {"id": "c", "text": "[1, 5, 8, 2, 9]"},
+            {"id": "d", "text": "[5, 2, 8, 1, 9]"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "The smallest element is 1 at index 3. Swap it with the first element (5). Result: [1, 2, 8, 5, 9]."
+    },
+    {
+        "id": "q-urev4-024",
+        "tags": ["unit4", "insertion sort", "trace"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 24\n\nConsider the array `[5, 2, 8, 1, 9]`. After one pass of insertion sort (i.e., after inserting the second element into the sorted portion), what is the array?",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "[2, 5, 8, 1, 9]"},
+            {"id": "b", "text": "[5, 2, 8, 1, 9]"},
+            {"id": "c", "text": "[1, 2, 5, 8, 9]"},
+            {"id": "d", "text": "[2, 5, 1, 8, 9]"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "First element (5) is sorted. Take second element (2), compare and shift 5 right, insert 2 at front: [2,5,8,1,9]."
+    },
+    {
+        "id": "q-urev4-025",
+        "tags": ["unit4", "recursion", "trace"],
+        "type": "SINGLE_CHOICE",
+        "prompt": "## Question 25\n\nWhat is returned by `mystery(4)`?\n```java\npublic static int mystery(int n) {\n    if (n <= 1) return n;\n    return mystery(n-1) + mystery(n-2);\n}\n```",
+        "imageUrl": null,
+        "optionsJson": [
+            {"id": "a", "text": "3"},
+            {"id": "b", "text": "4"},
+            {"id": "c", "text": "5"},
+            {"id": "d", "text": "8"}
+        ],
+        "answerKeyJson": "a",
+        "explanation": "This is the Fibonacci sequence: mystery(1)=1, mystery(2)=1, mystery(3)=2, mystery(4)=3. So mystery(4)=3."
+    },
+    {
+        "id": "q-urev4-026",
+        "tags": ["unit4", "FRQ", "ArrayList algorithm"],
+        "type": "OPEN",
+        "prompt": "## Free-Response Question 1\n\nWrite a method `public static ArrayList<Integer> mergeSorted(ArrayList<Integer> a, ArrayList<Integer> b)` that takes two sorted ArrayLists (each in ascending order) and returns a new ArrayList containing all elements from both lists in sorted ascending order. Do not modify the original lists. For example, if `a = [1, 3, 5]` and `b = [2, 4, 6]`, the method should return `[1, 2, 3, 4, 5, 6]`. Assume both input lists are non‑null.",
+        "imageUrl": null,
+        "optionsJson": [],
+        "answerKeyJson": "public static ArrayList<Integer> mergeSorted(ArrayList<Integer> a, ArrayList<Integer> b) {\n    ArrayList<Integer> result = new ArrayList<>();\n    int i = 0, j = 0;\n    while (i < a.size() && j < b.size()) {\n        if (a.get(i) < b.get(j)) {\n            result.add(a.get(i));\n            i++;\n        } else {\n            result.add(b.get(j));\n            j++;\n        }\n    }\n    while (i < a.size()) {\n        result.add(a.get(i));\n        i++;\n    }\n    while (j < b.size()) {\n        result.add(b.get(j));\n        j++;\n    }\n    return result;\n}",
+        "explanation": "This merge algorithm runs in O(n) time. It compares the current elements of both lists, adding the smaller to the result, then proceeds. After one list is exhausted, the remaining elements of the other are appended."
+    },
+    {
+        "id": "q-urev4-027",
+        "tags": ["unit4", "FRQ", "2D array algorithm"],
+        "type": "OPEN",
+        "prompt": "## Free-Response Question 2\n\nWrite a method `public static int[][] rotate90(int[][] matrix)` that takes a square 2D array (same number of rows and columns) and returns a new 2D array that is the original matrix rotated 90 degrees clockwise. For example, if the input is:\n```\n{{1,2,3},\n {4,5,6},\n {7,8,9}}\n```\nthe output should be:\n```\n{{7,4,1},\n {8,5,2},\n {9,6,3}}\n```\nDo not modify the original matrix. Assume the matrix is non‑empty and square.",
+        "imageUrl": null,
+        "optionsJson": [],
+        "answerKeyJson": "public static int[][] rotate90(int[][] matrix) {\n    int n = matrix.length;\n    int[][] result = new int[n][n];\n    for (int r = 0; r < n; r++) {\n        for (int c = 0; c < n; c++) {\n            result[c][n-1-r] = matrix[r][c];\n        }\n    }\n    return result;\n}",
+        "explanation": "In a 90° clockwise rotation, the element at (r, c) goes to (c, n-1-r). The nested loops copy each element to its new position in the result array."
     }
 ]

@@ -1,218 +1,477 @@
-# **Lesson 16: Antiderivatives and Basic Integration**
+# Integration Techniques
 
-### **16.1 Indefinite Integrals and Basic Rules**
+## **Reversing Differentiation**
 
-**Definition:**
-An **antiderivative** of a function $f(x)$ is a function $F(x)$ such that $F'(x) = f(x)$. The **indefinite integral** of $f$ with respect to $x$ is the family of all antiderivatives of $f$, denoted by:
-$$\int f(x) \, dx = F(x) + C$$
-where $C$ is an arbitrary constant called the **constant of integration**.
+All the stuff we've talked about so far is important—no doubt. That was all about the *why* behind the formulas and equations. But now it's time to learn integration at a really high level, because this is a key skill you need to develop—both for the AP exam and for life. Trust me, it'll be useful.
 
-**Comments:**
+Alright, first, let's make it clear:
 
-- **Why +C?** Because the derivative of a constant is zero, if $F(x)$ is an antiderivative, then $F(x) + C$ is also an antiderivative for any constant $C$. The constant represents an unknown vertical shift.
-- **Basic Rules:** These are obtained by reversing derivative rules:
-    1. **Power Rule (for $n \neq -1$):** $\int x^n \, dx = \frac{x^{n+1}}{n+1} + C$
-    2. **Constant Multiple:** $\int k f(x) \, dx = k \int f(x) \, dx$
-    3. **Sum/Difference:** $\int [f(x) \pm g(x)] \, dx = \int f(x) \, dx \pm \int g(x) \, dx$
-    4. **Integral of Zero:** $\int 0 \, dx = C$
-    5. **Integral of Constant:** $\int k \, dx = kx + C$
-- **Common Antiderivatives:**
-    - $\int e^x \, dx = e^x + C$
-    - $\int \sin x \, dx = -\cos x + C$
-    - $\int \cos x \, dx = \sin x + C$
-    - $\int \sec^2 x \, dx = \tan x + C$
-    - $\int \frac{1}{x} \, dx = \ln|x| + C$ (for $x \neq 0$)
-    - $\int \frac{1}{1+x^2} \, dx = \arctan x + C$
-    - $\int \frac{1}{\sqrt{1-x^2}} \, dx = \arcsin x + C$
-- **Limitation:** Not all functions have elementary antiderivatives (e.g., $e^{-x^2}$, $\frac{\sin x}{x}$). In such cases, we may approximate definite integrals numerically.
+If we have a definite integral
 
-**Examples:**
+$$
+\displaystyle \int_a^b f(x) \, dx = F(b) - F(a)
+$$
 
-1. **Basic Power Rule:** $\int x^4 \, dx = \frac{x^5}{5} + C$.
-2. **Fractional Exponent:** $\int \sqrt{x} \, dx = \int x^{1/2} \, dx = \frac{x^{3/2}}{3/2} + C = \frac{2}{3} x^{3/2} + C$.
-3. **Sum Rule:** $\int (3x^2 - 2x + 5) \, dx = 3 \cdot \frac{x^3}{3} - 2 \cdot \frac{x^2}{2} + 5x + C = x^3 - x^2 + 5x + C$.
-4. **Trigonometric:** $\int (2\sin x + 3\sec^2 x) \, dx = -2\cos x + 3\tan x + C$.
+To evaluate it and get the answer, we need to find the antiderivative first. Then, basically, the job is done. Last step is just plugging in the upper and lower limits, and that's it.
 
----
+So let's agree—the hardest part is finding antiderivatives of $\displaystyle f(x)$. Once you've got that, you're golden. So we need to master finding antiderivatives of any function—simple, complex, doesn't matter. Get good at that, and definite integrals won't be a problem.
 
-### **16.2 Algebraic Manipulation Before Integration**
+So let's talk about indefinite integration—or antidifferentiation—in more detail.
 
-**Definition:**
-Some integrands require algebraic manipulation—such as expanding, factoring, long division, or completing the square—to rewrite them in a form where basic integration rules apply.
+Let's recall:
 
-**Comments:**
+An **antiderivative** of a function $\displaystyle f(x)$ is a function $\displaystyle F(x)$ such that $\displaystyle F'(x) = f(x)$ for all $\displaystyle x$ in the domain of $\displaystyle f$.
 
-- **Long Division:** For rational functions where the degree of the numerator is greater than or equal to the degree of the denominator, perform polynomial long division to express it as a polynomial plus a proper rational function.
-- **Completing the Square:** Useful for integrals involving quadratic expressions, especially when they match forms for inverse trigonometric or logarithmic integrals.
-- **Splitting Fractions:** A single fraction with multiple terms in the numerator can often be split into separate fractions.
-- **Multiplying/Dividing:** Sometimes multiplying numerator and denominator by a conjugate or dividing through by a common factor simplifies the integrand.
+We wanna get good at this:
 
-**Examples:**
+$$\displaystyle \int f(x) \, dx = F(x) + C$$
 
-1. **Long Division:** Evaluate $\int \frac{x^2 + 3x - 5}{x-1} \, dx$.
-    - Perform long division: $\frac{x^2+3x-5}{x-1} = x + 4 + \frac{-1}{x-1}$.
-    - Then $\int \left( x + 4 + \frac{-1}{x-1} \right) dx = \frac{x^2}{2} + 4x - \ln|x-1| + C$.
-2. **Splitting Fractions:** Evaluate $\int \frac{x^3 + 2x + 1}{x} \, dx$.
-    - Split: $\frac{x^3}{x} + \frac{2x}{x} + \frac{1}{x} = x^2 + 2 + \frac{1}{x}$.
-    - Integral: $\frac{x^3}{3} + 2x + \ln|x| + C$.
-3. **Completing the Square:** Evaluate $\int \frac{1}{x^2 + 4x + 13} \, dx$.
-    - Complete the square: $x^2+4x+13 = (x^2+4x+4) + 9 = (x+2)^2 + 3^2$.
-    - Then $\int \frac{1}{(x+2)^2 + 9} \, dx$. Recognize form $\int \frac{du}{u^2+a^2} = \frac{1}{a} \arctan\left( \frac{u}{a} \right) + C$.
-    - Here $u = x+2, a=3$. So integral = $\frac{1}{3} \arctan\left( \frac{x+2}{3} \right) + C$.
-4. **Multiplying by Conjugate:** Evaluate $\int \frac{1}{\sqrt{x+1} - \sqrt{x}} \, dx$.
-    - Multiply numerator and denominator by the conjugate $\sqrt{x+1} + \sqrt{x}$:
-    $$\frac{1}{\sqrt{x+1} - \sqrt{x}} \cdot \frac{\sqrt{x+1} + \sqrt{x}}{\sqrt{x+1} + \sqrt{x}} = \frac{\sqrt{x+1} + \sqrt{x}}{(x+1)-x} = \sqrt{x+1} + \sqrt{x}$$
-    - Then integrate: $\int (\sqrt{x+1} + \sqrt{x}) \, dx = \frac{2}{3}(x+1)^{3/2} + \frac{2}{3}x^{3/2} + C$.
+*Please, I'm begging you, don't forget the constant $\displaystyle C$ here*—otherwise you'll mess up big time on the exam.
 
----
+Suppose we need the antiderivative of $\displaystyle f(x) = \cos x$. We try to find a function $\displaystyle F(x)$ whose derivative is $\displaystyle F'(x) = f(x)$.
 
-### **16.3 Substitution Method (u-Substitution)**
+From our differentiation rules, we know that's $\displaystyle \sin x$.
 
-**Definition:**
-The **substitution method** (or **u-substitution**) is the reverse of the chain rule. It is used when the integrand contains a composite function and its derivative (up to a constant factor).
+So an antiderivative is $\displaystyle F(x) = \sin x$, and
 
-**Procedure for Indefinite Integrals:**
+$\displaystyle \int \cos x \, dx = \sin x + C$
 
-1. Choose a substitution $u = g(x)$ such that the integrand contains $g(x)$ and its derivative $g'(x)$ (or a constant multiple thereof).
-2. Compute $du = g'(x) dx$, and solve for $dx$.
-3. Rewrite the integral entirely in terms of $u$ and $du$. If any $x$ terms remain, express them in terms of $u$.
-4. Integrate with respect to $u$.
-5. Substitute back to express the result in terms of $x$.
+Think about that for a second.
 
-**For Definite Integrals:** There are two approaches:
+It all comes back to the differentiation rules again. Integration and differentiation are inverse operations. And because of that, there are a bunch of integrals we can do right away—no extra steps needed.
 
-- **Method 1:** Change the limits of integration according to $u = g(x)$. Then evaluate the integral in terms of $u$ without returning to $x$.
-- **Method 2:** Integrate in terms of $u$ and then convert back to $x$ before evaluating using the original limits.
+## Basic Integration Rules
 
-**Comments:**
+| Differentiation Rule | Integration Rule |
+|----------------------|------------------|
+| $\displaystyle \frac{d}{dx}[k f(x)] = k f'(x)$ | $\displaystyle \int k f(x) \, dx = k \int f(x) \, dx \quad (k \neq 0)$ |
+| $\displaystyle \frac{d}{dx}[f(x) + g(x)] = f'(x) + g'(x)$ | $\displaystyle \int [f(x) + g(x)] \, dx = \int f(x) \, dx + \int g(x) \, dx$ |
+| $\displaystyle \frac{d}{dx}\left[\frac{x^{n+1}}{n+1}\right] = x^n$ | $\displaystyle \int x^n \, dx = \frac{x^{n+1}}{n+1} + C \quad (n \neq -1)$ |
+| $\displaystyle \frac{d}{dx}[\ln \lvert x \rvert] = \frac{1}{x}$ | $\displaystyle \int \frac{1}{x} \, dx = \ln \lvert x \rvert + C$ |
+| $\displaystyle \frac{d}{dx}[\sin x] = \cos x$ | $\displaystyle \int \cos x \, dx = \sin x + C$ |
+| $\displaystyle \frac{d}{dx}[\cos x] = -\sin x$ | $\displaystyle \int \sin x \, dx = -\cos x + C$ |
+| $\displaystyle \frac{d}{dx}[\tan x] = \sec^2 x$ | $\displaystyle \int \sec^2 x \, dx = \tan x + C$ |
+| $\displaystyle \frac{d}{dx}[\cot x] = -\csc^2 x$ | $\displaystyle \int \csc^2 x \, dx = -\cot x + C$ |
+| $\displaystyle \frac{d}{dx}[\sec x] = \sec x \tan x$ | $\displaystyle \int \sec x \tan x \, dx = \sec x + C$ |
+| $\displaystyle \frac{d}{dx}[\csc x] = -\csc x \cot x$ | $\displaystyle \int \csc x \cot x \, dx = -\csc x + C$ |
+| $\displaystyle \frac{d}{dx}[\ln \lvert \sec x \rvert] = \tan x$ | $\displaystyle \int \tan x \, dx = \ln \lvert \sec x \rvert + C$ (or $\displaystyle -\ln \lvert \cos x \rvert + C$) |
+| $\displaystyle \frac{d}{dx}[\ln \lvert \sin x \rvert] = \cot x$ | $\displaystyle \int \cot x \, dx = \ln \lvert \sin x \rvert + C$ (or $\displaystyle -\ln \lvert \csc x \rvert + C$) |
+| $\displaystyle \frac{d}{dx}[e^x] = e^x$ | $\displaystyle \int e^x \, dx = e^x + C$ |
+| $\displaystyle \frac{d}{dx}\left[\frac{a^x}{\ln a}\right] = a^x$ | $\displaystyle \int a^x \, dx = \frac{a^x}{\ln a} + C \quad (a > 0, a \neq 1)$ |
+| $\displaystyle \frac{d}{dx}[\sin^{-1} x] = \frac{1}{\sqrt{1-x^2}}$ | $\displaystyle \int \frac{dx}{\sqrt{1-x^2}} = \sin^{-1} x + C$ (or $\displaystyle \arcsin x + C$) |
+| $\displaystyle \frac{d}{dx}[\tan^{-1} x] = \frac{1}{1+x^2}$ | $\displaystyle \int \frac{dx}{1+x^2} = \tan^{-1} x + C$ (or $\displaystyle \arctan x + C$) |
+| $\displaystyle \frac{d}{dx}[\sec^{-1} \lvert x \rvert] = \frac{1}{x\sqrt{x^2-1}}$ | $\displaystyle \int \frac{dx}{x\sqrt{x^2-1}} = \sec^{-1} \lvert x \rvert + C$ (or $\displaystyle \operatorname{arcsec} \lvert x \rvert + C$) |
 
-- **Choosing $u$:** Look for an "inside function" whose derivative appears. Common choices: the argument of a trigonometric, exponential, or logarithmic function; the inner function of a power; etc.
-- **Missing Constant Factors:** Sometimes the derivative is off by a constant factor. You can multiply and divide by that constant to adjust, provided it's not zero.
-- **Verification:** Differentiate your result to check.
+- These rules are the foundation for finding indefinite integrals. Remember that every antiderivative includes an arbitrary constant $\displaystyle C$ because differentiation wipes out constant terms.
+- The absolute values in $\displaystyle \ln|x|$ and $\displaystyle \sec^{-1}|x|$ make sure the argument stays positive where needed.
+- For the inverse trig forms, $\displaystyle \sin^{-1}x$ means arcsine, etc.
 
-**Examples:**
+**Let's See It In Action:**
 
-1. **Basic Substitution:** Find $\int 2x (x^2+1)^4 \, dx$.
-    - Let $u = x^2+1$, then $du = 2x \, dx$. The integral becomes $\int u^4 \, du = \frac{u^5}{5} + C = \frac{(x^2+1)^5}{5} + C$.
-2. **Trigonometric Substitution:** Find $\int \sin(3x) \, dx$.
-    - Let $u = 3x$, then $du = 3 dx$, so $dx = \frac{1}{3} du$.
-    - $\int \sin u \cdot \frac{1}{3} du = \frac{1}{3} (-\cos u) + C = -\frac{1}{3} \cos(3x) + C$.
-3. **Definite Integral with Change of Limits:** Evaluate $\int_0^1 x e^{x^2} \, dx$.
-    - Let $u = x^2$, then $du = 2x dx \Rightarrow x dx = \frac{1}{2} du$.
-    - Change limits: when $x=0$, $u=0$; when $x=1$, $u=1$.
-    - Integral becomes $\int_0^1 e^u \cdot \frac{1}{2} du = \frac{1}{2} \left. e^u \right|_0^1 = \frac{1}{2}(e - 1)$.
-4. **Substitution with Extra Algebra:** Find $\int \frac{x}{\sqrt{1-4x^2}} \, dx$.
-    - Let $u = 1-4x^2$, then $du = -8x dx \Rightarrow x dx = -\frac{1}{8} du$.
-    - Integral: $\int \frac{1}{\sqrt{u}} \cdot \left( -\frac{1}{8} \right) du = -\frac{1}{8} \int u^{-1/2} du = -\frac{1}{8} \cdot 2u^{1/2} + C = -\frac{1}{4} \sqrt{1-4x^2} + C$.
-5. **Integral of Tangent:** Find $\int \tan x \, dx$.
-    - Write $\tan x = \frac{\sin x}{\cos x}$. Let $u = \cos x$, then $du = -\sin x dx$.
-    - $\int \frac{\sin x}{\cos x} dx = -\int \frac{1}{u} du = -\ln|u| + C = -\ln|\cos x| + C = \ln|\sec x| + C$.
+**Example 1: Basic Power Rule**
+Find $\displaystyle \int x^4 \, dx$.
+
+*   Reverse the power rule: add 1 to the exponent (4+1=5) and divide by the new exponent.
+*   $\displaystyle \int x^4 \, dx = \boxed{\frac{x^5}{5} + C}$.
+
+**Example 2: Fractional Exponent**
+Find $\displaystyle \int \sqrt{x} \, dx$.
+
+*   First, rewrite: $\displaystyle \sqrt{x} = x^{1/2}$.
+*   Apply the power rule: $\displaystyle \int x^{1/2} \, dx = \frac{x^{3/2}}{3/2} + C = \boxed{\frac{2}{3} x^{3/2} + C}$.
+
+**Example 3: Combining Rules**
+Find $\displaystyle \int (3x^2 - 2x + 5) \, dx$.
+
+*   Integrate term-by-term:
+    
+    $\displaystyle \int 3x^2 \, dx = 3 \cdot \frac{x^3}{3} = x^3$
+
+    $\displaystyle \int -2x \, dx = -2 \cdot \frac{x^2}{2} = -x^2$
+    
+    $\displaystyle \int 5 \, dx = 5x$
+*   Combine and add $\displaystyle C$: $\displaystyle \boxed{x^3 - x^2 + 5x + C}$.
+
+**Example 4: Trigonometric Integral**
+Find $\displaystyle \int (2\sin x + 3\sec^2 x) \, dx$.
+
+*   $\displaystyle \int 2\sin x \, dx = -2\cos x$
+*   $\displaystyle \int 3\sec^2 x \, dx = 3\tan x$
+*   Answer: $\displaystyle \boxed{-2\cos x + 3\tan x + C}$.
 
 ---
 
-### **16.4 Integration Strategy Selection**
+## **Integration by Substitution (u-Substitution)**
 
-**Definition:**
-Choosing the right technique is crucial for finding antiderivatives. A systematic approach involves recognizing the form of the integrand and applying appropriate rules or manipulations.
+Alright, can you integrate this?
 
-**Step-by-Step Strategy:**
+$$\displaystyle \int (x^2 + 1)^2 \, dx$$
 
-1. **Simplify:** Expand, factor, or algebraically manipulate the integrand to a simpler form.
-2. **Look for Basic Antiderivative:** Check if the integrand matches a known derivative formula.
-3. **Consider Substitution:** Look for a composite function and its derivative (or a constant multiple).
-4. **Algebraic Rearrangement:** For rational functions, use long division or partial fractions (partial fractions are covered in Calculus BC, but simple cases may be handled by splitting).
-5. **Complete the Square:** For quadratics inside square roots or denominators.
-6. **Try Trigonometric Identities:** For trigonometric integrals, use identities to simplify.
-7. **If Stuck:** Consider if the integral is non-elementary or requires advanced techniques (beyond AP Calculus AB).
+You might think: *Can't we just expand it?*
 
-**Comments:**
+For that one, yeah, we can. 
 
-- **Practice is Key:** The more integrals you solve, the better you become at recognizing patterns.
-- **Multiple Methods:** Sometimes more than one method works; choose the most efficient.
-- **Check Your Answer:** Differentiate your antiderivative to verify it matches the integrand.
+$\displaystyle (x^2 + 1)^2$ becomes $\displaystyle x^4 + 2x^2 + 1$, and then we integrate term by term. Easy.
 
-**Examples:**
+But what about this?
 
-1. **Rational Function:** $\int \frac{x^2+2x-1}{x} \, dx$.
-    - Split: $\int \left( x + 2 - \frac{1}{x} \right) dx = \frac{x^2}{2} + 2x - \ln|x| + C$.
-2. **Substitution with Trig:** $\int \sec^2(5x) \, dx$.
-    - Let $u = 5x$, $du = 5 dx$, so $dx = \frac{1}{5} du$.
-    - $\int \sec^2 u \cdot \frac{1}{5} du = \frac{1}{5} \tan u + C = \frac{1}{5} \tan(5x) + C$.
-3. **Combining Techniques:** $\int \frac{e^{2x}}{1+e^x} \, dx$.
-    - Note $e^{2x} = (e^x)^2$. Let $u = e^x$, then $du = e^x dx$. But we have $e^{2x} dx = e^x \cdot e^x dx = u \, du$.
-    - Then integral becomes $\int \frac{u}{1+u} du$. Perform long division: $\frac{u}{1+u} = 1 - \frac{1}{1+u}$.
-    - So $\int \left( 1 - \frac{1}{1+u} \right) du = u - \ln|1+u| + C = e^x - \ln(1+e^x) + C$.
-4. **Completing the Square:** $\int \frac{1}{\sqrt{-x^2+6x-5}} \, dx$.
-    - Complete the square: $-x^2+6x-5 = -(x^2-6x+5) = -(x^2-6x+9-4) = -[(x-3)^2-4] = 4 - (x-3)^2$.
-    - Integral: $\int \frac{1}{\sqrt{4-(x-3)^2}} dx$. Let $u = x-3$, then $du = dx$.
-    - This matches $\int \frac{1}{\sqrt{a^2-u^2}} du = \arcsin\left( \frac{u}{a} \right) + C$ with $a=2$.
-    - So result: $\arcsin\left( \frac{x-3}{2} \right) + C$.
+$$\displaystyle \int (x^2 + 1)^{50} \, dx$$
 
----
+You could expand it, but do you really want to multiply $\displaystyle (x^2+1)$ by itself 50 times? That would take forever. And what about this one?
 
-### **Lesson 16 Summary**
+$$\displaystyle \int 2x \cdot \cos(x^2) \, dx$$
 
-**Key Antiderivative Rules:**
+There's no expansion trick here. We need a new tool. That tool is called **u-substitution**, and it's our way of "undoing" the chain rule.
 
-- Power rule (for $n \neq -1$), exponential, trigonometric, inverse trigonometric, and logarithmic integrals.
+### The Connection to the Chain Rule
 
-**Algebraic Manipulations:**
+Remember how we take derivatives of something like $\displaystyle \sin(x^2)$? We use the chain rule: derivative of the outside times the derivative of the inside. So the derivative of $\displaystyle \sin(x^2)$ is $\displaystyle \cos(x^2) \cdot 2x$:
 
-- Long division, splitting fractions, completing the square, multiplying by conjugates.
+$$\displaystyle \frac{d}{dx} \left[ \sin(x^2) \right] = \cos(x^2) \cdot 2x$$
 
-**Substitution Method:**
+Now look at that last integral I wrote: $\displaystyle \int 2x \cdot \cos(x^2) \, dx$. 
 
-- Choose $u$ to simplify the integrand. For definite integrals, change limits or substitute back.
+That looks exactly like the result of a chain rule, doesn't it? It's a composition of functions multiplied by the derivative of the inside piece.
 
-**Strategy:**
+So, the antiderivative of $\displaystyle 2x \cos(x^2)$ must be $\displaystyle \sin(x^2) + C$.
 
-1. Simplify the integrand.
-2. Look for a known antiderivative.
-3. If composite function present, try substitution.
-4. Use algebraic techniques to rewrite into a familiar form.
+U-substitution is just a formal method for recognizing this pattern.
 
-**Important Notes:**
+Remember the chain rule: if you have $\displaystyle y = F(u)$ and $\displaystyle u = g(x)$, then
 
-- Always include $+C$ for indefinite integrals.
-- Check your work by differentiating.
-- Some integrals require techniques beyond AB (like integration by parts, partial fractions), but simple cases may be handled by algebra.
+$$\displaystyle \frac{d}{dx}[F(g(x))] = F'(g(x)) \cdot g'(x).$$
+
+Since integration "undoes" differentiation, this means:
+
+$$\displaystyle \int F'(g(x)) \cdot g'(x) \, dx = F(g(x)) + C.$$
+
+## **Theorem: Antidifferentiation of a Composite Function**
+
+Let $\displaystyle g$ be a differentiable function, and let $\displaystyle f$ be continuous on the range of $\displaystyle g$. If $\displaystyle F$ is an antiderivative of $\displaystyle f$, then
+
+$$\displaystyle \int f(g(x)) \, g'(x) \, dx = F(g(x)) + C.$$
+
+If we let $\displaystyle u = g(x)$, then $\displaystyle du = g'(x) \, dx$, and we get the cleaner form:
+
+$$\displaystyle \int f(u) \, du = F(u) + C.$$
 
 ---
 
-### **Additional Practice Problems**
+### Pattern Recognition: Spotting $\displaystyle f(g(x)) \cdot g'(x)$
 
-Find each indefinite integral or evaluate the definite integral.
+When you look at an integral, check if you can identify:
+- An **outside function** $\displaystyle f$
+- An **inside function** $\displaystyle g(x)$
+- The **derivative of the inside function** $\displaystyle g'(x)$ as a factor
 
-1. $\int (3x^4 - 2x^2 + 7) \, dx$
-2. $\int \frac{5}{x} \, dx$
-3. $\int (2\sin x - 3\cos x + \sec^2 x) \, dx$
-4. $\int \frac{x^3 - 2x + 1}{x} \, dx$
-5. $\int \frac{x}{\sqrt{x^2+4}} \, dx$
-6. $\int_0^{\pi/4} \sec^2 x \, dx$
-7. $\int e^{-3x} \, dx$
-8. $\int \frac{\ln x}{x} \, dx$
-9. $\int \frac{1}{x^2+2x+2} \, dx$
-10. $\int_0^1 x(1-x^2)^5 \, dx$
-11. $\int \frac{x^2}{x^2+1} \, dx$
-12. $\int \frac{1}{x^2-6x+13} \, dx$
-13. $\int \cos(2x) e^{\sin(2x)} \, dx$
-14. $\int \frac{e^x}{e^{2x}+1} \, dx$
-15. $\int_0^{\pi/2} \sin(2x) \, dx$
+$$\displaystyle \int \underbrace{f(g(x))}_{\text{outside}} \cdot \underbrace{g'(x)}_{\text{derivative of inside}} \, dx$$
 
-**Selected Solutions:**
+---
 
-1. $\frac{3x^5}{5} - \frac{2x^3}{3} + 7x + C$
-2. $5\ln|x| + C$
-3. $-2\cos x - 3\sin x + \tan x + C$
-4. Split: $\int (x^2 - 2 + \frac{1}{x}) dx = \frac{x^3}{3} - 2x + \ln|x| + C$
-5. Let $u = x^2+4$, $du=2x dx$, so $x dx = \frac{1}{2} du$. Integral = $\int u^{-1/2} \cdot \frac{1}{2} du = \frac{1}{2} \cdot 2u^{1/2} + C = \sqrt{x^2+4} + C$.
-6. Antiderivative is $\tan x$. Evaluate: $\tan(\pi/4) - \tan(0) = 1 - 0 = 1$.
-7. Let $u = -3x$, $du = -3 dx$, so $dx = -\frac{1}{3} du$. Then $\int e^u \cdot (-\frac{1}{3}) du = -\frac{1}{3} e^u + C = -\frac{1}{3} e^{-3x} + C$.
-8. Let $u = \ln x$, then $du = \frac{1}{x} dx$. Integral = $\int u \, du = \frac{u^2}{2} + C = \frac{(\ln x)^2}{2} + C$.
-9. Complete square: $x^2+2x+2 = (x+1)^2+1$. Let $u = x+1$, $du=dx$. Then $\int \frac{1}{u^2+1} du = \arctan u + C = \arctan(x+1) + C$.
-10. Let $u = 1-x^2$, $du = -2x dx$, so $x dx = -\frac{1}{2} du$. Change limits: when $x=0$, $u=1$; when $x=1$, $u=0$. Integral = $\int_1^0 u^5 \cdot (-\frac{1}{2}) du = -\frac{1}{2} \int_1^0 u^5 du = \frac{1}{2} \int_0^1 u^5 du = \frac{1}{2} \cdot \left. \frac{u^6}{6} \right|_0^1 = \frac{1}{12}$.
-11. Long division: $\frac{x^2}{x^2+1} = 1 - \frac{1}{x^2+1}$. So integral = $\int 1 dx - \int \frac{1}{x^2+1} dx = x - \arctan x + C$.
-12. Complete square: $x^2-6x+13 = (x-3)^2+4$. Let $u = x-3$, $du=dx$. Then $\int \frac{1}{u^2+4} du = \frac{1}{2} \arctan\left( \frac{u}{2} \right) + C = \frac{1}{2} \arctan\left( \frac{x-3}{2} \right) + C$.
-13. Let $u = \sin(2x)$, then $du = 2\cos(2x) dx$, so $\cos(2x) dx = \frac{1}{2} du$. Integral = $\int e^u \cdot \frac{1}{2} du = \frac{1}{2} e^u + C = \frac{1}{2} e^{\sin(2x)} + C$.
-14. Let $u = e^x$, then $du = e^x dx$. Integral becomes $\int \frac{1}{u^2+1} du = \arctan u + C = \arctan(e^x) + C$.
-15. Let $u = 2x$, $du=2 dx$, so $dx = \frac{1}{2} du$. Limits: when $x=0$, $u=0$; when $x=\pi/2$, $u=\pi$. Integral = $\int_0^{\pi} \sin u \cdot \frac{1}{2} du = \frac{1}{2} [-\cos u]_0^{\pi} = \frac{1}{2} (-\cos\pi + \cos 0) = \frac{1}{2} (-(-1)+1) = \frac{1}{2}(1+1)=1$. Alternatively, antiderivative of $\sin(2x)$ is $-\frac{1}{2}\cos(2x)$, evaluate at $\pi/2$ and $0$: $-\frac{1}{2}\cos\pi - (-\frac{1}{2}\cos 0) = -\frac{1}{2}(-1) + \frac{1}{2}(1) = \frac{1}{2}+\frac{1}{2}=1$.
+#### Example 1: Direct Pattern Recognition
+
+Find $\displaystyle \int (x^2 + 1)^2 (2x) \, dx$.
+
+Here:
+- Inside function: $\displaystyle g(x) = x^2 + 1$
+- Its derivative: $\displaystyle g'(x) = 2x$
+- Outside function: $\displaystyle f(u) = u^2$
+
+This fits the pattern perfectly! Using the power rule for integration:
+
+$$\displaystyle \int (x^2 + 1)^2 (2x) \, dx = \frac{1}{3}(x^2 + 1)^3 + C.$$
+
+Check: differentiate $\displaystyle \frac{1}{3}(x^2 + 1)^3 + C$ using the chain rule, and you'll get back $\displaystyle (x^2 + 1)^2(2x)$.
+
+---
+
+#### Example 2: Another Direct Pattern
+
+Find $\displaystyle \int 5 \cos 5x \, dx$.
+
+Here:
+- Inside function: $\displaystyle g(x) = 5x$
+- Its derivative: $\displaystyle g'(x) = 5$
+- Outside function: $\displaystyle f(u) = \cos u$
+
+The integrand is $\displaystyle \cos(5x) \cdot 5$, which matches $\displaystyle f(g(x)) \cdot g'(x)$. Using the cosine integration rule:
+
+$$\displaystyle \int 5 \cos 5x \, dx = \sin 5x + C.$$
+
+Check: $\displaystyle \frac{d}{dx}[\sin 5x] = 5 \cos 5x$, so it works.
+
+---
+
+### When the Derivative is "Almost" There
+
+Sometimes the integrand contains $\displaystyle g'(x)$ but is missing a constant factor. You can adjust by multiplying and dividing by the missing constant.
+
+#### Example 3: Multiplying and Dividing by a Constant
+
+Find $\displaystyle \int x(x^2 + 1)^2 \, dx$.
+
+This is similar to Example 1, but here the integrand has $\displaystyle x$, not $\displaystyle 2x$. Notice that $\displaystyle g(x) = x^2 + 1$ has derivative $\displaystyle 2x$. We're missing a factor of $\displaystyle 2$. Here's the trick:
+
+$$\displaystyle \int x(x^2 + 1)^2 \, dx = \int (x^2 + 1)^2 \cdot \frac{1}{2} \cdot (2x) \, dx$$
+
+Factor out the constant $\displaystyle \frac{1}{2}$:
+
+$$\displaystyle = \frac{1}{2} \int (x^2 + 1)^2 (2x) \, dx$$
+
+Now the inside matches the pattern from Example 1:
+
+$$\displaystyle = \frac{1}{2} \left[ \frac{(x^2 + 1)^3}{3} \right] + C = \frac{1}{6}(x^2 + 1)^3 + C.$$
+
+In practice, you might write this more compactly:
+
+$$\displaystyle \int x(x^2 + 1)^2 \, dx = \frac{1}{2} \int (x^2 + 1)^2 \cdot 2x \, dx = \frac{1}{2} \cdot \frac{(x^2 + 1)^3}{3} + C = \frac{1}{6}(x^2 + 1)^3 + C.$$
+
+---
+
+### Change of Variables (Formal u-Substitution)
+
+For more complicated integrals, it helps to do a formal substitution. You set $\displaystyle u$ equal to the inside function, find $\displaystyle du$, and rewrite the whole integral in terms of $\displaystyle u$.
+
+#### Example 4: Change of Variables
+
+Find $\displaystyle \int \sqrt{2x - 1} \, dx$.
+
+**Step 1:** Choose $\displaystyle u$ as the inside function.  
+Let $\displaystyle u = 2x - 1$.
+
+**Step 2:** Find $\displaystyle du$.  
+Differentiate: $\displaystyle du = 2 \, dx$, so $\displaystyle dx = \frac{du}{2}$.
+
+**Step 3:** Rewrite the integral in terms of $\displaystyle u$.  
+
+$$\displaystyle \int \sqrt{2x - 1} \, dx = \int \sqrt{u} \cdot \frac{du}{2} = \frac{1}{2} \int u^{1/2} \, du.$$
+
+**Step 4:** Integrate with respect to $\displaystyle u$.  
+
+$$\displaystyle \frac{1}{2} \cdot \frac{u^{3/2}}{3/2} + C = \frac{1}{2} \cdot \frac{2}{3} u^{3/2} + C = \frac{1}{3} u^{3/2} + C.$$
+
+**Step 5:** Substitute back in terms of $\displaystyle x$.  
+
+$$\displaystyle \frac{1}{3} (2x - 1)^{3/2} + C.$$
+
+That's the final answer. You can check by differentiating $\displaystyle \frac{1}{3}(2x - 1)^{3/2}$ using the chain rule—you should get $\displaystyle \sqrt{2x - 1}$.
+
+---
+
+### Summary
+
+- **Pattern recognition** is quick when you can mentally identify $\displaystyle f(g(x))$ and $\displaystyle g'(x)$.
+- If $\displaystyle g'(x)$ is missing a constant factor, **multiply and divide** by that constant.
+- For more complicated cases, use **formal change of variables** (u-substitution) to rewrite the integral completely before integrating.
+- Always check your answer by differentiating—it should give you back the original integrand.
+
+## Change of Variables for Definite Integrals
+
+When you use $\displaystyle u$-substitution on a *definite* integral (one with limits of integration), you have two choices:
+
+1. Do the substitution, find the antiderivative in terms of $\displaystyle u$, switch back to $\displaystyle x$, and then plug in the original $\displaystyle x$-limits.
+2. **Better idea:** Change the limits of integration to match the new variable $\displaystyle u$. This saves you from having to convert back to $\displaystyle x$ at the end.
+
+The second approach is usually cleaner, and it's justified by the following theorem.
+
+### Theorem: Change of Variables for Definite Integrals
+
+If $\displaystyle u = g(x)$ has a continuous derivative on $\displaystyle [a, b]$, and $\displaystyle f$ is continuous on the range of $\displaystyle g$, then
+
+$$\displaystyle \int_a^b f(g(x)) \, g'(x) \, dx = \int_{g(a)}^{g(b)} f(u) \, du.$$
+
+**In words:** When you substitute $\displaystyle u = g(x)$, the new limits of integration are $\displaystyle g(a)$ (the value of $\displaystyle u$ at $\displaystyle x = a$) and $\displaystyle g(b)$ (the value of $\displaystyle u$ at $\displaystyle x = b$). You then integrate $\displaystyle f(u)$ with respect to $\displaystyle u$ between these new limits.
+
+---
+
+### Why This Works
+
+This theorem follows directly from combining:
+- The substitution method for indefinite integrals ($\displaystyle \int f(g(x))g'(x) \, dx = \int f(u) \, du$)
+- The Fundamental Theorem of Calculus (which lets us evaluate definite integrals using antiderivatives)
+
+The key advantage: you never have to rewrite the final answer in terms of $\displaystyle x$—you just evaluate at the $\displaystyle u$-limits.
+
+---
+
+### Example: 
+
+Evaluate $$\displaystyle \int_0^2 2x(x^2 + 1)^2 \, dx$$ using $\displaystyle u$-substitution with limit changes.
+
+**Step 1: Choose $\displaystyle u$**  
+Let $\displaystyle u = x^2 + 1$ (the inside function).
+
+**Step 2: Find $\displaystyle du$**  
+$\displaystyle du = 2x \, dx.$  
+Look at that—the integrand already has $\displaystyle 2x \, dx$, so this substitution fits perfectly.
+
+**Step 3: Change the limits**  
+When $\displaystyle x = 0$: $\displaystyle u = 0^2 + 1 = 1$  
+When $\displaystyle x = 2$: $\displaystyle u = 2^2 + 1 = 5$
+
+So the new limits are from $\displaystyle u = 1$ to $\displaystyle u = 5$.
+
+**Step 4: Rewrite the integral in terms of $\displaystyle u$**  
+
+$$\displaystyle \int_{x=0}^{x=2} \underbrace{(x^2 + 1)^2}_{u^2} \underbrace{2x \, dx}_{du} = \int_{u=1}^{u=5} u^2 \, du.$$
+
+**Step 5: Integrate with respect to $\displaystyle u$**  
+
+$$\displaystyle \int_1^5 u^2 \, du = \left[ \frac{u^3}{3} \right]_1^5 = \frac{125}{3} - \frac{1}{3} = \frac{124}{3}.$$
+
+**Step 6: Done!**  
+No need to convert back to $\displaystyle x$—the answer is simply $\displaystyle \frac{124}{3}$.
+
+---
+
+### Why This Is So Useful
+
+If we had done this the long way (without changing limits), we would have:
+1. Found $\displaystyle \int 2x(x^2 + 1)^2 \, dx = \frac{(x^2 + 1)^3}{3} + C$
+2. Then evaluated $\displaystyle \left[ \frac{(x^2 + 1)^3}{3} \right]_0^2 = \frac{(4+1)^3}{3} - \frac{(0+1)^3}{3} = \frac{125}{3} - \frac{1}{3} = \frac{124}{3}$
+
+Same result, but more steps. Changing limits streamlines the process and reduces algebra mistakes.
+
+---
+
+### Quick Tip
+
+Always remember: **when the limits change, they change with the substitution.**  
+New lower limit = $\displaystyle g(\text{old lower limit})$  
+New upper limit = $\displaystyle g(\text{old upper limit})$
+
+Then integrate normally in $\displaystyle u$-land, and you're done!
+
+**Example 1: Basic Substitution**
+Find $\displaystyle \int 2x (x^2+1)^4 \, dx$.
+
+*   **Step 1:** Let $\displaystyle u = x^2+1$ (the inner function of the power).
+*   **Step 2:** Then $\displaystyle du = 2x \, dx$. Perfect! The $\displaystyle 2x \, dx$ is already there.
+*   **Step 3:** Substitute: $\displaystyle \int (x^2+1)^4 \cdot (2x dx) = \int u^4 \, du$.
+*   **Step 4:** Integrate: $\displaystyle \frac{u^5}{5} + C$.
+*   **Step 5:** Back-substitute: $\displaystyle \boxed{\frac{(x^2+1)^5}{5} + C}$.
+
+**Example 2: Trig Substitution with a Constant Factor**
+Find $\displaystyle \int \sin(3x) \, dx$.
+
+*   **Step 1:** Let $\displaystyle u = 3x$.
+*   **Step 2:** Then $\displaystyle du = 3 dx$. We have $\displaystyle dx$, not $\displaystyle 3 dx$. Solve for $\displaystyle dx$: $\displaystyle dx = \frac{1}{3} du$.
+*   **Step 3:** Substitute: $\displaystyle \int \sin(u) \cdot \frac{1}{3} du = \frac{1}{3} \int \sin u \, du$.
+*   **Step 4:** Integrate: $\displaystyle \frac{1}{3} (-\cos u) + C = -\frac{1}{3} \cos u + C$.
+*   **Step 5:** Back-substitute: $\displaystyle \boxed{-\frac{1}{3} \cos(3x) + C}$.
+
+**Example 3: Definite Integral with Changed Limits**
+Evaluate $\displaystyle \int_0^1 x e^{x^2} \, dx$.
+
+*   **Step 1:** Let $\displaystyle u = x^2$.
+*   **Step 2:** $\displaystyle du = 2x dx \Rightarrow x dx = \frac{1}{2} du$.
+*   **Step 3:** **Change the limits.** When $\displaystyle x=0$, $\displaystyle u=0^2=0$. When $\displaystyle x=1$, $\displaystyle u=1^2=1$.
+*   **Step 4:** Substitute everything: $\displaystyle \int_{x=0}^{x=1} e^{x^2} (x dx) = \int_{u=0}^{u=1} e^u \cdot \frac{1}{2} du$.
+*   **Step 5:** Evaluate: $\displaystyle \frac{1}{2} \int_0^1 e^u \, du = \frac{1}{2} \left[ e^u \right]_0^1 = \frac{1}{2}(e - 1)$.
+*   Final answer: $\displaystyle \boxed{\frac{1}{2}(e - 1)}$.
+
+**Example 4: Integral of Tangent (A Classic Result)**
+Find $\displaystyle \int \tan x \, dx$.
+
+*   **Step 1:** Rewrite using sine and cosine: $\displaystyle \int \frac{\sin x}{\cos x} dx$.
+*   **Step 2:** Let $\displaystyle u = \cos x$. Then $\displaystyle du = -\sin x \, dx$, so $\displaystyle \sin x \, dx = -du$.
+*   **Step 3:** Substitute: $\displaystyle \int \frac{1}{u} \cdot (-du) = -\int \frac{1}{u} du = -\ln|u| + C$.
+*   **Step 4:** Back-substitute: $\displaystyle -\ln|\cos x| + C = \ln|\cos x|^{-1} + C = \boxed{\ln|\sec x| + C}$.
+    *This is a very important antiderivative to memorize.*
+
+---
+
+### **Putting It All Together: An Integration Strategy**
+
+### **Simplifying the Integrand**
+
+Often, the hardest part of integration is the algebra that comes *before* you can apply an integration rule.
+
+**Key Algebraic Techniques:**
+
+1.  **Expanding/Factoring:** Multiply out products or factor to cancel common terms.
+2.  **Splitting Fractions:** If the numerator is a sum, you can split a single fraction into multiple, simpler fractions: $\displaystyle \frac{a+b}{c} = \frac{a}{c} + \frac{b}{c}$.
+3.  **Long Division:** For rational functions (polynomial divided by polynomial) where the degree of the numerator is greater than or equal to the degree of the denominator.
+4.  **Completing the Square:** Essential for integrals that lead to inverse trig functions (like $\displaystyle \arctan$) or certain logarithmic forms.
+5.  **Multiplying by a Conjugate:** Useful for integrals with radicals in the denominator.
+
+**Example 1: Long Division**
+Evaluate $\displaystyle \int \frac{x^2 + 3x - 5}{x-1} \, dx$.
+
+*   **Step 1: Perform long division.**
+    $\displaystyle \frac{x^2 + 3x - 5}{x-1} = x + 4 + \frac{-1}{x-1}$.
+*   **Step 2: Integrate the simplified result.**
+    $\displaystyle \int \left( x + 4 - \frac{1}{x-1} \right) dx = \frac{x^2}{2} + 4x - \ln|x-1| + C$.
+*   Final answer: $\displaystyle \boxed{\frac{x^2}{2} + 4x - \ln|x-1| + C}$.
+
+**Example 2: Splitting a Fraction**
+Evaluate $\displaystyle \int \frac{x^3 + 2x + 1}{x} \, dx$.
+
+*   **Step 1: Split the fraction for each term in the numerator.**
+    $\displaystyle \frac{x^3 + 2x + 1}{x} = \frac{x^3}{x} + \frac{2x}{x} + \frac{1}{x} = x^2 + 2 + \frac{1}{x}$.
+*   **Step 2: Integrate.**
+    $\displaystyle \int \left( x^2 + 2 + \frac{1}{x} \right) dx = \boxed{\frac{x^3}{3} + 2x + \ln|x| + C}$.
+
+**Example 3: Completing the Square**
+Evaluate $\displaystyle \int \frac{1}{x^2 + 4x + 13} \, dx$.
+
+*   **Step 1: Complete the square in the denominator.**
+    $\displaystyle x^2 + 4x + 13 = (x^2 + 4x + 4) + 9 = (x+2)^2 + 3^2$.
+*   **Step 2: Recognize the arctangent form.**
+    The integral is now $\displaystyle \int \frac{1}{(x+2)^2 + 3^2} \, dx$. This matches the formula: $\displaystyle \int \frac{du}{u^2 + a^2} = \frac{1}{a} \arctan\left( \frac{u}{a} \right) + C$.
+*   **Step 3: Identify $\displaystyle u$ and $\displaystyle a$ and integrate.**
+    Here, $\displaystyle u = x+2$ and $\displaystyle a=3$. So the integral equals $\displaystyle \boxed{\frac{1}{3} \arctan\left( \frac{x+2}{3} \right) + C}$.
+
+**Example 4: Multiplying by a Conjugate**
+Evaluate $\displaystyle \int \frac{1}{\sqrt{x+1} - \sqrt{x}} \, dx$.
+
+*   **Step 1: Multiply numerator and denominator by the conjugate.** The conjugate of $\displaystyle \sqrt{x+1} - \sqrt{x}$ is $\displaystyle \sqrt{x+1} + \sqrt{x}$.
+
+    $\displaystyle \frac{1}{\sqrt{x+1} - \sqrt{x}} \cdot \frac{\sqrt{x+1} + \sqrt{x}}{\sqrt{x+1} + \sqrt{x}} = \frac{\sqrt{x+1} + \sqrt{x}}{(x+1) - x} = \sqrt{x+1} + \sqrt{x}$.
+
+*   **Step 2: Integrate the simplified expression.**
+    $\displaystyle \int (\sqrt{x+1} + \sqrt{x}) \, dx = \int \left( (x+1)^{1/2} + x^{1/2} \right) dx = \boxed{\frac{2}{3}(x+1)^{3/2} + \frac{2}{3}x^{3/2} + C}$.
+
+---
+
+With multiple techniques available, having a game plan is essential. Follow this decision tree when faced with an integral.
+
+
+
+**Your Integration Toolkit Checklist:**
+
+1.  **SIMPLIFY:** Can you expand, factor, or split the integrand?
+2.  **KNOW YOUR BASICS:** Does it match a common antiderivative (like $\displaystyle \int \sec^2 x \, dx = \tan x + C$)?
+3.  **TRY $\displaystyle u$-SUBSTITUTION:** Look for a function and its derivative (up to a constant).
+4.  **SPECIAL ALGEBRA:**
+    *   **Rational function?** If the numerator's degree ≥ denominator's degree, use **long division**.
+    *   **Quadratic in denominator?** Consider **completing the square** to get an arctangent or arcsine form.
+    *   **Radical in denominator?** Try **multiplying by the conjugate**.
+
+**Example 1: Rational Function Strategy**
+Evaluate $\displaystyle \int \frac{x^2}{x^2+1} \, dx$.
+
+*   **Step 1: Check degrees.** Numerator degree (2) equals denominator degree (2). Use **long division**.
+    $\displaystyle \frac{x^2}{x^2+1} = 1 - \frac{1}{x^2+1}$.
+*   **Step 2: Integrate.**
+    $\displaystyle \int \left( 1 - \frac{1}{x^2+1} \right) dx = x - \arctan x + C$.
+*   Final answer: $\displaystyle \boxed{x - \arctan x + C}$.
+
+**Example 2: $\displaystyle u$-Substitution with Algebra**
+Evaluate $\displaystyle \int \frac{e^{2x}}{1+e^x} \, dx$.
+
+*   **Step 1: Notice $\displaystyle e^{2x} = (e^x)^2$. This suggests $\displaystyle u = e^x$, and $\displaystyle du = e^x dx$.** We have $\displaystyle e^{2x} dx = e^x \cdot e^x dx$. So let $\displaystyle u = e^x$, then $\displaystyle du = e^x dx$, and $\displaystyle e^x = u$. Thus, $\displaystyle e^{2x} dx = u \, du$.
+*   **Step 2: Substitute.** The integral becomes $\displaystyle \int \frac{u}{1+u} \, du$.
+*   **Step 3: Simplify the new integrand.** Use **long division** or simple algebra: $\displaystyle \frac{u}{1+u} = 1 - \frac{1}{1+u}$.
+*   **Step 4: Integrate.** $\displaystyle \int \left( 1 - \frac{1}{1+u} \right) du = u - \ln|1+u| + C$.
+*   **Step 5: Back-substitute ($\displaystyle u = e^x$).** $\displaystyle \boxed{e^x - \ln(1+e^x) + C}$.
+
+**Example 3: Completing the Square Strategy**
+Evaluate $\displaystyle \int \frac{1}{\sqrt{-x^2+6x-5}} \, dx$.
+
+*   **Step 1: The square root of a quadratic suggests arcsine form. Complete the square inside.**
+    $\displaystyle -x^2+6x-5 = -(x^2 - 6x + 5) = -(x^2 - 6x + 9 - 4) = -[(x-3)^2 - 4] = 4 - (x-3)^2$.
+*   **Step 2: Rewrite the integral.** $\displaystyle \int \frac{1}{\sqrt{4 - (x-3)^2}} \, dx$.
+*   **Step 3: Recognize the arcsine form.** $\displaystyle \int \frac{du}{\sqrt{a^2 - u^2}} = \arcsin\left( \frac{u}{a} \right) + C$.
+*   **Step 4: Identify $\displaystyle u$ and $\displaystyle a$.** Here, $\displaystyle u = x-3$ and $\displaystyle a = 2$.
+*   **Step 5: Integrate directly.** $\displaystyle \boxed{\arcsin\left( \frac{x-3}{2} \right) + C}$.

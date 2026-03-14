@@ -1,0 +1,227 @@
+[
+    {
+        "unitOrder": 1,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Collaboration & Design Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-pdc-001", "q-pdc-002", "q-pdc-003", "q-pdc-004", "q-pdc-005", "q-pdc-006", "q-pdc-007", "q-pdc-008", "q-pdc-009", "q-pdc-010", "q-pdc-011", "q-pdc-012"
+        ]
+    },
+    {
+        "unitOrder": 1,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Program Purpose, Documentation & Debugging Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-ade-001", "q-ade-002", "q-ade-003", "q-ade-004", "q-ade-005", "q-ade-006", "q-ade-007", "q-ade-008", "q-ade-009", "q-ade-010", "q-ade-011", "q-ade-012"
+        ]
+    },
+
+    {
+        "unitOrder": 1,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "Big Idea 1 Smash Time Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-ur-bi1-001", "q-ur-bi1-002", "q-ur-bi1-003", "q-ur-bi1-004", "q-ur-bi1-005", "q-ur-bi1-006", "q-ur-bi1-007", "q-ur-bi1-008", "q-ur-bi1-009", "q-ur-bi1-010", "q-ur-bi1-011", "q-ur-bi1-012", "q-ur-bi1-013", "q-ur-bi1-014", "q-ur-bi1-015", "q-ur-bi1-016", "q-ur-bi1-017", "q-ur-bi1-018", "q-ur-bi1-019", "q-ur-bi1-020", "q-ur-bi1-021", "q-ur-bi1-022", "q-ur-bi1-023", "q-ur-bi1-024", "q-ur-bi1-025"
+        ]
+    },
+
+    {
+        "unitOrder": 2,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Binary & Data Compression Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-drc-001", "q-drc-002", "q-drc-003", "q-drc-004", "q-drc-005", "q-drc-006", "q-drc-007", "q-drc-008", "q-drc-009", "q-drc-010", "q-drc-011", "q-drc-012", "q-drc-013", "q-drc-014", "q-drc-015", "q-drc-016", "q-drc-017", "q-drc-018"
+        ]
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Processing & Information Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-inf-001", "q-inf-002", "q-inf-003", "q-inf-004", "q-inf-005", "q-inf-006", "q-inf-007", "q-inf-008", "q-inf-009", "q-inf-010", "q-inf-011", "q-inf-012", "q-inf-013", "q-inf-014", "q-inf-015", "q-inf-016", "q-inf-017", "q-inf-018"
+        ]
+    },
+
+    {
+        "unitOrder": 2,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "Big Idea 2 Smash Time Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-ur-bi2-001", "q-ur-bi2-002", "q-ur-bi2-003", "q-ur-bi2-004", "q-ur-bi2-005", "q-ur-bi2-006", "q-ur-bi2-007", "q-ur-bi2-008", "q-ur-bi2-009", "q-ur-bi2-010", "q-ur-bi2-011", "q-ur-bi2-012", "q-ur-bi2-013", "q-ur-bi2-014", "q-ur-bi2-015", "q-ur-bi2-016", "q-ur-bi2-017", "q-ur-bi2-018", "q-ur-bi2-019", "q-ur-bi2-020", "q-ur-bi2-021", "q-ur-bi2-022", "q-ur-bi2-023", "q-ur-bi2-024", "q-ur-bi2-025", "q-ur-bi3-021", "q-ur-bi3-022", "q-ur-bi3-023", "q-ur-bi3-024", "q-ur-bi3-025"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Variables & Lists Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-vdl-001", "q-vdl-002", "q-vdl-003", "q-vdl-004", "q-vdl-005", "q-vdl-006", "q-vdl-007", "q-vdl-008", "q-vdl-009", "q-vdl-010", "q-vdl-011", "q-vdl-012", "q-vdl-013", "q-vdl-014", "q-vdl-015", "q-vdl-016", "q-vdl-017", "q-vdl-018"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Expressions & Randomness Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-exp-001", "q-exp-002", "q-exp-003", "q-exp-004", "q-exp-005", "q-exp-006", "q-exp-007", "q-exp-008", "q-exp-009", "q-exp-010", "q-exp-011", "q-exp-012", "q-exp-013", "q-exp-014", "q-exp-015", "q-exp-016", "q-exp-017", "q-exp-018"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "Conditionals & Loops Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-csi-001", "q-csi-002", "q-csi-003", "q-csi-004", "q-csi-005", "q-csi-006", "q-csi-007", "q-csi-008", "q-csi-009", "q-csi-010", "q-csi-011", "q-csi-012", "q-csi-013", "q-csi-014", "q-csi-015", "q-csi-016", "q-csi-017", "q-csi-018", "q-csi-019", "q-csi-020"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 4,
+        "type": "LESSON_TEST",
+        "title": "Procedures & Libraries Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-pro-001", "q-pro-002", "q-pro-003", "q-pro-004", "q-pro-005",  "q-pro-006", "q-pro-007", "q-pro-008", "q-pro-009", "q-pro-010", "q-pro-011", "q-pro-012", "q-pro-013", "q-pro-014", "q-pro-015", "q-pro-016", "q-pro-017", "q-pro-018"
+        ]
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 5,
+        "type": "LESSON_TEST",
+        "title": "Efficiency, Search & Simulations Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-alg-001", "q-alg-002", "q-alg-003", "q-alg-004", "q-alg-005", "q-alg-006", "q-alg-007", "q-alg-008", "q-alg-009", "q-alg-010", "q-alg-011", "q-alg-012", "q-alg-013", "q-alg-014", "q-alg-015", "q-alg-016", "q-alg-017", "q-alg-018"
+        ]
+    },
+
+    {
+        "unitOrder": 3,
+        "lessonOrder": 6,
+        "type": "LESSON_TEST",
+        "title": "Big Idea 3 Smash Time Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-ur-bi3-001", "q-ur-bi3-002", "q-ur-bi3-003", "q-ur-bi3-004", "q-ur-bi3-005", "q-ur-bi3-006", "q-ur-bi3-007", "q-ur-bi3-008", "q-ur-bi3-009", "q-ur-bi3-010", "q-ur-bi3-011", "q-ur-bi3-012", "q-ur-bi3-013", "q-ur-bi3-014", "q-ur-bi3-015", "q-ur-bi3-016", "q-ur-bi3-017", "q-ur-bi3-018", "q-ur-bi3-019", "q-ur-bi3-020", "q-ur-bi3-021", "q-ur-bi3-022", "q-ur-bi3-023", "q-ur-bi3-024", "q-ur-bi3-025", "q-ur-bi3-026", "q-ur-bi3-027", "q-ur-bi3-028", "q-ur-bi3-029", "q-ur-bi3-030", "q-ur-bi3-031", "q-ur-bi3-032", "q-ur-bi3-033", "q-ur-bi3-034", "q-ur-bi3-035", "q-ur-bi3-036", "q-ur-bi3-037", "q-ur-bi3-038", "q-ur-bi3-039", "q-ur-bi3-040"
+        ]
+    },
+
+
+    {
+        "unitOrder": 4,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "How the Internet Works Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-ifp-001", "q-ifp-002", "q-ifp-003", "q-ifp-004", "q-ifp-005", "q-ifp-006", "q-ifp-007", "q-ifp-008", "q-ifp-009", "q-ifp-010", "q-ifp-011", "q-ifp-012", "q-ifp-013", "q-ifp-014", "q-ifp-015"
+        ]
+    },
+    {
+        "unitOrder": 5,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Computing & Society Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-ebd-001", "q-ebd-002", "q-ebd-003", "q-ebd-004", "q-ebd-005",  "q-ebd-006", "q-ebd-007", "q-ebd-008", "q-ebd-009", "q-ebd-010", "q-ebd-011", "q-ebd-012", "q-ebd-013", "q-ebd-014", "q-ebd-015"
+        ]
+    },
+    {
+        "unitOrder": 5,
+        "lessonOrder": 2,
+        "type": "LESSON_TEST",
+        "title": "Crowdsourcing & Collaboration Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-cps-001", "q-cps-002", "q-cps-003", "q-cps-004", "q-cps-005", "q-cps-006", "q-cps-007", "q-cps-008", "q-cps-009", "q-cps-010"
+        ]
+    },
+    {
+        "unitOrder": 5,
+        "lessonOrder": 3,
+        "type": "LESSON_TEST",
+        "title": "Safe & Responsible Computingn Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-les-001", "q-les-002", "q-les-003", "q-les-004", "q-les-005", "q-les-006", "q-les-007", "q-les-008", "q-les-009", "q-les-010", "q-les-011", "q-les-012", "q-les-013", "q-les-014", "q-les-015"
+        ]
+    },
+
+    {
+        "unitOrder": 5,
+        "lessonOrder": 4,
+        "type": "LESSON_TEST",
+        "title": "Big Idea 5 Smash Time Quiz",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-ur-bi5-001", "q-ur-bi5-002", "q-ur-bi5-003", "q-ur-bi5-004", "q-ur-bi5-005", "q-ur-bi5-006", "q-ur-bi5-007", "q-ur-bi5-008", "q-ur-bi5-009", "q-ur-bi5-010", "q-ur-bi5-011", "q-ur-bi5-012", "q-ur-bi5-013", "q-ur-bi5-014", "q-ur-bi5-015", "q-ur-bi5-016", "q-ur-bi5-017", "q-ur-bi5-018", "q-ur-bi5-019", "q-ur-bi5-020", "q-ur-bi5-021", "q-ur-bi5-022", "q-ur-bi5-023", "q-ur-bi5-024", "q-ur-bi5-025", "q-ur-bi5-026", "q-ur-bi5-027", "q-ur-bi5-028", "q-ur-bi5-029", "q-ur-bi5-030"
+        ]
+    },
+
+    {
+        "unitOrder": 6,
+        "lessonOrder": 1,
+        "type": "LESSON_TEST",
+        "title": "Performance Task Practice",
+        "timeLimitSec": 1200,
+        "minTier": "BASIC",
+        "isPublished": true,
+        "questionIds": [
+            "q-crt-001", "q-crt-002", "q-crt-003", "q-crt-004", "q-crt-005", "q-crt-006", "q-crt-007", "q-crt-008"
+
+        ]
+    }
+]

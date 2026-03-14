@@ -1,5 +1,5 @@
 
-### 1.14: Calling Instance Methods
+### Calling Instance Methods
 
 ### What Are Instance Methods?
 

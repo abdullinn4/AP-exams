@@ -1,4 +1,4 @@
-### 2.2 Boolean Expressions
+### Boolean Expressions
 ### What is a Boolean Expression?
 
 A **Boolean expression** is an expression that evaluates to either `true` or `false`. It is named after George Boole, a mathematician who developed Boolean algebra.

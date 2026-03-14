@@ -1,0 +1,146 @@
+[
+    {
+    "unitOrder": 1,
+    "lessonOrder": 1,
+    "title": "Module 1. Building Together: Collaboration & Design",
+    "videoUrl": "https://youtu.be/5czA29NrI3U",
+    "contentFile": "unit-1-lesson-1.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 1,
+    "lessonOrder": 2,
+    "title": "Module 2. Making It Work: Program Purpose, Documentation & Debugging",
+    "videoUrl": "https://youtu.be/pnf-dY2rJOc",
+    "contentFile": "unit-1-lesson-2.md",
+    "releaseDate": null
+    },
+    {
+    "unitOrder": 1,
+    "lessonOrder": 3,
+    "title": "Big Idea 1 Smash Time",
+    "videoUrl": "https://youtu.be/imymQXE61CQ",
+    "contentFile": "unit-1-lesson-3.md",
+    "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 1,
+        "title": "Module 3. Inside the Machine: Binary & Data Compression",
+        "videoUrl": "https://youtu.be/yvF395xHzgE",
+        "contentFile": "unit-2-lesson-1.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 2,
+        "title": "Module 4. From Data to Insight: Processing & Information",
+        "videoUrl": "https://youtu.be/sd29c3BvR5o",
+        "contentFile": "unit-2-lesson-2.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 3,
+        "title": "Big Idea 2 Smash Time",
+        "videoUrl": "https://youtu.be/4CW8gOEDNIY",
+        "contentFile": "unit-2-lesson-3.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 1,
+        "title": "Module 5. Storing Information: Variables & Lists",
+        "videoUrl": "https://youtu.be/43Dq2mnVfEY",
+        "contentFile": "unit-3-lesson-1.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 2,
+        "title": "Module 6. Doing the Math: Expressions & Randomness",
+        "videoUrl": "https://youtu.be/f15SGCasU6c",
+        "contentFile": "unit-3-lesson-2.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 3,
+        "title": "Module 7. Controlling the Flow: Conditionals & Loops",
+        "videoUrl": "https://youtu.be/aFVLOUEprsw",
+        "contentFile": "unit-3-lesson-3.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 4,
+        "title": "Module 8. Think Like a Programmer: Procedures & Libraries",
+        "videoUrl": "https://youtu.be/4Tozmm-6Qpc",
+        "contentFile": "unit-3-lesson-4.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 5,
+        "title": "Module 9. Limits of Computing: Efficiency, Search & Simulations",
+        "videoUrl": "https://youtu.be/a5N72DqAzmU",
+        "contentFile": "unit-3-lesson-5.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 6,
+        "title": "Big Idea 3 Smash Time",
+        "videoUrl": "https://youtu.be/a5N72DqAzmU",
+        "contentFile": "unit-3-lesson-6.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 1,
+        "title": "Module 10. How the Internet Works: Packets, Protocols & Parallelism",
+        "videoUrl": "https://youtu.be/Z7OMBz-J8OQ",
+        "contentFile": "unit-4-lesson-1.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 5,
+        "lessonOrder": 1,
+        "title": "Module 11. Computing & Society: Impact, Equity & Bias",
+        "videoUrl": "https://youtu.be/McDW6RKuI2Q",
+        "contentFile": "unit-5-lesson-1.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 5,
+        "lessonOrder": 2,
+        "title": "Module 12. Power in Numbers: Crowdsourcing & Collaboration",
+        "videoUrl": "https://youtu.be/nD5lQx2tmqM",
+        "contentFile": "unit-5-lesson-2.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 5,
+        "lessonOrder": 3,
+        "title": "Module 13. Safe & Responsible Computing: Ethics, Law & Security",
+        "videoUrl": "https://youtu.be/FxL_00sUcjo",
+        "contentFile": "unit-5-lesson-3.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 5,
+        "lessonOrder": 4,
+        "title": "Big Idea 5 Smash Time",
+        "videoUrl": "https://youtu.be/rAmN3HjDwa0",
+        "contentFile": "unit-5-lesson-4.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 6,
+        "lessonOrder": 1,
+        "title": "Smash the Performance Task",
+        "videoUrl": "https://youtu.be/rAmN3HjDwa0",
+        "contentFile": "unit-6-lesson-1.md",
+        "releaseDate": null
+    }
+]

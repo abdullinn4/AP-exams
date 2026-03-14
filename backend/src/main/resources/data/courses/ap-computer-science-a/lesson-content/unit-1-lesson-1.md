@@ -1,4 +1,4 @@
-### 1.1: Introduction to Algorithms, Programming, and Compilers
+### Introduction to Algorithms, Programming, and Compilers
 
 ### What is an Algorithm?
 

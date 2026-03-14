@@ -1,4 +1,4 @@
-### 4.16: Recursion
+### Recursion
 
 ### What is Recursion?
 

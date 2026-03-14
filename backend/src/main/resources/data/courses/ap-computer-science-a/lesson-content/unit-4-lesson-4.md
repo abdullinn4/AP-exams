@@ -1,4 +1,4 @@
-### 4.4: Array Traversals
+### Array Traversals
 
 
 ### What is Array Traversal?

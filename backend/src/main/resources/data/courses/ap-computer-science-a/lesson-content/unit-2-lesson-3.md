@@ -1,4 +1,4 @@
-### 2.3: if Statements
+### if Statements
 
 ### What is an if Statement?
 

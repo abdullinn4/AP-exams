@@ -1,5 +1,5 @@
 
-### 1.9: Method Signatures
+### Method Signatures
 
 
 ### What is a Method?

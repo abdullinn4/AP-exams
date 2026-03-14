@@ -1,5 +1,5 @@
 
-### 2.1 Algorithms with Selection and Repetition
+### Algorithms with Selection and Repetition
 
 ### The Three Building Blocks of Algorithms
 

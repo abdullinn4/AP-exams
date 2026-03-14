@@ -1,4 +1,4 @@
-### 4.1: Ethical and Social Issues Around Data Collection
+### Ethical and Social Issues Around Data Collection
 
 ### Privacy Risks in Data Collection
 

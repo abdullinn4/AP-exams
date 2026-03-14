@@ -1,6 +1,6 @@
-# **Lesson 22: Calculator Mastery for the AP Calculus AB Exam**
+# Calculator Mastery for the AP Calculus AB Exam
 
-### **22.1 The Role of Your Calculator on the Exam**
+## **The Role of Your Calculator on the Exam**
 
 **Key Facts:**
 
@@ -17,7 +17,7 @@
 
 ---
 
-### **22.2 Essential TI-84 Plus Functions (With Keystrokes)**
+### **Essential TI-84 Plus Functions (With Keystrokes)**
 
 **1. Graphing a Function:**
 
@@ -76,7 +76,7 @@
 
 ---
 
-### **22.3 Essential TI-Nspire Functions (Non-CAS)**
+### **Essential TI-Nspire Functions (Non-CAS)**
 
 **1. Graphing and Analyzing in the Graphs App:**
 
@@ -104,7 +104,7 @@
 
 ---
 
-### **22.4 Step-by-Step Calculator Examples**
+### **Step-by-Step Calculator Examples**
 
 **Example 1: Area Between Curves**
 *Problem:* Find the area between $y = \cos x$ and $y = x^2 - 1$ from their first intersection to their second intersection.
@@ -129,7 +129,7 @@
 
 ---
 
-### **22.5 Efficiency Tips and Common Pitfalls**
+### **Efficiency Tips and Common Pitfalls**
 
 **Efficiency:**
 
@@ -148,7 +148,7 @@
 
 ---
 
-### **22.6 Practice Calculator Tasks**
+### **Practice Calculator Tasks**
 
 Try these with your calculator. Focus on the process, not just the answer.
 
@@ -172,20 +172,5 @@ Try these with your calculator. Focus on the process, not just the answer.
 
 ---
 
-### **Lesson 22 Summary**
-
-**Master These Skills:**
-
-1. Graphing and adjusting the window.
-2. Finding intersections and zeros.
-3. Evaluating definite integrals and derivatives at a point.
-4. Solving equations numerically.
-5. Using the calculator efficiently and accurately.
-
-**Remember:**
-
-- **Radian mode always.**
-- **Write the setup on the exam.**
-- **Practice under timed conditions.**
 
 Your calculator is a powerful ally. Use it to check your work, handle messy arithmetic, and visualize problems. But your brain and your pencil are still the primary tools for success.

@@ -4,7 +4,7 @@
         "lessonOrder": 1,
         "type": "LESSON_TEST",
         "title": "Introduction to Limits Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -19,7 +19,7 @@
         "lessonOrder": 2,
         "type": "LESSON_TEST",
         "title": "Calculating Limits Algebraically Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -34,7 +34,7 @@
         "lessonOrder": 3,
         "type": "LESSON_TEST",
         "title": "Continuity and Theorems Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -47,7 +47,7 @@
     {
         "type": "MOCK_EXAM",
         "title": "Unit 1: Limits and Continuity Mock Exam",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -62,7 +62,7 @@
         "lessonOrder": 1,
         "type": "LESSON_TEST",
         "title": "The Derivative Concept Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -77,7 +77,7 @@
         "lessonOrder": 2,
         "type": "LESSON_TEST",
         "title": "Derivative Rules Mastery Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -90,7 +90,7 @@
     {
         "type": "MOCK_EXAM",
         "title": "Unit 2: Differentiation Fundamentals Mock Exam",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -105,7 +105,7 @@
         "lessonOrder": 1,
         "type": "LESSON_TEST",
         "title": "Chain Rule and Implicit Differentiation Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -120,7 +120,7 @@
         "lessonOrder": 2,
         "type": "LESSON_TEST",
         "title": "Higher Order Derivatives Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -133,7 +133,7 @@
     {
         "type": "MOCK_EXAM",
         "title": "Unit 3: Advanced Differentiation Mock Exam",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -148,7 +148,7 @@
         "lessonOrder": 1,
         "type": "LESSON_TEST",
         "title": "Interpreting Derivatives in Context Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -163,7 +163,7 @@
         "lessonOrder": 2,
         "type": "LESSON_TEST",
         "title": "Related Rates Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -178,7 +178,7 @@
         "lessonOrder": 3,
         "type": "LESSON_TEST",
         "title": "Linearization and Limits Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -191,7 +191,7 @@
     {
         "type": "MOCK_EXAM",
         "title": "Unit 4: Contextual Applications Mock Exam",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -206,7 +206,7 @@
         "lessonOrder": 1,
         "type": "LESSON_TEST",
         "title": "Key Theorems and Extreme Values Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -221,7 +221,7 @@
         "lessonOrder": 2,
         "type": "LESSON_TEST",
         "title": "Function Behavior and Graphing Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -236,7 +236,7 @@
         "lessonOrder": 3,
         "type": "LESSON_TEST",
         "title": "Optimization Problems Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -265,7 +265,7 @@
         "lessonOrder": 1,
         "type": "LESSON_TEST",
         "title": "Riemann Sums and Accumulation Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -280,7 +280,7 @@
         "lessonOrder": 2,
         "type": "LESSON_TEST",
         "title": "Fundamental Theorem of Calculus Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -295,7 +295,7 @@
         "lessonOrder": 3,
         "type": "LESSON_TEST",
         "title": "Antiderivatives and Basic Integration Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -324,7 +324,7 @@
         "lessonOrder": 1,
         "type": "LESSON_TEST",
         "title": "Differential Equation Basics Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -339,7 +339,7 @@
         "lessonOrder": 2,
         "type": "LESSON_TEST",
         "title": "Solving Differential Equations Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -368,7 +368,7 @@
         "lessonOrder": 1,
         "type": "LESSON_TEST",
         "title": "Area Between Curves Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -383,7 +383,7 @@
         "lessonOrder": 2,
         "type": "LESSON_TEST",
         "title": "Volume of Solids Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [
@@ -398,7 +398,7 @@
         "lessonOrder": 3,
         "type": "LESSON_TEST",
         "title": "Accumulation and Average Value Quiz",
-        "timeLimitSec": 1200,
+        "timeLimitSec": 1800,
         "minTier": "BASIC",
         "isPublished": true,
         "questionIds": [

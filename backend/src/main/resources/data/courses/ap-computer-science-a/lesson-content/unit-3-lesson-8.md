@@ -1,4 +1,4 @@
-### 3.8: Scope and Access
+### Scope and Access
 
 ### What is Scope?
 

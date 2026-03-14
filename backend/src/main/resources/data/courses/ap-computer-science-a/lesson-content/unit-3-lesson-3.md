@@ -1,4 +1,4 @@
-### 3.3: Anatomy of a Class
+### Anatomy of a Class
 
 ### The Structure of a Class
 

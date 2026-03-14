@@ -1,4 +1,4 @@
-### 4.13: Implementing 2D Array Algorithms
+### Implementing 2D Array Algorithms
 
 
 ### Why 2D Array Algorithms Matter

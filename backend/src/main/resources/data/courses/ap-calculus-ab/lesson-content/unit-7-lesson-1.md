@@ -1,170 +1,313 @@
-# **Lesson 17: Differential Equation Basics**
+# Differential Equation Basics
 
-### **17.1 Introduction to Differential Equations**
+## **Introduction**
 
-**Definition:**
-A **differential equation** is an equation that relates a function with one or more of its derivatives. In AP Calculus AB, we focus on **ordinary differential equations** (ODEs) with one independent variable, typically $x$ or $t$. The **order** of a differential equation is the order of the highest derivative that appears in the equation.
+Alright, differential equations. Sounds scary, right?
 
-A **first-order differential equation** involves the first derivative and can often be written in the form:
-$$\frac{dy}{dx} = f(x, y)$$
-where $f(x, y)$ is some expression involving $x$ and $y$.
+Maybe, but that's just a name. A differential equation is really just an equation that also has some derivatives in it. For example:
 
-**Comments:**
+$$y' + y = 0$$
 
-- **Why Study Them?** Differential equations model dynamic processes: growth and decay, motion, cooling, population dynamics, and more. They allow us to describe how a quantity changes over time or space.
-- **Solution:** A **solution** to a differential equation is a function $y = f(x)$ that satisfies the equation for all $x$ in some interval.
-- **General vs. Particular Solution:**
-    - The **general solution** includes arbitrary constants (usually denoted $C$) and represents a family of curves.
-    - A **particular solution** is obtained by specifying an initial condition (e.g., $y(x_0) = y_0$) to determine the constant(s).
-- **Interpretation from Verbal Statements:** When a problem describes a rate of change (e.g., "the rate of change of $P$ with respect to $t$ is proportional to $P$"), translate it into a differential equation.
+is a differential equation.
 
-**Examples:**
+Believe it or not, differential equations are actually pretty cool. They show that calculus can be used to predict the future.
 
-1. **Translating a Statement:** "The rate of change of a population $P$ with respect to time $t$ is proportional to the population."
-    - This translates to: $\frac{dP}{dt} = kP$, where $k$ is a constant of proportionality.
-2. **Identifying Order:** For the equation $\frac{d^2y}{dx^2} + 3\frac{dy}{dx} + 2y = 0$, the highest derivative is the second derivative, so it is a second-order differential equation.
-3. **Another Translation:** "The slope of the tangent line to a curve at any point $(x, y)$ is equal to twice the sum of the coordinates."
-    - Slope of tangent is $\frac{dy}{dx}$. Sum of coordinates is $x + y$. So: $\frac{dy}{dx} = 2(x + y)$.
+Imagine you have a population of rabbits. The rate at which the population grows is proportional to the current population. More rabbits means more baby rabbits.
 
----
+$$ \frac{dP}{dt} = rP$$
 
-### **17.2 Verifying Solutions to Differential Equations**
+Again, a differential equation. So here's the big question: if I only know the rate of change, can I figure out the original function? Can I find $\displaystyle P(t)$? That's what we're learning today.
 
 **Definition:**
-To **verify** that a function is a solution to a given differential equation, substitute the function and its derivatives into the differential equation and check that the equation holds for all $x$ in an interval.
+A **differential equation** is an equation that relates a function with one or more of its derivatives. In AP Calculus AB, we focus on **ordinary differential equations** (ODEs) with one independent variable, typically $\displaystyle x$ or $\displaystyle t$.
 
-**Comments:**
+The **order** of a differential equation is the order of the highest derivative that appears in the equation.
+- $\displaystyle y' = 4y$ is **first-order** (only first derivative)
+- $\displaystyle s''(t) = -32$ is **second-order** (second derivative)
 
-- This process uses differentiation to compute the necessary derivatives of the proposed solution.
-- A function may satisfy a differential equation identically (for all $x$) or only for specific values of the constant(s).
-- Often, differential equations have infinitely many solutions (a family of curves). The general solution includes an arbitrary constant $C$ (for first-order equations).
+**First-Order Differential Equations (Our Main Focus):**
+These involve the first derivative and can often be written as:
 
-**Examples:**
+$$
+\frac{dy}{dx} = f(x, y)
+$$
 
-1. **Verifying a Solution:** Verify that $y = 3e^{2x}$ is a solution to the differential equation $\frac{dy}{dx} = 2y$.
-    - Compute derivative: $\frac{dy}{dx} = 6e^{2x}$.
-    - Substitute into right side: $2y = 2 \cdot 3e^{2x} = 6e^{2x}$.
-    - Since both sides equal $6e^{2x}$, the function is a solution.
-2. **Verifying a Family:** Show that $y = Ce^{-x} + 2$ is a solution to $\frac{dy}{dx} = -y + 2$ for any constant $C$.
-    - Compute derivative: $\frac{dy}{dx} = -Ce^{-x}$.
-    - Compute right side: $-y + 2 = -(Ce^{-x} + 2) + 2 = -Ce^{-x} - 2 + 2 = -Ce^{-x}$.
-    - Since both sides are equal, the family satisfies the equation.
-3. **Checking an Initial Condition:** Given the differential equation $\frac{dy}{dx} = 3x^2$ with the initial condition $y(1) = 4$, verify that $y = x^3 + 3$ is a particular solution.
-    - Derivative: $\frac{dy}{dx} = 3x^2$, which matches the right side.
-    - Check initial condition: $y(1) = 1^3 + 3 = 4$. So it satisfies both the equation and the initial condition.
+where $\displaystyle f(x, y)$ is some expression involving $\displaystyle x$ and $\displaystyle y$.
 
----
+The function $\displaystyle y = f(x)$ is called a **solution** if plugging it into the equation (along with its derivatives) makes the equation true.
 
-### **17.3 Slope Fields**
+**Example:** Check if $\displaystyle y = e^{-2x}$ solves $\displaystyle y' + 2y = 0$.
 
-**Definition:**
-A **slope field** (or **direction field**) is a graphical representation of a first-order differential equation $\frac{dy}{dx} = f(x, y)$. It is constructed by evaluating $f(x, y)$ at a grid of points $(x, y)$ and drawing a short line segment with that slope at each point.
+- $\displaystyle y' = -2e^{-2x}$
+- Substitute: $\displaystyle (-2e^{-2x}) + 2(e^{-2x}) = 0$ ✅
 
-**Comments:**
+It works! And it turns out *every* solution of this equation looks like
 
-- **Purpose:** Slope fields give a visual picture of the family of solutions without solving the differential equation analytically. They show the direction in which a solution curve will go at each point.
-- **Sketching Solutions:** To sketch a particular solution curve, start at a given point (initial condition) and follow the direction indicated by the slope field, drawing a smooth curve that is tangent to the line segments.
-- **Behavior:** Patterns in the slope field can indicate equilibrium solutions (where slopes are zero), asymptotic behavior, or symmetry.
-- **Creating a Slope Field:** For a given $f(x, y)$, compute slopes at representative points (e.g., integer coordinates) and draw short segments with those slopes.
+$$y = Ce^{-2x}$$
 
-**Examples:**
+where $\displaystyle C$ is any real number. This is called the **general solution** – it's a whole family of functions, one for each value of $\displaystyle C$.
 
-1. **Plotting a Simple Slope Field:** Consider $\frac{dy}{dx} = x$.
-    - The slope depends only on $x$. At each $x$, the slope is the same for all $y$. For example:
-        - At $x = 0$, slope = 0 (horizontal segments).
-        - At $x = 1$, slope = 1 (segments at 45° upward).
-        - At $x = -1$, slope = -1 (segments at 45° downward).
-    - The slope field suggests solution curves are parabolas $y = \frac{1}{2}x^2 + C$.
-2. **Slope Field for $\frac{dy}{dx} = y$:**
-    - Slopes depend only on $y$. At $y = 0$, slope = 0 (horizontal). For $y > 0$, slopes are positive and increase as $y$ increases. For $y < 0$, slopes are negative and become more negative as $y$ decreases.
-    - This suggests exponential growth for positive $y$, exponential decay for negative $y$, and the constant solution $y = 0$.
-3. **Sketching a Solution Curve:** Given the slope field for $\frac{dy}{dx} = x + y$ and the initial condition $y(0) = 1$, sketch the solution.
-    - Start at point $(0,1)$. The slope there is $0+1=1$, so curve goes upward with slope 1.
-    - As you move to the right, both $x$ and $y$ increase, so slope increases. The curve will become steeper.
-    - As you move to the left, $x$ becomes negative, but $y$ might decrease; follow the slopes.
-    - Draw a smooth curve that follows the direction of the segments.
+A differential equation of order $\displaystyle n$ typically has a general solution with $\displaystyle n$ arbitrary constants. For $\displaystyle s''(t) = -32$, the general solution is:
+
+$$s(t) = -16t^2 + C_1 t + C_2$$
+
+(two constants: $\displaystyle C_1$ and $\displaystyle C_2$).
 
 ---
 
-### **17.4 Estimating Solutions Using Slope Fields**
+## **Verifying Solutions**
 
-**Definition:**
-Given a slope field and an initial condition, we can **estimate** the graph of the particular solution by starting at the initial point and drawing a curve that is tangent to the slope segments.
+Before we learn how to *solve* differential equations, let's make sure we can recognize a solution when we see one. This is like checking your work in algebra by plugging your answer back into the original equation.
 
-**Comments:**
+Determine whether each function solves $\displaystyle y'' - y = 0$.
 
-- This is a graphical method to approximate solutions when an analytical solution is difficult to obtain.
-- **Equilibrium Solutions:** If $f(x, y) = 0$ for some constant $y = c$, then $y = c$ is an equilibrium solution (horizontal line). On the slope field, these appear as rows of horizontal segments.
-- **Isoclines:** An **isocline** is a curve along which the slope is constant. For $\frac{dy}{dx} = f(x, y)$, setting $f(x, y) = m$ gives an equation for the isocline of slope $m$. Isoclines can help in sketching slope fields.
+| Function | Derivatives | Check $\displaystyle y'' - y = 0$? | Verdict |
+|----------|-------------|----------------------|---------|
+| $\displaystyle y = \sin x$ | $\displaystyle y' = \cos x$, $\displaystyle y'' = -\sin x$ | $\displaystyle -\sin x - \sin x = -2\sin x \neq 0$ | ❌ Not a solution |
+| $\displaystyle y = 4e^{-x}$ | $\displaystyle y' = -4e^{-x}$, $\displaystyle y'' = 4e^{-x}$ | $\displaystyle 4e^{-x} - 4e^{-x} = 0$ | ✅ Solution |
+| $\displaystyle y = Ce^x$ | $\displaystyle y' = Ce^x$, $\displaystyle y'' = Ce^x$ | $\displaystyle Ce^x - Ce^x = 0$ | ✅ Solution for *any* $\displaystyle C$ |
 
-**Examples:**
+Notice: $\displaystyle y = Ce^x$ is actually the *general solution* of $\displaystyle y'' - y = 0$.
 
-1. **Identifying Equilibrium:** For $\frac{dy}{dx} = y(2 - y)$, find equilibrium solutions.
-    - Set $\frac{dy}{dx} = 0$: $y(2 - y) = 0$ ⇒ $y = 0$ or $y = 2$.
-    - These are horizontal lines where the slope is zero. In the slope field, along $y=0$ and $y=2$, all segments are horizontal.
-2. **Sketching from Slope Field:** The slope field for $\frac{dy}{dx} = \frac{x}{y}$ has segments with slope $\frac{x}{y}$. Notice:
-    - When $y > 0$, slopes are positive for $x > 0$ and negative for $x < 0$.
-    - When $y < 0$, signs reverse.
-    - At $y=0$, the slope is undefined (vertical segments? Actually, the equation is undefined at $y=0$, so we skip those points).
-    - The solution curves appear to be hyperbolas $y^2 - x^2 = C$.
-3. **Using Technology:** Graphing calculators or computer software can generate slope fields quickly. On the AP exam, you may be asked to interpret a given slope field or match a differential equation to its slope field.
+**Example 1: Simple Verification**
+Verify that $\displaystyle y = 3e^{2x}$ is a solution to $\displaystyle \frac{dy}{dx} = 2y$.
+
+*Step-by-step:*
+1. Compute the derivative: $\displaystyle \frac{dy}{dx} = 3 \cdot 2e^{2x} = 6e^{2x}$
+2. Substitute into the right side: $\displaystyle 2y = 2 \cdot 3e^{2x} = 6e^{2x}$
+3. Compare: Left side = $\displaystyle 6e^{2x}$, Right side = $\displaystyle 6e^{2x}$
+4. They match! So $\displaystyle y = 3e^{2x}$ **is** a solution.
+
+**Example 2: Verifying a Family of Solutions**
+Show that $\displaystyle y = Ce^{-x} + 2$ is a solution to $\displaystyle \frac{dy}{dx} = -y + 2$ for any constant $\displaystyle C$.
+
+*Step-by-step:*
+1. Compute the derivative: $\displaystyle \frac{dy}{dx} = -Ce^{-x}$
+2. Compute the right side: $\displaystyle -y + 2 = -(Ce^{-x} + 2) + 2 = -Ce^{-x} - 2 + 2 = -Ce^{-x}$
+3. Both sides equal $\displaystyle -Ce^{-x}$, so it works for **any** $\displaystyle C$.
+
+**Example 3: Checking an Initial Condition**
+Given the differential equation $\displaystyle \frac{dy}{dx} = 3x^2$ with initial condition $\displaystyle y(1) = 4$, verify that $\displaystyle y = x^3 + 3$ is a particular solution.
+
+*Step-by-step:*
+1. Check the differential equation:
+   - Derivative: $\displaystyle \frac{dy}{dx} = 3x^2$ ✓ matches
+2. Check the initial condition:
+   - $\displaystyle y(1) = 1^3 + 3 = 4$ ✓ matches
+3. Therefore, $\displaystyle y = x^3 + 3$ is the particular solution.
+
+**Example 4: A Tricky One**
+Verify that $\displaystyle y = \frac{1}{x} + 3$ is a solution to $\displaystyle \frac{dy}{dx} = -y^2 + 6y - 9$.
+
+*Step-by-step:*
+1. Compute the derivative: $\displaystyle \frac{dy}{dx} = -\frac{1}{x^2}$
+2. Compute the right side carefully:
+   - First, $\displaystyle y^2 = \left(\frac{1}{x} + 3\right)^2 = \frac{1}{x^2} + \frac{6}{x} + 9$
+   - So $\displaystyle -y^2 = -\frac{1}{x^2} - \frac{6}{x} - 9$
+   - $\displaystyle 6y = 6\left(\frac{1}{x} + 3\right) = \frac{6}{x} + 18$
+   - Put it all together: $\displaystyle -\frac{1}{x^2} - \frac{6}{x} - 9 + \frac{6}{x} + 18 - 9 = -\frac{1}{x^2}$
+3. Both sides equal $\displaystyle -\frac{1}{x^2}$, so it's a solution!
 
 ---
 
-### **Lesson 17 Summary**
+## **General Solution vs. Particular Solution**
 
-**Key Concepts:**
+- **General solution:** The family of all solutions, with arbitrary constants.
+- **Particular solution:** One specific member of the family, found by using **initial conditions** (extra info that pins down the constants).
 
-- **Differential Equation:** Relates a function and its derivatives.
-- **Order:** Highest derivative in the equation.
-- **Solution:** A function that satisfies the equation.
-- **General Solution:** Family of solutions with arbitrary constants.
-- **Particular Solution:** Obtained by applying an initial condition.
-- **Slope Field:** Graphical representation of $\frac{dy}{dx} = f(x, y)$ showing slopes at points.
+**Example:** The equation $\displaystyle xy' + y = 0$ has general solution
 
-**Skills:**
+$$y = \frac{C}{x}$$
 
-1. Translate verbal statements into differential equations.
-2. Verify a given function is a solution by substitution.
-3. Sketch or interpret slope fields.
-4. Estimate solution curves from slope fields and initial conditions.
-5. Identify equilibrium solutions from $f(x, y) = 0$.
+(you can verify: $\displaystyle y' = -C/x^2$, so $\displaystyle xy' + y = x(-C/x^2) + C/x = -C/x + C/x = 0$).
 
-**Common Models:**
-
-- Exponential growth/decay: $\frac{dy}{dt} = ky$
-- Logistic growth: $\frac{dP}{dt} = kP(1 - \frac{P}{M})$ (though logistic is more common in BC, AB may see it)
-- Newton's Law of Cooling: $\frac{dT}{dt} = k(T - T_{\text{env}})$
+Geometrically, each $\displaystyle C$ gives a different curve – these are called **solution curves** (Figure 6.1 shows a few of them).
 
 ---
 
-### **Additional Practice Problems**
+### Example 2: Finding a Particular Solution
 
-1. Translate: "The rate of change of the volume $V$ of a sphere with respect to its radius $r$ is proportional to its surface area." (Recall: volume $V = \frac{4}{3}\pi r^3$, surface area $S = 4\pi r^2$.) Write a differential equation.
-2. Verify that $y = \frac{1}{x} + 3$ is a solution to $\frac{dy}{dx} = -y^2 + 6y - 9$.
-3. For the differential equation $\frac{dy}{dx} = 2x - y$, compute the slopes at the points: $(0,0)$, $(1,2)$, $(-1,1)$, $(2,0)$.
-4. The slope field for $\frac{dy}{dx} = \frac{y}{x}$ is shown. Sketch the solution curve passing through $(1,2)$.
-5. Determine whether $y = \sin x + \cos x$ is a solution to $\frac{d^2y}{dx^2} + y = 0$.
-6. Find the equilibrium solutions of $\frac{dy}{dx} = y^2 - 4$.
-7. Match the differential equation with its slope field:
-a) $\frac{dy}{dx} = x + 1$
-b) $\frac{dy}{dx} = y + 1$
-c) $\frac{dy}{dx} = xy$
-8. Verify that $y = Ce^{2x} + 3e^{-x}$ is a solution to $\frac{dy}{dx} - 2y = -9e^{-x}$ for any constant $C$.
-9. Sketch a slope field for $\frac{dy}{dx} = 2y$ at the points $(0,0)$, $(0,1)$, $(0,-1)$, $(1,0)$, $(1,1)$, $(1,-1)$.
-10. Given the slope field for $\frac{dy}{dx} = x - y$, describe the behavior of solutions as $x$ increases.
+For $\displaystyle xy' - 3y = 0$, verify that $\displaystyle y = Cx^3$ is a solution, then find the particular solution satisfying $\displaystyle y = 2$ when $\displaystyle x = -3$.
 
-**Selected Solutions:**
+**Step 1: Verify the general solution**  
+$\displaystyle y = Cx^3$ ⇒ $\displaystyle y' = 3Cx^2$  
+Plug in: $\displaystyle xy' - 3y = x(3Cx^2) - 3(Cx^3) = 3Cx^3 - 3Cx^3 = 0$ ✅
 
-1. Rate of change of volume with respect to radius: $\frac{dV}{dr}$. Proportional to surface area: $\frac{dV}{dr} = k \cdot S$. But we know $\frac{dV}{dr} = 4\pi r^2$ from calculus, so the equation is $\frac{dV}{dr} = 4\pi r^2$, which is indeed proportional to $S = 4\pi r^2$ with constant of proportionality 1. So the differential equation is $\frac{dV}{dr} = k \cdot 4\pi r^2$ or simply $\frac{dV}{dr} = 4\pi r^2$ if $k=1$. But the statement says "proportional to", so we include a constant: $\frac{dV}{dr} = k \cdot 4\pi r^2$.
-2. Compute $\frac{dy}{dx} = -\frac{1}{x^2}$. Compute right side: $-y^2+6y-9 = -\left(\frac{1}{x}+3\right)^2 + 6\left(\frac{1}{x}+3\right) - 9 = -\left(\frac{1}{x^2}+\frac{6}{x}+9\right) + \frac{6}{x}+18 - 9 = -\frac{1}{x^2} - \frac{6}{x} - 9 + \frac{6}{x} + 9 = -\frac{1}{x^2}$. So both sides equal $-\frac{1}{x^2}$, verified.
-3. At $(0,0)$: slope = $2(0)-0=0$. At $(1,2)$: slope = $2(1)-2=0$. At $(-1,1)$: slope = $2(-1)-1=-2-1=-3$. At $(2,0)$: slope = $4-0=4$.
-4. For $\frac{dy}{dx} = \frac{y}{x}$, at $(1,2)$ slope = $2/1=2$. The solution curves are lines through the origin? Actually, the equation is separable: $\frac{dy}{y} = \frac{dx}{x}$, so $\ln|y| = \ln|x|+C$ ⇒ $y = Cx$. So the solutions are lines through the origin. Through $(1,2)$, the line is $y=2x$.
-5. Compute first derivative: $\frac{dy}{dx} = \cos x - \sin x$. Second derivative: $\frac{d^2y}{dx^2} = -\sin x - \cos x$. Then $\frac{d^2y}{dx^2} + y = (-\sin x - \cos x) + (\sin x + \cos x) = 0$. So yes.
-6. Set $\frac{dy}{dx}=0$: $y^2-4=0$ ⇒ $y = \pm 2$. So equilibrium solutions: $y=2$ and $y=-2$.
-7. a) $\frac{dy}{dx}=x+1$: slopes depend only on x. At a given x, all slopes are the same regardless of y. So the slope field has columns of identical segments.
-   b) $\frac{dy}{dx}=y+1$: slopes depend only on y. Rows of identical segments.
-   c) $\frac{dy}{dx}=xy$: slopes are zero along $x=0$ or $y=0$. In quadrants I and III, slopes positive; in II and IV, negative.
-8. Compute $\frac{dy}{dx} = 2Ce^{2x} - 3e^{-x}$. Then left side of equation: $\frac{dy}{dx} - 2y = (2Ce^{2x}-3e^{-x}) - 2(Ce^{2x}+3e^{-x}) = 2Ce^{2x}-3e^{-x} -2Ce^{2x} -6e^{-x} = -9e^{-x}$, which matches right side.
-9. Slopes: at $(0,0)$: 0; at $(0,1)$: 2; at $(0,-1)$: -2; at $(1,0)$: 0; at $(1,1)$: 2; at $(1,-1)$: -2. So slopes depend only on y.
-10. For $\frac{dy}{dx} = x-y$, equilibrium occurs when $y=x$. Above the line $y=x$, slope is negative (since $x-y<0$); below the line, slope is positive. Solutions tend to approach the line $y=x-1$? Actually, the general solution is $y = x-1 + Ce^{-x}$. As $x$ increases, $e^{-x} \to 0$, so solutions approach the line $y=x-1$. So as $x$ increases, solutions get closer to the line $y=x-1$.
+**Step 2: Use the initial condition**  
+When $\displaystyle x = -3$, $\displaystyle y = 2$:  
+$\displaystyle 2 = C(-3)^3 = C(-27)$
+
+$$C = -\frac{2}{27}$$
+
+**Step 3: Write the particular solution**  
+
+$$y = -\frac{2}{27}x^3$$
+
+You can check: at $\displaystyle x = -3$, $\displaystyle y = -\frac{2}{27}(-27) = 2$, works perfectly.
+
+---
+
+## **Slope Fields – A Picture of Solutions**
+
+Sometimes solving a differential equation algebraically is hard or even impossible. But we can still get a good idea of what solutions look like using a **slope field** (also called a **direction field**).
+
+For an equation of the form
+
+$$y' = F(x, y)$$
+
+at each point $\displaystyle (x, y)$, the slope of the solution curve is given by $\displaystyle F(x, y)$. If you draw tiny line segments with that slope at many points, you get a picture of how solutions behave.
+
+**Why it's useful:** Even without solving, you can trace the curves following the slopes and see the overall shape of solutions. It's like having a map of where solutions go.
+
+At each point $\displaystyle (x, y)$ in the plane, the differential equation $\displaystyle \frac{dy}{dx} = f(x, y)$ tells us the *slope* of the solution curve passing through that point. A slope field is a visual representation of these slopes.
+
+**How to Read (and Draw) a Slope Field:**
+1. Pick a grid of points $\displaystyle (x, y)$
+2. At each point, compute $\displaystyle f(x, y)$ – this is the slope
+3. Draw a short line segment with that slope at the point
+4. The collection of all these segments is the slope field
+
+**Example 1: The Simplest Case – $\displaystyle \frac{dy}{dx} = x$**
+Let's build this slope field step by step:
+
+| Point $\displaystyle (x, y)$ | Slope = $\displaystyle x$ | What to draw |
+| :--- | :--- | :--- |
+| $\displaystyle (0, 0)$ | $\displaystyle 0$ | Horizontal line segment |
+| $\displaystyle (0, 1)$ | $\displaystyle 0$ | Horizontal line segment |
+| $\displaystyle (0, -1)$ | $\displaystyle 0$ | Horizontal line segment |
+| $\displaystyle (1, 0)$ | $\displaystyle 1$ | Line with slope 1 (45° upward) |
+| $\displaystyle (1, 1)$ | $\displaystyle 1$ | Line with slope 1 |
+| $\displaystyle (-1, 0)$ | $\displaystyle -1$ | Line with slope -1 (45° downward) |
+
+Notice: The slope depends ONLY on $\displaystyle x$, so in each vertical column, all segments have the same slope.
+
+**Example 2: $\displaystyle \frac{dy}{dx} = y$**
+Now the slope depends only on $\displaystyle y$:
+
+| Point $\displaystyle (x, y)$ | Slope = $\displaystyle y$ | What to draw |
+| :--- | :--- | :--- |
+| $\displaystyle (0, 0)$ | $\displaystyle 0$ | Horizontal |
+| $\displaystyle (1, 0)$ | $\displaystyle 0$ | Horizontal |
+| $\displaystyle (0, 1)$ | $\displaystyle 1$ | Slope 1 |
+| $\displaystyle (2, 1)$ | $\displaystyle 1$ | Slope 1 |
+| $\displaystyle (0, -1)$ | $\displaystyle -1$ | Slope -1 |
+| $\displaystyle (0, 2)$ | $\displaystyle 2$ | Steeper (slope 2) |
+
+Here, in each horizontal row, all segments have the same slope.
+
+**Example 3: $\displaystyle \frac{dy}{dx} = x + y$**
+This one depends on both:
+
+| Point $\displaystyle (x, y)$ | Slope = $\displaystyle x + y$ | What to draw |
+| :--- | :--- | :--- |
+| $\displaystyle (0, 0)$ | $\displaystyle 0$ | Horizontal |
+| $\displaystyle (1, 0)$ | $\displaystyle 1$ | Slope 1 |
+| $\displaystyle (0, 1)$ | $\displaystyle 1$ | Slope 1 |
+| $\displaystyle (1, 1)$ | $\displaystyle 2$ | Slope 2 (steeper) |
+| $\displaystyle (-1, -1)$ | $\displaystyle -2$ | Slope -2 |
+| $\displaystyle (1, -1)$ | $\displaystyle 0$ | Horizontal |
+
+**Sketching Solution Curves:**
+Once you have a slope field, you can sketch approximate solution curves:
+1. Start at a given point (initial condition)
+2. Follow the "flow" of the slope field
+3. Draw a smooth curve that is tangent to the line segments
+
+![A slope field with several solution curves sketched through it](https://i.imgur.com/5JQkL9r.png)
+*Caption: Solution curves follow the direction indicated by the slope field.*
+
+---
+
+### **Special Features of Slope Fields**
+
+**Equilibrium Solutions:**
+These are horizontal lines (constant functions) that are solutions to the differential equation. They occur where $\displaystyle \frac{dy}{dx} = 0$ for all $\displaystyle x$.
+
+**Finding Equilibrium Solutions:**
+Set $\displaystyle f(x, y) = 0$ and solve for $\displaystyle y$ (if possible). The solutions are of the form $\displaystyle y = c$ (constant).
+
+**Example: Find equilibrium solutions for $\displaystyle \frac{dy}{dx} = y(2 - y)$**
+1. Set $\displaystyle y(2 - y) = 0$
+2. Solve: $\displaystyle y = 0$ or $\displaystyle y = 2$
+3. These are horizontal lines where the slope is zero everywhere
+
+**Isoclines (Optional but Helpful):**
+An **isocline** is a curve along which all slopes are equal. For $\displaystyle \frac{dy}{dx} = f(x, y)$, the isocline for slope $\displaystyle m$ is the curve $\displaystyle f(x, y) = m$.
+
+**Example: Find isoclines for $\displaystyle \frac{dy}{dx} = x + y$**
+- For slope 0: $\displaystyle x + y = 0$ or $\displaystyle y = -x$ (all points on this line have slope 0)
+- For slope 1: $\displaystyle x + y = 1$ or $\displaystyle y = 1 - x$ (all points on this line have slope 1)
+- For slope -1: $\displaystyle x + y = -1$ or $\displaystyle y = -1 - x$
+
+**Matching Differential Equations to Slope Fields:**
+This is a common AP question. Look for these clues:
+- If slopes depend only on $\displaystyle x$: vertical columns of identical segments
+- If slopes depend only on $\displaystyle y$: horizontal rows of identical segments
+- Zero slopes: where segments are horizontal
+- Undefined slopes: where segments might be vertical (though we usually avoid these points)
+
+**Example: Match the equation to the slope field**
+Which differential equation matches a slope field where:
+- All segments on the line $\displaystyle y = x$ are horizontal?
+- Above $\displaystyle y = x$, segments slope downward?
+- Below $\displaystyle y = x$, segments slope upward?
+
+*Analysis:*
+- Horizontal on $\displaystyle y = x$ means $\displaystyle \frac{dy}{dx} = 0$ when $\displaystyle y = x$
+- This suggests $\displaystyle \frac{dy}{dx} = x - y$ or $\displaystyle \frac{dy}{dx} = y - x$
+- Test $\displaystyle \frac{dy}{dx} = x - y$: When $\displaystyle y = x$, slope = 0 ✓
+  - Above $\displaystyle y = x$: $\displaystyle y > x$, so $\displaystyle x - y < 0$ (downward slope) ✓
+  - Below $\displaystyle y = x$: $\displaystyle y < x$, so $\displaystyle x - y > 0$ (upward slope) ✓
+So $\displaystyle \frac{dy}{dx} = x - y$ is the correct match.
+
+---
+
+### **Estimating Solutions Numerically and Graphically**
+
+When we can't find an exact formula for a solution, we can still approximate it using the slope field.
+
+**Euler's Method (Preview):**
+While not always required in AB, the idea is simple: start at an initial point, use the slope to take a small step, find the new slope at that point, take another step, and so on.
+
+**Example: Estimate $\displaystyle y(2)$ if $\displaystyle \frac{dy}{dx} = x + y$ and $\displaystyle y(0) = 1$, using step size $\displaystyle \Delta x = 1$**
+1. Start at $\displaystyle (0, 1)$: slope = $\displaystyle 0 + 1 = 1$
+2. Step to $\displaystyle x = 1$: New $\displaystyle y = 1 + 1 \cdot 1 = 2$ (so point is $\displaystyle (1, 2)$)
+3. At $\displaystyle (1, 2)$: slope = $\displaystyle 1 + 2 = 3$
+4. Step to $\displaystyle x = 2$: New $\displaystyle y = 2 + 3 \cdot 1 = 5$
+5. So $\displaystyle y(2) \approx 5$
+
+**Using Technology:**
+On the AP exam, you might be asked to interpret slope fields generated by a graphing calculator. Common calculator commands:
+- TI-84: `DIRFIELD` (if you have the program) or use `STAT PLOT` to create your own
+- You should be able to match a differential equation to its slope field and vice versa
+
+---
+
+### **Translating Words into Differential Equations**
+
+This is a crucial skill. Look for phrases like "rate of change," "is proportional to," "increases at a rate of."
+
+**Example 1: From Words to Equation**
+"The population $\displaystyle P$ of bacteria grows at a rate proportional to the current population."
+
+*Step-by-step:*
+1. Identify the rate: "grows at a rate" = $\displaystyle \frac{dP}{dt}$
+2. "Proportional to the current population" means = $\displaystyle kP$, where $\displaystyle k$ is a constant
+3. Put it together: $\displaystyle \frac{dP}{dt} = kP$
+
+**Example 2: Another Translation**
+"The rate at which water leaks from a tank is proportional to the square root of the volume remaining."
+
+*Step-by-step:*
+1. Let $\displaystyle V$ = volume of water
+2. "Rate at which water leaks" = $\displaystyle \frac{dV}{dt}$ (negative because it's leaking)
+3. "Proportional to the square root of the volume" = $\displaystyle k\sqrt{V}$
+4. Since the tank is leaking, the rate is negative: $\displaystyle \frac{dV}{dt} = -k\sqrt{V}$
+
+**Example 3: Geometric Interpretation**
+"At each point $\displaystyle (x, y)$ on a curve, the slope of the tangent line is twice the x-coordinate."
+
+*Step-by-step:*
+1. Slope of tangent line = $\displaystyle \frac{dy}{dx}$
+2. "Is twice the x-coordinate" = $\displaystyle 2x$
+3. So: $\displaystyle \frac{dy}{dx} = 2x$

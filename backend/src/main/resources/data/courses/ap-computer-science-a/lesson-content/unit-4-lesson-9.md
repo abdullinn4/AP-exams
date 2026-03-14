@@ -1,4 +1,4 @@
-### 4.9: ArrayList Traversals
+### ArrayList Traversals
 
 
 ### What is ArrayList Traversal?

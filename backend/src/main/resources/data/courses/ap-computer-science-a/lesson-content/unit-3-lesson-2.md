@@ -1,4 +1,4 @@
-### 3.2: Impact of Program Design
+### Impact of Program Design
 
 ### System Reliability
 

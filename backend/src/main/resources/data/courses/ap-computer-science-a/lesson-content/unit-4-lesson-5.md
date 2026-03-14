@@ -1,4 +1,4 @@
-### 4.5: Implementing Array Algorithms
+### Implementing Array Algorithms
 
 
 ### Why Standard Array Algorithms Matter

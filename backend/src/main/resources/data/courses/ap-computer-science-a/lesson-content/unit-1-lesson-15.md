@@ -1,4 +1,4 @@
-# 1.15: String Manipulation
+### String Manipulation
 
 
 ### The String Class

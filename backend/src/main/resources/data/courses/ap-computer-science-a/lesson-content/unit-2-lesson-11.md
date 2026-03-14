@@ -1,4 +1,4 @@
-### 2.11: Nested Iteration
+### Nested Iteration
 
 ### What Are Nested Iteration Statements?
 

@@ -1,5 +1,5 @@
 
-### 1.12: Objects: Instances of Classes
+### Objects: Instances of Classes
 
 
 ### What is an Object?

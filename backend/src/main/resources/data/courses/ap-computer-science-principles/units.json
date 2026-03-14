@@ -1,0 +1,50 @@
+[
+    {
+        "order": 1,
+        "title": "Big Idea 1: Creative Development",
+        "snippet": "Collaborative, iterative design",
+        "description": "Using iterative design and collaboration to develop programs and solve problems.",
+        "iconUrl": "https://cdn.example.com/icons/limits.svg",
+        "isPublished": true
+    },
+    {
+        "order": 2,
+        "title": "Big Idea 2: Data",
+        "snippet": "Digital data and knowledge discovery",
+        "description": "How computers digitally represent data and how programs extract information and knowledge.",
+        "iconUrl": "https://cdn.example.com/icons/derivative.svg",
+        "isPublished": true
+    },
+    {
+        "order": 3,
+        "title": "Big Idea 3: Algorithms and Programming",
+        "snippet": "Algorithms and programming constructs",
+        "description": "The building blocks for creating algorithms and programs to solve problems.",
+        "iconUrl": "https://cdn.example.com/icons/chain-rule.svg",
+        "isPublished": true
+    },
+    {
+        "order": 4,
+        "title": "Big Idea 4: Computer Systems and Networks",
+        "snippet": "Networks and fault-tolerant data transfer",
+        "description": "How the Internet and computer networks transfer data reliably.",
+        "iconUrl": "https://cdn.example.com/icons/applications.svg",
+        "isPublished": true
+    },
+    {
+        "order": 5,
+        "title": "Big Idea 5: Impact of Computing",
+        "snippet": "Impact, ethics, and safe computing",
+        "description": "The beneficial/harmful effects of computing, including ethical and safety concerns.",
+        "iconUrl": "https://cdn.example.com/icons/applications.svg",
+        "isPublished": true
+    },
+    {
+        "order": 6,
+        "title": "Smash the Performance Task",
+        "snippet": "Impact, ethics, and safe computing",
+        "description": "The beneficial/harmful effects of computing, including ethical and safety concerns.",
+        "iconUrl": "https://cdn.example.com/icons/applications.svg",
+        "isPublished": true
+    }
+]

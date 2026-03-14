@@ -1,27 +1,27 @@
 [
     {
-        "unitOrder": 1,
-        "lessonOrder": 1,
-        "title": "Introduction to Algorithms, Programming, and Compilers",
-        "videoUrl": "https://youtu.be/5czA29NrI3U",
-        "contentFile": "unit-1-lesson-1.md",
-        "releaseDate": null
+    "unitOrder": 1,
+    "lessonOrder": 1,
+    "title": "Introduction to Algorithms, Programming, and Compilers",
+    "videoUrl": "https://youtu.be/5czA29NrI3U",
+    "contentFile": "unit-1-lesson-1.md",
+    "releaseDate": null
     },
     {
-        "unitOrder": 1,
-        "lessonOrder": 2,
-        "title": "Variables and Data Types",
-        "videoUrl": "https://youtu.be/pnf-dY2rJOc",
-        "contentFile": "unit-1-lesson-2.md",
-        "releaseDate": null
+    "unitOrder": 1,
+    "lessonOrder": 2,
+    "title": "Variables and Data Types",
+    "videoUrl": "https://youtu.be/pnf-dY2rJOc",
+    "contentFile": "unit-1-lesson-2.md",
+    "releaseDate": null
     },
     {
-        "unitOrder": 1,
-        "lessonOrder": 3,
-        "title": "Expressions and Output",
-        "videoUrl": "https://youtu.be/imymQXE61CQ",
-        "contentFile": "unit-1-lesson-3.md",
-        "releaseDate": null
+    "unitOrder": 1,
+    "lessonOrder": 3,
+    "title": "Expressions and Output",
+    "videoUrl": "https://youtu.be/imymQXE61CQ",
+    "contentFile": "unit-1-lesson-3.md",
+    "releaseDate": null
     },
     {
         "unitOrder": 1,
@@ -120,6 +120,17 @@
         "releaseDate": null
     },
     {
+        "unitOrder": 1,
+        "lessonOrder": 16,
+        "title": "Unit 1 Smash Time",
+        "videoUrl": "https://youtu.be/FxL_00sUcjo",
+        "contentFile": "unit-1-lesson-16.md",
+        "releaseDate": null
+    },
+
+
+
+    {
         "unitOrder": 2,
         "lessonOrder": 1,
         "title": "Algorithms with Selection and Repetition",
@@ -154,7 +165,7 @@
     {
         "unitOrder": 2,
         "lessonOrder": 5,
-        "title": "2.5 Compound Boolean Expressions",
+        "title": "Compound Boolean Expressions",
         "videoUrl": "https://youtu.be/3GhuC098Rwc",
         "contentFile": "unit-2-lesson-5.md",
         "releaseDate": null
@@ -213,6 +224,14 @@
         "title": "Informal Run-Time Analysis",
         "videoUrl": "https://youtu.be/AHlz1YZdjPw",
         "contentFile": "unit-2-lesson-12.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 2,
+        "lessonOrder": 13,
+        "title": "Unit 2 Smash Time",
+        "videoUrl": "https://youtu.be/AHlz1YZdjPw",
+        "contentFile": "unit-2-lesson-13.md",
         "releaseDate": null
     },
     {
@@ -285,6 +304,14 @@
         "title": "this Keyword",
         "videoUrl": "https://youtu.be/3yQYx_hKR0E",
         "contentFile": "unit-3-lesson-9.md",
+        "releaseDate": null
+    },
+    {
+        "unitOrder": 3,
+        "lessonOrder": 10,
+        "title": "Unit 3 Smash Time",
+        "videoUrl": "https://youtu.be/3yQYx_hKR0E",
+        "contentFile": "unit-3-lesson-10.md",
         "releaseDate": null
     },
     {
@@ -410,7 +437,7 @@
     {
         "unitOrder": 4,
         "lessonOrder": 16,
-        "title": "Recursion",
+        "title": " Recursion",
         "videoUrl": "https://youtu.be/oYk8LLDz_7o",
         "contentFile": "unit-4-lesson-16.md",
         "releaseDate": null
@@ -422,5 +449,14 @@
         "videoUrl": "https://youtu.be/745keReAg9s",
         "contentFile": "unit-4-lesson-17.md",
         "releaseDate": null
+    },
+    {
+        "unitOrder": 4,
+        "lessonOrder": 18,
+        "title": "Unit 4 Smash Time",
+        "videoUrl": "https://youtu.be/745keReAg9s",
+        "contentFile": "unit-4-lesson-18.md",
+        "releaseDate": null
     }
+
 ]

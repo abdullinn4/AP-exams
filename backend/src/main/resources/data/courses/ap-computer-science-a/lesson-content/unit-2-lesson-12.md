@@ -1,4 +1,4 @@
-### 2.12: Informal Run-Time Analysis
+### Informal Run-Time Analysis
 
 ### What is Informal Run-Time Analysis?
 

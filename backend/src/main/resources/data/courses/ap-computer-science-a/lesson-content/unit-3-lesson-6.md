@@ -1,4 +1,4 @@
-### 3.6: Methods: Passing and Returning References of an Object
+### Methods: Passing and Returning References of an Object
 
 ### Passing Object References as Parameters
 

@@ -1,5 +1,5 @@
 
-### 1.13: Object Creation and Storage (Instantiation)
+### Object Creation and Storage (Instantiation)
 
 
 ### Creating Objects: The `new` Keyword

@@ -1,4 +1,4 @@
-### 4.8: ArrayList Methods
+### ArrayList Methods
 
 ### What is an ArrayList?
 

@@ -1,4 +1,4 @@
-### 2.8: for Loops
+### for Loops
 
 ### The for Loop
 

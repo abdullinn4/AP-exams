@@ -1,4 +1,4 @@
-### 1.4: Assignment Statements and Input
+### Assignment Statements and Input
 
 ### The Assignment Operator `=`
 

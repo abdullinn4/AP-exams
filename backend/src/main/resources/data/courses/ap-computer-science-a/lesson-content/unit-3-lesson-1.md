@@ -1,4 +1,4 @@
-### 3.1: Abstraction and Program Design
+### Abstraction and Program Design
 
 ### What is Abstraction?
 

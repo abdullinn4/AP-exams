@@ -1,4 +1,4 @@
-### 4.15: Sorting Algorithms
+### Sorting Algorithms
 
 ### What is Sorting?
 

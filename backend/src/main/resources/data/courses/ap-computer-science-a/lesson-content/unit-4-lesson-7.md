@@ -1,4 +1,4 @@
-### 4.7: Wrapper Classes
+### Wrapper Classes
 
 ### What Are Wrapper Classes?
 

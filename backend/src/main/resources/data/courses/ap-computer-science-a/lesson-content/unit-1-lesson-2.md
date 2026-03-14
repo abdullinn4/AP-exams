@@ -1,4 +1,4 @@
-### 1.2: Variables and Data Types
+### Variables and Data Types
 
 
 ### What is a Data Type?
