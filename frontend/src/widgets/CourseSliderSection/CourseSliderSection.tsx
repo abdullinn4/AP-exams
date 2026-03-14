@@ -31,17 +31,6 @@ export const CourseSliderSection = () => {
         resetAutoPlay()
     }
 
-    const handleThumbnailClick = (index: number) => {
-        if (isAnimating || index === currentIndex) return
-
-        const type = index > currentIndex ? 'next' : 'prev'
-        const steps = Math.abs(index - currentIndex)
-
-        for (let i = 0; i < steps; i++) {
-            setTimeout(() => showSlider(type), i * 600)
-        }
-    }
-
     const resetAutoPlay = () => {
         if (autoPlayRef.current) clearTimeout(autoPlayRef.current)
         autoPlayRef.current = window.setTimeout(() => {
@@ -100,7 +89,12 @@ export const CourseSliderSection = () => {
 
                     <div className="cards">
                         {orderedCourses.slice(1).map((course) => (
-                            <div key={course.id} className="block" onClick={() => handleThumbnailClick(courses.indexOf(course))}>
+                            <div
+                                key={course.id}
+                                className="block"
+                                onClick={() => window.location.href = `/courses/${course.slug}/preview`}
+                                style={{ cursor: 'pointer' }}
+                            >
                                 <img src={course.image} alt={course.title} />
                                 <div className="content">
                                     <div className="title">{course.shortTitle}</div>
@@ -109,7 +103,6 @@ export const CourseSliderSection = () => {
                                             className="button-secondary-white w-inline-block"
                                             onClick={(e) => {
                                                 e.stopPropagation()
-                                                handleThumbnailClick(courses.indexOf(course))
                                                 window.location.href = `/courses/${course.slug}/preview`
                                             }}
                                         >

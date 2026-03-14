@@ -246,25 +246,25 @@ export const HOME_POPULAR_COURSES = {
     ctaLink: '/courses',
     courses: [
         {
-            id: 'ap-csp-breaking-code',
+            id: 'ap-cs-principles-breaking-code',
             title: 'CS P: Breaking Code',
-            slug: 'coming-soon/ap-csp-breaking-code',
+            slug: 'ap-cs-principles-breaking-code',
             snippet: 'All you need to smash AP Computer Science Principles 2026',
             coverUrl: '/assets/webflow/images/breaking-code.png',
             wId: 'popular-course-1'
         },
         {
-            id: 'ap-calc-ab-game-of-graphs',
+            id: 'ap-calc-ab-multiverse-of-calculus',
             title: 'Calc AB: Game of Graphs',
-            slug: 'ap-calc-ab-game-of-graphs',
+            slug: 'ap-calc-ab-multiverse-of-calculus',
             snippet: 'All you need to smash AP Calculus AB 2026',
             coverUrl: '/assets/webflow/images/game-of-graphs.png',
             wId: 'popular-course-2'
         },
         {
-            id: 'ap-csa-escape-the-matrix',
+            id: 'ap-cs-a-escape-the-matrix',
             title: 'CS A: Escape the Matrix ',
-            slug: 'ap-csa-escape-the-matrix',
+            slug: 'ap-cs-a-escape-the-matrix',
             snippet: 'All you need to smash AP Computer Science A 2026',
             coverUrl: '/assets/webflow/images/escape-the-matrix.png',
             wId: 'popular-course-3'
@@ -272,7 +272,7 @@ export const HOME_POPULAR_COURSES = {
         {
             id: 'ap-calc-bc-67-problems',
             title: 'Calc BC: 67 Problems',
-            slug: 'coming-soon/ap-calc-bc-67-problems',
+            slug: 'ap-calc-bc-67-problems',
             snippet: 'All you need to smash AP Calculus BC 2026',
             coverUrl: '/assets/webflow/images/67_problems.png',
             wId: 'popular-course-4'
@@ -297,7 +297,7 @@ export const COURSES_DATA: Course[] = [
         shortTitle: 'AP Calc AB',
         description: 'Tired? Smash your AP Calc exam with a complete online course packed with engaging video solutions, lectures, and hundreds of practice problems. We cover the official curriculum end-to-end, giving you the ultimate toolkit to boost your score and master calculus the easy way.',
         image: '/assets/webflow/images/AP Calculus AB.png',
-        slug: 'ap-calc-ab-game-of-graphs'
+        slug: 'ap-calc-ab-multiverse-of-calculus'
     },
     {
         id: 1,
@@ -305,7 +305,7 @@ export const COURSES_DATA: Course[] = [
         shortTitle: 'AP CS P',
         description: 'Stop wasting hours searching through scattered tutorials and outdated forums. We’ve consolidated every single concept you need for the AP CSP exam into one seamless, all-in-one course, so you can finally stop hunting for answers and start mastering the material. Buy right now and own your exam confidence!',
         image: '/assets/webflow/images/AP Computer Science Principles.png',
-        slug: 'coming-soon/ap-csp-breaking-code'
+        slug: 'ap-cs-principles-breaking-code'
     },
     {
         id: 3,
@@ -321,7 +321,7 @@ export const COURSES_DATA: Course[] = [
         shortTitle: 'AP CS A',
         description: 'Master every single topic College Board requires for AP CS A — ALL 55. We don\'t guess what\'s on the exam—we follow their official description to the letter, so every video, every theory lesson, and every test serves a purpose: your success. Enroll today and be certain—you\'ve learned exactly what College Board expects!"',
         image: '/assets/webflow/images/AP Computer Science A.png',
-        slug: 'ap-csa-escape-the-matrix'
+        slug: 'ap-cs-a-escape-the-matrix'
     },
     {
         id: 5,
@@ -329,7 +329,7 @@ export const COURSES_DATA: Course[] = [
         shortTitle: 'AP Calc BC',
         description: 'It’s everything you need to dominate the AP Calc exam: the full CollegeBoard curriculum, broken down simply, with tons of practice and videos for every tricky task. Master this and you will smash AP. Guaranteed.',
         image: '/assets/webflow/images/AP Calculus BC.png',
-        slug: 'coming-soon/ap-calc-bc-67-problems'
+        slug: 'ap-calc-bc-67-problems'
     },
     {
         id: 6,

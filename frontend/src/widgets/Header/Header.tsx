@@ -25,12 +25,17 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
         return (
             <div data-w-id="b209dc69-0839-20fe-af3a-c9ee1dec5ef2" data-animation="default" data-collapse="all"
                  data-duration="400"
-                 data-easing="ease" data-easing2="ease" role="banner" className="header-wrapper w-nav">
+                 data-easing="ease" data-easing2="ease" role="banner" className="header-wrapper w-nav" style={{ minHeight: 'auto' }}>
                 <div className="container-default w-container">
                     <div data-w-id="b209dc69-0839-20fe-af3a-c9ee1dec5ef4" className="header-container-wrapper center">
                         <div className="logo-wrapper v1">
                             <Link to="/" className="logo-link w-inline-block"
-                                  style={{display: "flex", alignItems: 'center', justifyContent: 'center'}}>
+                                  style={{
+                                      display: "flex",
+                                      alignItems: 'center',
+                                      justifyContent: 'center',
+                                      maxHeight: '48px'
+                                  }}>
                                 <img src={logoSrc} alt="AP Exams Logo"/>
                             </Link>
                         </div>
@@ -49,14 +54,14 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
         return (
             <div data-w-id="c5a10a2d-1ce6-df65-3882-e8a1991bf291" data-animation="default" data-collapse="medium"
                  data-duration="400"
-                 data-easing="ease" data-easing2="ease" role="banner" className={headerClass}>
+                 data-easing="ease" data-easing2="ease" role="banner" className={headerClass} style={{ minHeight: 'auto' }}>
                 <div className="container-default w-container">
                     <div data-w-id="c7c25743-3af1-4a48-2846-73035f33d328" className="header-container-wrapper">
                         {/* Левая часть - только лого */}
                         <div className="nav-menu-left-side v1">
                             <div className="logo-wrapper v1">
                                 <Link to="/" className="logo-link w-inline-block"
-                                      style={{display: "flex", alignItems: 'center', justifyContent: 'center'}}>
+                                      style={{display: "flex", alignItems: 'center', justifyContent: 'center', maxHeight: '48px'}}>
                                     <img src={logoSrc} alt="AP Exams Logo" />
                                 </Link>
                             </div>
@@ -154,13 +159,13 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
     return (
         <div data-w-id="c5a10a2d-1ce6-df65-3882-e8a1991bf291" data-animation="default" data-collapse="medium"
              data-duration="400"
-             data-easing="ease" data-easing2="ease" role="banner" className={headerClass}>
+             data-easing="ease" data-easing2="ease" role="banner" className={headerClass} style={{ minHeight: 'auto' }}>
             <div className="container-default w-container">
                 <div data-w-id="c7c25743-3af1-4a48-2846-73035f33d328" className="header-container-wrapper">
                     <div className="nav-menu-left-side v1">
                         <div className="logo-wrapper v1">
                             <Link to="/" className="logo-link w-inline-block"
-                                  style={{display: "flex", alignItems: 'center', justifyContent: 'center'}}>
+                                  style={{display: "flex", alignItems: 'center', justifyContent: 'center', maxHeight: '48px'}}>
                                 <img src={logoSrc} alt="AP Exams Logo"/>
                             </Link>
                         </div>
