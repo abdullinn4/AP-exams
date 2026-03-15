@@ -14,8 +14,6 @@ export const QuestionRenderer = ({ question, questionNumber }: QuestionRendererP
             </div>*/}
 
             <div>
-                <MarkdownRenderer content={question.prompt} />
-
                 {question.imageUrl && (
                     <div className="mg-top-24px">
                         <img
@@ -25,6 +23,8 @@ export const QuestionRenderer = ({ question, questionNumber }: QuestionRendererP
                         />
                     </div>
                 )}
+
+                <MarkdownRenderer content={question.prompt} />
             </div>
         </div>
     );
