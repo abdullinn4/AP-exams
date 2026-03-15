@@ -23,3 +23,11 @@ export const CATALOG_COURSES = {
         }
     ]
 } as const
+
+export const COURSE_SLUG_TO_TITLE: Record<string, string> = {
+    'ap-calc-ab-multiverse-of-calculus': 'AP Calculus AB',
+    'ap-calc-bc-67-problems': 'AP Calculus BC',
+    'ap-cs-a-escape-the-matrix': 'AP Computer Science A',
+    'ap-cs-principles-breaking-code': 'AP CS Principles',
+    // добавьте остальные курсы
+}

@@ -9,6 +9,8 @@ import {useWebflowReinit} from "@/shared/lib/hooks/useWebflowReinit.ts";
 import {useLessonNavigation} from "@/shared/lib/hooks/useLessonNavigation.ts";
 import {LessonNavigationButtons} from "@/widgets/LessonNavigationButtons";
 import {LessonTestSection} from "@/features/test/ui/LessonTestSection";
+import {processLessonMarkdown} from "@/shared/lib/markdown/processMarkdown.ts";
+import {COURSE_SLUG_TO_TITLE} from "@/shared/config/content";
 
 export const LessonPage = () => {
     const {slug, unitId, lessonId} = useParams<{
@@ -25,6 +27,8 @@ export const LessonPage = () => {
     const navigation = useLessonNavigation(slug!, unitId!, lessonId!)
 
     useWebflowReinit(lesson)
+
+    const courseTitle = COURSE_SLUG_TO_TITLE[slug!]
 
     if (!slug || !unitId || !lessonId) {
         return (
@@ -169,7 +173,12 @@ export const LessonPage = () => {
                                         <div data-w-tab="Tab 1" className="w-tab-pane w--tab-active">
                                             <div className="card tab-card">
                                                 {lesson?.textPayload && (
-                                                    <MarkdownRenderer content={lesson.textPayload}/>
+                                                    <MarkdownRenderer
+                                                        content={processLessonMarkdown(
+                                                            lesson.textPayload,
+                                                            courseTitle
+                                                        )}
+                                                    />
                                                 )}
                                             </div>
                                         </div>
