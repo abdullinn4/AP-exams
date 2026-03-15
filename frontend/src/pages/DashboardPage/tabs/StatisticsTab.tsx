@@ -33,7 +33,7 @@ export const StatisticsTab = ({ statistics, error }: StatisticsTabProps) => {
 
     return (
         <Stack spacing={3}>
-            <div style={{ width: '100%', minWidth: 0, gap: '10px' }}>
+            <div style={{ width: '100%', minWidth: 0, display: 'flex', flexDirection: 'column',gap: '10px' }}>
                 {/* Header */}
                 <Box sx={{
                     display: 'flex',

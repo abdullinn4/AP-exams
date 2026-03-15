@@ -118,7 +118,7 @@ public class LessonProgressServiceImpl implements LessonProgressService {
             progressRepository.save(progress);
             log.info("Lesson completed: user={}, lesson={}", userId, lessonId);
 
-            // Создаём уведомление о завершении урока
+            /*// Создаём уведомление о завершении урока
             try {
                 LessonEntity lesson = progress.getLesson();
                 String payload = objectMapper.writeValueAsString(java.util.Map.of(
@@ -129,7 +129,7 @@ public class LessonProgressServiceImpl implements LessonProgressService {
                 notificationService.createNotification(userId, NotificationType.LESSON_COMPLETED, payload);
             } catch (Exception e) {
                 log.error("Failed to create notification for lesson completion: {}", e.getMessage());
-            }
+            }*/
         } else {
             log.debug("Lesson already completed: user={}, lesson={}", userId, lessonId);
         }

@@ -1,23 +1,16 @@
-import {useAuth} from "@/features/auth/model/useAuth.ts";
-import {useEffect, useState} from "react";
-import {useGetSystemNotificationsQuery} from "@/shared/api/notificationsApi.ts";
-import {Link} from "react-router-dom";
-import {GUEST_NOTIFICATION} from "@/shared/config/content";
+import { useAuth } from "@/features/auth/model/useAuth.ts"
+import { useEffect, useState } from "react"
+import { useGetSystemNotificationsQuery } from "@/shared/api/notificationsApi.ts"
+import { Link } from "react-router-dom"
+import { GUEST_NOTIFICATION } from "@/shared/config/content"
+import { useDispatch, useSelector } from "react-redux"
+import { dismissNotification } from "@/features/notifications/model/notificationsSlice"
+import type { RootState } from "@/app/store/store"
 
 export const NotificationBadge = () => {
     const { isAuthenticated } = useAuth()
-    const [isClosed, setIsClosed] = useState(() => {
-        const closedNotifications = localStorage.getItem('closedNotifications')
-        if (!closedNotifications) return false
-
-        try {
-            const closed = JSON.parse(closedNotifications)
-            const today = new Date().toDateString()
-            return closed.date === today
-        } catch {
-            return false
-        }
-    })
+    const dispatch = useDispatch()
+    const dismissedIds = useSelector((state: RootState) => state.notifications.dismissedIds)
 
     const [isActive, setIsActive] = useState(false)
 
@@ -26,58 +19,62 @@ export const NotificationBadge = () => {
         skip: !isAuthenticated,
     })
 
+    // Фильтруем только не закрытые уведомления
+    const activeNotifications = isAuthenticated
+        ? systemNotifications.filter(n => !dismissedIds.includes(n.id))
+        : [GUEST_NOTIFICATION]
+
     const [currentIndex, setCurrentIndex] = useState(0)
 
     useEffect(() => {
-        if (systemNotifications.length > 1) {
+        if (activeNotifications.length > 1) {
             const interval = setInterval(() => {
-                setCurrentIndex((prev) => (prev + 1) % systemNotifications.length)
+                setCurrentIndex((prev) => (prev + 1) % activeNotifications.length)
             }, 8000)
             return () => clearInterval(interval)
         }
-    }, [systemNotifications.length])
+    }, [activeNotifications.length])
 
-    // Определяем какое уведомление показывать
-    const notification = systemNotifications[currentIndex] || GUEST_NOTIFICATION
+    const notification = activeNotifications[currentIndex]
 
     useEffect(() => {
-        if (!isClosed && notification) {
-            // Задержка перед показом (как в оригинале)
+        if (notification) {
             const timeout = setTimeout(() => setIsActive(true), 500)
             return () => clearTimeout(timeout)
         }
-    }, [isClosed, notification])
+    }, [notification])
 
     const handleClose = () => {
         setIsActive(false)
         setTimeout(() => {
-            setIsClosed(true)
-            localStorage.setItem('closedNotifications', JSON.stringify({
-                date: new Date().toDateString()
-            }))
-        }, 800) // Время для анимации закрытия
+            if (notification?.id) {
+                dispatch(dismissNotification(notification.id))
+            }
+        }, 800)
     }
 
-    // Не показываем если закрыто или нет уведомления
-    if (isClosed || !notification) {
+    // Не показываем если нет уведомлений
+    if (!notification || activeNotifications.length === 0) {
         return null
     }
 
     return (
         <>
             <div data-w-id="f034c3f5-245e-c95e-1233-a4681f61b364" className="brix-badges-wrapper">
-                {/* Красный кружочек - Lottie анимация */}
                 <div
                     className="more-templates-lottie-2"
                     data-w-id="f034c3f5-245e-c95e-1233-a4681f61b365"
                 />
 
-                {/* Карточка уведомления */}
                 <Link
-                    to={notification.actionUrl}
+                    to={notification.actionUrl || '#'}
+                    onClick={(e) => {
+                        if (!notification.actionUrl || notification.actionUrl === '#') {
+                            e.preventDefault()
+                        }
+                    }}
                     className={`more-templates-badge-wrapper w-inline-block ${isActive ? 'active' : ''}`}
                 >
-                    {/* Убираем логотип, так как его нет в проекте */}
                     <div>
                         <p className="more-templates-p">
                             {notification.title}{' '}
@@ -87,7 +84,6 @@ export const NotificationBadge = () => {
                         </p>
                     </div>
 
-                    {/* Кнопка закрытия */}
                     <button
                         onClick={(e) => {
                             e.preventDefault()
@@ -121,7 +117,6 @@ export const NotificationBadge = () => {
                 </Link>
             </div>
 
-            {/* Стили из оригинального HTML */}
             <style>{`
                 .more-templates-badge-wrapper {
                     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);

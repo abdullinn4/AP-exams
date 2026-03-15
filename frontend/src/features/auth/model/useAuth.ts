@@ -8,6 +8,7 @@ import { setAuthenticated, clearAuth } from './authSlice'
 import type {RootState} from "@/app/store/store.ts";
 import {clearCart, reloadCart} from "@/features/cart/model/cartSlice";
 import {baseApi} from "@/shared/api/baseApi.ts";
+import {clearDismissed} from "@/features/notifications/model/notificationsSlice.ts";
 
 export const useAuth = () => {
     const navigate = useNavigate()
@@ -44,6 +45,7 @@ export const useAuth = () => {
             tokenService.clearTokens()
             dispatch(clearAuth())
             dispatch(clearCart())
+            dispatch(clearDismissed())
             dispatch(baseApi.util.resetApiState())
 
             // Используем window.location для жесткого редиректа

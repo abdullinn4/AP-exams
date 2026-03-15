@@ -84,7 +84,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
         EnrollmentEntity savedEnrollment = enrollmentRepository.save(enrollmentEntity);
 
-        // Создаём уведомление о покупке курса
+       /* // Создаём уведомление о покупке курса
         try {
             String payload = objectMapper.writeValueAsString(java.util.Map.of(
                     "courseId", course.getId().toString(),
@@ -94,7 +94,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
             notificationService.createNotification(user.getId(), NotificationType.COURSE_PURCHASED, payload);
         } catch (Exception e) {
             log.error("Failed to create notification for course purchase: {}", e.getMessage());
-        }
+        }*/
 
         return savedEnrollment;
     }

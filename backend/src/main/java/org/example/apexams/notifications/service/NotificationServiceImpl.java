@@ -18,6 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.WeekFields;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -119,21 +121,25 @@ public class NotificationServiceImpl implements NotificationService {
         List<SystemNotificationDto> notifications = new ArrayList<>();
 
         LocalDate today = LocalDate.now();
-        if (today.getDayOfWeek() == DayOfWeek.MONDAY) {
-            boolean hasActiveCourses = enrollmentRepository.existsByUserIdAndStatus(
-                    userId,
-                    EnrollmentStatus.ACTIVE
-            );
+        LocalDate monday = today.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
+        int weekOfYear = monday.get(WeekFields.ISO.weekOfWeekBasedYear());
+        int year = monday.getYear();
 
-            if (hasActiveCourses) {
-                notifications.add(SystemNotificationDto.builder()
-                        .type("WEEKLY_COURSE_REMINDER")
-                        .title("Don't forget to finish your course!")
-                        .message("Complete your way to «5»")
-                        .actionUrl("/my-courses")
-                        .build());
-            }
+        boolean hasActiveCourses = enrollmentRepository.existsByUserIdAndStatus(
+                userId,
+                EnrollmentStatus.ACTIVE
+        );
+
+        if (hasActiveCourses) {
+            notifications.add(SystemNotificationDto.builder()
+                    .id("weekly-course-reminder-" + year + "-W" + weekOfYear)
+                    .type("WEEKLY_COURSE_REMINDER")
+                    .title("Don't forget to finish your course!")
+                    .message("Complete your way to «5»")
+                    .actionUrl("/my-courses")
+                    .build());
         }
+
         return notifications;
     }
 

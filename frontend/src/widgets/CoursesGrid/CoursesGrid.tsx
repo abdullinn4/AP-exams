@@ -20,6 +20,7 @@ interface CoursesGridProps {
     onAddToCart?: (courseId: string, title: string, coverUrl: string) => void
     disableAnimations?: boolean
     compact?: boolean
+    columns?: 2 | 3
 }
 
 export const CoursesGrid = ({
@@ -31,7 +32,8 @@ export const CoursesGrid = ({
                                 coursesProgress,
                                 onAddToCart,
                                 disableAnimations = false,
-                                compact
+                                compact,
+                                columns = 3
                             }: CoursesGridProps) => {
     return (
         <section className="section top">
@@ -68,7 +70,7 @@ export const CoursesGrid = ({
                     className="projects-wrapper"
                 >
                     <div className="z-index-1">
-                        <div className="w-layout-grid grid-3-columns projects-grid">
+                        <div className={`w-layout-grid ${columns === 2 ? 'grid-2-columns' : 'grid-3-columns'} projects-grid`}>
                             {courses.map((course, index) => {
                                 const animationProps = getCourseCardAnimationProps(index)
                                 const progress = coursesProgress?.find(p => p.id === course.id)

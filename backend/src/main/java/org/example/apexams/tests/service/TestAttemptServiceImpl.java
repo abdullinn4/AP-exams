@@ -9,7 +9,6 @@ import org.example.apexams.common.exception.ActiveAttemptExistsException;
 import org.example.apexams.common.mapper.QuestionMapper;
 import org.example.apexams.common.mapper.TestMapper;
 import org.example.apexams.lessonProgress.service.LessonProgressService;
-import org.example.apexams.notifications.entity.enums.NotificationType;
 import org.example.apexams.notifications.service.NotificationService;
 import org.example.apexams.questionBank.dto.QuestionForStudentResponse;
 import org.example.apexams.questionBank.entity.QuestionEntity;
@@ -21,7 +20,6 @@ import org.example.apexams.tests.dto.TestResultDetailsResponse;
 import org.example.apexams.tests.entity.TestAttemptEntity;
 import org.example.apexams.tests.entity.TestEntity;
 import org.example.apexams.tests.entity.TestQuestionEntity;
-import org.example.apexams.tests.entity.enums.TestType;
 import org.example.apexams.tests.repo.TestAttemptRepository;
 import org.example.apexams.tests.repo.TestQuestionRepository;
 import org.example.apexams.tests.repo.TestRepository;
@@ -257,7 +255,8 @@ public class TestAttemptServiceImpl implements TestAttemptService {
         if (attempt.getAnswersJson() != null) {
             try {
                 ObjectMapper mapper = new ObjectMapper();
-                userAnswers = mapper.readValue(attempt.getAnswersJson(), new TypeReference<Map<UUID, String>>() {});
+                userAnswers = mapper.readValue(attempt.getAnswersJson(), new TypeReference<Map<UUID, String>>() {
+                });
             } catch (Exception e) {
                 log.error("Failed to parse answersJson for attempt {}", attemptId, e);
             }
@@ -373,6 +372,7 @@ public class TestAttemptServiceImpl implements TestAttemptService {
 
         return mapToStartTestResponse(attempt);
     }
+
     // Маппинг в DTO
     private StartTestResponse mapToStartTestResponse(TestAttemptEntity attempt) {
         List<QuestionEntity> questions = testQuestionRepository

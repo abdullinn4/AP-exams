@@ -27,6 +27,7 @@ export const MyCoursesTab = ({ myCourses, error }: MyCoursesTabProps) => {
             variant="my-courses"
             coursesProgress={myCourses}
             disableAnimations={true}
+            columns={2}
         />
     )
 }
