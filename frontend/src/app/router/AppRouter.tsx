@@ -21,9 +21,11 @@ import {MockExamsPage} from "@/pages/MockExamPage";
 import {MockExamTestPage} from "@/pages/MockExamTestPage";
 import {ComingSoonCoursePage} from "@/pages/ComingSoonCoursePage";
 import {CheckoutCancelPage} from "@/pages/CheckoutCancelPage";
+import {usePageTracking} from "@/shared/lib/hooks/usePageTracking.ts";
 
 export const AppRouter = () => {
     useWebflowAnimations()
+    usePageTracking();
 
     return (
         <>

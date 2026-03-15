@@ -7,10 +7,8 @@ import {AppRouter} from "@/app/router/AppRouter.tsx";
 import {BrowserRouter} from "react-router-dom";
 import {useEffect} from "react";
 import {NotificationBadge} from "@/widgets/NotificationBadge";
-import {usePageTracking} from "@/shared/lib/hooks/usePageTracking.ts";
 
 function App() {
-    usePageTracking();
 
     useEffect(() => {
         if ('scrollRestoration' in window.history) {
