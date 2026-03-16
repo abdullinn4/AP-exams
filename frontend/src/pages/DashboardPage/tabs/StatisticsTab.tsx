@@ -58,7 +58,7 @@ export const StatisticsTab = ({ statistics, error }: StatisticsTabProps) => {
                             sx={{
                                 minWidth: 220,
                                 '& .MuiOutlinedInput-root': {
-                                    fontFamily: 'Mona Sans, sans-serif',
+                                    fontFamily: 'Montserrat, sans-serif',
                                 }
                             }}
                             size="small"

@@ -44,13 +44,6 @@ public class EmailServiceImpl implements EmailService {
         sendEmail(email, subject, htmlBody);
     }
 
-    @Override
-    public void sendPurchaseConfirmationEmail(String toEmail, String courseName) {
-        String subject = "Course Purchase Confirmed - " + courseName;
-        String htmlBody = buildPurchaseConfirmationHtml(courseName);
-        sendEmail(toEmail, subject, htmlBody);
-    }
-
     private void sendEmail(String toEmail, String subject, String htmlBody) {
         try {
             MimeMessage message = mailSender.createMimeMessage();
@@ -81,11 +74,109 @@ public class EmailServiceImpl implements EmailService {
         sendEmail(toEmail, subject, htmlBody);
     }
 
+    @Override
+    public void sendPartnershipNotification(String email) {
+        String subject = "🚀 Make $30 Per Sale: Our Affiliate Program Just Launched";
+        String htmlBody = buildPartnershipNotificationHtml(email);
+        sendEmail(email, subject, htmlBody);
+    }
+
+    private String buildPartnershipNotificationHtml(String email) {
+        String affiliateLink = "http://cc.payproglobal.com/AffiliateSignup/8DE835912B6DFFE";
+
+        return String.format(
+                "<!DOCTYPE html>" +
+                        "<html>" +
+                        "<head><meta charset='UTF-8'></head>" +
+                        "<body style='font-family: \"Inter\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif; margin: 0; padding: 0; background-color: #f8f9fa;'>" +
+                        "<table width='100%%' cellpadding='0' cellspacing='0' border='0' style='background-color: #f8f9fa;'>" +
+                        "<tr><td align='center' style='padding: 40px 20px;'>" +
+                        "<table width='600' cellpadding='0' cellspacing='0' border='0' style='background-color: white; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>" +
+                        "<tr><td style='padding: 40px;'>" +
+
+                        "<!-- Greeting -->" +
+                        "<p style='color: #1a1a1a; font-size: 18px; font-weight: 600; margin: 0 0 24px 0;'>Hey Buddy,</p>" +
+
+                        "<p style='color: #4a5568; font-size: 16px; line-height: 1.6; margin: 0 0 16px 0;'>" +
+                        "You know our AP prep courses help students crush their exams. Now, I want to help <strong>you</strong> get paid for spreading the word.</p>" +
+
+                        "<p style='color: #1a1a1a; font-size: 18px; font-weight: 700; margin: 0 0 24px 0;'>" +
+                        "Introducing the Official SmashAP Affiliate Program.</p>" +
+
+                        "<!-- Deal Box -->" +
+                        "<div style='background: linear-gradient(135deg, #7C3AED 0%%, #9333EA 100%%); border-radius: 12px; padding: 24px; margin: 24px 0;'>" +
+                        "<p style='color: white; font-size: 16px; font-weight: 600; margin: 0 0 12px 0;'>Here's the deal:</p>" +
+                        "<ul style='color: white; font-size: 16px; line-height: 1.8; margin: 0; padding-left: 20px;'>" +
+                        "<li>You share your unique link with your audience.</li>" +
+                        "<li>Someone buys a course (<strong>$99</strong>).</li>" +
+                        "<li>You earn <strong>$30</strong>. Simple as that.</li>" +
+                        "</ul>" +
+                        "</div>" +
+
+                        "<p style='color: #4a5568; font-size: 16px; line-height: 1.6; margin: 0 0 32px 0;'>" +
+                        "No inventory. No customer support. Just pure commission on every sale.</p>" +
+
+                        "<hr style='border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;'>" +
+
+                        "<!-- How to Join -->" +
+                        "<h2 style='color: #1a1a1a; font-size: 22px; font-weight: 700; margin: 0 0 20px 0;'>" +
+                        "How to Join (Takes 2 Minutes):</h2>" +
+
+                        "<p style='color: #4a5568; font-size: 16px; line-height: 1.6; margin: 0 0 20px 0;'>" +
+                        "We partnered with <strong>PayPro</strong> to handle everything securely. Here's how to get started:</p>" +
+
+                        "<div style='background-color: #f7fafc; padding: 24px; border-radius: 12px; border-left: 4px solid #7C3AED; margin: 20px 0;'>" +
+                        "<p style='color: #2d3748; font-size: 16px; margin: 0 0 16px 0;'>" +
+                        "<strong>1. Click here to sign up:</strong><br>" +
+                        "<a href='%s' style='color: #7C3AED; text-decoration: underline; font-weight: 600;'>%s</a></p>" +
+
+                        "<p style='color: #2d3748; font-size: 16px; margin: 0 0 16px 0;'>" +
+                        "<strong>2. Fill out the form:</strong></p>" +
+                        "<ul style='color: #4a5568; font-size: 15px; line-height: 1.6; margin: 0 0 16px 0; padding-left: 20px;'>" +
+                        "<li>If you have a <strong>website</strong>, drop the link.</li>" +
+                        "<li>If you don't have a website—<strong>no problem!</strong> Just paste your <strong>Instagram, TikTok, or YouTube link</strong> in that field. We just want to see how you connect with your audience.</li>" +
+                        "</ul>" +
+
+                        "<p style='color: #2d3748; font-size: 16px; margin: 0;'>" +
+                        "<strong>3. We'll approve you ASAP.</strong><br>" +
+                        "<span style='color: #4a5568;'>Once you submit, we'll review and activate your account within 24 hours. You'll get an email confirmation, and then you're ready to start earning.</span></p>" +
+                        "</div>" +
+
+                        "<p style='color: #1a1a1a; font-size: 17px; font-weight: 600; margin: 32px 0 24px 0; text-align: center;'>" +
+                        "The best time to start was yesterday. The second best time is right now.</p>" +
+
+                        "<!-- CTA Button -->" +
+                        "<div style='text-align: center; margin: 32px 0;'>" +
+                        "<a href='%s' style='display: inline-block; background: linear-gradient(135deg, #7C3AED 0%%, #9333EA 100%%); color: white; padding: 16px 40px; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 18px; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);'>" +
+                        "👉 Click Here to Become an Affiliate →</a>" +
+                        "</div>" +
+
+                        "<p style='color: #4a5568; font-size: 16px; line-height: 1.6; margin: 32px 0 0 0;'>" +
+                        "Let's help students succeed (and make some money doing it)!</p>" +
+
+                        "<!-- Signature -->" +
+                        "<p style='color: #1a1a1a; font-size: 16px; margin: 40px 0 0 0;'>" +
+                        "Cheers,<br><br>" +
+                        "<strong>Amelia</strong><br>" +
+                        "<span style='color: #718096; font-size: 14px;'>Affiliate Assistant / SmashAP</span></p>" +
+
+                        "<hr style='border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;'>" +
+
+                        "<p style='color: #718096; font-size: 14px; font-style: italic; margin: 0;'>" +
+                        "P.S. Got friends who might be interested? Forward this email to them. The more the merrier!</p>" +
+
+                        "</td></tr></table>" +
+                        "</td></tr></table>" +
+                        "</body></html>",
+                affiliateLink, affiliateLink, affiliateLink
+        );
+    }
+
     private String buildPurchaseConfirmationHtml(List<String> courseNames) {
         StringBuilder coursesHtml = new StringBuilder();
         for (String courseName : courseNames) {
             coursesHtml.append(String.format(
-                    "<li style='padding: 10px; background-color: #f8f9fa; margin: 5px 0; border-radius: 5px;'>%s</li>",
+                    "<li style='padding: 14px 18px; background-color: #f7fafc; margin: 8px 0; border-radius: 8px; border-left: 3px solid #7C3AED; color: #2d3748; font-size: 16px; font-weight: 600;'>%s</li>",
                     courseName
             ));
         }
@@ -94,19 +185,28 @@ public class EmailServiceImpl implements EmailService {
                 "<!DOCTYPE html>" +
                         "<html>" +
                         "<head><meta charset='UTF-8'></head>" +
-                        "<body style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>" +
-                        "<div style='background-color: #f8f9fa; padding: 30px; border-radius: 10px;'>" +
-                        "<h2 style='color: #333; margin-top: 0;'>🎉 Purchase Successful!</h2>" +
-                        "<p style='color: #666; font-size: 16px;'>Thank you for your purchase! You now have access to:</p>" +
-                        "<ul style='list-style: none; padding: 0;'>%s</ul>" +
-                        "<div style='margin-top: 30px; padding: 20px; background-color: white; border-radius: 5px;'>" +
-                        "<p style='margin: 0; color: #666;'>Start learning now:</p>" +
-                        "<a href='%s/courses' style='display: inline-block; margin-top: 15px; padding: 12px 30px; background-color: #7C3AED; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;'>Go to My Courses</a>" +
-                        "</div>" +
-                        "<p style='color: #999; font-size: 14px; margin-top: 30px;'>If you have any questions, contact us at info@smashap.com</p>" +
-                        "</div>" +
-                        "</body>" +
-                        "</html>",
+                        "<body style='font-family: \"Inter\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif; margin: 0; padding: 0; background-color: #f8f9fa;'>" +
+                        "<table width='100%%' cellpadding='0' cellspacing='0' border='0' style='background-color: #f8f9fa;'>" +
+                        "<tr><td align='center' style='padding: 40px 20px;'>" +
+                        "<table width='600' cellpadding='0' cellspacing='0' border='0' style='background-color: white; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>" +
+                        "<tr><td style='padding: 40px;'>" +
+
+                        "<h2 style='color: #1a1a1a; font-size: 28px; font-weight: 800; margin: 0 0 16px 0;'>🎉 Purchase Successful!</h2>" +
+                        "<p style='color: #4a5568; font-size: 16px; line-height: 1.6; margin: 0 0 24px 0;'>Thank you for your purchase! You now have access to:</p>" +
+
+                        "<ul style='list-style: none; padding: 0; margin: 0 0 24px 0;'>%s</ul>" +
+
+                        "<div style='background: linear-gradient(135deg, #7C3AED 0%%, #9333EA 100%%); padding: 24px; border-radius: 12px; margin: 24px 0;'>" +
+                        "<p style='margin: 0 0 16px 0; color: white; font-size: 16px; font-weight: 600;'>Start learning now:</p>" +
+                        "<div style='text-align: center;'>" +
+                        "<a href='%s/dashboard' style='display: inline-block; background-color: white; color: #7C3AED; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 16px;'>Go to My Courses →</a>" +
+                        "</div></div>" +
+
+                        "<p style='color: #718096; font-size: 14px; margin-top: 32px; text-align: center;'>If you have any questions, contact us at info@smashap.com</p>" +
+
+                        "</td></tr></table>" +
+                        "</td></tr></table>" +
+                        "</body></html>",
                 coursesHtml,
                 frontendUrl
         );
@@ -118,19 +218,29 @@ public class EmailServiceImpl implements EmailService {
                 "<!DOCTYPE html>" +
                         "<html>" +
                         "<head><meta charset='UTF-8'></head>" +
-                        "<body style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>" +
-                        "<div style='background-color: #f8f9fa; padding: 30px; border-radius: 10px;'>" +
-                        "<h2 style='color: #333; margin-top: 0;'>Welcome to AP Exams Platform!</h2>" +
-                        "<p style='color: #666; font-size: 16px;'>Your account has been created successfully.</p>" +
-                        "<div style='background-color: white; padding: 20px; border-radius: 5px; margin: 20px 0;'>" +
-                        "<p style='margin: 5px 0;'><strong>Email:</strong> %s</p>" +
-                        "<p style='margin: 5px 0;'><strong>Password:</strong> <code style='background-color: #f0f0f0; padding: 5px 10px; border-radius: 3px; font-size: 14px;'>%s</code></p>" +
+                        "<body style='font-family: \"Inter\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif; margin: 0; padding: 0; background-color: #f8f9fa;'>" +
+                        "<table width='100%%' cellpadding='0' cellspacing='0' border='0' style='background-color: #f8f9fa;'>" +
+                        "<tr><td align='center' style='padding: 40px 20px;'>" +
+                        "<table width='600' cellpadding='0' cellspacing='0' border='0' style='background-color: white; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>" +
+                        "<tr><td style='padding: 40px;'>" +
+
+                        "<h2 style='color: #1a1a1a; font-size: 28px; font-weight: 800; margin: 0 0 16px 0;'>Welcome to SmashAP! 🎉</h2>" +
+                        "<p style='color: #4a5568; font-size: 16px; line-height: 1.6; margin: 0 0 24px 0;'>Your account has been created successfully.</p>" +
+
+                        "<div style='background-color: #f7fafc; padding: 24px; border-radius: 12px; border-left: 4px solid #7C3AED; margin: 20px 0;'>" +
+                        "<p style='margin: 0 0 12px 0; color: #2d3748; font-size: 16px;'><strong>Email:</strong> %s</p>" +
+                        "<p style='margin: 0; color: #2d3748; font-size: 16px;'><strong>Password:</strong> <code style='background-color: #edf2f7; padding: 8px 12px; border-radius: 6px; font-size: 15px; font-family: \"Source Code Pro\", monospace; color: #7C3AED; font-weight: 600;'>%s</code></p>" +
                         "</div>" +
-                        "<a href='%s/login' style='display: inline-block; background-color: #4CAF50; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; margin-top: 10px;'>Login Now</a>" +
-                        "<p style='color: #999; font-size: 12px; margin-top: 30px;'>Please keep this email and password safe.</p>" +
+
+                        "<div style='text-align: center; margin: 32px 0;'>" +
+                        "<a href='%s/login' style='display: inline-block; background: linear-gradient(135deg, #7C3AED 0%%, #9333EA 100%%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 16px; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);'>Login Now →</a>" +
                         "</div>" +
-                        "</body>" +
-                        "</html>",
+
+                        "<p style='color: #718096; font-size: 14px; margin-top: 32px; text-align: center;'>Please keep this email and password safe.</p>" +
+
+                        "</td></tr></table>" +
+                        "</td></tr></table>" +
+                        "</body></html>",
                 email, password, frontendUrl
         );
     }
@@ -140,16 +250,25 @@ public class EmailServiceImpl implements EmailService {
                 "<!DOCTYPE html>" +
                         "<html>" +
                         "<head><meta charset='UTF-8'></head>" +
-                        "<body style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>" +
-                        "<div style='background-color: #f8f9fa; padding: 30px; border-radius: 10px;'>" +
-                        "<h2 style='color: #333; margin-top: 0;'>🎉 Congratulations!</h2>" +
-                        "<p style='color: #666; font-size: 16px;'>You've successfully enrolled in <strong>%s</strong>.</p>" +
-                        "<p style='color: #666; font-size: 16px;'>Start your learning journey now and achieve your goals!</p>" +
-                        "<a href='%s/app/courses' style='display: inline-block; background-color: #2196F3; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; margin-top: 10px;'>Start Learning</a>" +
-                        "<p style='color: #999; font-size: 12px; margin-top: 30px;'>Good luck with your studies! 🚀</p>" +
+                        "<body style='font-family: \"Inter\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif; margin: 0; padding: 0; background-color: #f8f9fa;'>" +
+                        "<table width='100%%' cellpadding='0' cellspacing='0' border='0' style='background-color: #f8f9fa;'>" +
+                        "<tr><td align='center' style='padding: 40px 20px;'>" +
+                        "<table width='600' cellpadding='0' cellspacing='0' border='0' style='background-color: white; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>" +
+                        "<tr><td style='padding: 40px;'>" +
+
+                        "<h2 style='color: #1a1a1a; font-size: 28px; font-weight: 800; margin: 0 0 16px 0;'>🎉 Congratulations!</h2>" +
+                        "<p style='color: #4a5568; font-size: 16px; line-height: 1.6; margin: 0 0 16px 0;'>You've successfully enrolled in <strong style='color: #7C3AED;'>%s</strong>.</p>" +
+                        "<p style='color: #4a5568; font-size: 16px; line-height: 1.6; margin: 0 0 32px 0;'>Start your learning journey now and achieve your goals!</p>" +
+
+                        "<div style='text-align: center;'>" +
+                        "<a href='%s/dashboard' style='display: inline-block; background: linear-gradient(135deg, #7C3AED 0%%, #9333EA 100%%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 16px; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);'>Start Learning →</a>" +
                         "</div>" +
-                        "</body>" +
-                        "</html>",
+
+                        "<p style='color: #718096; font-size: 14px; margin-top: 32px; text-align: center;'>Good luck with your studies! 🚀</p>" +
+
+                        "</td></tr></table>" +
+                        "</td></tr></table>" +
+                        "</body></html>",
                 courseName, frontendUrl
         );
     }
@@ -159,44 +278,31 @@ public class EmailServiceImpl implements EmailService {
                 "<!DOCTYPE html>" +
                         "<html>" +
                         "<head><meta charset='UTF-8'></head>" +
-                        "<body style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>" +
-                        "<div style='background-color: #f8f9fa; padding: 30px; border-radius: 10px;'>" +
-                        "<h2 style='color: #333; margin-top: 0;'>Welcome to AP Exams Platform!</h2>" +
-                        "<p style='color: #666; font-size: 16px;'>Your password has been changed successfully.</p>" +
-                        "<div style='background-color: white; padding: 20px; border-radius: 5px; margin: 20px 0;'>" +
-                        "<p style='margin: 5px 0;'><strong>Email:</strong> %s</p>" +
-                        "<p style='margin: 5px 0;'><strong>Password:</strong> <code style='background-color: #f0f0f0; padding: 5px 10px; border-radius: 3px; font-size: 14px;'>%s</code></p>" +
+                        "<body style='font-family: \"Inter\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif; margin: 0; padding: 0; background-color: #f8f9fa;'>" +
+                        "<table width='100%%' cellpadding='0' cellspacing='0' border='0' style='background-color: #f8f9fa;'>" +
+                        "<tr><td align='center' style='padding: 40px 20px;'>" +
+                        "<table width='600' cellpadding='0' cellspacing='0' border='0' style='background-color: white; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>" +
+                        "<tr><td style='padding: 40px;'>" +
+
+                        "<h2 style='color: #1a1a1a; font-size: 28px; font-weight: 800; margin: 0 0 16px 0;'>Password Changed Successfully! 🔐</h2>" +
+                        "<p style='color: #4a5568; font-size: 16px; line-height: 1.6; margin: 0 0 24px 0;'>Your password has been changed successfully.</p>" +
+
+                        "<div style='background-color: #f7fafc; padding: 24px; border-radius: 12px; border-left: 4px solid #7C3AED; margin: 20px 0;'>" +
+                        "<p style='margin: 0 0 12px 0; color: #2d3748; font-size: 16px;'><strong>Email:</strong> %s</p>" +
+                        "<p style='margin: 0; color: #2d3748; font-size: 16px;'><strong>New Password:</strong> <code style='background-color: #edf2f7; padding: 8px 12px; border-radius: 6px; font-size: 15px; font-family: \"Source Code Pro\", monospace; color: #7C3AED; font-weight: 600;'>%s</code></p>" +
                         "</div>" +
-                        "<a href='%s/login' style='display: inline-block; background-color: #4CAF50; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; margin-top: 10px;'>Login Now</a>" +
-                        "<p style='color: #999; font-size: 12px; margin-top: 30px;'>Please keep this email and password safe.</p>" +
+
+                        "<div style='text-align: center; margin: 32px 0;'>" +
+                        "<a href='%s/login' style='display: inline-block; background: linear-gradient(135deg, #7C3AED 0%%, #9333EA 100%%); color: white; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 16px; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);'>Login Now →</a>" +
                         "</div>" +
-                        "</body>" +
-                        "</html>",
+
+                        "<p style='color: #718096; font-size: 14px; margin-top: 32px; text-align: center;'>Please keep this email and password safe.</p>" +
+
+                        "</td></tr></table>" +
+                        "</td></tr></table>" +
+                        "</body></html>",
                 email, newPassword, frontendUrl
         );
     }
 
-    private String buildPurchaseConfirmationHtml(String courseName) {
-        return String.format(
-                "<!DOCTYPE html>" +
-                        "<html>" +
-                        "<head><meta charset='UTF-8'></head>" +
-                        "<body style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>" +
-                        "<div style='background-color: #f8f9fa; padding: 30px; border-radius: 10px;'>" +
-                        "<h2 style='color: #333; margin-top: 0;'>🎉 Purchase Successful!</h2>" +
-                        "<p style='color: #666; font-size: 16px;'>Thank you for your purchase!</p>" +
-                        "<p style='color: #666; font-size: 16px;'>You've successfully enrolled in <strong>%s</strong>.</p>" +
-                        "<div style='background-color: white; padding: 20px; border-radius: 5px; margin: 20px 0;'>" +
-                        "<p style='margin: 5px 0; color: #333;'>✅ Payment confirmed</p>" +
-                        "<p style='margin: 5px 0; color: #333;'>✅ Access granted to course materials</p>" +
-                        "<p style='margin: 5px 0; color: #333;'>✅ You can now start learning</p>" +
-                        "</div>" +
-                        "<a href='%s/app/courses' style='display: inline-block; background-color: #2196F3; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; margin-top: 10px;'>Start Learning</a>" +
-                        "<p style='color: #999; font-size: 12px; margin-top: 30px;'>Use your existing credentials to login. Good luck! 🚀</p>" +
-                        "</div>" +
-                        "</body>" +
-                        "</html>",
-                courseName, frontendUrl
-        );
-    }
 }

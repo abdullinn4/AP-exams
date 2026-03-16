@@ -15,8 +15,7 @@ export const ROUTES = {
     MOCK_EXAMS: '/courses/:slug/mock-exams',
     MOCK_EXAM_TEST: '/courses/:slug/mock-exams/:examId',
     TERMS_AND_CONDITIONS: '/terms-and-conditions',
-
     DASHBOARD: '/dashboard',
-
     COMING_SOON_COURSE: '/courses/coming-soon/:slug/preview',
+    PARTNERSHIP: '/partnership',
 } as const

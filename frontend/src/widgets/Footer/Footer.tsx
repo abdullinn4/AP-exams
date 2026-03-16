@@ -142,6 +142,11 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                                 <div>Terms & Conditions</div>
                                             </Link>
                                         </li>
+                                        <li className="footer-column-item">
+                                            <Link to={ROUTES.PARTNERSHIP} className="footer-item-link w-inline-block">
+                                                <div>Partnership</div>
+                                            </Link>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

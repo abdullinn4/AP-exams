@@ -8,7 +8,6 @@ public interface EmailService {
     void sendWelcomeEmail(String email, String courseName);
 
     void sendNewPasswordEmail(String email, String password);
-
-    void sendPurchaseConfirmationEmail(String email, String courseName);
     void sendPurchaseConfirmationEmail(String email, List<String> courseNames);
+    void sendPartnershipNotification(String email);
 }

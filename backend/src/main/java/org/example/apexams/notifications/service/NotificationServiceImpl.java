@@ -136,7 +136,7 @@ public class NotificationServiceImpl implements NotificationService {
                     .type("WEEKLY_COURSE_REMINDER")
                     .title("Don't forget to finish your course!")
                     .message("Complete your way to «5»")
-                    .actionUrl("/my-courses")
+                    .actionUrl("/dashboard")
                     .build());
         }
 
