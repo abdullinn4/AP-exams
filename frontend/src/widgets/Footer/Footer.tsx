@@ -20,7 +20,20 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                     <img src={logoSrc} alt="AP Exams Logo" style={{width: 'auto', height: '40px'}}/>
                                 </Link>
                             </div>
-                            <p>Copyright © SmashAP 2026</p>
+                            <p>
+                                Copyright © SmashAP 2026 |
+                                <a
+                                    href="mailto:info@smashap.com"
+                                    style={{
+                                        marginLeft: '8px',
+                                        color: '#7C3AED',
+                                        textDecoration: 'none',
+                                        fontWeight: '600'
+                                    }}
+                                >
+                                    info@smashap.com
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -155,7 +168,18 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                     <div className="footer-bottom v1">
                         <div className="text-center">
                             <p>
-                                Copyright © SmashAP 2026
+                                Copyright © SmashAP 2026 |
+                                <a
+                                    href="mailto:info@smashap.com"
+                                    style={{
+                                        marginLeft: '4px',
+                                        color: '#7C3AED',
+                                        textDecoration: 'none',
+                                        fontWeight: '600'
+                                    }}
+                                >
+                                    info@smashap.com
+                                </a>
                             </p>
                         </div>
                     </div>
