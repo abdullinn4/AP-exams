@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useCart } from '@/features/cart'
 import type { TariffDetails } from '@/entities/tariff/tariff'
+import {ROUTES} from "@/app/router/routes.ts";
+import {useNavigate} from "react-router-dom";
 
 export const useAddCourseToCart = (course: {
     id: string
@@ -10,6 +12,7 @@ export const useAddCourseToCart = (course: {
     const { addItem, hasItem, canAddMore } = useCart()
     const [errorMessage, setErrorMessage] = useState<string | null>(null)
     const [successMessage, setSuccessMessage] = useState<string | null>(null)
+    const navigate = useNavigate()
 
     // Auto-clear error after 3 seconds
     useEffect(() => {
@@ -30,7 +33,7 @@ export const useAddCourseToCart = (course: {
         }
 
         if (!canAddMore()) {
-            setErrorMessage('Cart is full (maximum 5 courses)')
+            setErrorMessage('Cart is full (maximum 6 courses)')
             return false
         }
 
@@ -48,7 +51,10 @@ export const useAddCourseToCart = (course: {
             payProProductId: tariff.payProProductId,
         })
 
-        setSuccessMessage('Course added to cart successfully')
+        setSuccessMessage('Course added to cart successfully! Redirecting to checkout...')
+        setTimeout(() => {
+            navigate(ROUTES.CHECKOUT)
+        }, 3000)
         return true
     }
 

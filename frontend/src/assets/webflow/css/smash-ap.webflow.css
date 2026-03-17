@@ -6479,7 +6479,7 @@ figcaption {
 .dropdown-pd.dropdown-v4 {
   background-color: var(--neutral--100);
   border-radius: 24px;
-  min-width: 440px;
+  min-width: 660px;
   padding: 40px 48px;
 }
 
@@ -7388,8 +7388,8 @@ figcaption {
 }
 
 .grid-footer-columns {
-  grid-column-gap: 98px;
-  grid-row-gap: 48px;
+  grid-column-gap: 40px;
+  grid-row-gap: 10px;
   grid-template-rows: auto;
   grid-template-columns: auto auto 1fr;
 }

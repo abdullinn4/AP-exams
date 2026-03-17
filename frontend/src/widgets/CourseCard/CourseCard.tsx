@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { ProgressBar } from '@/widgets/ProgressBar'
 import type { CourseWithProgress } from '@/entities/course/course'
 
@@ -12,16 +12,27 @@ interface CourseCardProps {
         wId?: string
         className?: string
     }
-    variant: 'catalog' | 'my-courses' | 'popular-courses'
+    variant: 'catalog' | 'my-courses' | 'popular-courses' | 'free-materials'
     progress?: Pick<CourseWithProgress, 'progressPercentage' | 'tier'>
     onAddToCart?: () => void
     compact?: boolean
 }
 
 export const CourseCard = ({ course, variant, progress, onAddToCart, compact }: CourseCardProps) => {
+    const navigate = useNavigate()
+
     const courseUrl = (variant === 'catalog' || variant === 'popular-courses')
         ? `/courses/${course.slug}/preview`
-        : `/courses/${course.slug}`
+        : variant === 'free-materials'
+            ? `/free-materials/${course.slug}/request`
+            : `/courses/${course.slug}`
+
+    const handleCardClick = (e: React.MouseEvent) => {
+        if (variant === 'free-materials') {
+            e.preventDefault()
+            navigate(`/free-materials/${course.slug}/request`)
+        }
+    }
 
     return (
         <Link
@@ -29,6 +40,7 @@ export const CourseCard = ({ course, variant, progress, onAddToCart, compact }: 
             data-w-id={course.wId}
             className={`card project-card w-inline-block ${course.className || ''}`}
             style={{ position: 'relative' }}
+            onClick={handleCardClick}
         >
             {/* Price Badge - только для popular-courses */}
             {variant === 'popular-courses' && (
@@ -38,6 +50,7 @@ export const CourseCard = ({ course, variant, progress, onAddToCart, compact }: 
                     </div>
                 </div>
             )}
+
 
             <div className="image-wrapper border-radius-32px overflow-hidden">
                 <img
@@ -68,6 +81,24 @@ export const CourseCard = ({ course, variant, progress, onAddToCart, compact }: 
 
                 <div className="mg-top-24px">
                     <div className="buttons-row left">
+                        {variant === 'free-materials' && (
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    e.stopPropagation()
+                                    navigate(`/free-materials/${course.slug}/request`)
+                                }}
+                                className={`button-primary w-inline-block ${compact ? 'button-compact' : ''}`}
+                                style={compact ? { padding: '12px 20px', fontSize: '14px' } : {}}
+                            >
+                                <div className="text-block">Get for free</div>
+                                <div className="item-icon-right">
+                                    <div className="custom-icon-font"></div>
+                                </div>
+                            </button>
+                        )}
+
+
                         {(variant === 'catalog' || variant === 'popular-courses') && onAddToCart && (
                             <button
                                 onClick={(e) => {
@@ -85,20 +116,23 @@ export const CourseCard = ({ course, variant, progress, onAddToCart, compact }: 
                             </button>
                         )}
 
-                        <div className="link-wrapper w-inline-block">
-                            <div className={`display-2 bold text-neutral-800 ${compact ? 'compact-link' : ''}`}
-                                 style={compact ? { fontSize: '14px' } : {}}>
-                                <div className="flex y-align-center">
-                                    <div className="link">
-                                        {(variant === 'catalog' || variant === 'popular-courses')
-                                            ? (compact ? 'View' : 'View Course')
-                                            : 'Continue Learning'}                                    </div>
-                                    <div className="item-icon-right">
-                                        <div className="custom-icon-font"></div>
+                        {variant !== 'free-materials' && (
+                            <div className="link-wrapper w-inline-block">
+                                <div className={`display-2 bold text-neutral-800 ${compact ? 'compact-link' : ''}`}
+                                     style={compact ? { fontSize: '14px' } : {}}>
+                                    <div className="flex y-align-center">
+                                        <div className="link">
+                                            {(variant === 'catalog' || variant === 'popular-courses')
+                                                ? (compact ? 'View' : 'View Course')
+                                                : 'Continue Learning'}
+                                        </div>
+                                        <div className="item-icon-right">
+                                            <div className="custom-icon-font"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>

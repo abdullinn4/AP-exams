@@ -24,7 +24,7 @@ export const useCart = () => {
     }
 
     const canAddMore = () => {
-        return cart.items.length < 5
+        return cart.items.length < 6
     }
 
     return {

@@ -247,11 +247,19 @@ export const HOME_POPULAR_COURSES = {
     courses: [
         {
             id: 'ap-cs-principles-breaking-code',
-            title: 'CS P: Breaking Code',
+            title: 'AP CS P: Breaking Code',
             slug: 'ap-cs-principles-breaking-code',
             snippet: 'All you need to smash AP Computer Science Principles 2026',
             coverUrl: '/assets/webflow/images/breaking-code.png',
             wId: 'popular-course-1'
+        },
+        {
+            id: 'ap-lang-chamber-of-rhetoric',
+            title: 'AP Lang: Chamber of Rhetoric',
+            slug: 'coming-soon/ap-lang-chamber-of-rhetoric',
+            snippet: 'All you need to smash AP AP Lang 2026',
+            coverUrl: '/assets/webflow/images/AP Lang (2).png',
+            wId: 'popular-course-2'
         },
         {
             id: 'ap-calc-ab-multiverse-of-calculus',
@@ -259,25 +267,72 @@ export const HOME_POPULAR_COURSES = {
             slug: 'ap-calc-ab-multiverse-of-calculus',
             snippet: 'All you need to smash AP Calculus AB 2026',
             coverUrl: '/assets/webflow/images/multiverse-of-calc.png',
-            wId: 'popular-course-2'
-        },
-        {
-            id: 'ap-cs-a-escape-the-matrix',
-            title: 'CS A: Escape the Matrix ',
-            slug: 'ap-cs-a-escape-the-matrix',
-            snippet: 'All you need to smash AP Computer Science A 2026',
-            coverUrl: '/assets/webflow/images/escape-the-matrix.png',
             wId: 'popular-course-3'
         },
         {
+            id: 'ap-psych-the-upside-down',
+            title: 'AP Psych: The Upside Down',
+            slug: 'coming-soon/ap-psych-the-upside-down',
+            snippet: 'All you need to smash AP Psych 2026',
+            coverUrl: '/assets/webflow/images/AP Psych.png',
+            wId: 'popular-course-4'
+        },
+        {
+            id: 'ap-cs-a-escape-the-matrix',
+            title: 'AP CS A: Escape the Matrix ',
+            slug: 'ap-cs-a-escape-the-matrix',
+            snippet: 'All you need to smash AP Computer Science A 2026',
+            coverUrl: '/assets/webflow/images/escape-the-matrix.png',
+            wId: 'popular-course-5'
+        },
+        {
             id: 'ap-calc-bc-67-problems',
-            title: 'Calc BC: 67 Problems',
+            title: 'AP Calc BC: 67 Problems',
             slug: 'ap-calc-bc-67-problems',
             snippet: 'All you need to smash AP Calculus BC 2026',
             coverUrl: '/assets/webflow/images/67_problems.png',
-            wId: 'popular-course-4'
+            wId: 'popular-course-6'
         },
-
+        {
+            id: 'ap-lit-the-existential-dreamhouse',
+            title: 'AP Lit: The Existential Dreamhouse',
+            slug: 'coming-soon/ap-lit-the-existential-dreamhouse',
+            snippet: 'All you need to smash AP Lit 2026',
+            coverUrl: '/assets/webflow/images/AP Lit.png',
+            wId: 'popular-course-7'
+        },
+        {
+            id: 'ap-hug-demographic-drift',
+            title: 'AP HuG: Demographic Drift',
+            slug: 'coming-soon/ap-hug-demographic-drift',
+            snippet: 'All you need to smash AP HuG 2026',
+            coverUrl: '/assets/webflow/images/AP HuG.png',
+            wId: 'popular-course-8'
+        },
+        {
+            id: 'ap-bio-the-mutation-games',
+            title: 'AP Bio: The Mutation Games',
+            slug: 'coming-soon/ap-bio-the-mutation-games',
+            snippet: 'All you need to smash AP Bio 2026',
+            coverUrl: '/assets/webflow/images/AP Bio.png',
+            wId: 'popular-course-9'
+        },
+        {
+            id: 'wh-ap-the-dbq-project',
+            title: 'WHAP: The DBQ Project',
+            slug: 'coming-soon/wh-ap-the-dbq-project',
+            snippet: 'All you need to smash WHAP 2026',
+            coverUrl: '/assets/webflow/images/WHAP.png',
+            wId: 'popular-course-10'
+        },
+        {
+            id: 'ap-ush-the-last-of-us',
+            title: 'APUSH: The Last of US',
+            slug: 'coming-soon/ap-ush-the-last-of-us',
+            snippet: 'All you need to smash APUSH 2026',
+            coverUrl: '/assets/webflow/images/APUSH.png',
+            wId: 'popular-course-11'
+        }
     ]
 } as const
 

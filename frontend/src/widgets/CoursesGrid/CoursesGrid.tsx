@@ -15,7 +15,7 @@ interface CoursesGridProps {
         wId?: string
         className?: string
     }>
-    variant: 'catalog' | 'my-courses'
+    variant: 'catalog' | 'my-courses' | 'free-materials'
     coursesProgress?: CourseWithProgress[]
     onAddToCart?: (courseId: string, title: string, coverUrl: string) => void
     disableAnimations?: boolean

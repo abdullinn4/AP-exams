@@ -135,9 +135,46 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                                 <div>AP Lang</div>
                                             </Link>
                                         </li>
+
+                                    </ul>
+                                </div>
+                                <div id="w-node-_4ce7d77c-4018-d530-59d0-9a7e57241a6c-57241a43">
+                                    <h3 className="footer-title"></h3>
+                                    <ul role="list" className="footer-column-links">
                                         <li className="footer-column-item">
-                                            <Link to='/courses/coming-soon/ap-psych/preview' className="footer-item-link w-inline-block">
+                                            <Link to='/courses/coming-soon/ap-psych-the-upside-down/preview'
+                                                  className="footer-item-link w-inline-block">
                                                 <div>AP Psych</div>
+                                            </Link>
+                                        </li>
+                                        <li className="footer-column-item">
+                                            <Link to='/courses/coming-soon/ap-lit-the-existential-dreamhouse/preview'
+                                                  className="footer-item-link w-inline-block">
+                                                <div>AP Lit</div>
+                                            </Link>
+                                        </li>
+                                        <li className="footer-column-item">
+                                            <Link to='/courses/coming-soon/ap-hug-demographic-drift/preview'
+                                                  className="footer-item-link w-inline-block">
+                                                <div>AP HuG</div>
+                                            </Link>
+                                        </li>
+                                        <li className="footer-column-item">
+                                            <Link to='/courses/coming-soon/ap-bio-the-mutation-games/preview'
+                                                  className="footer-item-link w-inline-block">
+                                                <div>AP Bio</div>
+                                            </Link>
+                                        </li>
+                                        <li className="footer-column-item">
+                                            <Link to='/courses/coming-soon/wh-ap-the-dbq-project/preview'
+                                                  className="footer-item-link w-inline-block">
+                                                <div>WHAP</div>
+                                            </Link>
+                                        </li>
+                                        <li className="footer-column-item">
+                                            <Link to='/courses/coming-soon/ap-ush-the-last-of-us/preview'
+                                                  className="footer-item-link w-inline-block">
+                                                <div>APUSH</div>
                                             </Link>
                                         </li>
                                     </ul>

@@ -12,9 +12,12 @@ import {CourseAboutSection} from "@/widgets/CourseAboutSection";
 import {CourseStructureCard} from "@/widgets/CourseStructureCard";
 import {useGetMockExamsPreviewQuery} from "@/shared/api/mockExamApi.ts";
 import {MockExamsSection} from "@/widgets/MockExamsSection";
+import {useRef} from "react";
 
 export const CoursePreviewPage = () => {
     const {slug} = useParams<{ slug: string }>()
+    const pricingSectionRef = useRef<HTMLDivElement>(null)
+
     const {data: course, error} = useGetCourseBySlugQuery(
         slug || '',
         {skip: !slug} // Пропустить запрос если slug undefined
@@ -29,6 +32,13 @@ export const CoursePreviewPage = () => {
     const { data: mockExamsData } = useGetMockExamsPreviewQuery(course?.slug || '', {
         skip: !course?.slug
     })
+
+    const scrollToPricing = () => {
+        pricingSectionRef.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        })
+    }
 
     // Рассчитать totalLessons
     const totalLessons = course?.units?.reduce((sum, unit) => sum + unit.lessonsCount, 0) || 0
@@ -74,17 +84,19 @@ export const CoursePreviewPage = () => {
 
                                     <MockExamsSection courseSlug={course?.slug} isPreview={true} />
 
-                                    <PricingSection
-                                        title='Choose your <span class="heading-gradient">plan</span>'
-                                        description="Select the perfect plan that matches your learning goals"
-                                        tariffs={tariffs || []}
-                                        isLoading={tariffsLoading}
-                                        errorMessage={errorMessage}
-                                        successMessage={successMessage}
-                                        onTariffAction={addTariffToCart}
-                                        actionLabel="Add to Cart"
-                                        showBackground={true}
-                                    />
+                                    <div ref={pricingSectionRef}>
+                                        <PricingSection
+                                            title='Choose your <span class="heading-gradient">plan</span>'
+                                            description="Select the perfect plan that matches your learning goals"
+                                            tariffs={tariffs || []}
+                                            isLoading={tariffsLoading}
+                                            errorMessage={errorMessage}
+                                            successMessage={successMessage}
+                                            onTariffAction={addTariffToCart}
+                                            actionLabel="Add to Cart"
+                                            showBackground={true}
+                                        />
+                                    </div>
                                 </div>
 
                                 {/* Right Column - Sticky Sidebar */}
@@ -103,6 +115,7 @@ export const CoursePreviewPage = () => {
                                         totalLessons={totalLessons}
                                         totalMockExams={mockExamsData?.totalExams}
                                         showStartButton={true}
+                                        onStartClick={scrollToPricing}
                                     />
                                     <div className="mg-top-24px">
 
@@ -116,6 +129,7 @@ export const CoursePreviewPage = () => {
                                         totalLessons={totalLessons}
                                         totalMockExams={mockExamsData?.totalExams}
                                         showStartButton={true}
+                                        onStartClick={scrollToPricing}
                                     />
                                 </div>
                             </div>

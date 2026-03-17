@@ -1,16 +1,16 @@
-import {ROUTES} from "@/app/router/routes.ts";
-
 interface CourseStructureCardProps {
     totalUnits?: number
     totalLessons?: number
     totalMockExams?: number
     showStartButton?: boolean
+    onStartClick?: () => void
 }
 export const CourseStructureCard = ({
     totalLessons,
     totalUnits,
     totalMockExams,
-    showStartButton
+    showStartButton,
+    onStartClick
 }: CourseStructureCardProps) => {
     return (
         <div
@@ -79,17 +79,18 @@ export const CourseStructureCard = ({
             </div>
             <div className="mg-top-40px">
                 {showStartButton && (
-                    <a
+                    <button
                         id="w-node-e9da5fd6-ab44-5b2f-81ad-6e5f36bfab9c-36bfab9c"
                         data-w-id="e9da5fd6-ab44-5b2f-81ad-6e5f36bfab9c"
-                        href={ROUTES.CATALOG}
+                        onClick={onStartClick}
                         className="button-primary w-inline-block"
+                        style={{ border: 'none', cursor: 'pointer' }}
                     >
                         <div className="text-block">Start learning</div>
                         <div className="item-icon-right">
-                            <div className="custom-icon-font"></div>
+                            <div className="custom-icon-font"></div>
                         </div>
-                    </a>
+                    </button>
                 )}
             </div>
         </div>

@@ -222,18 +222,44 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                                                       className="footer-item-link w-inline-block">
                                                                     <div>AP CS A</div>
                                                                 </Link>
-                                                                <Link to='/courses/coming-soon/ap-lang/preview'
+                                                                <Link to='/courses/coming-soon/ap-lang-chamber-of-rhetoric/preview'
                                                                       className="footer-item-link w-inline-block">
                                                                     <div>AP Lang</div>
-                                                                </Link>
-                                                                <Link to='/courses/coming-soon/ap-psych/preview'
-                                                                      className="footer-item-link w-inline-block">
-                                                                    <div>AP Psych</div>
                                                                 </Link>
                                                             </div>
                                                         </div>
                                                     </div>
-
+                                                    <div>
+                                                        <h3 className="dropdown-title"></h3>
+                                                        <div className="w-layout-grid main-pages-wrapper">
+                                                            <div className="dropdown-link-column">
+                                                                <Link to='/courses/coming-soon/ap-psych-the-upside-down/preview'
+                                                                      className="footer-item-link w-inline-block">
+                                                                    <div>AP Psych</div>
+                                                                </Link>
+                                                                <Link to='/courses/coming-soon/ap-lit-the-existential-dreamhouse/preview'
+                                                                      className="footer-item-link w-inline-block">
+                                                                    <div>AP Lit</div>
+                                                                </Link>
+                                                                <Link to='/courses/coming-soon/ap-hug-demographic-drift/preview'
+                                                                      className="footer-item-link w-inline-block">
+                                                                    <div>AP HuG</div>
+                                                                </Link>
+                                                                <Link to='/courses/coming-soon/ap-bio-the-mutation-games/preview'
+                                                                      className="footer-item-link w-inline-block">
+                                                                    <div>AP Bio</div>
+                                                                </Link>
+                                                                <Link to='/courses/coming-soon/wh-ap-the-dbq-project/preview'
+                                                                      className="footer-item-link w-inline-block">
+                                                                    <div>WHAP</div>
+                                                                </Link>
+                                                                <Link to='/courses/coming-soon/ap-ush-the-last-of-us/preview'
+                                                                      className="footer-item-link w-inline-block">
+                                                                    <div>APUSH</div>
+                                                                </Link>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </nav>
