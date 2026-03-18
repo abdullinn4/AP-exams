@@ -265,6 +265,11 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                         </nav>
                                     </div>
                                 </li>
+                                <li className="link-nav-item">
+                                    <Link to={ROUTES.FREE_MATERIALS} className={linkClass} style={{ whiteSpace: 'nowrap' }}>
+                                        Free Library
+                                    </Link>
+                                </li>
                             </ul>
                         </nav>
                         <div data-open-product="" data-wf-cart-type="modal" data-wf-cart-query=""

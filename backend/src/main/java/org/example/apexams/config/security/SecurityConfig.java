@@ -43,6 +43,7 @@ public class SecurityConfig {
                                 "/api/v1/paypro/**",
                                 "/api/v1/orders/by-checkout/**",
                                 "/api/v1/partnership/**",
+                                "/api/v1/free-materials/**",
                                 "/"
                         ).permitAll()
 

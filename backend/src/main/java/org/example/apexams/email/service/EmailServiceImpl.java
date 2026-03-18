@@ -81,6 +81,102 @@ public class EmailServiceImpl implements EmailService {
         sendEmail(email, subject, htmlBody);
     }
 
+    @Override
+    public void sendFreeMaterial(String email, String materialSlug) {
+        String materialName = getMaterialNameBySlug(materialSlug);
+        String materialLink = getMaterialLinkBySlug(materialSlug);
+
+        String subject = "Your Free " + materialName + " from SmashAP 🎁";
+        String htmlBody = buildFreeMaterialEmailHtml(materialName, materialLink);
+        sendEmail(email, subject, htmlBody);
+    }
+
+    private String buildFreeMaterialEmailHtml(String materialName, String materialLink) {
+        return String.format(
+                "<!DOCTYPE html>" +
+                        "<html>" +
+                        "<head>" +
+                        "<meta charset='UTF-8'>" +
+                        "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
+                        "</head>" +
+                        "<body style='font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; margin: 0; padding: 0; background-color: #f5f5f5;'>" +
+                        "<table width='100%%' cellpadding='0' cellspacing='0' border='0' style='background-color: #f5f5f5;'>" +
+                        "<tr><td align='center' style='padding: 40px 20px;'>" +
+                        "<table width='600' cellpadding='0' cellspacing='0' border='0' style='background-color: white; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);'>" +
+                        "<tr><td style='padding: 40px;'>" +
+
+                        // Header with logo
+                        "<div style='text-align: center; margin-bottom: 30px;'>" +
+                        "<div style='font-size: 28px; font-weight: 700; background: linear-gradient(135deg, #7C3AED 0%%, #5B21B6 100%%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;'>SmashAP</div>" +
+                        "</div>" +
+
+                        // Greeting
+                        "<div style='color: #333; font-size: 16px; line-height: 1.8;'>" +
+                        "<div style='font-size: 18px; font-weight: 600; margin-bottom: 20px;'>Hey!</div>" +
+
+                        "<p style='margin: 0 0 16px 0;'>Thanks for grabbing the <strong>%s</strong> from SmashAP 🎉</p>" +
+
+                        "<p style='margin: 0 0 16px 0;'>We made this specifically to help you start cooking on your AP exams. This is just a taste though… our full prep courses go way harder and will actually get you the 4s and 5s you need.</p>" +
+
+                        // Highlight box
+                        "<div style='background-color: #f3f4f6; padding: 20px; border-radius: 12px; margin: 25px 0; border-left: 4px solid #7C3AED;'>" +
+                        "<p style='margin: 0;'><strong>Quick question</strong> so we can send you the right stuff — which AP are you taking? Just reply with the subject(s).</p>" +
+                        "</div>" +
+
+                        "<p style='margin: 0 0 16px 0;'>Also, since you're already here… we got you.<br>Use code below to get <strong>10%% OFF</strong> any of our full courses.</p>" +
+
+                        // Promo code
+                        "<div style='font-size: 20px; font-weight: 700; color: #7C3AED; text-align: center; padding: 15px; background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%%, rgba(91, 33, 182, 0.1) 100%%); border-radius: 8px; margin: 20px 0;'>" +
+                        "SMASH10AP" +
+                        "</div>" +
+
+                        // CTA Button
+                        "<div style='text-align: center; margin: 25px 0;'>" +
+                        "<a href='%s' style='display: inline-block; background: linear-gradient(135deg, #7C3AED 0%%, #5B21B6 100%%); color: white; text-decoration: none; padding: 16px 32px; border-radius: 12px; font-weight: 600; font-size: 16px;'>Link to your free stuff →</a>" +
+                        "</div>" +
+
+                        "<p style='margin: 30px 0 0 0;'>Let's smash these APs together 💪</p>" +
+
+                        // Signature
+                        "<div style='margin-top: 30px; font-weight: 600; color: #1a1a1a;'>" +
+                        "Talk soon,<br>SmashAP Team" +
+                        "</div>" +
+                        "</div>" +
+
+                        // Footer
+                        "<div style='margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 14px; text-align: center;'>" +
+                        "<p style='margin: 0 0 8px 0;'>© 2026 SmashAP. All rights reserved.</p>" +
+                        "<p style='margin: 0;'>You're receiving this because you requested free materials from SmashAP.</p>" +
+                        "</div>" +
+
+                        "</td></tr></table>" +
+                        "</td></tr></table>" +
+                        "</body></html>",
+                materialName, materialLink
+        );
+    }
+
+    private String getMaterialNameBySlug(String slug) {
+        return switch (slug) {
+            case "one-page-cram-sheet-bundle" -> "The \"One-Page Cram Sheet\" Bundle";
+            case "ap-score-calculator" -> "AP Score Calculator";
+            case "college-admissions-ap-checklist" -> "College Admissions AP Checklist";
+            default -> "Free Material";
+        };
+    }
+
+    private String getMaterialLinkBySlug(String slug) {
+        return switch (slug) {
+            case "one-page-cram-sheet-bundle" ->
+                    "https://docs.google.com/document/d/1yx47BzafOdnqgmdBVtSW-bkLlIEEA4pn20cMhcipcyY/edit?usp=sharing";
+            case "ap-score-calculator" ->
+                    "https://docs.google.com/spreadsheets/d/1G6ZR10d7td6SAgCeuXEYrRXqipFzkrmAn1y7FstVNF4/edit?usp=sharing";
+            case "college-admissions-ap-checklist" ->
+                    "https://docs.google.com/spreadsheets/d/1wk2N9-ilTljpzRGnvYI0KY7yJoIs5MNxrml8budfnZw/edit?usp=sharing";
+            default -> "https://smashap.com";
+        };
+    }
+
     private String buildPartnershipNotificationHtml(String email) {
         String affiliateLink = "http://cc.payproglobal.com/AffiliateSignup/8DE835912B6DFFE";
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useGetLikesQuery, useToggleLikeMutation } from '@/shared/api/comingSoonApi'
+import {getAdjustedLikeCount} from "@/shared/config/content/courseLikesOffset.ts";
 
 interface LikeButtonProps {
     courseSlug: string
@@ -9,6 +10,7 @@ export const LikeButton = ({ courseSlug }: LikeButtonProps) => {
     const { data: likesData } = useGetLikesQuery(courseSlug)
     const [toggleLike, { isLoading: isToggling }] = useToggleLikeMutation()
     const [isAnimating, setIsAnimating] = useState(false)
+    const displayedLikes = getAdjustedLikeCount(courseSlug, likesData?.likesCount || 0)
 
     const handleLike = async () => {
         if (isToggling) return
@@ -93,7 +95,7 @@ export const LikeButton = ({ courseSlug }: LikeButtonProps) => {
                             textAlign: 'center',
                         }}
                     >
-                        {likesCount}
+                        {displayedLikes}
                     </div>
                 )}
             </button>

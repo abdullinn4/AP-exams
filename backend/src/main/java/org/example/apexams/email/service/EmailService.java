@@ -10,4 +10,5 @@ public interface EmailService {
     void sendNewPasswordEmail(String email, String password);
     void sendPurchaseConfirmationEmail(String email, List<String> courseNames);
     void sendPartnershipNotification(String email);
+    void sendFreeMaterial(String email, String materialSlug);
 }

@@ -7388,10 +7388,11 @@ figcaption {
 }
 
 .grid-footer-columns {
-  grid-column-gap: 40px;
-  grid-row-gap: 10px;
-  grid-template-rows: auto;
-  grid-template-columns: auto auto 1fr;
+    grid-column-gap: 32px;
+    grid-row-gap: 32px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-columns: 1fr;
+    display: grid;
 }
 
 .grid-footer-columns.footer-v2 {
@@ -9855,7 +9856,7 @@ figcaption {
 
   .grid-footer-columns {
     grid-row-gap: 64px;
-    grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
   }
 
   .grid-footer-columns.footer-v2 {

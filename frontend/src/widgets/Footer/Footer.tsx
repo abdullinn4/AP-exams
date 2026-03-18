@@ -100,6 +100,11 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                                 </Link>
                                             </li>
                                             <li className="footer-column-item">
+                                                <Link to={ROUTES.FREE_MATERIALS} className="footer-item-link w-inline-block">
+                                                    Free Library
+                                                </Link>
+                                            </li>
+                                            <li className="footer-column-item">
                                                 <Link to="/about" className="footer-item-link w-inline-block">
                                                     <div>About</div>
                                                 </Link>
@@ -139,7 +144,7 @@ export const Footer = ({ variant = 'full' }: FooterProps) => {
                                     </ul>
                                 </div>
                                 <div id="w-node-_4ce7d77c-4018-d530-59d0-9a7e57241a6c-57241a43">
-                                    <h3 className="footer-title"></h3>
+                                    <h3 className="footer-title">Courses</h3>
                                     <ul role="list" className="footer-column-links">
                                         <li className="footer-column-item">
                                             <Link to='/courses/coming-soon/ap-psych-the-upside-down/preview'

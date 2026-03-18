@@ -18,4 +18,6 @@ export const ROUTES = {
     DASHBOARD: '/dashboard',
     COMING_SOON_COURSE: '/courses/coming-soon/:slug/preview',
     PARTNERSHIP: '/partnership',
+    FREE_MATERIALS: '/free-materials',
+    FREE_MATERIAL_REQUEST: '/free-materials/:slug/request',
 } as const

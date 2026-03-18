@@ -1,0 +1,198 @@
+import { useState, type FormEvent } from 'react'
+import { useParams } from 'react-router-dom'
+import { Header } from '@/widgets/Header'
+import { Footer } from '@/widgets/Footer'
+import { FREE_MATERIAL_REQUEST_CONTENT } from '@/shared/config/content'
+import { useRequestFreeMaterialMutation } from '@/shared/api/freeMaterialsApi'
+import { ROUTES } from '@/app/router/routes'
+import { Link } from 'react-router-dom'
+
+export const FreeMaterialRequestPage = () => {
+    const { slug } = useParams<{ slug: string }>()
+    const [email, setEmail] = useState('')
+    const [isSuccess, setIsSuccess] = useState(false)
+    const [requestFreeMaterial, { isLoading, isError }] = useRequestFreeMaterialMutation()
+
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault()
+        if (!email || !slug) return
+
+        try {
+            await requestFreeMaterial({ email, materialSlug: slug }).unwrap()
+            setIsSuccess(true)
+        } catch (error) {
+            console.error('Free material request error:', error)
+        }
+    }
+
+    return (
+        <div className="page-wrapper full-page">
+            <div
+                data-w-id="b209dc69-0839-20fe-af3a-c9ee1dec5ef2"
+                data-animation="default"
+                data-collapse="all"
+                data-duration="400"
+                data-easing="ease"
+                data-easing2="ease"
+                role="banner"
+                className="header-wrapper w-nav"
+            >
+                <div className="container-default w-container">
+                    <div data-w-id="b209dc69-0839-20fe-af3a-c9ee1dec5ef4" className="header-container-wrapper center">
+                        <Header variant="minimal" theme="dark" />
+                    </div>
+                </div>
+            </div>
+
+            <section className="section-card-padding" style={{ paddingBottom: '100px' }}>
+                <div className="w-layout-blockcontainer container-default width-100 w-container">
+                    <div className="w-layout-grid grid-2-columns newsletter-grid">
+                        {/* Image Section */}
+                        <div
+                            data-w-id="d53ecb1e-13fe-497c-9ed2-84647e95938f"
+                            style={{
+                                WebkitTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                                MozTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                                msTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                                transform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                                opacity: 0
+                            }}
+                            className="image-wrapper border-radius-32px overflow-hidden"
+                        >
+                            <img
+                                src={FREE_MATERIAL_REQUEST_CONTENT.hero.image}
+                                loading="eager"
+                                alt="Free Material - SmashAP"
+                                className="cover-image"
+                                style={{
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                    objectPosition: 'center'
+                                }}
+                            />
+                        </div>
+
+                        {/* Content Section */}
+                        <div
+                            id="w-node-d53ecb1e-13fe-497c-9ed2-84647e95936c-ad098e74"
+                            data-w-id="d53ecb1e-13fe-497c-9ed2-84647e95936c"
+                            style={{
+                                WebkitTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                                MozTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                                msTransform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                                transform: 'translate3d(0, 10%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)',
+                                opacity: 0
+                            }}
+                            className="card newsletter-card"
+                        >
+                            {!isSuccess ? (
+                                <>
+                                    <div className="inner-container _390px _100-tablet">
+                                        <h1 className="display-6">{FREE_MATERIAL_REQUEST_CONTENT.hero.title}</h1>
+                                    </div>
+
+                                    <div className="mg-top-12px">
+                                        <p style={{fontSize: '17px'}}>{FREE_MATERIAL_REQUEST_CONTENT.hero.description}</p>
+                                    </div>
+
+                                    {/* Form */}
+                                    <div className="mg-top-32px">
+                                        <div className="form w-form">
+                                            <form
+                                                id="wf-form-FreeMaterial-Form"
+                                                name="wf-form-FreeMaterial-Form"
+                                                onSubmit={handleSubmit}
+                                                className="form-wrapper inside-input"
+                                            >
+                                                <div className="input-wrapper">
+                                                    <input
+                                                        className="input w-input"
+                                                        maxLength={256}
+                                                        placeholder={FREE_MATERIAL_REQUEST_CONTENT.form.placeholder}
+                                                        type="email"
+                                                        value={email}
+                                                        onChange={(e) => setEmail(e.target.value)}
+                                                        required
+                                                    />
+                                                    <div className="button-inside-input-wrapper">
+                                                        <input
+                                                            type="submit"
+                                                            className="button-primary inside-button w-button"
+                                                            value={isLoading ? 'Sending...' : FREE_MATERIAL_REQUEST_CONTENT.form.submitText}
+                                                            disabled={isLoading}
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                {isError && (
+                                                    <div style={{
+                                                        marginTop: '16px',
+                                                        padding: '12px',
+                                                        backgroundColor: '#fee',
+                                                        borderRadius: '8px',
+                                                        color: '#c00'
+                                                    }}>
+                                                        {FREE_MATERIAL_REQUEST_CONTENT.form.errorMessage}
+                                                    </div>
+                                                )}
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    {/* Social Media */}
+                                    <div className="mg-top-24px">
+                                        <div className="social-media-grid">
+                                            <a href="https://www.instagram.com/smashap.official?igsh=NHY3eDVqdjhsbTh5&utm_source=qr" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                                <div className="icon-font-social-media"></div>
+                                            </a>
+
+                                            <a href="https://youtube.com/@smashap?si=bqFvfUA016Ev1q2i" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                                <div className="icon-font-social-media"></div>
+                                            </a>
+                                            <a href="https://www.tiktok.com/@km_lab?_r=1&_t=ZG-94g9DkFtr4S" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                                <div className="icon-font-social-media">
+                                                    <img src="/assets/webflow/images/tiktok-icon.svg" alt="tiktok-icon"/>
+                                                </div>
+                                            </a>
+                                            <a href="https://discord.gg/etvUeM62" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                                <div className="icon-font-social-media">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                         fill="currentColor" className="bi bi-discord" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    {/* Success State */}
+                                    <div className="inner-container _390px _100-tablet">
+                                        <h1 className="display-6">Thanks for joining SmashAP Community</h1>
+                                    </div>
+
+                                    <div className="mg-top-12px">
+                                        <p style={{fontSize: '17px'}}>
+                                            We sent the file on your e-mail. Check it out and return back to look at our other courses!
+                                        </p>
+                                    </div>
+
+                                    <div className="mg-top-32px">
+                                        <Link to={ROUTES.HOME} className="button-primary w-button">
+                                            Back to Main
+                                        </Link>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <Footer />
+        </div>
+    )
+}

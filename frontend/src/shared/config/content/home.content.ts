@@ -257,13 +257,13 @@ export const HOME_POPULAR_COURSES = {
             id: 'ap-lang-chamber-of-rhetoric',
             title: 'AP Lang: Chamber of Rhetoric',
             slug: 'coming-soon/ap-lang-chamber-of-rhetoric',
-            snippet: 'All you need to smash AP AP Lang 2026',
+            snippet: 'All you need to smash AP English Language 2026',
             coverUrl: '/assets/webflow/images/AP Lang (2).png',
             wId: 'popular-course-2'
         },
         {
             id: 'ap-calc-ab-multiverse-of-calculus',
-            title: 'Calc AB: Multiverse of Calculus',
+            title: 'AP Calc AB: Multiverse of Calculus',
             slug: 'ap-calc-ab-multiverse-of-calculus',
             snippet: 'All you need to smash AP Calculus AB 2026',
             coverUrl: '/assets/webflow/images/multiverse-of-calc.png',
@@ -273,7 +273,7 @@ export const HOME_POPULAR_COURSES = {
             id: 'ap-psych-the-upside-down',
             title: 'AP Psych: The Upside Down',
             slug: 'coming-soon/ap-psych-the-upside-down',
-            snippet: 'All you need to smash AP Psych 2026',
+            snippet: 'All you need to smash AP Psychology 2026',
             coverUrl: '/assets/webflow/images/AP Psych.png',
             wId: 'popular-course-4'
         },
@@ -297,7 +297,7 @@ export const HOME_POPULAR_COURSES = {
             id: 'ap-lit-the-existential-dreamhouse',
             title: 'AP Lit: The Existential Dreamhouse',
             slug: 'coming-soon/ap-lit-the-existential-dreamhouse',
-            snippet: 'All you need to smash AP Lit 2026',
+            snippet: 'All you need to smash AP English Literature 2026',
             coverUrl: '/assets/webflow/images/AP Lit.png',
             wId: 'popular-course-7'
         },
@@ -305,7 +305,7 @@ export const HOME_POPULAR_COURSES = {
             id: 'ap-hug-demographic-drift',
             title: 'AP HuG: Demographic Drift',
             slug: 'coming-soon/ap-hug-demographic-drift',
-            snippet: 'All you need to smash AP HuG 2026',
+            snippet: 'All you need to smash AP Human Geography 2026',
             coverUrl: '/assets/webflow/images/AP HuG.png',
             wId: 'popular-course-8'
         },
@@ -313,7 +313,7 @@ export const HOME_POPULAR_COURSES = {
             id: 'ap-bio-the-mutation-games',
             title: 'AP Bio: The Mutation Games',
             slug: 'coming-soon/ap-bio-the-mutation-games',
-            snippet: 'All you need to smash AP Bio 2026',
+            snippet: 'All you need to smash AP Biology 2026',
             coverUrl: '/assets/webflow/images/AP Bio.png',
             wId: 'popular-course-9'
         },
@@ -321,7 +321,7 @@ export const HOME_POPULAR_COURSES = {
             id: 'wh-ap-the-dbq-project',
             title: 'WHAP: The DBQ Project',
             slug: 'coming-soon/wh-ap-the-dbq-project',
-            snippet: 'All you need to smash WHAP 2026',
+            snippet: 'All you need to smash AP World History: Modern 2026',
             coverUrl: '/assets/webflow/images/WHAP.png',
             wId: 'popular-course-10'
         },
@@ -329,7 +329,7 @@ export const HOME_POPULAR_COURSES = {
             id: 'ap-ush-the-last-of-us',
             title: 'APUSH: The Last of US',
             slug: 'coming-soon/ap-ush-the-last-of-us',
-            snippet: 'All you need to smash APUSH 2026',
+            snippet: 'All you need to smash AP US History 2026',
             coverUrl: '/assets/webflow/images/APUSH.png',
             wId: 'popular-course-11'
         }

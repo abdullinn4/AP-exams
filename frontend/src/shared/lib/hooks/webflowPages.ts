@@ -19,5 +19,7 @@ export const WEBFLOW_PAGE_IDS: Record<string, string> = {
     '/statistics': '696cb73966e9acecad098e72',
     '/courses/coming-soon/:slug/preview': '696cb73966e9acecad098e73',
     '/partnership': '696cb73966e9acecad098e74',
+    '/free-materials': '696cb73966e9acecad098e69',
+    '/free-materials/:slug/request': '696cb73966e9acecad098e74',
     // ... остальные
 }
