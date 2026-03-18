@@ -6,6 +6,8 @@ import { Footer } from "@/widgets/Footer"
 export const ComingSoonCoursePage = () => {
     const { slug } = useParams<{ slug: string }>()
 
+    const fullSlug = `coming-soon/${slug}`
+
     if (!slug) {
         return <div>Course not found</div>
     }
@@ -38,7 +40,7 @@ export const ComingSoonCoursePage = () => {
                                     </p>
                                 </div>
                                 <div className="mg-top-40px mg-bottom-40px">
-                                    <LikeButton courseSlug={slug} />
+                                    <LikeButton courseSlug={fullSlug} />
                                 </div>
                                 <div className="mg-top-24px">
                                     <div className="social-media-grid">

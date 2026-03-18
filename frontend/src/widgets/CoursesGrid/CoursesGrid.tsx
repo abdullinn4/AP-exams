@@ -75,9 +75,6 @@ export const CoursesGrid = ({
                                 const animationProps = getCourseCardAnimationProps(index)
                                 const progress = coursesProgress?.find(p => p.id === course.id)
 
-                                const className = columns === 2
-                                    ? (course.className || animationProps.className || '').replace(/top-center|top-right|bottom-left|bottom-right/g, '').trim()
-                                    : (course.className || animationProps.className)
 
                                 return (
                                     <CourseCard
@@ -85,7 +82,7 @@ export const CoursesGrid = ({
                                         course={{
                                             ...course,
                                             wId: course.wId || animationProps.wId,
-                                            className: className
+                                            className: ''
                                         }}
                                         variant={variant}
                                         progress={progress ? {
