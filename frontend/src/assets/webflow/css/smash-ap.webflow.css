@@ -16248,3 +16248,27 @@ figcaption {
     }
 
 }
+/* Make all cards in the grid equal height */
+.grid-3-columns.projects-grid,
+.grid-2-columns.projects-grid {
+    align-items: stretch;
+}
+
+/* Make the card use full height and flex layout */
+.card.project-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Make the bottom content area grow to fill space */
+.project-card-bottom-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Push buttons to the bottom */
+.project-card-bottom-content .mg-top-24px {
+    margin-top: auto !important;
+}
