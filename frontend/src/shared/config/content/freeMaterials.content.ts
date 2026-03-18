@@ -26,7 +26,7 @@ export const FREE_MATERIALS_MOCK_DATA = [
         snippet: 'How many APs do you need to be in Ivy League?',
         coverUrl: '/assets/webflow/images/free-ap-worth.png',
     }
-] as const
+]
 
 export const FREE_MATERIAL_REQUEST_CONTENT = {
     hero: {
