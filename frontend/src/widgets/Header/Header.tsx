@@ -272,28 +272,6 @@ export const Header = ({variant = 'full', theme = 'dark'}: HeaderProps) => {
                                 </li>
                             </ul>
                         </nav>
-                        <div data-open-product="" data-wf-cart-type="modal" data-wf-cart-query=""
-                             data-wf-page-link-href-prefix="" className="w-commerce-commercecartwrapper cart-wrapper"
-                             data-node-type="commerce-cart-wrapper">
-                            <a
-                                data-w-id="ec261ed6-1354-ca9a-7ff5-ab76103da11a"
-                                className="w-commerce-commercecartopenlink cart-button w-inline-block"
-                                role="button"
-                                aria-haspopup="dialog"
-                                aria-label="Open cart"
-                                data-node-type="commerce-cart-open-link"
-                                href="#"
-                                style={{color: theme === 'light' ? '#fff' : '#000'}}
-                                onClick={(e) => {
-                                    e.preventDefault()
-                                    setIsCartOpen(true)
-                                }}
-                            >
-                                <CartBadge theme={theme}/>
-                            </a>
-
-                            <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)}/>
-                        </div>
                         <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: '16px' }}>
                             <div data-open-product="" data-wf-cart-type="modal" data-wf-cart-query=""
                                  data-wf-page-link-href-prefix="" className="w-commerce-commercecartwrapper cart-wrapper"
