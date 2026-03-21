@@ -4,7 +4,6 @@ import { HOME_HERO } from '@/shared/config/content'
 import {HeroSlider} from "@/widgets/HeroSlider";
 import {ROUTES} from "@/app/router/routes.ts";
 import * as React from "react";
-import {PracticeTestsBanner} from "@/widgets/PracticeTestsBanner";
 
 export const HeroSection = () => {
     const handleScrollToWhyCourse = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -19,7 +18,6 @@ export const HeroSection = () => {
         <section className="section-card-padding top">
             <div className="position-relative">
                 <Header variant="full" theme="light" />
-                <PracticeTestsBanner/>
                 <div data-w-id="fa95ee18-0a5c-64ab-0aaf-ae790687b46c" className="section-card hero-section">
                     <div className="w-layout-blockcontainer container-default w-container">
                         <div className="w-layout-grid grid-2-columns hero-grid---home-v1">
