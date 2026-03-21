@@ -108,7 +108,9 @@ export const ExamPrepWorksSection = () => {
                                             </p>
                                             <div className="exam-prep-card-cta">
                                                 <a
-                                                    href="#"
+                                                    href={step.buttonLink}
+                                                    target={step.buttonLink.startsWith('http') ? '_blank' : undefined}
+                                                    rel={step.buttonLink.startsWith('http') ? 'noopener noreferrer' : undefined}
                                                     className="exam-prep-cta-button"
                                                     style={{
                                                         backgroundColor: step.buttonColor,

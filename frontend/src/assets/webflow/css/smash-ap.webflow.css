@@ -14956,9 +14956,6 @@ figcaption {
         height: 220px;
     }
 
-    .nav {
-        display: none;
-    }
 }
 
 @media screen and (max-width: 767px) {
@@ -15000,10 +14997,6 @@ figcaption {
         font-size: 12px;
     }
 
-    /* Скрыть стрелки навигации */
-    .nav {
-        display: none;
-    }
 }
 
 @media screen and (max-width: 479px) {
@@ -15022,11 +15015,6 @@ figcaption {
     .cards .block {
         width: 100px;
         height: 147px;
-    }
-
-    /* Стрелки уже скрыты из предыдущего медиа-запроса */
-    .nav {
-        display: none;
     }
 
     .text-block{
@@ -16271,4 +16259,56 @@ figcaption {
 /* Push buttons to the bottom */
 .project-card-bottom-content .mg-top-24px {
     margin-top: auto !important;
+}
+
+/* Slider overflow fix */
+.slider {
+    position: relative;
+    overflow: visible !important;
+}
+
+/* Десктопные стрелки - внутри слайдера снизу слева */
+.slider .nav-desktop {
+    display: flex !important;
+    gap: 16px;
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    z-index: 100;
+}
+
+/* Мобильные стрелки - скрыты на десктопе */
+.nav-mobile {
+    display: none !important;
+}
+
+/* Скрыть кнопку Explore Course на мобильных */
+@media screen and (max-width: 991px) {
+    .course-slider-main-button {
+        display: none !important;
+    }
+
+    /* Скрыть десктопные стрелки */
+    .slider .nav-desktop {
+        display: none !important;
+    }
+
+    /* Показать мобильные стрелки - снизу по центру под слайдером */
+    .nav-mobile {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* Планшеты и мобильные */
+@media screen and (max-width: 767px) {
+    .nav-mobile {
+        gap: 12px;
+    }
+
+    .nav-mobile .secondary-button-icon {
+        width: 48px;
+        height: 48px;
+    }
 }

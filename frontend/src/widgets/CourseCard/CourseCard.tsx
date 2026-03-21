@@ -24,13 +24,13 @@ export const CourseCard = ({ course, variant, progress, onAddToCart, compact }: 
     const courseUrl = (variant === 'catalog' || variant === 'popular-courses')
         ? `/courses/${course.slug}/preview`
         : variant === 'free-materials'
-            ? `/free-materials/${course.slug}/request`
+            ? `/free-library/${course.slug}/request`
             : `/courses/${course.slug}`
 
     const handleCardClick = (e: React.MouseEvent) => {
         if (variant === 'free-materials') {
             e.preventDefault()
-            navigate(`/free-materials/${course.slug}/request`)
+            navigate(`/free-library/${course.slug}/request`)
         }
     }
 
@@ -42,16 +42,6 @@ export const CourseCard = ({ course, variant, progress, onAddToCart, compact }: 
             style={{ position: 'relative' }}
             onClick={handleCardClick}
         >
-            {/* Price Badge - только для popular-courses */}
-            {variant === 'popular-courses' && (
-                <div className="course-price-badge">
-                    <div className="price-badge-inner">
-                        $99
-                    </div>
-                </div>
-            )}
-
-
             <div className="image-wrapper border-radius-32px overflow-hidden">
                 <img
                     src={course.coverUrl || ''}
@@ -86,7 +76,7 @@ export const CourseCard = ({ course, variant, progress, onAddToCart, compact }: 
                                 onClick={(e) => {
                                     e.preventDefault()
                                     e.stopPropagation()
-                                    navigate(`/free-materials/${course.slug}/request`)
+                                    navigate(`/free-library/${course.slug}/request`)
                                 }}
                                 className={`button-primary w-inline-block ${compact ? 'button-compact' : ''}`}
                                 style={compact ? { padding: '12px 20px', fontSize: '14px' } : {}}
@@ -99,22 +89,24 @@ export const CourseCard = ({ course, variant, progress, onAddToCart, compact }: 
                         )}
 
 
-                        {(variant === 'catalog' || variant === 'popular-courses') && onAddToCart && (
-                            <button
-                                onClick={(e) => {
-                                    e.preventDefault()
-                                    e.stopPropagation()
-                                    onAddToCart()
-                                }}
-                                className={`button-primary w-inline-block ${compact ? 'button-compact' : ''}`}
-                                style={compact ? { padding: '12px 20px', fontSize: '14px' } : {}}
-                            >
-                                <div className="text-block">Add to Cart</div>
-                                <div className="item-icon-right">
-                                    <div className="custom-icon-font"></div>
-                                </div>
-                            </button>
-                        )}
+                        {(variant === 'catalog' || variant === 'popular-courses') &&
+                            onAddToCart &&
+                            !course.slug.startsWith('coming-soon/') && (
+                                <button
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        e.stopPropagation()
+                                        onAddToCart()
+                                    }}
+                                    className={`button-primary w-inline-block ${compact ? 'button-compact' : ''}`}
+                                    style={compact ? { padding: '12px 20px', fontSize: '14px' } : {}}
+                                >
+                                    <div className="text-block">Add to Cart</div>
+                                    <div className="item-icon-right">
+                                        <div className="custom-icon-font"></div>
+                                    </div>
+                                </button>
+                            )}
 
                         {variant !== 'free-materials' && (
                             <div className="link-wrapper w-inline-block">

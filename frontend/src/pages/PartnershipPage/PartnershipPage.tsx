@@ -191,14 +191,14 @@ export const PartnershipPage = () => {
                             {/* Social Media */}
                             <div className="mg-top-24px">
                                 <div className="social-media-grid">
-                                    <a href="https://www.instagram.com/smashap.official?igsh=NHY3eDVqdjhsbTh5&utm_source=qr" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                    <a href="https://www.instagram.com/kamilsmashap?igsh=eXM5aWdhYWF0dGQ4" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
                                         <div className="icon-font-social-media"></div>
                                     </a>
 
-                                    <a href="https://youtube.com/@smashap?si=bqFvfUA016Ev1q2i" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                    <a href="https://youtube.com/@gabdulkhakovv?si=d80uEKFpzNM8X72C" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
                                         <div className="icon-font-social-media"></div>
                                     </a>
-                                    <a href="https://www.tiktok.com/@km_lab?_r=1&_t=ZG-94g9DkFtr4S" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                    <a href="https://www.tiktok.com/@marat.smashap?_r=1&_t=ZG-94srMyEwlmr" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
                                         <div className="icon-font-social-media">
                                             <img src="/assets/webflow/images/tiktok-icon.svg" alt="tiktok-icon"/>
                                         </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import {COURSES_DATA} from "@/shared/config/content"
 
 export const CourseSliderSection = () => {
@@ -6,7 +6,6 @@ export const CourseSliderSection = () => {
     const [isAnimating, setIsAnimating] = useState(false)
     const [animationType, setAnimationType] = useState<'next' | 'prev' | null>(null)
     const timeoutRef = useRef<number | null>(null)
-    const autoPlayRef = useRef<number | null>(null)
 
     const courses = COURSES_DATA
 
@@ -27,24 +26,7 @@ export const CourseSliderSection = () => {
             setIsAnimating(false)
             setAnimationType(null)
         }, 450)
-
-        resetAutoPlay()
     }
-
-    const resetAutoPlay = () => {
-        if (autoPlayRef.current) clearTimeout(autoPlayRef.current)
-        autoPlayRef.current = window.setTimeout(() => {
-            showSlider('next')
-        }, 7000)
-    }
-
-    useEffect(() => {
-        resetAutoPlay()
-        return () => {
-            if (timeoutRef.current) clearTimeout(timeoutRef.current)
-            if (autoPlayRef.current) clearTimeout(autoPlayRef.current)
-        }
-    }, [])
 
     const getOrderedCourses = () => {
         return [...courses.slice(currentIndex), ...courses.slice(0, currentIndex)]
@@ -71,14 +53,14 @@ export const CourseSliderSection = () => {
                                 <div className="content">
                                     <div className="title">{course.title}</div>
                                     <div className="description">{course.description}</div>
-                                    <div className="buttons">
+                                    <div className="buttons course-slider-main-button">
                                         <button
                                             className="button-primary w-inline-block"
                                             onClick={() => window.location.href = `/courses/${course.slug}/preview`}
                                         >
                                             <div className="text-block">Explore Course</div>
                                             <div className="item-icon-right">
-                                                <div className="custom-icon-font"></div>
+                                                <div className="custom-icon-font"></div>
                                             </div>
                                         </button>
                                     </div>
@@ -116,7 +98,7 @@ export const CourseSliderSection = () => {
                         ))}
                     </div>
 
-                    <div className="nav">
+                    <div className="nav nav-desktop">
                         <button
                             className="secondary-button-icon"
                             onClick={() => showSlider('prev')}
@@ -136,6 +118,27 @@ export const CourseSliderSection = () => {
                             </div>
                         </button>
                     </div>
+                </div>
+
+                <div className="nav nav-mobile">
+                    <button
+                        className="secondary-button-icon"
+                        onClick={() => showSlider('prev')}
+                        disabled={isAnimating}
+                    >
+                        <div className="custom-icon-font">
+                            <img src="/assets/webflow/images/arrow-left_black.svg" alt="left-arrow"/>
+                        </div>
+                    </button>
+                    <button
+                        className="secondary-button-icon"
+                        onClick={() => showSlider('next')}
+                        disabled={isAnimating}
+                    >
+                        <div className="custom-icon-font">
+                            <img src="/assets/webflow/images/arrow-right_black.svg" alt="right-arrow"/>
+                        </div>
+                    </button>
                 </div>
             </div>
         </section>

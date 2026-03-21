@@ -1,6 +1,6 @@
 export const TARIFF_DESCRIPTIONS = {
     BASIC: {
-        description: "Perfect for beginners who want to start learning web design",
+        description: "",
         features: [
             "Access to all lessons",
             "Exclusive videos",
@@ -8,7 +8,7 @@ export const TARIFF_DESCRIPTIONS = {
         ]
     },
     PRO: {
-        description: "For serious learners who want the complete experience",
+        description: "",
         features: [
             "Everything from Basic",
             "Additional tasks",

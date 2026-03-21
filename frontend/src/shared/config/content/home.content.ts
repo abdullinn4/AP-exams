@@ -6,10 +6,10 @@ export const HOME_HERO = {
         '/assets/webflow/images/preview_avatar_4.jpg'
     ],
     trustedText: 'Trusted by over',
-    trustedCount: '2,000+',
+    trustedCount: '1,000+',
     trustedSuffix: 'students',
-    title: "The most effective",
-    titleHighlight: 'AP Prep for 99$',
+    title: "Join the AP community that",
+    titleHighlight: 'gets you results',
     description: 'The online school that actually prepares you for AP exams. We\'ll help you save on tuition — and dramatically improve your odds of getting into your dream college.',
     ctaPrimary: 'Start learning',
     ctaSecondary: 'Who we are',
@@ -72,7 +72,7 @@ export const HOME_CHAPTERS = {
             id: 6,
             wId: '8c1c1686-60be-c3e5-da93-1fe51396f0a4',
             title: '',
-            image: '/assets/webflow/gifs/chapters_section_3.gif.mp4',
+            image: '/assets/webflow/gifs/hop.mp4',
             type: 'video',
             className: 'grid-bottom-item-margin-top'
 
@@ -86,7 +86,7 @@ export const HOME_WHY_COURSE = {
     description1: '',
     description2: '',
     ctaText: 'Start learning',
-    videoImage: '/assets/webflow/gifs/main_preview.mp4',
+    videoImage: '/assets/webflow/gifs/preview.mp4',
     playButton: '/assets/webflow/images/play-button-courselify-x-webflow-template.svg',
     stats: [
         {value: '10', suffix: '+', label: 'Courses'},
@@ -167,8 +167,8 @@ export const HOME_FEATURES = {
                 '✗ Loss of motivation due to lack of support',
                 '✗ Lots of links and notes that you need to keep track of'
             ],
-            price: `$0 if you don't purchase the prep books`,
-            result: `The result? You're in a panic by late April, hire a tutor, and have to start all over from the beginning :(`,
+            price: `$0 without prep books`,
+            result: `The result? You're finally in a panic, hire a tutor, and have to start all over from the beginning :(`,
             showIcon: false,
             logo: undefined,
             priceHighlight: undefined,
@@ -230,7 +230,8 @@ export const HOME_FAQ = {
         },
         {
             question: 'What are the pricing plans?',
-            answer: '1) BASIC: Full platform access — all materials, video lessons, online practice tests, webinars, and our community included.'
+            answer: '1) BASIC: Full platform access — all materials, video lessons, online practice tests, webinars, and our community included;' +
+                ' 2) PRO: Everything from Basic + more tasks and materials'
         },
         {
             question: 'What do I need for SmashAP?',
@@ -246,7 +247,7 @@ export const HOME_POPULAR_COURSES = {
     ctaLink: '/courses',
     courses: [
         {
-            id: 'ap-cs-principles-breaking-code',
+            id: '91b822a3-c75a-40bc-b5b5-27683acdfdd2',
             title: 'AP CS P: Breaking Code',
             slug: 'ap-cs-principles-breaking-code',
             snippet: 'All you need to smash AP Computer Science Principles 2026',
@@ -262,7 +263,7 @@ export const HOME_POPULAR_COURSES = {
             wId: 'popular-course-2'
         },
         {
-            id: 'ap-calc-ab-multiverse-of-calculus',
+            id: '701d0484-c177-4229-88a5-c4c89554c9e5',
             title: 'AP Calc AB: Multiverse of Calculus',
             slug: 'ap-calc-ab-multiverse-of-calculus',
             snippet: 'All you need to smash AP Calculus AB 2026',
@@ -278,7 +279,7 @@ export const HOME_POPULAR_COURSES = {
             wId: 'popular-course-4'
         },
         {
-            id: 'ap-cs-a-escape-the-matrix',
+            id: '30814740-674c-4bf1-ba6c-2d118e11f9ac',
             title: 'AP CS A: Escape the Matrix ',
             slug: 'ap-cs-a-escape-the-matrix',
             snippet: 'All you need to smash AP Computer Science A 2026',
@@ -286,7 +287,7 @@ export const HOME_POPULAR_COURSES = {
             wId: 'popular-course-5'
         },
         {
-            id: 'ap-calc-bc-67-problems',
+            id: '0110f48a-c940-41ca-91b3-fc9bb7af2e4a',
             title: 'AP Calc BC: 67 Problems',
             slug: 'ap-calc-bc-67-problems',
             snippet: 'All you need to smash AP Calculus BC 2026',
@@ -404,6 +405,7 @@ export const EXAM_PREP_STEPS = [
         ghostName: 'Convenient platform',
         ghostRole: 'that has everything',
         buttonText: 'Choose a course',
+        buttonLink: '/courses',
         video: '/assets/webflow/gifs/platf.mp4',
         subtitleColor: '#FF8A3C',
         titleColor: '#fff',
@@ -420,6 +422,7 @@ export const EXAM_PREP_STEPS = [
         ghostName: 'Join our Discord',
         ghostRole: 'and also Instagram & Tiktok',
         buttonText: 'Move to Discord',
+        buttonLink: 'https://discord.gg/Fh9eM23Y',
         video: '/assets/webflow/gifs/supp.mp4',
         subtitleColor: '#303056',
         titleColor: '#303056',
@@ -436,6 +439,7 @@ export const EXAM_PREP_STEPS = [
         ghostName: 'Master',
         ghostRole: 'What You\'ve Learned',
         buttonText: 'Coming soon',
+        buttonLink: '/free-library',
         video: '/assets/webflow/gifs/tests.mp4',
         subtitleColor: '#000',
         titleColor: '#000',

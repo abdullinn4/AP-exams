@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { HOME_CTA } from '@/shared/config/content'
 
 export const CTASection = () => {
@@ -28,11 +27,11 @@ export const CTASection = () => {
                         </div>
                         <div className="mg-top-48px">
                             <div className="buttons-row left">
-                                <Link to="/courses" className="lighbox-button-wrapper w-inline-block w-lightbox">
+                                <a href="/courses" className="lighbox-button-wrapper w-inline-block w-lightbox">
                                     <div className="secondary-button white">
                                         <div>{HOME_CTA.ctaSecondary}</div>
                                     </div>
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </div>
