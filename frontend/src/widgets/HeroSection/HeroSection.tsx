@@ -40,7 +40,7 @@ export const HeroSection = () => {
                                 </div>
 
                                 <div className="mg-top-32px">
-                                    <h1 className="text-neutral-100" style={{fontSize: '72px', lineHeight: '1.15em'}}>
+                                    <h1 className="display-10 text-neutral-100">
                                         {HOME_HERO.title} <span className="heading-gradient">{HOME_HERO.titleHighlight}</span>
                                     </h1>
                                 </div>
