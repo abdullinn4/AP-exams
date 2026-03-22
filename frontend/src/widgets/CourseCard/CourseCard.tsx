@@ -21,6 +21,8 @@ interface CourseCardProps {
 export const CourseCard = ({ course, variant, progress, onAddToCart, compact }: CourseCardProps) => {
     const navigate = useNavigate()
 
+    const isComingSoon = course.slug.startsWith('coming-soon/')
+
     const courseUrl = (variant === 'catalog' || variant === 'popular-courses')
         ? `/courses/${course.slug}/preview`
         : variant === 'free-materials'
@@ -42,13 +44,13 @@ export const CourseCard = ({ course, variant, progress, onAddToCart, compact }: 
             style={{ position: 'relative' }}
             onClick={handleCardClick}
         >
-            <div className="image-wrapper border-radius-32px overflow-hidden">
+            <div className="image-wrapper border-radius-32px overflow-hidden image-zoom-wrapper">
                 <img
                     src={course.coverUrl || ''}
                     loading="eager"
                     sizes="(max-width: 479px) 93vw, (max-width: 767px) 95vw, (max-width: 991px) 46vw, (max-width: 1439px) 31vw, 404px"
                     alt={`${course.title} - Course Cover`}
-                    className="image"
+                    className="image image-zoom"
                 />
             </div>
             <div className="project-card-bottom-content">
@@ -89,24 +91,26 @@ export const CourseCard = ({ course, variant, progress, onAddToCart, compact }: 
                         )}
 
 
-                        {(variant === 'catalog' || variant === 'popular-courses') &&
-                            onAddToCart &&
-                            !course.slug.startsWith('coming-soon/') && (
-                                <button
-                                    onClick={(e) => {
-                                        e.preventDefault()
-                                        e.stopPropagation()
+                        {(variant === 'catalog' || variant === 'popular-courses') && onAddToCart && (
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    e.stopPropagation()
+                                    if (isComingSoon) {
+                                        navigate(courseUrl)
+                                    } else {
                                         onAddToCart()
-                                    }}
-                                    className={`button-primary w-inline-block ${compact ? 'button-compact' : ''}`}
-                                    style={compact ? { padding: '12px 20px', fontSize: '14px' } : {}}
-                                >
-                                    <div className="text-block">Add to Cart</div>
-                                    <div className="item-icon-right">
-                                        <div className="custom-icon-font"></div>
-                                    </div>
-                                </button>
-                            )}
+                                    }
+                                }}
+                                className={`button-primary w-inline-block ${compact ? 'button-compact' : ''}`}
+                                style={compact ? { padding: '12px 20px', fontSize: '14px' } : {}}
+                            >
+                                <div className="text-block">Add to Cart</div>
+                                <div className="item-icon-right">
+                                    <div className="custom-icon-font"></div>
+                                </div>
+                            </button>
+                        )}
 
                         {variant !== 'free-materials' && (
                             <div className="link-wrapper w-inline-block">

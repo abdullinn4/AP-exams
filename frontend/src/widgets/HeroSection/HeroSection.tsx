@@ -3,16 +3,8 @@ import { Header } from '@/widgets/Header'
 import { HOME_HERO } from '@/shared/config/content'
 import {HeroSlider} from "@/widgets/HeroSlider";
 import {ROUTES} from "@/app/router/routes.ts";
-import * as React from "react";
 
 export const HeroSection = () => {
-    const handleScrollToWhyCourse = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault()
-        const element = document.getElementById('why-course-section')
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }
-    }
 
     return (
         <section className="section-card-padding top">
@@ -48,7 +40,7 @@ export const HeroSection = () => {
                                 </div>
 
                                 <div className="mg-top-32px">
-                                    <h1 className="display-10 text-neutral-100">
+                                    <h1 className="text-neutral-100" style={{fontSize: '72px', lineHeight: '1.15em'}}>
                                         {HOME_HERO.title} <span className="heading-gradient">{HOME_HERO.titleHighlight}</span>
                                     </h1>
                                 </div>
@@ -60,13 +52,12 @@ export const HeroSection = () => {
                                                 <div className="custom-icon-font"></div>
                                             </div>
                                         </Link>
-                                        <a
-                                            href="#why-course-section"
-                                            onClick={handleScrollToWhyCourse}
+                                        <Link
+                                            to={ROUTES.ABOUT}
                                             className="secondary-button white w-inline-block"
                                         >
                                             <div className="text-block">{HOME_HERO.ctaSecondary}</div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

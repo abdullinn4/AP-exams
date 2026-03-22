@@ -8,8 +8,8 @@ export const HOME_HERO = {
     trustedText: 'Trusted by over',
     trustedCount: '1,000+',
     trustedSuffix: 'students',
-    title: "Join the AP community that",
-    titleHighlight: 'gets you results',
+    title: "Join the ",
+    titleHighlight: 'AP Community that gets you results',
     description: 'The online school that actually prepares you for AP exams. We\'ll help you save on tuition — and dramatically improve your odds of getting into your dream college.',
     ctaPrimary: 'Start learning',
     ctaSecondary: 'Who we are',
@@ -168,7 +168,7 @@ export const HOME_FEATURES = {
                 '✗ Lots of links and notes that you need to keep track of'
             ],
             price: `$0 without prep books`,
-            result: `The result? You're finally in a panic, hire a tutor, and have to start all over from the beginning :(`,
+            result: `The result? You're finally in a panic, hire a tutor, and have to start all over again:(`,
             showIcon: false,
             logo: undefined,
             priceHighlight: undefined,
@@ -413,6 +413,7 @@ export const EXAM_PREP_STEPS = [
         buttonColor: '#FF8A3C',
         ghostInfoColor: '#FF8A3C',
         bgGradient: '#1b1b40',
+        ghostTextColor: '#fff',
     },
     {
         id: 2,
@@ -420,7 +421,7 @@ export const EXAM_PREP_STEPS = [
         title: 'Support & Community',
         description: 'Free webinars. Every week. Level up with live sessions and get your questions answered on the spot. Plus, we\'re everywhere you hang—Discord, Insta, TikTok. Daily content, real talk, and a whole community rooting for you. We\'re not just support. We\'re your squad.',
         ghostName: 'Join our Discord',
-        ghostRole: 'and also Instagram & Tiktok',
+        ghostRole: 'and Instagram & Tiktok',
         buttonText: 'Move to Discord',
         buttonLink: 'https://discord.gg/Fh9eM23Y',
         video: '/assets/webflow/gifs/supp.mp4',
@@ -428,8 +429,9 @@ export const EXAM_PREP_STEPS = [
         titleColor: '#303056',
         descriptionColor: '#303056',
         buttonColor: '#FF5B79',
-        ghostInfoColor: '#fff',
+        ghostInfoColor: '#303056',
         bgGradient: '#e8cafb',
+        ghostTextColor: '#303056',
     },
     {
         id: 3,
@@ -447,6 +449,7 @@ export const EXAM_PREP_STEPS = [
         buttonColor: '#5B3A8C',
         ghostInfoColor: '#5B3A8C',
         bgGradient: '#f8a874',
+        ghostTextColor: '#fff',
     }
 ] as const
 

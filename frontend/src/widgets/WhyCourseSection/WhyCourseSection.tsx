@@ -4,7 +4,7 @@ import {ROUTES} from "@/app/router/routes.ts";
 
 export const WhyCourseSection = () => {
     return (
-        <section id="why-course-section" className="section">
+        <section className="section">
             <div className="section-card">
                 <div className="w-layout-blockcontainer container-default w-container">
                     <div data-w-id="3d388a41-0fb9-3d4a-6162-054e74091a48" className="stats-top-content-grid">

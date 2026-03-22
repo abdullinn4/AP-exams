@@ -123,8 +123,8 @@ export const ExamPrepWorksSection = () => {
                                         </div>
                                         <div className="exam-prep-card-ghost-info">
                                             <span style={{ backgroundColor: step.ghostInfoColor }}></span>
-                                            <div className="exam-prep-ghost-name">{step.ghostName}</div>
-                                            <div>{step.ghostRole}</div>
+                                            <div className="exam-prep-ghost-name" style={{color: step.ghostTextColor}}>{step.ghostName}</div>
+                                            <div style={{color: step.ghostTextColor}}>{step.ghostRole}</div>
                                         </div>
                                     </div>
                                 </div>

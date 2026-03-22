@@ -12063,8 +12063,6 @@ figcaption {
 
   .buttons-row {
     grid-row-gap: 16px;
-    flex-direction: column;
-    align-items: stretch;
     width: 100%;
   }
 
@@ -14596,7 +14594,6 @@ figcaption {
     overflow: hidden;
     position: relative;
     margin-left: 0;
-    border-radius: 38px !important;
 }
 
 .slider .mainslides .block {
@@ -14610,6 +14607,7 @@ figcaption {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 38px !important;
 }
 
 .slider .mainslides .block .content {
@@ -16311,4 +16309,19 @@ figcaption {
         width: 48px;
         height: 48px;
     }
+}
+/* Зум картинок при hover */
+.image-zoom-wrapper {
+    overflow: hidden;
+}
+
+.image-zoom {
+    transition: transform 0.3s ease;
+}
+
+.image-zoom-wrapper:hover .image-zoom {
+    transform: scale(1.1);
+}
+.project-card-bottom-content {
+    gap: 10px;
 }

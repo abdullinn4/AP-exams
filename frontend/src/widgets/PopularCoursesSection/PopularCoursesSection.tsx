@@ -7,6 +7,7 @@ import { CourseCard } from '@/widgets/CourseCard'
 import { HOME_POPULAR_COURSES } from '@/shared/config/content'
 import 'swiper/swiper-bundle.css'
 import {TariffSelectionModal} from "@/features/cart";
+import {useGetAllCoursesQuery} from "@/shared/api/courseApi.ts";
 
 interface PopularCoursesSectionProps {
     title?: string
@@ -18,6 +19,8 @@ export const PopularCoursesSection = ({
                                           titleHighlight = HOME_POPULAR_COURSES.titleHighlight
                                       }: PopularCoursesSectionProps) => {
     const swiperRef = useRef<SwiperType | null>(null)
+
+    const { data: courses } = useGetAllCoursesQuery()
 
     const [selectedCourse, setSelectedCourse] = useState<{
         id: string
@@ -87,7 +90,7 @@ export const PopularCoursesSection = ({
                                 }
                             }}
                         >
-                            {HOME_POPULAR_COURSES.courses.map((course) => (
+                            {courses?.map((course) => (
                                 <SwiperSlide key={course.id}>
                                     <CourseCard
                                         course={course}
