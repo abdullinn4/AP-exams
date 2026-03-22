@@ -16325,3 +16325,32 @@ figcaption {
 .project-card-bottom-content {
     gap: 10px;
 }
+/* Компактная версия display-10 для Hero заголовка (3 строки вместо 4) */
+.display-10-compact {
+    font-size: 72px;
+    line-height: 1.1em;
+}
+
+.display-10-compact.bold {
+    font-weight: 700;
+}
+
+/* Адаптивные размеры */
+@media screen and (max-width: 991px) {
+    .display-10-compact {
+        text-align: center;
+        font-size: 52px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .display-10-compact {
+        font-size: 42px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .display-10-compact {
+        font-size: 34px;
+    }
+}

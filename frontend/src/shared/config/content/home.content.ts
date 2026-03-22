@@ -11,7 +11,7 @@ export const HOME_HERO = {
     title: "Join the ",
     titleHighlight: 'AP Community ',
     titleHighlight1: 'that ',
-    titleHighlight2: 'gets you results',
+    titleHighlight2: 'Gets you results',
     description: 'The online school that actually prepares you for AP exams. We\'ll help you save on tuition — and dramatically improve your odds of getting into your dream college.',
     ctaPrimary: 'Start learning',
     ctaSecondary: 'Who we are',
