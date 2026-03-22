@@ -39,7 +39,6 @@ export const CourseCard = ({ course, variant, progress, onAddToCart, compact }: 
     return (
         <Link
             to={courseUrl}
-            data-w-id={course.wId}
             className={`card project-card w-inline-block ${course.className || ''}`}
             style={{ position: 'relative' }}
             onClick={handleCardClick}
