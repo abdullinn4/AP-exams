@@ -6844,7 +6844,7 @@ figcaption {
 .sales-home-cta-card-square-logo {
   box-shadow: 0 6px 20px 0 var(--neutral-shadow--03);
   border-radius: 22px;
-  max-width: 80px;
+  max-width: 280px;
   margin-bottom: 24px;
 }
 
@@ -16353,4 +16353,12 @@ figcaption {
     .display-10-compact {
         font-size: 34px;
     }
+}
+/* Плавный hover для CTA карточек */
+.card.buy-now {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.buy-now:hover {
+    transform: translateY(-4px);
 }

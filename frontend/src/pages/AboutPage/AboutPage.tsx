@@ -3,6 +3,8 @@ import {Footer} from '@/widgets/Footer'
 import {ABOUT_HERO, ABOUT_PORTFOLIO} from '@/shared/config/content'
 import {CTAFooterBlock} from "@/widgets/CTAFooterBlock";
 import {QuoteWithVideos} from "@/widgets/QuoteWithVideos";
+import {SurprisesSection} from "@/widgets/SurprisesSection";
+import {CTACardsSection} from "@/widgets/CTACardsSection";
 
 export const AboutPage = () => {
 
@@ -148,6 +150,9 @@ export const AboutPage = () => {
                     </div>
                 </div>
             </section>
+
+            <SurprisesSection />
+            <CTACardsSection />
 
             <QuoteWithVideos variant="about"/>
 

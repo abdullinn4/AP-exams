@@ -11,6 +11,7 @@ import {PopularCoursesSection} from "@/widgets/PopularCoursesSection";
 import {CourseSliderSection} from "@/widgets/CourseSliderSection";
 import {ExamPrepWorksSection} from "@/widgets/ExamPrepWorksSection";
 import {QuoteWithVideos} from "@/widgets/QuoteWithVideos";
+import {IncludedFeaturesSection} from "@/widgets/IncludedFeaturesSection";
 
 export const HomePage = () => {
 
@@ -21,6 +22,7 @@ export const HomePage = () => {
             <ChaptersSection/>
             <ExamPrepWorksSection/>
             <CourseSliderSection/>
+            <IncludedFeaturesSection/>
             <CTASection/>
             <PopularCoursesSection/>
             <TestimonialsSection/>

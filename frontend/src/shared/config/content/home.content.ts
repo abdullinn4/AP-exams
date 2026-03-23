@@ -473,3 +473,49 @@ export const SLIDER_VIDEOS_BOTTOM: SliderVideo[] = [
     {src: '/assets/webflow/gifs/preview6.mp4', alt: 'AP Course Preview 7'},
     {src: '/assets/webflow/gifs/preview4.mp4', alt: 'AP Course Preview 8'},
 ]
+
+export const HOME_INCLUDED_FEATURES = {
+    title: 'Our Community Hub: Connect, Learn, Grow',
+    description: 'We’ve built a supportive ecosystem across five platforms. Each one serves a specific role – pick the one that fits you best.',
+
+    // Три мини-карточки сверху
+    miniCards: [
+        {
+            id: 1,
+            image: '/assets/webflow/images/instagram-main.png',
+            title: 'Courses',
+
+        },
+        {
+            id: 2,
+            image: '/assets/webflow/images/tiktok-main.png',
+            title: 'Videos',
+        },
+        {
+            id: 3,
+            image: '/assets/webflow/images/youtube-main.png',
+            title: 'Practice Tests',
+
+        }
+    ],
+
+    // Два больших блока снизу
+    largeCards: [
+        {
+            id: 1,
+            icon: '/assets/webflow/images/meeting.svg',
+            title: 'Curator – For you & For your parent',
+            description: 'On Discord you\'re never alone. We’ve built a true community - students helping students, forming study groups, and tackling tough problems together with curators and experts by your side, every step of the way. For parents, our Facebook hub offers a calm space: weekly updates, answers to your questions, and direct contact with admins to give you peace of mind while your student progresses.',
+            image: '/assets/webflow/images/community.png',
+            imagePosition: 'right'
+        },
+        {
+            id: 2,
+            icon: '/assets/webflow/images/network.svg',
+            title: 'Think we\'ll forget about you after exam day? No way.',
+            description: 'You become part of our team. After the exam, we invite you to stay - whether as a curator helping the next wave of students, or in marketing, accounting, programming, or other roles we always need. We invest in you long‑term, because your success doesn’t end with a test score - it’s just the beginning.',
+            image: '/assets/webflow/images/hustle.png',
+            imagePosition: 'left'
+        }
+    ],
+} as const
