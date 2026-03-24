@@ -40,7 +40,7 @@ export const HOME_SURPRISES = {
         },
         {
             id: 2,
-            title: 'AP Computer Science A | P',
+            title: 'AP CS A | Principles',
             description: 'Ready to hack the AP exam? Marat is your ultimate tech guru. Whether you’ve been coding in your sleep or you’re writing your very first line of Java, Marat brings an electric energy to the screen that makes programming dangerously fun. He strips away the confusing tech jargon and gives you the exact cheat codes you need to ace your multiple-choice questions and flawlessly execute your Free Response Questions.',
             ctaPrimary: 'Start learning',
             image: '/assets/webflow/images/about-cs.png',

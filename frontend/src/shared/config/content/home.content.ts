@@ -475,7 +475,9 @@ export const SLIDER_VIDEOS_BOTTOM: SliderVideo[] = [
 ]
 
 export const HOME_INCLUDED_FEATURES = {
-    title: 'Our Community Hub: Connect, Learn, Grow',
+    title: 'Our',
+    titleH1: 'Community Hub',
+    titleH2: ': Connect, Learn, Grow',
     description: 'We’ve built a supportive ecosystem across five platforms. Each one serves a specific role – pick the one that fits you best.',
 
     // Три мини-карточки сверху

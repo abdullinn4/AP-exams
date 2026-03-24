@@ -16362,3 +16362,58 @@ figcaption {
 .card.buy-now:hover {
     transform: translateY(-4px);
 }
+/* Mobile layout fixes - image before text */
+@media screen and (max-width: 991px) {
+    /* SurprisesSection - всегда изображение перед текстом на мобилке */
+    .grid-2-columns.surprises-image-right,
+    .grid-2-columns.surprises-image-left {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .grid-2-columns.surprises-image-right .sales-home---surprises-image-wrapper,
+    .grid-2-columns.surprises-image-left .sales-home---surprises-image-wrapper {
+        order: 1;
+    }
+
+    .grid-2-columns.surprises-image-right .inner-container,
+    .grid-2-columns.surprises-image-left .inner-container {
+        order: 2;
+    }
+
+    /* CourseHeroSection - заголовок первым, изображение внизу на мобилке */
+    .grid-2-columns.hero-grid---chapters-single-page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .grid-2-columns.hero-grid---chapters-single-page .inner-container {
+        order: 1;
+    }
+
+    .grid-2-columns.hero-grid---chapters-single-page .image-container.hero-image-chapter-single {
+        order: 2;
+        align-self: flex-end;
+        margin-top: auto;
+    }
+}
+/* CourseSliderSection - мобильная навигация по центру под слайдером */
+@media screen and (max-width: 991px) {
+    .nav.nav-mobile {
+        position: static !important;
+        bottom: auto !important;
+        right: auto !important;
+        max-width: none !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 16px !important;
+        margin-top: 24px;
+    }
+
+        /* CourseCard - View Course в одну строку на мобилке */
+    .project-card .link {
+        white-space: nowrap;
+    }
+}

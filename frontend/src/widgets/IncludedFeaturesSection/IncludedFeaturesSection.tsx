@@ -10,7 +10,7 @@ export const IncludedFeaturesSection = () => {
                         data-w-id="9dabc3b1-cb78-d347-7c77-5a8b55c31260"
                         className="text-center mg-bottom-40px"
                     >
-                        <h2 className="display-6">{HOME_INCLUDED_FEATURES.title}</h2>
+                        <h2 className="display-6">{HOME_INCLUDED_FEATURES.title} <span className="heading-gradient">{HOME_INCLUDED_FEATURES.titleH1}</span> <span>{HOME_INCLUDED_FEATURES.titleH2}</span></h2>
                         <div className="mg-top-16px">
                             <p>{HOME_INCLUDED_FEATURES.description}</p>
                         </div>

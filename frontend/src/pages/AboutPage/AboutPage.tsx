@@ -4,7 +4,6 @@ import {ABOUT_HERO, ABOUT_PORTFOLIO} from '@/shared/config/content'
 import {CTAFooterBlock} from "@/widgets/CTAFooterBlock";
 import {QuoteWithVideos} from "@/widgets/QuoteWithVideos";
 import {SurprisesSection} from "@/widgets/SurprisesSection";
-import {CTACardsSection} from "@/widgets/CTACardsSection";
 
 export const AboutPage = () => {
 
@@ -104,7 +103,7 @@ export const AboutPage = () => {
                                     loading="eager"
                                     sizes="(max-width: 479px) 77vw, (max-width: 991px) 46vw, (max-width: 1439px) 23vw, 310px"
                                     alt="A Professional Web Designer - Courselify X Webflow Template"
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                    style={{width: '100%', height: '100%', objectFit: 'cover'}}
                                 />
                             </div>
                             <div
@@ -124,7 +123,7 @@ export const AboutPage = () => {
                                     loading="eager"
                                     sizes="(max-width: 479px) 77vw, (max-width: 991px) 46vw, (max-width: 1439px) 23vw, 310px"
                                     alt="A Professional Web Designer - Courselify X Webflow Template"
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                    style={{width: '100%', height: '100%', objectFit: 'cover'}}
                                 />
                             </div>
                         </div>
@@ -151,8 +150,7 @@ export const AboutPage = () => {
                 </div>
             </section>
 
-            <SurprisesSection />
-            <CTACardsSection />
+            <SurprisesSection/>
 
             <QuoteWithVideos variant="about"/>
 

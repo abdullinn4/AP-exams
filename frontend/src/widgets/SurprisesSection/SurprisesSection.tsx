@@ -10,7 +10,7 @@ export const SurprisesSection = () => {
                         className="inner-container _860px center"
                     >
                         <div className="mg-bottom-80px">
-                            <h2 className="display-7 text-center">{HOME_SURPRISES.title} <span className="heading-gradient">{HOME_SURPRISES.subtitle}</span></h2>
+                            <h2 className="display-8 text-center">{HOME_SURPRISES.title} <span className="heading-gradient">{HOME_SURPRISES.subtitle}</span></h2>
                         </div>
                     </div>
 
