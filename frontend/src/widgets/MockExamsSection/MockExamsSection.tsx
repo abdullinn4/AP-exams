@@ -59,7 +59,7 @@ export const MockExamsSection = ({ courseSlug, isPreview }: MockExamsSectionProp
                                     <div className="chapter-premium-card---left-content">
                                         <div className="image-wrapper chapter-icon">
                                             <img
-                                                src='/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png'
+                                                src='/assets/webflow/images/examtestsicon.svg'
                                                 loading="eager"
                                                 alt="Exam Tests Icon"
                                             />
