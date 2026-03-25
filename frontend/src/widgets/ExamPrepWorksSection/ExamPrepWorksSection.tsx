@@ -52,8 +52,8 @@ export const ExamPrepWorksSection = () => {
     }, [])
 
     return (
-        <section className="section exam-prep-section top">
-            <div className="w-layout-blockcontainer container-default w-container">
+        <section className="section exam-prep-section top" >
+            <div data-w-id="b59a59eb-8135-53d7-934d-15fd43cb5117" className="w-layout-blockcontainer container-default w-container">
                 <div className="exam-prep-header">
                     <h2 className="display-9 mg-bottom-0">
                         How <span className="heading-gradient">Exam Prep Works</span>
@@ -61,7 +61,7 @@ export const ExamPrepWorksSection = () => {
                 </div>
             </div>
 
-            <div className="w-layout-blockcontainer container-default w-container">
+            <div data-w-id="b59a59eb-8135-53d7-934d-15fd43cb5117" className="w-layout-blockcontainer container-default w-container">
                 <div className="exam-prep-container">
                     <div className="exam-prep-swiper swiper">
                         <div className="swiper-wrapper">

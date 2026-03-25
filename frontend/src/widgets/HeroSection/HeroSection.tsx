@@ -70,23 +70,8 @@ export const HeroSection = () => {
                                 />
                                 <div className="blur-bg hero-bg---home-v1"></div>
 
-                                <div data-w-id="10aaa36f-a5fa-5307-350c-2670b8214199" className="image-wrapper float-image-01---hero-home-v1">
-                                    <img src={HOME_HERO.images.floatPyramid} loading="eager" alt="" className="image rotate-60-deg" />
-                                </div>
-                                <div data-w-id="7fb39435-788a-a0e2-eebf-8fa67eedace6" className="image-wrapper float-image-02---hero-home-v1">
-                                    <img src={HOME_HERO.images.floatSquare} loading="eager" alt="" className="image rotate-60-deg" />
-                                </div>
-                                <div data-w-id="8dea4324-cda8-84c2-908d-22dfcf9d549a" className="image-wrapper float-image-03---hero-home-v1">
-                                    <img src={HOME_HERO.images.floatCircle} loading="eager" alt="" className="image rotate-30-deg" />
-                                </div>
-                                <div data-w-id="8a2279e7-a56c-fc6a-4b5a-4983b72955ca" className="image-wrapper float-image-04---hero-home-v1">
-                                    <img src={HOME_HERO.images.floatPyramid} loading="eager" alt="" className="image rotate--60-deg" />
-                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="full-section-bg-wrapper">
-                        <img src={HOME_HERO.images.bgTexture} loading="eager" alt="" className="fit-cover width-100" />
                     </div>
 
                     <HeroSlider/>

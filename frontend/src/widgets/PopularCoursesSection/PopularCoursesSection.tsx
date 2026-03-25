@@ -34,7 +34,7 @@ export const PopularCoursesSection = ({
 
     return (
         <section className="section-card-padding top">
-            <div className="section-card">
+            <div className="section-card" data-w-id="b59a59eb-8135-53d7-934d-15fd43cb5117">
                 <div className="w-layout-blockcontainer container-default w-container">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                         <div data-w-id="f402fcd4-a56b-275f-aeb1-72593824ca6a" className="inner-container _704px center-tablet">

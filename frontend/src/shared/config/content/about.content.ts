@@ -99,6 +99,7 @@ export const HOME_SURPRISES = {
 } as const
 
 export const ABOUT_CTA_CARDS = {
+    title: 'What About Competitors?',
     cards: [
         {
             id: 1,

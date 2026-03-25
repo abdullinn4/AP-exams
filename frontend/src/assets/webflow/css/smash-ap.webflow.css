@@ -15704,12 +15704,8 @@ figcaption {
         width: 100%;
         max-width: 400px;
         margin: auto;
-        border-radius: 50%;
         overflow: hidden;
 
-        box-shadow:
-                0 0 60px 30px rgba(255, 255, 255, 0.05),
-                0 0 100px 50px rgba(255, 255, 255, 0.05);
     }
 
     .hero-mobile-image img {
@@ -15778,11 +15774,7 @@ figcaption {
         width: 100%;
         max-width: 600px;
         margin: auto;
-        border-radius: 24px;
         overflow: hidden;
-        box-shadow:
-                0 0 60px 30px rgba(255, 255, 255, 0.05),
-                0 0 100px 50px rgba(255, 255, 255, 0.05);
     }
 
     .cta-mobile-image img {
@@ -15914,18 +15906,7 @@ figcaption {
         margin: 32px 0;
     }
 }
-/* Softer white shadow */
-.image-container.hero-image---home-v1 > .image.floating-image---down,
-.image-container.main-image---cta-v1 > .image.floating-image---down {
-    box-shadow: 0 0 60px 30px rgba(255, 255, 255, 0.05),
-    0 0 100px 50px rgba(255, 255, 255, 0.05);
-}
 
-
-/* Border radius for circular image in HeroSection */
-.image-container.hero-image---home-v1 > .image.floating-image---down {
-    border-radius: 50%;
-}
 /* Swiper styles for PopularCoursesSection */
 .popular-courses-swiper-wrapper .swiper {
     overflow: visible;

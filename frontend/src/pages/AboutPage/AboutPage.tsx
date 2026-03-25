@@ -40,8 +40,6 @@ export const AboutPage = () => {
                                     <img
                                         src={ABOUT_HERO.images.main}
                                         loading="eager"
-                                        sizes="(max-width: 479px) 87vw, (max-width: 767px) 90vw, (max-width: 991px) 45vw, (max-width: 1439px) 47vw, 600px"
-                                        srcSet={`${ABOUT_HERO.images.main.replace('.jpg', '-p-500.jpg')} 500w, ${ABOUT_HERO.images.main.replace('.jpg', '-p-800.jpg')} 800w, ${ABOUT_HERO.images.main.replace('.jpg', '-p-1080.jpg')} 1080w, ${ABOUT_HERO.images.main} 1806w`}
                                         alt={`Hello Im ${ABOUT_HERO.name} - Courselify X Webflow Template`}
                                     />
                                 </div>
@@ -62,8 +60,6 @@ export const AboutPage = () => {
                                     <img
                                         src={ABOUT_HERO.images.secondary}
                                         loading="eager"
-                                        sizes="(max-width: 479px) 87vw, (max-width: 767px) 90vw, (max-width: 991px) 41vw, (max-width: 1439px) 42vw, 544px"
-                                        srcSet={`${ABOUT_HERO.images.secondary.replace('.jpg', '-p-500.jpg')} 500w, ${ABOUT_HERO.images.secondary.replace('.jpg', '-p-800.jpg')} 800w, ${ABOUT_HERO.images.secondary.replace('.jpg', '-p-1080.jpg')} 1080w, ${ABOUT_HERO.images.secondary} 1638w`}
                                         alt={`Hello Im ${ABOUT_HERO.name} - Courselify X Webflow Template`}
                                     />
                                 </div>

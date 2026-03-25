@@ -4,11 +4,17 @@ import {ROUTES} from "@/app/router/routes.ts";
 
 export const CTACardsSection = () => {
     return (
-        <section className="section cta-sales-home">
+        <section className="section-card-padding">
             <div className="home-sales---features-section-wrapper">
                 <div className="home-sales---features-section-bottom"></div>
             </div>
-            <div data-w-id="75e4621d-f034-0a35-68ad-960bc681dcd6" className="w-layout-blockcontainer container-default width-100 z-index-1 w-container">
+            <div data-w-id="fa95ee18-0a5c-64ab-0aaf-ae790687b46c" className="w-layout-blockcontainer container-default width-100 z-index-1 w-container">
+                <div className="exam-prep-header">
+                    <h2 className="display-9 mg-bottom-0">
+                        {ABOUT_CTA_CARDS.title}
+                    </h2>
+                </div>
+
                 <div style={{ textAlign: 'center' }} className="grid-2-columns more-templates-grid">
                     {ABOUT_CTA_CARDS.cards.map((card) => {
 

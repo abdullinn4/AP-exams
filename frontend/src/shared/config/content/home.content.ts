@@ -17,10 +17,6 @@ export const HOME_HERO = {
     ctaSecondary: 'Who we are',
     images: {
         main: '/assets/webflow/images/preview.png',
-        floatPyramid: '/assets/webflow/images/pyramid-figure-courselify-x-webflow-template.png',
-        floatSquare: '/assets/webflow/images/square-figure-courselify-x-webflow-template.png',
-        floatCircle: '/assets/webflow/images/circle-figure-courselify-x-webflow-template.png',
-        bgTexture: '/assets/webflow/images/home-v1-hero-bg-texture-courselify-webflow-ecommerce-template.png'
     }
 } as const
 
@@ -114,10 +110,7 @@ export const HOME_CTA = {
     ctaPrimary: 'Go to the cart',
     ctaSecondary: 'View all courses',
     images: {
-        main: '/assets/webflow/images/noperfect.png',
-        floatSquare: '/assets/webflow/images/square-figure-courselify-x-webflow-template.png',
-        floatCircle: '/assets/webflow/images/circle-figure-courselify-x-webflow-template.png',
-        floatPyramid: '/assets/webflow/images/pyramid-figure-courselify-x-webflow-template.png'
+        main: '/assets/webflow/images/time.png',
     }
 } as const
 
@@ -371,7 +364,7 @@ export const COURSES_DATA: Course[] = [
         shortTitle: 'AP Psych',
         description: 'Can\'t tell your Freud from your Piaget? We make every psychologist, theory, and concept crystal clear. Our streamlined course uses dynamic videos, smart mnemonics, and targeted practice to help you finally master the material—and crush the exam.',
         image: '/assets/webflow/images/AP Psychology.png',
-        slug: 'coming-soon/ap-psych'
+        slug: 'coming-soon/ap-psych-the-upside-down'
     },
     {
         id: 4,
@@ -395,7 +388,7 @@ export const COURSES_DATA: Course[] = [
         shortTitle: 'AP Lang',
         description: 'Get the exact skills you need for the AP Lang exam without the boring lectures. We cover all the course material with clear video walkthroughs and plenty of practice, making it super simple to understand what the graders are looking for.',
         image: '/assets/webflow/images/AP Lang.png',
-        slug: 'coming-soon/ap-lang'
+        slug: 'coming-soon/ap-lang-chamber-of-rhetoric'
     }
 ]
 export const EXAM_PREP_STEPS = [
