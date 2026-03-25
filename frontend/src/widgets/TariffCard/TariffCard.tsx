@@ -22,7 +22,7 @@ export const TariffCard = ({
                                variant = 'default'
                            }: TariffCardProps) => {
     const config = TARIFF_DESCRIPTIONS[tier]
-    const iconUrl = `/assets/webflow/images/${tier.toLowerCase()}-plan-courselify-x-webflow-template.png`
+    const iconUrl = `/assets/webflow/images/${tier.toLowerCase()}access.svg`
     const isPro = tier === 'PRO'
 
     return (

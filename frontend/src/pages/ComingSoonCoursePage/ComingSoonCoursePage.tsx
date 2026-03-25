@@ -64,6 +64,11 @@ export const ComingSoonCoursePage = () => {
                                                 </svg>
                                             </div>
                                         </a>
+                                        <a href="https://www.facebook.com/share/g/1VAQmeCQbJ/?mibextid=wwXIfr" target="_blank" className="social-media-icon-wrapper-dark w-inline-block">
+                                            <div className="icon-font-social-media">
+                                                
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

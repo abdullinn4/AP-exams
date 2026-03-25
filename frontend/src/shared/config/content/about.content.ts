@@ -99,7 +99,8 @@ export const HOME_SURPRISES = {
 } as const
 
 export const ABOUT_CTA_CARDS = {
-    title: 'What About Competitors?',
+    title: 'What About ',
+    titleGradient: 'Competitors?',
     cards: [
         {
             id: 1,
@@ -110,27 +111,27 @@ export const ABOUT_CTA_CARDS = {
             points: [
                 {
                     type: 'positive',
-                    text: 'Content depth: Units with video, theory, and tests – fully structured progression.'
+                    text: '✓ Content depth: Units with video, theory, and tests – fully structured progression.'
                 },
                 {
                     type: 'positive',
-                    text: 'Community & support: Live Discord + Facebook group. Real curators and admins help students and parents daily.'
+                    text: '✓ Community & support: Live Discord + Facebook group. Real curators and admins help students and parents daily.'
                 },
                 {
                     type: 'positive',
-                    text: 'Long‑term opportunity: We hire our graduates. Curators, marketers, programmers, etc. – your next job starts here.'
+                    text: '✓ Long‑term opportunity: We hire our graduates. Curators, marketers, programmers, etc. – your next job starts here.'
                 },
                 {
                     type: 'positive',
-                    text: 'Parent involvement: Dedicated Facebook group with admins answering parents directly.'
+                    text: '✓ Parent involvement: Dedicated Facebook group with admins answering parents directly.'
                 },
                 {
                     type: 'positive',
-                    text: 'Personalization: Curators help you on Discord – human support tailored to your struggle.'
+                    text: '✓ Personalization: Curators help you on Discord – human support tailored to your struggle.'
                 },
                 {
                     type: 'negative',
-                    text: 'Price: Paid course – Yes, we cost money. But look at everything above – a real community, career opportunity, and human support. Doesn\'t that make it worth it?'
+                    text: '✗ Price: Paid course – Yes, we cost money. But look at everything above – a real community, career opportunity, and human support. Doesn\'t that make it worth it?'
                 }
             ],
             ctaText: 'Worth, Show Me Courses →',
@@ -146,23 +147,23 @@ export const ABOUT_CTA_CARDS = {
             points: [
                 {
                     type: 'positive',
-                    text: 'Proven track record teaching generations of AP students'
+                    text: '✓ Proven track record teaching generations of AP students'
                 },
                 {
                     type: 'negative',
-                    text: 'Community & support: No community or human support (except paid tutoring with Princeton Review).'
+                    text: '✗ Community & support: No community or human support (except paid tutoring with Princeton Review).'
                 },
                 {
                     type: 'negative',
-                    text: 'Long‑term opportunity: No career path.'
+                    text: '✗ Long‑term opportunity: No career path.'
                 },
                 {
                     type: 'negative',
-                    text: 'Parent involvement: Not designed for parents (Khan, UWorld) or only if parent pays extra (Princeton).'
+                    text: '✗ Parent involvement: Not designed for parents (Khan, UWorld) or only if parent pays extra (Princeton).'
                 },
                 {
                     type: 'negative',
-                    text: 'Personalization: Algorithm‑based (Khan), static content (Princeton), Q‑bank only (UWorld) – no direct mentor.'
+                    text: '✗ Personalization: Algorithm‑based (Khan), static content (Princeton), Q‑bank only (UWorld) – no direct mentor.'
                 },
                 {
                     type: 'mixed',

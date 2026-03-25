@@ -4,14 +4,14 @@ import {ROUTES} from "@/app/router/routes.ts";
 
 export const CTACardsSection = () => {
     return (
-        <section className="section-card-padding">
+        <section className="section">
             <div className="home-sales---features-section-wrapper">
                 <div className="home-sales---features-section-bottom"></div>
             </div>
             <div data-w-id="fa95ee18-0a5c-64ab-0aaf-ae790687b46c" className="w-layout-blockcontainer container-default width-100 z-index-1 w-container">
                 <div className="exam-prep-header">
                     <h2 className="display-9 mg-bottom-0">
-                        {ABOUT_CTA_CARDS.title}
+                        {ABOUT_CTA_CARDS.title} <span className="heading-gradient">{ABOUT_CTA_CARDS.titleGradient}</span>
                     </h2>
                 </div>
 
