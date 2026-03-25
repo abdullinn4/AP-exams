@@ -63,7 +63,9 @@ export const UnitPage = () => {
                                     <div style={{display: 'flex', alignItems: 'center', gap: '24px'}}>
                                         <div className="image-wrapper chapter-single-premium-image">
                                             <img
-                                                src={unit?.iconUrl || '/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png'}
+                                                src={unit?.iconUrl && unit.iconUrl.trim() !== ''
+                                                    ? unit.iconUrl
+                                                    : '/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png'}
                                                 loading="eager"
                                                 alt={`${unit?.title} Icon`}
                                                 className="image"
