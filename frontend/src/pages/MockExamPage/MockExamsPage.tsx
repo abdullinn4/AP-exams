@@ -54,7 +54,7 @@ export const MockExamsPage = () => {
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
                                         <div className="image-wrapper chapter-single-premium-image">
                                             <img
-                                                src='/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png'
+                                                src='/assets/webflow/images/examtestsicon.svg'
                                                 loading="eager"
                                                 alt="Exam Tests Icon"
                                                 className="image"
