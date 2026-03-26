@@ -27,7 +27,7 @@ export const CTACardsSection = () => {
                             ? { background: card.backgroundColor }
                             : {}
 
-                        const commonProps = {
+                        const { key: cardKey, ...commonProps } = {
                             key: card.id,
                             className: cardClass,
                             style: cardStyle
@@ -85,11 +85,11 @@ export const CTACardsSection = () => {
 
                         // Условный рендеринг: Link или div
                         return card.ctaLink ? (
-                            <Link {...commonProps} to={ROUTES.CATALOG}>
+                            <Link key={cardKey} {...commonProps} to={ROUTES.CATALOG}>
                                 {content}
                             </Link>
                         ) : (
-                            <div {...commonProps}>
+                            <div key={cardKey} {...commonProps}>
                                 {content}
                             </div>
                         )

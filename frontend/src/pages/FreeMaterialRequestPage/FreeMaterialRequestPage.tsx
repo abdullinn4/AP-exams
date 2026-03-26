@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import {useState, type FormEvent} from 'react'
 import { useParams } from 'react-router-dom'
 import { Header } from '@/widgets/Header'
 import { Footer } from '@/widgets/Footer'
@@ -6,12 +6,25 @@ import { FREE_MATERIAL_REQUEST_CONTENT } from '@/shared/config/content'
 import { useRequestFreeMaterialMutation } from '@/shared/api/freeMaterialsApi'
 import { ROUTES } from '@/app/router/routes'
 import { Link } from 'react-router-dom'
+import {tokenService} from "@/features/auth/lib/tokenService.ts";
 
 export const FreeMaterialRequestPage = () => {
     const { slug } = useParams<{ slug: string }>()
-    const [email, setEmail] = useState('')
     const [isSuccess, setIsSuccess] = useState(false)
     const [requestFreeMaterial, { isLoading, isError }] = useRequestFreeMaterialMutation()
+    const [email, setEmail] = useState(() => {
+        const token = tokenService.getAccessToken()
+        if (token) {
+            try {
+                const payload = JSON.parse(atob(token.split('.')[1]))
+                return payload.sub || ''
+            } catch (error) {
+                console.error('Failed to parse token:', error)
+                return ''
+            }
+        }
+        return ''
+    })
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()

@@ -6649,7 +6649,6 @@ figcaption {
 }
 
 .image-container.hero-image-chapter-single {
-    bottom: 0;
   justify-content: center;
   align-items: flex-end;
   width: 120%;
@@ -9803,7 +9802,6 @@ figcaption {
 
   .sales-home-cta-card-square-logo {
     border-radius: 16px;
-    max-width: 72px;
   }
 
   .dropdown-title {
@@ -11341,7 +11339,6 @@ figcaption {
   }
 
   .sales-home-cta-card-square-logo {
-    max-width: 64px;
     margin-bottom: 20px;
   }
 
