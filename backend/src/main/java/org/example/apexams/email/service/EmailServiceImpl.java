@@ -170,9 +170,9 @@ public class EmailServiceImpl implements EmailService {
             case "one-page-cram-sheet-bundle" ->
                     "https://docs.google.com/document/d/1lYWcaG3d3pYvyXGNSDSk5zYKIfnzlVm9pyR1wY22mQc/edit?usp=sharing";
             case "ap-score-calculator" ->
-                    "https://docs.google.com/spreadsheets/d/1G6ZR10d7td6SAgCeuXEYrRXqipFzkrmAn1y7FstVNF4/edit?usp=sharing";
+                    "https://docs.google.com/spreadsheets/d/1JUYcOn6g_VXMD8jSANTVycEr9nAXpo6At2zE9NwABmE/edit?usp=sharing";
             case "college-admissions-ap-checklist" ->
-                    "https://docs.google.com/spreadsheets/d/1wk2N9-ilTljpzRGnvYI0KY7yJoIs5MNxrml8budfnZw/edit?usp=sharing";
+                    "https://docs.google.com/spreadsheets/d/1UOHr4UsA4N5FV4p0WcDx98rR45WXDxysocQb0hdrmSI/edit?usp=sharing";
             default -> "https://smashap.com";
         };
     }
