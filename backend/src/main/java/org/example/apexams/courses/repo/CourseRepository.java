@@ -17,6 +17,6 @@ public interface CourseRepository extends JpaRepository<CourseEntity, UUID> {
 
     boolean existsBySlug(String slug);
 
-    @Query("SELECT c FROM CourseEntity c WHERE c.status = :status")
+    @Query("SELECT c FROM CourseEntity c WHERE c.status = :status ORDER BY c.orderIndex ASC NULLS LAST, c.createdAt ASC")
     List<CourseEntity> findAllByStatus(@Param("status") CourseStatus status);
 }

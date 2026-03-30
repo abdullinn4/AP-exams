@@ -54,6 +54,9 @@ public class CourseEntity {
     @Column(nullable = false)
     private CourseStatus status = DRAFT;
 
+    @Column(name = "order_index")
+    private Integer orderIndex;
+
     @Column(name = "discord_invite_url", columnDefinition = "TEXT")
     private String discordInviteUrl;
 

@@ -168,7 +168,7 @@ public class EmailServiceImpl implements EmailService {
     private String getMaterialLinkBySlug(String slug) {
         return switch (slug) {
             case "one-page-cram-sheet-bundle" ->
-                    "https://docs.google.com/document/d/1yx47BzafOdnqgmdBVtSW-bkLlIEEA4pn20cMhcipcyY/edit?usp=sharing";
+                    "https://docs.google.com/document/d/1lYWcaG3d3pYvyXGNSDSk5zYKIfnzlVm9pyR1wY22mQc/edit?usp=sharing";
             case "ap-score-calculator" ->
                     "https://docs.google.com/spreadsheets/d/1G6ZR10d7td6SAgCeuXEYrRXqipFzkrmAn1y7FstVNF4/edit?usp=sharing";
             case "college-admissions-ap-checklist" ->
