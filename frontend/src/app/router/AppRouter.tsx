@@ -25,6 +25,7 @@ import {usePageTracking} from "@/shared/lib/hooks/usePageTracking.ts";
 import {PartnershipPage} from "@/pages/PartnershipPage";
 import {FreeMaterialsPage} from "@/pages/FreeMaterialsPage";
 import {FreeMaterialRequestPage} from "@/pages/FreeMaterialRequestPage";
+import {NotFoundPage} from "@/pages/NotFoundPage";
 
 export const AppRouter = () => {
     useWebflowAnimations()
