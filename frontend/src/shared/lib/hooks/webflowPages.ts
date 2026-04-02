@@ -21,5 +21,6 @@ export const WEBFLOW_PAGE_IDS: Record<string, string> = {
     '/partnership': '696cb73966e9acecad098e74',
     '/free-library': '696cb73966e9acecad098e69',
     '/free-library/:slug/request': '696cb73966e9acecad098e74',
+    '/404': '696cb73966e9acecad098e61',
     // ... остальные
 }

@@ -44,6 +44,7 @@ export const TestimonialsSection = () => {
                                     <div className="testimonial-card-v2---text" style={{fontSize: '13px', lineHeight: '1.5', fontWeight: '500'}}>"{testimonial.quote}"</div>
                                     <div>
                                         <div className="display-1 bold text-neutral-800 ">{testimonial.name}</div>
+                                        <div className="display-1 text-neutral-800 ">{testimonial.grade}</div>
                                         <div className="testimonial-card-v2---details-text">{testimonial.position}</div>
                                     </div>
                                 </div>

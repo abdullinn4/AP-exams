@@ -50,6 +50,7 @@ export const AppRouter = () => {
                 <Route path={ROUTES.PARTNERSHIP} element={<PartnershipPage/>}/>
                 <Route path={ROUTES.FREE_MATERIALS} element={<FreeMaterialsPage/>}/>
                 <Route path={ROUTES.FREE_MATERIAL_REQUEST} element={<FreeMaterialRequestPage/>}/>
+                <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage/>}/>
 
                 <Route element={<ProtectedRoute/>}>
                     <Route path={ROUTES.MY_COURSE} element={<MyCoursePage/>}/>
@@ -60,7 +61,7 @@ export const AppRouter = () => {
                     <Route path={ROUTES.DASHBOARD} element={<DashboardPage/>}/>
                 </Route>
 
-                <Route path="*" element={<Navigate to={ROUTES.HOME} replace/>}/>
+                <Route path="*" element={<Navigate to={ROUTES.NOT_FOUND} replace/>}/>
             </Routes>
         </>
 

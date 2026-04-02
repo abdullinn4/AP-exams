@@ -35,7 +35,7 @@ export const FinalCTASection = () => {
                                         ) : (
                                             <div className="inner-container _528px _100-tablet">
                                                 <h3 className="display-5">{faq.question}</h3>
-                                                <p className="mg-top-16px">{faq.answer}</p>
+                                                <p className="mg-top-16px" style={{ whiteSpace: 'pre-line' }}>{faq.answer}</p>
                                             </div>
                                         )}
                                     </div>

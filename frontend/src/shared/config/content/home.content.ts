@@ -178,33 +178,38 @@ export const HOME_TESTIMONIALS = {
     titleHighlight: 'Our Reputation',
     items: [
         {
-            quote: "My parents were about to drop like $800 on a private tutor because I was drowning in related rates. Then I found Smash AP. Video lessons, lesson notes, practice tests—everything was absolutely beautiful. Huge respect for the Unit Smash Time lessons, fr. Prof. G explains stuff like he actually remembers what it's like to be confused. Saved my parents like six hundred bucks and I walked out of that exam feeling solid. Scored a 4 and my dad finally got off my back about my math grade. Huge financial W for the family.",
-            name: "Marcus 12th Grade (Atlanta, GA)",
-            position: "AP Calculus BC",
+            quote: "I‘m taking Calc AB this year and I was pretty nervous because I had a decent foundation, but there were gaps everywhere. Kamil really sharpened everything up for me. The AP Calc AB: Semester to Success course literally has everything from limits to volumes of revolution, all aligned perfectly with the exam. I love that I can watch the videos to get the concept, then read the text materials if I need a refresher, and then immediately test myself. Finally, I‘m super prepared and I’m already getting 5s on practice tests. The only disadvantage can be the style. I mean you just need to realize if u love how Kamil teaches. I watched youtube videos and I loved his energetic manner from the beginning. So for me, absolutely 0 negative feelings.",
+            name: "Marcus",
+            grade: "Junior",
+            position: "AP Calculus AB",
             avatar: "/assets/webflow/images/marcus_avatar_review.PNG"
         },
         {
-            quote: "Okay so I took CSP because I thought it was gonna be easy (spoiler: it wasn't). I was genuinely struggling. Prof. Marat lays everything out in such a concise, clear way. Then I sharpened everything with a ton of practice problems. On the webinars, nobody makes you feel dumb for asking questions—everyone's just trying to lock in. Got a 5 and now I'm actually considering majoring in CS next year. This site lowkey changed my whole career path. Thanks, Smash AP.",
-            name: "Jessica 12th Grade (Seattle, WA)",
-            position: "AP Computer Science Principles",
+            quote: "There are almost no normal resources out there to prepare for the AP CSA exam. I couldn’t really find anything good on my own. I’m so thankful my friend recommended this website to me. I’d argue it’s the only comprehensive ap csa course out there right now. Marat breaks down the whole subject and exam really well. It’s great to learn from someone who’s both a strong programmer and a great teacher. Plus, knowing I can hop into discord and ask the curators about some weird bugs saves me hours of frustration.",
+            name: "Jessica",
+            grade: "Junior",
+            position: "AP Computer Science A",
             avatar: "/assets/webflow/images/jessica_avatar_review.PNG"
         },
         {
-            quote: "My actual teacher was sweet but she retired halfway through the year and we got a sub who had no idea what she was doing. I was STRESSED about the rhetorical analysis essays. Amelia is literally so funny and actually explains things like a normal person. I started looking forward to studying again. The webinars were especially helpful and honestly kinda lovely? Ended up with a 5 and I swear it's because the videos made me feel like I had a real teacher again. Bestie for real.",
-            name: "Danielle 12th Grade (Nashville, TN)",
-            position: "AP English Language",
+            quote: "I was really scared to try an online school. The experience totally exceeded my expectations. The community is so welcoming and everyone is genuinely nice. We have a discord channel just for hanging out and I've actually made friends there. We help each other with questions and just talk about random stuff. Kamilla is my teacher and I've gotten so close with her. She's super easy to talk to and always supportive. She makes AP Lang so much easier to understand. I used to dread writing essays but now after her classes I actually feel confident. Plus we do regular practice tests which is huge for AP prep. Highly recommend this online school.",
+            name: "Emily",
+            grade: "Senior",
+            position: "AP English Language and Composition",
             avatar: "/assets/webflow/images/danielle_avatar_review.PNG"
         },
         {
-            quote: "So I'm not gonna lie... I did absolutely nothing all semester. Like I was fully locked in on Fortnite and forgot school existed. Week before the exam I'm panicking because I don't know a single thing about acids and bases. Grinded Smash AP for like 5 days straight, no sleep, just straight chem. The practice problems are set up exactly like the real exam. Pulled a 4 and my friends called me a hacker. Highly recommend this school. Doesn't matter what level you're at now, you'll find something new here.",
-            name: "Tyler 12th Grade (Phoenix, AZ)",
-            position: "AP Chemistry",
+            quote: "I literally couldn’t keep all the historical events straight. Like my teacher would go through the textbook and I’d still be confused about how everything connected. Then I met Maria. She explains everything in such a simple way. But honestly the vibe of the whole course is something else. All the teachers at Smash AP are super chill and actually fun to learn from but Maria has a special place in my heart. She makes every lesson interesting and actually makes me want to study. If you’re looking for a course with a teacher who actually motivates you, go with Maria. With her you’re not just prepping for the APUSH - you actually enjoy the process.",
+            name: "Tyler",
+            grade: "Sophomore",
+            position: "AP United States History",
             avatar: "/assets/webflow/images/tyler_avatar_review.PNG"
         },
         {
-            quote: "My counselor told me if I passed this exam I could skip intro psych in college and save like 3 grand on tuition. So obviously I locked in. Smash AP has all the info you need—aligned with the exam and course book—but explained in such an easy way to understand. The review videos are actually kinda vibey, with a bunch of solved exam-style problems. I was scoring 5s on practice tests by the end. Passed easy and now I'm basically saving my future self thousands of dollars. Highly recommend this online school.",
-            name: "Ashley 12th Grade (Orlando, FL)",
-            position: "AP Psychology",
+            quote: "I'm taking the AP Bio: The Complete Pathway course and I'm so grateful. Every topic is broken down in detail using super clear language. The info sticks way easier than I expected. On top of the videos, there are so many helpful notes and study guides. The website and all the materials are laid out really nicely and it's easy to find what I need. By winter break I took a practice test and got a 4 already. I feel so much more confident now than I did at the start of the year.",
+            name: "Michael",
+            grade: "Junior",
+            position: "AP Biology",
             avatar: "/assets/webflow/images/ashley_avatar_review.PNG"
         }
     ]
@@ -225,8 +230,20 @@ export const HOME_FAQ = {
         },
         {
             question: 'What are the pricing plans?',
-            answer: '1) BASIC: Full platform access — all materials, video lessons, online practice tests, webinars, and our community included;' +
-                ' 2) PRO: Everything from Basic + more tasks and materials'
+            answer: '1) BASIC ACCESS – EXPRESS COURSE\n' +
+                '\n' +
+                '· All the essential information you need to ace your AP exam in one month\n' +
+                '· Concise video lessons covering only what’s tested\n' +
+                '· Text materials written by an expert with a soul in a super understandable language (no AI)\n' +
+                '· Targeted AP‑style practice tests\n' +
+                '· Access to the closed Smash AP Community\n' +
+                '· Opportunity to join our team after the course and start earning money\n\n' +
+                ' 2) PRO ACCESS – EXPRESS COURSE\n' +
+                '\n' +
+                '· Everything in Basic\n' +
+                '· Professional Skills Library – apply your AP knowledge to real‑world projects and build skills that matter beyond the exam\n' +
+                '· Wider range of job vacancies within our team and partner companies\n' +
+                '· Access to an individual curator'
         },
         {
             question: 'What do I need for SmashAP?',

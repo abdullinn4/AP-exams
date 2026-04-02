@@ -34,7 +34,7 @@ export const CourseDetailCard = ({ courseDetail }: CourseDetailCardProps) => {
             <div className="chapters-top-content-wrapper first">
                 <div className="chapters-top-content" style={{ display: 'flex', alignItems: 'center' }}>
                     <div className="image-wrapper chapter-icon">
-                        <img src='/assets/webflow/images/start-course-icon-courselify-webflow-ecommerce-template.png' alt="Course"/>
+                        <img src='/assets/webflow/images/coursesinsideicon.svg' alt="Course"/>
                     </div>
                     <div className="inner-container _418px">
                         <h2 className="display-5">{courseDetail.courseTitle}</h2>
